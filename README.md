@@ -1,4 +1,4 @@
-# Go API client for openapi
+# Golang SDK of Suger API
 
 CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.
 
