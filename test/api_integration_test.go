@@ -11,10 +11,11 @@ package openapi
 
 import (
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func Test_openapi_IntegrationAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_openapi_IntegrationAPIService(t *testing.T) {
 
 	t.Run("Test IntegrationAPIService CreateIntegration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 
@@ -38,7 +39,7 @@ func Test_openapi_IntegrationAPIService(t *testing.T) {
 
 	t.Run("Test IntegrationAPIService DeleteIntegration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var partner string
@@ -54,7 +55,7 @@ func Test_openapi_IntegrationAPIService(t *testing.T) {
 
 	t.Run("Test IntegrationAPIService GetIntegration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var partner string
@@ -70,7 +71,7 @@ func Test_openapi_IntegrationAPIService(t *testing.T) {
 
 	t.Run("Test IntegrationAPIService ListIntegrationsByOrganization", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 
@@ -84,7 +85,7 @@ func Test_openapi_IntegrationAPIService(t *testing.T) {
 
 	t.Run("Test IntegrationAPIService UpdateIntegration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var partner string
@@ -100,7 +101,7 @@ func Test_openapi_IntegrationAPIService(t *testing.T) {
 
 	t.Run("Test IntegrationAPIService VerifyIntegration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var partner string

@@ -11,10 +11,11 @@ package openapi
 
 import (
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func Test_openapi_MeteringAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	t.Run("Test MeteringAPIService BatchReportUsageRecordGroups", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 
@@ -38,7 +39,7 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	t.Run("Test MeteringAPIService BatchValidateUsageRecordGroups", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 
@@ -52,7 +53,7 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	t.Run("Test MeteringAPIService DeleteUsageRecordGroup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var usageRecordGroupId string
@@ -67,7 +68,7 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	t.Run("Test MeteringAPIService GetUsageMeteringConfigInfo", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 
@@ -81,7 +82,7 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	t.Run("Test MeteringAPIService GetUsageRecordGroup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var usageRecordGroupId string
@@ -96,7 +97,7 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	t.Run("Test MeteringAPIService GetUsageRecordReport", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var usageRecordReportId string
@@ -111,7 +112,7 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	t.Run("Test MeteringAPIService ListUsageRecordGroups", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 
@@ -125,7 +126,7 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	t.Run("Test MeteringAPIService ListUsageRecordGroupsByEntitlement", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var entitlementId string
@@ -140,7 +141,7 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	t.Run("Test MeteringAPIService ListUsageRecordGroupsByProduct", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var productId string
@@ -155,7 +156,7 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	t.Run("Test MeteringAPIService ListUsageRecordReports", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 
@@ -169,7 +170,7 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	t.Run("Test MeteringAPIService ReportUsageRecordGroup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var entitlementId string
@@ -184,7 +185,7 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	t.Run("Test MeteringAPIService UpdateUsageMeteringConfigInfo", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 
