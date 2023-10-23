@@ -11,10 +11,11 @@ package openapi
 
 import (
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func Test_openapi_EntitlementAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementAPIService AddEntitlementCredit", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var entitlementId string
@@ -39,7 +40,7 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementAPIService ApproveEntitlement", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var entitlementId string
@@ -54,7 +55,7 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementAPIService DivideEntitlementCommit", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var entitlementId string
@@ -69,7 +70,7 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementAPIService GetEntitlement", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var entitlementId string
@@ -84,7 +85,7 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementAPIService ListEntitlements", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 
@@ -98,7 +99,7 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementAPIService ListEntitlementsByBuyer", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var buyerId string
@@ -113,7 +114,7 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementAPIService ListEntitlementsByOffer", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var offerId string
@@ -128,7 +129,7 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementAPIService ListEntitlementsByPartner", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var partner string
@@ -143,7 +144,7 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementAPIService ListEntitlementsByProduct", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var productId string
@@ -158,7 +159,7 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementAPIService UpdateEntitlementMetaInfo", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var entitlementId string
@@ -173,7 +174,7 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementAPIService UpdateEntitlementName", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var entitlementId string

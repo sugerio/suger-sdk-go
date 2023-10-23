@@ -11,10 +11,11 @@ package openapi
 
 import (
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func Test_openapi_ContactAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_openapi_ContactAPIService(t *testing.T) {
 
 	t.Run("Test ContactAPIService AddContactToBuyer", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var buyerId string
@@ -40,7 +41,7 @@ func Test_openapi_ContactAPIService(t *testing.T) {
 
 	t.Run("Test ContactAPIService AddContactToOffer", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var contactId string
@@ -56,7 +57,7 @@ func Test_openapi_ContactAPIService(t *testing.T) {
 
 	t.Run("Test ContactAPIService CreateContact", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 
@@ -70,7 +71,7 @@ func Test_openapi_ContactAPIService(t *testing.T) {
 
 	t.Run("Test ContactAPIService GetContact", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var contactId string
@@ -85,7 +86,7 @@ func Test_openapi_ContactAPIService(t *testing.T) {
 
 	t.Run("Test ContactAPIService ListContactsByOrganization", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 
@@ -99,7 +100,7 @@ func Test_openapi_ContactAPIService(t *testing.T) {
 
 	t.Run("Test ContactAPIService RemoveContactFromBuyer", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var buyerId string
@@ -115,7 +116,7 @@ func Test_openapi_ContactAPIService(t *testing.T) {
 
 	t.Run("Test ContactAPIService RemoveContactFromOffer", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var contactId string
@@ -131,7 +132,7 @@ func Test_openapi_ContactAPIService(t *testing.T) {
 
 	t.Run("Test ContactAPIService UpdateContact", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var orgId string
 		var contactId string

@@ -13,9 +13,9 @@ import (
 	"context"
 	"testing"
 
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func Test_openapi_OfferAPIService(t *testing.T) {
