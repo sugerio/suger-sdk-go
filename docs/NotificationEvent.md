@@ -6,18 +6,27 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | Pointer to [**NotificationEventAction**](NotificationEventAction.md) |  | [optional] 
 **CcContactIds** | Pointer to **[]string** | Cc contactIds that will receive this notification | [optional] 
+**Channels** | Pointer to [**[]NotificationChannel**](NotificationChannel.md) | The list of channels this event will be sent to, e.g., [\&quot;SLACK\&quot;, \&quot;EMAIL\&quot;] | [optional] 
+**ContactEmails** | Pointer to **[]string** | Contact emails that will receive this notification | [optional] 
 **ContactIds** | Pointer to **[]string** | ContactIds that will receive this notification | [optional] 
+**CreatedBy** | Pointer to [**LastModifiedBy**](LastModifiedBy.md) | Who originally created or triggered this notification event. It can be user or API client. | [optional] 
+**CustomFields** | Pointer to **map[string]interface{}** | Custom fields of the notification event. | [optional] 
 **EntityID** | Pointer to **string** |  | [optional] 
+**EntityName** | Pointer to **string** | The name of the entity. | [optional] 
 **EntityStatus** | Pointer to **string** |  | [optional] 
 **EntityType** | Pointer to [**EntityType**](EntityType.md) |  | [optional] 
 **EventID** | Pointer to **string** | notification event id. | [optional] 
-**EventStatus** | Pointer to [**NotificationEventStatus**](NotificationEventStatus.md) |  | [optional] 
+**EventStatus** | Pointer to [**NotificationEventStatus**](NotificationEventStatus.md) | notification event status. | [optional] 
+**Info** | Pointer to **map[string]interface{}** | Additional info of the notification event. | [optional] 
+**IsActionItem** | Pointer to **bool** | If this notification event is an action item. | [optional] 
 **LastUpdateTime** | Pointer to **time.Time** | timestamp of the event when it is updated. | [optional] 
-**Message** | Pointer to **string** |  | [optional] 
+**Message** | Pointer to **string** | The message of the notification event such as email body, action item description. | [optional] 
 **OrganizationID** | Pointer to **string** | suger organization id. | [optional] 
-**Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
+**Partner** | Pointer to [**Partner**](Partner.md) | the partner of the entity. Optional. | [optional] 
+**Priority** | Pointer to [**AuditingEventPriority**](AuditingEventPriority.md) | The priority of the notification event. | [optional] 
+**RequireAudit** | Pointer to **bool** | If this notification event is an auditing event and need to store in DB. | [optional] 
 **Timestamp** | Pointer to **time.Time** | timestamp of the event when it is scheduled or created. | [optional] 
-**Title** | Pointer to **string** | The title of the notification event such as email subject. | [optional] 
+**Title** | Pointer to **string** | The title of the notification event such as email subject, action item title. | [optional] 
 **TrackEvents** | Pointer to [**[]TrackEvent**](TrackEvent.md) | The track events of the notification event. | [optional] 
 
 ## Methods
@@ -89,6 +98,56 @@ SetCcContactIds sets CcContactIds field to given value.
 
 HasCcContactIds returns a boolean if a field has been set.
 
+### GetChannels
+
+`func (o *NotificationEvent) GetChannels() []NotificationChannel`
+
+GetChannels returns the Channels field if non-nil, zero value otherwise.
+
+### GetChannelsOk
+
+`func (o *NotificationEvent) GetChannelsOk() (*[]NotificationChannel, bool)`
+
+GetChannelsOk returns a tuple with the Channels field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChannels
+
+`func (o *NotificationEvent) SetChannels(v []NotificationChannel)`
+
+SetChannels sets Channels field to given value.
+
+### HasChannels
+
+`func (o *NotificationEvent) HasChannels() bool`
+
+HasChannels returns a boolean if a field has been set.
+
+### GetContactEmails
+
+`func (o *NotificationEvent) GetContactEmails() []string`
+
+GetContactEmails returns the ContactEmails field if non-nil, zero value otherwise.
+
+### GetContactEmailsOk
+
+`func (o *NotificationEvent) GetContactEmailsOk() (*[]string, bool)`
+
+GetContactEmailsOk returns a tuple with the ContactEmails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContactEmails
+
+`func (o *NotificationEvent) SetContactEmails(v []string)`
+
+SetContactEmails sets ContactEmails field to given value.
+
+### HasContactEmails
+
+`func (o *NotificationEvent) HasContactEmails() bool`
+
+HasContactEmails returns a boolean if a field has been set.
+
 ### GetContactIds
 
 `func (o *NotificationEvent) GetContactIds() []string`
@@ -114,6 +173,56 @@ SetContactIds sets ContactIds field to given value.
 
 HasContactIds returns a boolean if a field has been set.
 
+### GetCreatedBy
+
+`func (o *NotificationEvent) GetCreatedBy() LastModifiedBy`
+
+GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
+
+### GetCreatedByOk
+
+`func (o *NotificationEvent) GetCreatedByOk() (*LastModifiedBy, bool)`
+
+GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedBy
+
+`func (o *NotificationEvent) SetCreatedBy(v LastModifiedBy)`
+
+SetCreatedBy sets CreatedBy field to given value.
+
+### HasCreatedBy
+
+`func (o *NotificationEvent) HasCreatedBy() bool`
+
+HasCreatedBy returns a boolean if a field has been set.
+
+### GetCustomFields
+
+`func (o *NotificationEvent) GetCustomFields() map[string]interface{}`
+
+GetCustomFields returns the CustomFields field if non-nil, zero value otherwise.
+
+### GetCustomFieldsOk
+
+`func (o *NotificationEvent) GetCustomFieldsOk() (*map[string]interface{}, bool)`
+
+GetCustomFieldsOk returns a tuple with the CustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomFields
+
+`func (o *NotificationEvent) SetCustomFields(v map[string]interface{})`
+
+SetCustomFields sets CustomFields field to given value.
+
+### HasCustomFields
+
+`func (o *NotificationEvent) HasCustomFields() bool`
+
+HasCustomFields returns a boolean if a field has been set.
+
 ### GetEntityID
 
 `func (o *NotificationEvent) GetEntityID() string`
@@ -138,6 +247,31 @@ SetEntityID sets EntityID field to given value.
 `func (o *NotificationEvent) HasEntityID() bool`
 
 HasEntityID returns a boolean if a field has been set.
+
+### GetEntityName
+
+`func (o *NotificationEvent) GetEntityName() string`
+
+GetEntityName returns the EntityName field if non-nil, zero value otherwise.
+
+### GetEntityNameOk
+
+`func (o *NotificationEvent) GetEntityNameOk() (*string, bool)`
+
+GetEntityNameOk returns a tuple with the EntityName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntityName
+
+`func (o *NotificationEvent) SetEntityName(v string)`
+
+SetEntityName sets EntityName field to given value.
+
+### HasEntityName
+
+`func (o *NotificationEvent) HasEntityName() bool`
+
+HasEntityName returns a boolean if a field has been set.
 
 ### GetEntityStatus
 
@@ -239,6 +373,56 @@ SetEventStatus sets EventStatus field to given value.
 
 HasEventStatus returns a boolean if a field has been set.
 
+### GetInfo
+
+`func (o *NotificationEvent) GetInfo() map[string]interface{}`
+
+GetInfo returns the Info field if non-nil, zero value otherwise.
+
+### GetInfoOk
+
+`func (o *NotificationEvent) GetInfoOk() (*map[string]interface{}, bool)`
+
+GetInfoOk returns a tuple with the Info field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInfo
+
+`func (o *NotificationEvent) SetInfo(v map[string]interface{})`
+
+SetInfo sets Info field to given value.
+
+### HasInfo
+
+`func (o *NotificationEvent) HasInfo() bool`
+
+HasInfo returns a boolean if a field has been set.
+
+### GetIsActionItem
+
+`func (o *NotificationEvent) GetIsActionItem() bool`
+
+GetIsActionItem returns the IsActionItem field if non-nil, zero value otherwise.
+
+### GetIsActionItemOk
+
+`func (o *NotificationEvent) GetIsActionItemOk() (*bool, bool)`
+
+GetIsActionItemOk returns a tuple with the IsActionItem field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsActionItem
+
+`func (o *NotificationEvent) SetIsActionItem(v bool)`
+
+SetIsActionItem sets IsActionItem field to given value.
+
+### HasIsActionItem
+
+`func (o *NotificationEvent) HasIsActionItem() bool`
+
+HasIsActionItem returns a boolean if a field has been set.
+
 ### GetLastUpdateTime
 
 `func (o *NotificationEvent) GetLastUpdateTime() time.Time`
@@ -338,6 +522,56 @@ SetPartner sets Partner field to given value.
 `func (o *NotificationEvent) HasPartner() bool`
 
 HasPartner returns a boolean if a field has been set.
+
+### GetPriority
+
+`func (o *NotificationEvent) GetPriority() AuditingEventPriority`
+
+GetPriority returns the Priority field if non-nil, zero value otherwise.
+
+### GetPriorityOk
+
+`func (o *NotificationEvent) GetPriorityOk() (*AuditingEventPriority, bool)`
+
+GetPriorityOk returns a tuple with the Priority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPriority
+
+`func (o *NotificationEvent) SetPriority(v AuditingEventPriority)`
+
+SetPriority sets Priority field to given value.
+
+### HasPriority
+
+`func (o *NotificationEvent) HasPriority() bool`
+
+HasPriority returns a boolean if a field has been set.
+
+### GetRequireAudit
+
+`func (o *NotificationEvent) GetRequireAudit() bool`
+
+GetRequireAudit returns the RequireAudit field if non-nil, zero value otherwise.
+
+### GetRequireAuditOk
+
+`func (o *NotificationEvent) GetRequireAuditOk() (*bool, bool)`
+
+GetRequireAuditOk returns a tuple with the RequireAudit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequireAudit
+
+`func (o *NotificationEvent) SetRequireAudit(v bool)`
+
+SetRequireAudit sets RequireAudit field to given value.
+
+### HasRequireAudit
+
+`func (o *NotificationEvent) HasRequireAudit() bool`
+
+HasRequireAudit returns a boolean if a field has been set.
 
 ### GetTimestamp
 

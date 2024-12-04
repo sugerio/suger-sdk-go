@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnableScheduledStartTimes** | Pointer to **bool** |  | [optional] 
 **EndTime** | Pointer to **time.Time** |  | [optional] 
-**StartPolicy** | Pointer to **string** | such as \&quot;OFFER_START_POLICY_IMMEDIATE\&quot; | [optional] 
+**StartPolicy** | Pointer to [**GcpMarketplaceOfferStartPolicy**](GcpMarketplaceOfferStartPolicy.md) |  | [optional] 
 **StartTime** | Pointer to **time.Time** |  | [optional] 
 **TermDuration** | Pointer to [**GcpPeriodDuration**](GcpPeriodDuration.md) |  | [optional] 
 
@@ -81,20 +81,20 @@ HasEndTime returns a boolean if a field has been set.
 
 ### GetStartPolicy
 
-`func (o *GcpMarketplacePrivateOfferTerm) GetStartPolicy() string`
+`func (o *GcpMarketplacePrivateOfferTerm) GetStartPolicy() GcpMarketplaceOfferStartPolicy`
 
 GetStartPolicy returns the StartPolicy field if non-nil, zero value otherwise.
 
 ### GetStartPolicyOk
 
-`func (o *GcpMarketplacePrivateOfferTerm) GetStartPolicyOk() (*string, bool)`
+`func (o *GcpMarketplacePrivateOfferTerm) GetStartPolicyOk() (*GcpMarketplaceOfferStartPolicy, bool)`
 
 GetStartPolicyOk returns a tuple with the StartPolicy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStartPolicy
 
-`func (o *GcpMarketplacePrivateOfferTerm) SetStartPolicy(v string)`
+`func (o *GcpMarketplacePrivateOfferTerm) SetStartPolicy(v GcpMarketplaceOfferStartPolicy)`
 
 SetStartPolicy sets StartPolicy field to given value.
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Dimension** | Pointer to **string** | The dimension for which the given entitlement applies. Dimensions represent categories of capacity in a product and are specified when the product is listed in AWS Marketplace. | [optional] 
 **ExpirationDate** | Pointer to **string** | The expiration date represents the minimum date through which this entitlement is expected to remain valid. For contractual products listed on AWS Marketplace, the expiration date is the date at which the customer will renew or cancel their contract. Customers who are opting to renew their contract will still have entitlements with an expiration date. | [optional] 
 **ProductCode** | Pointer to **string** | The product code for which the given entitlement applies. Product codes are provided by AWS Marketplace when the product listing is created. | [optional] 
-**Value** | Pointer to **map[string]interface{}** | The EntitlementValue represents the amount of capacity that the customer is entitled to for the product. | [optional] 
+**Value** | Pointer to [**TypesEntitlementValue**](TypesEntitlementValue.md) | The EntitlementValue represents the amount of capacity that the customer is entitled to for the product. | [optional] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasProductCode returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *TypesEntitlement) GetValue() map[string]interface{}`
+`func (o *TypesEntitlement) GetValue() TypesEntitlementValue`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *TypesEntitlement) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *TypesEntitlement) GetValueOk() (*TypesEntitlementValue, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *TypesEntitlement) SetValue(v map[string]interface{})`
+`func (o *TypesEntitlement) SetValue(v TypesEntitlementValue)`
 
 SetValue sets Value field to given value.
 

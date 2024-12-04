@@ -4,11 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DimensionMapping** | Pointer to [**map[string]UsageMeteringDimensionMappingValue**](UsageMeteringDimensionMappingValue.md) | The mapping of the source dimension key to the destination dimension key of the usage metering. | [optional] 
+**DimensionMapping** | Pointer to [**map[string]UsageMeteringDimensionMappingValue**](UsageMeteringDimensionMappingValue.md) | Deprecated: Use DimensionMappingV2 instead. The mapping of the source dimension key to the destination dimension key of the usage metering. | [optional] 
+**DimensionMappingV2** | Pointer to [**map[string][]UsageMeteringDimensionMappingValue**](array.md) | The mapping of the source dimension key to the destination dimension keys of the usage metering. The destination dimension keys are the list of the destination dimension keys. So the source dimension key can be mapped to multiple destination dimension keys. | [optional] 
+**EnableBillableDimension** | Pointer to **bool** |  | [optional] 
 **EnableCommitWithAdditionalUsageAtListPrice** | Pointer to **bool** | Enable the commit (discount) with additional usage metering at list price. Only applicable if EnableCommitWithAdditionalUsageMetering is true. The default is false, which means the commit with additional usage metering at the discounted price in the private offer. If set to true, the additional usage is metered at the list price (the price in public product listing) instead of the discounted price. | [optional] 
 **EnableCommitWithAdditionalUsageMetering** | Pointer to **bool** | Enable the commit with additional usage metering. The default is false, which means all usage records are reported to partner no matter how much is the commit. If set to true, the usage records will be reported to partner only if the current commit has been exhausted. | [optional] 
 **EnableDimensionMapping** | Pointer to **bool** | Enable the dimension mapping for the usage metering. The default is false, which means no dimension conversion and just use the origin dimension. | [optional] 
-**Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
+**Partner** | Pointer to [**Partner**](Partner.md) | The partner in this dimension mapping. Required. Such as AWS, AZURE or GCP. | [optional] 
 
 ## Methods
 
@@ -53,6 +55,56 @@ SetDimensionMapping sets DimensionMapping field to given value.
 `func (o *PartnerUsageMeteringConfig) HasDimensionMapping() bool`
 
 HasDimensionMapping returns a boolean if a field has been set.
+
+### GetDimensionMappingV2
+
+`func (o *PartnerUsageMeteringConfig) GetDimensionMappingV2() map[string][]UsageMeteringDimensionMappingValue`
+
+GetDimensionMappingV2 returns the DimensionMappingV2 field if non-nil, zero value otherwise.
+
+### GetDimensionMappingV2Ok
+
+`func (o *PartnerUsageMeteringConfig) GetDimensionMappingV2Ok() (*map[string][]UsageMeteringDimensionMappingValue, bool)`
+
+GetDimensionMappingV2Ok returns a tuple with the DimensionMappingV2 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDimensionMappingV2
+
+`func (o *PartnerUsageMeteringConfig) SetDimensionMappingV2(v map[string][]UsageMeteringDimensionMappingValue)`
+
+SetDimensionMappingV2 sets DimensionMappingV2 field to given value.
+
+### HasDimensionMappingV2
+
+`func (o *PartnerUsageMeteringConfig) HasDimensionMappingV2() bool`
+
+HasDimensionMappingV2 returns a boolean if a field has been set.
+
+### GetEnableBillableDimension
+
+`func (o *PartnerUsageMeteringConfig) GetEnableBillableDimension() bool`
+
+GetEnableBillableDimension returns the EnableBillableDimension field if non-nil, zero value otherwise.
+
+### GetEnableBillableDimensionOk
+
+`func (o *PartnerUsageMeteringConfig) GetEnableBillableDimensionOk() (*bool, bool)`
+
+GetEnableBillableDimensionOk returns a tuple with the EnableBillableDimension field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableBillableDimension
+
+`func (o *PartnerUsageMeteringConfig) SetEnableBillableDimension(v bool)`
+
+SetEnableBillableDimension sets EnableBillableDimension field to given value.
+
+### HasEnableBillableDimension
+
+`func (o *PartnerUsageMeteringConfig) HasEnableBillableDimension() bool`
+
+HasEnableBillableDimension returns a boolean if a field has been set.
 
 ### GetEnableCommitWithAdditionalUsageAtListPrice
 

@@ -20,15 +20,602 @@ import (
 	"strings"
 )
 
-
 // BuyerAPIService BuyerAPI service
 type BuyerAPIService service
 
-type ApiGetBuyerRequest struct {
-	ctx context.Context
+type ApiCloseCreditWalletRequest struct {
+	ctx        context.Context
 	ApiService *BuyerAPIService
-	orgId string
-	buyerId string
+	orgId      string
+	buyerId    string
+	walletId   string
+}
+
+func (r ApiCloseCreditWalletRequest) Execute() (*BillingWallet, *http.Response, error) {
+	return r.ApiService.CloseCreditWalletExecute(r)
+}
+
+/*
+CloseCreditWallet close credit wallet
+
+Close the given credit wallet, if it's a payment method, sync to payment provider too. Once closed, it can't be used for payment.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param buyerId Buyer ID
+	@param walletId Wallet ID
+	@return ApiCloseCreditWalletRequest
+*/
+func (a *BuyerAPIService) CloseCreditWallet(ctx context.Context, orgId string, buyerId string, walletId string) ApiCloseCreditWalletRequest {
+	return ApiCloseCreditWalletRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+		buyerId:    buyerId,
+		walletId:   walletId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return BillingWallet
+func (a *BuyerAPIService) CloseCreditWalletExecute(r ApiCloseCreditWalletRequest) (*BillingWallet, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BillingWallet
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.CloseCreditWallet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/buyer/{buyerId}/wallet/{walletId}/close"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"buyerId"+"}", url.PathEscape(parameterValueToString(r.buyerId, "buyerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"walletId"+"}", url.PathEscape(parameterValueToString(r.walletId, "walletId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCreateBuyerRequest struct {
+	ctx        context.Context
+	ApiService *BuyerAPIService
+	orgId      string
+	data       *CreateBuyerParams
+}
+
+// CreateBuyerParams
+func (r ApiCreateBuyerRequest) Data(data CreateBuyerParams) ApiCreateBuyerRequest {
+	r.data = &data
+	return r
+}
+
+func (r ApiCreateBuyerRequest) Execute() (*IdentityBuyer, *http.Response, error) {
+	return r.ApiService.CreateBuyerExecute(r)
+}
+
+/*
+CreateBuyer create buyer
+
+create a new buyer for Stripe or Adyen under the given organization.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@return ApiCreateBuyerRequest
+*/
+func (a *BuyerAPIService) CreateBuyer(ctx context.Context, orgId string) ApiCreateBuyerRequest {
+	return ApiCreateBuyerRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return IdentityBuyer
+func (a *BuyerAPIService) CreateBuyerExecute(r ApiCreateBuyerRequest) (*IdentityBuyer, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *IdentityBuyer
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.CreateBuyer")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/buyer"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.data == nil {
+		return localVarReturnValue, nil, reportError("data is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.data
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCreateCreditWalletRequest struct {
+	ctx        context.Context
+	ApiService *BuyerAPIService
+	orgId      string
+	buyerId    string
+}
+
+func (r ApiCreateCreditWalletRequest) Execute() (*BillingWallet, *http.Response, error) {
+	return r.ApiService.CreateCreditWalletExecute(r)
+}
+
+/*
+CreateCreditWallet create credit wallet
+
+create a new credit wallet for the buyer.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param buyerId Buyer ID
+	@return ApiCreateCreditWalletRequest
+*/
+func (a *BuyerAPIService) CreateCreditWallet(ctx context.Context, orgId string, buyerId string) ApiCreateCreditWalletRequest {
+	return ApiCreateCreditWalletRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+		buyerId:    buyerId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return BillingWallet
+func (a *BuyerAPIService) CreateCreditWalletExecute(r ApiCreateCreditWalletRequest) (*BillingWallet, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BillingWallet
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.CreateCreditWallet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/buyer/{buyerId}/wallet"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"buyerId"+"}", url.PathEscape(parameterValueToString(r.buyerId, "buyerId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeleteBuyerWalletRequest struct {
+	ctx        context.Context
+	ApiService *BuyerAPIService
+	orgId      string
+	buyerId    string
+	walletId   string
+}
+
+func (r ApiDeleteBuyerWalletRequest) Execute() (*BillingWallet, *http.Response, error) {
+	return r.ApiService.DeleteBuyerWalletExecute(r)
+}
+
+/*
+DeleteBuyerWallet delete buyer wallet
+
+delete a wallet of the buyer, if it's a payment method, sync to payment provider too.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param buyerId Buyer ID
+	@param walletId Wallet ID
+	@return ApiDeleteBuyerWalletRequest
+*/
+func (a *BuyerAPIService) DeleteBuyerWallet(ctx context.Context, orgId string, buyerId string, walletId string) ApiDeleteBuyerWalletRequest {
+	return ApiDeleteBuyerWalletRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+		buyerId:    buyerId,
+		walletId:   walletId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return BillingWallet
+func (a *BuyerAPIService) DeleteBuyerWalletExecute(r ApiDeleteBuyerWalletRequest) (*BillingWallet, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BillingWallet
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.DeleteBuyerWallet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/buyer/{buyerId}/wallet/{walletId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"buyerId"+"}", url.PathEscape(parameterValueToString(r.buyerId, "buyerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"walletId"+"}", url.PathEscape(parameterValueToString(r.walletId, "walletId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetBuyerRequest struct {
+	ctx        context.Context
+	ApiService *BuyerAPIService
+	orgId      string
+	buyerId    string
 }
 
 func (r ApiGetBuyerRequest) Execute() (*IdentityBuyer, *http.Response, error) {
@@ -38,30 +625,31 @@ func (r ApiGetBuyerRequest) Execute() (*IdentityBuyer, *http.Response, error) {
 /*
 GetBuyer get buyer
 
-get buyer by the given organization and buyer id
+get buyer by the given organization and buyer id.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param buyerId Buyer ID
- @return ApiGetBuyerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param buyerId Buyer ID
+	@return ApiGetBuyerRequest
 */
 func (a *BuyerAPIService) GetBuyer(ctx context.Context, orgId string, buyerId string) ApiGetBuyerRequest {
 	return ApiGetBuyerRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		buyerId: buyerId,
+		ctx:        ctx,
+		orgId:      orgId,
+		buyerId:    buyerId,
 	}
 }
 
 // Execute executes the request
-//  @return IdentityBuyer
+//
+//	@return IdentityBuyer
 func (a *BuyerAPIService) GetBuyerExecute(r ApiGetBuyerRequest) (*IdentityBuyer, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *IdentityBuyer
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *IdentityBuyer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.GetBuyer")
@@ -97,7 +685,7 @@ func (a *BuyerAPIService) GetBuyerExecute(r ApiGetBuyerRequest) (*IdentityBuyer,
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -137,8 +725,8 @@ func (a *BuyerAPIService) GetBuyerExecute(r ApiGetBuyerRequest) (*IdentityBuyer,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -148,8 +736,8 @@ func (a *BuyerAPIService) GetBuyerExecute(r ApiGetBuyerRequest) (*IdentityBuyer,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -159,8 +747,8 @@ func (a *BuyerAPIService) GetBuyerExecute(r ApiGetBuyerRequest) (*IdentityBuyer,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -177,54 +765,55 @@ func (a *BuyerAPIService) GetBuyerExecute(r ApiGetBuyerRequest) (*IdentityBuyer,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListBuyersByContactRequest struct {
-	ctx context.Context
+type ApiListBuyerWalletsRequest struct {
+	ctx        context.Context
 	ApiService *BuyerAPIService
-	orgId string
-	contactId string
+	orgId      string
+	buyerId    string
 }
 
-func (r ApiListBuyersByContactRequest) Execute() ([]IdentityBuyer, *http.Response, error) {
-	return r.ApiService.ListBuyersByContactExecute(r)
+func (r ApiListBuyerWalletsRequest) Execute() ([]BillingWallet, *http.Response, error) {
+	return r.ApiService.ListBuyerWalletsExecute(r)
 }
 
 /*
-ListBuyersByContact list buyers by contact
+ListBuyerWallets list buyer's wallets
 
-list all buyers by the given organization and contact
+list all wallets of a buyer.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param contactId Contact ID
- @return ApiListBuyersByContactRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param buyerId Buyer ID
+	@return ApiListBuyerWalletsRequest
 */
-func (a *BuyerAPIService) ListBuyersByContact(ctx context.Context, orgId string, contactId string) ApiListBuyersByContactRequest {
-	return ApiListBuyersByContactRequest{
+func (a *BuyerAPIService) ListBuyerWallets(ctx context.Context, orgId string, buyerId string) ApiListBuyerWalletsRequest {
+	return ApiListBuyerWalletsRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		contactId: contactId,
+		ctx:        ctx,
+		orgId:      orgId,
+		buyerId:    buyerId,
 	}
 }
 
 // Execute executes the request
-//  @return []IdentityBuyer
-func (a *BuyerAPIService) ListBuyersByContactExecute(r ApiListBuyersByContactRequest) ([]IdentityBuyer, *http.Response, error) {
+//
+//	@return []BillingWallet
+func (a *BuyerAPIService) ListBuyerWalletsExecute(r ApiListBuyerWalletsRequest) ([]BillingWallet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []IdentityBuyer
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []BillingWallet
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.ListBuyersByContact")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.ListBuyerWallets")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/org/{orgId}/contact/{contactId}/buyer"
+	localVarPath := localBasePath + "/org/{orgId}/buyer/{buyerId}/wallet"
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"contactId"+"}", url.PathEscape(parameterValueToString(r.contactId, "contactId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"buyerId"+"}", url.PathEscape(parameterValueToString(r.buyerId, "buyerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -250,7 +839,7 @@ func (a *BuyerAPIService) ListBuyersByContactExecute(r ApiListBuyersByContactReq
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -290,8 +879,8 @@ func (a *BuyerAPIService) ListBuyersByContactExecute(r ApiListBuyersByContactReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -301,8 +890,8 @@ func (a *BuyerAPIService) ListBuyersByContactExecute(r ApiListBuyersByContactReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -319,44 +908,73 @@ func (a *BuyerAPIService) ListBuyersByContactExecute(r ApiListBuyersByContactReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListBuyersByOrganizationRequest struct {
-	ctx context.Context
+type ApiListBuyersRequest struct {
+	ctx        context.Context
 	ApiService *BuyerAPIService
-	orgId string
+	orgId      string
+	partner    *string
+	contactId  *string
+	limit      *int32
+	offset     *int32
 }
 
-func (r ApiListBuyersByOrganizationRequest) Execute() ([]IdentityBuyer, *http.Response, error) {
-	return r.ApiService.ListBuyersByOrganizationExecute(r)
+// filter by partner
+func (r ApiListBuyersRequest) Partner(partner string) ApiListBuyersRequest {
+	r.partner = &partner
+	return r
+}
+
+// filter by contactId
+func (r ApiListBuyersRequest) ContactId(contactId string) ApiListBuyersRequest {
+	r.contactId = &contactId
+	return r
+}
+
+// List pagination size, default 1000, max value is 1000
+func (r ApiListBuyersRequest) Limit(limit int32) ApiListBuyersRequest {
+	r.limit = &limit
+	return r
+}
+
+// List pagination offset, default 0
+func (r ApiListBuyersRequest) Offset(offset int32) ApiListBuyersRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiListBuyersRequest) Execute() ([]IdentityBuyer, *http.Response, error) {
+	return r.ApiService.ListBuyersExecute(r)
 }
 
 /*
-ListBuyersByOrganization list buyers by organization
+ListBuyers list buyers
 
-list all buyers by the given organization
+list buyers by the given organization with pagination and optional filters.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @return ApiListBuyersByOrganizationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@return ApiListBuyersRequest
 */
-func (a *BuyerAPIService) ListBuyersByOrganization(ctx context.Context, orgId string) ApiListBuyersByOrganizationRequest {
-	return ApiListBuyersByOrganizationRequest{
+func (a *BuyerAPIService) ListBuyers(ctx context.Context, orgId string) ApiListBuyersRequest {
+	return ApiListBuyersRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
+		ctx:        ctx,
+		orgId:      orgId,
 	}
 }
 
 // Execute executes the request
-//  @return []IdentityBuyer
-func (a *BuyerAPIService) ListBuyersByOrganizationExecute(r ApiListBuyersByOrganizationRequest) ([]IdentityBuyer, *http.Response, error) {
+//
+//	@return []IdentityBuyer
+func (a *BuyerAPIService) ListBuyersExecute(r ApiListBuyersRequest) ([]IdentityBuyer, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []IdentityBuyer
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []IdentityBuyer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.ListBuyersByOrganization")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.ListBuyers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -368,6 +986,18 @@ func (a *BuyerAPIService) ListBuyersByOrganizationExecute(r ApiListBuyersByOrgan
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.partner != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
+	}
+	if r.contactId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "contactId", r.contactId, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -388,7 +1018,7 @@ func (a *BuyerAPIService) ListBuyersByOrganizationExecute(r ApiListBuyersByOrgan
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -436,54 +1066,59 @@ func (a *BuyerAPIService) ListBuyersByOrganizationExecute(r ApiListBuyersByOrgan
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListBuyersByPartnerRequest struct {
-	ctx context.Context
+type ApiSetBuyerDefaultWalletRequest struct {
+	ctx        context.Context
 	ApiService *BuyerAPIService
-	orgId string
-	partner string
+	orgId      string
+	buyerId    string
+	walletId   string
 }
 
-func (r ApiListBuyersByPartnerRequest) Execute() ([]IdentityBuyer, *http.Response, error) {
-	return r.ApiService.ListBuyersByPartnerExecute(r)
+func (r ApiSetBuyerDefaultWalletRequest) Execute() (*IdentityBuyer, *http.Response, error) {
+	return r.ApiService.SetBuyerDefaultWalletExecute(r)
 }
 
 /*
-ListBuyersByPartner list buyers by partner
+SetBuyerDefaultWallet set buyer default wallet
 
-list all buyers by the given organization and partner
+set a payment method wallet as buyer's default wallet.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param partner Cloud Partner
- @return ApiListBuyersByPartnerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param buyerId Buyer ID
+	@param walletId Wallet ID
+	@return ApiSetBuyerDefaultWalletRequest
 */
-func (a *BuyerAPIService) ListBuyersByPartner(ctx context.Context, orgId string, partner string) ApiListBuyersByPartnerRequest {
-	return ApiListBuyersByPartnerRequest{
+func (a *BuyerAPIService) SetBuyerDefaultWallet(ctx context.Context, orgId string, buyerId string, walletId string) ApiSetBuyerDefaultWalletRequest {
+	return ApiSetBuyerDefaultWalletRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		partner: partner,
+		ctx:        ctx,
+		orgId:      orgId,
+		buyerId:    buyerId,
+		walletId:   walletId,
 	}
 }
 
 // Execute executes the request
-//  @return []IdentityBuyer
-func (a *BuyerAPIService) ListBuyersByPartnerExecute(r ApiListBuyersByPartnerRequest) ([]IdentityBuyer, *http.Response, error) {
+//
+//	@return IdentityBuyer
+func (a *BuyerAPIService) SetBuyerDefaultWalletExecute(r ApiSetBuyerDefaultWalletRequest) (*IdentityBuyer, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []IdentityBuyer
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *IdentityBuyer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.ListBuyersByPartner")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.SetBuyerDefaultWallet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/org/{orgId}/partner/{partner}/buyer"
+	localVarPath := localBasePath + "/org/{orgId}/buyer/{buyerId}/wallet/{walletId}/default"
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"partner"+"}", url.PathEscape(parameterValueToString(r.partner, "partner")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"buyerId"+"}", url.PathEscape(parameterValueToString(r.buyerId, "buyerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"walletId"+"}", url.PathEscape(parameterValueToString(r.walletId, "walletId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -509,7 +1144,7 @@ func (a *BuyerAPIService) ListBuyersByPartnerExecute(r ApiListBuyersByPartnerReq
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -549,8 +1184,8 @@ func (a *BuyerAPIService) ListBuyersByPartnerExecute(r ApiListBuyersByPartnerReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -560,8 +1195,8 @@ func (a *BuyerAPIService) ListBuyersByPartnerExecute(r ApiListBuyersByPartnerReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -579,11 +1214,11 @@ func (a *BuyerAPIService) ListBuyersByPartnerExecute(r ApiListBuyersByPartnerReq
 }
 
 type ApiUpdateBuyerRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *BuyerAPIService
-	orgId string
-	buyerId string
-	data *UpdateBuyerParams
+	orgId      string
+	buyerId    string
+	data       *UpdateBuyerParams
 }
 
 // UpdateBuyerParams
@@ -599,30 +1234,31 @@ func (r ApiUpdateBuyerRequest) Execute() (*IdentityBuyer, *http.Response, error)
 /*
 UpdateBuyer update buyer
 
-update buyer by the given organization and buyer id
+update buyer by the given organization and buyer id.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param buyerId Buyer ID
- @return ApiUpdateBuyerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param buyerId Buyer ID
+	@return ApiUpdateBuyerRequest
 */
 func (a *BuyerAPIService) UpdateBuyer(ctx context.Context, orgId string, buyerId string) ApiUpdateBuyerRequest {
 	return ApiUpdateBuyerRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		buyerId: buyerId,
+		ctx:        ctx,
+		orgId:      orgId,
+		buyerId:    buyerId,
 	}
 }
 
 // Execute executes the request
-//  @return IdentityBuyer
+//
+//	@return IdentityBuyer
 func (a *BuyerAPIService) UpdateBuyerExecute(r ApiUpdateBuyerRequest) (*IdentityBuyer, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *IdentityBuyer
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *IdentityBuyer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.UpdateBuyer")
@@ -663,7 +1299,7 @@ func (a *BuyerAPIService) UpdateBuyerExecute(r ApiUpdateBuyerRequest) (*Identity
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -703,8 +1339,155 @@ func (a *BuyerAPIService) UpdateBuyerExecute(r ApiUpdateBuyerRequest) (*Identity
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateCreditWalletRequest struct {
+	ctx        context.Context
+	ApiService *BuyerAPIService
+	orgId      string
+	buyerId    string
+	walletId   string
+}
+
+func (r ApiUpdateCreditWalletRequest) Execute() (*BillingWallet, *http.Response, error) {
+	return r.ApiService.UpdateCreditWalletExecute(r)
+}
+
+/*
+UpdateCreditWallet update credit wallet
+
+update startTime or expireTime of the wallet.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param buyerId Buyer ID
+	@param walletId Wallet ID
+	@return ApiUpdateCreditWalletRequest
+*/
+func (a *BuyerAPIService) UpdateCreditWallet(ctx context.Context, orgId string, buyerId string, walletId string) ApiUpdateCreditWalletRequest {
+	return ApiUpdateCreditWalletRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+		buyerId:    buyerId,
+		walletId:   walletId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return BillingWallet
+func (a *BuyerAPIService) UpdateCreditWalletExecute(r ApiUpdateCreditWalletRequest) (*BillingWallet, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BillingWallet
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.UpdateCreditWallet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/buyer/{buyerId}/wallet/{walletId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"buyerId"+"}", url.PathEscape(parameterValueToString(r.buyerId, "buyerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"walletId"+"}", url.PathEscape(parameterValueToString(r.walletId, "walletId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

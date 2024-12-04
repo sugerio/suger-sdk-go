@@ -21,15 +21,25 @@ var _ MappedNullable = &MeteringUsageRecordReportInfo{}
 
 // MeteringUsageRecordReportInfo struct for MeteringUsageRecordReportInfo
 type MeteringUsageRecordReportInfo struct {
+	// The aggregated billable records from the usage metering API v2.
+	AggregatedBillableRecords []AggregatedMeteringUsageRecord `json:"aggregatedBillableRecords,omitempty"`
+	// The raw request to call Alibaba metering service.
 	AlibabaMeteringRequest *ClientPushMeteringDataRequest `json:"alibabaMeteringRequest,omitempty"`
+	// The raw response from Alibaba metering service.
 	AlibabaMeteringResponse *ClientPushMeteringDataResponseBody `json:"alibabaMeteringResponse,omitempty"`
+	// The raw request to call AWS metering service.
+	AwsMeteringRequest *AwsMarketplaceMeteringBatchMeterUsageInput `json:"awsMeteringRequest,omitempty"`
+	// The raw response from AWS metering service.
 	AwsMeteringResponse *MarketplacemeteringBatchMeterUsageOutput `json:"awsMeteringResponse,omitempty"`
+	// The raw request to call Azure metering service.
+	AzureMeteringRequest *AzureMarketplaceMeteringBatchUsageEvent `json:"azureMeteringRequest,omitempty"`
+	// The raw response from Azure metering service.
 	AzureMeteringResponse *GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse `json:"azureMeteringResponse,omitempty"`
 	// The amount of the commit if applicable.
 	CommitAmount *float32 `json:"commitAmount,omitempty"`
 	// The amount of the credit if applicable.
 	CreditAmount *float32 `json:"creditAmount,omitempty"`
-	// The credit usage records in the map of <DimensionKey, Count>
+	// The credit usage records in the map of <DimensionKey, Count> for usage metering API v1.
 	CreditRecords *map[string]float32 `json:"creditRecords,omitempty"`
 	// The decimal parts of the usage dimension quantity in the map of <DimensionKey, DecimalPart>, before this usage record report.
 	DecimalParts *map[string]float32 `json:"decimalParts,omitempty"`
@@ -41,19 +51,24 @@ type MeteringUsageRecordReportInfo struct {
 	DimensionUnitPrice *map[string]float32 `json:"dimensionUnitPrice,omitempty"`
 	// time in UTC when the UsageRecordReport ends
 	EndTime *time.Time `json:"endTime,omitempty"`
+	// The raw request to call GCP metering service.
+	GcpMeteringRequest *GcpMarketplaceMeteringOperation `json:"gcpMeteringRequest,omitempty"`
+	// The raw response from GCP metering service.
 	GcpMeteringResponse *ServicecontrolReportResponse `json:"gcpMeteringResponse,omitempty"`
-	// The included usage records in the map of <DimensionKey, Count>
+	// The included usage records in the map of <DimensionKey, Count> for usage metering API v1.
 	IncludedRecords *map[string]float32 `json:"includedRecords,omitempty"`
+	Message         *string             `json:"message,omitempty"`
 	// The decimal parts of the usage dimension quantity in the map of <DimensionKey, DecimalPart>, after this usage record report.
 	NewDecimalParts *map[string]float32 `json:"newDecimalParts,omitempty"`
 	// The partner where this usage record report is sent to. Such as AWS, AZURE or GCP.
 	Partner *string `json:"partner,omitempty"`
 	// The usage records to report before the adjustment by the commit with additional usage at list price, in the map of <DimensionKey, Count>.
 	RecordsToReportBeforeAdjustmentAtListPrice *map[string]float32 `json:"recordsToReportBeforeAdjustmentAtListPrice,omitempty"`
-	// The reported usage records in the map of <DimensionKey, Count>
+	// The reported usage records in the map of <DimensionKey, Count> for usage metering API v1.
 	ReportedRecords *map[string]float32 `json:"reportedRecords,omitempty"`
 	// time in UTC when the UsageRecordReport starts
-	StartTime *time.Time `json:"startTime,omitempty"`
+	StartTime *time.Time               `json:"startTime,omitempty"`
+	Status    *UsageRecordReportStatus `json:"status,omitempty"`
 	// The IDs of UsageRecordGroups aggregated in this UsageRecordReport.
 	UsageRecordGroupIds []string `json:"usageRecordGroupIds,omitempty"`
 	// The amount of the used commit before this usage record report if applicable.
@@ -81,6 +96,38 @@ func NewMeteringUsageRecordReportInfo() *MeteringUsageRecordReportInfo {
 func NewMeteringUsageRecordReportInfoWithDefaults() *MeteringUsageRecordReportInfo {
 	this := MeteringUsageRecordReportInfo{}
 	return &this
+}
+
+// GetAggregatedBillableRecords returns the AggregatedBillableRecords field value if set, zero value otherwise.
+func (o *MeteringUsageRecordReportInfo) GetAggregatedBillableRecords() []AggregatedMeteringUsageRecord {
+	if o == nil || IsNil(o.AggregatedBillableRecords) {
+		var ret []AggregatedMeteringUsageRecord
+		return ret
+	}
+	return o.AggregatedBillableRecords
+}
+
+// GetAggregatedBillableRecordsOk returns a tuple with the AggregatedBillableRecords field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordReportInfo) GetAggregatedBillableRecordsOk() ([]AggregatedMeteringUsageRecord, bool) {
+	if o == nil || IsNil(o.AggregatedBillableRecords) {
+		return nil, false
+	}
+	return o.AggregatedBillableRecords, true
+}
+
+// HasAggregatedBillableRecords returns a boolean if a field has been set.
+func (o *MeteringUsageRecordReportInfo) HasAggregatedBillableRecords() bool {
+	if o != nil && !IsNil(o.AggregatedBillableRecords) {
+		return true
+	}
+
+	return false
+}
+
+// SetAggregatedBillableRecords gets a reference to the given []AggregatedMeteringUsageRecord and assigns it to the AggregatedBillableRecords field.
+func (o *MeteringUsageRecordReportInfo) SetAggregatedBillableRecords(v []AggregatedMeteringUsageRecord) {
+	o.AggregatedBillableRecords = v
 }
 
 // GetAlibabaMeteringRequest returns the AlibabaMeteringRequest field value if set, zero value otherwise.
@@ -147,6 +194,38 @@ func (o *MeteringUsageRecordReportInfo) SetAlibabaMeteringResponse(v ClientPushM
 	o.AlibabaMeteringResponse = &v
 }
 
+// GetAwsMeteringRequest returns the AwsMeteringRequest field value if set, zero value otherwise.
+func (o *MeteringUsageRecordReportInfo) GetAwsMeteringRequest() AwsMarketplaceMeteringBatchMeterUsageInput {
+	if o == nil || IsNil(o.AwsMeteringRequest) {
+		var ret AwsMarketplaceMeteringBatchMeterUsageInput
+		return ret
+	}
+	return *o.AwsMeteringRequest
+}
+
+// GetAwsMeteringRequestOk returns a tuple with the AwsMeteringRequest field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordReportInfo) GetAwsMeteringRequestOk() (*AwsMarketplaceMeteringBatchMeterUsageInput, bool) {
+	if o == nil || IsNil(o.AwsMeteringRequest) {
+		return nil, false
+	}
+	return o.AwsMeteringRequest, true
+}
+
+// HasAwsMeteringRequest returns a boolean if a field has been set.
+func (o *MeteringUsageRecordReportInfo) HasAwsMeteringRequest() bool {
+	if o != nil && !IsNil(o.AwsMeteringRequest) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsMeteringRequest gets a reference to the given AwsMarketplaceMeteringBatchMeterUsageInput and assigns it to the AwsMeteringRequest field.
+func (o *MeteringUsageRecordReportInfo) SetAwsMeteringRequest(v AwsMarketplaceMeteringBatchMeterUsageInput) {
+	o.AwsMeteringRequest = &v
+}
+
 // GetAwsMeteringResponse returns the AwsMeteringResponse field value if set, zero value otherwise.
 func (o *MeteringUsageRecordReportInfo) GetAwsMeteringResponse() MarketplacemeteringBatchMeterUsageOutput {
 	if o == nil || IsNil(o.AwsMeteringResponse) {
@@ -177,6 +256,38 @@ func (o *MeteringUsageRecordReportInfo) HasAwsMeteringResponse() bool {
 // SetAwsMeteringResponse gets a reference to the given MarketplacemeteringBatchMeterUsageOutput and assigns it to the AwsMeteringResponse field.
 func (o *MeteringUsageRecordReportInfo) SetAwsMeteringResponse(v MarketplacemeteringBatchMeterUsageOutput) {
 	o.AwsMeteringResponse = &v
+}
+
+// GetAzureMeteringRequest returns the AzureMeteringRequest field value if set, zero value otherwise.
+func (o *MeteringUsageRecordReportInfo) GetAzureMeteringRequest() AzureMarketplaceMeteringBatchUsageEvent {
+	if o == nil || IsNil(o.AzureMeteringRequest) {
+		var ret AzureMarketplaceMeteringBatchUsageEvent
+		return ret
+	}
+	return *o.AzureMeteringRequest
+}
+
+// GetAzureMeteringRequestOk returns a tuple with the AzureMeteringRequest field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordReportInfo) GetAzureMeteringRequestOk() (*AzureMarketplaceMeteringBatchUsageEvent, bool) {
+	if o == nil || IsNil(o.AzureMeteringRequest) {
+		return nil, false
+	}
+	return o.AzureMeteringRequest, true
+}
+
+// HasAzureMeteringRequest returns a boolean if a field has been set.
+func (o *MeteringUsageRecordReportInfo) HasAzureMeteringRequest() bool {
+	if o != nil && !IsNil(o.AzureMeteringRequest) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureMeteringRequest gets a reference to the given AzureMarketplaceMeteringBatchUsageEvent and assigns it to the AzureMeteringRequest field.
+func (o *MeteringUsageRecordReportInfo) SetAzureMeteringRequest(v AzureMarketplaceMeteringBatchUsageEvent) {
+	o.AzureMeteringRequest = &v
 }
 
 // GetAzureMeteringResponse returns the AzureMeteringResponse field value if set, zero value otherwise.
@@ -467,6 +578,38 @@ func (o *MeteringUsageRecordReportInfo) SetEndTime(v time.Time) {
 	o.EndTime = &v
 }
 
+// GetGcpMeteringRequest returns the GcpMeteringRequest field value if set, zero value otherwise.
+func (o *MeteringUsageRecordReportInfo) GetGcpMeteringRequest() GcpMarketplaceMeteringOperation {
+	if o == nil || IsNil(o.GcpMeteringRequest) {
+		var ret GcpMarketplaceMeteringOperation
+		return ret
+	}
+	return *o.GcpMeteringRequest
+}
+
+// GetGcpMeteringRequestOk returns a tuple with the GcpMeteringRequest field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordReportInfo) GetGcpMeteringRequestOk() (*GcpMarketplaceMeteringOperation, bool) {
+	if o == nil || IsNil(o.GcpMeteringRequest) {
+		return nil, false
+	}
+	return o.GcpMeteringRequest, true
+}
+
+// HasGcpMeteringRequest returns a boolean if a field has been set.
+func (o *MeteringUsageRecordReportInfo) HasGcpMeteringRequest() bool {
+	if o != nil && !IsNil(o.GcpMeteringRequest) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpMeteringRequest gets a reference to the given GcpMarketplaceMeteringOperation and assigns it to the GcpMeteringRequest field.
+func (o *MeteringUsageRecordReportInfo) SetGcpMeteringRequest(v GcpMarketplaceMeteringOperation) {
+	o.GcpMeteringRequest = &v
+}
+
 // GetGcpMeteringResponse returns the GcpMeteringResponse field value if set, zero value otherwise.
 func (o *MeteringUsageRecordReportInfo) GetGcpMeteringResponse() ServicecontrolReportResponse {
 	if o == nil || IsNil(o.GcpMeteringResponse) {
@@ -529,6 +672,38 @@ func (o *MeteringUsageRecordReportInfo) HasIncludedRecords() bool {
 // SetIncludedRecords gets a reference to the given map[string]float32 and assigns it to the IncludedRecords field.
 func (o *MeteringUsageRecordReportInfo) SetIncludedRecords(v map[string]float32) {
 	o.IncludedRecords = &v
+}
+
+// GetMessage returns the Message field value if set, zero value otherwise.
+func (o *MeteringUsageRecordReportInfo) GetMessage() string {
+	if o == nil || IsNil(o.Message) {
+		var ret string
+		return ret
+	}
+	return *o.Message
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordReportInfo) GetMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.Message) {
+		return nil, false
+	}
+	return o.Message, true
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *MeteringUsageRecordReportInfo) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
+func (o *MeteringUsageRecordReportInfo) SetMessage(v string) {
+	o.Message = &v
 }
 
 // GetNewDecimalParts returns the NewDecimalParts field value if set, zero value otherwise.
@@ -689,6 +864,38 @@ func (o *MeteringUsageRecordReportInfo) HasStartTime() bool {
 // SetStartTime gets a reference to the given time.Time and assigns it to the StartTime field.
 func (o *MeteringUsageRecordReportInfo) SetStartTime(v time.Time) {
 	o.StartTime = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *MeteringUsageRecordReportInfo) GetStatus() UsageRecordReportStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret UsageRecordReportStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordReportInfo) GetStatusOk() (*UsageRecordReportStatus, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *MeteringUsageRecordReportInfo) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given UsageRecordReportStatus and assigns it to the Status field.
+func (o *MeteringUsageRecordReportInfo) SetStatus(v UsageRecordReportStatus) {
+	o.Status = &v
 }
 
 // GetUsageRecordGroupIds returns the UsageRecordGroupIds field value if set, zero value otherwise.
@@ -852,7 +1059,7 @@ func (o *MeteringUsageRecordReportInfo) SetUsedCreditAmountIncrement(v float32) 
 }
 
 func (o MeteringUsageRecordReportInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -861,14 +1068,23 @@ func (o MeteringUsageRecordReportInfo) MarshalJSON() ([]byte, error) {
 
 func (o MeteringUsageRecordReportInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AggregatedBillableRecords) {
+		toSerialize["aggregatedBillableRecords"] = o.AggregatedBillableRecords
+	}
 	if !IsNil(o.AlibabaMeteringRequest) {
 		toSerialize["alibabaMeteringRequest"] = o.AlibabaMeteringRequest
 	}
 	if !IsNil(o.AlibabaMeteringResponse) {
 		toSerialize["alibabaMeteringResponse"] = o.AlibabaMeteringResponse
 	}
+	if !IsNil(o.AwsMeteringRequest) {
+		toSerialize["awsMeteringRequest"] = o.AwsMeteringRequest
+	}
 	if !IsNil(o.AwsMeteringResponse) {
 		toSerialize["awsMeteringResponse"] = o.AwsMeteringResponse
+	}
+	if !IsNil(o.AzureMeteringRequest) {
+		toSerialize["azureMeteringRequest"] = o.AzureMeteringRequest
 	}
 	if !IsNil(o.AzureMeteringResponse) {
 		toSerialize["azureMeteringResponse"] = o.AzureMeteringResponse
@@ -897,11 +1113,17 @@ func (o MeteringUsageRecordReportInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EndTime) {
 		toSerialize["endTime"] = o.EndTime
 	}
+	if !IsNil(o.GcpMeteringRequest) {
+		toSerialize["gcpMeteringRequest"] = o.GcpMeteringRequest
+	}
 	if !IsNil(o.GcpMeteringResponse) {
 		toSerialize["gcpMeteringResponse"] = o.GcpMeteringResponse
 	}
 	if !IsNil(o.IncludedRecords) {
 		toSerialize["includedRecords"] = o.IncludedRecords
+	}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
 	}
 	if !IsNil(o.NewDecimalParts) {
 		toSerialize["newDecimalParts"] = o.NewDecimalParts
@@ -917,6 +1139,9 @@ func (o MeteringUsageRecordReportInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.StartTime) {
 		toSerialize["startTime"] = o.StartTime
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.UsageRecordGroupIds) {
 		toSerialize["usageRecordGroupIds"] = o.UsageRecordGroupIds
@@ -971,5 +1196,3 @@ func (v *NullableMeteringUsageRecordReportInfo) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

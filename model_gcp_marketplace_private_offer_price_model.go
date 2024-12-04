@@ -21,11 +21,13 @@ var _ MappedNullable = &GcpMarketplacePrivateOfferPriceModel{}
 // GcpMarketplacePrivateOfferPriceModel struct for GcpMarketplacePrivateOfferPriceModel
 type GcpMarketplacePrivateOfferPriceModel struct {
 	// in format of \"projects/{projectNumber}/services/service-name.endpoints.gcp-project-id.cloud.goog/standardOffers/base-offer-id\"
-	BaseOffer *string `json:"baseOffer,omitempty"`
+	BaseOffer  *string                                         `json:"baseOffer,omitempty"`
 	Commitment *GcpMarketplacePrivateOfferPriceModelCommitment `json:"commitment,omitempty"`
-	FixedPrice *GcpMarketplacePrivateOfferPriceModelFixed `json:"fixedPrice,omitempty"`
-	OneTimeCredit *GcpPriceValue `json:"oneTimeCredit,omitempty"`
-	Overage *GcpMarketplacePrivateOfferPriceModelOverage `json:"overage,omitempty"`
+	FixedPrice *GcpMarketplacePrivateOfferPriceModelFixed      `json:"fixedPrice,omitempty"`
+	// The one time credit in amount of money
+	OneTimeCredit *GcpPriceValue                               `json:"oneTimeCredit,omitempty"`
+	Overage       *GcpMarketplacePrivateOfferPriceModelOverage `json:"overage,omitempty"`
+	// Pay as you go.
 	Payg *GcpMarketplacePrivateOfferPriceModelPayg `json:"payg,omitempty"`
 	// such as \"PREVIOUS_CREDIT_BALANCE_POLICY_UNSPECIFIED\"
 	PreviousCreditBalancePolicy *string `json:"previousCreditBalancePolicy,omitempty"`
@@ -273,7 +275,7 @@ func (o *GcpMarketplacePrivateOfferPriceModel) SetPreviousCreditBalancePolicy(v 
 }
 
 func (o GcpMarketplacePrivateOfferPriceModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -341,5 +343,3 @@ func (v *NullableGcpMarketplacePrivateOfferPriceModel) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

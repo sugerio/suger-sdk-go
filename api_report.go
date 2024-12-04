@@ -20,15 +20,14 @@ import (
 	"strings"
 )
 
-
 // ReportAPIService ReportAPI service
 type ReportAPIService service
 
 type ApiGetRevenueReportRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ReportAPIService
-	orgId string
-	data *GetRevenueReportParams
+	orgId      string
+	data       *GetRevenueReportParams
 }
 
 // Get Revenue Report Params
@@ -46,26 +45,27 @@ GetRevenueReport get revenue report
 
 Get the revenue report of the given organization, product, entitlement, or buyer.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @return ApiGetRevenueReportRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@return ApiGetRevenueReportRequest
 */
 func (a *ReportAPIService) GetRevenueReport(ctx context.Context, orgId string) ApiGetRevenueReportRequest {
 	return ApiGetRevenueReportRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
+		ctx:        ctx,
+		orgId:      orgId,
 	}
 }
 
 // Execute executes the request
-//  @return RevenueReport
+//
+//	@return RevenueReport
 func (a *ReportAPIService) GetRevenueReportExecute(r ApiGetRevenueReportRequest) (*RevenueReport, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RevenueReport
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RevenueReport
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportAPIService.GetRevenueReport")
@@ -105,7 +105,7 @@ func (a *ReportAPIService) GetRevenueReportExecute(r ApiGetRevenueReportRequest)
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -145,8 +145,8 @@ func (a *ReportAPIService) GetRevenueReportExecute(r ApiGetRevenueReportRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -156,8 +156,8 @@ func (a *ReportAPIService) GetRevenueReportExecute(r ApiGetRevenueReportRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -174,128 +174,115 @@ func (a *ReportAPIService) GetRevenueReportExecute(r ApiGetRevenueReportRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRevenueRecordDetailsRequest struct {
-	ctx context.Context
-	ApiService *ReportAPIService
-	orgId string
-	partner string
-	productId *string
+type ApiListDailyRevenueRecordsRequest struct {
+	ctx           context.Context
+	ApiService    *ReportAPIService
+	orgId         string
+	partner       *string
+	productId     *string
+	buyerId       *string
 	entitlementId *string
-	buyerId *string
-	startDate *string
-	endDate *string
-	limit *int32
-	offset *int32
+	startDate     *string
+	endDate       *string
 }
 
-// Filter revenue record details by the given product ID
-func (r ApiListRevenueRecordDetailsRequest) ProductId(productId string) ApiListRevenueRecordDetailsRequest {
+// Cloud Partner
+func (r ApiListDailyRevenueRecordsRequest) Partner(partner string) ApiListDailyRevenueRecordsRequest {
+	r.partner = &partner
+	return r
+}
+
+// Filter daily revenue records by the given product ID
+func (r ApiListDailyRevenueRecordsRequest) ProductId(productId string) ApiListDailyRevenueRecordsRequest {
 	r.productId = &productId
 	return r
 }
 
-// Filter revenue record details by the given entitlement ID
-func (r ApiListRevenueRecordDetailsRequest) EntitlementId(entitlementId string) ApiListRevenueRecordDetailsRequest {
-	r.entitlementId = &entitlementId
-	return r
-}
-
-// Filter revenue record details by the given buyer ID
-func (r ApiListRevenueRecordDetailsRequest) BuyerId(buyerId string) ApiListRevenueRecordDetailsRequest {
+// Filter daily revenue records by the given buyer ID
+func (r ApiListDailyRevenueRecordsRequest) BuyerId(buyerId string) ApiListDailyRevenueRecordsRequest {
 	r.buyerId = &buyerId
 	return r
 }
 
+// Filter daily revenue records by the given entitlement ID
+func (r ApiListDailyRevenueRecordsRequest) EntitlementId(entitlementId string) ApiListDailyRevenueRecordsRequest {
+	r.entitlementId = &entitlementId
+	return r
+}
+
 // start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
-func (r ApiListRevenueRecordDetailsRequest) StartDate(startDate string) ApiListRevenueRecordDetailsRequest {
+func (r ApiListDailyRevenueRecordsRequest) StartDate(startDate string) ApiListDailyRevenueRecordsRequest {
 	r.startDate = &startDate
 	return r
 }
 
 // end date (UTC) in YYYY-MM-DD format, default is today
-func (r ApiListRevenueRecordDetailsRequest) EndDate(endDate string) ApiListRevenueRecordDetailsRequest {
+func (r ApiListDailyRevenueRecordsRequest) EndDate(endDate string) ApiListDailyRevenueRecordsRequest {
 	r.endDate = &endDate
 	return r
 }
 
-// List pagination size, default 20, max value is 1000
-func (r ApiListRevenueRecordDetailsRequest) Limit(limit int32) ApiListRevenueRecordDetailsRequest {
-	r.limit = &limit
-	return r
-}
-
-// List pagination offset, default 0
-func (r ApiListRevenueRecordDetailsRequest) Offset(offset int32) ApiListRevenueRecordDetailsRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiListRevenueRecordDetailsRequest) Execute() (*ListRevenueRecordDetailsResponse, *http.Response, error) {
-	return r.ApiService.ListRevenueRecordDetailsExecute(r)
+func (r ApiListDailyRevenueRecordsRequest) Execute() ([]RevenueRecord, *http.Response, error) {
+	return r.ApiService.ListDailyRevenueRecordsExecute(r)
 }
 
 /*
-ListRevenueRecordDetails list revenue record details
+ListDailyRevenueRecords list daily revenue records
 
-list the raw revenue record details for the given organization, product, entitlement, or buyer.
+list daily revenue records for the given organization, partner, entitlement, or buyer, within the given date range.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param partner Cloud Partner
- @return ApiListRevenueRecordDetailsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@return ApiListDailyRevenueRecordsRequest
 */
-func (a *ReportAPIService) ListRevenueRecordDetails(ctx context.Context, orgId string, partner string) ApiListRevenueRecordDetailsRequest {
-	return ApiListRevenueRecordDetailsRequest{
+func (a *ReportAPIService) ListDailyRevenueRecords(ctx context.Context, orgId string) ApiListDailyRevenueRecordsRequest {
+	return ApiListDailyRevenueRecordsRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		partner: partner,
+		ctx:        ctx,
+		orgId:      orgId,
 	}
 }
 
 // Execute executes the request
-//  @return ListRevenueRecordDetailsResponse
-func (a *ReportAPIService) ListRevenueRecordDetailsExecute(r ApiListRevenueRecordDetailsRequest) (*ListRevenueRecordDetailsResponse, *http.Response, error) {
+//
+//	@return []RevenueRecord
+func (a *ReportAPIService) ListDailyRevenueRecordsExecute(r ApiListDailyRevenueRecordsRequest) ([]RevenueRecord, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ListRevenueRecordDetailsResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []RevenueRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportAPIService.ListRevenueRecordDetails")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportAPIService.ListDailyRevenueRecords")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/org/{orgId}/partner/{partner}/revenueRecordDetail"
+	localVarPath := localBasePath + "/org/{orgId}/dailyRevenueRecord"
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"partner"+"}", url.PathEscape(parameterValueToString(r.partner, "partner")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "")
+	if r.partner != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
 	}
-	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "")
+	if r.productId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "form", "")
 	}
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
+	}
+	if r.entitlementId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
 	}
 	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "form", "")
 	}
 	if r.endDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -317,7 +304,7 @@ func (a *ReportAPIService) ListRevenueRecordDetailsExecute(r ApiListRevenueRecor
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -357,8 +344,8 @@ func (a *ReportAPIService) ListRevenueRecordDetailsExecute(r ApiListRevenueRecor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -368,8 +355,221 @@ func (a *ReportAPIService) ListRevenueRecordDetailsExecute(r ApiListRevenueRecor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListRevenueRecordDetailsRequest struct {
+	ctx           context.Context
+	ApiService    *ReportAPIService
+	orgId         string
+	partner       string
+	productId     *string
+	buyerId       *string
+	entitlementId *string
+	startDate     *string
+	endDate       *string
+	limit         *int32
+	offset        *int32
+}
+
+// Filter revenue record details by the given product ID
+func (r ApiListRevenueRecordDetailsRequest) ProductId(productId string) ApiListRevenueRecordDetailsRequest {
+	r.productId = &productId
+	return r
+}
+
+// Filter revenue record details by the given buyer ID
+func (r ApiListRevenueRecordDetailsRequest) BuyerId(buyerId string) ApiListRevenueRecordDetailsRequest {
+	r.buyerId = &buyerId
+	return r
+}
+
+// Filter revenue record details by the given entitlement ID
+func (r ApiListRevenueRecordDetailsRequest) EntitlementId(entitlementId string) ApiListRevenueRecordDetailsRequest {
+	r.entitlementId = &entitlementId
+	return r
+}
+
+// start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+func (r ApiListRevenueRecordDetailsRequest) StartDate(startDate string) ApiListRevenueRecordDetailsRequest {
+	r.startDate = &startDate
+	return r
+}
+
+// end date (UTC) in YYYY-MM-DD format, default is today
+func (r ApiListRevenueRecordDetailsRequest) EndDate(endDate string) ApiListRevenueRecordDetailsRequest {
+	r.endDate = &endDate
+	return r
+}
+
+// List pagination size, default 1000, max value is 1000
+func (r ApiListRevenueRecordDetailsRequest) Limit(limit int32) ApiListRevenueRecordDetailsRequest {
+	r.limit = &limit
+	return r
+}
+
+// List pagination offset, default 0
+func (r ApiListRevenueRecordDetailsRequest) Offset(offset int32) ApiListRevenueRecordDetailsRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiListRevenueRecordDetailsRequest) Execute() (*ListRevenueRecordDetailsResponse, *http.Response, error) {
+	return r.ApiService.ListRevenueRecordDetailsExecute(r)
+}
+
+/*
+ListRevenueRecordDetails list revenue record details
+
+list the raw revenue record details for the given organization, partner, product, entitlement, or buyer.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param partner Cloud Partner
+	@return ApiListRevenueRecordDetailsRequest
+*/
+func (a *ReportAPIService) ListRevenueRecordDetails(ctx context.Context, orgId string, partner string) ApiListRevenueRecordDetailsRequest {
+	return ApiListRevenueRecordDetailsRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+		partner:    partner,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListRevenueRecordDetailsResponse
+func (a *ReportAPIService) ListRevenueRecordDetailsExecute(r ApiListRevenueRecordDetailsRequest) (*ListRevenueRecordDetailsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ListRevenueRecordDetailsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportAPIService.ListRevenueRecordDetails")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/partner/{partner}/revenueRecordDetail"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"partner"+"}", url.PathEscape(parameterValueToString(r.partner, "partner")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.productId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "form", "")
+	}
+	if r.buyerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
+	}
+	if r.entitlementId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
+	}
+	if r.startDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "form", "")
+	}
+	if r.endDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -387,32 +587,32 @@ func (a *ReportAPIService) ListRevenueRecordDetailsExecute(r ApiListRevenueRecor
 }
 
 type ApiListRevenueRecordsRequest struct {
-	ctx context.Context
-	ApiService *ReportAPIService
-	orgId string
-	partner string
-	productId *string
+	ctx           context.Context
+	ApiService    *ReportAPIService
+	orgId         string
+	partner       string
+	productId     *string
 	entitlementId *string
-	buyerId *string
-	startDate *string
-	endDate *string
-	limit *int32
-	offset *int32
+	buyerId       *string
+	startDate     *string
+	endDate       *string
+	limit         *int32
+	offset        *int32
 }
 
-// Filter revenue record details by the given product ID
+// Filter revenue records by the given product ID
 func (r ApiListRevenueRecordsRequest) ProductId(productId string) ApiListRevenueRecordsRequest {
 	r.productId = &productId
 	return r
 }
 
-// Filter revenue record details by the given entitlement ID
+// Filter revenue records by the given entitlement ID
 func (r ApiListRevenueRecordsRequest) EntitlementId(entitlementId string) ApiListRevenueRecordsRequest {
 	r.entitlementId = &entitlementId
 	return r
 }
 
-// Filter revenue record details by the given buyer ID
+// Filter revenue records by the given buyer ID
 func (r ApiListRevenueRecordsRequest) BuyerId(buyerId string) ApiListRevenueRecordsRequest {
 	r.buyerId = &buyerId
 	return r
@@ -430,7 +630,7 @@ func (r ApiListRevenueRecordsRequest) EndDate(endDate string) ApiListRevenueReco
 	return r
 }
 
-// List pagination size, default 20, max value is 1000
+// List pagination size, default 1000, max value is 1000
 func (r ApiListRevenueRecordsRequest) Limit(limit int32) ApiListRevenueRecordsRequest {
 	r.limit = &limit
 	return r
@@ -451,28 +651,29 @@ ListRevenueRecords list revenue records
 
 list the revenue records for the given organization, product, entitlement, or buyer.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param partner Cloud Partner
- @return ApiListRevenueRecordsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param partner Cloud Partner
+	@return ApiListRevenueRecordsRequest
 */
 func (a *ReportAPIService) ListRevenueRecords(ctx context.Context, orgId string, partner string) ApiListRevenueRecordsRequest {
 	return ApiListRevenueRecordsRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		partner: partner,
+		ctx:        ctx,
+		orgId:      orgId,
+		partner:    partner,
 	}
 }
 
 // Execute executes the request
-//  @return ListRevenueRecordsResponse
+//
+//	@return ListRevenueRecordsResponse
 func (a *ReportAPIService) ListRevenueRecordsExecute(r ApiListRevenueRecordsRequest) (*ListRevenueRecordsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ListRevenueRecordsResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ListRevenueRecordsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportAPIService.ListRevenueRecords")
@@ -489,25 +690,25 @@ func (a *ReportAPIService) ListRevenueRecordsExecute(r ApiListRevenueRecordsRequ
 	localVarFormParams := url.Values{}
 
 	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "form", "")
 	}
 	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
 	}
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
 	}
 	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "form", "")
 	}
 	if r.endDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -529,7 +730,7 @@ func (a *ReportAPIService) ListRevenueRecordsExecute(r ApiListRevenueRecordsRequ
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -569,8 +770,8 @@ func (a *ReportAPIService) ListRevenueRecordsExecute(r ApiListRevenueRecordsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -580,8 +781,8 @@ func (a *ReportAPIService) ListRevenueRecordsExecute(r ApiListRevenueRecordsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -599,34 +800,27 @@ func (a *ReportAPIService) ListRevenueRecordsExecute(r ApiListRevenueRecordsRequ
 }
 
 type ApiListUsageMeteringDailyRecordsRequest struct {
-	ctx context.Context
-	ApiService *ReportAPIService
-	orgId string
-	partner string
-	productId *string
+	ctx           context.Context
+	ApiService    *ReportAPIService
+	orgId         string
+	partner       string
+	buyerId       *string
 	entitlementId *string
-	buyerId *string
-	startDate *string
-	endDate *string
-	limit *int32
-	offset *int32
+	startDate     *string
+	endDate       *string
+	limit         *int32
+	offset        *int32
 }
 
-// Filter revenue record details by the given product ID
-func (r ApiListUsageMeteringDailyRecordsRequest) ProductId(productId string) ApiListUsageMeteringDailyRecordsRequest {
-	r.productId = &productId
-	return r
-}
-
-// Filter revenue record details by the given entitlement ID
-func (r ApiListUsageMeteringDailyRecordsRequest) EntitlementId(entitlementId string) ApiListUsageMeteringDailyRecordsRequest {
-	r.entitlementId = &entitlementId
-	return r
-}
-
-// Filter revenue record details by the given buyer ID
+// Filter usage metering daily records by the given buyer ID
 func (r ApiListUsageMeteringDailyRecordsRequest) BuyerId(buyerId string) ApiListUsageMeteringDailyRecordsRequest {
 	r.buyerId = &buyerId
+	return r
+}
+
+// Filter usage metering daily records by the given entitlement ID
+func (r ApiListUsageMeteringDailyRecordsRequest) EntitlementId(entitlementId string) ApiListUsageMeteringDailyRecordsRequest {
+	r.entitlementId = &entitlementId
 	return r
 }
 
@@ -642,7 +836,7 @@ func (r ApiListUsageMeteringDailyRecordsRequest) EndDate(endDate string) ApiList
 	return r
 }
 
-// List pagination size, default 20, max value is 1000
+// List pagination size, default 1000, max value is 1000
 func (r ApiListUsageMeteringDailyRecordsRequest) Limit(limit int32) ApiListUsageMeteringDailyRecordsRequest {
 	r.limit = &limit
 	return r
@@ -661,30 +855,31 @@ func (r ApiListUsageMeteringDailyRecordsRequest) Execute() (*ListUsageMeteringDa
 /*
 ListUsageMeteringDailyRecords list usage metering daily records
 
-list the daily records of the usage metering from the cloud marketplace for the given organization, product, entitlement, or buyer.
+list the daily records of the usage metering from the cloud marketplace for the given organization, entitlement, or buyer.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param partner Cloud Partner
- @return ApiListUsageMeteringDailyRecordsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param partner Filter by the Cloud Partner
+	@return ApiListUsageMeteringDailyRecordsRequest
 */
 func (a *ReportAPIService) ListUsageMeteringDailyRecords(ctx context.Context, orgId string, partner string) ApiListUsageMeteringDailyRecordsRequest {
 	return ApiListUsageMeteringDailyRecordsRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		partner: partner,
+		ctx:        ctx,
+		orgId:      orgId,
+		partner:    partner,
 	}
 }
 
 // Execute executes the request
-//  @return ListUsageMeteringDailyRecordsResponse
+//
+//	@return ListUsageMeteringDailyRecordsResponse
 func (a *ReportAPIService) ListUsageMeteringDailyRecordsExecute(r ApiListUsageMeteringDailyRecordsRequest) (*ListUsageMeteringDailyRecordsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ListUsageMeteringDailyRecordsResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ListUsageMeteringDailyRecordsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportAPIService.ListUsageMeteringDailyRecords")
@@ -700,26 +895,23 @@ func (a *ReportAPIService) ListUsageMeteringDailyRecordsExecute(r ApiListUsageMe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "")
+	if r.buyerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
 	}
 	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "")
-	}
-	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
 	}
 	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "form", "")
 	}
 	if r.endDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -741,7 +933,7 @@ func (a *ReportAPIService) ListUsageMeteringDailyRecordsExecute(r ApiListUsageMe
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -781,8 +973,8 @@ func (a *ReportAPIService) ListUsageMeteringDailyRecordsExecute(r ApiListUsageMe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -792,220 +984,8 @@ func (a *ReportAPIService) ListUsageMeteringDailyRecordsExecute(r ApiListUsageMe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiListUsageMeteringDailyVerificationsRequest struct {
-	ctx context.Context
-	ApiService *ReportAPIService
-	orgId string
-	partner string
-	productId *string
-	entitlementId *string
-	buyerId *string
-	startDate *string
-	endDate *string
-	limit *int32
-	offset *int32
-}
-
-// Filter usage metering daily verifications by the given product ID
-func (r ApiListUsageMeteringDailyVerificationsRequest) ProductId(productId string) ApiListUsageMeteringDailyVerificationsRequest {
-	r.productId = &productId
-	return r
-}
-
-// Filter usage metering daily verifications by the given entitlement ID
-func (r ApiListUsageMeteringDailyVerificationsRequest) EntitlementId(entitlementId string) ApiListUsageMeteringDailyVerificationsRequest {
-	r.entitlementId = &entitlementId
-	return r
-}
-
-// Filter usage metering daily verifications by the given buyer ID
-func (r ApiListUsageMeteringDailyVerificationsRequest) BuyerId(buyerId string) ApiListUsageMeteringDailyVerificationsRequest {
-	r.buyerId = &buyerId
-	return r
-}
-
-// start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
-func (r ApiListUsageMeteringDailyVerificationsRequest) StartDate(startDate string) ApiListUsageMeteringDailyVerificationsRequest {
-	r.startDate = &startDate
-	return r
-}
-
-// end date (UTC) in YYYY-MM-DD format, default is today
-func (r ApiListUsageMeteringDailyVerificationsRequest) EndDate(endDate string) ApiListUsageMeteringDailyVerificationsRequest {
-	r.endDate = &endDate
-	return r
-}
-
-// List pagination size, default 20, max value is 1000
-func (r ApiListUsageMeteringDailyVerificationsRequest) Limit(limit int32) ApiListUsageMeteringDailyVerificationsRequest {
-	r.limit = &limit
-	return r
-}
-
-// List pagination offset, default 0
-func (r ApiListUsageMeteringDailyVerificationsRequest) Offset(offset int32) ApiListUsageMeteringDailyVerificationsRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiListUsageMeteringDailyVerificationsRequest) Execute() (*ListUsageMeteringDailyVerificationsResponse, *http.Response, error) {
-	return r.ApiService.ListUsageMeteringDailyVerificationsExecute(r)
-}
-
-/*
-ListUsageMeteringDailyVerifications list usage metering daily verifications
-
-list the daily verifications between the usage records reported to cloud marketplace & the usage metering from the cloud marketplace for the given organization, product, entitlement, or buyer.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param partner Cloud Partner
- @return ApiListUsageMeteringDailyVerificationsRequest
-*/
-func (a *ReportAPIService) ListUsageMeteringDailyVerifications(ctx context.Context, orgId string, partner string) ApiListUsageMeteringDailyVerificationsRequest {
-	return ApiListUsageMeteringDailyVerificationsRequest{
-		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		partner: partner,
-	}
-}
-
-// Execute executes the request
-//  @return ListUsageMeteringDailyVerificationsResponse
-func (a *ReportAPIService) ListUsageMeteringDailyVerificationsExecute(r ApiListUsageMeteringDailyVerificationsRequest) (*ListUsageMeteringDailyVerificationsResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ListUsageMeteringDailyVerificationsResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportAPIService.ListUsageMeteringDailyVerifications")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/org/{orgId}/partner/{partner}/usageMeteringDailyVerification"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"partner"+"}", url.PathEscape(parameterValueToString(r.partner, "partner")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "")
-	}
-	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "")
-	}
-	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "")
-	}
-	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "")
-	}
-	if r.endDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

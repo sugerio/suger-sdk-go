@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **Rate** | Pointer to **float32** | The unit price of this usage metering dimension. | [optional] 
 **SkuId** | Pointer to **string** | The SKU ID of the metering dimension. Applicable to GCP Marketplace only. | [optional] 
 **Types** | Pointer to **[]string** |  | [optional] 
-**UsageCount** | Pointer to [**UsageCount**](UsageCount.md) |  | [optional] 
-**ValueType** | Pointer to [**ValueType**](ValueType.md) |  | [optional] 
+**UsageCount** | Pointer to [**UsageCount**](UsageCount.md) | The current Dimension Usage Count. Available when call GetEntitlement API. | [optional] 
+**ValueType** | Pointer to [**ValueType**](ValueType.md) | The value type of the metering dimension quantity. Applicable to GCP Marketplace only. | [optional] 
 
 ## Methods
 

@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Action** | Pointer to [**NotificationEventAction**](NotificationEventAction.md) | The action of this notification message. | [optional] 
 **CcRecipients** | Pointer to **[]string** |  | [optional] 
-**CustomFields** | Pointer to **map[string]string** | The custom fields to render the email content. | [optional] 
+**CustomFields** | Pointer to **map[string]interface{}** | All other fields | [optional] 
 **HtmlContent** | Pointer to **string** | The HTML content of the email. | [optional] 
 **RccRecipients** | Pointer to **[]string** |  | [optional] 
+**StandardFields** | Pointer to **map[string]interface{}** | The standard fields to render the email content. | [optional] 
 **Subject** | Pointer to **string** |  | [optional] 
 **TextContent** | Pointer to **string** | The text content of the email in case the recipient&#39;s email client does not support HTML. | [optional] 
 
@@ -29,6 +31,31 @@ will change when the set of required properties is changed
 NewNotificationMessageInfoWithDefaults instantiates a new NotificationMessageInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAction
+
+`func (o *NotificationMessageInfo) GetAction() NotificationEventAction`
+
+GetAction returns the Action field if non-nil, zero value otherwise.
+
+### GetActionOk
+
+`func (o *NotificationMessageInfo) GetActionOk() (*NotificationEventAction, bool)`
+
+GetActionOk returns a tuple with the Action field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAction
+
+`func (o *NotificationMessageInfo) SetAction(v NotificationEventAction)`
+
+SetAction sets Action field to given value.
+
+### HasAction
+
+`func (o *NotificationMessageInfo) HasAction() bool`
+
+HasAction returns a boolean if a field has been set.
 
 ### GetCcRecipients
 
@@ -57,20 +84,20 @@ HasCcRecipients returns a boolean if a field has been set.
 
 ### GetCustomFields
 
-`func (o *NotificationMessageInfo) GetCustomFields() map[string]string`
+`func (o *NotificationMessageInfo) GetCustomFields() map[string]interface{}`
 
 GetCustomFields returns the CustomFields field if non-nil, zero value otherwise.
 
 ### GetCustomFieldsOk
 
-`func (o *NotificationMessageInfo) GetCustomFieldsOk() (*map[string]string, bool)`
+`func (o *NotificationMessageInfo) GetCustomFieldsOk() (*map[string]interface{}, bool)`
 
 GetCustomFieldsOk returns a tuple with the CustomFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomFields
 
-`func (o *NotificationMessageInfo) SetCustomFields(v map[string]string)`
+`func (o *NotificationMessageInfo) SetCustomFields(v map[string]interface{})`
 
 SetCustomFields sets CustomFields field to given value.
 
@@ -129,6 +156,31 @@ SetRccRecipients sets RccRecipients field to given value.
 `func (o *NotificationMessageInfo) HasRccRecipients() bool`
 
 HasRccRecipients returns a boolean if a field has been set.
+
+### GetStandardFields
+
+`func (o *NotificationMessageInfo) GetStandardFields() map[string]interface{}`
+
+GetStandardFields returns the StandardFields field if non-nil, zero value otherwise.
+
+### GetStandardFieldsOk
+
+`func (o *NotificationMessageInfo) GetStandardFieldsOk() (*map[string]interface{}, bool)`
+
+GetStandardFieldsOk returns a tuple with the StandardFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStandardFields
+
+`func (o *NotificationMessageInfo) SetStandardFields(v map[string]interface{})`
+
+SetStandardFields sets StandardFields field to given value.
+
+### HasStandardFields
+
+`func (o *NotificationMessageInfo) HasStandardFields() bool`
+
+HasStandardFields returns a boolean if a field has been set.
 
 ### GetSubject
 

@@ -12,7 +12,9 @@ Contact: support@suger.io
 package openapi
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -21,12 +23,18 @@ var _ MappedNullable = &NewUsageRecordGroup{}
 
 // NewUsageRecordGroup struct for NewUsageRecordGroup
 type NewUsageRecordGroup struct {
-	EntitlementID string `json:"entitlementID"`
+	// for usage metering API v2, don't use it together with the records v1.
+	BillableRecords []MeteringUsageRecord `json:"billableRecords,omitempty"`
+	EntitlementID   string                `json:"entitlementID"`
+	// read-only, don't set it when validating or reporting the usage record group.
 	MetaInfo *MeteringUsageRecordGroupMetaInfo `json:"metaInfo,omitempty"`
+	// for usage metering API v1, don't use it together with the billableRecords v2.
 	Records map[string]float32 `json:"records"`
 	// The timestamp of when the usage records were generated. Optional, if not provided, the current report timestamp will be used. This is not the timestamp of when the usage records were reported to Suger.
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 }
+
+type _NewUsageRecordGroup NewUsageRecordGroup
 
 // NewNewUsageRecordGroup instantiates a new NewUsageRecordGroup object
 // This constructor will assign default values to properties that have it defined,
@@ -45,6 +53,38 @@ func NewNewUsageRecordGroup(entitlementID string, records map[string]float32) *N
 func NewNewUsageRecordGroupWithDefaults() *NewUsageRecordGroup {
 	this := NewUsageRecordGroup{}
 	return &this
+}
+
+// GetBillableRecords returns the BillableRecords field value if set, zero value otherwise.
+func (o *NewUsageRecordGroup) GetBillableRecords() []MeteringUsageRecord {
+	if o == nil || IsNil(o.BillableRecords) {
+		var ret []MeteringUsageRecord
+		return ret
+	}
+	return o.BillableRecords
+}
+
+// GetBillableRecordsOk returns a tuple with the BillableRecords field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NewUsageRecordGroup) GetBillableRecordsOk() ([]MeteringUsageRecord, bool) {
+	if o == nil || IsNil(o.BillableRecords) {
+		return nil, false
+	}
+	return o.BillableRecords, true
+}
+
+// HasBillableRecords returns a boolean if a field has been set.
+func (o *NewUsageRecordGroup) HasBillableRecords() bool {
+	if o != nil && !IsNil(o.BillableRecords) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillableRecords gets a reference to the given []MeteringUsageRecord and assigns it to the BillableRecords field.
+func (o *NewUsageRecordGroup) SetBillableRecords(v []MeteringUsageRecord) {
+	o.BillableRecords = v
 }
 
 // GetEntitlementID returns the EntitlementID field value
@@ -160,7 +200,7 @@ func (o *NewUsageRecordGroup) SetTimestamp(v time.Time) {
 }
 
 func (o NewUsageRecordGroup) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -169,6 +209,9 @@ func (o NewUsageRecordGroup) MarshalJSON() ([]byte, error) {
 
 func (o NewUsageRecordGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BillableRecords) {
+		toSerialize["billableRecords"] = o.BillableRecords
+	}
 	toSerialize["entitlementID"] = o.EntitlementID
 	if !IsNil(o.MetaInfo) {
 		toSerialize["metaInfo"] = o.MetaInfo
@@ -178,6 +221,44 @@ func (o NewUsageRecordGroup) ToMap() (map[string]interface{}, error) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
 	return toSerialize, nil
+}
+
+func (o *NewUsageRecordGroup) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"entitlementID",
+		"records",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varNewUsageRecordGroup := _NewUsageRecordGroup{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varNewUsageRecordGroup)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NewUsageRecordGroup(varNewUsageRecordGroup)
+
+	return err
 }
 
 type NullableNewUsageRecordGroup struct {
@@ -215,5 +296,3 @@ func (v *NullableNewUsageRecordGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

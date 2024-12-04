@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Approvals** | Pointer to [**[]GcpMarketplaceUserAccountApproval**](GcpMarketplaceUserAccountApproval.md) | The approvals for this account, that are permitted or have been completed. | [optional] 
 **BillingAccountId** | Pointer to **string** | The buyer&#39;s GCP billing account ID. | [optional] 
-**CompanyInfo** | Pointer to [**CompanyInfo**](CompanyInfo.md) |  | [optional] 
 **CreateTime** | Pointer to **time.Time** | RFC3339 UTC timestamp | [optional] 
 **Id** | Pointer to **string** | GCP Marketplace User Account ID. | [optional] 
 **InputProperties** | Pointer to **[]int32** |  | [optional] 
 **Name** | Pointer to **string** | The resource name of the account. Account names have the form providers/{provider_id}/accounts/{account_id}. | [optional] 
 **Provider** | Pointer to **string** | The identifier of the service provider (SaaS Seller) that this account was created against. | [optional] 
-**State** | Pointer to [**GcpMarketplaceUserAccountState**](GcpMarketplaceUserAccountState.md) |  | [optional] 
+**State** | Pointer to [**GcpMarketplaceUserAccountState**](GcpMarketplaceUserAccountState.md) | The state of the account. An account might not be able to make a purchase if the billing account is suspended. | [optional] 
 **UpdateTime** | Pointer to **time.Time** | RFC3339 UTC timestamp | [optional] 
 **UserInfo** | Pointer to [**GcpUserInfo**](GcpUserInfo.md) |  | [optional] 
 
@@ -84,31 +83,6 @@ SetBillingAccountId sets BillingAccountId field to given value.
 `func (o *GcpMarketplaceUserAccount) HasBillingAccountId() bool`
 
 HasBillingAccountId returns a boolean if a field has been set.
-
-### GetCompanyInfo
-
-`func (o *GcpMarketplaceUserAccount) GetCompanyInfo() CompanyInfo`
-
-GetCompanyInfo returns the CompanyInfo field if non-nil, zero value otherwise.
-
-### GetCompanyInfoOk
-
-`func (o *GcpMarketplaceUserAccount) GetCompanyInfoOk() (*CompanyInfo, bool)`
-
-GetCompanyInfoOk returns a tuple with the CompanyInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCompanyInfo
-
-`func (o *GcpMarketplaceUserAccount) SetCompanyInfo(v CompanyInfo)`
-
-SetCompanyInfo sets CompanyInfo field to given value.
-
-### HasCompanyInfo
-
-`func (o *GcpMarketplaceUserAccount) HasCompanyInfo() bool`
-
-HasCompanyInfo returns a boolean if a field has been set.
 
 ### GetCreateTime
 

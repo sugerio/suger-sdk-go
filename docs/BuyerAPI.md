@@ -1,15 +1,317 @@
 # \BuyerAPI
 
-All URIs are relative to *https://api.suger.cloud*
+All URIs are relative to *http://https://api.suger.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CloseCreditWallet**](BuyerAPI.md#CloseCreditWallet) | **Patch** /org/{orgId}/buyer/{buyerId}/wallet/{walletId}/close | close credit wallet
+[**CreateBuyer**](BuyerAPI.md#CreateBuyer) | **Post** /org/{orgId}/buyer | create buyer
+[**CreateCreditWallet**](BuyerAPI.md#CreateCreditWallet) | **Post** /org/{orgId}/buyer/{buyerId}/wallet | create credit wallet
+[**DeleteBuyerWallet**](BuyerAPI.md#DeleteBuyerWallet) | **Delete** /org/{orgId}/buyer/{buyerId}/wallet/{walletId} | delete buyer wallet
 [**GetBuyer**](BuyerAPI.md#GetBuyer) | **Get** /org/{orgId}/buyer/{buyerId} | get buyer
-[**ListBuyersByContact**](BuyerAPI.md#ListBuyersByContact) | **Get** /org/{orgId}/contact/{contactId}/buyer | list buyers by contact
-[**ListBuyersByOrganization**](BuyerAPI.md#ListBuyersByOrganization) | **Get** /org/{orgId}/buyer | list buyers by organization
-[**ListBuyersByPartner**](BuyerAPI.md#ListBuyersByPartner) | **Get** /org/{orgId}/partner/{partner}/buyer | list buyers by partner
+[**ListBuyerWallets**](BuyerAPI.md#ListBuyerWallets) | **Get** /org/{orgId}/buyer/{buyerId}/wallet | list buyer&#39;s wallets
+[**ListBuyers**](BuyerAPI.md#ListBuyers) | **Get** /org/{orgId}/buyer | list buyers
+[**SetBuyerDefaultWallet**](BuyerAPI.md#SetBuyerDefaultWallet) | **Patch** /org/{orgId}/buyer/{buyerId}/wallet/{walletId}/default | set buyer default wallet
 [**UpdateBuyer**](BuyerAPI.md#UpdateBuyer) | **Patch** /org/{orgId}/buyer/{buyerId} | update buyer
+[**UpdateCreditWallet**](BuyerAPI.md#UpdateCreditWallet) | **Patch** /org/{orgId}/buyer/{buyerId}/wallet/{walletId} | update credit wallet
 
+
+
+## CloseCreditWallet
+
+> BillingWallet CloseCreditWallet(ctx, orgId, buyerId, walletId).Execute()
+
+close credit wallet
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	buyerId := "buyerId_example" // string | Buyer ID
+	walletId := "walletId_example" // string | Wallet ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuyerAPI.CloseCreditWallet(context.Background(), orgId, buyerId, walletId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.CloseCreditWallet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CloseCreditWallet`: BillingWallet
+	fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.CloseCreditWallet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+**buyerId** | **string** | Buyer ID | 
+**walletId** | **string** | Wallet ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCloseCreditWalletRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**BillingWallet**](BillingWallet.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateBuyer
+
+> IdentityBuyer CreateBuyer(ctx, orgId).Data(data).Execute()
+
+create buyer
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	data := *openapiclient.NewCreateBuyerParams() // CreateBuyerParams | CreateBuyerParams
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuyerAPI.CreateBuyer(context.Background(), orgId).Data(data).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.CreateBuyer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateBuyer`: IdentityBuyer
+	fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.CreateBuyer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateBuyerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **data** | [**CreateBuyerParams**](CreateBuyerParams.md) | CreateBuyerParams | 
+
+### Return type
+
+[**IdentityBuyer**](IdentityBuyer.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateCreditWallet
+
+> BillingWallet CreateCreditWallet(ctx, orgId, buyerId).Execute()
+
+create credit wallet
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	buyerId := "buyerId_example" // string | Buyer ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuyerAPI.CreateCreditWallet(context.Background(), orgId, buyerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.CreateCreditWallet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateCreditWallet`: BillingWallet
+	fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.CreateCreditWallet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+**buyerId** | **string** | Buyer ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateCreditWalletRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**BillingWallet**](BillingWallet.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteBuyerWallet
+
+> BillingWallet DeleteBuyerWallet(ctx, orgId, buyerId, walletId).Execute()
+
+delete buyer wallet
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	buyerId := "buyerId_example" // string | Buyer ID
+	walletId := "walletId_example" // string | Wallet ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuyerAPI.DeleteBuyerWallet(context.Background(), orgId, buyerId, walletId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.DeleteBuyerWallet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteBuyerWallet`: BillingWallet
+	fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.DeleteBuyerWallet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+**buyerId** | **string** | Buyer ID | 
+**walletId** | **string** | Wallet ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteBuyerWalletRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**BillingWallet**](BillingWallet.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetBuyer
@@ -26,25 +328,25 @@ get buyer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    buyerId := "buyerId_example" // string | Buyer ID
+	orgId := "orgId_example" // string | Organization ID
+	buyerId := "buyerId_example" // string | Buyer ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BuyerAPI.GetBuyer(context.Background(), orgId, buyerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.GetBuyer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetBuyer`: IdentityBuyer
-    fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.GetBuyer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuyerAPI.GetBuyer(context.Background(), orgId, buyerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.GetBuyer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetBuyer`: IdentityBuyer
+	fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.GetBuyer`: %v\n", resp)
 }
 ```
 
@@ -73,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -85,11 +387,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListBuyersByContact
+## ListBuyerWallets
 
-> []IdentityBuyer ListBuyersByContact(ctx, orgId, contactId).Execute()
+> []BillingWallet ListBuyerWallets(ctx, orgId, buyerId).Execute()
 
-list buyers by contact
+list buyer's wallets
 
 
 
@@ -99,25 +401,25 @@ list buyers by contact
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    contactId := "contactId_example" // string | Contact ID
+	orgId := "orgId_example" // string | Organization ID
+	buyerId := "buyerId_example" // string | Buyer ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BuyerAPI.ListBuyersByContact(context.Background(), orgId, contactId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.ListBuyersByContact``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListBuyersByContact`: []IdentityBuyer
-    fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.ListBuyersByContact`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuyerAPI.ListBuyerWallets(context.Background(), orgId, buyerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.ListBuyerWallets``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListBuyerWallets`: []BillingWallet
+	fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.ListBuyerWallets`: %v\n", resp)
 }
 ```
 
@@ -128,11 +430,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **orgId** | **string** | Organization ID | 
-**contactId** | **string** | Contact ID | 
+**buyerId** | **string** | Buyer ID | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListBuyersByContactRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListBuyerWalletsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -142,11 +444,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]IdentityBuyer**](IdentityBuyer.md)
+[**[]BillingWallet**](BillingWallet.md)
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -158,11 +460,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListBuyersByOrganization
+## ListBuyers
 
-> []IdentityBuyer ListBuyersByOrganization(ctx, orgId).Execute()
+> []IdentityBuyer ListBuyers(ctx, orgId).Partner(partner).ContactId(contactId).Limit(limit).Offset(offset).Execute()
 
-list buyers by organization
+list buyers
 
 
 
@@ -172,24 +474,28 @@ list buyers by organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
+	orgId := "orgId_example" // string | Organization ID
+	partner := "partner_example" // string | filter by partner (optional)
+	contactId := "contactId_example" // string | filter by contactId (optional)
+	limit := int32(56) // int32 | List pagination size, default 1000, max value is 1000 (optional)
+	offset := int32(56) // int32 | List pagination offset, default 0 (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BuyerAPI.ListBuyersByOrganization(context.Background(), orgId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.ListBuyersByOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListBuyersByOrganization`: []IdentityBuyer
-    fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.ListBuyersByOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuyerAPI.ListBuyers(context.Background(), orgId).Partner(partner).ContactId(contactId).Limit(limit).Offset(offset).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.ListBuyers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListBuyers`: []IdentityBuyer
+	fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.ListBuyers`: %v\n", resp)
 }
 ```
 
@@ -203,12 +509,16 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListBuyersByOrganizationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListBuyersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **partner** | **string** | filter by partner | 
+ **contactId** | **string** | filter by contactId | 
+ **limit** | **int32** | List pagination size, default 1000, max value is 1000 | 
+ **offset** | **int32** | List pagination offset, default 0 | 
 
 ### Return type
 
@@ -216,7 +526,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -228,11 +538,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListBuyersByPartner
+## SetBuyerDefaultWallet
 
-> []IdentityBuyer ListBuyersByPartner(ctx, orgId, partner).Execute()
+> IdentityBuyer SetBuyerDefaultWallet(ctx, orgId, buyerId, walletId).Execute()
 
-list buyers by partner
+set buyer default wallet
 
 
 
@@ -242,25 +552,26 @@ list buyers by partner
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    partner := "partner_example" // string | Cloud Partner
+	orgId := "orgId_example" // string | Organization ID
+	buyerId := "buyerId_example" // string | Buyer ID
+	walletId := "walletId_example" // string | Wallet ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BuyerAPI.ListBuyersByPartner(context.Background(), orgId, partner).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.ListBuyersByPartner``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListBuyersByPartner`: []IdentityBuyer
-    fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.ListBuyersByPartner`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuyerAPI.SetBuyerDefaultWallet(context.Background(), orgId, buyerId, walletId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.SetBuyerDefaultWallet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SetBuyerDefaultWallet`: IdentityBuyer
+	fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.SetBuyerDefaultWallet`: %v\n", resp)
 }
 ```
 
@@ -271,11 +582,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **orgId** | **string** | Organization ID | 
-**partner** | **string** | Cloud Partner | 
+**buyerId** | **string** | Buyer ID | 
+**walletId** | **string** | Wallet ID | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListBuyersByPartnerRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSetBuyerDefaultWalletRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -283,13 +595,14 @@ Name | Type | Description  | Notes
 
 
 
+
 ### Return type
 
-[**[]IdentityBuyer**](IdentityBuyer.md)
+[**IdentityBuyer**](IdentityBuyer.md)
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -315,26 +628,26 @@ update buyer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    buyerId := "buyerId_example" // string | Buyer ID
-    data := *openapiclient.NewUpdateBuyerParams() // UpdateBuyerParams | UpdateBuyerParams
+	orgId := "orgId_example" // string | Organization ID
+	buyerId := "buyerId_example" // string | Buyer ID
+	data := *openapiclient.NewUpdateBuyerParams() // UpdateBuyerParams | UpdateBuyerParams
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BuyerAPI.UpdateBuyer(context.Background(), orgId, buyerId).Data(data).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.UpdateBuyer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateBuyer`: IdentityBuyer
-    fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.UpdateBuyer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuyerAPI.UpdateBuyer(context.Background(), orgId, buyerId).Data(data).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.UpdateBuyer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateBuyer`: IdentityBuyer
+	fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.UpdateBuyer`: %v\n", resp)
 }
 ```
 
@@ -364,11 +677,87 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateCreditWallet
+
+> BillingWallet UpdateCreditWallet(ctx, orgId, buyerId, walletId).Execute()
+
+update credit wallet
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	buyerId := "buyerId_example" // string | Buyer ID
+	walletId := "walletId_example" // string | Wallet ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuyerAPI.UpdateCreditWallet(context.Background(), orgId, buyerId, walletId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.UpdateCreditWallet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateCreditWallet`: BillingWallet
+	fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.UpdateCreditWallet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+**buyerId** | **string** | Buyer ID | 
+**walletId** | **string** | Wallet ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateCreditWalletRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**BillingWallet**](BillingWallet.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

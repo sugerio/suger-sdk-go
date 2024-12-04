@@ -25,20 +25,20 @@ type GcpMarketplaceUserAccount struct {
 	Approvals []GcpMarketplaceUserAccountApproval `json:"approvals,omitempty"`
 	// The buyer's GCP billing account ID.
 	BillingAccountId *string `json:"billingAccountId,omitempty"`
-	CompanyInfo *CompanyInfo `json:"companyInfo,omitempty"`
 	// RFC3339 UTC timestamp
 	CreateTime *time.Time `json:"createTime,omitempty"`
 	// GCP Marketplace User Account ID.
-	Id *string `json:"id,omitempty"`
+	Id              *string `json:"id,omitempty"`
 	InputProperties []int32 `json:"inputProperties,omitempty"`
 	// The resource name of the account. Account names have the form providers/{provider_id}/accounts/{account_id}.
 	Name *string `json:"name,omitempty"`
 	// The identifier of the service provider (SaaS Seller) that this account was created against.
 	Provider *string `json:"provider,omitempty"`
+	// The state of the account. An account might not be able to make a purchase if the billing account is suspended.
 	State *GcpMarketplaceUserAccountState `json:"state,omitempty"`
 	// RFC3339 UTC timestamp
-	UpdateTime *time.Time `json:"updateTime,omitempty"`
-	UserInfo *GcpUserInfo `json:"userInfo,omitempty"`
+	UpdateTime *time.Time   `json:"updateTime,omitempty"`
+	UserInfo   *GcpUserInfo `json:"userInfo,omitempty"`
 }
 
 // NewGcpMarketplaceUserAccount instantiates a new GcpMarketplaceUserAccount object
@@ -120,38 +120,6 @@ func (o *GcpMarketplaceUserAccount) HasBillingAccountId() bool {
 // SetBillingAccountId gets a reference to the given string and assigns it to the BillingAccountId field.
 func (o *GcpMarketplaceUserAccount) SetBillingAccountId(v string) {
 	o.BillingAccountId = &v
-}
-
-// GetCompanyInfo returns the CompanyInfo field value if set, zero value otherwise.
-func (o *GcpMarketplaceUserAccount) GetCompanyInfo() CompanyInfo {
-	if o == nil || IsNil(o.CompanyInfo) {
-		var ret CompanyInfo
-		return ret
-	}
-	return *o.CompanyInfo
-}
-
-// GetCompanyInfoOk returns a tuple with the CompanyInfo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GcpMarketplaceUserAccount) GetCompanyInfoOk() (*CompanyInfo, bool) {
-	if o == nil || IsNil(o.CompanyInfo) {
-		return nil, false
-	}
-	return o.CompanyInfo, true
-}
-
-// HasCompanyInfo returns a boolean if a field has been set.
-func (o *GcpMarketplaceUserAccount) HasCompanyInfo() bool {
-	if o != nil && !IsNil(o.CompanyInfo) {
-		return true
-	}
-
-	return false
-}
-
-// SetCompanyInfo gets a reference to the given CompanyInfo and assigns it to the CompanyInfo field.
-func (o *GcpMarketplaceUserAccount) SetCompanyInfo(v CompanyInfo) {
-	o.CompanyInfo = &v
 }
 
 // GetCreateTime returns the CreateTime field value if set, zero value otherwise.
@@ -411,7 +379,7 @@ func (o *GcpMarketplaceUserAccount) SetUserInfo(v GcpUserInfo) {
 }
 
 func (o GcpMarketplaceUserAccount) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -425,9 +393,6 @@ func (o GcpMarketplaceUserAccount) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BillingAccountId) {
 		toSerialize["billingAccountId"] = o.BillingAccountId
-	}
-	if !IsNil(o.CompanyInfo) {
-		toSerialize["companyInfo"] = o.CompanyInfo
 	}
 	if !IsNil(o.CreateTime) {
 		toSerialize["createTime"] = o.CreateTime
@@ -491,5 +456,3 @@ func (v *NullableGcpMarketplaceUserAccount) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

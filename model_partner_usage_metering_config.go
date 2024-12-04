@@ -20,14 +20,18 @@ var _ MappedNullable = &PartnerUsageMeteringConfig{}
 
 // PartnerUsageMeteringConfig struct for PartnerUsageMeteringConfig
 type PartnerUsageMeteringConfig struct {
-	// The mapping of the source dimension key to the destination dimension key of the usage metering.
+	// Deprecated: Use DimensionMappingV2 instead. The mapping of the source dimension key to the destination dimension key of the usage metering.
 	DimensionMapping *map[string]UsageMeteringDimensionMappingValue `json:"dimensionMapping,omitempty"`
+	// The mapping of the source dimension key to the destination dimension keys of the usage metering. The destination dimension keys are the list of the destination dimension keys. So the source dimension key can be mapped to multiple destination dimension keys.
+	DimensionMappingV2      *map[string][]UsageMeteringDimensionMappingValue `json:"dimensionMappingV2,omitempty"`
+	EnableBillableDimension *bool                                            `json:"enableBillableDimension,omitempty"`
 	// Enable the commit (discount) with additional usage metering at list price. Only applicable if EnableCommitWithAdditionalUsageMetering is true. The default is false, which means the commit with additional usage metering at the discounted price in the private offer. If set to true, the additional usage is metered at the list price (the price in public product listing) instead of the discounted price.
 	EnableCommitWithAdditionalUsageAtListPrice *bool `json:"enableCommitWithAdditionalUsageAtListPrice,omitempty"`
 	// Enable the commit with additional usage metering. The default is false, which means all usage records are reported to partner no matter how much is the commit. If set to true, the usage records will be reported to partner only if the current commit has been exhausted.
 	EnableCommitWithAdditionalUsageMetering *bool `json:"enableCommitWithAdditionalUsageMetering,omitempty"`
 	// Enable the dimension mapping for the usage metering. The default is false, which means no dimension conversion and just use the origin dimension.
 	EnableDimensionMapping *bool `json:"enableDimensionMapping,omitempty"`
+	// The partner in this dimension mapping. Required. Such as AWS, AZURE or GCP.
 	Partner *Partner `json:"partner,omitempty"`
 }
 
@@ -78,6 +82,70 @@ func (o *PartnerUsageMeteringConfig) HasDimensionMapping() bool {
 // SetDimensionMapping gets a reference to the given map[string]UsageMeteringDimensionMappingValue and assigns it to the DimensionMapping field.
 func (o *PartnerUsageMeteringConfig) SetDimensionMapping(v map[string]UsageMeteringDimensionMappingValue) {
 	o.DimensionMapping = &v
+}
+
+// GetDimensionMappingV2 returns the DimensionMappingV2 field value if set, zero value otherwise.
+func (o *PartnerUsageMeteringConfig) GetDimensionMappingV2() map[string][]UsageMeteringDimensionMappingValue {
+	if o == nil || IsNil(o.DimensionMappingV2) {
+		var ret map[string][]UsageMeteringDimensionMappingValue
+		return ret
+	}
+	return *o.DimensionMappingV2
+}
+
+// GetDimensionMappingV2Ok returns a tuple with the DimensionMappingV2 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PartnerUsageMeteringConfig) GetDimensionMappingV2Ok() (*map[string][]UsageMeteringDimensionMappingValue, bool) {
+	if o == nil || IsNil(o.DimensionMappingV2) {
+		return nil, false
+	}
+	return o.DimensionMappingV2, true
+}
+
+// HasDimensionMappingV2 returns a boolean if a field has been set.
+func (o *PartnerUsageMeteringConfig) HasDimensionMappingV2() bool {
+	if o != nil && !IsNil(o.DimensionMappingV2) {
+		return true
+	}
+
+	return false
+}
+
+// SetDimensionMappingV2 gets a reference to the given map[string][]UsageMeteringDimensionMappingValue and assigns it to the DimensionMappingV2 field.
+func (o *PartnerUsageMeteringConfig) SetDimensionMappingV2(v map[string][]UsageMeteringDimensionMappingValue) {
+	o.DimensionMappingV2 = &v
+}
+
+// GetEnableBillableDimension returns the EnableBillableDimension field value if set, zero value otherwise.
+func (o *PartnerUsageMeteringConfig) GetEnableBillableDimension() bool {
+	if o == nil || IsNil(o.EnableBillableDimension) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableBillableDimension
+}
+
+// GetEnableBillableDimensionOk returns a tuple with the EnableBillableDimension field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PartnerUsageMeteringConfig) GetEnableBillableDimensionOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableBillableDimension) {
+		return nil, false
+	}
+	return o.EnableBillableDimension, true
+}
+
+// HasEnableBillableDimension returns a boolean if a field has been set.
+func (o *PartnerUsageMeteringConfig) HasEnableBillableDimension() bool {
+	if o != nil && !IsNil(o.EnableBillableDimension) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableBillableDimension gets a reference to the given bool and assigns it to the EnableBillableDimension field.
+func (o *PartnerUsageMeteringConfig) SetEnableBillableDimension(v bool) {
+	o.EnableBillableDimension = &v
 }
 
 // GetEnableCommitWithAdditionalUsageAtListPrice returns the EnableCommitWithAdditionalUsageAtListPrice field value if set, zero value otherwise.
@@ -209,7 +277,7 @@ func (o *PartnerUsageMeteringConfig) SetPartner(v Partner) {
 }
 
 func (o PartnerUsageMeteringConfig) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -220,6 +288,12 @@ func (o PartnerUsageMeteringConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DimensionMapping) {
 		toSerialize["dimensionMapping"] = o.DimensionMapping
+	}
+	if !IsNil(o.DimensionMappingV2) {
+		toSerialize["dimensionMappingV2"] = o.DimensionMappingV2
+	}
+	if !IsNil(o.EnableBillableDimension) {
+		toSerialize["enableBillableDimension"] = o.EnableBillableDimension
 	}
 	if !IsNil(o.EnableCommitWithAdditionalUsageAtListPrice) {
 		toSerialize["enableCommitWithAdditionalUsageAtListPrice"] = o.EnableCommitWithAdditionalUsageAtListPrice
@@ -271,5 +345,3 @@ func (v *NullablePartnerUsageMeteringConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Quantity** | Pointer to **float32** | Number of units consumed | [optional] 
 **ResourceId** | Pointer to **string** | Identifier of the resource against which usage is emitted | [optional] 
 **ResourceUri** | Pointer to **string** | Identifier of the managed app resource against which usage is emitted | [optional] 
-**Status** | Pointer to [**GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageEventStatusEnum**](GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageEventStatusEnum.md) |  | [optional] 
+**Status** | Pointer to [**GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageEventStatusEnum**](GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageEventStatusEnum.md) | Status of the operation. | [optional] 
 **UsageEventId** | Pointer to **string** | Unique identifier associated with the usage event | [optional] 
 
 ## Methods

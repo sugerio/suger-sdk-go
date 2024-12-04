@@ -22,10 +22,10 @@ var _ MappedNullable = &AzureMarketplacePrice{}
 type AzureMarketplacePrice struct {
 	// ISO 4217 currency code
 	Currency *string `json:"currency,omitempty"`
+	// PriceAndAvailability audience definition
 	Markets []string `json:"markets,omitempty"`
-	// default 0
+	// Prices   interface{} `json:\"prices,omitempty\"`
 	Price *float32 `json:"price,omitempty"`
-	Prices map[string]interface{} `json:"prices,omitempty"`
 }
 
 // NewAzureMarketplacePrice instantiates a new AzureMarketplacePrice object
@@ -141,40 +141,8 @@ func (o *AzureMarketplacePrice) SetPrice(v float32) {
 	o.Price = &v
 }
 
-// GetPrices returns the Prices field value if set, zero value otherwise.
-func (o *AzureMarketplacePrice) GetPrices() map[string]interface{} {
-	if o == nil || IsNil(o.Prices) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Prices
-}
-
-// GetPricesOk returns a tuple with the Prices field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AzureMarketplacePrice) GetPricesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Prices) {
-		return map[string]interface{}{}, false
-	}
-	return o.Prices, true
-}
-
-// HasPrices returns a boolean if a field has been set.
-func (o *AzureMarketplacePrice) HasPrices() bool {
-	if o != nil && !IsNil(o.Prices) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrices gets a reference to the given map[string]interface{} and assigns it to the Prices field.
-func (o *AzureMarketplacePrice) SetPrices(v map[string]interface{}) {
-	o.Prices = v
-}
-
 func (o AzureMarketplacePrice) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -191,9 +159,6 @@ func (o AzureMarketplacePrice) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Price) {
 		toSerialize["price"] = o.Price
-	}
-	if !IsNil(o.Prices) {
-		toSerialize["prices"] = o.Prices
 	}
 	return toSerialize, nil
 }
@@ -233,5 +198,3 @@ func (v *NullableAzureMarketplacePrice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

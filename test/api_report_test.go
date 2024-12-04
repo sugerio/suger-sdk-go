@@ -11,11 +11,10 @@ package openapi
 
 import (
 	"context"
-	"testing"
-
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/sugerio/suger-sdk-go"
+	"testing"
 )
 
 func Test_openapi_ReportAPIService(t *testing.T) {
@@ -30,6 +29,20 @@ func Test_openapi_ReportAPIService(t *testing.T) {
 		var orgId string
 
 		resp, httpRes, err := apiClient.ReportAPI.GetRevenueReport(context.Background(), orgId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ReportAPIService ListDailyRevenueRecords", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+
+		resp, httpRes, err := apiClient.ReportAPI.ListDailyRevenueRecords(context.Background(), orgId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -75,21 +88,6 @@ func Test_openapi_ReportAPIService(t *testing.T) {
 		var partner string
 
 		resp, httpRes, err := apiClient.ReportAPI.ListUsageMeteringDailyRecords(context.Background(), orgId, partner).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ReportAPIService ListUsageMeteringDailyVerifications", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var orgId string
-		var partner string
-
-		resp, httpRes, err := apiClient.ReportAPI.ListUsageMeteringDailyVerifications(context.Background(), orgId, partner).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

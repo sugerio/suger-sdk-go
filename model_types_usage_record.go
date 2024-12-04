@@ -28,7 +28,7 @@ type TypesUsageRecord struct {
 	Quantity *int32 `json:"quantity,omitempty"`
 	// Timestamp, in UTC, for which the usage is being reported. Your application can meter usage for up to one hour in the past. Make sure the timestamp value is not before the start of the software usage.  This member is required.
 	Timestamp *string `json:"timestamp,omitempty"`
-	// The set of UsageAllocations to submit. The sum of all UsageAllocation quantities must equal the Quantity of the UsageRecord.
+	// The set of UsageAllocations to submit. The sum of all UsageAllocation quantities must equal the Quantity of the UsageRecord .
 	UsageAllocations []TypesUsageAllocation `json:"usageAllocations,omitempty"`
 }
 
@@ -210,7 +210,7 @@ func (o *TypesUsageRecord) SetUsageAllocations(v []TypesUsageAllocation) {
 }
 
 func (o TypesUsageRecord) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -272,5 +272,3 @@ func (v *NullableTypesUsageRecord) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

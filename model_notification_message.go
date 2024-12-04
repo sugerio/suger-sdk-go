@@ -21,12 +21,12 @@ var _ MappedNullable = &NotificationMessage{}
 
 // NotificationMessage struct for NotificationMessage
 type NotificationMessage struct {
-	CreationTime *time.Time `json:"creationTime,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Info *NotificationMessageInfo `json:"info,omitempty"`
-	OrganizationID *string `json:"organizationID,omitempty"`
-	Recipient *string `json:"recipient,omitempty"`
-	Type *NotificationType `json:"type,omitempty"`
+	CreationTime   *time.Time               `json:"creationTime,omitempty"`
+	Id             *string                  `json:"id,omitempty"`
+	Info           *NotificationMessageInfo `json:"info,omitempty"`
+	OrganizationID *string                  `json:"organizationID,omitempty"`
+	Recipient      *string                  `json:"recipient,omitempty"`
+	Type           *NotificationChannel     `json:"type,omitempty"`
 }
 
 // NewNotificationMessage instantiates a new NotificationMessage object
@@ -207,9 +207,9 @@ func (o *NotificationMessage) SetRecipient(v string) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *NotificationMessage) GetType() NotificationType {
+func (o *NotificationMessage) GetType() NotificationChannel {
 	if o == nil || IsNil(o.Type) {
-		var ret NotificationType
+		var ret NotificationChannel
 		return ret
 	}
 	return *o.Type
@@ -217,7 +217,7 @@ func (o *NotificationMessage) GetType() NotificationType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationMessage) GetTypeOk() (*NotificationType, bool) {
+func (o *NotificationMessage) GetTypeOk() (*NotificationChannel, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -233,13 +233,13 @@ func (o *NotificationMessage) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given NotificationType and assigns it to the Type field.
-func (o *NotificationMessage) SetType(v NotificationType) {
+// SetType gets a reference to the given NotificationChannel and assigns it to the Type field.
+func (o *NotificationMessage) SetType(v NotificationChannel) {
 	o.Type = &v
 }
 
 func (o NotificationMessage) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -304,5 +304,3 @@ func (v *NullableNotificationMessage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

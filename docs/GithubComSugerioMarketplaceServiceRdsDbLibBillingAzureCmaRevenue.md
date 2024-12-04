@@ -13,10 +13,10 @@ Name | Type | Description | Notes
 **BuyerID** | Pointer to **string** |  | [optional] 
 **EarningUsd** | Pointer to **float32** |  | [optional] 
 **EntitlementID** | Pointer to **string** |  | [optional] 
-**EstimatedPayoutMonth** | Pointer to [**SqlNullTime**](SqlNullTime.md) |  | [optional] 
+**EstimatedPayoutMonth** | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |  | [optional] 
 **OfferID** | Pointer to **string** |  | [optional] 
 **OrganizationID** | Pointer to **string** |  | [optional] 
-**PaymentSentDate** | Pointer to [**SqlNullTime**](SqlNullTime.md) |  | [optional] 
+**PaymentSentDate** | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |  | [optional] 
 **PayoutStatus** | Pointer to **string** |  | [optional] 
 **ProductID** | Pointer to **string** |  | [optional] 
 **PurchaseRecordID** | Pointer to **string** |  | [optional] 
@@ -270,20 +270,20 @@ HasEntitlementID returns a boolean if a field has been set.
 
 ### GetEstimatedPayoutMonth
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetEstimatedPayoutMonth() SqlNullTime`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetEstimatedPayoutMonth() DatabaseSqlNullTime`
 
 GetEstimatedPayoutMonth returns the EstimatedPayoutMonth field if non-nil, zero value otherwise.
 
 ### GetEstimatedPayoutMonthOk
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetEstimatedPayoutMonthOk() (*SqlNullTime, bool)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetEstimatedPayoutMonthOk() (*DatabaseSqlNullTime, bool)`
 
 GetEstimatedPayoutMonthOk returns a tuple with the EstimatedPayoutMonth field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEstimatedPayoutMonth
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) SetEstimatedPayoutMonth(v SqlNullTime)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) SetEstimatedPayoutMonth(v DatabaseSqlNullTime)`
 
 SetEstimatedPayoutMonth sets EstimatedPayoutMonth field to given value.
 
@@ -345,20 +345,20 @@ HasOrganizationID returns a boolean if a field has been set.
 
 ### GetPaymentSentDate
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetPaymentSentDate() SqlNullTime`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetPaymentSentDate() DatabaseSqlNullTime`
 
 GetPaymentSentDate returns the PaymentSentDate field if non-nil, zero value otherwise.
 
 ### GetPaymentSentDateOk
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetPaymentSentDateOk() (*SqlNullTime, bool)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetPaymentSentDateOk() (*DatabaseSqlNullTime, bool)`
 
 GetPaymentSentDateOk returns a tuple with the PaymentSentDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPaymentSentDate
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) SetPaymentSentDate(v SqlNullTime)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) SetPaymentSentDate(v DatabaseSqlNullTime)`
 
 SetPaymentSentDate sets PaymentSentDate field to given value.
 

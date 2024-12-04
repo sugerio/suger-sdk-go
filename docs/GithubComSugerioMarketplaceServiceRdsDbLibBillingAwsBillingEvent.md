@@ -19,19 +19,19 @@ Name | Type | Description | Notes
 **EntitlementID** | Pointer to **string** |  | [optional] 
 **FromAccountID** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
-**InsertDate** | Pointer to [**SqlNullTime**](SqlNullTime.md) |  | [optional] 
-**InvoiceDate** | Pointer to [**SqlNullTime**](SqlNullTime.md) |  | [optional] 
+**InsertDate** | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |  | [optional] 
+**InvoiceDate** | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |  | [optional] 
 **InvoiceID** | Pointer to **string** |  | [optional] 
 **OfferID** | Pointer to **string** |  | [optional] 
 **OrganizationID** | Pointer to **string** |  | [optional] 
 **ParentBillingEventID** | Pointer to **string** |  | [optional] 
-**PaymentDueDate** | Pointer to [**SqlNullTime**](SqlNullTime.md) |  | [optional] 
+**PaymentDueDate** | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |  | [optional] 
 **ProductID** | Pointer to **string** |  | [optional] 
 **ToAccountID** | Pointer to **string** |  | [optional] 
 **TransactionReferenceID** | Pointer to **string** |  | [optional] 
 **TransactionType** | Pointer to **string** |  | [optional] 
-**UsagePeriodEndDate** | Pointer to [**SqlNullTime**](SqlNullTime.md) |  | [optional] 
-**UsagePeriodStartDate** | Pointer to [**SqlNullTime**](SqlNullTime.md) |  | [optional] 
+**UsagePeriodEndDate** | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |  | [optional] 
+**UsagePeriodStartDate** | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |  | [optional] 
 
 ## Methods
 
@@ -429,20 +429,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetInsertDate
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInsertDate() SqlNullTime`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInsertDate() DatabaseSqlNullTime`
 
 GetInsertDate returns the InsertDate field if non-nil, zero value otherwise.
 
 ### GetInsertDateOk
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInsertDateOk() (*SqlNullTime, bool)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInsertDateOk() (*DatabaseSqlNullTime, bool)`
 
 GetInsertDateOk returns a tuple with the InsertDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInsertDate
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetInsertDate(v SqlNullTime)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetInsertDate(v DatabaseSqlNullTime)`
 
 SetInsertDate sets InsertDate field to given value.
 
@@ -454,20 +454,20 @@ HasInsertDate returns a boolean if a field has been set.
 
 ### GetInvoiceDate
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInvoiceDate() SqlNullTime`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInvoiceDate() DatabaseSqlNullTime`
 
 GetInvoiceDate returns the InvoiceDate field if non-nil, zero value otherwise.
 
 ### GetInvoiceDateOk
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInvoiceDateOk() (*SqlNullTime, bool)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInvoiceDateOk() (*DatabaseSqlNullTime, bool)`
 
 GetInvoiceDateOk returns a tuple with the InvoiceDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInvoiceDate
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetInvoiceDate(v SqlNullTime)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetInvoiceDate(v DatabaseSqlNullTime)`
 
 SetInvoiceDate sets InvoiceDate field to given value.
 
@@ -579,20 +579,20 @@ HasParentBillingEventID returns a boolean if a field has been set.
 
 ### GetPaymentDueDate
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetPaymentDueDate() SqlNullTime`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetPaymentDueDate() DatabaseSqlNullTime`
 
 GetPaymentDueDate returns the PaymentDueDate field if non-nil, zero value otherwise.
 
 ### GetPaymentDueDateOk
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetPaymentDueDateOk() (*SqlNullTime, bool)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetPaymentDueDateOk() (*DatabaseSqlNullTime, bool)`
 
 GetPaymentDueDateOk returns a tuple with the PaymentDueDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPaymentDueDate
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetPaymentDueDate(v SqlNullTime)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetPaymentDueDate(v DatabaseSqlNullTime)`
 
 SetPaymentDueDate sets PaymentDueDate field to given value.
 
@@ -704,20 +704,20 @@ HasTransactionType returns a boolean if a field has been set.
 
 ### GetUsagePeriodEndDate
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodEndDate() SqlNullTime`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodEndDate() DatabaseSqlNullTime`
 
 GetUsagePeriodEndDate returns the UsagePeriodEndDate field if non-nil, zero value otherwise.
 
 ### GetUsagePeriodEndDateOk
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodEndDateOk() (*SqlNullTime, bool)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodEndDateOk() (*DatabaseSqlNullTime, bool)`
 
 GetUsagePeriodEndDateOk returns a tuple with the UsagePeriodEndDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsagePeriodEndDate
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetUsagePeriodEndDate(v SqlNullTime)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetUsagePeriodEndDate(v DatabaseSqlNullTime)`
 
 SetUsagePeriodEndDate sets UsagePeriodEndDate field to given value.
 
@@ -729,20 +729,20 @@ HasUsagePeriodEndDate returns a boolean if a field has been set.
 
 ### GetUsagePeriodStartDate
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodStartDate() SqlNullTime`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodStartDate() DatabaseSqlNullTime`
 
 GetUsagePeriodStartDate returns the UsagePeriodStartDate field if non-nil, zero value otherwise.
 
 ### GetUsagePeriodStartDateOk
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodStartDateOk() (*SqlNullTime, bool)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodStartDateOk() (*DatabaseSqlNullTime, bool)`
 
 GetUsagePeriodStartDateOk returns a tuple with the UsagePeriodStartDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsagePeriodStartDate
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetUsagePeriodStartDate(v SqlNullTime)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetUsagePeriodStartDate(v DatabaseSqlNullTime)`
 
 SetUsagePeriodStartDate sets UsagePeriodStartDate field to given value.
 

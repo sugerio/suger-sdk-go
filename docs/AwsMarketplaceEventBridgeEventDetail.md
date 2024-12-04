@@ -12,13 +12,13 @@ Name | Type | Description | Notes
 **EventType** | Pointer to **string** |  | [optional] 
 **EventVersion** | Pointer to **string** |  | [optional] 
 **ManagementEvent** | Pointer to **bool** |  | [optional] 
-**Manufacturer** | Pointer to [**AwsMarketplaceEventBridgeEventAccount**](AwsMarketplaceEventBridgeEventAccount.md) |  | [optional] 
+**Manufacturer** | Pointer to [**AwsMarketplaceEventBridgeEventAccount**](AwsMarketplaceEventBridgeEventAccount.md) | The seller/ISV&#39;s AWS Account Id. | [optional] 
 **Offer** | Pointer to [**AwsMarketplaceEventBridgeEventOffer**](AwsMarketplaceEventBridgeEventOffer.md) |  | [optional] 
 **Product** | Pointer to [**AwsMarketplaceEventBridgeEventProduct**](AwsMarketplaceEventBridgeEventProduct.md) |  | [optional] 
 **RequestID** | Pointer to **string** |  | [optional] 
 **RequestParameters** | Pointer to **map[string]interface{}** |  | [optional] 
 **ResponseElements** | Pointer to **map[string]interface{}** |  | [optional] 
-**SellerOfRecord** | Pointer to [**AwsMarketplaceEventBridgeEventAccount**](AwsMarketplaceEventBridgeEventAccount.md) |  | [optional] 
+**SellerOfRecord** | Pointer to [**AwsMarketplaceEventBridgeEventAccount**](AwsMarketplaceEventBridgeEventAccount.md) | For private offer created by a channel partner, this is the channel partner&#39;s AWS Account Id. For private offer created by a seller/ISV, this is the seller/ISV&#39;s AWS Account Id. | [optional] 
 **TargetedBuyerAccountIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods

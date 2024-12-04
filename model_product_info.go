@@ -20,18 +20,26 @@ var _ MappedNullable = &ProductInfo{}
 
 // ProductInfo struct for ProductInfo
 type ProductInfo struct {
-	AlibabaProduct *AlibabaMarketplaceProduct `json:"alibabaProduct,omitempty"`
-	Attributes *map[string]string `json:"attributes,omitempty"`
-	AwsSaasProduct *AwsSaasProduct `json:"awsSaasProduct,omitempty"`
-	AwsSnsSubscriptions []AwsSnsSubscription `json:"awsSnsSubscriptions,omitempty"`
-	AzureProduct *AzureProduct `json:"azureProduct,omitempty"`
-	Commits []CommitDimension `json:"commits,omitempty"`
-	Currency *string `json:"currency,omitempty"`
-	Dimensions []MeteringDimension `json:"dimensions,omitempty"`
-	EulaUrl *string `json:"eulaUrl,omitempty"`
-	GcpProduct *GcpMarketplaceProduct `json:"gcpProduct,omitempty"`
-	RefundCancelationPolicy *string `json:"refundCancelationPolicy,omitempty"`
-	SellerNotes *string `json:"sellerNotes,omitempty"`
+	AlibabaProduct                 *AlibabaMarketplaceProduct       `json:"alibabaProduct,omitempty"`
+	Attributes                     *map[string]string               `json:"attributes,omitempty"`
+	AwsAmiProduct                  *AwsProduct                      `json:"awsAmiProduct,omitempty"`
+	AwsContainerProduct            *AwsProduct                      `json:"awsContainerProduct,omitempty"`
+	AwsProfessionalServicesProduct *AwsProduct                      `json:"awsProfessionalServicesProduct,omitempty"`
+	AwsSaasProduct                 *AwsProduct                      `json:"awsSaasProduct,omitempty"`
+	AwsSnsSubscriptions            []AwsSnsSubscription             `json:"awsSnsSubscriptions,omitempty"`
+	AzureProduct                   *AzureProduct                    `json:"azureProduct,omitempty"`
+	AzureProductResource           *AzureMarketplaceProductResource `json:"azureProductResource,omitempty"`
+	Commits                        []CommitDimension                `json:"commits,omitempty"`
+	Currency                       *string                          `json:"currency,omitempty"`
+	Dimensions                     []MeteringDimension              `json:"dimensions,omitempty"`
+	// The public offer's EULA type.
+	EulaType *EulaType `json:"eulaType,omitempty"`
+	// The public offer's EULA URL.
+	EulaUrl                  *string                `json:"eulaUrl,omitempty"`
+	GcpProduct               *GcpMarketplaceProduct `json:"gcpProduct,omitempty"`
+	RefundCancellationPolicy *string                `json:"refundCancellationPolicy,omitempty"`
+	SellerNotes              *string                `json:"sellerNotes,omitempty"`
+	StripeProduct            *StripeProduct         `json:"stripeProduct,omitempty"`
 }
 
 // NewProductInfo instantiates a new ProductInfo object
@@ -115,10 +123,106 @@ func (o *ProductInfo) SetAttributes(v map[string]string) {
 	o.Attributes = &v
 }
 
+// GetAwsAmiProduct returns the AwsAmiProduct field value if set, zero value otherwise.
+func (o *ProductInfo) GetAwsAmiProduct() AwsProduct {
+	if o == nil || IsNil(o.AwsAmiProduct) {
+		var ret AwsProduct
+		return ret
+	}
+	return *o.AwsAmiProduct
+}
+
+// GetAwsAmiProductOk returns a tuple with the AwsAmiProduct field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductInfo) GetAwsAmiProductOk() (*AwsProduct, bool) {
+	if o == nil || IsNil(o.AwsAmiProduct) {
+		return nil, false
+	}
+	return o.AwsAmiProduct, true
+}
+
+// HasAwsAmiProduct returns a boolean if a field has been set.
+func (o *ProductInfo) HasAwsAmiProduct() bool {
+	if o != nil && !IsNil(o.AwsAmiProduct) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsAmiProduct gets a reference to the given AwsProduct and assigns it to the AwsAmiProduct field.
+func (o *ProductInfo) SetAwsAmiProduct(v AwsProduct) {
+	o.AwsAmiProduct = &v
+}
+
+// GetAwsContainerProduct returns the AwsContainerProduct field value if set, zero value otherwise.
+func (o *ProductInfo) GetAwsContainerProduct() AwsProduct {
+	if o == nil || IsNil(o.AwsContainerProduct) {
+		var ret AwsProduct
+		return ret
+	}
+	return *o.AwsContainerProduct
+}
+
+// GetAwsContainerProductOk returns a tuple with the AwsContainerProduct field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductInfo) GetAwsContainerProductOk() (*AwsProduct, bool) {
+	if o == nil || IsNil(o.AwsContainerProduct) {
+		return nil, false
+	}
+	return o.AwsContainerProduct, true
+}
+
+// HasAwsContainerProduct returns a boolean if a field has been set.
+func (o *ProductInfo) HasAwsContainerProduct() bool {
+	if o != nil && !IsNil(o.AwsContainerProduct) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsContainerProduct gets a reference to the given AwsProduct and assigns it to the AwsContainerProduct field.
+func (o *ProductInfo) SetAwsContainerProduct(v AwsProduct) {
+	o.AwsContainerProduct = &v
+}
+
+// GetAwsProfessionalServicesProduct returns the AwsProfessionalServicesProduct field value if set, zero value otherwise.
+func (o *ProductInfo) GetAwsProfessionalServicesProduct() AwsProduct {
+	if o == nil || IsNil(o.AwsProfessionalServicesProduct) {
+		var ret AwsProduct
+		return ret
+	}
+	return *o.AwsProfessionalServicesProduct
+}
+
+// GetAwsProfessionalServicesProductOk returns a tuple with the AwsProfessionalServicesProduct field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductInfo) GetAwsProfessionalServicesProductOk() (*AwsProduct, bool) {
+	if o == nil || IsNil(o.AwsProfessionalServicesProduct) {
+		return nil, false
+	}
+	return o.AwsProfessionalServicesProduct, true
+}
+
+// HasAwsProfessionalServicesProduct returns a boolean if a field has been set.
+func (o *ProductInfo) HasAwsProfessionalServicesProduct() bool {
+	if o != nil && !IsNil(o.AwsProfessionalServicesProduct) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsProfessionalServicesProduct gets a reference to the given AwsProduct and assigns it to the AwsProfessionalServicesProduct field.
+func (o *ProductInfo) SetAwsProfessionalServicesProduct(v AwsProduct) {
+	o.AwsProfessionalServicesProduct = &v
+}
+
 // GetAwsSaasProduct returns the AwsSaasProduct field value if set, zero value otherwise.
-func (o *ProductInfo) GetAwsSaasProduct() AwsSaasProduct {
+func (o *ProductInfo) GetAwsSaasProduct() AwsProduct {
 	if o == nil || IsNil(o.AwsSaasProduct) {
-		var ret AwsSaasProduct
+		var ret AwsProduct
 		return ret
 	}
 	return *o.AwsSaasProduct
@@ -126,7 +230,7 @@ func (o *ProductInfo) GetAwsSaasProduct() AwsSaasProduct {
 
 // GetAwsSaasProductOk returns a tuple with the AwsSaasProduct field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductInfo) GetAwsSaasProductOk() (*AwsSaasProduct, bool) {
+func (o *ProductInfo) GetAwsSaasProductOk() (*AwsProduct, bool) {
 	if o == nil || IsNil(o.AwsSaasProduct) {
 		return nil, false
 	}
@@ -142,8 +246,8 @@ func (o *ProductInfo) HasAwsSaasProduct() bool {
 	return false
 }
 
-// SetAwsSaasProduct gets a reference to the given AwsSaasProduct and assigns it to the AwsSaasProduct field.
-func (o *ProductInfo) SetAwsSaasProduct(v AwsSaasProduct) {
+// SetAwsSaasProduct gets a reference to the given AwsProduct and assigns it to the AwsSaasProduct field.
+func (o *ProductInfo) SetAwsSaasProduct(v AwsProduct) {
 	o.AwsSaasProduct = &v
 }
 
@@ -209,6 +313,38 @@ func (o *ProductInfo) HasAzureProduct() bool {
 // SetAzureProduct gets a reference to the given AzureProduct and assigns it to the AzureProduct field.
 func (o *ProductInfo) SetAzureProduct(v AzureProduct) {
 	o.AzureProduct = &v
+}
+
+// GetAzureProductResource returns the AzureProductResource field value if set, zero value otherwise.
+func (o *ProductInfo) GetAzureProductResource() AzureMarketplaceProductResource {
+	if o == nil || IsNil(o.AzureProductResource) {
+		var ret AzureMarketplaceProductResource
+		return ret
+	}
+	return *o.AzureProductResource
+}
+
+// GetAzureProductResourceOk returns a tuple with the AzureProductResource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductInfo) GetAzureProductResourceOk() (*AzureMarketplaceProductResource, bool) {
+	if o == nil || IsNil(o.AzureProductResource) {
+		return nil, false
+	}
+	return o.AzureProductResource, true
+}
+
+// HasAzureProductResource returns a boolean if a field has been set.
+func (o *ProductInfo) HasAzureProductResource() bool {
+	if o != nil && !IsNil(o.AzureProductResource) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureProductResource gets a reference to the given AzureMarketplaceProductResource and assigns it to the AzureProductResource field.
+func (o *ProductInfo) SetAzureProductResource(v AzureMarketplaceProductResource) {
+	o.AzureProductResource = &v
 }
 
 // GetCommits returns the Commits field value if set, zero value otherwise.
@@ -307,6 +443,38 @@ func (o *ProductInfo) SetDimensions(v []MeteringDimension) {
 	o.Dimensions = v
 }
 
+// GetEulaType returns the EulaType field value if set, zero value otherwise.
+func (o *ProductInfo) GetEulaType() EulaType {
+	if o == nil || IsNil(o.EulaType) {
+		var ret EulaType
+		return ret
+	}
+	return *o.EulaType
+}
+
+// GetEulaTypeOk returns a tuple with the EulaType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductInfo) GetEulaTypeOk() (*EulaType, bool) {
+	if o == nil || IsNil(o.EulaType) {
+		return nil, false
+	}
+	return o.EulaType, true
+}
+
+// HasEulaType returns a boolean if a field has been set.
+func (o *ProductInfo) HasEulaType() bool {
+	if o != nil && !IsNil(o.EulaType) {
+		return true
+	}
+
+	return false
+}
+
+// SetEulaType gets a reference to the given EulaType and assigns it to the EulaType field.
+func (o *ProductInfo) SetEulaType(v EulaType) {
+	o.EulaType = &v
+}
+
 // GetEulaUrl returns the EulaUrl field value if set, zero value otherwise.
 func (o *ProductInfo) GetEulaUrl() string {
 	if o == nil || IsNil(o.EulaUrl) {
@@ -371,36 +539,36 @@ func (o *ProductInfo) SetGcpProduct(v GcpMarketplaceProduct) {
 	o.GcpProduct = &v
 }
 
-// GetRefundCancelationPolicy returns the RefundCancelationPolicy field value if set, zero value otherwise.
-func (o *ProductInfo) GetRefundCancelationPolicy() string {
-	if o == nil || IsNil(o.RefundCancelationPolicy) {
+// GetRefundCancellationPolicy returns the RefundCancellationPolicy field value if set, zero value otherwise.
+func (o *ProductInfo) GetRefundCancellationPolicy() string {
+	if o == nil || IsNil(o.RefundCancellationPolicy) {
 		var ret string
 		return ret
 	}
-	return *o.RefundCancelationPolicy
+	return *o.RefundCancellationPolicy
 }
 
-// GetRefundCancelationPolicyOk returns a tuple with the RefundCancelationPolicy field value if set, nil otherwise
+// GetRefundCancellationPolicyOk returns a tuple with the RefundCancellationPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductInfo) GetRefundCancelationPolicyOk() (*string, bool) {
-	if o == nil || IsNil(o.RefundCancelationPolicy) {
+func (o *ProductInfo) GetRefundCancellationPolicyOk() (*string, bool) {
+	if o == nil || IsNil(o.RefundCancellationPolicy) {
 		return nil, false
 	}
-	return o.RefundCancelationPolicy, true
+	return o.RefundCancellationPolicy, true
 }
 
-// HasRefundCancelationPolicy returns a boolean if a field has been set.
-func (o *ProductInfo) HasRefundCancelationPolicy() bool {
-	if o != nil && !IsNil(o.RefundCancelationPolicy) {
+// HasRefundCancellationPolicy returns a boolean if a field has been set.
+func (o *ProductInfo) HasRefundCancellationPolicy() bool {
+	if o != nil && !IsNil(o.RefundCancellationPolicy) {
 		return true
 	}
 
 	return false
 }
 
-// SetRefundCancelationPolicy gets a reference to the given string and assigns it to the RefundCancelationPolicy field.
-func (o *ProductInfo) SetRefundCancelationPolicy(v string) {
-	o.RefundCancelationPolicy = &v
+// SetRefundCancellationPolicy gets a reference to the given string and assigns it to the RefundCancellationPolicy field.
+func (o *ProductInfo) SetRefundCancellationPolicy(v string) {
+	o.RefundCancellationPolicy = &v
 }
 
 // GetSellerNotes returns the SellerNotes field value if set, zero value otherwise.
@@ -435,8 +603,40 @@ func (o *ProductInfo) SetSellerNotes(v string) {
 	o.SellerNotes = &v
 }
 
+// GetStripeProduct returns the StripeProduct field value if set, zero value otherwise.
+func (o *ProductInfo) GetStripeProduct() StripeProduct {
+	if o == nil || IsNil(o.StripeProduct) {
+		var ret StripeProduct
+		return ret
+	}
+	return *o.StripeProduct
+}
+
+// GetStripeProductOk returns a tuple with the StripeProduct field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductInfo) GetStripeProductOk() (*StripeProduct, bool) {
+	if o == nil || IsNil(o.StripeProduct) {
+		return nil, false
+	}
+	return o.StripeProduct, true
+}
+
+// HasStripeProduct returns a boolean if a field has been set.
+func (o *ProductInfo) HasStripeProduct() bool {
+	if o != nil && !IsNil(o.StripeProduct) {
+		return true
+	}
+
+	return false
+}
+
+// SetStripeProduct gets a reference to the given StripeProduct and assigns it to the StripeProduct field.
+func (o *ProductInfo) SetStripeProduct(v StripeProduct) {
+	o.StripeProduct = &v
+}
+
 func (o ProductInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -451,6 +651,15 @@ func (o ProductInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+	if !IsNil(o.AwsAmiProduct) {
+		toSerialize["awsAmiProduct"] = o.AwsAmiProduct
+	}
+	if !IsNil(o.AwsContainerProduct) {
+		toSerialize["awsContainerProduct"] = o.AwsContainerProduct
+	}
+	if !IsNil(o.AwsProfessionalServicesProduct) {
+		toSerialize["awsProfessionalServicesProduct"] = o.AwsProfessionalServicesProduct
+	}
 	if !IsNil(o.AwsSaasProduct) {
 		toSerialize["awsSaasProduct"] = o.AwsSaasProduct
 	}
@@ -459,6 +668,9 @@ func (o ProductInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AzureProduct) {
 		toSerialize["azureProduct"] = o.AzureProduct
+	}
+	if !IsNil(o.AzureProductResource) {
+		toSerialize["azureProductResource"] = o.AzureProductResource
 	}
 	if !IsNil(o.Commits) {
 		toSerialize["commits"] = o.Commits
@@ -469,17 +681,23 @@ func (o ProductInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Dimensions) {
 		toSerialize["dimensions"] = o.Dimensions
 	}
+	if !IsNil(o.EulaType) {
+		toSerialize["eulaType"] = o.EulaType
+	}
 	if !IsNil(o.EulaUrl) {
 		toSerialize["eulaUrl"] = o.EulaUrl
 	}
 	if !IsNil(o.GcpProduct) {
 		toSerialize["gcpProduct"] = o.GcpProduct
 	}
-	if !IsNil(o.RefundCancelationPolicy) {
-		toSerialize["refundCancelationPolicy"] = o.RefundCancelationPolicy
+	if !IsNil(o.RefundCancellationPolicy) {
+		toSerialize["refundCancellationPolicy"] = o.RefundCancellationPolicy
 	}
 	if !IsNil(o.SellerNotes) {
 		toSerialize["sellerNotes"] = o.SellerNotes
+	}
+	if !IsNil(o.StripeProduct) {
+		toSerialize["stripeProduct"] = o.StripeProduct
 	}
 	return toSerialize, nil
 }
@@ -519,5 +737,3 @@ func (v *NullableProductInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreditAmountIncrement** | **float32** | The amount to be added to the credit amount. | 
 **EntitlementID** | **string** |  | 
+**EntitlementTermID** | Pointer to **string** | This is optional. If it is empty, the credit will be added to the default entitlement term of the entitlement. | [optional] 
 **OrganizationID** | **string** |  | 
 
 ## Methods
@@ -66,6 +67,31 @@ and a boolean to check if the value has been set.
 
 SetEntitlementID sets EntitlementID field to given value.
 
+
+### GetEntitlementTermID
+
+`func (o *AddEntitlementCreditParams) GetEntitlementTermID() string`
+
+GetEntitlementTermID returns the EntitlementTermID field if non-nil, zero value otherwise.
+
+### GetEntitlementTermIDOk
+
+`func (o *AddEntitlementCreditParams) GetEntitlementTermIDOk() (*string, bool)`
+
+GetEntitlementTermIDOk returns a tuple with the EntitlementTermID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntitlementTermID
+
+`func (o *AddEntitlementCreditParams) SetEntitlementTermID(v string)`
+
+SetEntitlementTermID sets EntitlementTermID field to given value.
+
+### HasEntitlementTermID
+
+`func (o *AddEntitlementCreditParams) HasEntitlementTermID() bool`
+
+HasEntitlementTermID returns a boolean if a field has been set.
 
 ### GetOrganizationID
 

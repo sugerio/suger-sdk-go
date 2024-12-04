@@ -20,21 +20,43 @@ var _ MappedNullable = &BuyerInfo{}
 
 // BuyerInfo struct for BuyerInfo
 type BuyerInfo struct {
+	// Buyer on Adyen
+	AdyenBuyer *AdyenBuyer `json:"adyenBuyer,omitempty"`
+	// Buyer from AWS Marketplace
 	AwsBuyer *AwsAccountIdentifier `json:"awsBuyer,omitempty"`
+	// Buyer from Azure Marketplace
 	AzureBuyer *AzureADIdentifier `json:"azureBuyer,omitempty"`
 	// The amount that the seller can collect. It excludes the marketplace commision fee.
-	CollectableAmount *float32 `json:"collectableAmount,omitempty"`
+	CollectableAmount *float32     `json:"collectableAmount,omitempty"`
+	CompanyInfo       *CompanyInfo `json:"companyInfo,omitempty"`
 	// customerID of buyer on seller's side
 	CustomerId *string `json:"customerId,omitempty"`
 	// The amount that has been disbursed to the seller account.
 	DisbursedAmount *float32 `json:"disbursedAmount,omitempty"`
+	// The email address of the buyer. This was copied from the new client signup form.
+	EmailAddress *string `json:"emailAddress,omitempty"`
+	// Fields to store key-value pairs of buyer information.
+	Fields map[string]interface{} `json:"fields,omitempty"`
+	// Buyer from GCP Marketplace
 	GcpBuyer *GcpMarketplaceUserAccount `json:"gcpBuyer,omitempty"`
+	// The gross amount that the buyer has committed to pay, including usage metered amount.
+	GrossAmount *float32 `json:"grossAmount,omitempty"`
 	// The amount that the buyer has got invoiced.
 	InvoicedAmount *float32 `json:"invoicedAmount,omitempty"`
+	// The lgo customer ID for the buyer if it is connected to a lago customer.
+	LagoCustomerId *string `json:"lagoCustomerId,omitempty"`
+	// Last modifier user ID.
+	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
 	// The metronome customer ID for the buyer if it is connected to a metronome customer.
 	MetronomeCustomerId *string `json:"metronomeCustomerId,omitempty"`
 	// The orb customer ID for the buyer if it is connected to a orb customer.
 	OrbCustomerId *string `json:"orbCustomerId,omitempty"`
+	// Payment Config for billing.
+	PaymentConfig *PaymentConfig `json:"paymentConfig,omitempty"`
+	// Buyer SPA url, public page visited with jwt.
+	SpaUrl *string `json:"spaUrl,omitempty"`
+	// Buyer as Customer on Stripe
+	StripeBuyer *StripeCustomer `json:"stripeBuyer,omitempty"`
 }
 
 // NewBuyerInfo instantiates a new BuyerInfo object
@@ -52,6 +74,38 @@ func NewBuyerInfo() *BuyerInfo {
 func NewBuyerInfoWithDefaults() *BuyerInfo {
 	this := BuyerInfo{}
 	return &this
+}
+
+// GetAdyenBuyer returns the AdyenBuyer field value if set, zero value otherwise.
+func (o *BuyerInfo) GetAdyenBuyer() AdyenBuyer {
+	if o == nil || IsNil(o.AdyenBuyer) {
+		var ret AdyenBuyer
+		return ret
+	}
+	return *o.AdyenBuyer
+}
+
+// GetAdyenBuyerOk returns a tuple with the AdyenBuyer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetAdyenBuyerOk() (*AdyenBuyer, bool) {
+	if o == nil || IsNil(o.AdyenBuyer) {
+		return nil, false
+	}
+	return o.AdyenBuyer, true
+}
+
+// HasAdyenBuyer returns a boolean if a field has been set.
+func (o *BuyerInfo) HasAdyenBuyer() bool {
+	if o != nil && !IsNil(o.AdyenBuyer) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdyenBuyer gets a reference to the given AdyenBuyer and assigns it to the AdyenBuyer field.
+func (o *BuyerInfo) SetAdyenBuyer(v AdyenBuyer) {
+	o.AdyenBuyer = &v
 }
 
 // GetAwsBuyer returns the AwsBuyer field value if set, zero value otherwise.
@@ -150,6 +204,38 @@ func (o *BuyerInfo) SetCollectableAmount(v float32) {
 	o.CollectableAmount = &v
 }
 
+// GetCompanyInfo returns the CompanyInfo field value if set, zero value otherwise.
+func (o *BuyerInfo) GetCompanyInfo() CompanyInfo {
+	if o == nil || IsNil(o.CompanyInfo) {
+		var ret CompanyInfo
+		return ret
+	}
+	return *o.CompanyInfo
+}
+
+// GetCompanyInfoOk returns a tuple with the CompanyInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetCompanyInfoOk() (*CompanyInfo, bool) {
+	if o == nil || IsNil(o.CompanyInfo) {
+		return nil, false
+	}
+	return o.CompanyInfo, true
+}
+
+// HasCompanyInfo returns a boolean if a field has been set.
+func (o *BuyerInfo) HasCompanyInfo() bool {
+	if o != nil && !IsNil(o.CompanyInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompanyInfo gets a reference to the given CompanyInfo and assigns it to the CompanyInfo field.
+func (o *BuyerInfo) SetCompanyInfo(v CompanyInfo) {
+	o.CompanyInfo = &v
+}
+
 // GetCustomerId returns the CustomerId field value if set, zero value otherwise.
 func (o *BuyerInfo) GetCustomerId() string {
 	if o == nil || IsNil(o.CustomerId) {
@@ -214,6 +300,70 @@ func (o *BuyerInfo) SetDisbursedAmount(v float32) {
 	o.DisbursedAmount = &v
 }
 
+// GetEmailAddress returns the EmailAddress field value if set, zero value otherwise.
+func (o *BuyerInfo) GetEmailAddress() string {
+	if o == nil || IsNil(o.EmailAddress) {
+		var ret string
+		return ret
+	}
+	return *o.EmailAddress
+}
+
+// GetEmailAddressOk returns a tuple with the EmailAddress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetEmailAddressOk() (*string, bool) {
+	if o == nil || IsNil(o.EmailAddress) {
+		return nil, false
+	}
+	return o.EmailAddress, true
+}
+
+// HasEmailAddress returns a boolean if a field has been set.
+func (o *BuyerInfo) HasEmailAddress() bool {
+	if o != nil && !IsNil(o.EmailAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmailAddress gets a reference to the given string and assigns it to the EmailAddress field.
+func (o *BuyerInfo) SetEmailAddress(v string) {
+	o.EmailAddress = &v
+}
+
+// GetFields returns the Fields field value if set, zero value otherwise.
+func (o *BuyerInfo) GetFields() map[string]interface{} {
+	if o == nil || IsNil(o.Fields) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Fields
+}
+
+// GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetFieldsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Fields) {
+		return map[string]interface{}{}, false
+	}
+	return o.Fields, true
+}
+
+// HasFields returns a boolean if a field has been set.
+func (o *BuyerInfo) HasFields() bool {
+	if o != nil && !IsNil(o.Fields) {
+		return true
+	}
+
+	return false
+}
+
+// SetFields gets a reference to the given map[string]interface{} and assigns it to the Fields field.
+func (o *BuyerInfo) SetFields(v map[string]interface{}) {
+	o.Fields = v
+}
+
 // GetGcpBuyer returns the GcpBuyer field value if set, zero value otherwise.
 func (o *BuyerInfo) GetGcpBuyer() GcpMarketplaceUserAccount {
 	if o == nil || IsNil(o.GcpBuyer) {
@@ -246,6 +396,38 @@ func (o *BuyerInfo) SetGcpBuyer(v GcpMarketplaceUserAccount) {
 	o.GcpBuyer = &v
 }
 
+// GetGrossAmount returns the GrossAmount field value if set, zero value otherwise.
+func (o *BuyerInfo) GetGrossAmount() float32 {
+	if o == nil || IsNil(o.GrossAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.GrossAmount
+}
+
+// GetGrossAmountOk returns a tuple with the GrossAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetGrossAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.GrossAmount) {
+		return nil, false
+	}
+	return o.GrossAmount, true
+}
+
+// HasGrossAmount returns a boolean if a field has been set.
+func (o *BuyerInfo) HasGrossAmount() bool {
+	if o != nil && !IsNil(o.GrossAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetGrossAmount gets a reference to the given float32 and assigns it to the GrossAmount field.
+func (o *BuyerInfo) SetGrossAmount(v float32) {
+	o.GrossAmount = &v
+}
+
 // GetInvoicedAmount returns the InvoicedAmount field value if set, zero value otherwise.
 func (o *BuyerInfo) GetInvoicedAmount() float32 {
 	if o == nil || IsNil(o.InvoicedAmount) {
@@ -276,6 +458,70 @@ func (o *BuyerInfo) HasInvoicedAmount() bool {
 // SetInvoicedAmount gets a reference to the given float32 and assigns it to the InvoicedAmount field.
 func (o *BuyerInfo) SetInvoicedAmount(v float32) {
 	o.InvoicedAmount = &v
+}
+
+// GetLagoCustomerId returns the LagoCustomerId field value if set, zero value otherwise.
+func (o *BuyerInfo) GetLagoCustomerId() string {
+	if o == nil || IsNil(o.LagoCustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.LagoCustomerId
+}
+
+// GetLagoCustomerIdOk returns a tuple with the LagoCustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetLagoCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.LagoCustomerId) {
+		return nil, false
+	}
+	return o.LagoCustomerId, true
+}
+
+// HasLagoCustomerId returns a boolean if a field has been set.
+func (o *BuyerInfo) HasLagoCustomerId() bool {
+	if o != nil && !IsNil(o.LagoCustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetLagoCustomerId gets a reference to the given string and assigns it to the LagoCustomerId field.
+func (o *BuyerInfo) SetLagoCustomerId(v string) {
+	o.LagoCustomerId = &v
+}
+
+// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
+func (o *BuyerInfo) GetLastModifiedBy() string {
+	if o == nil || IsNil(o.LastModifiedBy) {
+		var ret string
+		return ret
+	}
+	return *o.LastModifiedBy
+}
+
+// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetLastModifiedByOk() (*string, bool) {
+	if o == nil || IsNil(o.LastModifiedBy) {
+		return nil, false
+	}
+	return o.LastModifiedBy, true
+}
+
+// HasLastModifiedBy returns a boolean if a field has been set.
+func (o *BuyerInfo) HasLastModifiedBy() bool {
+	if o != nil && !IsNil(o.LastModifiedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModifiedBy gets a reference to the given string and assigns it to the LastModifiedBy field.
+func (o *BuyerInfo) SetLastModifiedBy(v string) {
+	o.LastModifiedBy = &v
 }
 
 // GetMetronomeCustomerId returns the MetronomeCustomerId field value if set, zero value otherwise.
@@ -342,8 +588,104 @@ func (o *BuyerInfo) SetOrbCustomerId(v string) {
 	o.OrbCustomerId = &v
 }
 
+// GetPaymentConfig returns the PaymentConfig field value if set, zero value otherwise.
+func (o *BuyerInfo) GetPaymentConfig() PaymentConfig {
+	if o == nil || IsNil(o.PaymentConfig) {
+		var ret PaymentConfig
+		return ret
+	}
+	return *o.PaymentConfig
+}
+
+// GetPaymentConfigOk returns a tuple with the PaymentConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetPaymentConfigOk() (*PaymentConfig, bool) {
+	if o == nil || IsNil(o.PaymentConfig) {
+		return nil, false
+	}
+	return o.PaymentConfig, true
+}
+
+// HasPaymentConfig returns a boolean if a field has been set.
+func (o *BuyerInfo) HasPaymentConfig() bool {
+	if o != nil && !IsNil(o.PaymentConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentConfig gets a reference to the given PaymentConfig and assigns it to the PaymentConfig field.
+func (o *BuyerInfo) SetPaymentConfig(v PaymentConfig) {
+	o.PaymentConfig = &v
+}
+
+// GetSpaUrl returns the SpaUrl field value if set, zero value otherwise.
+func (o *BuyerInfo) GetSpaUrl() string {
+	if o == nil || IsNil(o.SpaUrl) {
+		var ret string
+		return ret
+	}
+	return *o.SpaUrl
+}
+
+// GetSpaUrlOk returns a tuple with the SpaUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetSpaUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.SpaUrl) {
+		return nil, false
+	}
+	return o.SpaUrl, true
+}
+
+// HasSpaUrl returns a boolean if a field has been set.
+func (o *BuyerInfo) HasSpaUrl() bool {
+	if o != nil && !IsNil(o.SpaUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetSpaUrl gets a reference to the given string and assigns it to the SpaUrl field.
+func (o *BuyerInfo) SetSpaUrl(v string) {
+	o.SpaUrl = &v
+}
+
+// GetStripeBuyer returns the StripeBuyer field value if set, zero value otherwise.
+func (o *BuyerInfo) GetStripeBuyer() StripeCustomer {
+	if o == nil || IsNil(o.StripeBuyer) {
+		var ret StripeCustomer
+		return ret
+	}
+	return *o.StripeBuyer
+}
+
+// GetStripeBuyerOk returns a tuple with the StripeBuyer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetStripeBuyerOk() (*StripeCustomer, bool) {
+	if o == nil || IsNil(o.StripeBuyer) {
+		return nil, false
+	}
+	return o.StripeBuyer, true
+}
+
+// HasStripeBuyer returns a boolean if a field has been set.
+func (o *BuyerInfo) HasStripeBuyer() bool {
+	if o != nil && !IsNil(o.StripeBuyer) {
+		return true
+	}
+
+	return false
+}
+
+// SetStripeBuyer gets a reference to the given StripeCustomer and assigns it to the StripeBuyer field.
+func (o *BuyerInfo) SetStripeBuyer(v StripeCustomer) {
+	o.StripeBuyer = &v
+}
+
 func (o BuyerInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -352,6 +694,9 @@ func (o BuyerInfo) MarshalJSON() ([]byte, error) {
 
 func (o BuyerInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AdyenBuyer) {
+		toSerialize["adyenBuyer"] = o.AdyenBuyer
+	}
 	if !IsNil(o.AwsBuyer) {
 		toSerialize["awsBuyer"] = o.AwsBuyer
 	}
@@ -361,23 +706,50 @@ func (o BuyerInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CollectableAmount) {
 		toSerialize["collectableAmount"] = o.CollectableAmount
 	}
+	if !IsNil(o.CompanyInfo) {
+		toSerialize["companyInfo"] = o.CompanyInfo
+	}
 	if !IsNil(o.CustomerId) {
 		toSerialize["customerId"] = o.CustomerId
 	}
 	if !IsNil(o.DisbursedAmount) {
 		toSerialize["disbursedAmount"] = o.DisbursedAmount
 	}
+	if !IsNil(o.EmailAddress) {
+		toSerialize["emailAddress"] = o.EmailAddress
+	}
+	if !IsNil(o.Fields) {
+		toSerialize["fields"] = o.Fields
+	}
 	if !IsNil(o.GcpBuyer) {
 		toSerialize["gcpBuyer"] = o.GcpBuyer
 	}
+	if !IsNil(o.GrossAmount) {
+		toSerialize["grossAmount"] = o.GrossAmount
+	}
 	if !IsNil(o.InvoicedAmount) {
 		toSerialize["invoicedAmount"] = o.InvoicedAmount
+	}
+	if !IsNil(o.LagoCustomerId) {
+		toSerialize["lagoCustomerId"] = o.LagoCustomerId
+	}
+	if !IsNil(o.LastModifiedBy) {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	}
 	if !IsNil(o.MetronomeCustomerId) {
 		toSerialize["metronomeCustomerId"] = o.MetronomeCustomerId
 	}
 	if !IsNil(o.OrbCustomerId) {
 		toSerialize["orbCustomerId"] = o.OrbCustomerId
+	}
+	if !IsNil(o.PaymentConfig) {
+		toSerialize["paymentConfig"] = o.PaymentConfig
+	}
+	if !IsNil(o.SpaUrl) {
+		toSerialize["spaUrl"] = o.SpaUrl
+	}
+	if !IsNil(o.StripeBuyer) {
+		toSerialize["stripeBuyer"] = o.StripeBuyer
 	}
 	return toSerialize, nil
 }
@@ -417,5 +789,3 @@ func (v *NullableBuyerInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

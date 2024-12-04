@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BuyerID** | Pointer to **string** |  | [optional] 
 **ContactIds** | Pointer to **[]string** |  | [optional] 
 **CreatedBy** | Pointer to **string** |  | [optional] 
 **CreationTime** | Pointer to **time.Time** |  | [optional] 
@@ -16,12 +17,12 @@ Name | Type | Description | Notes
 **LastUpdatedBy** | Pointer to **string** |  | [optional] 
 **MetaInfo** | Pointer to [**WorkloadMetaInfo**](WorkloadMetaInfo.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**OfferType** | Pointer to **string** |  | [optional] 
+**OfferType** | Pointer to [**OfferType**](OfferType.md) |  | [optional] 
 **OrganizationID** | Pointer to **string** |  | [optional] 
 **Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
 **ProductID** | Pointer to **string** |  | [optional] 
 **Service** | Pointer to [**PartnerService**](PartnerService.md) |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to [**OfferStatus**](OfferStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -41,6 +42,31 @@ will change when the set of required properties is changed
 NewWorkloadOfferWithDefaults instantiates a new WorkloadOffer object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBuyerID
+
+`func (o *WorkloadOffer) GetBuyerID() string`
+
+GetBuyerID returns the BuyerID field if non-nil, zero value otherwise.
+
+### GetBuyerIDOk
+
+`func (o *WorkloadOffer) GetBuyerIDOk() (*string, bool)`
+
+GetBuyerIDOk returns a tuple with the BuyerID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuyerID
+
+`func (o *WorkloadOffer) SetBuyerID(v string)`
+
+SetBuyerID sets BuyerID field to given value.
+
+### HasBuyerID
+
+`func (o *WorkloadOffer) HasBuyerID() bool`
+
+HasBuyerID returns a boolean if a field has been set.
 
 ### GetContactIds
 
@@ -344,20 +370,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetOfferType
 
-`func (o *WorkloadOffer) GetOfferType() string`
+`func (o *WorkloadOffer) GetOfferType() OfferType`
 
 GetOfferType returns the OfferType field if non-nil, zero value otherwise.
 
 ### GetOfferTypeOk
 
-`func (o *WorkloadOffer) GetOfferTypeOk() (*string, bool)`
+`func (o *WorkloadOffer) GetOfferTypeOk() (*OfferType, bool)`
 
 GetOfferTypeOk returns a tuple with the OfferType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOfferType
 
-`func (o *WorkloadOffer) SetOfferType(v string)`
+`func (o *WorkloadOffer) SetOfferType(v OfferType)`
 
 SetOfferType sets OfferType field to given value.
 
@@ -469,20 +495,20 @@ HasService returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *WorkloadOffer) GetStatus() string`
+`func (o *WorkloadOffer) GetStatus() OfferStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *WorkloadOffer) GetStatusOk() (*string, bool)`
+`func (o *WorkloadOffer) GetStatusOk() (*OfferStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *WorkloadOffer) SetStatus(v string)`
+`func (o *WorkloadOffer) SetStatus(v OfferStatus)`
 
 SetStatus sets Status field to given value.
 

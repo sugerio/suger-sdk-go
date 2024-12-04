@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BillableRecords** | Pointer to [**[]MeteringUsageRecord**](MeteringUsageRecord.md) | for usage metering API v2, don&#39;t use it together with the records v1. | [optional] 
 **EntitlementID** | **string** |  | 
 **Id** | Pointer to **string** | The uuid of the UsageRecordGroup (the size is up to 36 characters). Optional, if not provided, suger will generate one. | [optional] 
-**MetaInfo** | Pointer to [**MeteringUsageRecordGroupMetaInfo**](MeteringUsageRecordGroupMetaInfo.md) |  | [optional] 
+**MetaInfo** | Pointer to [**MeteringUsageRecordGroupMetaInfo**](MeteringUsageRecordGroupMetaInfo.md) | read-only, don&#39;t set it up when reporting the usage record group. | [optional] 
 **OrganizationID** | **string** |  | 
-**Records** | **map[string]float32** |  | 
+**Records** | **map[string]float32** | for usage metering API v1, don&#39;t use it together with the billableRecords v2. | 
 **Timestamp** | Pointer to **time.Time** | The timestamp of when the usage records were generated. Optional, if not provided, the current report timestamp will be used. This is not the timestamp of when the usage records were reported to Suger. | [optional] 
 
 ## Methods
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewCreateUsageRecordGroupParamsWithDefaults instantiates a new CreateUsageRecordGroupParams object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBillableRecords
+
+`func (o *CreateUsageRecordGroupParams) GetBillableRecords() []MeteringUsageRecord`
+
+GetBillableRecords returns the BillableRecords field if non-nil, zero value otherwise.
+
+### GetBillableRecordsOk
+
+`func (o *CreateUsageRecordGroupParams) GetBillableRecordsOk() (*[]MeteringUsageRecord, bool)`
+
+GetBillableRecordsOk returns a tuple with the BillableRecords field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillableRecords
+
+`func (o *CreateUsageRecordGroupParams) SetBillableRecords(v []MeteringUsageRecord)`
+
+SetBillableRecords sets BillableRecords field to given value.
+
+### HasBillableRecords
+
+`func (o *CreateUsageRecordGroupParams) HasBillableRecords() bool`
+
+HasBillableRecords returns a boolean if a field has been set.
 
 ### GetEntitlementID
 

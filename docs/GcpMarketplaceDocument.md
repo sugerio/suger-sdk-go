@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** |  | [optional] 
+**DocumentBody** | Pointer to **string** |  | [optional] 
 **DocumentType** | Pointer to **string** | such as \&quot;PARTNER_EULA\&quot; | [optional] 
+**ExternalGoogleLink** | Pointer to [**GcpMarketplaceExternalGoogleLink**](GcpMarketplaceExternalGoogleLink.md) | The external link to Standard EULA such as https://cloud.google.com/terms/marketplace/eula-standard-v2-01272021. | [optional] 
 **Name** | Pointer to **string** | in format of \&quot;projects/{projectNumber}/agreements/{agreementId}/documents/{documentId}\&quot; | [optional] 
 **UnstructuredDocument** | Pointer to [**GcpMarketplaceUnstructuredDocument**](GcpMarketplaceUnstructuredDocument.md) |  | [optional] 
 **UpdateTime** | Pointer to **time.Time** |  | [optional] 
@@ -54,6 +56,31 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetDocumentBody
+
+`func (o *GcpMarketplaceDocument) GetDocumentBody() string`
+
+GetDocumentBody returns the DocumentBody field if non-nil, zero value otherwise.
+
+### GetDocumentBodyOk
+
+`func (o *GcpMarketplaceDocument) GetDocumentBodyOk() (*string, bool)`
+
+GetDocumentBodyOk returns a tuple with the DocumentBody field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDocumentBody
+
+`func (o *GcpMarketplaceDocument) SetDocumentBody(v string)`
+
+SetDocumentBody sets DocumentBody field to given value.
+
+### HasDocumentBody
+
+`func (o *GcpMarketplaceDocument) HasDocumentBody() bool`
+
+HasDocumentBody returns a boolean if a field has been set.
+
 ### GetDocumentType
 
 `func (o *GcpMarketplaceDocument) GetDocumentType() string`
@@ -78,6 +105,31 @@ SetDocumentType sets DocumentType field to given value.
 `func (o *GcpMarketplaceDocument) HasDocumentType() bool`
 
 HasDocumentType returns a boolean if a field has been set.
+
+### GetExternalGoogleLink
+
+`func (o *GcpMarketplaceDocument) GetExternalGoogleLink() GcpMarketplaceExternalGoogleLink`
+
+GetExternalGoogleLink returns the ExternalGoogleLink field if non-nil, zero value otherwise.
+
+### GetExternalGoogleLinkOk
+
+`func (o *GcpMarketplaceDocument) GetExternalGoogleLinkOk() (*GcpMarketplaceExternalGoogleLink, bool)`
+
+GetExternalGoogleLinkOk returns a tuple with the ExternalGoogleLink field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalGoogleLink
+
+`func (o *GcpMarketplaceDocument) SetExternalGoogleLink(v GcpMarketplaceExternalGoogleLink)`
+
+SetExternalGoogleLink sets ExternalGoogleLink field to given value.
+
+### HasExternalGoogleLink
+
+`func (o *GcpMarketplaceDocument) HasExternalGoogleLink() bool`
+
+HasExternalGoogleLink returns a boolean if a field has been set.
 
 ### GetName
 

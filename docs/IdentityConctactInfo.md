@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CompanyLocation** | Pointer to **string** |  | [optional] 
 **CompanyName** | Pointer to **string** |  | [optional] 
+**LastModifiedBy** | Pointer to **string** |  | [optional] 
 **PhoneNumber** | Pointer to **string** |  | [optional] 
 **Role** | Pointer to **string** |  | [optional] 
 
@@ -77,6 +78,31 @@ SetCompanyName sets CompanyName field to given value.
 `func (o *IdentityConctactInfo) HasCompanyName() bool`
 
 HasCompanyName returns a boolean if a field has been set.
+
+### GetLastModifiedBy
+
+`func (o *IdentityConctactInfo) GetLastModifiedBy() string`
+
+GetLastModifiedBy returns the LastModifiedBy field if non-nil, zero value otherwise.
+
+### GetLastModifiedByOk
+
+`func (o *IdentityConctactInfo) GetLastModifiedByOk() (*string, bool)`
+
+GetLastModifiedByOk returns a tuple with the LastModifiedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastModifiedBy
+
+`func (o *IdentityConctactInfo) SetLastModifiedBy(v string)`
+
+SetLastModifiedBy sets LastModifiedBy field to given value.
+
+### HasLastModifiedBy
+
+`func (o *IdentityConctactInfo) HasLastModifiedBy() bool`
+
+HasLastModifiedBy returns a boolean if a field has been set.
 
 ### GetPhoneNumber
 

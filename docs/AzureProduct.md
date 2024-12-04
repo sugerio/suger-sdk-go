@@ -12,10 +12,10 @@ Name | Type | Description | Notes
 **Listings** | Pointer to [**[]AzureProductListing**](AzureProductListing.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **PackageConfigurations** | Pointer to [**[]AzureProductPackageConfiguration**](AzureProductPackageConfiguration.md) |  | [optional] 
-**Plans** | Pointer to [**[]AzurePriceAndAvailabilityPrivateOfferPlan**](AzurePriceAndAvailabilityPrivateOfferPlan.md) | All plans under this product | [optional] 
+**Plans** | Pointer to [**[]AzureMarketplacePriceAndAvailabilityPrivateOfferPlan**](AzureMarketplacePriceAndAvailabilityPrivateOfferPlan.md) | All plans under this product | [optional] 
 **Properties** | Pointer to [**[]AzureProductProperty**](AzureProductProperty.md) |  | [optional] 
 **ResourceType** | Pointer to **string** |  | [optional] 
-**Setup** | Pointer to [**AzureProductSetup**](AzureProductSetup.md) |  | [optional] 
+**Setup** | Pointer to [**AzureProductSetup**](AzureProductSetup.md) | Not original fields. They are populated by other API calls | [optional] 
 **Submissions** | Pointer to [**[]AzureProductSubmission**](AzureProductSubmission.md) |  | [optional] 
 **Variants** | Pointer to [**[]AzureProductVariant**](AzureProductVariant.md) |  | [optional] 
 
@@ -240,20 +240,20 @@ HasPackageConfigurations returns a boolean if a field has been set.
 
 ### GetPlans
 
-`func (o *AzureProduct) GetPlans() []AzurePriceAndAvailabilityPrivateOfferPlan`
+`func (o *AzureProduct) GetPlans() []AzureMarketplacePriceAndAvailabilityPrivateOfferPlan`
 
 GetPlans returns the Plans field if non-nil, zero value otherwise.
 
 ### GetPlansOk
 
-`func (o *AzureProduct) GetPlansOk() (*[]AzurePriceAndAvailabilityPrivateOfferPlan, bool)`
+`func (o *AzureProduct) GetPlansOk() (*[]AzureMarketplacePriceAndAvailabilityPrivateOfferPlan, bool)`
 
 GetPlansOk returns a tuple with the Plans field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlans
 
-`func (o *AzureProduct) SetPlans(v []AzurePriceAndAvailabilityPrivateOfferPlan)`
+`func (o *AzureProduct) SetPlans(v []AzureMarketplacePriceAndAvailabilityPrivateOfferPlan)`
 
 SetPlans sets Plans field to given value.
 

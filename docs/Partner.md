@@ -5,23 +5,35 @@
 
 * `Partner_UNKNOWN` (value: `""`)
 
+* `Partner_ADYEN` (value: `"ADYEN"`)
+
 * `Partner_ALIBABA` (value: `"ALIBABA"`)
 
 * `Partner_AWS` (value: `"AWS"`)
+
+* `Partner_AWS_CHINA` (value: `"AWS_CHINA"`)
 
 * `Partner_AZURE` (value: `"AZURE"`)
 
 * `Partner_GCP` (value: `"GCP"`)
 
-* `Partner_MICROSOFT` (value: `"MICROSOFT"`)
-
-* `Partner_DYNAMICS365` (value: `"DYNAMICS365"`)
+* `Partner_GOOGLE` (value: `"GOOGLE"`)
 
 * `Partner_HUBSPOT` (value: `"HUBSPOT"`)
 
+* `Partner_INTUIT` (value: `"INTUIT"`)
+
+* `Partner_LAGO` (value: `"LAGO"`)
+
 * `Partner_MARKETO` (value: `"MARKETO"`)
 
+* `Partner_METRONOME` (value: `"METRONOME"`)
+
+* `Partner_MICROSOFT` (value: `"MICROSOFT"`)
+
 * `Partner_ORACLE` (value: `"ORACLE"`)
+
+* `Partner_ORB` (value: `"ORB"`)
 
 * `Partner_REDHAT` (value: `"REDHAT"`)
 
@@ -29,11 +41,11 @@
 
 * `Partner_SLACK` (value: `"SLACK"`)
 
+* `Partner_SNOWFLAKE` (value: `"SNOWFLAKE"`)
+
+* `Partner_STRIPE` (value: `"STRIPE"`)
+
 * `Partner_ZOHO` (value: `"ZOHO"`)
-
-* `Partner_METRONOME` (value: `"METRONOME"`)
-
-* `Partner_ORB` (value: `"ORB"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

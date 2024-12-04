@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **LastUpdateTime** | Pointer to **time.Time** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **OrganizationID** | Pointer to **string** |  | [optional] 
-**Partner** | Pointer to **string** |  | [optional] 
+**Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
 
 ## Methods
 
@@ -261,20 +261,20 @@ HasOrganizationID returns a boolean if a field has been set.
 
 ### GetPartner
 
-`func (o *IdentityBuyer) GetPartner() string`
+`func (o *IdentityBuyer) GetPartner() Partner`
 
 GetPartner returns the Partner field if non-nil, zero value otherwise.
 
 ### GetPartnerOk
 
-`func (o *IdentityBuyer) GetPartnerOk() (*string, bool)`
+`func (o *IdentityBuyer) GetPartnerOk() (*Partner, bool)`
 
 GetPartnerOk returns a tuple with the Partner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPartner
 
-`func (o *IdentityBuyer) SetPartner(v string)`
+`func (o *IdentityBuyer) SetPartner(v Partner)`
 
 SetPartner sets Partner field to given value.
 

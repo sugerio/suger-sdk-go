@@ -21,24 +21,25 @@ var _ MappedNullable = &WorkloadEntitlementTerm{}
 
 // WorkloadEntitlementTerm struct for WorkloadEntitlementTerm
 type WorkloadEntitlementTerm struct {
-	BuyerID *string `json:"buyerID,omitempty"`
+	BuyerID      *string  `json:"buyerID,omitempty"`
 	CommitAmount *float32 `json:"commitAmount,omitempty"`
 	CreditAmount *float32 `json:"creditAmount,omitempty"`
 	// nullable
-	EndTime *time.Time `json:"endTime,omitempty"`
-	EntitlementID *string `json:"entitlementID,omitempty"`
-	EntitlementInfo *EntitlementInfo `json:"entitlementInfo,omitempty"`
-	ExternalEntitlementID *string `json:"externalEntitlementID,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Info *EntitlementTermInfo `json:"info,omitempty"`
-	OfferID *string `json:"offerID,omitempty"`
-	OrganizationID *string `json:"organizationID,omitempty"`
-	Partner *Partner `json:"partner,omitempty"`
-	ProductID *string `json:"productID,omitempty"`
-	Service *PartnerService `json:"service,omitempty"`
-	StartTime *time.Time `json:"startTime,omitempty"`
-	UsedCommitAmount *float32 `json:"usedCommitAmount,omitempty"`
-	UsedCreditAmount *float32 `json:"usedCreditAmount,omitempty"`
+	EndTime               *time.Time           `json:"endTime,omitempty"`
+	EntitlementID         *string              `json:"entitlementID,omitempty"`
+	EntitlementInfo       *EntitlementInfo     `json:"entitlementInfo,omitempty"`
+	ExternalEntitlementID *string              `json:"externalEntitlementID,omitempty"`
+	Id                    *string              `json:"id,omitempty"`
+	Info                  *EntitlementTermInfo `json:"info,omitempty"`
+	OfferID               *string              `json:"offerID,omitempty"`
+	OrganizationID        *string              `json:"organizationID,omitempty"`
+	Partner               *Partner             `json:"partner,omitempty"`
+	ProductID             *string              `json:"productID,omitempty"`
+	ReportedAmount        *float32             `json:"reportedAmount,omitempty"`
+	Service               *PartnerService      `json:"service,omitempty"`
+	StartTime             *time.Time           `json:"startTime,omitempty"`
+	UsedCommitAmount      *float32             `json:"usedCommitAmount,omitempty"`
+	UsedCreditAmount      *float32             `json:"usedCreditAmount,omitempty"`
 }
 
 // NewWorkloadEntitlementTerm instantiates a new WorkloadEntitlementTerm object
@@ -474,6 +475,38 @@ func (o *WorkloadEntitlementTerm) SetProductID(v string) {
 	o.ProductID = &v
 }
 
+// GetReportedAmount returns the ReportedAmount field value if set, zero value otherwise.
+func (o *WorkloadEntitlementTerm) GetReportedAmount() float32 {
+	if o == nil || IsNil(o.ReportedAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.ReportedAmount
+}
+
+// GetReportedAmountOk returns a tuple with the ReportedAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadEntitlementTerm) GetReportedAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.ReportedAmount) {
+		return nil, false
+	}
+	return o.ReportedAmount, true
+}
+
+// HasReportedAmount returns a boolean if a field has been set.
+func (o *WorkloadEntitlementTerm) HasReportedAmount() bool {
+	if o != nil && !IsNil(o.ReportedAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetReportedAmount gets a reference to the given float32 and assigns it to the ReportedAmount field.
+func (o *WorkloadEntitlementTerm) SetReportedAmount(v float32) {
+	o.ReportedAmount = &v
+}
+
 // GetService returns the Service field value if set, zero value otherwise.
 func (o *WorkloadEntitlementTerm) GetService() PartnerService {
 	if o == nil || IsNil(o.Service) {
@@ -603,7 +636,7 @@ func (o *WorkloadEntitlementTerm) SetUsedCreditAmount(v float32) {
 }
 
 func (o WorkloadEntitlementTerm) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -650,6 +683,9 @@ func (o WorkloadEntitlementTerm) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProductID) {
 		toSerialize["productID"] = o.ProductID
+	}
+	if !IsNil(o.ReportedAmount) {
+		toSerialize["reportedAmount"] = o.ReportedAmount
 	}
 	if !IsNil(o.Service) {
 		toSerialize["service"] = o.Service
@@ -701,5 +737,3 @@ func (v *NullableWorkloadEntitlementTerm) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ResultMetadata** | Pointer to **map[string]interface{}** |  | [optional] 
-**Results** | Pointer to [**[]TypesUsageRecordResult**](TypesUsageRecordResult.md) | Contains all UsageRecords processed by BatchMeterUsage. These records were either honored by AWS Marketplace Metering Service or were invalid. Invalid records should be fixed before being resubmitted. | [optional] 
-**UnprocessedRecords** | Pointer to [**[]TypesUsageRecord**](TypesUsageRecord.md) | Contains all UsageRecords that were not processed by BatchMeterUsage. This is a list of UsageRecords. You can retry the failed request by making another BatchMeterUsage call with this list as input in the BatchMeterUsageRequest. | [optional] 
+**ResultMetadata** | Pointer to **map[string]interface{}** | Metadata pertaining to the operation&#39;s result. | [optional] 
+**Results** | Pointer to [**[]TypesUsageRecordResult**](TypesUsageRecordResult.md) | Contains all UsageRecords processed by BatchMeterUsage . These records were either honored by AWS Marketplace Metering Service or were invalid. Invalid records should be fixed before being resubmitted. | [optional] 
+**UnprocessedRecords** | Pointer to [**[]TypesUsageRecord**](TypesUsageRecord.md) | Contains all UsageRecords that were not processed by BatchMeterUsage . This is a list of UsageRecords . You can retry the failed request by making another BatchMeterUsage call with this list as input in the BatchMeterUsageRequest . | [optional] 
 
 ## Methods
 

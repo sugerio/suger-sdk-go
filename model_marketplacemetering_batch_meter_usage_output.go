@@ -20,10 +20,11 @@ var _ MappedNullable = &MarketplacemeteringBatchMeterUsageOutput{}
 
 // MarketplacemeteringBatchMeterUsageOutput struct for MarketplacemeteringBatchMeterUsageOutput
 type MarketplacemeteringBatchMeterUsageOutput struct {
+	// Metadata pertaining to the operation's result.
 	ResultMetadata map[string]interface{} `json:"resultMetadata,omitempty"`
-	// Contains all UsageRecords processed by BatchMeterUsage. These records were either honored by AWS Marketplace Metering Service or were invalid. Invalid records should be fixed before being resubmitted.
+	// Contains all UsageRecords processed by BatchMeterUsage . These records were either honored by AWS Marketplace Metering Service or were invalid. Invalid records should be fixed before being resubmitted.
 	Results []TypesUsageRecordResult `json:"results,omitempty"`
-	// Contains all UsageRecords that were not processed by BatchMeterUsage. This is a list of UsageRecords. You can retry the failed request by making another BatchMeterUsage call with this list as input in the BatchMeterUsageRequest.
+	// Contains all UsageRecords that were not processed by BatchMeterUsage . This is a list of UsageRecords . You can retry the failed request by making another BatchMeterUsage call with this list as input in the BatchMeterUsageRequest .
 	UnprocessedRecords []TypesUsageRecord `json:"unprocessedRecords,omitempty"`
 }
 
@@ -141,7 +142,7 @@ func (o *MarketplacemeteringBatchMeterUsageOutput) SetUnprocessedRecords(v []Typ
 }
 
 func (o MarketplacemeteringBatchMeterUsageOutput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -197,5 +198,3 @@ func (v *NullableMarketplacemeteringBatchMeterUsageOutput) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

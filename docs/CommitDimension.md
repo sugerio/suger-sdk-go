@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **Rate** | Pointer to **float32** | The commit amount. For GCP, it is monthly commitment. | [optional] 
 **Term** | Pointer to **string** | The term of the commit amount. It is used for front-end display only. | [optional] 
 **TermEndTime** | Pointer to **string** | The end time of the commit term. | [optional] 
-**TimeUnit** | Pointer to [**CommitDimensionTimeUnit**](CommitDimensionTimeUnit.md) |  | [optional] 
-**Type** | Pointer to [**CommitDimensionType**](CommitDimensionType.md) |  | [optional] 
+**TimeUnit** | Pointer to [**TimeUnit**](TimeUnit.md) | The term unit for the commit amount. | [optional] 
+**Type** | Pointer to [**CommitDimensionType**](CommitDimensionType.md) | The type of the commit dimension. Applicable only to Azure Marketplace. | [optional] 
 **Types** | Pointer to **[]string** | These indicate whether the dimension covers metering, entitlement, or support for external metering | [optional] 
 
 ## Methods
@@ -341,20 +341,20 @@ HasTermEndTime returns a boolean if a field has been set.
 
 ### GetTimeUnit
 
-`func (o *CommitDimension) GetTimeUnit() CommitDimensionTimeUnit`
+`func (o *CommitDimension) GetTimeUnit() TimeUnit`
 
 GetTimeUnit returns the TimeUnit field if non-nil, zero value otherwise.
 
 ### GetTimeUnitOk
 
-`func (o *CommitDimension) GetTimeUnitOk() (*CommitDimensionTimeUnit, bool)`
+`func (o *CommitDimension) GetTimeUnitOk() (*TimeUnit, bool)`
 
 GetTimeUnitOk returns a tuple with the TimeUnit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeUnit
 
-`func (o *CommitDimension) SetTimeUnit(v CommitDimensionTimeUnit)`
+`func (o *CommitDimension) SetTimeUnit(v TimeUnit)`
 
 SetTimeUnit sets TimeUnit field to given value.
 

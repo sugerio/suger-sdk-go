@@ -6,8 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **float32** |  | [optional] 
 **Date** | Pointer to **time.Time** |  | [optional] 
+**EntitlementID** | Pointer to **string** | The Entitlement ID of the usage metering daily record. | [optional] 
+**GroupBysExpression** | Pointer to **string** | The group bys expression of the usage metering. When the same usage metering key may have multiple expressions of group bys to aggregate the usage. | [optional] 
 **Key** | Pointer to **string** | The dimension key of the usage metering. | [optional] 
-**Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
+**Partner** | Pointer to [**Partner**](Partner.md) | The partner where this usage metering daily record is from. Such as AWS, AZURE or GCP. | [optional] 
 **Quantity** | Pointer to **float32** |  | [optional] 
 
 ## Methods
@@ -78,6 +80,56 @@ SetDate sets Date field to given value.
 `func (o *UsageMeteringDailyRecord) HasDate() bool`
 
 HasDate returns a boolean if a field has been set.
+
+### GetEntitlementID
+
+`func (o *UsageMeteringDailyRecord) GetEntitlementID() string`
+
+GetEntitlementID returns the EntitlementID field if non-nil, zero value otherwise.
+
+### GetEntitlementIDOk
+
+`func (o *UsageMeteringDailyRecord) GetEntitlementIDOk() (*string, bool)`
+
+GetEntitlementIDOk returns a tuple with the EntitlementID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntitlementID
+
+`func (o *UsageMeteringDailyRecord) SetEntitlementID(v string)`
+
+SetEntitlementID sets EntitlementID field to given value.
+
+### HasEntitlementID
+
+`func (o *UsageMeteringDailyRecord) HasEntitlementID() bool`
+
+HasEntitlementID returns a boolean if a field has been set.
+
+### GetGroupBysExpression
+
+`func (o *UsageMeteringDailyRecord) GetGroupBysExpression() string`
+
+GetGroupBysExpression returns the GroupBysExpression field if non-nil, zero value otherwise.
+
+### GetGroupBysExpressionOk
+
+`func (o *UsageMeteringDailyRecord) GetGroupBysExpressionOk() (*string, bool)`
+
+GetGroupBysExpressionOk returns a tuple with the GroupBysExpression field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupBysExpression
+
+`func (o *UsageMeteringDailyRecord) SetGroupBysExpression(v string)`
+
+SetGroupBysExpression sets GroupBysExpression field to given value.
+
+### HasGroupBysExpression
+
+`func (o *UsageMeteringDailyRecord) HasGroupBysExpression() bool`
+
+HasGroupBysExpression returns a boolean if a field has been set.
 
 ### GetKey
 

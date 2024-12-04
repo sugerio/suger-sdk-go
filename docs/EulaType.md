@@ -9,6 +9,8 @@
 
 * `EulaType_ECMP` (value: `"ECMP"`)
 
+* `EulaType_RCMP` (value: `"RCMP"`)
+
 * `EulaType_CUSTOM` (value: `"CUSTOM"`)
 
 * `EulaType_ISV` (value: `"ISV"`)

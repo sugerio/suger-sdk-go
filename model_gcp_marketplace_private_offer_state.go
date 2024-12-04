@@ -21,21 +21,25 @@ type GcpMarketplacePrivateOfferState string
 
 // List of GcpMarketplacePrivateOfferState
 const (
-	GcpMarketplacePrivateOfferState_OFFER_PUBLISHED GcpMarketplacePrivateOfferState = "OFFER_PUBLISHED"
-	GcpMarketplacePrivateOfferState_OFFER_ACTIVE GcpMarketplacePrivateOfferState = "OFFER_ACTIVE"
-	GcpMarketplacePrivateOfferState_OFFER_ACTIVATING GcpMarketplacePrivateOfferState = "OFFER_ACTIVATING"
-	GcpMarketplacePrivateOfferState_OFFER_LAPSED GcpMarketplacePrivateOfferState = "OFFER_LAPSED"
-	GcpMarketplacePrivateOfferState_OFFER_EXPIRED GcpMarketplacePrivateOfferState = "OFFER_EXPIRED"
-	GcpMarketplacePrivateOfferState_OFFER_CANCELLED GcpMarketplacePrivateOfferState = "OFFER_CANCELLED"
-	GcpMarketplacePrivateOfferState_OFFER_UNAVAILABLE GcpMarketplacePrivateOfferState = "OFFER_UNAVAILABLE"
-	GcpMarketplacePrivateOfferState_OFFER_DRAFT GcpMarketplacePrivateOfferState = "OFFER_DRAFT"
+	GcpMarketplacePrivateOfferState_OFFER_ACTIVE                      GcpMarketplacePrivateOfferState = "OFFER_ACTIVE"
+	GcpMarketplacePrivateOfferState_OFFER_ACTIVATING                  GcpMarketplacePrivateOfferState = "OFFER_ACTIVATING"
+	GcpMarketplacePrivateOfferState_OFFER_SCHEDULED                   GcpMarketplacePrivateOfferState = "OFFER_SCHEDULED"
+	GcpMarketplacePrivateOfferState_OFFER_ENTITLEMENT_ACCOUNT_PENDING GcpMarketplacePrivateOfferState = "OFFER_ENTITLEMENT_ACCOUNT_PENDING"
+	GcpMarketplacePrivateOfferState_OFFER_PUBLISHED                   GcpMarketplacePrivateOfferState = "OFFER_PUBLISHED"
+	GcpMarketplacePrivateOfferState_OFFER_LAPSED                      GcpMarketplacePrivateOfferState = "OFFER_LAPSED"
+	GcpMarketplacePrivateOfferState_OFFER_EXPIRED                     GcpMarketplacePrivateOfferState = "OFFER_EXPIRED"
+	GcpMarketplacePrivateOfferState_OFFER_CANCELLED                   GcpMarketplacePrivateOfferState = "OFFER_CANCELLED"
+	GcpMarketplacePrivateOfferState_OFFER_UNAVAILABLE                 GcpMarketplacePrivateOfferState = "OFFER_UNAVAILABLE"
+	GcpMarketplacePrivateOfferState_OFFER_DRAFT                       GcpMarketplacePrivateOfferState = "OFFER_DRAFT"
 )
 
 // All allowed values of GcpMarketplacePrivateOfferState enum
 var AllowedGcpMarketplacePrivateOfferStateEnumValues = []GcpMarketplacePrivateOfferState{
-	"OFFER_PUBLISHED",
 	"OFFER_ACTIVE",
 	"OFFER_ACTIVATING",
+	"OFFER_SCHEDULED",
+	"OFFER_ENTITLEMENT_ACCOUNT_PENDING",
+	"OFFER_PUBLISHED",
 	"OFFER_LAPSED",
 	"OFFER_EXPIRED",
 	"OFFER_CANCELLED",
@@ -121,4 +125,3 @@ func (v *NullableGcpMarketplacePrivateOfferState) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

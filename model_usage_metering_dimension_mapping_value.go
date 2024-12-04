@@ -20,10 +20,12 @@ var _ MappedNullable = &UsageMeteringDimensionMappingValue{}
 
 // UsageMeteringDimensionMappingValue struct for UsageMeteringDimensionMappingValue
 type UsageMeteringDimensionMappingValue struct {
-	// The convertion multiplier when mapping to the DimensionKey.
+	// The convertion multiplier when mapping from the source dimension key to the destination dimensionKey by quantity mode. Not required if the mapping mode is AMOUNT.
 	ConvertionMultiplier *float32 `json:"convertionMultiplier,omitempty"`
-	// The dimension key of the usage metering.
+	// The destination dimension key of the usage metering mapping.
 	DimensionKey *string `json:"dimensionKey,omitempty"`
+	// The conversion mode of UsageMeteringDimensionMapping. The default is QUANTITY if not available.
+	MappingMode *UsageMeteringDimensionMappingMode `json:"mappingMode,omitempty"`
 }
 
 // NewUsageMeteringDimensionMappingValue instantiates a new UsageMeteringDimensionMappingValue object
@@ -107,8 +109,40 @@ func (o *UsageMeteringDimensionMappingValue) SetDimensionKey(v string) {
 	o.DimensionKey = &v
 }
 
+// GetMappingMode returns the MappingMode field value if set, zero value otherwise.
+func (o *UsageMeteringDimensionMappingValue) GetMappingMode() UsageMeteringDimensionMappingMode {
+	if o == nil || IsNil(o.MappingMode) {
+		var ret UsageMeteringDimensionMappingMode
+		return ret
+	}
+	return *o.MappingMode
+}
+
+// GetMappingModeOk returns a tuple with the MappingMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UsageMeteringDimensionMappingValue) GetMappingModeOk() (*UsageMeteringDimensionMappingMode, bool) {
+	if o == nil || IsNil(o.MappingMode) {
+		return nil, false
+	}
+	return o.MappingMode, true
+}
+
+// HasMappingMode returns a boolean if a field has been set.
+func (o *UsageMeteringDimensionMappingValue) HasMappingMode() bool {
+	if o != nil && !IsNil(o.MappingMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetMappingMode gets a reference to the given UsageMeteringDimensionMappingMode and assigns it to the MappingMode field.
+func (o *UsageMeteringDimensionMappingValue) SetMappingMode(v UsageMeteringDimensionMappingMode) {
+	o.MappingMode = &v
+}
+
 func (o UsageMeteringDimensionMappingValue) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,6 +156,9 @@ func (o UsageMeteringDimensionMappingValue) ToMap() (map[string]interface{}, err
 	}
 	if !IsNil(o.DimensionKey) {
 		toSerialize["dimensionKey"] = o.DimensionKey
+	}
+	if !IsNil(o.MappingMode) {
+		toSerialize["mappingMode"] = o.MappingMode
 	}
 	return toSerialize, nil
 }
@@ -161,5 +198,3 @@ func (v *NullableUsageMeteringDimensionMappingValue) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

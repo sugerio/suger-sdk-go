@@ -20,13 +20,14 @@ var _ MappedNullable = &GcpMarketplaceExistingPrivateOffer{}
 
 // GcpMarketplaceExistingPrivateOffer struct for GcpMarketplaceExistingPrivateOffer
 type GcpMarketplaceExistingPrivateOffer struct {
-	Agreement *string `json:"agreement,omitempty"`
-	CustomEula *GcpMarketplaceDocument `json:"customEula,omitempty"`
+	Agreement           *string                                        `json:"agreement,omitempty"`
+	CustomEula          *GcpMarketplaceDocument                        `json:"customEula,omitempty"`
 	InstallmentTimeline *GcpMarketplacePrivateOfferInstallmentTimeline `json:"installmentTimeline,omitempty"`
 	// GCP private offer resource name.
-	Name *string `json:"name,omitempty"`
-	OfferTerm *GcpMarketplacePrivateOfferTerm `json:"offerTerm,omitempty"`
-	PaymentSchedule *GcpMarketplacePaymentScheduleType `json:"paymentSchedule,omitempty"`
+	Name            *string                         `json:"name,omitempty"`
+	OfferTerm       *GcpMarketplacePrivateOfferTerm `json:"offerTerm,omitempty"`
+	PaymentSchedule *PaymentScheduleType            `json:"paymentSchedule,omitempty"`
+	// Nill if the offer has payment installments.
 	PriceModel *GcpMarketplacePrivateOfferPriceModel `json:"priceModel,omitempty"`
 	// The Plan of the offer.
 	ServiceLevel *string `json:"serviceLevel,omitempty"`
@@ -210,9 +211,9 @@ func (o *GcpMarketplaceExistingPrivateOffer) SetOfferTerm(v GcpMarketplacePrivat
 }
 
 // GetPaymentSchedule returns the PaymentSchedule field value if set, zero value otherwise.
-func (o *GcpMarketplaceExistingPrivateOffer) GetPaymentSchedule() GcpMarketplacePaymentScheduleType {
+func (o *GcpMarketplaceExistingPrivateOffer) GetPaymentSchedule() PaymentScheduleType {
 	if o == nil || IsNil(o.PaymentSchedule) {
-		var ret GcpMarketplacePaymentScheduleType
+		var ret PaymentScheduleType
 		return ret
 	}
 	return *o.PaymentSchedule
@@ -220,7 +221,7 @@ func (o *GcpMarketplaceExistingPrivateOffer) GetPaymentSchedule() GcpMarketplace
 
 // GetPaymentScheduleOk returns a tuple with the PaymentSchedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GcpMarketplaceExistingPrivateOffer) GetPaymentScheduleOk() (*GcpMarketplacePaymentScheduleType, bool) {
+func (o *GcpMarketplaceExistingPrivateOffer) GetPaymentScheduleOk() (*PaymentScheduleType, bool) {
 	if o == nil || IsNil(o.PaymentSchedule) {
 		return nil, false
 	}
@@ -236,8 +237,8 @@ func (o *GcpMarketplaceExistingPrivateOffer) HasPaymentSchedule() bool {
 	return false
 }
 
-// SetPaymentSchedule gets a reference to the given GcpMarketplacePaymentScheduleType and assigns it to the PaymentSchedule field.
-func (o *GcpMarketplaceExistingPrivateOffer) SetPaymentSchedule(v GcpMarketplacePaymentScheduleType) {
+// SetPaymentSchedule gets a reference to the given PaymentScheduleType and assigns it to the PaymentSchedule field.
+func (o *GcpMarketplaceExistingPrivateOffer) SetPaymentSchedule(v PaymentScheduleType) {
 	o.PaymentSchedule = &v
 }
 
@@ -306,7 +307,7 @@ func (o *GcpMarketplaceExistingPrivateOffer) SetServiceLevel(v string) {
 }
 
 func (o GcpMarketplaceExistingPrivateOffer) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -377,5 +378,3 @@ func (v *NullableGcpMarketplaceExistingPrivateOffer) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AwsRevenueRecordDetail** | Pointer to [**GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent**](GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent.md) |  | [optional] 
-**AzureRevenueRecordDetail** | Pointer to [**GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue**](GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue.md) |  | [optional] 
-**GcpRevenueRecordDetail** | Pointer to [**GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage**](GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage.md) |  | [optional] 
+**AwsRevenueRecordDetail** | Pointer to [**GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent**](GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent.md) | For AWS Marketplace | [optional] 
+**AzureRevenueRecordDetail** | Pointer to [**GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue**](GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue.md) | For Azure Marketplace | [optional] 
+**GcpRevenueRecordDetail** | Pointer to [**GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage**](GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage.md) | For GCP Marketplace | [optional] 
 
 ## Methods
 

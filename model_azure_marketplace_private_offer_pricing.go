@@ -20,23 +20,29 @@ var _ MappedNullable = &AzureMarketplacePrivateOfferPricing{}
 
 // AzureMarketplacePrivateOfferPricing struct for AzureMarketplacePrivateOfferPricing
 type AzureMarketplacePrivateOfferPricing struct {
+	// required for SaasNewCustomizedPlans
+	BasePlan *string `json:"basePlan,omitempty"`
 	// between 0.01 to 100
-	DiscountPercentage *float32 `json:"discountPercentage,omitempty"`
-	DiscountType *PrivateOfferDiscountType `json:"discountType,omitempty"`
+	DiscountPercentage *float32                  `json:"discountPercentage,omitempty"`
+	DiscountType       *PrivateOfferDiscountType `json:"discountType,omitempty"`
 	// between 0.00000001 to 100
 	MarkupPercentage *float32 `json:"markupPercentage,omitempty"`
-	OriginalPlan *AzurePriceAndAvailabilityPrivateOfferPlan `json:"originalPlan,omitempty"`
-	// in format of \"plan/product-durable-id/plan-durable-id\"
-	Plan *string `json:"plan,omitempty"`
-	PlanId *string `json:"planId,omitempty"`
+	// required for SaasNewCustomizedPlans
+	NewPlanDetails *AzureMarketplacePrivateOfferPricingNewPlanDetails `json:"newPlanDetails,omitempty"`
+	// the pricing plan of the original plan.
+	OriginalPlan *AzureMarketplacePriceAndAvailabilityPrivateOfferPlan `json:"originalPlan,omitempty"`
+	// The base/original/default plan of the private offer, in format of \"plan/product-durable-id/plan-durable-id\"
+	Plan     *string `json:"plan,omitempty"`
+	PlanId   *string `json:"planId,omitempty"`
 	PlanName *string `json:"planName,omitempty"`
 	// The type of the plan, FLAT_RATE or PER_USER.
-	PlanType *string `json:"planType,omitempty"`
-	PriceDetails *string `json:"priceDetails,omitempty"`
-	PrivateOfferPlan *AzurePriceAndAvailabilityPrivateOfferPlan `json:"privateOfferPlan,omitempty"`
+	PlanType     *string                `json:"planType,omitempty"`
+	PriceDetails map[string]interface{} `json:"priceDetails,omitempty"`
+	// the pricing plan of the private offer
+	PrivateOfferPlan *AzureMarketplacePriceAndAvailabilityPrivateOfferPlan `json:"privateOfferPlan,omitempty"`
 	// in format of \"product/product-durable-id\"
-	Product *string `json:"product,omitempty"`
-	ProductName *string `json:"productName,omitempty"`
+	Product      *string `json:"product,omitempty"`
+	ProductName  *string `json:"productName,omitempty"`
 	SugerOfferId *string `json:"sugerOfferId,omitempty"`
 }
 
@@ -55,6 +61,38 @@ func NewAzureMarketplacePrivateOfferPricing() *AzureMarketplacePrivateOfferPrici
 func NewAzureMarketplacePrivateOfferPricingWithDefaults() *AzureMarketplacePrivateOfferPricing {
 	this := AzureMarketplacePrivateOfferPricing{}
 	return &this
+}
+
+// GetBasePlan returns the BasePlan field value if set, zero value otherwise.
+func (o *AzureMarketplacePrivateOfferPricing) GetBasePlan() string {
+	if o == nil || IsNil(o.BasePlan) {
+		var ret string
+		return ret
+	}
+	return *o.BasePlan
+}
+
+// GetBasePlanOk returns a tuple with the BasePlan field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureMarketplacePrivateOfferPricing) GetBasePlanOk() (*string, bool) {
+	if o == nil || IsNil(o.BasePlan) {
+		return nil, false
+	}
+	return o.BasePlan, true
+}
+
+// HasBasePlan returns a boolean if a field has been set.
+func (o *AzureMarketplacePrivateOfferPricing) HasBasePlan() bool {
+	if o != nil && !IsNil(o.BasePlan) {
+		return true
+	}
+
+	return false
+}
+
+// SetBasePlan gets a reference to the given string and assigns it to the BasePlan field.
+func (o *AzureMarketplacePrivateOfferPricing) SetBasePlan(v string) {
+	o.BasePlan = &v
 }
 
 // GetDiscountPercentage returns the DiscountPercentage field value if set, zero value otherwise.
@@ -153,10 +191,42 @@ func (o *AzureMarketplacePrivateOfferPricing) SetMarkupPercentage(v float32) {
 	o.MarkupPercentage = &v
 }
 
+// GetNewPlanDetails returns the NewPlanDetails field value if set, zero value otherwise.
+func (o *AzureMarketplacePrivateOfferPricing) GetNewPlanDetails() AzureMarketplacePrivateOfferPricingNewPlanDetails {
+	if o == nil || IsNil(o.NewPlanDetails) {
+		var ret AzureMarketplacePrivateOfferPricingNewPlanDetails
+		return ret
+	}
+	return *o.NewPlanDetails
+}
+
+// GetNewPlanDetailsOk returns a tuple with the NewPlanDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureMarketplacePrivateOfferPricing) GetNewPlanDetailsOk() (*AzureMarketplacePrivateOfferPricingNewPlanDetails, bool) {
+	if o == nil || IsNil(o.NewPlanDetails) {
+		return nil, false
+	}
+	return o.NewPlanDetails, true
+}
+
+// HasNewPlanDetails returns a boolean if a field has been set.
+func (o *AzureMarketplacePrivateOfferPricing) HasNewPlanDetails() bool {
+	if o != nil && !IsNil(o.NewPlanDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetNewPlanDetails gets a reference to the given AzureMarketplacePrivateOfferPricingNewPlanDetails and assigns it to the NewPlanDetails field.
+func (o *AzureMarketplacePrivateOfferPricing) SetNewPlanDetails(v AzureMarketplacePrivateOfferPricingNewPlanDetails) {
+	o.NewPlanDetails = &v
+}
+
 // GetOriginalPlan returns the OriginalPlan field value if set, zero value otherwise.
-func (o *AzureMarketplacePrivateOfferPricing) GetOriginalPlan() AzurePriceAndAvailabilityPrivateOfferPlan {
+func (o *AzureMarketplacePrivateOfferPricing) GetOriginalPlan() AzureMarketplacePriceAndAvailabilityPrivateOfferPlan {
 	if o == nil || IsNil(o.OriginalPlan) {
-		var ret AzurePriceAndAvailabilityPrivateOfferPlan
+		var ret AzureMarketplacePriceAndAvailabilityPrivateOfferPlan
 		return ret
 	}
 	return *o.OriginalPlan
@@ -164,7 +234,7 @@ func (o *AzureMarketplacePrivateOfferPricing) GetOriginalPlan() AzurePriceAndAva
 
 // GetOriginalPlanOk returns a tuple with the OriginalPlan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AzureMarketplacePrivateOfferPricing) GetOriginalPlanOk() (*AzurePriceAndAvailabilityPrivateOfferPlan, bool) {
+func (o *AzureMarketplacePrivateOfferPricing) GetOriginalPlanOk() (*AzureMarketplacePriceAndAvailabilityPrivateOfferPlan, bool) {
 	if o == nil || IsNil(o.OriginalPlan) {
 		return nil, false
 	}
@@ -180,8 +250,8 @@ func (o *AzureMarketplacePrivateOfferPricing) HasOriginalPlan() bool {
 	return false
 }
 
-// SetOriginalPlan gets a reference to the given AzurePriceAndAvailabilityPrivateOfferPlan and assigns it to the OriginalPlan field.
-func (o *AzureMarketplacePrivateOfferPricing) SetOriginalPlan(v AzurePriceAndAvailabilityPrivateOfferPlan) {
+// SetOriginalPlan gets a reference to the given AzureMarketplacePriceAndAvailabilityPrivateOfferPlan and assigns it to the OriginalPlan field.
+func (o *AzureMarketplacePrivateOfferPricing) SetOriginalPlan(v AzureMarketplacePriceAndAvailabilityPrivateOfferPlan) {
 	o.OriginalPlan = &v
 }
 
@@ -314,19 +384,19 @@ func (o *AzureMarketplacePrivateOfferPricing) SetPlanType(v string) {
 }
 
 // GetPriceDetails returns the PriceDetails field value if set, zero value otherwise.
-func (o *AzureMarketplacePrivateOfferPricing) GetPriceDetails() string {
+func (o *AzureMarketplacePrivateOfferPricing) GetPriceDetails() map[string]interface{} {
 	if o == nil || IsNil(o.PriceDetails) {
-		var ret string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.PriceDetails
+	return o.PriceDetails
 }
 
 // GetPriceDetailsOk returns a tuple with the PriceDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AzureMarketplacePrivateOfferPricing) GetPriceDetailsOk() (*string, bool) {
+func (o *AzureMarketplacePrivateOfferPricing) GetPriceDetailsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.PriceDetails) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.PriceDetails, true
 }
@@ -340,15 +410,15 @@ func (o *AzureMarketplacePrivateOfferPricing) HasPriceDetails() bool {
 	return false
 }
 
-// SetPriceDetails gets a reference to the given string and assigns it to the PriceDetails field.
-func (o *AzureMarketplacePrivateOfferPricing) SetPriceDetails(v string) {
-	o.PriceDetails = &v
+// SetPriceDetails gets a reference to the given map[string]interface{} and assigns it to the PriceDetails field.
+func (o *AzureMarketplacePrivateOfferPricing) SetPriceDetails(v map[string]interface{}) {
+	o.PriceDetails = v
 }
 
 // GetPrivateOfferPlan returns the PrivateOfferPlan field value if set, zero value otherwise.
-func (o *AzureMarketplacePrivateOfferPricing) GetPrivateOfferPlan() AzurePriceAndAvailabilityPrivateOfferPlan {
+func (o *AzureMarketplacePrivateOfferPricing) GetPrivateOfferPlan() AzureMarketplacePriceAndAvailabilityPrivateOfferPlan {
 	if o == nil || IsNil(o.PrivateOfferPlan) {
-		var ret AzurePriceAndAvailabilityPrivateOfferPlan
+		var ret AzureMarketplacePriceAndAvailabilityPrivateOfferPlan
 		return ret
 	}
 	return *o.PrivateOfferPlan
@@ -356,7 +426,7 @@ func (o *AzureMarketplacePrivateOfferPricing) GetPrivateOfferPlan() AzurePriceAn
 
 // GetPrivateOfferPlanOk returns a tuple with the PrivateOfferPlan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AzureMarketplacePrivateOfferPricing) GetPrivateOfferPlanOk() (*AzurePriceAndAvailabilityPrivateOfferPlan, bool) {
+func (o *AzureMarketplacePrivateOfferPricing) GetPrivateOfferPlanOk() (*AzureMarketplacePriceAndAvailabilityPrivateOfferPlan, bool) {
 	if o == nil || IsNil(o.PrivateOfferPlan) {
 		return nil, false
 	}
@@ -372,8 +442,8 @@ func (o *AzureMarketplacePrivateOfferPricing) HasPrivateOfferPlan() bool {
 	return false
 }
 
-// SetPrivateOfferPlan gets a reference to the given AzurePriceAndAvailabilityPrivateOfferPlan and assigns it to the PrivateOfferPlan field.
-func (o *AzureMarketplacePrivateOfferPricing) SetPrivateOfferPlan(v AzurePriceAndAvailabilityPrivateOfferPlan) {
+// SetPrivateOfferPlan gets a reference to the given AzureMarketplacePriceAndAvailabilityPrivateOfferPlan and assigns it to the PrivateOfferPlan field.
+func (o *AzureMarketplacePrivateOfferPricing) SetPrivateOfferPlan(v AzureMarketplacePriceAndAvailabilityPrivateOfferPlan) {
 	o.PrivateOfferPlan = &v
 }
 
@@ -474,7 +544,7 @@ func (o *AzureMarketplacePrivateOfferPricing) SetSugerOfferId(v string) {
 }
 
 func (o AzureMarketplacePrivateOfferPricing) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -483,6 +553,9 @@ func (o AzureMarketplacePrivateOfferPricing) MarshalJSON() ([]byte, error) {
 
 func (o AzureMarketplacePrivateOfferPricing) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BasePlan) {
+		toSerialize["basePlan"] = o.BasePlan
+	}
 	if !IsNil(o.DiscountPercentage) {
 		toSerialize["discountPercentage"] = o.DiscountPercentage
 	}
@@ -491,6 +564,9 @@ func (o AzureMarketplacePrivateOfferPricing) ToMap() (map[string]interface{}, er
 	}
 	if !IsNil(o.MarkupPercentage) {
 		toSerialize["markupPercentage"] = o.MarkupPercentage
+	}
+	if !IsNil(o.NewPlanDetails) {
+		toSerialize["newPlanDetails"] = o.NewPlanDetails
 	}
 	if !IsNil(o.OriginalPlan) {
 		toSerialize["originalPlan"] = o.OriginalPlan
@@ -560,5 +636,3 @@ func (v *NullableAzureMarketplacePrivateOfferPricing) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

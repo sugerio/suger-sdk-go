@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ApiKeyHash** | Pointer to **string** |  | [optional] 
 **CreationTime** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
-**Info** | Pointer to **string** |  | [optional] 
+**Info** | Pointer to **[]int32** |  | [optional] 
 **LastUpdateTime** | Pointer to **string** |  | [optional] 
 **OrganizationID** | Pointer to **string** |  | [optional] 
 **Provider** | Pointer to **string** |  | [optional] 
@@ -111,20 +111,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetInfo
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) GetInfo() string`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) GetInfo() []int32`
 
 GetInfo returns the Info field if non-nil, zero value otherwise.
 
 ### GetInfoOk
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) GetInfoOk() (*string, bool)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) GetInfoOk() (*[]int32, bool)`
 
 GetInfoOk returns a tuple with the Info field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInfo
 
-`func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) SetInfo(v string)`
+`func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) SetInfo(v []int32)`
 
 SetInfo sets Info field to given value.
 

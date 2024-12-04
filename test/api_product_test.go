@@ -11,11 +11,10 @@ package openapi
 
 import (
 	"context"
-	"testing"
-
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/sugerio/suger-sdk-go"
+	"testing"
 )
 
 func Test_openapi_ProductAPIService(t *testing.T) {
@@ -73,8 +72,6 @@ func Test_openapi_ProductAPIService(t *testing.T) {
 		var orgId string
 		var productId string
 
-		orgId = "EH3R7hwfM"
-		productId = "eWeOhF0tp"
 		resp, httpRes, err := apiClient.ProductAPI.GetProduct(context.Background(), orgId, productId).Execute()
 
 		require.Nil(t, err)
@@ -127,6 +124,21 @@ func Test_openapi_ProductAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProductAPIService PublishProduct", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var productId string
+
+		resp, httpRes, err := apiClient.ProductAPI.PublishProduct(context.Background(), orgId, productId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProductAPIService UpdateProduct", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -135,6 +147,21 @@ func Test_openapi_ProductAPIService(t *testing.T) {
 		var productId string
 
 		resp, httpRes, err := apiClient.ProductAPI.UpdateProduct(context.Background(), orgId, productId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProductAPIService UpdateProductFulfillmentUrl", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var productId string
+
+		resp, httpRes, err := apiClient.ProductAPI.UpdateProductFulfillmentUrl(context.Background(), orgId, productId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -4,36 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BuyerIds** | Pointer to **[]string** | The AWS Account ID of buyer that are specified by the ISV/Seller in this CPPO Opportunity. | [optional] 
-**BuyerNames** | Pointer to **[]string** |  | [optional] 
-**ContractDurationInDays** | Pointer to **int32** |  | [optional] 
-**CreatedBy** | Pointer to **string** | The AWS Account ID of the ISV/Seller who create this CPPO Opportunity. | [optional] 
-**CreatedDate** | Pointer to **string** | in format of \&quot;Wed Sep 13 17:50:07 UTC 2023\&quot; | [optional] 
-**CustomPriceTerms** | Pointer to [**AwsMarketplaceCppoPriceTerms**](AwsMarketplaceCppoPriceTerms.md) |  | [optional] 
-**Discount** | Pointer to **string** | in format of \&quot;10.0\&quot; (10%) | [optional] 
-**DiscountPercent** | Pointer to **float32** |  | [optional] 
-**DiscountType** | Pointer to [**AwsMarketplaceCppoDiscountType**](AwsMarketplaceCppoDiscountType.md) |  | [optional] 
-**Errors** | Pointer to **[]map[string]interface{}** |  | [optional] 
-**ExpirationDate** | Pointer to **string** | in format of \&quot;Thu Nov 30 23:59:59 UTC 2023\&quot; | [optional] 
-**ListingFeeRenewal** | Pointer to **bool** |  | [optional] 
-**ManufacturerId** | Pointer to **string** | The AWS Account ID of the ISV/Seller | [optional] 
-**ManufacturerName** | Pointer to **string** | The name of the ISV/Seller | [optional] 
-**OffersCount** | Pointer to **int32** |  | [optional] 
-**OpportunityDiscription** | Pointer to **string** |  | [optional] 
+**CreatedDate** | Pointer to **string** |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
+**Dimensions** | Pointer to [**[]AwsProductDimension**](AwsProductDimension.md) |  | [optional] 
+**ManufacturerAccountId** | Pointer to **string** |  | [optional] 
+**ManufacturerLegalName** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
+**OfferDetails** | Pointer to [**AwsMarketplaceCppoOpportunityOfferDetails**](AwsMarketplaceCppoOpportunityOfferDetails.md) |  | [optional] 
+**PreExistingBuyerAgreement** | Pointer to [**AwsMarketplacePreExistingAgreement**](AwsMarketplacePreExistingAgreement.md) |  | [optional] 
+**ProductId** | Pointer to **string** |  | [optional] 
+**ProductName** | Pointer to **string** |  | [optional] 
+**Rules** | Pointer to [**[]AwsMarketplaceCppoOpportunityRule**](AwsMarketplaceCppoOpportunityRule.md) |  | [optional] 
+**Status** | Pointer to **string** |  | [optional] 
+**Terms** | Pointer to [**[]AwsMarketplaceCppoOpportunityTerm**](AwsMarketplaceCppoOpportunityTerm.md) |  | [optional] 
+**DiscountType** | Pointer to [**AwsMarketplaceCppoDiscountType**](AwsMarketplaceCppoDiscountType.md) | The following fields are not from aws catalog API, only used for cppo_out offer create. They shouldn&#39;t be read in other places because they will absent when fetch opportunity from aws catalog API. | [optional] 
 **OpportunityDurationType** | Pointer to [**AwsMarketplaceCppoDurationType**](AwsMarketplaceCppoDurationType.md) |  | [optional] 
-**OpportunityEula** | Pointer to [**AwsMarketplaceCppoOpportunityEula**](AwsMarketplaceCppoOpportunityEula.md) |  | [optional] 
 **OpportunityId** | Pointer to **string** |  | [optional] 
-**OpportunityName** | Pointer to **string** |  | [optional] 
-**OpportunityRcmp** | Pointer to [**AwsMarketplaceCppoOpportunityEula**](AwsMarketplaceCppoOpportunityEula.md) |  | [optional] 
-**PartnerId** | Pointer to **string** | The AWS Account ID of the Channel Partner | [optional] 
-**PartnerName** | Pointer to **string** | The name of the Channel Partner | [optional] 
-**PaymentTerms** | Pointer to [**AwsMarketplaceCppoPaymentTerms**](AwsMarketplaceCppoPaymentTerms.md) |  | [optional] 
-**ProductId** | Pointer to **string** | The AWS Product ID from the ISV/Seller in this CPPO Opportunity. | [optional] 
-**ProductName** | Pointer to **string** | The AWS Product Name from the ISV/Seller in this CPPO Opportunity. | [optional] 
-**ProductType** | Pointer to **string** | The type of the AWS Product from the ISV/Seller in this CPPO Opportunity. | [optional] 
-**Sppo** | Pointer to **bool** |  | [optional] 
-**Status** | Pointer to **string** | The status of the CPPO Opportunity. | [optional] 
-**UsageAllowed** | Pointer to **int32** | How many times the CPPO Opportunity can be allowed to create CPPO Private Offer by the Channel Partner. | [optional] 
+**PartnerId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -53,106 +40,6 @@ will change when the set of required properties is changed
 NewAwsMarketplaceCppoOpportunityWithDefaults instantiates a new AwsMarketplaceCppoOpportunity object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetBuyerIds
-
-`func (o *AwsMarketplaceCppoOpportunity) GetBuyerIds() []string`
-
-GetBuyerIds returns the BuyerIds field if non-nil, zero value otherwise.
-
-### GetBuyerIdsOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetBuyerIdsOk() (*[]string, bool)`
-
-GetBuyerIdsOk returns a tuple with the BuyerIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBuyerIds
-
-`func (o *AwsMarketplaceCppoOpportunity) SetBuyerIds(v []string)`
-
-SetBuyerIds sets BuyerIds field to given value.
-
-### HasBuyerIds
-
-`func (o *AwsMarketplaceCppoOpportunity) HasBuyerIds() bool`
-
-HasBuyerIds returns a boolean if a field has been set.
-
-### GetBuyerNames
-
-`func (o *AwsMarketplaceCppoOpportunity) GetBuyerNames() []string`
-
-GetBuyerNames returns the BuyerNames field if non-nil, zero value otherwise.
-
-### GetBuyerNamesOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetBuyerNamesOk() (*[]string, bool)`
-
-GetBuyerNamesOk returns a tuple with the BuyerNames field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBuyerNames
-
-`func (o *AwsMarketplaceCppoOpportunity) SetBuyerNames(v []string)`
-
-SetBuyerNames sets BuyerNames field to given value.
-
-### HasBuyerNames
-
-`func (o *AwsMarketplaceCppoOpportunity) HasBuyerNames() bool`
-
-HasBuyerNames returns a boolean if a field has been set.
-
-### GetContractDurationInDays
-
-`func (o *AwsMarketplaceCppoOpportunity) GetContractDurationInDays() int32`
-
-GetContractDurationInDays returns the ContractDurationInDays field if non-nil, zero value otherwise.
-
-### GetContractDurationInDaysOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetContractDurationInDaysOk() (*int32, bool)`
-
-GetContractDurationInDaysOk returns a tuple with the ContractDurationInDays field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetContractDurationInDays
-
-`func (o *AwsMarketplaceCppoOpportunity) SetContractDurationInDays(v int32)`
-
-SetContractDurationInDays sets ContractDurationInDays field to given value.
-
-### HasContractDurationInDays
-
-`func (o *AwsMarketplaceCppoOpportunity) HasContractDurationInDays() bool`
-
-HasContractDurationInDays returns a boolean if a field has been set.
-
-### GetCreatedBy
-
-`func (o *AwsMarketplaceCppoOpportunity) GetCreatedBy() string`
-
-GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
-
-### GetCreatedByOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetCreatedByOk() (*string, bool)`
-
-GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedBy
-
-`func (o *AwsMarketplaceCppoOpportunity) SetCreatedBy(v string)`
-
-SetCreatedBy sets CreatedBy field to given value.
-
-### HasCreatedBy
-
-`func (o *AwsMarketplaceCppoOpportunity) HasCreatedBy() bool`
-
-HasCreatedBy returns a boolean if a field has been set.
 
 ### GetCreatedDate
 
@@ -179,480 +66,180 @@ SetCreatedDate sets CreatedDate field to given value.
 
 HasCreatedDate returns a boolean if a field has been set.
 
-### GetCustomPriceTerms
+### GetDescription
 
-`func (o *AwsMarketplaceCppoOpportunity) GetCustomPriceTerms() AwsMarketplaceCppoPriceTerms`
+`func (o *AwsMarketplaceCppoOpportunity) GetDescription() string`
 
-GetCustomPriceTerms returns the CustomPriceTerms field if non-nil, zero value otherwise.
+GetDescription returns the Description field if non-nil, zero value otherwise.
 
-### GetCustomPriceTermsOk
+### GetDescriptionOk
 
-`func (o *AwsMarketplaceCppoOpportunity) GetCustomPriceTermsOk() (*AwsMarketplaceCppoPriceTerms, bool)`
+`func (o *AwsMarketplaceCppoOpportunity) GetDescriptionOk() (*string, bool)`
 
-GetCustomPriceTermsOk returns a tuple with the CustomPriceTerms field if it's non-nil, zero value otherwise
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCustomPriceTerms
+### SetDescription
 
-`func (o *AwsMarketplaceCppoOpportunity) SetCustomPriceTerms(v AwsMarketplaceCppoPriceTerms)`
+`func (o *AwsMarketplaceCppoOpportunity) SetDescription(v string)`
 
-SetCustomPriceTerms sets CustomPriceTerms field to given value.
+SetDescription sets Description field to given value.
 
-### HasCustomPriceTerms
+### HasDescription
 
-`func (o *AwsMarketplaceCppoOpportunity) HasCustomPriceTerms() bool`
+`func (o *AwsMarketplaceCppoOpportunity) HasDescription() bool`
 
-HasCustomPriceTerms returns a boolean if a field has been set.
+HasDescription returns a boolean if a field has been set.
 
-### GetDiscount
+### GetDimensions
 
-`func (o *AwsMarketplaceCppoOpportunity) GetDiscount() string`
+`func (o *AwsMarketplaceCppoOpportunity) GetDimensions() []AwsProductDimension`
 
-GetDiscount returns the Discount field if non-nil, zero value otherwise.
+GetDimensions returns the Dimensions field if non-nil, zero value otherwise.
 
-### GetDiscountOk
+### GetDimensionsOk
 
-`func (o *AwsMarketplaceCppoOpportunity) GetDiscountOk() (*string, bool)`
+`func (o *AwsMarketplaceCppoOpportunity) GetDimensionsOk() (*[]AwsProductDimension, bool)`
 
-GetDiscountOk returns a tuple with the Discount field if it's non-nil, zero value otherwise
+GetDimensionsOk returns a tuple with the Dimensions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDiscount
+### SetDimensions
 
-`func (o *AwsMarketplaceCppoOpportunity) SetDiscount(v string)`
+`func (o *AwsMarketplaceCppoOpportunity) SetDimensions(v []AwsProductDimension)`
 
-SetDiscount sets Discount field to given value.
+SetDimensions sets Dimensions field to given value.
 
-### HasDiscount
+### HasDimensions
 
-`func (o *AwsMarketplaceCppoOpportunity) HasDiscount() bool`
+`func (o *AwsMarketplaceCppoOpportunity) HasDimensions() bool`
 
-HasDiscount returns a boolean if a field has been set.
+HasDimensions returns a boolean if a field has been set.
 
-### GetDiscountPercent
+### GetManufacturerAccountId
 
-`func (o *AwsMarketplaceCppoOpportunity) GetDiscountPercent() float32`
+`func (o *AwsMarketplaceCppoOpportunity) GetManufacturerAccountId() string`
 
-GetDiscountPercent returns the DiscountPercent field if non-nil, zero value otherwise.
+GetManufacturerAccountId returns the ManufacturerAccountId field if non-nil, zero value otherwise.
 
-### GetDiscountPercentOk
+### GetManufacturerAccountIdOk
 
-`func (o *AwsMarketplaceCppoOpportunity) GetDiscountPercentOk() (*float32, bool)`
+`func (o *AwsMarketplaceCppoOpportunity) GetManufacturerAccountIdOk() (*string, bool)`
 
-GetDiscountPercentOk returns a tuple with the DiscountPercent field if it's non-nil, zero value otherwise
+GetManufacturerAccountIdOk returns a tuple with the ManufacturerAccountId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDiscountPercent
+### SetManufacturerAccountId
 
-`func (o *AwsMarketplaceCppoOpportunity) SetDiscountPercent(v float32)`
+`func (o *AwsMarketplaceCppoOpportunity) SetManufacturerAccountId(v string)`
 
-SetDiscountPercent sets DiscountPercent field to given value.
+SetManufacturerAccountId sets ManufacturerAccountId field to given value.
 
-### HasDiscountPercent
+### HasManufacturerAccountId
 
-`func (o *AwsMarketplaceCppoOpportunity) HasDiscountPercent() bool`
+`func (o *AwsMarketplaceCppoOpportunity) HasManufacturerAccountId() bool`
 
-HasDiscountPercent returns a boolean if a field has been set.
+HasManufacturerAccountId returns a boolean if a field has been set.
 
-### GetDiscountType
+### GetManufacturerLegalName
 
-`func (o *AwsMarketplaceCppoOpportunity) GetDiscountType() AwsMarketplaceCppoDiscountType`
+`func (o *AwsMarketplaceCppoOpportunity) GetManufacturerLegalName() string`
 
-GetDiscountType returns the DiscountType field if non-nil, zero value otherwise.
+GetManufacturerLegalName returns the ManufacturerLegalName field if non-nil, zero value otherwise.
 
-### GetDiscountTypeOk
+### GetManufacturerLegalNameOk
 
-`func (o *AwsMarketplaceCppoOpportunity) GetDiscountTypeOk() (*AwsMarketplaceCppoDiscountType, bool)`
+`func (o *AwsMarketplaceCppoOpportunity) GetManufacturerLegalNameOk() (*string, bool)`
 
-GetDiscountTypeOk returns a tuple with the DiscountType field if it's non-nil, zero value otherwise
+GetManufacturerLegalNameOk returns a tuple with the ManufacturerLegalName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDiscountType
+### SetManufacturerLegalName
 
-`func (o *AwsMarketplaceCppoOpportunity) SetDiscountType(v AwsMarketplaceCppoDiscountType)`
+`func (o *AwsMarketplaceCppoOpportunity) SetManufacturerLegalName(v string)`
 
-SetDiscountType sets DiscountType field to given value.
+SetManufacturerLegalName sets ManufacturerLegalName field to given value.
 
-### HasDiscountType
+### HasManufacturerLegalName
 
-`func (o *AwsMarketplaceCppoOpportunity) HasDiscountType() bool`
+`func (o *AwsMarketplaceCppoOpportunity) HasManufacturerLegalName() bool`
 
-HasDiscountType returns a boolean if a field has been set.
+HasManufacturerLegalName returns a boolean if a field has been set.
 
-### GetErrors
+### GetName
 
-`func (o *AwsMarketplaceCppoOpportunity) GetErrors() []map[string]interface{}`
+`func (o *AwsMarketplaceCppoOpportunity) GetName() string`
 
-GetErrors returns the Errors field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetErrorsOk
+### GetNameOk
 
-`func (o *AwsMarketplaceCppoOpportunity) GetErrorsOk() (*[]map[string]interface{}, bool)`
+`func (o *AwsMarketplaceCppoOpportunity) GetNameOk() (*string, bool)`
 
-GetErrorsOk returns a tuple with the Errors field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetErrors
+### SetName
 
-`func (o *AwsMarketplaceCppoOpportunity) SetErrors(v []map[string]interface{})`
+`func (o *AwsMarketplaceCppoOpportunity) SetName(v string)`
 
-SetErrors sets Errors field to given value.
+SetName sets Name field to given value.
 
-### HasErrors
+### HasName
 
-`func (o *AwsMarketplaceCppoOpportunity) HasErrors() bool`
+`func (o *AwsMarketplaceCppoOpportunity) HasName() bool`
 
-HasErrors returns a boolean if a field has been set.
+HasName returns a boolean if a field has been set.
 
-### GetExpirationDate
+### GetOfferDetails
 
-`func (o *AwsMarketplaceCppoOpportunity) GetExpirationDate() string`
+`func (o *AwsMarketplaceCppoOpportunity) GetOfferDetails() AwsMarketplaceCppoOpportunityOfferDetails`
 
-GetExpirationDate returns the ExpirationDate field if non-nil, zero value otherwise.
+GetOfferDetails returns the OfferDetails field if non-nil, zero value otherwise.
 
-### GetExpirationDateOk
+### GetOfferDetailsOk
 
-`func (o *AwsMarketplaceCppoOpportunity) GetExpirationDateOk() (*string, bool)`
+`func (o *AwsMarketplaceCppoOpportunity) GetOfferDetailsOk() (*AwsMarketplaceCppoOpportunityOfferDetails, bool)`
 
-GetExpirationDateOk returns a tuple with the ExpirationDate field if it's non-nil, zero value otherwise
+GetOfferDetailsOk returns a tuple with the OfferDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExpirationDate
+### SetOfferDetails
 
-`func (o *AwsMarketplaceCppoOpportunity) SetExpirationDate(v string)`
+`func (o *AwsMarketplaceCppoOpportunity) SetOfferDetails(v AwsMarketplaceCppoOpportunityOfferDetails)`
 
-SetExpirationDate sets ExpirationDate field to given value.
+SetOfferDetails sets OfferDetails field to given value.
 
-### HasExpirationDate
+### HasOfferDetails
 
-`func (o *AwsMarketplaceCppoOpportunity) HasExpirationDate() bool`
+`func (o *AwsMarketplaceCppoOpportunity) HasOfferDetails() bool`
 
-HasExpirationDate returns a boolean if a field has been set.
+HasOfferDetails returns a boolean if a field has been set.
 
-### GetListingFeeRenewal
+### GetPreExistingBuyerAgreement
 
-`func (o *AwsMarketplaceCppoOpportunity) GetListingFeeRenewal() bool`
+`func (o *AwsMarketplaceCppoOpportunity) GetPreExistingBuyerAgreement() AwsMarketplacePreExistingAgreement`
 
-GetListingFeeRenewal returns the ListingFeeRenewal field if non-nil, zero value otherwise.
+GetPreExistingBuyerAgreement returns the PreExistingBuyerAgreement field if non-nil, zero value otherwise.
 
-### GetListingFeeRenewalOk
+### GetPreExistingBuyerAgreementOk
 
-`func (o *AwsMarketplaceCppoOpportunity) GetListingFeeRenewalOk() (*bool, bool)`
+`func (o *AwsMarketplaceCppoOpportunity) GetPreExistingBuyerAgreementOk() (*AwsMarketplacePreExistingAgreement, bool)`
 
-GetListingFeeRenewalOk returns a tuple with the ListingFeeRenewal field if it's non-nil, zero value otherwise
+GetPreExistingBuyerAgreementOk returns a tuple with the PreExistingBuyerAgreement field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetListingFeeRenewal
+### SetPreExistingBuyerAgreement
 
-`func (o *AwsMarketplaceCppoOpportunity) SetListingFeeRenewal(v bool)`
+`func (o *AwsMarketplaceCppoOpportunity) SetPreExistingBuyerAgreement(v AwsMarketplacePreExistingAgreement)`
 
-SetListingFeeRenewal sets ListingFeeRenewal field to given value.
+SetPreExistingBuyerAgreement sets PreExistingBuyerAgreement field to given value.
 
-### HasListingFeeRenewal
+### HasPreExistingBuyerAgreement
 
-`func (o *AwsMarketplaceCppoOpportunity) HasListingFeeRenewal() bool`
+`func (o *AwsMarketplaceCppoOpportunity) HasPreExistingBuyerAgreement() bool`
 
-HasListingFeeRenewal returns a boolean if a field has been set.
-
-### GetManufacturerId
-
-`func (o *AwsMarketplaceCppoOpportunity) GetManufacturerId() string`
-
-GetManufacturerId returns the ManufacturerId field if non-nil, zero value otherwise.
-
-### GetManufacturerIdOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetManufacturerIdOk() (*string, bool)`
-
-GetManufacturerIdOk returns a tuple with the ManufacturerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetManufacturerId
-
-`func (o *AwsMarketplaceCppoOpportunity) SetManufacturerId(v string)`
-
-SetManufacturerId sets ManufacturerId field to given value.
-
-### HasManufacturerId
-
-`func (o *AwsMarketplaceCppoOpportunity) HasManufacturerId() bool`
-
-HasManufacturerId returns a boolean if a field has been set.
-
-### GetManufacturerName
-
-`func (o *AwsMarketplaceCppoOpportunity) GetManufacturerName() string`
-
-GetManufacturerName returns the ManufacturerName field if non-nil, zero value otherwise.
-
-### GetManufacturerNameOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetManufacturerNameOk() (*string, bool)`
-
-GetManufacturerNameOk returns a tuple with the ManufacturerName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetManufacturerName
-
-`func (o *AwsMarketplaceCppoOpportunity) SetManufacturerName(v string)`
-
-SetManufacturerName sets ManufacturerName field to given value.
-
-### HasManufacturerName
-
-`func (o *AwsMarketplaceCppoOpportunity) HasManufacturerName() bool`
-
-HasManufacturerName returns a boolean if a field has been set.
-
-### GetOffersCount
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOffersCount() int32`
-
-GetOffersCount returns the OffersCount field if non-nil, zero value otherwise.
-
-### GetOffersCountOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOffersCountOk() (*int32, bool)`
-
-GetOffersCountOk returns a tuple with the OffersCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOffersCount
-
-`func (o *AwsMarketplaceCppoOpportunity) SetOffersCount(v int32)`
-
-SetOffersCount sets OffersCount field to given value.
-
-### HasOffersCount
-
-`func (o *AwsMarketplaceCppoOpportunity) HasOffersCount() bool`
-
-HasOffersCount returns a boolean if a field has been set.
-
-### GetOpportunityDiscription
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityDiscription() string`
-
-GetOpportunityDiscription returns the OpportunityDiscription field if non-nil, zero value otherwise.
-
-### GetOpportunityDiscriptionOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityDiscriptionOk() (*string, bool)`
-
-GetOpportunityDiscriptionOk returns a tuple with the OpportunityDiscription field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOpportunityDiscription
-
-`func (o *AwsMarketplaceCppoOpportunity) SetOpportunityDiscription(v string)`
-
-SetOpportunityDiscription sets OpportunityDiscription field to given value.
-
-### HasOpportunityDiscription
-
-`func (o *AwsMarketplaceCppoOpportunity) HasOpportunityDiscription() bool`
-
-HasOpportunityDiscription returns a boolean if a field has been set.
-
-### GetOpportunityDurationType
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityDurationType() AwsMarketplaceCppoDurationType`
-
-GetOpportunityDurationType returns the OpportunityDurationType field if non-nil, zero value otherwise.
-
-### GetOpportunityDurationTypeOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityDurationTypeOk() (*AwsMarketplaceCppoDurationType, bool)`
-
-GetOpportunityDurationTypeOk returns a tuple with the OpportunityDurationType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOpportunityDurationType
-
-`func (o *AwsMarketplaceCppoOpportunity) SetOpportunityDurationType(v AwsMarketplaceCppoDurationType)`
-
-SetOpportunityDurationType sets OpportunityDurationType field to given value.
-
-### HasOpportunityDurationType
-
-`func (o *AwsMarketplaceCppoOpportunity) HasOpportunityDurationType() bool`
-
-HasOpportunityDurationType returns a boolean if a field has been set.
-
-### GetOpportunityEula
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityEula() AwsMarketplaceCppoOpportunityEula`
-
-GetOpportunityEula returns the OpportunityEula field if non-nil, zero value otherwise.
-
-### GetOpportunityEulaOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityEulaOk() (*AwsMarketplaceCppoOpportunityEula, bool)`
-
-GetOpportunityEulaOk returns a tuple with the OpportunityEula field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOpportunityEula
-
-`func (o *AwsMarketplaceCppoOpportunity) SetOpportunityEula(v AwsMarketplaceCppoOpportunityEula)`
-
-SetOpportunityEula sets OpportunityEula field to given value.
-
-### HasOpportunityEula
-
-`func (o *AwsMarketplaceCppoOpportunity) HasOpportunityEula() bool`
-
-HasOpportunityEula returns a boolean if a field has been set.
-
-### GetOpportunityId
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityId() string`
-
-GetOpportunityId returns the OpportunityId field if non-nil, zero value otherwise.
-
-### GetOpportunityIdOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityIdOk() (*string, bool)`
-
-GetOpportunityIdOk returns a tuple with the OpportunityId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOpportunityId
-
-`func (o *AwsMarketplaceCppoOpportunity) SetOpportunityId(v string)`
-
-SetOpportunityId sets OpportunityId field to given value.
-
-### HasOpportunityId
-
-`func (o *AwsMarketplaceCppoOpportunity) HasOpportunityId() bool`
-
-HasOpportunityId returns a boolean if a field has been set.
-
-### GetOpportunityName
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityName() string`
-
-GetOpportunityName returns the OpportunityName field if non-nil, zero value otherwise.
-
-### GetOpportunityNameOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityNameOk() (*string, bool)`
-
-GetOpportunityNameOk returns a tuple with the OpportunityName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOpportunityName
-
-`func (o *AwsMarketplaceCppoOpportunity) SetOpportunityName(v string)`
-
-SetOpportunityName sets OpportunityName field to given value.
-
-### HasOpportunityName
-
-`func (o *AwsMarketplaceCppoOpportunity) HasOpportunityName() bool`
-
-HasOpportunityName returns a boolean if a field has been set.
-
-### GetOpportunityRcmp
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityRcmp() AwsMarketplaceCppoOpportunityEula`
-
-GetOpportunityRcmp returns the OpportunityRcmp field if non-nil, zero value otherwise.
-
-### GetOpportunityRcmpOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityRcmpOk() (*AwsMarketplaceCppoOpportunityEula, bool)`
-
-GetOpportunityRcmpOk returns a tuple with the OpportunityRcmp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOpportunityRcmp
-
-`func (o *AwsMarketplaceCppoOpportunity) SetOpportunityRcmp(v AwsMarketplaceCppoOpportunityEula)`
-
-SetOpportunityRcmp sets OpportunityRcmp field to given value.
-
-### HasOpportunityRcmp
-
-`func (o *AwsMarketplaceCppoOpportunity) HasOpportunityRcmp() bool`
-
-HasOpportunityRcmp returns a boolean if a field has been set.
-
-### GetPartnerId
-
-`func (o *AwsMarketplaceCppoOpportunity) GetPartnerId() string`
-
-GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
-
-### GetPartnerIdOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetPartnerIdOk() (*string, bool)`
-
-GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPartnerId
-
-`func (o *AwsMarketplaceCppoOpportunity) SetPartnerId(v string)`
-
-SetPartnerId sets PartnerId field to given value.
-
-### HasPartnerId
-
-`func (o *AwsMarketplaceCppoOpportunity) HasPartnerId() bool`
-
-HasPartnerId returns a boolean if a field has been set.
-
-### GetPartnerName
-
-`func (o *AwsMarketplaceCppoOpportunity) GetPartnerName() string`
-
-GetPartnerName returns the PartnerName field if non-nil, zero value otherwise.
-
-### GetPartnerNameOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetPartnerNameOk() (*string, bool)`
-
-GetPartnerNameOk returns a tuple with the PartnerName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPartnerName
-
-`func (o *AwsMarketplaceCppoOpportunity) SetPartnerName(v string)`
-
-SetPartnerName sets PartnerName field to given value.
-
-### HasPartnerName
-
-`func (o *AwsMarketplaceCppoOpportunity) HasPartnerName() bool`
-
-HasPartnerName returns a boolean if a field has been set.
-
-### GetPaymentTerms
-
-`func (o *AwsMarketplaceCppoOpportunity) GetPaymentTerms() AwsMarketplaceCppoPaymentTerms`
-
-GetPaymentTerms returns the PaymentTerms field if non-nil, zero value otherwise.
-
-### GetPaymentTermsOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetPaymentTermsOk() (*AwsMarketplaceCppoPaymentTerms, bool)`
-
-GetPaymentTermsOk returns a tuple with the PaymentTerms field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPaymentTerms
-
-`func (o *AwsMarketplaceCppoOpportunity) SetPaymentTerms(v AwsMarketplaceCppoPaymentTerms)`
-
-SetPaymentTerms sets PaymentTerms field to given value.
-
-### HasPaymentTerms
-
-`func (o *AwsMarketplaceCppoOpportunity) HasPaymentTerms() bool`
-
-HasPaymentTerms returns a boolean if a field has been set.
+HasPreExistingBuyerAgreement returns a boolean if a field has been set.
 
 ### GetProductId
 
@@ -704,55 +291,30 @@ SetProductName sets ProductName field to given value.
 
 HasProductName returns a boolean if a field has been set.
 
-### GetProductType
+### GetRules
 
-`func (o *AwsMarketplaceCppoOpportunity) GetProductType() string`
+`func (o *AwsMarketplaceCppoOpportunity) GetRules() []AwsMarketplaceCppoOpportunityRule`
 
-GetProductType returns the ProductType field if non-nil, zero value otherwise.
+GetRules returns the Rules field if non-nil, zero value otherwise.
 
-### GetProductTypeOk
+### GetRulesOk
 
-`func (o *AwsMarketplaceCppoOpportunity) GetProductTypeOk() (*string, bool)`
+`func (o *AwsMarketplaceCppoOpportunity) GetRulesOk() (*[]AwsMarketplaceCppoOpportunityRule, bool)`
 
-GetProductTypeOk returns a tuple with the ProductType field if it's non-nil, zero value otherwise
+GetRulesOk returns a tuple with the Rules field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProductType
+### SetRules
 
-`func (o *AwsMarketplaceCppoOpportunity) SetProductType(v string)`
+`func (o *AwsMarketplaceCppoOpportunity) SetRules(v []AwsMarketplaceCppoOpportunityRule)`
 
-SetProductType sets ProductType field to given value.
+SetRules sets Rules field to given value.
 
-### HasProductType
+### HasRules
 
-`func (o *AwsMarketplaceCppoOpportunity) HasProductType() bool`
+`func (o *AwsMarketplaceCppoOpportunity) HasRules() bool`
 
-HasProductType returns a boolean if a field has been set.
-
-### GetSppo
-
-`func (o *AwsMarketplaceCppoOpportunity) GetSppo() bool`
-
-GetSppo returns the Sppo field if non-nil, zero value otherwise.
-
-### GetSppoOk
-
-`func (o *AwsMarketplaceCppoOpportunity) GetSppoOk() (*bool, bool)`
-
-GetSppoOk returns a tuple with the Sppo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSppo
-
-`func (o *AwsMarketplaceCppoOpportunity) SetSppo(v bool)`
-
-SetSppo sets Sppo field to given value.
-
-### HasSppo
-
-`func (o *AwsMarketplaceCppoOpportunity) HasSppo() bool`
-
-HasSppo returns a boolean if a field has been set.
+HasRules returns a boolean if a field has been set.
 
 ### GetStatus
 
@@ -779,30 +341,130 @@ SetStatus sets Status field to given value.
 
 HasStatus returns a boolean if a field has been set.
 
-### GetUsageAllowed
+### GetTerms
 
-`func (o *AwsMarketplaceCppoOpportunity) GetUsageAllowed() int32`
+`func (o *AwsMarketplaceCppoOpportunity) GetTerms() []AwsMarketplaceCppoOpportunityTerm`
 
-GetUsageAllowed returns the UsageAllowed field if non-nil, zero value otherwise.
+GetTerms returns the Terms field if non-nil, zero value otherwise.
 
-### GetUsageAllowedOk
+### GetTermsOk
 
-`func (o *AwsMarketplaceCppoOpportunity) GetUsageAllowedOk() (*int32, bool)`
+`func (o *AwsMarketplaceCppoOpportunity) GetTermsOk() (*[]AwsMarketplaceCppoOpportunityTerm, bool)`
 
-GetUsageAllowedOk returns a tuple with the UsageAllowed field if it's non-nil, zero value otherwise
+GetTermsOk returns a tuple with the Terms field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUsageAllowed
+### SetTerms
 
-`func (o *AwsMarketplaceCppoOpportunity) SetUsageAllowed(v int32)`
+`func (o *AwsMarketplaceCppoOpportunity) SetTerms(v []AwsMarketplaceCppoOpportunityTerm)`
 
-SetUsageAllowed sets UsageAllowed field to given value.
+SetTerms sets Terms field to given value.
 
-### HasUsageAllowed
+### HasTerms
 
-`func (o *AwsMarketplaceCppoOpportunity) HasUsageAllowed() bool`
+`func (o *AwsMarketplaceCppoOpportunity) HasTerms() bool`
 
-HasUsageAllowed returns a boolean if a field has been set.
+HasTerms returns a boolean if a field has been set.
+
+### GetDiscountType
+
+`func (o *AwsMarketplaceCppoOpportunity) GetDiscountType() AwsMarketplaceCppoDiscountType`
+
+GetDiscountType returns the DiscountType field if non-nil, zero value otherwise.
+
+### GetDiscountTypeOk
+
+`func (o *AwsMarketplaceCppoOpportunity) GetDiscountTypeOk() (*AwsMarketplaceCppoDiscountType, bool)`
+
+GetDiscountTypeOk returns a tuple with the DiscountType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscountType
+
+`func (o *AwsMarketplaceCppoOpportunity) SetDiscountType(v AwsMarketplaceCppoDiscountType)`
+
+SetDiscountType sets DiscountType field to given value.
+
+### HasDiscountType
+
+`func (o *AwsMarketplaceCppoOpportunity) HasDiscountType() bool`
+
+HasDiscountType returns a boolean if a field has been set.
+
+### GetOpportunityDurationType
+
+`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityDurationType() AwsMarketplaceCppoDurationType`
+
+GetOpportunityDurationType returns the OpportunityDurationType field if non-nil, zero value otherwise.
+
+### GetOpportunityDurationTypeOk
+
+`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityDurationTypeOk() (*AwsMarketplaceCppoDurationType, bool)`
+
+GetOpportunityDurationTypeOk returns a tuple with the OpportunityDurationType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpportunityDurationType
+
+`func (o *AwsMarketplaceCppoOpportunity) SetOpportunityDurationType(v AwsMarketplaceCppoDurationType)`
+
+SetOpportunityDurationType sets OpportunityDurationType field to given value.
+
+### HasOpportunityDurationType
+
+`func (o *AwsMarketplaceCppoOpportunity) HasOpportunityDurationType() bool`
+
+HasOpportunityDurationType returns a boolean if a field has been set.
+
+### GetOpportunityId
+
+`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityId() string`
+
+GetOpportunityId returns the OpportunityId field if non-nil, zero value otherwise.
+
+### GetOpportunityIdOk
+
+`func (o *AwsMarketplaceCppoOpportunity) GetOpportunityIdOk() (*string, bool)`
+
+GetOpportunityIdOk returns a tuple with the OpportunityId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpportunityId
+
+`func (o *AwsMarketplaceCppoOpportunity) SetOpportunityId(v string)`
+
+SetOpportunityId sets OpportunityId field to given value.
+
+### HasOpportunityId
+
+`func (o *AwsMarketplaceCppoOpportunity) HasOpportunityId() bool`
+
+HasOpportunityId returns a boolean if a field has been set.
+
+### GetPartnerId
+
+`func (o *AwsMarketplaceCppoOpportunity) GetPartnerId() string`
+
+GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
+
+### GetPartnerIdOk
+
+`func (o *AwsMarketplaceCppoOpportunity) GetPartnerIdOk() (*string, bool)`
+
+GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnerId
+
+`func (o *AwsMarketplaceCppoOpportunity) SetPartnerId(v string)`
+
+SetPartnerId sets PartnerId field to given value.
+
+### HasPartnerId
+
+`func (o *AwsMarketplaceCppoOpportunity) HasPartnerId() bool`
+
+HasPartnerId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

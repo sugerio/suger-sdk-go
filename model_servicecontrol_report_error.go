@@ -22,6 +22,7 @@ var _ MappedNullable = &ServicecontrolReportError{}
 type ServicecontrolReportError struct {
 	// OperationId: The Operation.operation_id value from the request.
 	OperationId *string `json:"operationId,omitempty"`
+	// Status: Details of the error when processing the Operation.
 	Status *ServicecontrolStatus `json:"status,omitempty"`
 }
 
@@ -107,7 +108,7 @@ func (o *ServicecontrolReportError) SetStatus(v ServicecontrolStatus) {
 }
 
 func (o ServicecontrolReportError) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,5 +161,3 @@ func (v *NullableServicecontrolReportError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

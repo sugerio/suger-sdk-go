@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **ReportingUnit** | Pointer to **string** | such as \&quot;min\&quot; | [optional] 
 **SkuId** | Pointer to **string** | The SKU ID of this usage metering metric. Applicable only in Private Offer. | [optional] 
 **Unit** | Pointer to **string** | such as \&quot;min\&quot; | [optional] 
-**ValueType** | Pointer to [**ValueType**](ValueType.md) |  | [optional] 
+**ValueType** | Pointer to [**ValueType**](ValueType.md) | such as \&quot;INT64\&quot; | [optional] 
 
 ## Methods
 

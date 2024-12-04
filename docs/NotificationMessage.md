@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Info** | Pointer to [**NotificationMessageInfo**](NotificationMessageInfo.md) |  | [optional] 
 **OrganizationID** | Pointer to **string** |  | [optional] 
 **Recipient** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to [**NotificationType**](NotificationType.md) |  | [optional] 
+**Type** | Pointer to [**NotificationChannel**](NotificationChannel.md) |  | [optional] 
 
 ## Methods
 
@@ -157,20 +157,20 @@ HasRecipient returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *NotificationMessage) GetType() NotificationType`
+`func (o *NotificationMessage) GetType() NotificationChannel`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *NotificationMessage) GetTypeOk() (*NotificationType, bool)`
+`func (o *NotificationMessage) GetTypeOk() (*NotificationChannel, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *NotificationMessage) SetType(v NotificationType)`
+`func (o *NotificationMessage) SetType(v NotificationChannel)`
 
 SetType sets Type field to given value.
 

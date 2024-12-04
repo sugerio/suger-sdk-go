@@ -3,11 +3,15 @@
 ## Enum
 
 
-* `GcpMarketplacePrivateOfferState_OFFER_PUBLISHED` (value: `"OFFER_PUBLISHED"`)
-
 * `GcpMarketplacePrivateOfferState_OFFER_ACTIVE` (value: `"OFFER_ACTIVE"`)
 
 * `GcpMarketplacePrivateOfferState_OFFER_ACTIVATING` (value: `"OFFER_ACTIVATING"`)
+
+* `GcpMarketplacePrivateOfferState_OFFER_SCHEDULED` (value: `"OFFER_SCHEDULED"`)
+
+* `GcpMarketplacePrivateOfferState_OFFER_ENTITLEMENT_ACCOUNT_PENDING` (value: `"OFFER_ENTITLEMENT_ACCOUNT_PENDING"`)
+
+* `GcpMarketplacePrivateOfferState_OFFER_PUBLISHED` (value: `"OFFER_PUBLISHED"`)
 
 * `GcpMarketplacePrivateOfferState_OFFER_LAPSED` (value: `"OFFER_LAPSED"`)
 

@@ -21,24 +21,44 @@ type PartnerService string
 
 // List of PartnerService
 const (
-	PartnerService_DEFAULT PartnerService = "DEFAULT"
+	PartnerService_DEFAULT     PartnerService = "DEFAULT"
+	PartnerService_ACE         PartnerService = "ACE"
+	PartnerService_BIGQUERY    PartnerService = "BIGQUERY"
+	PartnerService_BILLING     PartnerService = "BILLING"
+	PartnerService_CHATBOT     PartnerService = "CHATBOT"
+	PartnerService_COSELL      PartnerService = "COSELL"
+	PartnerService_CRM         PartnerService = "CRM"
+	PartnerService_CPQ         PartnerService = "CPQ"
+	PartnerService_DATABASE    PartnerService = "DATABASE"
+	PartnerService_DRIVE       PartnerService = "DRIVE"
+	PartnerService_EMAIL       PartnerService = "EMAIL"
 	PartnerService_MARKETPLACE PartnerService = "MARKETPLACE"
-	PartnerService_ACE PartnerService = "ACE"
-	PartnerService_CRM PartnerService = "CRM"
-	PartnerService_CPQ PartnerService = "CPQ"
-	PartnerService_CHATBOT PartnerService = "CHATBOT"
-	PartnerService_BILLING PartnerService = "BILLING"
+	PartnerService_NETSUITE    PartnerService = "NETSUITE"
+	PartnerService_PAYMENT     PartnerService = "PAYMENT"
+	PartnerService_QUICKBOOKS  PartnerService = "QUICKBOOKS"
+	PartnerService_STORAGE     PartnerService = "STORAGE"
+	PartnerService_TEAMS       PartnerService = "TEAMS"
 )
 
 // All allowed values of PartnerService enum
 var AllowedPartnerServiceEnumValues = []PartnerService{
 	"DEFAULT",
-	"MARKETPLACE",
 	"ACE",
+	"BIGQUERY",
+	"BILLING",
+	"CHATBOT",
+	"COSELL",
 	"CRM",
 	"CPQ",
-	"CHATBOT",
-	"BILLING",
+	"DATABASE",
+	"DRIVE",
+	"EMAIL",
+	"MARKETPLACE",
+	"NETSUITE",
+	"PAYMENT",
+	"QUICKBOOKS",
+	"STORAGE",
+	"TEAMS",
 }
 
 func (v *PartnerService) UnmarshalJSON(src []byte) error {
@@ -119,4 +139,3 @@ func (v *NullablePartnerService) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

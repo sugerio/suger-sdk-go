@@ -20,40 +20,66 @@ var _ MappedNullable = &EntitlementInfo{}
 
 // EntitlementInfo struct for EntitlementInfo
 type EntitlementInfo struct {
+	// The addons for the entitlement.
+	Addons []BillingAddonRecord `json:"addons,omitempty"`
+	// Alert days before the end of the entitlement
+	AlertDaysBeforeEnd *int32 `json:"alertDaysBeforeEnd,omitempty"`
 	// Nullable. Alibaba Entitlements from Alibaba Marketplace.
 	AlibabaEntitlements []ClientDescribeInstanceResponseBody `json:"alibabaEntitlements,omitempty"`
 	// Nullable. Alibaba Orders from Alibaba Marketplace.
 	AlibabaOrders []ClientDescribeOrderResponseBody `json:"alibabaOrders,omitempty"`
 	// Is this Entitlement Auto Renew enabled.
 	AutoRenew *bool `json:"autoRenew,omitempty"`
+	// Nullable. AWS agreement from AWS Marketplace.
+	AwsAgreement *AwsMarketplaceAgreementV2 `json:"awsAgreement,omitempty"`
+	// The AWS channel partner (reseller), only applicable if this entitlement is based on AWS CPPO offer.
+	AwsChannelPartner *AwsChannelPartner `json:"awsChannelPartner,omitempty"`
 	// Nullable. AWS Entitlements from AWS Marketplace.
 	AwsEntitlements []TypesEntitlement `json:"awsEntitlements,omitempty"`
 	// Nullable. Azure Subscriptions from Azure Marketplace.
 	AzureSubscriptions []AzureMarketplaceSubscription `json:"azureSubscriptions,omitempty"`
+	// The dimensions for billable metric usage-based metering. It's for Suger(Stripe, Ayden) metering.
+	BillableDimensions []BillableDimension `json:"billableDimensions,omitempty"`
+	// Billing Cycle
+	BillingCycle *BillingCycle `json:"billingCycle,omitempty"`
 	// The amount that the seller can collect. It excludes the marketplace commision fee.
 	CollectableAmount *float32 `json:"collectableAmount,omitempty"`
 	// The amount that the buyer has committed to pay. It can be the sum of payment installments if applicable.
 	CommitAmount *float32 `json:"commitAmount,omitempty"`
-	// The dimensions for commit.
+	// The dimensions for flatrate commitment (recurring or one-time).
 	Commits []CommitDimension `json:"commits,omitempty"`
 	// The default Currency is USD.
 	Currency *string `json:"currency,omitempty"`
-	// The dimensions for usage-based metering.
+	// The dimensions for usage-based metering. It's for usage metering in cloud marketplaces. The max size of dimensions is 50. The oversized dimensions won't be saved in the EntitlementInfo. But the dimensions can be accessed from the connected offer info or product info.
 	Dimensions []MeteringDimension `json:"dimensions,omitempty"`
+	// Whether the upper metering dimensions are oversized (exceed the max size 50).
+	DimensionsOversized *bool `json:"dimensionsOversized,omitempty"`
 	// The amount that has been disbursed to the seller account.
-	DisbursedAmount *float32 `json:"disbursedAmount,omitempty"`
-	EulaType *EulaType `json:"eulaType,omitempty"`
-	EulaUrl *string `json:"eulaUrl,omitempty"`
+	DisbursedAmount *float32  `json:"disbursedAmount,omitempty"`
+	EulaType        *EulaType `json:"eulaType,omitempty"`
+	EulaUrl         *string   `json:"eulaUrl,omitempty"`
 	// Nullable. GCP Entitlements from GCP Marketplace.
 	GcpEntitlements []GcpMarketplaceEntitlement `json:"gcpEntitlements,omitempty"`
 	// Only applicable for GCP Marketplace Entitlements.
 	GcpPlans []GcpMarketplaceProductPurchaseOptionSpec `json:"gcpPlans,omitempty"`
+	// The grace period for the offer. It is same as the TrialConfig in DirectOfferInfo. But can be overridden at the entitlement level.
+	GracePeriodInDays *int32 `json:"gracePeriodInDays,omitempty"`
+	// The gross amount that the buyer has committed to pay, including usage metered amount.
+	GrossAmount *float32 `json:"grossAmount,omitempty"`
 	// The amount that the buyer has got invoiced.
 	InvoicedAmount *float32 `json:"invoicedAmount,omitempty"`
+	// The net terms for the offer. It is same as the TrialConfig in DirectOfferInfo. But can be overridden at the entitlement level.
+	NetTermsInDays *int32 `json:"netTermsInDays,omitempty"`
 	// For flexible payment schedules
 	PaymentInstallments []PaymentInstallment `json:"paymentInstallments,omitempty"`
-	RefundCancelationPolicy *string `json:"refundCancelationPolicy,omitempty"`
-	SellerNotes *string `json:"sellerNotes,omitempty"`
+	// The payment schedule for the entitlement. PREPAY means the buyer pays before the service is provided. POSTPAY means the buyer pays after the service is provided.
+	PaymentSchedule          *PaymentScheduleType `json:"paymentSchedule,omitempty"`
+	RefundCancellationPolicy *string              `json:"refundCancellationPolicy,omitempty"`
+	SellerNotes              *string              `json:"sellerNotes,omitempty"`
+	// The URL with JWT as auth method for the entitlement SPA. It can be shared with the buyer to access the SPA without login.
+	SpaUrl *string `json:"spaUrl,omitempty"`
+	// The trial configuration for the offer. It is same as the TrialConfig in DirectOfferInfo. But can be overridden at the entitlement level.
+	TrialConfig *TrialConfig `json:"trialConfig,omitempty"`
 }
 
 // NewEntitlementInfo instantiates a new EntitlementInfo object
@@ -71,6 +97,70 @@ func NewEntitlementInfo() *EntitlementInfo {
 func NewEntitlementInfoWithDefaults() *EntitlementInfo {
 	this := EntitlementInfo{}
 	return &this
+}
+
+// GetAddons returns the Addons field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetAddons() []BillingAddonRecord {
+	if o == nil || IsNil(o.Addons) {
+		var ret []BillingAddonRecord
+		return ret
+	}
+	return o.Addons
+}
+
+// GetAddonsOk returns a tuple with the Addons field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetAddonsOk() ([]BillingAddonRecord, bool) {
+	if o == nil || IsNil(o.Addons) {
+		return nil, false
+	}
+	return o.Addons, true
+}
+
+// HasAddons returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasAddons() bool {
+	if o != nil && !IsNil(o.Addons) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddons gets a reference to the given []BillingAddonRecord and assigns it to the Addons field.
+func (o *EntitlementInfo) SetAddons(v []BillingAddonRecord) {
+	o.Addons = v
+}
+
+// GetAlertDaysBeforeEnd returns the AlertDaysBeforeEnd field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetAlertDaysBeforeEnd() int32 {
+	if o == nil || IsNil(o.AlertDaysBeforeEnd) {
+		var ret int32
+		return ret
+	}
+	return *o.AlertDaysBeforeEnd
+}
+
+// GetAlertDaysBeforeEndOk returns a tuple with the AlertDaysBeforeEnd field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetAlertDaysBeforeEndOk() (*int32, bool) {
+	if o == nil || IsNil(o.AlertDaysBeforeEnd) {
+		return nil, false
+	}
+	return o.AlertDaysBeforeEnd, true
+}
+
+// HasAlertDaysBeforeEnd returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasAlertDaysBeforeEnd() bool {
+	if o != nil && !IsNil(o.AlertDaysBeforeEnd) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertDaysBeforeEnd gets a reference to the given int32 and assigns it to the AlertDaysBeforeEnd field.
+func (o *EntitlementInfo) SetAlertDaysBeforeEnd(v int32) {
+	o.AlertDaysBeforeEnd = &v
 }
 
 // GetAlibabaEntitlements returns the AlibabaEntitlements field value if set, zero value otherwise.
@@ -169,6 +259,70 @@ func (o *EntitlementInfo) SetAutoRenew(v bool) {
 	o.AutoRenew = &v
 }
 
+// GetAwsAgreement returns the AwsAgreement field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetAwsAgreement() AwsMarketplaceAgreementV2 {
+	if o == nil || IsNil(o.AwsAgreement) {
+		var ret AwsMarketplaceAgreementV2
+		return ret
+	}
+	return *o.AwsAgreement
+}
+
+// GetAwsAgreementOk returns a tuple with the AwsAgreement field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetAwsAgreementOk() (*AwsMarketplaceAgreementV2, bool) {
+	if o == nil || IsNil(o.AwsAgreement) {
+		return nil, false
+	}
+	return o.AwsAgreement, true
+}
+
+// HasAwsAgreement returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasAwsAgreement() bool {
+	if o != nil && !IsNil(o.AwsAgreement) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsAgreement gets a reference to the given AwsMarketplaceAgreementV2 and assigns it to the AwsAgreement field.
+func (o *EntitlementInfo) SetAwsAgreement(v AwsMarketplaceAgreementV2) {
+	o.AwsAgreement = &v
+}
+
+// GetAwsChannelPartner returns the AwsChannelPartner field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetAwsChannelPartner() AwsChannelPartner {
+	if o == nil || IsNil(o.AwsChannelPartner) {
+		var ret AwsChannelPartner
+		return ret
+	}
+	return *o.AwsChannelPartner
+}
+
+// GetAwsChannelPartnerOk returns a tuple with the AwsChannelPartner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetAwsChannelPartnerOk() (*AwsChannelPartner, bool) {
+	if o == nil || IsNil(o.AwsChannelPartner) {
+		return nil, false
+	}
+	return o.AwsChannelPartner, true
+}
+
+// HasAwsChannelPartner returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasAwsChannelPartner() bool {
+	if o != nil && !IsNil(o.AwsChannelPartner) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsChannelPartner gets a reference to the given AwsChannelPartner and assigns it to the AwsChannelPartner field.
+func (o *EntitlementInfo) SetAwsChannelPartner(v AwsChannelPartner) {
+	o.AwsChannelPartner = &v
+}
+
 // GetAwsEntitlements returns the AwsEntitlements field value if set, zero value otherwise.
 func (o *EntitlementInfo) GetAwsEntitlements() []TypesEntitlement {
 	if o == nil || IsNil(o.AwsEntitlements) {
@@ -231,6 +385,70 @@ func (o *EntitlementInfo) HasAzureSubscriptions() bool {
 // SetAzureSubscriptions gets a reference to the given []AzureMarketplaceSubscription and assigns it to the AzureSubscriptions field.
 func (o *EntitlementInfo) SetAzureSubscriptions(v []AzureMarketplaceSubscription) {
 	o.AzureSubscriptions = v
+}
+
+// GetBillableDimensions returns the BillableDimensions field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetBillableDimensions() []BillableDimension {
+	if o == nil || IsNil(o.BillableDimensions) {
+		var ret []BillableDimension
+		return ret
+	}
+	return o.BillableDimensions
+}
+
+// GetBillableDimensionsOk returns a tuple with the BillableDimensions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetBillableDimensionsOk() ([]BillableDimension, bool) {
+	if o == nil || IsNil(o.BillableDimensions) {
+		return nil, false
+	}
+	return o.BillableDimensions, true
+}
+
+// HasBillableDimensions returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasBillableDimensions() bool {
+	if o != nil && !IsNil(o.BillableDimensions) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillableDimensions gets a reference to the given []BillableDimension and assigns it to the BillableDimensions field.
+func (o *EntitlementInfo) SetBillableDimensions(v []BillableDimension) {
+	o.BillableDimensions = v
+}
+
+// GetBillingCycle returns the BillingCycle field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetBillingCycle() BillingCycle {
+	if o == nil || IsNil(o.BillingCycle) {
+		var ret BillingCycle
+		return ret
+	}
+	return *o.BillingCycle
+}
+
+// GetBillingCycleOk returns a tuple with the BillingCycle field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetBillingCycleOk() (*BillingCycle, bool) {
+	if o == nil || IsNil(o.BillingCycle) {
+		return nil, false
+	}
+	return o.BillingCycle, true
+}
+
+// HasBillingCycle returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasBillingCycle() bool {
+	if o != nil && !IsNil(o.BillingCycle) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingCycle gets a reference to the given BillingCycle and assigns it to the BillingCycle field.
+func (o *EntitlementInfo) SetBillingCycle(v BillingCycle) {
+	o.BillingCycle = &v
 }
 
 // GetCollectableAmount returns the CollectableAmount field value if set, zero value otherwise.
@@ -393,6 +611,38 @@ func (o *EntitlementInfo) SetDimensions(v []MeteringDimension) {
 	o.Dimensions = v
 }
 
+// GetDimensionsOversized returns the DimensionsOversized field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetDimensionsOversized() bool {
+	if o == nil || IsNil(o.DimensionsOversized) {
+		var ret bool
+		return ret
+	}
+	return *o.DimensionsOversized
+}
+
+// GetDimensionsOversizedOk returns a tuple with the DimensionsOversized field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetDimensionsOversizedOk() (*bool, bool) {
+	if o == nil || IsNil(o.DimensionsOversized) {
+		return nil, false
+	}
+	return o.DimensionsOversized, true
+}
+
+// HasDimensionsOversized returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasDimensionsOversized() bool {
+	if o != nil && !IsNil(o.DimensionsOversized) {
+		return true
+	}
+
+	return false
+}
+
+// SetDimensionsOversized gets a reference to the given bool and assigns it to the DimensionsOversized field.
+func (o *EntitlementInfo) SetDimensionsOversized(v bool) {
+	o.DimensionsOversized = &v
+}
+
 // GetDisbursedAmount returns the DisbursedAmount field value if set, zero value otherwise.
 func (o *EntitlementInfo) GetDisbursedAmount() float32 {
 	if o == nil || IsNil(o.DisbursedAmount) {
@@ -553,6 +803,70 @@ func (o *EntitlementInfo) SetGcpPlans(v []GcpMarketplaceProductPurchaseOptionSpe
 	o.GcpPlans = v
 }
 
+// GetGracePeriodInDays returns the GracePeriodInDays field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetGracePeriodInDays() int32 {
+	if o == nil || IsNil(o.GracePeriodInDays) {
+		var ret int32
+		return ret
+	}
+	return *o.GracePeriodInDays
+}
+
+// GetGracePeriodInDaysOk returns a tuple with the GracePeriodInDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetGracePeriodInDaysOk() (*int32, bool) {
+	if o == nil || IsNil(o.GracePeriodInDays) {
+		return nil, false
+	}
+	return o.GracePeriodInDays, true
+}
+
+// HasGracePeriodInDays returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasGracePeriodInDays() bool {
+	if o != nil && !IsNil(o.GracePeriodInDays) {
+		return true
+	}
+
+	return false
+}
+
+// SetGracePeriodInDays gets a reference to the given int32 and assigns it to the GracePeriodInDays field.
+func (o *EntitlementInfo) SetGracePeriodInDays(v int32) {
+	o.GracePeriodInDays = &v
+}
+
+// GetGrossAmount returns the GrossAmount field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetGrossAmount() float32 {
+	if o == nil || IsNil(o.GrossAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.GrossAmount
+}
+
+// GetGrossAmountOk returns a tuple with the GrossAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetGrossAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.GrossAmount) {
+		return nil, false
+	}
+	return o.GrossAmount, true
+}
+
+// HasGrossAmount returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasGrossAmount() bool {
+	if o != nil && !IsNil(o.GrossAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetGrossAmount gets a reference to the given float32 and assigns it to the GrossAmount field.
+func (o *EntitlementInfo) SetGrossAmount(v float32) {
+	o.GrossAmount = &v
+}
+
 // GetInvoicedAmount returns the InvoicedAmount field value if set, zero value otherwise.
 func (o *EntitlementInfo) GetInvoicedAmount() float32 {
 	if o == nil || IsNil(o.InvoicedAmount) {
@@ -583,6 +897,38 @@ func (o *EntitlementInfo) HasInvoicedAmount() bool {
 // SetInvoicedAmount gets a reference to the given float32 and assigns it to the InvoicedAmount field.
 func (o *EntitlementInfo) SetInvoicedAmount(v float32) {
 	o.InvoicedAmount = &v
+}
+
+// GetNetTermsInDays returns the NetTermsInDays field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetNetTermsInDays() int32 {
+	if o == nil || IsNil(o.NetTermsInDays) {
+		var ret int32
+		return ret
+	}
+	return *o.NetTermsInDays
+}
+
+// GetNetTermsInDaysOk returns a tuple with the NetTermsInDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetNetTermsInDaysOk() (*int32, bool) {
+	if o == nil || IsNil(o.NetTermsInDays) {
+		return nil, false
+	}
+	return o.NetTermsInDays, true
+}
+
+// HasNetTermsInDays returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasNetTermsInDays() bool {
+	if o != nil && !IsNil(o.NetTermsInDays) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetTermsInDays gets a reference to the given int32 and assigns it to the NetTermsInDays field.
+func (o *EntitlementInfo) SetNetTermsInDays(v int32) {
+	o.NetTermsInDays = &v
 }
 
 // GetPaymentInstallments returns the PaymentInstallments field value if set, zero value otherwise.
@@ -617,36 +963,68 @@ func (o *EntitlementInfo) SetPaymentInstallments(v []PaymentInstallment) {
 	o.PaymentInstallments = v
 }
 
-// GetRefundCancelationPolicy returns the RefundCancelationPolicy field value if set, zero value otherwise.
-func (o *EntitlementInfo) GetRefundCancelationPolicy() string {
-	if o == nil || IsNil(o.RefundCancelationPolicy) {
-		var ret string
+// GetPaymentSchedule returns the PaymentSchedule field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetPaymentSchedule() PaymentScheduleType {
+	if o == nil || IsNil(o.PaymentSchedule) {
+		var ret PaymentScheduleType
 		return ret
 	}
-	return *o.RefundCancelationPolicy
+	return *o.PaymentSchedule
 }
 
-// GetRefundCancelationPolicyOk returns a tuple with the RefundCancelationPolicy field value if set, nil otherwise
+// GetPaymentScheduleOk returns a tuple with the PaymentSchedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementInfo) GetRefundCancelationPolicyOk() (*string, bool) {
-	if o == nil || IsNil(o.RefundCancelationPolicy) {
+func (o *EntitlementInfo) GetPaymentScheduleOk() (*PaymentScheduleType, bool) {
+	if o == nil || IsNil(o.PaymentSchedule) {
 		return nil, false
 	}
-	return o.RefundCancelationPolicy, true
+	return o.PaymentSchedule, true
 }
 
-// HasRefundCancelationPolicy returns a boolean if a field has been set.
-func (o *EntitlementInfo) HasRefundCancelationPolicy() bool {
-	if o != nil && !IsNil(o.RefundCancelationPolicy) {
+// HasPaymentSchedule returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasPaymentSchedule() bool {
+	if o != nil && !IsNil(o.PaymentSchedule) {
 		return true
 	}
 
 	return false
 }
 
-// SetRefundCancelationPolicy gets a reference to the given string and assigns it to the RefundCancelationPolicy field.
-func (o *EntitlementInfo) SetRefundCancelationPolicy(v string) {
-	o.RefundCancelationPolicy = &v
+// SetPaymentSchedule gets a reference to the given PaymentScheduleType and assigns it to the PaymentSchedule field.
+func (o *EntitlementInfo) SetPaymentSchedule(v PaymentScheduleType) {
+	o.PaymentSchedule = &v
+}
+
+// GetRefundCancellationPolicy returns the RefundCancellationPolicy field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetRefundCancellationPolicy() string {
+	if o == nil || IsNil(o.RefundCancellationPolicy) {
+		var ret string
+		return ret
+	}
+	return *o.RefundCancellationPolicy
+}
+
+// GetRefundCancellationPolicyOk returns a tuple with the RefundCancellationPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetRefundCancellationPolicyOk() (*string, bool) {
+	if o == nil || IsNil(o.RefundCancellationPolicy) {
+		return nil, false
+	}
+	return o.RefundCancellationPolicy, true
+}
+
+// HasRefundCancellationPolicy returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasRefundCancellationPolicy() bool {
+	if o != nil && !IsNil(o.RefundCancellationPolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetRefundCancellationPolicy gets a reference to the given string and assigns it to the RefundCancellationPolicy field.
+func (o *EntitlementInfo) SetRefundCancellationPolicy(v string) {
+	o.RefundCancellationPolicy = &v
 }
 
 // GetSellerNotes returns the SellerNotes field value if set, zero value otherwise.
@@ -681,8 +1059,72 @@ func (o *EntitlementInfo) SetSellerNotes(v string) {
 	o.SellerNotes = &v
 }
 
+// GetSpaUrl returns the SpaUrl field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetSpaUrl() string {
+	if o == nil || IsNil(o.SpaUrl) {
+		var ret string
+		return ret
+	}
+	return *o.SpaUrl
+}
+
+// GetSpaUrlOk returns a tuple with the SpaUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetSpaUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.SpaUrl) {
+		return nil, false
+	}
+	return o.SpaUrl, true
+}
+
+// HasSpaUrl returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasSpaUrl() bool {
+	if o != nil && !IsNil(o.SpaUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetSpaUrl gets a reference to the given string and assigns it to the SpaUrl field.
+func (o *EntitlementInfo) SetSpaUrl(v string) {
+	o.SpaUrl = &v
+}
+
+// GetTrialConfig returns the TrialConfig field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetTrialConfig() TrialConfig {
+	if o == nil || IsNil(o.TrialConfig) {
+		var ret TrialConfig
+		return ret
+	}
+	return *o.TrialConfig
+}
+
+// GetTrialConfigOk returns a tuple with the TrialConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetTrialConfigOk() (*TrialConfig, bool) {
+	if o == nil || IsNil(o.TrialConfig) {
+		return nil, false
+	}
+	return o.TrialConfig, true
+}
+
+// HasTrialConfig returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasTrialConfig() bool {
+	if o != nil && !IsNil(o.TrialConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrialConfig gets a reference to the given TrialConfig and assigns it to the TrialConfig field.
+func (o *EntitlementInfo) SetTrialConfig(v TrialConfig) {
+	o.TrialConfig = &v
+}
+
 func (o EntitlementInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -691,6 +1133,12 @@ func (o EntitlementInfo) MarshalJSON() ([]byte, error) {
 
 func (o EntitlementInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Addons) {
+		toSerialize["addons"] = o.Addons
+	}
+	if !IsNil(o.AlertDaysBeforeEnd) {
+		toSerialize["alertDaysBeforeEnd"] = o.AlertDaysBeforeEnd
+	}
 	if !IsNil(o.AlibabaEntitlements) {
 		toSerialize["alibabaEntitlements"] = o.AlibabaEntitlements
 	}
@@ -700,11 +1148,23 @@ func (o EntitlementInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoRenew) {
 		toSerialize["autoRenew"] = o.AutoRenew
 	}
+	if !IsNil(o.AwsAgreement) {
+		toSerialize["awsAgreement"] = o.AwsAgreement
+	}
+	if !IsNil(o.AwsChannelPartner) {
+		toSerialize["awsChannelPartner"] = o.AwsChannelPartner
+	}
 	if !IsNil(o.AwsEntitlements) {
 		toSerialize["awsEntitlements"] = o.AwsEntitlements
 	}
 	if !IsNil(o.AzureSubscriptions) {
 		toSerialize["azureSubscriptions"] = o.AzureSubscriptions
+	}
+	if !IsNil(o.BillableDimensions) {
+		toSerialize["billableDimensions"] = o.BillableDimensions
+	}
+	if !IsNil(o.BillingCycle) {
+		toSerialize["billingCycle"] = o.BillingCycle
 	}
 	if !IsNil(o.CollectableAmount) {
 		toSerialize["collectableAmount"] = o.CollectableAmount
@@ -721,6 +1181,9 @@ func (o EntitlementInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Dimensions) {
 		toSerialize["dimensions"] = o.Dimensions
 	}
+	if !IsNil(o.DimensionsOversized) {
+		toSerialize["dimensionsOversized"] = o.DimensionsOversized
+	}
 	if !IsNil(o.DisbursedAmount) {
 		toSerialize["disbursedAmount"] = o.DisbursedAmount
 	}
@@ -736,17 +1199,35 @@ func (o EntitlementInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GcpPlans) {
 		toSerialize["gcpPlans"] = o.GcpPlans
 	}
+	if !IsNil(o.GracePeriodInDays) {
+		toSerialize["gracePeriodInDays"] = o.GracePeriodInDays
+	}
+	if !IsNil(o.GrossAmount) {
+		toSerialize["grossAmount"] = o.GrossAmount
+	}
 	if !IsNil(o.InvoicedAmount) {
 		toSerialize["invoicedAmount"] = o.InvoicedAmount
+	}
+	if !IsNil(o.NetTermsInDays) {
+		toSerialize["netTermsInDays"] = o.NetTermsInDays
 	}
 	if !IsNil(o.PaymentInstallments) {
 		toSerialize["paymentInstallments"] = o.PaymentInstallments
 	}
-	if !IsNil(o.RefundCancelationPolicy) {
-		toSerialize["refundCancelationPolicy"] = o.RefundCancelationPolicy
+	if !IsNil(o.PaymentSchedule) {
+		toSerialize["paymentSchedule"] = o.PaymentSchedule
+	}
+	if !IsNil(o.RefundCancellationPolicy) {
+		toSerialize["refundCancellationPolicy"] = o.RefundCancellationPolicy
 	}
 	if !IsNil(o.SellerNotes) {
 		toSerialize["sellerNotes"] = o.SellerNotes
+	}
+	if !IsNil(o.SpaUrl) {
+		toSerialize["spaUrl"] = o.SpaUrl
+	}
+	if !IsNil(o.TrialConfig) {
+		toSerialize["trialConfig"] = o.TrialConfig
 	}
 	return toSerialize, nil
 }
@@ -786,5 +1267,3 @@ func (v *NullableEntitlementInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

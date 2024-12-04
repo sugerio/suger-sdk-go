@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | One part of a key-value pair that makes up a tag. A key is a label that acts like a category for the specific tag values.  This member is required. | [optional] 
-**Value** | Pointer to **string** | One part of a key-value pair that makes up a tag. A value acts as a descriptor within a tag category (key). The value can be empty or null.  This member is required. | [optional] 
+**Key** | Pointer to **string** | One part of a key-value pair that makes up a tag . A key is a label that acts like a category for the specific tag values.  This member is required. | [optional] 
+**Value** | Pointer to **string** | One part of a key-value pair that makes up a tag . A value acts as a descriptor within a tag category (key). The value can be empty or null.  This member is required. | [optional] 
 
 ## Methods
 

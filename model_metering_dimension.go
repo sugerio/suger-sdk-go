@@ -20,11 +20,11 @@ var _ MappedNullable = &MeteringDimension{}
 
 // MeteringDimension The dimension to meter usage in entitlement.
 type MeteringDimension struct {
-	Category *string `json:"category,omitempty"`
+	Category    *string `json:"category,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// how many quantities of this dimension are included in the commit.
 	IncludedBaseQuantities []AzureIncludedBaseQuantity `json:"includedBaseQuantities,omitempty"`
-	Key *string `json:"key,omitempty"`
+	Key                    *string                     `json:"key,omitempty"`
 	// Display name of the dimension. For GCP Marketplace, it is the metering metric ID without plan prefix.
 	Name *string `json:"name,omitempty"`
 	// The plan ID of the metering dimension. Applicable to GCP Marketplace only. No ISO duration suffix.
@@ -36,9 +36,11 @@ type MeteringDimension struct {
 	// The unit price of this usage metering dimension.
 	Rate *float32 `json:"rate,omitempty"`
 	// The SKU ID of the metering dimension. Applicable to GCP Marketplace only.
-	SkuId *string `json:"skuId,omitempty"`
+	SkuId *string  `json:"skuId,omitempty"`
 	Types []string `json:"types,omitempty"`
+	// The current Dimension Usage Count. Available when call GetEntitlement API.
 	UsageCount *UsageCount `json:"usageCount,omitempty"`
+	// The value type of the metering dimension quantity. Applicable to GCP Marketplace only.
 	ValueType *ValueType `json:"valueType,omitempty"`
 }
 
@@ -476,7 +478,7 @@ func (o *MeteringDimension) SetValueType(v ValueType) {
 }
 
 func (o MeteringDimension) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -562,5 +564,3 @@ func (v *NullableMeteringDimension) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

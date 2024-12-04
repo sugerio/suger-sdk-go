@@ -11,11 +11,10 @@ package openapi
 
 import (
 	"context"
-	"testing"
-
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	openapiclient "github.com/sugerio/suger-sdk-go"
+	"testing"
 )
 
 func Test_openapi_ContactAPIService(t *testing.T) {
@@ -48,6 +47,20 @@ func Test_openapi_ContactAPIService(t *testing.T) {
 		var offerId string
 
 		resp, httpRes, err := apiClient.ContactAPI.AddContactToOffer(context.Background(), orgId, contactId, offerId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ContactAPIService BatchCreateContacts", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+
+		resp, httpRes, err := apiClient.ContactAPI.BatchCreateContacts(context.Background(), orgId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

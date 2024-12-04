@@ -20,25 +20,25 @@ var _ MappedNullable = &GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCm
 
 // GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue struct for GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue
 type GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue struct {
-	AzureAssetID *string `json:"azureAssetID,omitempty"`
-	AzureBillingAccountID *string `json:"azureBillingAccountID,omitempty"`
-	AzureCustomerID *string `json:"azureCustomerID,omitempty"`
-	AzureOfferID *string `json:"azureOfferID,omitempty"`
-	AzurePlanID *string `json:"azurePlanID,omitempty"`
-	BillingModel *string `json:"billingModel,omitempty"`
-	BuyerID *string `json:"buyerID,omitempty"`
-	EarningUsd *float32 `json:"earningUsd,omitempty"`
-	EntitlementID *string `json:"entitlementID,omitempty"`
-	EstimatedPayoutMonth *SqlNullTime `json:"estimatedPayoutMonth,omitempty"`
-	OfferID *string `json:"offerID,omitempty"`
-	OrganizationID *string `json:"organizationID,omitempty"`
-	PaymentSentDate *SqlNullTime `json:"paymentSentDate,omitempty"`
-	PayoutStatus *string `json:"payoutStatus,omitempty"`
-	ProductID *string `json:"productID,omitempty"`
-	PurchaseRecordID *string `json:"purchaseRecordID,omitempty"`
-	RevenueUsd *float32 `json:"revenueUsd,omitempty"`
-	TermEndDate *string `json:"termEndDate,omitempty"`
-	TermStartDate *string `json:"termStartDate,omitempty"`
+	AzureAssetID          *string              `json:"azureAssetID,omitempty"`
+	AzureBillingAccountID *string              `json:"azureBillingAccountID,omitempty"`
+	AzureCustomerID       *string              `json:"azureCustomerID,omitempty"`
+	AzureOfferID          *string              `json:"azureOfferID,omitempty"`
+	AzurePlanID           *string              `json:"azurePlanID,omitempty"`
+	BillingModel          *string              `json:"billingModel,omitempty"`
+	BuyerID               *string              `json:"buyerID,omitempty"`
+	EarningUsd            *float32             `json:"earningUsd,omitempty"`
+	EntitlementID         *string              `json:"entitlementID,omitempty"`
+	EstimatedPayoutMonth  *DatabaseSqlNullTime `json:"estimatedPayoutMonth,omitempty"`
+	OfferID               *string              `json:"offerID,omitempty"`
+	OrganizationID        *string              `json:"organizationID,omitempty"`
+	PaymentSentDate       *DatabaseSqlNullTime `json:"paymentSentDate,omitempty"`
+	PayoutStatus          *string              `json:"payoutStatus,omitempty"`
+	ProductID             *string              `json:"productID,omitempty"`
+	PurchaseRecordID      *string              `json:"purchaseRecordID,omitempty"`
+	RevenueUsd            *float32             `json:"revenueUsd,omitempty"`
+	TermEndDate           *string              `json:"termEndDate,omitempty"`
+	TermStartDate         *string              `json:"termStartDate,omitempty"`
 }
 
 // NewGithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue instantiates a new GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue object
@@ -347,9 +347,9 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) SetEn
 }
 
 // GetEstimatedPayoutMonth returns the EstimatedPayoutMonth field value if set, zero value otherwise.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetEstimatedPayoutMonth() SqlNullTime {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetEstimatedPayoutMonth() DatabaseSqlNullTime {
 	if o == nil || IsNil(o.EstimatedPayoutMonth) {
-		var ret SqlNullTime
+		var ret DatabaseSqlNullTime
 		return ret
 	}
 	return *o.EstimatedPayoutMonth
@@ -357,7 +357,7 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetEs
 
 // GetEstimatedPayoutMonthOk returns a tuple with the EstimatedPayoutMonth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetEstimatedPayoutMonthOk() (*SqlNullTime, bool) {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetEstimatedPayoutMonthOk() (*DatabaseSqlNullTime, bool) {
 	if o == nil || IsNil(o.EstimatedPayoutMonth) {
 		return nil, false
 	}
@@ -373,8 +373,8 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) HasEs
 	return false
 }
 
-// SetEstimatedPayoutMonth gets a reference to the given SqlNullTime and assigns it to the EstimatedPayoutMonth field.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) SetEstimatedPayoutMonth(v SqlNullTime) {
+// SetEstimatedPayoutMonth gets a reference to the given DatabaseSqlNullTime and assigns it to the EstimatedPayoutMonth field.
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) SetEstimatedPayoutMonth(v DatabaseSqlNullTime) {
 	o.EstimatedPayoutMonth = &v
 }
 
@@ -443,9 +443,9 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) SetOr
 }
 
 // GetPaymentSentDate returns the PaymentSentDate field value if set, zero value otherwise.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetPaymentSentDate() SqlNullTime {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetPaymentSentDate() DatabaseSqlNullTime {
 	if o == nil || IsNil(o.PaymentSentDate) {
-		var ret SqlNullTime
+		var ret DatabaseSqlNullTime
 		return ret
 	}
 	return *o.PaymentSentDate
@@ -453,7 +453,7 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetPa
 
 // GetPaymentSentDateOk returns a tuple with the PaymentSentDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetPaymentSentDateOk() (*SqlNullTime, bool) {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) GetPaymentSentDateOk() (*DatabaseSqlNullTime, bool) {
 	if o == nil || IsNil(o.PaymentSentDate) {
 		return nil, false
 	}
@@ -469,8 +469,8 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) HasPa
 	return false
 }
 
-// SetPaymentSentDate gets a reference to the given SqlNullTime and assigns it to the PaymentSentDate field.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) SetPaymentSentDate(v SqlNullTime) {
+// SetPaymentSentDate gets a reference to the given DatabaseSqlNullTime and assigns it to the PaymentSentDate field.
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) SetPaymentSentDate(v DatabaseSqlNullTime) {
 	o.PaymentSentDate = &v
 }
 
@@ -667,7 +667,7 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) SetTe
 }
 
 func (o GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -771,5 +771,3 @@ func (v *NullableGithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenu
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

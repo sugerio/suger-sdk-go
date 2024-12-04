@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **InventoryFlavorExternalName** | Pointer to **string** | Plan name maybe with term suffix, such as \&quot;plan-name-P1Y\&quot; | [optional] 
 **ProductExternalName** | Pointer to **string** | in format of \&quot;product-service-id.endpoints.gcp-project-id.cloud.goog\&quot; | [optional] 
-**ProviderId** | Pointer to **string** |  | [optional] 
+**ProjectNumber** | Pointer to **string** | The GCP project number of the provider. | [optional] 
+**ProviderId** | Pointer to **string** | The GCP project ID of the provider. | [optional] 
 
 ## Methods
 
@@ -76,6 +77,31 @@ SetProductExternalName sets ProductExternalName field to given value.
 `func (o *GcpMarketplacePrivateOfferMigrationMetadata) HasProductExternalName() bool`
 
 HasProductExternalName returns a boolean if a field has been set.
+
+### GetProjectNumber
+
+`func (o *GcpMarketplacePrivateOfferMigrationMetadata) GetProjectNumber() string`
+
+GetProjectNumber returns the ProjectNumber field if non-nil, zero value otherwise.
+
+### GetProjectNumberOk
+
+`func (o *GcpMarketplacePrivateOfferMigrationMetadata) GetProjectNumberOk() (*string, bool)`
+
+GetProjectNumberOk returns a tuple with the ProjectNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectNumber
+
+`func (o *GcpMarketplacePrivateOfferMigrationMetadata) SetProjectNumber(v string)`
+
+SetProjectNumber sets ProjectNumber field to given value.
+
+### HasProjectNumber
+
+`func (o *GcpMarketplacePrivateOfferMigrationMetadata) HasProjectNumber() bool`
+
+HasProjectNumber returns a boolean if a field has been set.
 
 ### GetProviderId
 

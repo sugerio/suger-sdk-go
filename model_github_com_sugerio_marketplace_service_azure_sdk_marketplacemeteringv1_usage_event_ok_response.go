@@ -34,6 +34,7 @@ type GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageEventOk
 	ResourceId *string `json:"resourceId,omitempty"`
 	// Identifier of the managed app resource against which usage is emitted
 	ResourceUri *string `json:"resourceUri,omitempty"`
+	// Status of the operation.
 	Status *GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageEventStatusEnum `json:"status,omitempty"`
 	// Unique identifier associated with the usage event
 	UsageEventId *string `json:"usageEventId,omitempty"`
@@ -345,7 +346,7 @@ func (o *GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageEve
 }
 
 func (o GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageEventOkResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -419,5 +420,3 @@ func (v *NullableGithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

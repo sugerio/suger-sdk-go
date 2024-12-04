@@ -21,16 +21,16 @@ var _ MappedNullable = &IdentityBuyer{}
 
 // IdentityBuyer struct for IdentityBuyer
 type IdentityBuyer struct {
-	ContactIds []string `json:"contactIds,omitempty"`
-	CreationTime *time.Time `json:"creationTime,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ExternalID *string `json:"externalID,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Info *BuyerInfo `json:"info,omitempty"`
+	ContactIds     []string   `json:"contactIds,omitempty"`
+	CreationTime   *time.Time `json:"creationTime,omitempty"`
+	Description    *string    `json:"description,omitempty"`
+	ExternalID     *string    `json:"externalID,omitempty"`
+	Id             *string    `json:"id,omitempty"`
+	Info           *BuyerInfo `json:"info,omitempty"`
 	LastUpdateTime *time.Time `json:"lastUpdateTime,omitempty"`
-	Name *string `json:"name,omitempty"`
-	OrganizationID *string `json:"organizationID,omitempty"`
-	Partner *string `json:"partner,omitempty"`
+	Name           *string    `json:"name,omitempty"`
+	OrganizationID *string    `json:"organizationID,omitempty"`
+	Partner        *Partner   `json:"partner,omitempty"`
 }
 
 // NewIdentityBuyer instantiates a new IdentityBuyer object
@@ -339,9 +339,9 @@ func (o *IdentityBuyer) SetOrganizationID(v string) {
 }
 
 // GetPartner returns the Partner field value if set, zero value otherwise.
-func (o *IdentityBuyer) GetPartner() string {
+func (o *IdentityBuyer) GetPartner() Partner {
 	if o == nil || IsNil(o.Partner) {
-		var ret string
+		var ret Partner
 		return ret
 	}
 	return *o.Partner
@@ -349,7 +349,7 @@ func (o *IdentityBuyer) GetPartner() string {
 
 // GetPartnerOk returns a tuple with the Partner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityBuyer) GetPartnerOk() (*string, bool) {
+func (o *IdentityBuyer) GetPartnerOk() (*Partner, bool) {
 	if o == nil || IsNil(o.Partner) {
 		return nil, false
 	}
@@ -365,13 +365,13 @@ func (o *IdentityBuyer) HasPartner() bool {
 	return false
 }
 
-// SetPartner gets a reference to the given string and assigns it to the Partner field.
-func (o *IdentityBuyer) SetPartner(v string) {
+// SetPartner gets a reference to the given Partner and assigns it to the Partner field.
+func (o *IdentityBuyer) SetPartner(v Partner) {
 	o.Partner = &v
 }
 
 func (o IdentityBuyer) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -448,5 +448,3 @@ func (v *NullableIdentityBuyer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

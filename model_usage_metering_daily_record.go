@@ -21,11 +21,16 @@ var _ MappedNullable = &UsageMeteringDailyRecord{}
 
 // UsageMeteringDailyRecord struct for UsageMeteringDailyRecord
 type UsageMeteringDailyRecord struct {
-	Amount *float32 `json:"amount,omitempty"`
-	Date *time.Time `json:"date,omitempty"`
+	Amount *float32   `json:"amount,omitempty"`
+	Date   *time.Time `json:"date,omitempty"`
+	// The Entitlement ID of the usage metering daily record.
+	EntitlementID *string `json:"entitlementID,omitempty"`
+	// The group bys expression of the usage metering. When the same usage metering key may have multiple expressions of group bys to aggregate the usage.
+	GroupBysExpression *string `json:"groupBysExpression,omitempty"`
 	// The dimension key of the usage metering.
 	Key *string `json:"key,omitempty"`
-	Partner *Partner `json:"partner,omitempty"`
+	// The partner where this usage metering daily record is from. Such as AWS, AZURE or GCP.
+	Partner  *Partner `json:"partner,omitempty"`
 	Quantity *float32 `json:"quantity,omitempty"`
 }
 
@@ -108,6 +113,70 @@ func (o *UsageMeteringDailyRecord) HasDate() bool {
 // SetDate gets a reference to the given time.Time and assigns it to the Date field.
 func (o *UsageMeteringDailyRecord) SetDate(v time.Time) {
 	o.Date = &v
+}
+
+// GetEntitlementID returns the EntitlementID field value if set, zero value otherwise.
+func (o *UsageMeteringDailyRecord) GetEntitlementID() string {
+	if o == nil || IsNil(o.EntitlementID) {
+		var ret string
+		return ret
+	}
+	return *o.EntitlementID
+}
+
+// GetEntitlementIDOk returns a tuple with the EntitlementID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UsageMeteringDailyRecord) GetEntitlementIDOk() (*string, bool) {
+	if o == nil || IsNil(o.EntitlementID) {
+		return nil, false
+	}
+	return o.EntitlementID, true
+}
+
+// HasEntitlementID returns a boolean if a field has been set.
+func (o *UsageMeteringDailyRecord) HasEntitlementID() bool {
+	if o != nil && !IsNil(o.EntitlementID) {
+		return true
+	}
+
+	return false
+}
+
+// SetEntitlementID gets a reference to the given string and assigns it to the EntitlementID field.
+func (o *UsageMeteringDailyRecord) SetEntitlementID(v string) {
+	o.EntitlementID = &v
+}
+
+// GetGroupBysExpression returns the GroupBysExpression field value if set, zero value otherwise.
+func (o *UsageMeteringDailyRecord) GetGroupBysExpression() string {
+	if o == nil || IsNil(o.GroupBysExpression) {
+		var ret string
+		return ret
+	}
+	return *o.GroupBysExpression
+}
+
+// GetGroupBysExpressionOk returns a tuple with the GroupBysExpression field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UsageMeteringDailyRecord) GetGroupBysExpressionOk() (*string, bool) {
+	if o == nil || IsNil(o.GroupBysExpression) {
+		return nil, false
+	}
+	return o.GroupBysExpression, true
+}
+
+// HasGroupBysExpression returns a boolean if a field has been set.
+func (o *UsageMeteringDailyRecord) HasGroupBysExpression() bool {
+	if o != nil && !IsNil(o.GroupBysExpression) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupBysExpression gets a reference to the given string and assigns it to the GroupBysExpression field.
+func (o *UsageMeteringDailyRecord) SetGroupBysExpression(v string) {
+	o.GroupBysExpression = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -207,7 +276,7 @@ func (o *UsageMeteringDailyRecord) SetQuantity(v float32) {
 }
 
 func (o UsageMeteringDailyRecord) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -221,6 +290,12 @@ func (o UsageMeteringDailyRecord) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Date) {
 		toSerialize["date"] = o.Date
+	}
+	if !IsNil(o.EntitlementID) {
+		toSerialize["entitlementID"] = o.EntitlementID
+	}
+	if !IsNil(o.GroupBysExpression) {
+		toSerialize["groupBysExpression"] = o.GroupBysExpression
 	}
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
@@ -269,5 +344,3 @@ func (v *NullableUsageMeteringDailyRecord) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

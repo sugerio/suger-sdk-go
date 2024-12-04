@@ -21,13 +21,16 @@ var _ MappedNullable = &GcpMarketplaceDocument{}
 
 // GcpMarketplaceDocument struct for GcpMarketplaceDocument
 type GcpMarketplaceDocument struct {
-	Description *string `json:"description,omitempty"`
+	Description  *string `json:"description,omitempty"`
+	DocumentBody *string `json:"documentBody,omitempty"`
 	// such as \"PARTNER_EULA\"
 	DocumentType *string `json:"documentType,omitempty"`
+	// The external link to Standard EULA such as https://cloud.google.com/terms/marketplace/eula-standard-v2-01272021.
+	ExternalGoogleLink *GcpMarketplaceExternalGoogleLink `json:"externalGoogleLink,omitempty"`
 	// in format of \"projects/{projectNumber}/agreements/{agreementId}/documents/{documentId}\"
-	Name *string `json:"name,omitempty"`
+	Name                 *string                             `json:"name,omitempty"`
 	UnstructuredDocument *GcpMarketplaceUnstructuredDocument `json:"unstructuredDocument,omitempty"`
-	UpdateTime *time.Time `json:"updateTime,omitempty"`
+	UpdateTime           *time.Time                          `json:"updateTime,omitempty"`
 }
 
 // NewGcpMarketplaceDocument instantiates a new GcpMarketplaceDocument object
@@ -79,6 +82,38 @@ func (o *GcpMarketplaceDocument) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetDocumentBody returns the DocumentBody field value if set, zero value otherwise.
+func (o *GcpMarketplaceDocument) GetDocumentBody() string {
+	if o == nil || IsNil(o.DocumentBody) {
+		var ret string
+		return ret
+	}
+	return *o.DocumentBody
+}
+
+// GetDocumentBodyOk returns a tuple with the DocumentBody field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GcpMarketplaceDocument) GetDocumentBodyOk() (*string, bool) {
+	if o == nil || IsNil(o.DocumentBody) {
+		return nil, false
+	}
+	return o.DocumentBody, true
+}
+
+// HasDocumentBody returns a boolean if a field has been set.
+func (o *GcpMarketplaceDocument) HasDocumentBody() bool {
+	if o != nil && !IsNil(o.DocumentBody) {
+		return true
+	}
+
+	return false
+}
+
+// SetDocumentBody gets a reference to the given string and assigns it to the DocumentBody field.
+func (o *GcpMarketplaceDocument) SetDocumentBody(v string) {
+	o.DocumentBody = &v
+}
+
 // GetDocumentType returns the DocumentType field value if set, zero value otherwise.
 func (o *GcpMarketplaceDocument) GetDocumentType() string {
 	if o == nil || IsNil(o.DocumentType) {
@@ -109,6 +144,38 @@ func (o *GcpMarketplaceDocument) HasDocumentType() bool {
 // SetDocumentType gets a reference to the given string and assigns it to the DocumentType field.
 func (o *GcpMarketplaceDocument) SetDocumentType(v string) {
 	o.DocumentType = &v
+}
+
+// GetExternalGoogleLink returns the ExternalGoogleLink field value if set, zero value otherwise.
+func (o *GcpMarketplaceDocument) GetExternalGoogleLink() GcpMarketplaceExternalGoogleLink {
+	if o == nil || IsNil(o.ExternalGoogleLink) {
+		var ret GcpMarketplaceExternalGoogleLink
+		return ret
+	}
+	return *o.ExternalGoogleLink
+}
+
+// GetExternalGoogleLinkOk returns a tuple with the ExternalGoogleLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GcpMarketplaceDocument) GetExternalGoogleLinkOk() (*GcpMarketplaceExternalGoogleLink, bool) {
+	if o == nil || IsNil(o.ExternalGoogleLink) {
+		return nil, false
+	}
+	return o.ExternalGoogleLink, true
+}
+
+// HasExternalGoogleLink returns a boolean if a field has been set.
+func (o *GcpMarketplaceDocument) HasExternalGoogleLink() bool {
+	if o != nil && !IsNil(o.ExternalGoogleLink) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalGoogleLink gets a reference to the given GcpMarketplaceExternalGoogleLink and assigns it to the ExternalGoogleLink field.
+func (o *GcpMarketplaceDocument) SetExternalGoogleLink(v GcpMarketplaceExternalGoogleLink) {
+	o.ExternalGoogleLink = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -208,7 +275,7 @@ func (o *GcpMarketplaceDocument) SetUpdateTime(v time.Time) {
 }
 
 func (o GcpMarketplaceDocument) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -220,8 +287,14 @@ func (o GcpMarketplaceDocument) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.DocumentBody) {
+		toSerialize["documentBody"] = o.DocumentBody
+	}
 	if !IsNil(o.DocumentType) {
 		toSerialize["documentType"] = o.DocumentType
+	}
+	if !IsNil(o.ExternalGoogleLink) {
+		toSerialize["externalGoogleLink"] = o.ExternalGoogleLink
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -270,5 +343,3 @@ func (v *NullableGcpMarketplaceDocument) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

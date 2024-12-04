@@ -24,6 +24,9 @@ type GcpMarketplacePrivateOfferMigrationMetadata struct {
 	InventoryFlavorExternalName *string `json:"inventoryFlavorExternalName,omitempty"`
 	// in format of \"product-service-id.endpoints.gcp-project-id.cloud.goog\"
 	ProductExternalName *string `json:"productExternalName,omitempty"`
+	// The GCP project number of the provider.
+	ProjectNumber *string `json:"projectNumber,omitempty"`
+	// The GCP project ID of the provider.
 	ProviderId *string `json:"providerId,omitempty"`
 }
 
@@ -108,6 +111,38 @@ func (o *GcpMarketplacePrivateOfferMigrationMetadata) SetProductExternalName(v s
 	o.ProductExternalName = &v
 }
 
+// GetProjectNumber returns the ProjectNumber field value if set, zero value otherwise.
+func (o *GcpMarketplacePrivateOfferMigrationMetadata) GetProjectNumber() string {
+	if o == nil || IsNil(o.ProjectNumber) {
+		var ret string
+		return ret
+	}
+	return *o.ProjectNumber
+}
+
+// GetProjectNumberOk returns a tuple with the ProjectNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GcpMarketplacePrivateOfferMigrationMetadata) GetProjectNumberOk() (*string, bool) {
+	if o == nil || IsNil(o.ProjectNumber) {
+		return nil, false
+	}
+	return o.ProjectNumber, true
+}
+
+// HasProjectNumber returns a boolean if a field has been set.
+func (o *GcpMarketplacePrivateOfferMigrationMetadata) HasProjectNumber() bool {
+	if o != nil && !IsNil(o.ProjectNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectNumber gets a reference to the given string and assigns it to the ProjectNumber field.
+func (o *GcpMarketplacePrivateOfferMigrationMetadata) SetProjectNumber(v string) {
+	o.ProjectNumber = &v
+}
+
 // GetProviderId returns the ProviderId field value if set, zero value otherwise.
 func (o *GcpMarketplacePrivateOfferMigrationMetadata) GetProviderId() string {
 	if o == nil || IsNil(o.ProviderId) {
@@ -141,7 +176,7 @@ func (o *GcpMarketplacePrivateOfferMigrationMetadata) SetProviderId(v string) {
 }
 
 func (o GcpMarketplacePrivateOfferMigrationMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -155,6 +190,9 @@ func (o GcpMarketplacePrivateOfferMigrationMetadata) ToMap() (map[string]interfa
 	}
 	if !IsNil(o.ProductExternalName) {
 		toSerialize["productExternalName"] = o.ProductExternalName
+	}
+	if !IsNil(o.ProjectNumber) {
+		toSerialize["projectNumber"] = o.ProjectNumber
 	}
 	if !IsNil(o.ProviderId) {
 		toSerialize["providerId"] = o.ProviderId
@@ -197,5 +235,3 @@ func (v *NullableGcpMarketplacePrivateOfferMigrationMetadata) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

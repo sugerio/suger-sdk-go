@@ -21,9 +21,10 @@ var _ MappedNullable = &IdentityConctactInfo{}
 // IdentityConctactInfo struct for IdentityConctactInfo
 type IdentityConctactInfo struct {
 	CompanyLocation *string `json:"companyLocation,omitempty"`
-	CompanyName *string `json:"companyName,omitempty"`
-	PhoneNumber *string `json:"phoneNumber,omitempty"`
-	Role *string `json:"role,omitempty"`
+	CompanyName     *string `json:"companyName,omitempty"`
+	LastModifiedBy  *string `json:"lastModifiedBy,omitempty"`
+	PhoneNumber     *string `json:"phoneNumber,omitempty"`
+	Role            *string `json:"role,omitempty"`
 }
 
 // NewIdentityConctactInfo instantiates a new IdentityConctactInfo object
@@ -107,6 +108,38 @@ func (o *IdentityConctactInfo) SetCompanyName(v string) {
 	o.CompanyName = &v
 }
 
+// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
+func (o *IdentityConctactInfo) GetLastModifiedBy() string {
+	if o == nil || IsNil(o.LastModifiedBy) {
+		var ret string
+		return ret
+	}
+	return *o.LastModifiedBy
+}
+
+// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityConctactInfo) GetLastModifiedByOk() (*string, bool) {
+	if o == nil || IsNil(o.LastModifiedBy) {
+		return nil, false
+	}
+	return o.LastModifiedBy, true
+}
+
+// HasLastModifiedBy returns a boolean if a field has been set.
+func (o *IdentityConctactInfo) HasLastModifiedBy() bool {
+	if o != nil && !IsNil(o.LastModifiedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModifiedBy gets a reference to the given string and assigns it to the LastModifiedBy field.
+func (o *IdentityConctactInfo) SetLastModifiedBy(v string) {
+	o.LastModifiedBy = &v
+}
+
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
 func (o *IdentityConctactInfo) GetPhoneNumber() string {
 	if o == nil || IsNil(o.PhoneNumber) {
@@ -172,7 +205,7 @@ func (o *IdentityConctactInfo) SetRole(v string) {
 }
 
 func (o IdentityConctactInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -186,6 +219,9 @@ func (o IdentityConctactInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CompanyName) {
 		toSerialize["companyName"] = o.CompanyName
+	}
+	if !IsNil(o.LastModifiedBy) {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	}
 	if !IsNil(o.PhoneNumber) {
 		toSerialize["phoneNumber"] = o.PhoneNumber
@@ -231,5 +267,3 @@ func (v *NullableIdentityConctactInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **PostalCode** | Pointer to **string** |  | [optional] 
 **State** | Pointer to **string** |  | [optional] 
+**ValidFrom** | Pointer to **string** | When the company info becomes valid. in format \&quot;2006-01-02T15:04:05Z\&quot; | [optional] 
 
 ## Methods
 
@@ -231,6 +232,31 @@ SetState sets State field to given value.
 `func (o *CompanyInfo) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### GetValidFrom
+
+`func (o *CompanyInfo) GetValidFrom() string`
+
+GetValidFrom returns the ValidFrom field if non-nil, zero value otherwise.
+
+### GetValidFromOk
+
+`func (o *CompanyInfo) GetValidFromOk() (*string, bool)`
+
+GetValidFromOk returns a tuple with the ValidFrom field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValidFrom
+
+`func (o *CompanyInfo) SetValidFrom(v string)`
+
+SetValidFrom sets ValidFrom field to given value.
+
+### HasValidFrom
+
+`func (o *CompanyInfo) HasValidFrom() bool`
+
+HasValidFrom returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

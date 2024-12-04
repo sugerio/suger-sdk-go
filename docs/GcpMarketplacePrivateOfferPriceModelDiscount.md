@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DiscountPercentage** | Pointer to [**GcpDiscountPercentage**](GcpDiscountPercentage.md) |  | [optional] 
-**DiscountedPrice** | Pointer to [**GcpPriceValue**](GcpPriceValue.md) |  | [optional] 
+**DiscountPercentage** | Pointer to [**GcpAmountUnit**](GcpAmountUnit.md) | such as {\&quot;units\&quot;: \&quot;0\&quot;, \&quot;nanos\&quot;: 0} as no discount, or {\&quot;units\&quot;: \&quot;10\&quot;, \&quot;nanos\&quot;: 0} as 10% off discount | [optional] 
+**DiscountedPrice** | Pointer to [**GcpPriceValue**](GcpPriceValue.md) | The discounted price of the private offer. If the discount is 10% off, and the original price is $100, then the discounted price is $90. | [optional] 
 
 ## Methods
 
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDiscountPercentage
 
-`func (o *GcpMarketplacePrivateOfferPriceModelDiscount) GetDiscountPercentage() GcpDiscountPercentage`
+`func (o *GcpMarketplacePrivateOfferPriceModelDiscount) GetDiscountPercentage() GcpAmountUnit`
 
 GetDiscountPercentage returns the DiscountPercentage field if non-nil, zero value otherwise.
 
 ### GetDiscountPercentageOk
 
-`func (o *GcpMarketplacePrivateOfferPriceModelDiscount) GetDiscountPercentageOk() (*GcpDiscountPercentage, bool)`
+`func (o *GcpMarketplacePrivateOfferPriceModelDiscount) GetDiscountPercentageOk() (*GcpAmountUnit, bool)`
 
 GetDiscountPercentageOk returns a tuple with the DiscountPercentage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscountPercentage
 
-`func (o *GcpMarketplacePrivateOfferPriceModelDiscount) SetDiscountPercentage(v GcpDiscountPercentage)`
+`func (o *GcpMarketplacePrivateOfferPriceModelDiscount) SetDiscountPercentage(v GcpAmountUnit)`
 
 SetDiscountPercentage sets DiscountPercentage field to given value.
 
