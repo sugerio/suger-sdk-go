@@ -677,7 +677,7 @@ auth := context.WithValue(
 		context.Background(),
 		openapi.ContextAPIKeys,
 		map[string]openapi.APIKey{
-			"APIKeyAuth": {Key: "API_KEY_STRING"},
+			"Authorization": {Key: "API_KEY_STRING"},
 		},
 	)
 r, err := client.Service.Operation(auth, args)
