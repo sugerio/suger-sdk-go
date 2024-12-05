@@ -29,7 +29,7 @@ type TypesEntitlement struct {
 	// The product code for which the given entitlement applies. Product codes are provided by AWS Marketplace when the product listing is created.
 	ProductCode *string `json:"productCode,omitempty"`
 	// The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.
-	Value map[string]interface{} `json:"value,omitempty"`
+	Value *TypesEntitlementValue `json:"value,omitempty"`
 }
 
 // NewTypesEntitlement instantiates a new TypesEntitlement object
@@ -178,19 +178,19 @@ func (o *TypesEntitlement) SetProductCode(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *TypesEntitlement) GetValue() map[string]interface{} {
+func (o *TypesEntitlement) GetValue() TypesEntitlementValue {
 	if o == nil || IsNil(o.Value) {
-		var ret map[string]interface{}
+		var ret TypesEntitlementValue
 		return ret
 	}
-	return o.Value
+	return *o.Value
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TypesEntitlement) GetValueOk() (map[string]interface{}, bool) {
+func (o *TypesEntitlement) GetValueOk() (*TypesEntitlementValue, bool) {
 	if o == nil || IsNil(o.Value) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Value, true
 }
@@ -204,13 +204,13 @@ func (o *TypesEntitlement) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given map[string]interface{} and assigns it to the Value field.
-func (o *TypesEntitlement) SetValue(v map[string]interface{}) {
-	o.Value = v
+// SetValue gets a reference to the given TypesEntitlementValue and assigns it to the Value field.
+func (o *TypesEntitlement) SetValue(v TypesEntitlementValue) {
+	o.Value = &v
 }
 
 func (o TypesEntitlement) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -272,5 +272,3 @@ func (v *NullableTypesEntitlement) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

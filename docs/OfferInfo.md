@@ -4,36 +4,57 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AttachEulaType** | Pointer to [**EulaType**](EulaType.md) |  | [optional] 
+**AdditionalEulaUrls** | Pointer to **[]string** | The URL of the additional EULA files. Only applicable when EulaType &#x3D; CUSTOM. The additional EULA files will be attached to the EULA file in the EulaUrl, and form a single EULA file. | [optional] 
+**AdditionalResellerEulaUrls** | Pointer to **[]string** | The URL of the additional reseller EULA files. Only applicable when ResellerEulaType &#x3D; CUSTOM. | [optional] 
+**AttachEulaType** | Pointer to [**EulaType**](EulaType.md) | Attach the standard EULA file to the CUSTOM EULA file. Only applicable when EulaType &#x3D; CUSTOM | [optional] 
 **AutoRenew** | Pointer to **bool** | Is this offer Auto Renew enabled. | [optional] 
-**AwsCppoEventDetail** | Pointer to [**AwsMarketplaceEventBridgeEventDetail**](AwsMarketplaceEventBridgeEventDetail.md) |  | [optional] 
-**AwsCppoOpportunity** | Pointer to [**AwsMarketplaceCppoOpportunity**](AwsMarketplaceCppoOpportunity.md) |  | [optional] 
-**AzureOriginalPlan** | Pointer to [**AzurePriceAndAvailabilityPrivateOfferPlan**](AzurePriceAndAvailabilityPrivateOfferPlan.md) |  | [optional] 
-**AzurePrivateOffer** | Pointer to [**AzureMarketplacePrivateOffer**](AzureMarketplacePrivateOffer.md) |  | [optional] 
-**AzureProductVariant** | Pointer to [**AzureProductVariant**](AzureProductVariant.md) |  | [optional] 
+**AwsAgreementDuration** | Pointer to **string** | Aws private subscription offer Usage duration. ISO8601 format. P300D means the contract Usage start date At acceptance, and with duration 300 days. | [optional] 
+**AwsChannelPartner** | Pointer to [**AwsChannelPartner**](AwsChannelPartner.md) | The AWS channel partner (reseller), only applicable for AWS Marketplace CPPO_OUT or CPPO offers. | [optional] 
+**AwsCppoEventDetail** | Pointer to [**AwsMarketplaceEventBridgeEventDetail**](AwsMarketplaceEventBridgeEventDetail.md) | AWS EventBridge Event, only applicable for AWS Marketplace CPPO offers. | [optional] 
+**AwsCppoOpportunity** | Pointer to [**AwsMarketplaceCppoOpportunity**](AwsMarketplaceCppoOpportunity.md) | AWS CPPO Opportunity, only applicable for AWS Marketplace CPPO_OUT or CPPO_IN offers. | [optional] 
+**AwsMarkupPercentage** | Pointer to **float32** | AWS private reseller offer using markup percentage. 10.0 represent 10% partner margin. | [optional] 
+**AwsResaleAuthorizationId** | Pointer to **string** | AWS ResaleAuthorizationId(CPPO_IN offer id) for CPPO offers of the reseller. | [optional] 
+**AzureOriginalPlan** | Pointer to [**AzureMarketplacePriceAndAvailabilityPrivateOfferPlan**](AzureMarketplacePriceAndAvailabilityPrivateOfferPlan.md) | The origin pricing of Azure plan. Only applicable for Azure Marketplace plans. | [optional] 
+**AzurePrivateOffer** | Pointer to [**AzureMarketplacePrivateOffer**](AzureMarketplacePrivateOffer.md) | The private offer for Azure Marketplace. Only applicable for Azure Marketplace private offers. | [optional] 
+**AzureProductVariant** | Pointer to [**AzureProductVariant**](AzureProductVariant.md) | For Azure marketplace only. | [optional] 
+**BillableDimensions** | Pointer to [**[]BillableDimension**](BillableDimension.md) | Usage based metering dimensions based on Billable Metrics, managed by Suger only. | [optional] 
+**BillingCycle** | Pointer to [**BillingCycle**](BillingCycle.md) | Billing Cycle for the offer. | [optional] 
 **BuyerAwsAccountIds** | Pointer to **[]string** | The buyers&#39; AWS Account IDs of this offer. | [optional] 
 **BuyerAzureTenants** | Pointer to [**[]AzureAudience**](AzureAudience.md) | The buyers&#39; Azure tenants of this offer. | [optional] 
-**CommitAmount** | Pointer to **float32** | The amount that the buyer has committed to pay, before discount if applicable. It can be monthly commitment or total commitment. | [optional] 
-**Commits** | Pointer to [**[]CommitDimension**](CommitDimension.md) |  | [optional] 
-**Currency** | Pointer to **string** |  | [optional] 
-**Dimensions** | Pointer to [**[]MeteringDimension**](MeteringDimension.md) |  | [optional] 
+**CommitAmount** | Pointer to **float32** | The amount that the buyer has committed to pay, before discount if applicable. It can be monthly commitment or total commitment. For frontend display or analysis purposes, not used for billing. | [optional] 
+**CommitBillingIntervalInMonths** | Pointer to **int32** | Billing interval in months for commitDimensions | [optional] 
+**Commits** | Pointer to [**[]CommitDimension**](CommitDimension.md) | Recurring flat fee for the offer, managed by cloud marketplaces or Suger. | [optional] 
+**Currency** | Pointer to **string** | The currency code of the offer. ISO 4217 format. | [optional] 
+**Dimensions** | Pointer to [**[]MeteringDimension**](MeteringDimension.md) | Usage based metering dimensions defined on cloud marketplaces, managed by Cloud marketplaces only. | [optional] 
 **DiscountPercentage** | Pointer to **float32** | The discount percentage off the original price. For example, 20 means 20% off. 0 means no discount. It can be discount off the commitment amount or discount off the usage price. | [optional] 
 **EulaType** | Pointer to [**EulaType**](EulaType.md) |  | [optional] 
 **EulaUrl** | Pointer to **string** |  | [optional] 
-**GcpCustomerInfo** | Pointer to [**GcpMarketplacePrivateOfferCustomerInfo**](GcpMarketplacePrivateOfferCustomerInfo.md) |  | [optional] 
+**GcpCustomerInfo** | Pointer to [**GcpMarketplacePrivateOfferCustomerInfo**](GcpMarketplacePrivateOfferCustomerInfo.md) | Only required when creating GCP Marketplace private offer. | [optional] 
 **GcpDuration** | Pointer to **int32** | The duration of the offer in months. Only required when creating GCP Marketplace private offer. | [optional] 
 **GcpMetrics** | Pointer to [**[]GcpMarketplaceProductMeteringMetric**](GcpMarketplaceProductMeteringMetric.md) | Only applicable for GCP Marketplace Offers (the default or private offer) | [optional] 
-**GcpPaymentSchedule** | Pointer to [**GcpMarketplacePaymentScheduleType**](GcpMarketplacePaymentScheduleType.md) |  | [optional] 
+**GcpPaymentSchedule** | Pointer to [**PaymentScheduleType**](PaymentScheduleType.md) | Only required when creating GCP Marketplace private offer, to specify the payment schedule for the private offer. TODO: It will be deprecated in the future and replaced by PaymentSchedule. | [optional] 
 **GcpPlans** | Pointer to [**[]GcpMarketplaceProductPurchaseOptionSpec**](GcpMarketplaceProductPurchaseOptionSpec.md) | Only applicable for GCP Marketplace | [optional] 
-**GcpPrivateOffer** | Pointer to [**GcpMarketplacePrivateOffer**](GcpMarketplacePrivateOffer.md) |  | [optional] 
-**GcpProviderInfo** | Pointer to [**GcpMarketplacePrivateOfferProviderInfo**](GcpMarketplacePrivateOfferProviderInfo.md) |  | [optional] 
+**GcpPrivateOffer** | Pointer to [**GcpMarketplacePrivateOffer**](GcpMarketplacePrivateOffer.md) | The private offer for GCP Marketplace. Only applicable for GCP Marketplace private offers. | [optional] 
+**GcpProviderInfo** | Pointer to [**GcpMarketplacePrivateOfferProviderInfo**](GcpMarketplacePrivateOfferProviderInfo.md) | Only required when creating GCP Marketplace private offer. | [optional] 
 **GcpProviderInternalNote** | Pointer to **string** | Optional when creating GCP Marketplace private offer. The internal note for the seller/ISV. It is only visible to the seller/ISV. | [optional] 
-**GcpProviderPublicNote** | Pointer to **string** | Optional when creating GCP Marketplace private offer. The public note for the buyer. It is visible to the buyer. | [optional] 
-**GcpUsagePlanPriceModel** | Pointer to [**GcpMarketplaceUsagePlanPriceModel**](GcpMarketplaceUsagePlanPriceModel.md) |  | [optional] 
-**PaymentInstallments** | Pointer to [**[]PaymentInstallment**](PaymentInstallment.md) | For flexible payment schedule. | [optional] 
+**GcpProviderPublicNote** | Pointer to **string** | Optional when creating GCP Marketplace private offer. By default, it is the same as offer name. The public note for the buyer. It is visible to the buyer. | [optional] 
+**GcpResellerPrivateOfferPlan** | Pointer to [**GcpMarketplaceResellerPrivateOfferPlan**](GcpMarketplaceResellerPrivateOfferPlan.md) |  | [optional] 
+**GcpUsagePlanPriceModel** | Pointer to [**GcpMarketplaceUsagePlanPriceModel**](GcpMarketplaceUsagePlanPriceModel.md) | Only applicable for GCP Marketplace with Usage plan. Not appliable for Subscription plan. | [optional] 
+**GracePeriodInDays** | Pointer to **int32** | The grace period in days for the offer. This is the number of days during which invoices remain in draft status, for reviewing. This filed can be overridden at the entitlement level. | [optional] 
+**NetTermsInDays** | Pointer to **int32** | The net terms in days for the offer. This is the number of days the buyer has to pay the invoice. This filed can be overridden at the entitlement level. | [optional] 
+**PaymentInstallments** | Pointer to [**[]PaymentInstallment**](PaymentInstallment.md) | For flexible payment schedule, managed by cloud marketplaces or Suger. | [optional] 
+**PaymentSchedule** | Pointer to [**PaymentScheduleType**](PaymentScheduleType.md) | The payment schedule for the offer. PREPAY means the buyer pays before the service is provided. POSTPAY means the buyer pays after the service is provided. | [optional] 
 **PrivateOfferUrl** | Pointer to **string** | The URL of the private offer sent to buyers to accept. Only applicable for private offer. | [optional] 
-**RefundCancelationPolicy** | Pointer to **string** |  | [optional] 
+**ProratedBilling** | Pointer to **bool** | Prorated billing for the offer. If true, the billing is prorated based on the start date and end date. If false, the billing is not prorated. This filed can be overridden at the entitlement level. | [optional] 
+**RefundCancellationPolicy** | Pointer to **string** |  | [optional] 
+**ResellerAttachEulaType** | Pointer to [**EulaType**](EulaType.md) | Attach the standard EULA file to the CUSTOM EULA file. Only applicable when EulaType &#x3D; CUSTOM | [optional] 
+**ResellerEulaType** | Pointer to [**EulaType**](EulaType.md) | The type of the reseller EULA. Only applicable for CPPO offers. | [optional] 
+**ResellerEulaUrl** | Pointer to **string** |  | [optional] 
 **SellerNotes** | Pointer to **string** |  | [optional] 
+**StartTime** | Pointer to **time.Time** | Optional when creating AWS or GCP Marketplace private offer on the contract product. The future start time of the offer if it is not started on the acceptance. | [optional] 
+**TaxIds** | Pointer to **[]string** | Tax ids for the offer, used to calculate the tax amount for the offer. This field can be overridden at the entitlement level. | [optional] 
+**TrialConfig** | Pointer to [**TrialConfig**](TrialConfig.md) | The offer for Direct. Only applicable for Direct offers. It is used in Stripe, Adyen, and other direct payment providers. The trial configuration for the offer. | [optional] 
+**UsageBillingIntervalInMonths** | Pointer to **int32** | Billing interval in months for billableDimensions | [optional] 
 **Visibility** | Pointer to **string** | The default visibility of offer is PRIVATE. | [optional] 
 
 ## Methods
@@ -54,6 +75,56 @@ will change when the set of required properties is changed
 NewOfferInfoWithDefaults instantiates a new OfferInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAdditionalEulaUrls
+
+`func (o *OfferInfo) GetAdditionalEulaUrls() []string`
+
+GetAdditionalEulaUrls returns the AdditionalEulaUrls field if non-nil, zero value otherwise.
+
+### GetAdditionalEulaUrlsOk
+
+`func (o *OfferInfo) GetAdditionalEulaUrlsOk() (*[]string, bool)`
+
+GetAdditionalEulaUrlsOk returns a tuple with the AdditionalEulaUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalEulaUrls
+
+`func (o *OfferInfo) SetAdditionalEulaUrls(v []string)`
+
+SetAdditionalEulaUrls sets AdditionalEulaUrls field to given value.
+
+### HasAdditionalEulaUrls
+
+`func (o *OfferInfo) HasAdditionalEulaUrls() bool`
+
+HasAdditionalEulaUrls returns a boolean if a field has been set.
+
+### GetAdditionalResellerEulaUrls
+
+`func (o *OfferInfo) GetAdditionalResellerEulaUrls() []string`
+
+GetAdditionalResellerEulaUrls returns the AdditionalResellerEulaUrls field if non-nil, zero value otherwise.
+
+### GetAdditionalResellerEulaUrlsOk
+
+`func (o *OfferInfo) GetAdditionalResellerEulaUrlsOk() (*[]string, bool)`
+
+GetAdditionalResellerEulaUrlsOk returns a tuple with the AdditionalResellerEulaUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalResellerEulaUrls
+
+`func (o *OfferInfo) SetAdditionalResellerEulaUrls(v []string)`
+
+SetAdditionalResellerEulaUrls sets AdditionalResellerEulaUrls field to given value.
+
+### HasAdditionalResellerEulaUrls
+
+`func (o *OfferInfo) HasAdditionalResellerEulaUrls() bool`
+
+HasAdditionalResellerEulaUrls returns a boolean if a field has been set.
 
 ### GetAttachEulaType
 
@@ -105,6 +176,56 @@ SetAutoRenew sets AutoRenew field to given value.
 
 HasAutoRenew returns a boolean if a field has been set.
 
+### GetAwsAgreementDuration
+
+`func (o *OfferInfo) GetAwsAgreementDuration() string`
+
+GetAwsAgreementDuration returns the AwsAgreementDuration field if non-nil, zero value otherwise.
+
+### GetAwsAgreementDurationOk
+
+`func (o *OfferInfo) GetAwsAgreementDurationOk() (*string, bool)`
+
+GetAwsAgreementDurationOk returns a tuple with the AwsAgreementDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsAgreementDuration
+
+`func (o *OfferInfo) SetAwsAgreementDuration(v string)`
+
+SetAwsAgreementDuration sets AwsAgreementDuration field to given value.
+
+### HasAwsAgreementDuration
+
+`func (o *OfferInfo) HasAwsAgreementDuration() bool`
+
+HasAwsAgreementDuration returns a boolean if a field has been set.
+
+### GetAwsChannelPartner
+
+`func (o *OfferInfo) GetAwsChannelPartner() AwsChannelPartner`
+
+GetAwsChannelPartner returns the AwsChannelPartner field if non-nil, zero value otherwise.
+
+### GetAwsChannelPartnerOk
+
+`func (o *OfferInfo) GetAwsChannelPartnerOk() (*AwsChannelPartner, bool)`
+
+GetAwsChannelPartnerOk returns a tuple with the AwsChannelPartner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsChannelPartner
+
+`func (o *OfferInfo) SetAwsChannelPartner(v AwsChannelPartner)`
+
+SetAwsChannelPartner sets AwsChannelPartner field to given value.
+
+### HasAwsChannelPartner
+
+`func (o *OfferInfo) HasAwsChannelPartner() bool`
+
+HasAwsChannelPartner returns a boolean if a field has been set.
+
 ### GetAwsCppoEventDetail
 
 `func (o *OfferInfo) GetAwsCppoEventDetail() AwsMarketplaceEventBridgeEventDetail`
@@ -155,22 +276,72 @@ SetAwsCppoOpportunity sets AwsCppoOpportunity field to given value.
 
 HasAwsCppoOpportunity returns a boolean if a field has been set.
 
+### GetAwsMarkupPercentage
+
+`func (o *OfferInfo) GetAwsMarkupPercentage() float32`
+
+GetAwsMarkupPercentage returns the AwsMarkupPercentage field if non-nil, zero value otherwise.
+
+### GetAwsMarkupPercentageOk
+
+`func (o *OfferInfo) GetAwsMarkupPercentageOk() (*float32, bool)`
+
+GetAwsMarkupPercentageOk returns a tuple with the AwsMarkupPercentage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsMarkupPercentage
+
+`func (o *OfferInfo) SetAwsMarkupPercentage(v float32)`
+
+SetAwsMarkupPercentage sets AwsMarkupPercentage field to given value.
+
+### HasAwsMarkupPercentage
+
+`func (o *OfferInfo) HasAwsMarkupPercentage() bool`
+
+HasAwsMarkupPercentage returns a boolean if a field has been set.
+
+### GetAwsResaleAuthorizationId
+
+`func (o *OfferInfo) GetAwsResaleAuthorizationId() string`
+
+GetAwsResaleAuthorizationId returns the AwsResaleAuthorizationId field if non-nil, zero value otherwise.
+
+### GetAwsResaleAuthorizationIdOk
+
+`func (o *OfferInfo) GetAwsResaleAuthorizationIdOk() (*string, bool)`
+
+GetAwsResaleAuthorizationIdOk returns a tuple with the AwsResaleAuthorizationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsResaleAuthorizationId
+
+`func (o *OfferInfo) SetAwsResaleAuthorizationId(v string)`
+
+SetAwsResaleAuthorizationId sets AwsResaleAuthorizationId field to given value.
+
+### HasAwsResaleAuthorizationId
+
+`func (o *OfferInfo) HasAwsResaleAuthorizationId() bool`
+
+HasAwsResaleAuthorizationId returns a boolean if a field has been set.
+
 ### GetAzureOriginalPlan
 
-`func (o *OfferInfo) GetAzureOriginalPlan() AzurePriceAndAvailabilityPrivateOfferPlan`
+`func (o *OfferInfo) GetAzureOriginalPlan() AzureMarketplacePriceAndAvailabilityPrivateOfferPlan`
 
 GetAzureOriginalPlan returns the AzureOriginalPlan field if non-nil, zero value otherwise.
 
 ### GetAzureOriginalPlanOk
 
-`func (o *OfferInfo) GetAzureOriginalPlanOk() (*AzurePriceAndAvailabilityPrivateOfferPlan, bool)`
+`func (o *OfferInfo) GetAzureOriginalPlanOk() (*AzureMarketplacePriceAndAvailabilityPrivateOfferPlan, bool)`
 
 GetAzureOriginalPlanOk returns a tuple with the AzureOriginalPlan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAzureOriginalPlan
 
-`func (o *OfferInfo) SetAzureOriginalPlan(v AzurePriceAndAvailabilityPrivateOfferPlan)`
+`func (o *OfferInfo) SetAzureOriginalPlan(v AzureMarketplacePriceAndAvailabilityPrivateOfferPlan)`
 
 SetAzureOriginalPlan sets AzureOriginalPlan field to given value.
 
@@ -229,6 +400,56 @@ SetAzureProductVariant sets AzureProductVariant field to given value.
 `func (o *OfferInfo) HasAzureProductVariant() bool`
 
 HasAzureProductVariant returns a boolean if a field has been set.
+
+### GetBillableDimensions
+
+`func (o *OfferInfo) GetBillableDimensions() []BillableDimension`
+
+GetBillableDimensions returns the BillableDimensions field if non-nil, zero value otherwise.
+
+### GetBillableDimensionsOk
+
+`func (o *OfferInfo) GetBillableDimensionsOk() (*[]BillableDimension, bool)`
+
+GetBillableDimensionsOk returns a tuple with the BillableDimensions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillableDimensions
+
+`func (o *OfferInfo) SetBillableDimensions(v []BillableDimension)`
+
+SetBillableDimensions sets BillableDimensions field to given value.
+
+### HasBillableDimensions
+
+`func (o *OfferInfo) HasBillableDimensions() bool`
+
+HasBillableDimensions returns a boolean if a field has been set.
+
+### GetBillingCycle
+
+`func (o *OfferInfo) GetBillingCycle() BillingCycle`
+
+GetBillingCycle returns the BillingCycle field if non-nil, zero value otherwise.
+
+### GetBillingCycleOk
+
+`func (o *OfferInfo) GetBillingCycleOk() (*BillingCycle, bool)`
+
+GetBillingCycleOk returns a tuple with the BillingCycle field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillingCycle
+
+`func (o *OfferInfo) SetBillingCycle(v BillingCycle)`
+
+SetBillingCycle sets BillingCycle field to given value.
+
+### HasBillingCycle
+
+`func (o *OfferInfo) HasBillingCycle() bool`
+
+HasBillingCycle returns a boolean if a field has been set.
 
 ### GetBuyerAwsAccountIds
 
@@ -304,6 +525,31 @@ SetCommitAmount sets CommitAmount field to given value.
 `func (o *OfferInfo) HasCommitAmount() bool`
 
 HasCommitAmount returns a boolean if a field has been set.
+
+### GetCommitBillingIntervalInMonths
+
+`func (o *OfferInfo) GetCommitBillingIntervalInMonths() int32`
+
+GetCommitBillingIntervalInMonths returns the CommitBillingIntervalInMonths field if non-nil, zero value otherwise.
+
+### GetCommitBillingIntervalInMonthsOk
+
+`func (o *OfferInfo) GetCommitBillingIntervalInMonthsOk() (*int32, bool)`
+
+GetCommitBillingIntervalInMonthsOk returns a tuple with the CommitBillingIntervalInMonths field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommitBillingIntervalInMonths
+
+`func (o *OfferInfo) SetCommitBillingIntervalInMonths(v int32)`
+
+SetCommitBillingIntervalInMonths sets CommitBillingIntervalInMonths field to given value.
+
+### HasCommitBillingIntervalInMonths
+
+`func (o *OfferInfo) HasCommitBillingIntervalInMonths() bool`
+
+HasCommitBillingIntervalInMonths returns a boolean if a field has been set.
 
 ### GetCommits
 
@@ -532,20 +778,20 @@ HasGcpMetrics returns a boolean if a field has been set.
 
 ### GetGcpPaymentSchedule
 
-`func (o *OfferInfo) GetGcpPaymentSchedule() GcpMarketplacePaymentScheduleType`
+`func (o *OfferInfo) GetGcpPaymentSchedule() PaymentScheduleType`
 
 GetGcpPaymentSchedule returns the GcpPaymentSchedule field if non-nil, zero value otherwise.
 
 ### GetGcpPaymentScheduleOk
 
-`func (o *OfferInfo) GetGcpPaymentScheduleOk() (*GcpMarketplacePaymentScheduleType, bool)`
+`func (o *OfferInfo) GetGcpPaymentScheduleOk() (*PaymentScheduleType, bool)`
 
 GetGcpPaymentScheduleOk returns a tuple with the GcpPaymentSchedule field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGcpPaymentSchedule
 
-`func (o *OfferInfo) SetGcpPaymentSchedule(v GcpMarketplacePaymentScheduleType)`
+`func (o *OfferInfo) SetGcpPaymentSchedule(v PaymentScheduleType)`
 
 SetGcpPaymentSchedule sets GcpPaymentSchedule field to given value.
 
@@ -680,6 +926,31 @@ SetGcpProviderPublicNote sets GcpProviderPublicNote field to given value.
 
 HasGcpProviderPublicNote returns a boolean if a field has been set.
 
+### GetGcpResellerPrivateOfferPlan
+
+`func (o *OfferInfo) GetGcpResellerPrivateOfferPlan() GcpMarketplaceResellerPrivateOfferPlan`
+
+GetGcpResellerPrivateOfferPlan returns the GcpResellerPrivateOfferPlan field if non-nil, zero value otherwise.
+
+### GetGcpResellerPrivateOfferPlanOk
+
+`func (o *OfferInfo) GetGcpResellerPrivateOfferPlanOk() (*GcpMarketplaceResellerPrivateOfferPlan, bool)`
+
+GetGcpResellerPrivateOfferPlanOk returns a tuple with the GcpResellerPrivateOfferPlan field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpResellerPrivateOfferPlan
+
+`func (o *OfferInfo) SetGcpResellerPrivateOfferPlan(v GcpMarketplaceResellerPrivateOfferPlan)`
+
+SetGcpResellerPrivateOfferPlan sets GcpResellerPrivateOfferPlan field to given value.
+
+### HasGcpResellerPrivateOfferPlan
+
+`func (o *OfferInfo) HasGcpResellerPrivateOfferPlan() bool`
+
+HasGcpResellerPrivateOfferPlan returns a boolean if a field has been set.
+
 ### GetGcpUsagePlanPriceModel
 
 `func (o *OfferInfo) GetGcpUsagePlanPriceModel() GcpMarketplaceUsagePlanPriceModel`
@@ -704,6 +975,56 @@ SetGcpUsagePlanPriceModel sets GcpUsagePlanPriceModel field to given value.
 `func (o *OfferInfo) HasGcpUsagePlanPriceModel() bool`
 
 HasGcpUsagePlanPriceModel returns a boolean if a field has been set.
+
+### GetGracePeriodInDays
+
+`func (o *OfferInfo) GetGracePeriodInDays() int32`
+
+GetGracePeriodInDays returns the GracePeriodInDays field if non-nil, zero value otherwise.
+
+### GetGracePeriodInDaysOk
+
+`func (o *OfferInfo) GetGracePeriodInDaysOk() (*int32, bool)`
+
+GetGracePeriodInDaysOk returns a tuple with the GracePeriodInDays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGracePeriodInDays
+
+`func (o *OfferInfo) SetGracePeriodInDays(v int32)`
+
+SetGracePeriodInDays sets GracePeriodInDays field to given value.
+
+### HasGracePeriodInDays
+
+`func (o *OfferInfo) HasGracePeriodInDays() bool`
+
+HasGracePeriodInDays returns a boolean if a field has been set.
+
+### GetNetTermsInDays
+
+`func (o *OfferInfo) GetNetTermsInDays() int32`
+
+GetNetTermsInDays returns the NetTermsInDays field if non-nil, zero value otherwise.
+
+### GetNetTermsInDaysOk
+
+`func (o *OfferInfo) GetNetTermsInDaysOk() (*int32, bool)`
+
+GetNetTermsInDaysOk returns a tuple with the NetTermsInDays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetTermsInDays
+
+`func (o *OfferInfo) SetNetTermsInDays(v int32)`
+
+SetNetTermsInDays sets NetTermsInDays field to given value.
+
+### HasNetTermsInDays
+
+`func (o *OfferInfo) HasNetTermsInDays() bool`
+
+HasNetTermsInDays returns a boolean if a field has been set.
 
 ### GetPaymentInstallments
 
@@ -730,6 +1051,31 @@ SetPaymentInstallments sets PaymentInstallments field to given value.
 
 HasPaymentInstallments returns a boolean if a field has been set.
 
+### GetPaymentSchedule
+
+`func (o *OfferInfo) GetPaymentSchedule() PaymentScheduleType`
+
+GetPaymentSchedule returns the PaymentSchedule field if non-nil, zero value otherwise.
+
+### GetPaymentScheduleOk
+
+`func (o *OfferInfo) GetPaymentScheduleOk() (*PaymentScheduleType, bool)`
+
+GetPaymentScheduleOk returns a tuple with the PaymentSchedule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaymentSchedule
+
+`func (o *OfferInfo) SetPaymentSchedule(v PaymentScheduleType)`
+
+SetPaymentSchedule sets PaymentSchedule field to given value.
+
+### HasPaymentSchedule
+
+`func (o *OfferInfo) HasPaymentSchedule() bool`
+
+HasPaymentSchedule returns a boolean if a field has been set.
+
 ### GetPrivateOfferUrl
 
 `func (o *OfferInfo) GetPrivateOfferUrl() string`
@@ -755,30 +1101,130 @@ SetPrivateOfferUrl sets PrivateOfferUrl field to given value.
 
 HasPrivateOfferUrl returns a boolean if a field has been set.
 
-### GetRefundCancelationPolicy
+### GetProratedBilling
 
-`func (o *OfferInfo) GetRefundCancelationPolicy() string`
+`func (o *OfferInfo) GetProratedBilling() bool`
 
-GetRefundCancelationPolicy returns the RefundCancelationPolicy field if non-nil, zero value otherwise.
+GetProratedBilling returns the ProratedBilling field if non-nil, zero value otherwise.
 
-### GetRefundCancelationPolicyOk
+### GetProratedBillingOk
 
-`func (o *OfferInfo) GetRefundCancelationPolicyOk() (*string, bool)`
+`func (o *OfferInfo) GetProratedBillingOk() (*bool, bool)`
 
-GetRefundCancelationPolicyOk returns a tuple with the RefundCancelationPolicy field if it's non-nil, zero value otherwise
+GetProratedBillingOk returns a tuple with the ProratedBilling field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRefundCancelationPolicy
+### SetProratedBilling
 
-`func (o *OfferInfo) SetRefundCancelationPolicy(v string)`
+`func (o *OfferInfo) SetProratedBilling(v bool)`
 
-SetRefundCancelationPolicy sets RefundCancelationPolicy field to given value.
+SetProratedBilling sets ProratedBilling field to given value.
 
-### HasRefundCancelationPolicy
+### HasProratedBilling
 
-`func (o *OfferInfo) HasRefundCancelationPolicy() bool`
+`func (o *OfferInfo) HasProratedBilling() bool`
 
-HasRefundCancelationPolicy returns a boolean if a field has been set.
+HasProratedBilling returns a boolean if a field has been set.
+
+### GetRefundCancellationPolicy
+
+`func (o *OfferInfo) GetRefundCancellationPolicy() string`
+
+GetRefundCancellationPolicy returns the RefundCancellationPolicy field if non-nil, zero value otherwise.
+
+### GetRefundCancellationPolicyOk
+
+`func (o *OfferInfo) GetRefundCancellationPolicyOk() (*string, bool)`
+
+GetRefundCancellationPolicyOk returns a tuple with the RefundCancellationPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefundCancellationPolicy
+
+`func (o *OfferInfo) SetRefundCancellationPolicy(v string)`
+
+SetRefundCancellationPolicy sets RefundCancellationPolicy field to given value.
+
+### HasRefundCancellationPolicy
+
+`func (o *OfferInfo) HasRefundCancellationPolicy() bool`
+
+HasRefundCancellationPolicy returns a boolean if a field has been set.
+
+### GetResellerAttachEulaType
+
+`func (o *OfferInfo) GetResellerAttachEulaType() EulaType`
+
+GetResellerAttachEulaType returns the ResellerAttachEulaType field if non-nil, zero value otherwise.
+
+### GetResellerAttachEulaTypeOk
+
+`func (o *OfferInfo) GetResellerAttachEulaTypeOk() (*EulaType, bool)`
+
+GetResellerAttachEulaTypeOk returns a tuple with the ResellerAttachEulaType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResellerAttachEulaType
+
+`func (o *OfferInfo) SetResellerAttachEulaType(v EulaType)`
+
+SetResellerAttachEulaType sets ResellerAttachEulaType field to given value.
+
+### HasResellerAttachEulaType
+
+`func (o *OfferInfo) HasResellerAttachEulaType() bool`
+
+HasResellerAttachEulaType returns a boolean if a field has been set.
+
+### GetResellerEulaType
+
+`func (o *OfferInfo) GetResellerEulaType() EulaType`
+
+GetResellerEulaType returns the ResellerEulaType field if non-nil, zero value otherwise.
+
+### GetResellerEulaTypeOk
+
+`func (o *OfferInfo) GetResellerEulaTypeOk() (*EulaType, bool)`
+
+GetResellerEulaTypeOk returns a tuple with the ResellerEulaType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResellerEulaType
+
+`func (o *OfferInfo) SetResellerEulaType(v EulaType)`
+
+SetResellerEulaType sets ResellerEulaType field to given value.
+
+### HasResellerEulaType
+
+`func (o *OfferInfo) HasResellerEulaType() bool`
+
+HasResellerEulaType returns a boolean if a field has been set.
+
+### GetResellerEulaUrl
+
+`func (o *OfferInfo) GetResellerEulaUrl() string`
+
+GetResellerEulaUrl returns the ResellerEulaUrl field if non-nil, zero value otherwise.
+
+### GetResellerEulaUrlOk
+
+`func (o *OfferInfo) GetResellerEulaUrlOk() (*string, bool)`
+
+GetResellerEulaUrlOk returns a tuple with the ResellerEulaUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResellerEulaUrl
+
+`func (o *OfferInfo) SetResellerEulaUrl(v string)`
+
+SetResellerEulaUrl sets ResellerEulaUrl field to given value.
+
+### HasResellerEulaUrl
+
+`func (o *OfferInfo) HasResellerEulaUrl() bool`
+
+HasResellerEulaUrl returns a boolean if a field has been set.
 
 ### GetSellerNotes
 
@@ -804,6 +1250,106 @@ SetSellerNotes sets SellerNotes field to given value.
 `func (o *OfferInfo) HasSellerNotes() bool`
 
 HasSellerNotes returns a boolean if a field has been set.
+
+### GetStartTime
+
+`func (o *OfferInfo) GetStartTime() time.Time`
+
+GetStartTime returns the StartTime field if non-nil, zero value otherwise.
+
+### GetStartTimeOk
+
+`func (o *OfferInfo) GetStartTimeOk() (*time.Time, bool)`
+
+GetStartTimeOk returns a tuple with the StartTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartTime
+
+`func (o *OfferInfo) SetStartTime(v time.Time)`
+
+SetStartTime sets StartTime field to given value.
+
+### HasStartTime
+
+`func (o *OfferInfo) HasStartTime() bool`
+
+HasStartTime returns a boolean if a field has been set.
+
+### GetTaxIds
+
+`func (o *OfferInfo) GetTaxIds() []string`
+
+GetTaxIds returns the TaxIds field if non-nil, zero value otherwise.
+
+### GetTaxIdsOk
+
+`func (o *OfferInfo) GetTaxIdsOk() (*[]string, bool)`
+
+GetTaxIdsOk returns a tuple with the TaxIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTaxIds
+
+`func (o *OfferInfo) SetTaxIds(v []string)`
+
+SetTaxIds sets TaxIds field to given value.
+
+### HasTaxIds
+
+`func (o *OfferInfo) HasTaxIds() bool`
+
+HasTaxIds returns a boolean if a field has been set.
+
+### GetTrialConfig
+
+`func (o *OfferInfo) GetTrialConfig() TrialConfig`
+
+GetTrialConfig returns the TrialConfig field if non-nil, zero value otherwise.
+
+### GetTrialConfigOk
+
+`func (o *OfferInfo) GetTrialConfigOk() (*TrialConfig, bool)`
+
+GetTrialConfigOk returns a tuple with the TrialConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrialConfig
+
+`func (o *OfferInfo) SetTrialConfig(v TrialConfig)`
+
+SetTrialConfig sets TrialConfig field to given value.
+
+### HasTrialConfig
+
+`func (o *OfferInfo) HasTrialConfig() bool`
+
+HasTrialConfig returns a boolean if a field has been set.
+
+### GetUsageBillingIntervalInMonths
+
+`func (o *OfferInfo) GetUsageBillingIntervalInMonths() int32`
+
+GetUsageBillingIntervalInMonths returns the UsageBillingIntervalInMonths field if non-nil, zero value otherwise.
+
+### GetUsageBillingIntervalInMonthsOk
+
+`func (o *OfferInfo) GetUsageBillingIntervalInMonthsOk() (*int32, bool)`
+
+GetUsageBillingIntervalInMonthsOk returns a tuple with the UsageBillingIntervalInMonths field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageBillingIntervalInMonths
+
+`func (o *OfferInfo) SetUsageBillingIntervalInMonths(v int32)`
+
+SetUsageBillingIntervalInMonths sets UsageBillingIntervalInMonths field to given value.
+
+### HasUsageBillingIntervalInMonths
+
+`func (o *OfferInfo) HasUsageBillingIntervalInMonths() bool`
+
+HasUsageBillingIntervalInMonths returns a boolean if a field has been set.
 
 ### GetVisibility
 

@@ -21,17 +21,19 @@ type ValueType string
 
 // List of ValueType
 const (
-	ValueType_UNSPECIFIED ValueType = "VALUE_TYPE_UNSPECIFIED"
-	ValueType_BOOL ValueType = "BOOL"
-	ValueType_INT64 ValueType = "INT64"
-	ValueType_DOUBLE ValueType = "DOUBLE"
-	ValueType_STRING ValueType = "STRING"
+	ValueType_UNKNOWN      ValueType = ""
+	ValueType_UNSPECIFIED  ValueType = "VALUE_TYPE_UNSPECIFIED"
+	ValueType_BOOL         ValueType = "BOOL"
+	ValueType_INT64        ValueType = "INT64"
+	ValueType_DOUBLE       ValueType = "DOUBLE"
+	ValueType_STRING       ValueType = "STRING"
 	ValueType_DISTRIBUTION ValueType = "DISTRIBUTION"
-	ValueType_MONEY ValueType = "MONEY"
+	ValueType_MONEY        ValueType = "MONEY"
 )
 
 // All allowed values of ValueType enum
 var AllowedValueTypeEnumValues = []ValueType{
+	"",
 	"VALUE_TYPE_UNSPECIFIED",
 	"BOOL",
 	"INT64",
@@ -119,4 +121,3 @@ func (v *NullableValueType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

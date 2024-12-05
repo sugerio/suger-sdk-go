@@ -20,9 +20,9 @@ var _ MappedNullable = &GithubComAwsAwsSdkGoV2ServiceMarketplacemeteringTypesTag
 
 // GithubComAwsAwsSdkGoV2ServiceMarketplacemeteringTypesTag struct for GithubComAwsAwsSdkGoV2ServiceMarketplacemeteringTypesTag
 type GithubComAwsAwsSdkGoV2ServiceMarketplacemeteringTypesTag struct {
-	// One part of a key-value pair that makes up a tag. A key is a label that acts like a category for the specific tag values.  This member is required.
+	// One part of a key-value pair that makes up a tag . A key is a label that acts like a category for the specific tag values.  This member is required.
 	Key *string `json:"key,omitempty"`
-	// One part of a key-value pair that makes up a tag. A value acts as a descriptor within a tag category (key). The value can be empty or null.  This member is required.
+	// One part of a key-value pair that makes up a tag . A value acts as a descriptor within a tag category (key). The value can be empty or null.  This member is required.
 	Value *string `json:"value,omitempty"`
 }
 
@@ -108,7 +108,7 @@ func (o *GithubComAwsAwsSdkGoV2ServiceMarketplacemeteringTypesTag) SetValue(v st
 }
 
 func (o GithubComAwsAwsSdkGoV2ServiceMarketplacemeteringTypesTag) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -161,5 +161,3 @@ func (v *NullableGithubComAwsAwsSdkGoV2ServiceMarketplacemeteringTypesTag) Unmar
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

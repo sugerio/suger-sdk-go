@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **ProductExternalName** | Pointer to **string** | The identifier of the product that was procured. | [optional] 
 **Provider** | Pointer to **string** | The ID of the service provider under Cloud Commerce platform that this entitlement was created against. | [optional] 
 **QuoteExternalName** | Pointer to **string** | The identifier of the quote that was used to procure, such as the private offer Id. Empty if the order is not purchased using a quote. | [optional] 
-**State** | Pointer to [**GcpMarketplaceEntitlementState**](GcpMarketplaceEntitlementState.md) |  | [optional] 
+**State** | Pointer to [**GcpMarketplaceEntitlementState**](GcpMarketplaceEntitlementState.md) | Enums of the Entitlement State. https://cloud.google.com/marketplace/docs/partners/commerce-procurement-api/reference/rest/v1/providers.entitlements#EntitlementState | [optional] 
 **SubscriptionEndTime** | Pointer to **time.Time** | The End time for the subscription corresponding to this entitlement. | [optional] 
 **UpdateTime** | Pointer to **time.Time** | The last update timestamp. It is the endTime for the cancelled entitlement. | [optional] 
 **UsageReportingId** | Pointer to **string** | The consumerId to use when reporting usage through the Service Control API. See the consumerId field at Reporting Metrics (https://cloud.google.com/service-control/reporting-metrics) for more details. This field is present only if the product has usage-based billing configured. | [optional] 

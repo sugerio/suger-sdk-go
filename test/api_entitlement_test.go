@@ -11,17 +11,20 @@ package openapi
 
 import (
 	"context"
-	"testing"
-
+	"encoding/json"
+	"fmt"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	openapiclient "github.com/sugerio/suger-sdk-go"
+	"testing"
 )
 
 func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
+	header := apiClient.GetConfig().DefaultHeader
+	header["Authorization"] = "Key b277c95e5e92ff7a8e96e74baf6ee2fb080db3e6507977c0067791abc1f52da4220e866e2081117a1721788aa2e9dc6fe009f2a699f17a7bba23973af6954db4"
 
 	t.Run("Test EntitlementAPIService AddEntitlementCredit", func(t *testing.T) {
 
@@ -38,6 +41,21 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test EntitlementAPIService ApplyAddonToEntitlement", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var entitlementId string
+
+		resp, httpRes, err := apiClient.EntitlementAPI.ApplyAddonToEntitlement(context.Background(), orgId, entitlementId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test EntitlementAPIService ApproveEntitlement", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -46,6 +64,51 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 		var entitlementId string
 
 		resp, httpRes, err := apiClient.EntitlementAPI.ApproveEntitlement(context.Background(), orgId, entitlementId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementAPIService CancelEntitlement", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var entitlementId string
+
+		resp, httpRes, err := apiClient.EntitlementAPI.CancelEntitlement(context.Background(), orgId, entitlementId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementAPIService CreateEntitlement", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+
+		resp, httpRes, err := apiClient.EntitlementAPI.CreateEntitlement(context.Background(), orgId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementAPIService DeleteEntitlementTerm", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var entitlementId string
+		var entitlementTermId string
+
+		resp, httpRes, err := apiClient.EntitlementAPI.DeleteEntitlementTerm(context.Background(), orgId, entitlementId, entitlementTermId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -72,11 +135,44 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var orgId string
-		var entitlementId string
+		var orgId = "w43Vc6UfM"
+		var entitlementId = "3LviYKS_S"
 
 		resp, httpRes, err := apiClient.EntitlementAPI.GetEntitlement(context.Background(), orgId, entitlementId).Execute()
+		jsonData, err := json.Marshal(resp)
+		fmt.Printf(string(jsonData))
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
+	})
+
+	t.Run("Test EntitlementAPIService GetEntitlementTerm", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var entitlementId string
+		var entitlementTermId string
+
+		resp, httpRes, err := apiClient.EntitlementAPI.GetEntitlementTerm(context.Background(), orgId, entitlementId, entitlementTermId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementAPIService ListEntitlementTerms", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId = "w43Vc6UfM"
+		var entitlementId = "3LviYKS_S"
+
+		resp, httpRes, err := apiClient.EntitlementAPI.ListEntitlementTerms(context.Background(), orgId, entitlementId).Execute()
+		jsonData, err := json.Marshal(resp)
+		fmt.Printf(string(jsonData))
 		require.Nil(t, err)
 		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -97,14 +193,14 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test EntitlementAPIService ListEntitlementsByBuyer", func(t *testing.T) {
+	t.Run("Test EntitlementAPIService ScheduleEntitlementCancellation", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var orgId string
-		var buyerId string
+		var entitlementId string
 
-		resp, httpRes, err := apiClient.EntitlementAPI.ListEntitlementsByBuyer(context.Background(), orgId, buyerId).Execute()
+		resp, httpRes, err := apiClient.EntitlementAPI.ScheduleEntitlementCancellation(context.Background(), orgId, entitlementId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -112,44 +208,14 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test EntitlementAPIService ListEntitlementsByOffer", func(t *testing.T) {
+	t.Run("Test EntitlementAPIService UnscheduleEntitlementCancellation", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var orgId string
-		var offerId string
+		var entitlementId string
 
-		resp, httpRes, err := apiClient.EntitlementAPI.ListEntitlementsByOffer(context.Background(), orgId, offerId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test EntitlementAPIService ListEntitlementsByPartner", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var orgId string
-		var partner string
-
-		resp, httpRes, err := apiClient.EntitlementAPI.ListEntitlementsByPartner(context.Background(), orgId, partner).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test EntitlementAPIService ListEntitlementsByProduct", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var orgId string
-		var productId string
-
-		resp, httpRes, err := apiClient.EntitlementAPI.ListEntitlementsByProduct(context.Background(), orgId, productId).Execute()
+		resp, httpRes, err := apiClient.EntitlementAPI.UnscheduleEntitlementCancellation(context.Background(), orgId, entitlementId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -180,6 +246,21 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 		var entitlementId string
 
 		resp, httpRes, err := apiClient.EntitlementAPI.UpdateEntitlementName(context.Background(), orgId, entitlementId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementAPIService UpdateEntitlementSeat", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var entitlementId string
+
+		resp, httpRes, err := apiClient.EntitlementAPI.UpdateEntitlementSeat(context.Background(), orgId, entitlementId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -21,22 +21,24 @@ type EntitlementStatus string
 
 // List of EntitlementStatus
 const (
-	EntitlementStatus_UNKNOWN EntitlementStatus = ""
-	EntitlementStatus_ACTIVE EntitlementStatus = "ACTIVE"
+	EntitlementStatus_UNKNOWN        EntitlementStatus = ""
+	EntitlementStatus_ACTIVE         EntitlementStatus = "ACTIVE"
+	EntitlementStatus_CANCELLED      EntitlementStatus = "CANCELLED"
+	EntitlementStatus_DELETED        EntitlementStatus = "DELETED"
 	EntitlementStatus_PENDING_CANCEL EntitlementStatus = "PENDING_CANCEL"
-	EntitlementStatus_CANCELLED EntitlementStatus = "CANCELLED"
-	EntitlementStatus_SUSPENDED EntitlementStatus = "SUSPENDED"
-	EntitlementStatus_PENDING_START EntitlementStatus = "PENDING_START"
+	EntitlementStatus_PENDING_START  EntitlementStatus = "PENDING_START"
+	EntitlementStatus_SUSPENDED      EntitlementStatus = "SUSPENDED"
 )
 
 // All allowed values of EntitlementStatus enum
 var AllowedEntitlementStatusEnumValues = []EntitlementStatus{
 	"",
 	"ACTIVE",
-	"PENDING_CANCEL",
 	"CANCELLED",
-	"SUSPENDED",
+	"DELETED",
+	"PENDING_CANCEL",
 	"PENDING_START",
+	"SUSPENDED",
 }
 
 func (v *EntitlementStatus) UnmarshalJSON(src []byte) error {
@@ -117,4 +119,3 @@ func (v *NullableEntitlementStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

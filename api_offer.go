@@ -20,15 +20,14 @@ import (
 	"strings"
 )
 
-
 // OfferAPIService OfferAPI service
 type OfferAPIService service
 
 type ApiCancelOfferRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *OfferAPIService
-	orgId string
-	offerId string
+	orgId      string
+	offerId    string
 }
 
 func (r ApiCancelOfferRequest) Execute() (string, *http.Response, error) {
@@ -38,30 +37,31 @@ func (r ApiCancelOfferRequest) Execute() (string, *http.Response, error) {
 /*
 CancelOffer cancel offer
 
-Only the offer with status = "PENDING_ACCEPTANCE" or "PENDING_CANCEL" is allowed to cancel.
+Only the offer with status = "PENDING_ACCEPTANCE", "PENDING_CANCEL", "ACTIVE" or "USED" is allowed to cancel.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param offerId Offer ID
- @return ApiCancelOfferRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param offerId Offer ID
+	@return ApiCancelOfferRequest
 */
 func (a *OfferAPIService) CancelOffer(ctx context.Context, orgId string, offerId string) ApiCancelOfferRequest {
 	return ApiCancelOfferRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		offerId: offerId,
+		ctx:        ctx,
+		orgId:      orgId,
+		offerId:    offerId,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *OfferAPIService) CancelOfferExecute(r ApiCancelOfferRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.CancelOffer")
@@ -97,7 +97,7 @@ func (a *OfferAPIService) CancelOfferExecute(r ApiCancelOfferRequest) (string, *
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -137,8 +137,8 @@ func (a *OfferAPIService) CancelOfferExecute(r ApiCancelOfferRequest) (string, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -148,8 +148,8 @@ func (a *OfferAPIService) CancelOfferExecute(r ApiCancelOfferRequest) (string, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -159,8 +159,8 @@ func (a *OfferAPIService) CancelOfferExecute(r ApiCancelOfferRequest) (string, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -178,10 +178,10 @@ func (a *OfferAPIService) CancelOfferExecute(r ApiCancelOfferRequest) (string, *
 }
 
 type ApiCreateOfferRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *OfferAPIService
-	orgId string
-	data *WorkloadOffer
+	orgId      string
+	data       *WorkloadOffer
 }
 
 // Offer to create
@@ -199,26 +199,27 @@ CreateOffer create offer
 
 Create a private offer under the given organization.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @return ApiCreateOfferRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@return ApiCreateOfferRequest
 */
 func (a *OfferAPIService) CreateOffer(ctx context.Context, orgId string) ApiCreateOfferRequest {
 	return ApiCreateOfferRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
+		ctx:        ctx,
+		orgId:      orgId,
 	}
 }
 
 // Execute executes the request
-//  @return WorkloadOffer
+//
+//	@return WorkloadOffer
 func (a *OfferAPIService) CreateOfferExecute(r ApiCreateOfferRequest) (*WorkloadOffer, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *WorkloadOffer
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WorkloadOffer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.CreateOffer")
@@ -258,7 +259,7 @@ func (a *OfferAPIService) CreateOfferExecute(r ApiCreateOfferRequest) (*Workload
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -298,8 +299,8 @@ func (a *OfferAPIService) CreateOfferExecute(r ApiCreateOfferRequest) (*Workload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -309,8 +310,8 @@ func (a *OfferAPIService) CreateOfferExecute(r ApiCreateOfferRequest) (*Workload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -320,8 +321,8 @@ func (a *OfferAPIService) CreateOfferExecute(r ApiCreateOfferRequest) (*Workload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -339,10 +340,10 @@ func (a *OfferAPIService) CreateOfferExecute(r ApiCreateOfferRequest) (*Workload
 }
 
 type ApiCreateOrUpdateDraftOfferRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *OfferAPIService
-	orgId string
-	data *WorkloadOffer
+	orgId      string
+	data       *WorkloadOffer
 }
 
 // the draft offer to create
@@ -360,26 +361,27 @@ CreateOrUpdateDraftOffer create or update draft offer
 
 Create a new draft offer or update the existing draft offer. When updating draft offer, the offer.ID is required.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @return ApiCreateOrUpdateDraftOfferRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@return ApiCreateOrUpdateDraftOfferRequest
 */
 func (a *OfferAPIService) CreateOrUpdateDraftOffer(ctx context.Context, orgId string) ApiCreateOrUpdateDraftOfferRequest {
 	return ApiCreateOrUpdateDraftOfferRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
+		ctx:        ctx,
+		orgId:      orgId,
 	}
 }
 
 // Execute executes the request
-//  @return WorkloadOffer
+//
+//	@return WorkloadOffer
 func (a *OfferAPIService) CreateOrUpdateDraftOfferExecute(r ApiCreateOrUpdateDraftOfferRequest) (*WorkloadOffer, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *WorkloadOffer
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WorkloadOffer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.CreateOrUpdateDraftOffer")
@@ -419,7 +421,7 @@ func (a *OfferAPIService) CreateOrUpdateDraftOfferExecute(r ApiCreateOrUpdateDra
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -459,8 +461,8 @@ func (a *OfferAPIService) CreateOrUpdateDraftOfferExecute(r ApiCreateOrUpdateDra
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -470,8 +472,8 @@ func (a *OfferAPIService) CreateOrUpdateDraftOfferExecute(r ApiCreateOrUpdateDra
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -481,8 +483,8 @@ func (a *OfferAPIService) CreateOrUpdateDraftOfferExecute(r ApiCreateOrUpdateDra
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -500,10 +502,10 @@ func (a *OfferAPIService) CreateOrUpdateDraftOfferExecute(r ApiCreateOrUpdateDra
 }
 
 type ApiDeleteOfferRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *OfferAPIService
-	orgId string
-	offerId string
+	orgId      string
+	offerId    string
 }
 
 func (r ApiDeleteOfferRequest) Execute() (string, *http.Response, error) {
@@ -513,30 +515,31 @@ func (r ApiDeleteOfferRequest) Execute() (string, *http.Response, error) {
 /*
 DeleteOffer delete offer
 
-Only the offer with status = "DRAFT" or "CREATE_FAILED" is allowed to be deleted.
+The offer is soft deleted (marked as DELETED status) in Suger service. Only the offer with status = "DRAFT", "CREATE_FAILED", "EXPIRED" or "CANCELLED" is allowed to be deleted.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param offerId Offer ID
- @return ApiDeleteOfferRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param offerId Offer ID
+	@return ApiDeleteOfferRequest
 */
 func (a *OfferAPIService) DeleteOffer(ctx context.Context, orgId string, offerId string) ApiDeleteOfferRequest {
 	return ApiDeleteOfferRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		offerId: offerId,
+		ctx:        ctx,
+		orgId:      orgId,
+		offerId:    offerId,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *OfferAPIService) DeleteOfferExecute(r ApiDeleteOfferRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.DeleteOffer")
@@ -572,7 +575,7 @@ func (a *OfferAPIService) DeleteOfferExecute(r ApiDeleteOfferRequest) (string, *
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -612,19 +615,19 @@ func (a *OfferAPIService) DeleteOfferExecute(r ApiDeleteOfferRequest) (string, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 405 {
+		if localVarHTTPResponse.StatusCode == 404 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -634,8 +637,8 @@ func (a *OfferAPIService) DeleteOfferExecute(r ApiDeleteOfferRequest) (string, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -653,10 +656,10 @@ func (a *OfferAPIService) DeleteOfferExecute(r ApiDeleteOfferRequest) (string, *
 }
 
 type ApiExtendPrivateOfferExpiryDateRequest struct {
-	ctx context.Context
-	ApiService *OfferAPIService
-	orgId string
-	offerId string
+	ctx           context.Context
+	ApiService    *OfferAPIService
+	orgId         string
+	offerId       string
 	newExpiryDate *string
 }
 
@@ -673,30 +676,31 @@ func (r ApiExtendPrivateOfferExpiryDateRequest) Execute() (string, *http.Respons
 /*
 ExtendPrivateOfferExpiryDate extend offer expiry date
 
-Only the offer with status = "PENDING_ACCEPTANCE" or "EXPIRED" is allowed to extend expiry date.
+Only the offer with status = "PENDING_ACCEPTANCE", "EXPIRED" or "ACCEPTED" is allowed to extend expiry date.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param offerId Offer ID
- @return ApiExtendPrivateOfferExpiryDateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param offerId Offer ID
+	@return ApiExtendPrivateOfferExpiryDateRequest
 */
 func (a *OfferAPIService) ExtendPrivateOfferExpiryDate(ctx context.Context, orgId string, offerId string) ApiExtendPrivateOfferExpiryDateRequest {
 	return ApiExtendPrivateOfferExpiryDateRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		offerId: offerId,
+		ctx:        ctx,
+		orgId:      orgId,
+		offerId:    offerId,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *OfferAPIService) ExtendPrivateOfferExpiryDateExecute(r ApiExtendPrivateOfferExpiryDateRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.ExtendPrivateOfferExpiryDate")
@@ -715,7 +719,7 @@ func (a *OfferAPIService) ExtendPrivateOfferExpiryDateExecute(r ApiExtendPrivate
 		return localVarReturnValue, nil, reportError("newExpiryDate is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "newExpiryDate", r.newExpiryDate, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "newExpiryDate", r.newExpiryDate, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -736,7 +740,7 @@ func (a *OfferAPIService) ExtendPrivateOfferExpiryDateExecute(r ApiExtendPrivate
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -776,8 +780,8 @@ func (a *OfferAPIService) ExtendPrivateOfferExpiryDateExecute(r ApiExtendPrivate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -787,19 +791,8 @@ func (a *OfferAPIService) ExtendPrivateOfferExpiryDateExecute(r ApiExtendPrivate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 405 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -809,8 +802,8 @@ func (a *OfferAPIService) ExtendPrivateOfferExpiryDateExecute(r ApiExtendPrivate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -828,10 +821,10 @@ func (a *OfferAPIService) ExtendPrivateOfferExpiryDateExecute(r ApiExtendPrivate
 }
 
 type ApiGetOfferRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *OfferAPIService
-	orgId string
-	offerId string
+	orgId      string
+	offerId    string
 }
 
 func (r ApiGetOfferRequest) Execute() (*WorkloadOffer, *http.Response, error) {
@@ -843,28 +836,29 @@ GetOffer get offer
 
 Get the offer by the given offer ID.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param offerId Offer ID
- @return ApiGetOfferRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param offerId Offer ID
+	@return ApiGetOfferRequest
 */
 func (a *OfferAPIService) GetOffer(ctx context.Context, orgId string, offerId string) ApiGetOfferRequest {
 	return ApiGetOfferRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		offerId: offerId,
+		ctx:        ctx,
+		orgId:      orgId,
+		offerId:    offerId,
 	}
 }
 
 // Execute executes the request
-//  @return WorkloadOffer
+//
+//	@return WorkloadOffer
 func (a *OfferAPIService) GetOfferExecute(r ApiGetOfferRequest) (*WorkloadOffer, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *WorkloadOffer
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WorkloadOffer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.GetOffer")
@@ -900,7 +894,7 @@ func (a *OfferAPIService) GetOfferExecute(r ApiGetOfferRequest) (*WorkloadOffer,
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -940,8 +934,8 @@ func (a *OfferAPIService) GetOfferExecute(r ApiGetOfferRequest) (*WorkloadOffer,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -951,8 +945,8 @@ func (a *OfferAPIService) GetOfferExecute(r ApiGetOfferRequest) (*WorkloadOffer,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -962,8 +956,8 @@ func (a *OfferAPIService) GetOfferExecute(r ApiGetOfferRequest) (*WorkloadOffer,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -973,8 +967,173 @@ func (a *OfferAPIService) GetOfferExecute(r ApiGetOfferRequest) (*WorkloadOffer,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetOfferByExternalIdRequest struct {
+	ctx             context.Context
+	ApiService      *OfferAPIService
+	orgId           string
+	offerExternalId string
+}
+
+func (r ApiGetOfferByExternalIdRequest) Execute() (*WorkloadOffer, *http.Response, error) {
+	return r.ApiService.GetOfferByExternalIdExecute(r)
+}
+
+/*
+GetOfferByExternalId get offer by external ID
+
+Get the offer by the given offer external ID.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param offerExternalId Offer External ID
+	@return ApiGetOfferByExternalIdRequest
+*/
+func (a *OfferAPIService) GetOfferByExternalId(ctx context.Context, orgId string, offerExternalId string) ApiGetOfferByExternalIdRequest {
+	return ApiGetOfferByExternalIdRequest{
+		ApiService:      a,
+		ctx:             ctx,
+		orgId:           orgId,
+		offerExternalId: offerExternalId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return WorkloadOffer
+func (a *OfferAPIService) GetOfferByExternalIdExecute(r ApiGetOfferByExternalIdRequest) (*WorkloadOffer, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WorkloadOffer
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.GetOfferByExternalId")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/offerExternalId/{offerExternalId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"offerExternalId"+"}", url.PathEscape(parameterValueToString(r.offerExternalId, "offerExternalId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 405 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -992,10 +1151,10 @@ func (a *OfferAPIService) GetOfferExecute(r ApiGetOfferRequest) (*WorkloadOffer,
 }
 
 type ApiGetOfferEulaRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *OfferAPIService
-	orgId string
-	offerId string
+	orgId      string
+	offerId    string
 }
 
 func (r ApiGetOfferEulaRequest) Execute() (string, *http.Response, error) {
@@ -1007,28 +1166,29 @@ GetOfferEula get offer EULA
 
 Get the EULA file of the given offer ID.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param offerId Offer ID
- @return ApiGetOfferEulaRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param offerId Offer ID
+	@return ApiGetOfferEulaRequest
 */
 func (a *OfferAPIService) GetOfferEula(ctx context.Context, orgId string, offerId string) ApiGetOfferEulaRequest {
 	return ApiGetOfferEulaRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		offerId: offerId,
+		ctx:        ctx,
+		orgId:      orgId,
+		offerId:    offerId,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *OfferAPIService) GetOfferEulaExecute(r ApiGetOfferEulaRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.GetOfferEula")
@@ -1064,7 +1224,7 @@ func (a *OfferAPIService) GetOfferEulaExecute(r ApiGetOfferEulaRequest) (string,
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -1104,8 +1264,8 @@ func (a *OfferAPIService) GetOfferEulaExecute(r ApiGetOfferEulaRequest) (string,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -1115,8 +1275,8 @@ func (a *OfferAPIService) GetOfferEulaExecute(r ApiGetOfferEulaRequest) (string,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1126,8 +1286,8 @@ func (a *OfferAPIService) GetOfferEulaExecute(r ApiGetOfferEulaRequest) (string,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1144,54 +1304,55 @@ func (a *OfferAPIService) GetOfferEulaExecute(r ApiGetOfferEulaRequest) (string,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListOffersByContactRequest struct {
-	ctx context.Context
+type ApiGetOfferResellerEulaRequest struct {
+	ctx        context.Context
 	ApiService *OfferAPIService
-	orgId string
-	contactId string
+	orgId      string
+	offerId    string
 }
 
-func (r ApiListOffersByContactRequest) Execute() ([]WorkloadOffer, *http.Response, error) {
-	return r.ApiService.ListOffersByContactExecute(r)
+func (r ApiGetOfferResellerEulaRequest) Execute() (string, *http.Response, error) {
+	return r.ApiService.GetOfferResellerEulaExecute(r)
 }
 
 /*
-ListOffersByContact list offers by contact
+GetOfferResellerEula get offer reseller EULA
 
-List all offers under the given organization & contact.
+Get the Reseller EULA file of the given offer ID.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param contactId Contact ID
- @return ApiListOffersByContactRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param offerId Offer ID
+	@return ApiGetOfferResellerEulaRequest
 */
-func (a *OfferAPIService) ListOffersByContact(ctx context.Context, orgId string, contactId string) ApiListOffersByContactRequest {
-	return ApiListOffersByContactRequest{
+func (a *OfferAPIService) GetOfferResellerEula(ctx context.Context, orgId string, offerId string) ApiGetOfferResellerEulaRequest {
+	return ApiGetOfferResellerEulaRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		contactId: contactId,
+		ctx:        ctx,
+		orgId:      orgId,
+		offerId:    offerId,
 	}
 }
 
 // Execute executes the request
-//  @return []WorkloadOffer
-func (a *OfferAPIService) ListOffersByContactExecute(r ApiListOffersByContactRequest) ([]WorkloadOffer, *http.Response, error) {
+//
+//	@return string
+func (a *OfferAPIService) GetOfferResellerEulaExecute(r ApiGetOfferResellerEulaRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []WorkloadOffer
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.ListOffersByContact")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.GetOfferResellerEula")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/org/{orgId}/contact/{contactId}/offer"
+	localVarPath := localBasePath + "/org/{orgId}/offer/{offerId}/resellerEula"
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"contactId"+"}", url.PathEscape(parameterValueToString(r.contactId, "contactId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"offerId"+"}", url.PathEscape(parameterValueToString(r.offerId, "offerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1217,7 +1378,7 @@ func (a *OfferAPIService) ListOffersByContactExecute(r ApiListOffersByContactReq
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -1257,8 +1418,8 @@ func (a *OfferAPIService) ListOffersByContactExecute(r ApiListOffersByContactReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -1268,8 +1429,8 @@ func (a *OfferAPIService) ListOffersByContactExecute(r ApiListOffersByContactReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1279,8 +1440,8 @@ func (a *OfferAPIService) ListOffersByContactExecute(r ApiListOffersByContactReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1297,44 +1458,108 @@ func (a *OfferAPIService) ListOffersByContactExecute(r ApiListOffersByContactReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListOffersByOrganizationRequest struct {
-	ctx context.Context
-	ApiService *OfferAPIService
-	orgId string
+type ApiListOffersRequest struct {
+	ctx           context.Context
+	ApiService    *OfferAPIService
+	orgId         string
+	status        *string
+	partner       *string
+	offerType     *string
+	productId     *string
+	buyerId       *string
+	hubspotDealId *string
+	contactId     *string
+	limit         *int32
+	offset        *int32
 }
 
-func (r ApiListOffersByOrganizationRequest) Execute() ([]WorkloadOffer, *http.Response, error) {
-	return r.ApiService.ListOffersByOrganizationExecute(r)
+// filter by offer status
+func (r ApiListOffersRequest) Status(status string) ApiListOffersRequest {
+	r.status = &status
+	return r
+}
+
+// filter by partner
+func (r ApiListOffersRequest) Partner(partner string) ApiListOffersRequest {
+	r.partner = &partner
+	return r
+}
+
+// filter by offerType
+func (r ApiListOffersRequest) OfferType(offerType string) ApiListOffersRequest {
+	r.offerType = &offerType
+	return r
+}
+
+// filter by productId
+func (r ApiListOffersRequest) ProductId(productId string) ApiListOffersRequest {
+	r.productId = &productId
+	return r
+}
+
+// filter by buyerId
+func (r ApiListOffersRequest) BuyerId(buyerId string) ApiListOffersRequest {
+	r.buyerId = &buyerId
+	return r
+}
+
+// filter by hubspotDealId
+func (r ApiListOffersRequest) HubspotDealId(hubspotDealId string) ApiListOffersRequest {
+	r.hubspotDealId = &hubspotDealId
+	return r
+}
+
+// filter by contactId
+func (r ApiListOffersRequest) ContactId(contactId string) ApiListOffersRequest {
+	r.contactId = &contactId
+	return r
+}
+
+// List pagination size, default 1000, max value is 1000
+func (r ApiListOffersRequest) Limit(limit int32) ApiListOffersRequest {
+	r.limit = &limit
+	return r
+}
+
+// List pagination offset, default 0
+func (r ApiListOffersRequest) Offset(offset int32) ApiListOffersRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiListOffersRequest) Execute() ([]WorkloadOffer, *http.Response, error) {
+	return r.ApiService.ListOffersExecute(r)
 }
 
 /*
-ListOffersByOrganization list offers by organization
+ListOffers list offers
 
-List all offers under the given organization.
+List offers under the given organization with pagination and optional filter.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @return ApiListOffersByOrganizationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@return ApiListOffersRequest
 */
-func (a *OfferAPIService) ListOffersByOrganization(ctx context.Context, orgId string) ApiListOffersByOrganizationRequest {
-	return ApiListOffersByOrganizationRequest{
+func (a *OfferAPIService) ListOffers(ctx context.Context, orgId string) ApiListOffersRequest {
+	return ApiListOffersRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
+		ctx:        ctx,
+		orgId:      orgId,
 	}
 }
 
 // Execute executes the request
-//  @return []WorkloadOffer
-func (a *OfferAPIService) ListOffersByOrganizationExecute(r ApiListOffersByOrganizationRequest) ([]WorkloadOffer, *http.Response, error) {
+//
+//	@return []WorkloadOffer
+func (a *OfferAPIService) ListOffersExecute(r ApiListOffersRequest) ([]WorkloadOffer, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []WorkloadOffer
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []WorkloadOffer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.ListOffersByOrganization")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.ListOffers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1346,6 +1571,33 @@ func (a *OfferAPIService) ListOffersByOrganizationExecute(r ApiListOffersByOrgan
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	}
+	if r.partner != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
+	}
+	if r.offerType != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offerType", r.offerType, "form", "")
+	}
+	if r.productId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "form", "")
+	}
+	if r.buyerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
+	}
+	if r.hubspotDealId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "hubspotDealId", r.hubspotDealId, "form", "")
+	}
+	if r.contactId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "contactId", r.contactId, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1366,7 +1618,7 @@ func (a *OfferAPIService) ListOffersByOrganizationExecute(r ApiListOffersByOrgan
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -1406,8 +1658,8 @@ func (a *OfferAPIService) ListOffersByOrganizationExecute(r ApiListOffersByOrgan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -1417,8 +1669,8 @@ func (a *OfferAPIService) ListOffersByOrganizationExecute(r ApiListOffersByOrgan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1428,303 +1680,8 @@ func (a *OfferAPIService) ListOffersByOrganizationExecute(r ApiListOffersByOrgan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiListOffersByPartnerRequest struct {
-	ctx context.Context
-	ApiService *OfferAPIService
-	orgId string
-	partner string
-}
-
-func (r ApiListOffersByPartnerRequest) Execute() ([]WorkloadOffer, *http.Response, error) {
-	return r.ApiService.ListOffersByPartnerExecute(r)
-}
-
-/*
-ListOffersByPartner list offers by partner
-
-List all offers under the given organization & cloud partner.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param partner Cloud Partner
- @return ApiListOffersByPartnerRequest
-*/
-func (a *OfferAPIService) ListOffersByPartner(ctx context.Context, orgId string, partner string) ApiListOffersByPartnerRequest {
-	return ApiListOffersByPartnerRequest{
-		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		partner: partner,
-	}
-}
-
-// Execute executes the request
-//  @return []WorkloadOffer
-func (a *OfferAPIService) ListOffersByPartnerExecute(r ApiListOffersByPartnerRequest) ([]WorkloadOffer, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []WorkloadOffer
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.ListOffersByPartner")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/org/{orgId}/partner/{partner}/offer"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"partner"+"}", url.PathEscape(parameterValueToString(r.partner, "partner")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 405 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiListOffersByProductRequest struct {
-	ctx context.Context
-	ApiService *OfferAPIService
-	orgId string
-	productId string
-}
-
-func (r ApiListOffersByProductRequest) Execute() ([]WorkloadOffer, *http.Response, error) {
-	return r.ApiService.ListOffersByProductExecute(r)
-}
-
-/*
-ListOffersByProduct list offers by product
-
-List all offers under the given organization & product.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param productId Product ID
- @return ApiListOffersByProductRequest
-*/
-func (a *OfferAPIService) ListOffersByProduct(ctx context.Context, orgId string, productId string) ApiListOffersByProductRequest {
-	return ApiListOffersByProductRequest{
-		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		productId: productId,
-	}
-}
-
-// Execute executes the request
-//  @return []WorkloadOffer
-func (a *OfferAPIService) ListOffersByProductExecute(r ApiListOffersByProductRequest) ([]WorkloadOffer, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []WorkloadOffer
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.ListOffersByProduct")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/org/{orgId}/product/{productId}/offer"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"productId"+"}", url.PathEscape(parameterValueToString(r.productId, "productId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1742,10 +1699,10 @@ func (a *OfferAPIService) ListOffersByProductExecute(r ApiListOffersByProductReq
 }
 
 type ApiSendOfferNotificationsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *OfferAPIService
-	orgId string
-	offerId string
+	orgId      string
+	offerId    string
 	contactIds *[]string
 }
 
@@ -1764,28 +1721,29 @@ SendOfferNotifications notify offer contacts
 
 Send offer notifications to the given contact ids. If contactIds is empty, send notifications to all contacts of the offer.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param offerId Offer ID
- @return ApiSendOfferNotificationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param offerId Offer ID
+	@return ApiSendOfferNotificationsRequest
 */
 func (a *OfferAPIService) SendOfferNotifications(ctx context.Context, orgId string, offerId string) ApiSendOfferNotificationsRequest {
 	return ApiSendOfferNotificationsRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		offerId: offerId,
+		ctx:        ctx,
+		orgId:      orgId,
+		offerId:    offerId,
 	}
 }
 
 // Execute executes the request
-//  @return NotificationEvent
+//
+//	@return NotificationEvent
 func (a *OfferAPIService) SendOfferNotificationsExecute(r ApiSendOfferNotificationsRequest) (*NotificationEvent, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *NotificationEvent
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *NotificationEvent
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.SendOfferNotifications")
@@ -1823,7 +1781,7 @@ func (a *OfferAPIService) SendOfferNotificationsExecute(r ApiSendOfferNotificati
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -1863,8 +1821,8 @@ func (a *OfferAPIService) SendOfferNotificationsExecute(r ApiSendOfferNotificati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -1874,8 +1832,8 @@ func (a *OfferAPIService) SendOfferNotificationsExecute(r ApiSendOfferNotificati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1885,8 +1843,8 @@ func (a *OfferAPIService) SendOfferNotificationsExecute(r ApiSendOfferNotificati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1904,11 +1862,11 @@ func (a *OfferAPIService) SendOfferNotificationsExecute(r ApiSendOfferNotificati
 }
 
 type ApiUpdateOfferMetaInfoRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *OfferAPIService
-	orgId string
-	offerId string
-	data *WorkloadMetaInfo
+	orgId      string
+	offerId    string
+	data       *WorkloadMetaInfo
 }
 
 // Offer meta info to update
@@ -1926,28 +1884,29 @@ UpdateOfferMetaInfo update offer meta info
 
 Update the meta info of the given offer.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param offerId Offer ID
- @return ApiUpdateOfferMetaInfoRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param offerId Offer ID
+	@return ApiUpdateOfferMetaInfoRequest
 */
 func (a *OfferAPIService) UpdateOfferMetaInfo(ctx context.Context, orgId string, offerId string) ApiUpdateOfferMetaInfoRequest {
 	return ApiUpdateOfferMetaInfoRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		offerId: offerId,
+		ctx:        ctx,
+		orgId:      orgId,
+		offerId:    offerId,
 	}
 }
 
 // Execute executes the request
-//  @return WorkloadMetaInfo
+//
+//	@return WorkloadMetaInfo
 func (a *OfferAPIService) UpdateOfferMetaInfoExecute(r ApiUpdateOfferMetaInfoRequest) (*WorkloadMetaInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *WorkloadMetaInfo
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WorkloadMetaInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.UpdateOfferMetaInfo")
@@ -1988,7 +1947,7 @@ func (a *OfferAPIService) UpdateOfferMetaInfoExecute(r ApiUpdateOfferMetaInfoReq
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -2028,8 +1987,8 @@ func (a *OfferAPIService) UpdateOfferMetaInfoExecute(r ApiUpdateOfferMetaInfoReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
@@ -2039,8 +1998,8 @@ func (a *OfferAPIService) UpdateOfferMetaInfoExecute(r ApiUpdateOfferMetaInfoReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2050,8 +2009,8 @@ func (a *OfferAPIService) UpdateOfferMetaInfoExecute(r ApiUpdateOfferMetaInfoReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

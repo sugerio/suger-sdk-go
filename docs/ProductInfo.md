@@ -6,16 +6,22 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AlibabaProduct** | Pointer to [**AlibabaMarketplaceProduct**](AlibabaMarketplaceProduct.md) |  | [optional] 
 **Attributes** | Pointer to **map[string]string** |  | [optional] 
-**AwsSaasProduct** | Pointer to [**AwsSaasProduct**](AwsSaasProduct.md) |  | [optional] 
+**AwsAmiProduct** | Pointer to [**AwsProduct**](AwsProduct.md) |  | [optional] 
+**AwsContainerProduct** | Pointer to [**AwsProduct**](AwsProduct.md) |  | [optional] 
+**AwsProfessionalServicesProduct** | Pointer to [**AwsProduct**](AwsProduct.md) |  | [optional] 
+**AwsSaasProduct** | Pointer to [**AwsProduct**](AwsProduct.md) |  | [optional] 
 **AwsSnsSubscriptions** | Pointer to [**[]AwsSnsSubscription**](AwsSnsSubscription.md) |  | [optional] 
 **AzureProduct** | Pointer to [**AzureProduct**](AzureProduct.md) |  | [optional] 
+**AzureProductResource** | Pointer to [**AzureMarketplaceProductResource**](AzureMarketplaceProductResource.md) |  | [optional] 
 **Commits** | Pointer to [**[]CommitDimension**](CommitDimension.md) |  | [optional] 
 **Currency** | Pointer to **string** |  | [optional] 
 **Dimensions** | Pointer to [**[]MeteringDimension**](MeteringDimension.md) |  | [optional] 
-**EulaUrl** | Pointer to **string** |  | [optional] 
+**EulaType** | Pointer to [**EulaType**](EulaType.md) | The public offer&#39;s EULA type. | [optional] 
+**EulaUrl** | Pointer to **string** | The public offer&#39;s EULA URL. | [optional] 
 **GcpProduct** | Pointer to [**GcpMarketplaceProduct**](GcpMarketplaceProduct.md) |  | [optional] 
-**RefundCancelationPolicy** | Pointer to **string** |  | [optional] 
+**RefundCancellationPolicy** | Pointer to **string** |  | [optional] 
 **SellerNotes** | Pointer to **string** |  | [optional] 
+**StripeProduct** | Pointer to [**StripeProduct**](StripeProduct.md) |  | [optional] 
 
 ## Methods
 
@@ -86,22 +92,97 @@ SetAttributes sets Attributes field to given value.
 
 HasAttributes returns a boolean if a field has been set.
 
+### GetAwsAmiProduct
+
+`func (o *ProductInfo) GetAwsAmiProduct() AwsProduct`
+
+GetAwsAmiProduct returns the AwsAmiProduct field if non-nil, zero value otherwise.
+
+### GetAwsAmiProductOk
+
+`func (o *ProductInfo) GetAwsAmiProductOk() (*AwsProduct, bool)`
+
+GetAwsAmiProductOk returns a tuple with the AwsAmiProduct field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsAmiProduct
+
+`func (o *ProductInfo) SetAwsAmiProduct(v AwsProduct)`
+
+SetAwsAmiProduct sets AwsAmiProduct field to given value.
+
+### HasAwsAmiProduct
+
+`func (o *ProductInfo) HasAwsAmiProduct() bool`
+
+HasAwsAmiProduct returns a boolean if a field has been set.
+
+### GetAwsContainerProduct
+
+`func (o *ProductInfo) GetAwsContainerProduct() AwsProduct`
+
+GetAwsContainerProduct returns the AwsContainerProduct field if non-nil, zero value otherwise.
+
+### GetAwsContainerProductOk
+
+`func (o *ProductInfo) GetAwsContainerProductOk() (*AwsProduct, bool)`
+
+GetAwsContainerProductOk returns a tuple with the AwsContainerProduct field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsContainerProduct
+
+`func (o *ProductInfo) SetAwsContainerProduct(v AwsProduct)`
+
+SetAwsContainerProduct sets AwsContainerProduct field to given value.
+
+### HasAwsContainerProduct
+
+`func (o *ProductInfo) HasAwsContainerProduct() bool`
+
+HasAwsContainerProduct returns a boolean if a field has been set.
+
+### GetAwsProfessionalServicesProduct
+
+`func (o *ProductInfo) GetAwsProfessionalServicesProduct() AwsProduct`
+
+GetAwsProfessionalServicesProduct returns the AwsProfessionalServicesProduct field if non-nil, zero value otherwise.
+
+### GetAwsProfessionalServicesProductOk
+
+`func (o *ProductInfo) GetAwsProfessionalServicesProductOk() (*AwsProduct, bool)`
+
+GetAwsProfessionalServicesProductOk returns a tuple with the AwsProfessionalServicesProduct field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsProfessionalServicesProduct
+
+`func (o *ProductInfo) SetAwsProfessionalServicesProduct(v AwsProduct)`
+
+SetAwsProfessionalServicesProduct sets AwsProfessionalServicesProduct field to given value.
+
+### HasAwsProfessionalServicesProduct
+
+`func (o *ProductInfo) HasAwsProfessionalServicesProduct() bool`
+
+HasAwsProfessionalServicesProduct returns a boolean if a field has been set.
+
 ### GetAwsSaasProduct
 
-`func (o *ProductInfo) GetAwsSaasProduct() AwsSaasProduct`
+`func (o *ProductInfo) GetAwsSaasProduct() AwsProduct`
 
 GetAwsSaasProduct returns the AwsSaasProduct field if non-nil, zero value otherwise.
 
 ### GetAwsSaasProductOk
 
-`func (o *ProductInfo) GetAwsSaasProductOk() (*AwsSaasProduct, bool)`
+`func (o *ProductInfo) GetAwsSaasProductOk() (*AwsProduct, bool)`
 
 GetAwsSaasProductOk returns a tuple with the AwsSaasProduct field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAwsSaasProduct
 
-`func (o *ProductInfo) SetAwsSaasProduct(v AwsSaasProduct)`
+`func (o *ProductInfo) SetAwsSaasProduct(v AwsProduct)`
 
 SetAwsSaasProduct sets AwsSaasProduct field to given value.
 
@@ -160,6 +241,31 @@ SetAzureProduct sets AzureProduct field to given value.
 `func (o *ProductInfo) HasAzureProduct() bool`
 
 HasAzureProduct returns a boolean if a field has been set.
+
+### GetAzureProductResource
+
+`func (o *ProductInfo) GetAzureProductResource() AzureMarketplaceProductResource`
+
+GetAzureProductResource returns the AzureProductResource field if non-nil, zero value otherwise.
+
+### GetAzureProductResourceOk
+
+`func (o *ProductInfo) GetAzureProductResourceOk() (*AzureMarketplaceProductResource, bool)`
+
+GetAzureProductResourceOk returns a tuple with the AzureProductResource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureProductResource
+
+`func (o *ProductInfo) SetAzureProductResource(v AzureMarketplaceProductResource)`
+
+SetAzureProductResource sets AzureProductResource field to given value.
+
+### HasAzureProductResource
+
+`func (o *ProductInfo) HasAzureProductResource() bool`
+
+HasAzureProductResource returns a boolean if a field has been set.
 
 ### GetCommits
 
@@ -236,6 +342,31 @@ SetDimensions sets Dimensions field to given value.
 
 HasDimensions returns a boolean if a field has been set.
 
+### GetEulaType
+
+`func (o *ProductInfo) GetEulaType() EulaType`
+
+GetEulaType returns the EulaType field if non-nil, zero value otherwise.
+
+### GetEulaTypeOk
+
+`func (o *ProductInfo) GetEulaTypeOk() (*EulaType, bool)`
+
+GetEulaTypeOk returns a tuple with the EulaType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEulaType
+
+`func (o *ProductInfo) SetEulaType(v EulaType)`
+
+SetEulaType sets EulaType field to given value.
+
+### HasEulaType
+
+`func (o *ProductInfo) HasEulaType() bool`
+
+HasEulaType returns a boolean if a field has been set.
+
 ### GetEulaUrl
 
 `func (o *ProductInfo) GetEulaUrl() string`
@@ -286,30 +417,30 @@ SetGcpProduct sets GcpProduct field to given value.
 
 HasGcpProduct returns a boolean if a field has been set.
 
-### GetRefundCancelationPolicy
+### GetRefundCancellationPolicy
 
-`func (o *ProductInfo) GetRefundCancelationPolicy() string`
+`func (o *ProductInfo) GetRefundCancellationPolicy() string`
 
-GetRefundCancelationPolicy returns the RefundCancelationPolicy field if non-nil, zero value otherwise.
+GetRefundCancellationPolicy returns the RefundCancellationPolicy field if non-nil, zero value otherwise.
 
-### GetRefundCancelationPolicyOk
+### GetRefundCancellationPolicyOk
 
-`func (o *ProductInfo) GetRefundCancelationPolicyOk() (*string, bool)`
+`func (o *ProductInfo) GetRefundCancellationPolicyOk() (*string, bool)`
 
-GetRefundCancelationPolicyOk returns a tuple with the RefundCancelationPolicy field if it's non-nil, zero value otherwise
+GetRefundCancellationPolicyOk returns a tuple with the RefundCancellationPolicy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRefundCancelationPolicy
+### SetRefundCancellationPolicy
 
-`func (o *ProductInfo) SetRefundCancelationPolicy(v string)`
+`func (o *ProductInfo) SetRefundCancellationPolicy(v string)`
 
-SetRefundCancelationPolicy sets RefundCancelationPolicy field to given value.
+SetRefundCancellationPolicy sets RefundCancellationPolicy field to given value.
 
-### HasRefundCancelationPolicy
+### HasRefundCancellationPolicy
 
-`func (o *ProductInfo) HasRefundCancelationPolicy() bool`
+`func (o *ProductInfo) HasRefundCancellationPolicy() bool`
 
-HasRefundCancelationPolicy returns a boolean if a field has been set.
+HasRefundCancellationPolicy returns a boolean if a field has been set.
 
 ### GetSellerNotes
 
@@ -335,6 +466,31 @@ SetSellerNotes sets SellerNotes field to given value.
 `func (o *ProductInfo) HasSellerNotes() bool`
 
 HasSellerNotes returns a boolean if a field has been set.
+
+### GetStripeProduct
+
+`func (o *ProductInfo) GetStripeProduct() StripeProduct`
+
+GetStripeProduct returns the StripeProduct field if non-nil, zero value otherwise.
+
+### GetStripeProductOk
+
+`func (o *ProductInfo) GetStripeProductOk() (*StripeProduct, bool)`
+
+GetStripeProductOk returns a tuple with the StripeProduct field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStripeProduct
+
+`func (o *ProductInfo) SetStripeProduct(v StripeProduct)`
+
+SetStripeProduct sets StripeProduct field to given value.
+
+### HasStripeProduct
+
+`func (o *ProductInfo) HasStripeProduct() bool`
+
+HasStripeProduct returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

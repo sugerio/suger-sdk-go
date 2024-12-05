@@ -23,8 +23,8 @@ type GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageBatchEv
 	// Dimension identifier
 	Dimension *string `json:"dimension,omitempty"`
 	// Time in UTC when the usage event occurred
-	EffectiveStartTime *string `json:"effectiveStartTime,omitempty"`
-	Error *GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageEventConflictResponse `json:"error,omitempty"`
+	EffectiveStartTime *string                                                                                    `json:"effectiveStartTime,omitempty"`
+	Error              *GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageEventConflictResponse `json:"error,omitempty"`
 	// Time this message was created in UTC
 	MessageTime *string `json:"messageTime,omitempty"`
 	// Plan associated with the purchased offer
@@ -35,6 +35,7 @@ type GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageBatchEv
 	ResourceId *string `json:"resourceId,omitempty"`
 	// Identifier of the managed app resource against which usage is emitted
 	ResourceUri *string `json:"resourceUri,omitempty"`
+	// Status of the operation.
 	Status *GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageEventStatusEnum `json:"status,omitempty"`
 	// Unique identifier associated with the usage event
 	UsageEventId *string `json:"usageEventId,omitempty"`
@@ -378,7 +379,7 @@ func (o *GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageBat
 }
 
 func (o GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1UsageBatchEventOkMessage) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -455,5 +456,3 @@ func (v *NullableGithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -24,23 +24,44 @@ type NotificationEvent struct {
 	Action *NotificationEventAction `json:"action,omitempty"`
 	// Cc contactIds that will receive this notification
 	CcContactIds []string `json:"ccContactIds,omitempty"`
+	// The list of channels this event will be sent to, e.g., [\"SLACK\", \"EMAIL\"]
+	Channels []NotificationChannel `json:"channels,omitempty"`
+	// Contact emails that will receive this notification
+	ContactEmails []string `json:"contactEmails,omitempty"`
 	// ContactIds that will receive this notification
 	ContactIds []string `json:"contactIds,omitempty"`
-	EntityID *string `json:"entityID,omitempty"`
-	EntityStatus *string `json:"entityStatus,omitempty"`
-	EntityType *EntityType `json:"entityType,omitempty"`
+	// Who originally created or triggered this notification event. It can be user or API client.
+	CreatedBy *LastModifiedBy `json:"createdBy,omitempty"`
+	// Custom fields of the notification event.
+	CustomFields map[string]interface{} `json:"customFields,omitempty"`
+	EntityID     *string                `json:"entityID,omitempty"`
+	// The name of the entity.
+	EntityName   *string     `json:"entityName,omitempty"`
+	EntityStatus *string     `json:"entityStatus,omitempty"`
+	EntityType   *EntityType `json:"entityType,omitempty"`
 	// notification event id.
 	EventID *string `json:"eventID,omitempty"`
+	// notification event status.
 	EventStatus *NotificationEventStatus `json:"eventStatus,omitempty"`
+	// Additional info of the notification event.
+	Info map[string]interface{} `json:"info,omitempty"`
+	// If this notification event is an action item.
+	IsActionItem *bool `json:"isActionItem,omitempty"`
 	// timestamp of the event when it is updated.
 	LastUpdateTime *time.Time `json:"lastUpdateTime,omitempty"`
+	// The message of the notification event such as email body, action item description.
 	Message *string `json:"message,omitempty"`
 	// suger organization id.
 	OrganizationID *string `json:"organizationID,omitempty"`
+	// the partner of the entity. Optional.
 	Partner *Partner `json:"partner,omitempty"`
+	// The priority of the notification event.
+	Priority *AuditingEventPriority `json:"priority,omitempty"`
+	// If this notification event is an auditing event and need to store in DB.
+	RequireAudit *bool `json:"requireAudit,omitempty"`
 	// timestamp of the event when it is scheduled or created.
 	Timestamp *time.Time `json:"timestamp,omitempty"`
-	// The title of the notification event such as email subject.
+	// The title of the notification event such as email subject, action item title.
 	Title *string `json:"title,omitempty"`
 	// The track events of the notification event.
 	TrackEvents []TrackEvent `json:"trackEvents,omitempty"`
@@ -127,6 +148,70 @@ func (o *NotificationEvent) SetCcContactIds(v []string) {
 	o.CcContactIds = v
 }
 
+// GetChannels returns the Channels field value if set, zero value otherwise.
+func (o *NotificationEvent) GetChannels() []NotificationChannel {
+	if o == nil || IsNil(o.Channels) {
+		var ret []NotificationChannel
+		return ret
+	}
+	return o.Channels
+}
+
+// GetChannelsOk returns a tuple with the Channels field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationEvent) GetChannelsOk() ([]NotificationChannel, bool) {
+	if o == nil || IsNil(o.Channels) {
+		return nil, false
+	}
+	return o.Channels, true
+}
+
+// HasChannels returns a boolean if a field has been set.
+func (o *NotificationEvent) HasChannels() bool {
+	if o != nil && !IsNil(o.Channels) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannels gets a reference to the given []NotificationChannel and assigns it to the Channels field.
+func (o *NotificationEvent) SetChannels(v []NotificationChannel) {
+	o.Channels = v
+}
+
+// GetContactEmails returns the ContactEmails field value if set, zero value otherwise.
+func (o *NotificationEvent) GetContactEmails() []string {
+	if o == nil || IsNil(o.ContactEmails) {
+		var ret []string
+		return ret
+	}
+	return o.ContactEmails
+}
+
+// GetContactEmailsOk returns a tuple with the ContactEmails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationEvent) GetContactEmailsOk() ([]string, bool) {
+	if o == nil || IsNil(o.ContactEmails) {
+		return nil, false
+	}
+	return o.ContactEmails, true
+}
+
+// HasContactEmails returns a boolean if a field has been set.
+func (o *NotificationEvent) HasContactEmails() bool {
+	if o != nil && !IsNil(o.ContactEmails) {
+		return true
+	}
+
+	return false
+}
+
+// SetContactEmails gets a reference to the given []string and assigns it to the ContactEmails field.
+func (o *NotificationEvent) SetContactEmails(v []string) {
+	o.ContactEmails = v
+}
+
 // GetContactIds returns the ContactIds field value if set, zero value otherwise.
 func (o *NotificationEvent) GetContactIds() []string {
 	if o == nil || IsNil(o.ContactIds) {
@@ -159,6 +244,70 @@ func (o *NotificationEvent) SetContactIds(v []string) {
 	o.ContactIds = v
 }
 
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+func (o *NotificationEvent) GetCreatedBy() LastModifiedBy {
+	if o == nil || IsNil(o.CreatedBy) {
+		var ret LastModifiedBy
+		return ret
+	}
+	return *o.CreatedBy
+}
+
+// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationEvent) GetCreatedByOk() (*LastModifiedBy, bool) {
+	if o == nil || IsNil(o.CreatedBy) {
+		return nil, false
+	}
+	return o.CreatedBy, true
+}
+
+// HasCreatedBy returns a boolean if a field has been set.
+func (o *NotificationEvent) HasCreatedBy() bool {
+	if o != nil && !IsNil(o.CreatedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBy gets a reference to the given LastModifiedBy and assigns it to the CreatedBy field.
+func (o *NotificationEvent) SetCreatedBy(v LastModifiedBy) {
+	o.CreatedBy = &v
+}
+
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+func (o *NotificationEvent) GetCustomFields() map[string]interface{} {
+	if o == nil || IsNil(o.CustomFields) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.CustomFields
+}
+
+// GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationEvent) GetCustomFieldsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.CustomFields) {
+		return map[string]interface{}{}, false
+	}
+	return o.CustomFields, true
+}
+
+// HasCustomFields returns a boolean if a field has been set.
+func (o *NotificationEvent) HasCustomFields() bool {
+	if o != nil && !IsNil(o.CustomFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomFields gets a reference to the given map[string]interface{} and assigns it to the CustomFields field.
+func (o *NotificationEvent) SetCustomFields(v map[string]interface{}) {
+	o.CustomFields = v
+}
+
 // GetEntityID returns the EntityID field value if set, zero value otherwise.
 func (o *NotificationEvent) GetEntityID() string {
 	if o == nil || IsNil(o.EntityID) {
@@ -189,6 +338,38 @@ func (o *NotificationEvent) HasEntityID() bool {
 // SetEntityID gets a reference to the given string and assigns it to the EntityID field.
 func (o *NotificationEvent) SetEntityID(v string) {
 	o.EntityID = &v
+}
+
+// GetEntityName returns the EntityName field value if set, zero value otherwise.
+func (o *NotificationEvent) GetEntityName() string {
+	if o == nil || IsNil(o.EntityName) {
+		var ret string
+		return ret
+	}
+	return *o.EntityName
+}
+
+// GetEntityNameOk returns a tuple with the EntityName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationEvent) GetEntityNameOk() (*string, bool) {
+	if o == nil || IsNil(o.EntityName) {
+		return nil, false
+	}
+	return o.EntityName, true
+}
+
+// HasEntityName returns a boolean if a field has been set.
+func (o *NotificationEvent) HasEntityName() bool {
+	if o != nil && !IsNil(o.EntityName) {
+		return true
+	}
+
+	return false
+}
+
+// SetEntityName gets a reference to the given string and assigns it to the EntityName field.
+func (o *NotificationEvent) SetEntityName(v string) {
+	o.EntityName = &v
 }
 
 // GetEntityStatus returns the EntityStatus field value if set, zero value otherwise.
@@ -319,6 +500,70 @@ func (o *NotificationEvent) SetEventStatus(v NotificationEventStatus) {
 	o.EventStatus = &v
 }
 
+// GetInfo returns the Info field value if set, zero value otherwise.
+func (o *NotificationEvent) GetInfo() map[string]interface{} {
+	if o == nil || IsNil(o.Info) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Info
+}
+
+// GetInfoOk returns a tuple with the Info field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationEvent) GetInfoOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Info) {
+		return map[string]interface{}{}, false
+	}
+	return o.Info, true
+}
+
+// HasInfo returns a boolean if a field has been set.
+func (o *NotificationEvent) HasInfo() bool {
+	if o != nil && !IsNil(o.Info) {
+		return true
+	}
+
+	return false
+}
+
+// SetInfo gets a reference to the given map[string]interface{} and assigns it to the Info field.
+func (o *NotificationEvent) SetInfo(v map[string]interface{}) {
+	o.Info = v
+}
+
+// GetIsActionItem returns the IsActionItem field value if set, zero value otherwise.
+func (o *NotificationEvent) GetIsActionItem() bool {
+	if o == nil || IsNil(o.IsActionItem) {
+		var ret bool
+		return ret
+	}
+	return *o.IsActionItem
+}
+
+// GetIsActionItemOk returns a tuple with the IsActionItem field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationEvent) GetIsActionItemOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsActionItem) {
+		return nil, false
+	}
+	return o.IsActionItem, true
+}
+
+// HasIsActionItem returns a boolean if a field has been set.
+func (o *NotificationEvent) HasIsActionItem() bool {
+	if o != nil && !IsNil(o.IsActionItem) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsActionItem gets a reference to the given bool and assigns it to the IsActionItem field.
+func (o *NotificationEvent) SetIsActionItem(v bool) {
+	o.IsActionItem = &v
+}
+
 // GetLastUpdateTime returns the LastUpdateTime field value if set, zero value otherwise.
 func (o *NotificationEvent) GetLastUpdateTime() time.Time {
 	if o == nil || IsNil(o.LastUpdateTime) {
@@ -447,6 +692,70 @@ func (o *NotificationEvent) SetPartner(v Partner) {
 	o.Partner = &v
 }
 
+// GetPriority returns the Priority field value if set, zero value otherwise.
+func (o *NotificationEvent) GetPriority() AuditingEventPriority {
+	if o == nil || IsNil(o.Priority) {
+		var ret AuditingEventPriority
+		return ret
+	}
+	return *o.Priority
+}
+
+// GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationEvent) GetPriorityOk() (*AuditingEventPriority, bool) {
+	if o == nil || IsNil(o.Priority) {
+		return nil, false
+	}
+	return o.Priority, true
+}
+
+// HasPriority returns a boolean if a field has been set.
+func (o *NotificationEvent) HasPriority() bool {
+	if o != nil && !IsNil(o.Priority) {
+		return true
+	}
+
+	return false
+}
+
+// SetPriority gets a reference to the given AuditingEventPriority and assigns it to the Priority field.
+func (o *NotificationEvent) SetPriority(v AuditingEventPriority) {
+	o.Priority = &v
+}
+
+// GetRequireAudit returns the RequireAudit field value if set, zero value otherwise.
+func (o *NotificationEvent) GetRequireAudit() bool {
+	if o == nil || IsNil(o.RequireAudit) {
+		var ret bool
+		return ret
+	}
+	return *o.RequireAudit
+}
+
+// GetRequireAuditOk returns a tuple with the RequireAudit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationEvent) GetRequireAuditOk() (*bool, bool) {
+	if o == nil || IsNil(o.RequireAudit) {
+		return nil, false
+	}
+	return o.RequireAudit, true
+}
+
+// HasRequireAudit returns a boolean if a field has been set.
+func (o *NotificationEvent) HasRequireAudit() bool {
+	if o != nil && !IsNil(o.RequireAudit) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequireAudit gets a reference to the given bool and assigns it to the RequireAudit field.
+func (o *NotificationEvent) SetRequireAudit(v bool) {
+	o.RequireAudit = &v
+}
+
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *NotificationEvent) GetTimestamp() time.Time {
 	if o == nil || IsNil(o.Timestamp) {
@@ -544,7 +853,7 @@ func (o *NotificationEvent) SetTrackEvents(v []TrackEvent) {
 }
 
 func (o NotificationEvent) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -559,11 +868,26 @@ func (o NotificationEvent) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CcContactIds) {
 		toSerialize["ccContactIds"] = o.CcContactIds
 	}
+	if !IsNil(o.Channels) {
+		toSerialize["channels"] = o.Channels
+	}
+	if !IsNil(o.ContactEmails) {
+		toSerialize["contactEmails"] = o.ContactEmails
+	}
 	if !IsNil(o.ContactIds) {
 		toSerialize["contactIds"] = o.ContactIds
 	}
+	if !IsNil(o.CreatedBy) {
+		toSerialize["createdBy"] = o.CreatedBy
+	}
+	if !IsNil(o.CustomFields) {
+		toSerialize["customFields"] = o.CustomFields
+	}
 	if !IsNil(o.EntityID) {
 		toSerialize["entityID"] = o.EntityID
+	}
+	if !IsNil(o.EntityName) {
+		toSerialize["entityName"] = o.EntityName
 	}
 	if !IsNil(o.EntityStatus) {
 		toSerialize["entityStatus"] = o.EntityStatus
@@ -577,6 +901,12 @@ func (o NotificationEvent) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EventStatus) {
 		toSerialize["eventStatus"] = o.EventStatus
 	}
+	if !IsNil(o.Info) {
+		toSerialize["info"] = o.Info
+	}
+	if !IsNil(o.IsActionItem) {
+		toSerialize["isActionItem"] = o.IsActionItem
+	}
 	if !IsNil(o.LastUpdateTime) {
 		toSerialize["lastUpdateTime"] = o.LastUpdateTime
 	}
@@ -588,6 +918,12 @@ func (o NotificationEvent) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Partner) {
 		toSerialize["partner"] = o.Partner
+	}
+	if !IsNil(o.Priority) {
+		toSerialize["priority"] = o.Priority
+	}
+	if !IsNil(o.RequireAudit) {
+		toSerialize["requireAudit"] = o.RequireAudit
 	}
 	if !IsNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
@@ -636,5 +972,3 @@ func (v *NullableNotificationEvent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

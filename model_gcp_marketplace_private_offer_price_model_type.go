@@ -21,13 +21,13 @@ type GcpMarketplacePrivateOfferPriceModelType string
 
 // List of GcpMarketplacePrivateOfferPriceModelType
 const (
-	GcpMarketplacePrivateOfferPriceModelType_UNKNOWN GcpMarketplacePrivateOfferPriceModelType = ""
-	GcpMarketplacePrivateOfferPriceModelType_UNSPECIFIED GcpMarketplacePrivateOfferPriceModelType = "PRICE_MODEL_TYPE_UNSPECIFIED"
-	GcpMarketplacePrivateOfferPriceModelType_CUD GcpMarketplacePrivateOfferPriceModelType = "CUD"
-	GcpMarketplacePrivateOfferPriceModelType_PAYG GcpMarketplacePrivateOfferPriceModelType = "PAYG"
-	GcpMarketplacePrivateOfferPriceModelType_PAYG_WITH_CUD GcpMarketplacePrivateOfferPriceModelType = "PAYG_WITH_CUD"
-	GcpMarketplacePrivateOfferPriceModelType_FIXED_FEE GcpMarketplacePrivateOfferPriceModelType = "FIXED_FEE"
+	GcpMarketplacePrivateOfferPriceModelType_UNKNOWN                GcpMarketplacePrivateOfferPriceModelType = ""
+	GcpMarketplacePrivateOfferPriceModelType_UNSPECIFIED            GcpMarketplacePrivateOfferPriceModelType = "PRICE_MODEL_TYPE_UNSPECIFIED"
+	GcpMarketplacePrivateOfferPriceModelType_CUD                    GcpMarketplacePrivateOfferPriceModelType = "CUD"
+	GcpMarketplacePrivateOfferPriceModelType_FIXED_FEE              GcpMarketplacePrivateOfferPriceModelType = "FIXED_FEE"
 	GcpMarketplacePrivateOfferPriceModelType_FIXED_FEE_WITH_OVERAGE GcpMarketplacePrivateOfferPriceModelType = "FIXED_FEE_WITH_OVERAGE"
+	GcpMarketplacePrivateOfferPriceModelType_PAYG                   GcpMarketplacePrivateOfferPriceModelType = "PAYG"
+	GcpMarketplacePrivateOfferPriceModelType_PAYG_WITH_CUD          GcpMarketplacePrivateOfferPriceModelType = "PAYG_WITH_CUD"
 )
 
 // All allowed values of GcpMarketplacePrivateOfferPriceModelType enum
@@ -35,10 +35,10 @@ var AllowedGcpMarketplacePrivateOfferPriceModelTypeEnumValues = []GcpMarketplace
 	"",
 	"PRICE_MODEL_TYPE_UNSPECIFIED",
 	"CUD",
-	"PAYG",
-	"PAYG_WITH_CUD",
 	"FIXED_FEE",
 	"FIXED_FEE_WITH_OVERAGE",
+	"PAYG",
+	"PAYG_WITH_CUD",
 }
 
 func (v *GcpMarketplacePrivateOfferPriceModelType) UnmarshalJSON(src []byte) error {
@@ -119,4 +119,3 @@ func (v *NullableGcpMarketplacePrivateOfferPriceModelType) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

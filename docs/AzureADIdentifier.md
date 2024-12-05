@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BillingAccountId** | Pointer to **string** | Azure Billing Account ID | [optional] 
-**CompanyInfo** | Pointer to [**CompanyInfo**](CompanyInfo.md) |  | [optional] 
 **CustomerId** | Pointer to **string** |  | [optional] 
 **EmailId** | Pointer to **string** | Email address | [optional] 
 **FirstName** | Pointer to **string** |  | [optional] 
@@ -58,31 +57,6 @@ SetBillingAccountId sets BillingAccountId field to given value.
 `func (o *AzureADIdentifier) HasBillingAccountId() bool`
 
 HasBillingAccountId returns a boolean if a field has been set.
-
-### GetCompanyInfo
-
-`func (o *AzureADIdentifier) GetCompanyInfo() CompanyInfo`
-
-GetCompanyInfo returns the CompanyInfo field if non-nil, zero value otherwise.
-
-### GetCompanyInfoOk
-
-`func (o *AzureADIdentifier) GetCompanyInfoOk() (*CompanyInfo, bool)`
-
-GetCompanyInfoOk returns a tuple with the CompanyInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCompanyInfo
-
-`func (o *AzureADIdentifier) SetCompanyInfo(v CompanyInfo)`
-
-SetCompanyInfo sets CompanyInfo field to given value.
-
-### HasCompanyInfo
-
-`func (o *AzureADIdentifier) HasCompanyInfo() bool`
-
-HasCompanyInfo returns a boolean if a field has been set.
 
 ### GetCustomerId
 

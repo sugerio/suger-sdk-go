@@ -20,16 +20,22 @@ var _ MappedNullable = &UpdateBuyerParams{}
 
 // UpdateBuyerParams struct for UpdateBuyerParams
 type UpdateBuyerParams struct {
+	// Optional. CompanyInfo of the buyer.
+	CompanyInfo *CompanyInfo `json:"companyInfo,omitempty"`
 	// The customer ID to recognize the cloud marketplace buyer in your internal system. This may be used for uploading CSV files for Batch Metering Usage
 	CustomerId *string `json:"customerId,omitempty"`
 	// The description of the buyer. If not provided, the description will not be updated.
 	Description *string `json:"description,omitempty"`
+	// The Lago Customer ID of the buyer. If not provided, the Lago Customer ID will not be updated.
+	LagoCustomerId *string `json:"lagoCustomerId,omitempty"`
 	// The Metronome Customer ID of the buyer. If not provided, the Metronome Customer ID will not be updated.
 	MetronomeCustomerId *string `json:"metronomeCustomerId,omitempty"`
 	// The name of the buyer. If not provided, the name will not be updated.
 	Name *string `json:"name,omitempty"`
 	// The Orb Customer ID of the buyer. If not provided, the Orb Customer ID will not be updated.
 	OrbCustomerId *string `json:"orbCustomerId,omitempty"`
+	// Optional. PaymentConfig of the buyer. The currency can't be updated.
+	PaymentConfig *PaymentConfig `json:"paymentConfig,omitempty"`
 }
 
 // NewUpdateBuyerParams instantiates a new UpdateBuyerParams object
@@ -47,6 +53,38 @@ func NewUpdateBuyerParams() *UpdateBuyerParams {
 func NewUpdateBuyerParamsWithDefaults() *UpdateBuyerParams {
 	this := UpdateBuyerParams{}
 	return &this
+}
+
+// GetCompanyInfo returns the CompanyInfo field value if set, zero value otherwise.
+func (o *UpdateBuyerParams) GetCompanyInfo() CompanyInfo {
+	if o == nil || IsNil(o.CompanyInfo) {
+		var ret CompanyInfo
+		return ret
+	}
+	return *o.CompanyInfo
+}
+
+// GetCompanyInfoOk returns a tuple with the CompanyInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateBuyerParams) GetCompanyInfoOk() (*CompanyInfo, bool) {
+	if o == nil || IsNil(o.CompanyInfo) {
+		return nil, false
+	}
+	return o.CompanyInfo, true
+}
+
+// HasCompanyInfo returns a boolean if a field has been set.
+func (o *UpdateBuyerParams) HasCompanyInfo() bool {
+	if o != nil && !IsNil(o.CompanyInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompanyInfo gets a reference to the given CompanyInfo and assigns it to the CompanyInfo field.
+func (o *UpdateBuyerParams) SetCompanyInfo(v CompanyInfo) {
+	o.CompanyInfo = &v
 }
 
 // GetCustomerId returns the CustomerId field value if set, zero value otherwise.
@@ -111,6 +149,38 @@ func (o *UpdateBuyerParams) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *UpdateBuyerParams) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetLagoCustomerId returns the LagoCustomerId field value if set, zero value otherwise.
+func (o *UpdateBuyerParams) GetLagoCustomerId() string {
+	if o == nil || IsNil(o.LagoCustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.LagoCustomerId
+}
+
+// GetLagoCustomerIdOk returns a tuple with the LagoCustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateBuyerParams) GetLagoCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.LagoCustomerId) {
+		return nil, false
+	}
+	return o.LagoCustomerId, true
+}
+
+// HasLagoCustomerId returns a boolean if a field has been set.
+func (o *UpdateBuyerParams) HasLagoCustomerId() bool {
+	if o != nil && !IsNil(o.LagoCustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetLagoCustomerId gets a reference to the given string and assigns it to the LagoCustomerId field.
+func (o *UpdateBuyerParams) SetLagoCustomerId(v string) {
+	o.LagoCustomerId = &v
 }
 
 // GetMetronomeCustomerId returns the MetronomeCustomerId field value if set, zero value otherwise.
@@ -209,8 +279,40 @@ func (o *UpdateBuyerParams) SetOrbCustomerId(v string) {
 	o.OrbCustomerId = &v
 }
 
+// GetPaymentConfig returns the PaymentConfig field value if set, zero value otherwise.
+func (o *UpdateBuyerParams) GetPaymentConfig() PaymentConfig {
+	if o == nil || IsNil(o.PaymentConfig) {
+		var ret PaymentConfig
+		return ret
+	}
+	return *o.PaymentConfig
+}
+
+// GetPaymentConfigOk returns a tuple with the PaymentConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateBuyerParams) GetPaymentConfigOk() (*PaymentConfig, bool) {
+	if o == nil || IsNil(o.PaymentConfig) {
+		return nil, false
+	}
+	return o.PaymentConfig, true
+}
+
+// HasPaymentConfig returns a boolean if a field has been set.
+func (o *UpdateBuyerParams) HasPaymentConfig() bool {
+	if o != nil && !IsNil(o.PaymentConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentConfig gets a reference to the given PaymentConfig and assigns it to the PaymentConfig field.
+func (o *UpdateBuyerParams) SetPaymentConfig(v PaymentConfig) {
+	o.PaymentConfig = &v
+}
+
 func (o UpdateBuyerParams) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -219,11 +321,17 @@ func (o UpdateBuyerParams) MarshalJSON() ([]byte, error) {
 
 func (o UpdateBuyerParams) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CompanyInfo) {
+		toSerialize["companyInfo"] = o.CompanyInfo
+	}
 	if !IsNil(o.CustomerId) {
 		toSerialize["customerId"] = o.CustomerId
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.LagoCustomerId) {
+		toSerialize["lagoCustomerId"] = o.LagoCustomerId
 	}
 	if !IsNil(o.MetronomeCustomerId) {
 		toSerialize["metronomeCustomerId"] = o.MetronomeCustomerId
@@ -233,6 +341,9 @@ func (o UpdateBuyerParams) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OrbCustomerId) {
 		toSerialize["orbCustomerId"] = o.OrbCustomerId
+	}
+	if !IsNil(o.PaymentConfig) {
+		toSerialize["paymentConfig"] = o.PaymentConfig
 	}
 	return toSerialize, nil
 }
@@ -272,5 +383,3 @@ func (v *NullableUpdateBuyerParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

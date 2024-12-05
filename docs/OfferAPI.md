@@ -1,6 +1,6 @@
 # \OfferAPI
 
-All URIs are relative to *https://api.suger.cloud*
+All URIs are relative to *http://https://api.suger.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,11 +10,10 @@ Method | HTTP request | Description
 [**DeleteOffer**](OfferAPI.md#DeleteOffer) | **Delete** /org/{orgId}/offer/{offerId} | delete offer
 [**ExtendPrivateOfferExpiryDate**](OfferAPI.md#ExtendPrivateOfferExpiryDate) | **Post** /org/{orgId}/offer/{offerId}/extendExpiryDate | extend offer expiry date
 [**GetOffer**](OfferAPI.md#GetOffer) | **Get** /org/{orgId}/offer/{offerId} | get offer
+[**GetOfferByExternalId**](OfferAPI.md#GetOfferByExternalId) | **Get** /org/{orgId}/offerExternalId/{offerExternalId} | get offer by external ID
 [**GetOfferEula**](OfferAPI.md#GetOfferEula) | **Get** /org/{orgId}/offer/{offerId}/eula | get offer EULA
-[**ListOffersByContact**](OfferAPI.md#ListOffersByContact) | **Get** /org/{orgId}/contact/{contactId}/offer | list offers by contact
-[**ListOffersByOrganization**](OfferAPI.md#ListOffersByOrganization) | **Get** /org/{orgId}/offer | list offers by organization
-[**ListOffersByPartner**](OfferAPI.md#ListOffersByPartner) | **Get** /org/{orgId}/partner/{partner}/offer | list offers by partner
-[**ListOffersByProduct**](OfferAPI.md#ListOffersByProduct) | **Get** /org/{orgId}/product/{productId}/offer | list offers by product
+[**GetOfferResellerEula**](OfferAPI.md#GetOfferResellerEula) | **Get** /org/{orgId}/offer/{offerId}/resellerEula | get offer reseller EULA
+[**ListOffers**](OfferAPI.md#ListOffers) | **Get** /org/{orgId}/offer | list offers
 [**SendOfferNotifications**](OfferAPI.md#SendOfferNotifications) | **Post** /org/{orgId}/offer/{offerId}/notifyContacts | notify offer contacts
 [**UpdateOfferMetaInfo**](OfferAPI.md#UpdateOfferMetaInfo) | **Patch** /org/{orgId}/offer/{offerId}/metaInfo | update offer meta info
 
@@ -34,25 +33,25 @@ cancel offer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    offerId := "offerId_example" // string | Offer ID
+	orgId := "orgId_example" // string | Organization ID
+	offerId := "offerId_example" // string | Offer ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfferAPI.CancelOffer(context.Background(), orgId, offerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.CancelOffer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CancelOffer`: string
-    fmt.Fprintf(os.Stdout, "Response from `OfferAPI.CancelOffer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.CancelOffer(context.Background(), orgId, offerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.CancelOffer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CancelOffer`: string
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.CancelOffer`: %v\n", resp)
 }
 ```
 
@@ -81,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -107,25 +106,25 @@ create offer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    data := *openapiclient.NewWorkloadOffer() // WorkloadOffer | Offer to create
+	orgId := "orgId_example" // string | Organization ID
+	data := *openapiclient.NewWorkloadOffer() // WorkloadOffer | Offer to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfferAPI.CreateOffer(context.Background(), orgId).Data(data).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.CreateOffer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateOffer`: WorkloadOffer
-    fmt.Fprintf(os.Stdout, "Response from `OfferAPI.CreateOffer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.CreateOffer(context.Background(), orgId).Data(data).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.CreateOffer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateOffer`: WorkloadOffer
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.CreateOffer`: %v\n", resp)
 }
 ```
 
@@ -153,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -179,25 +178,25 @@ create or update draft offer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    data := *openapiclient.NewWorkloadOffer() // WorkloadOffer | the draft offer to create
+	orgId := "orgId_example" // string | Organization ID
+	data := *openapiclient.NewWorkloadOffer() // WorkloadOffer | the draft offer to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfferAPI.CreateOrUpdateDraftOffer(context.Background(), orgId).Data(data).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.CreateOrUpdateDraftOffer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateOrUpdateDraftOffer`: WorkloadOffer
-    fmt.Fprintf(os.Stdout, "Response from `OfferAPI.CreateOrUpdateDraftOffer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.CreateOrUpdateDraftOffer(context.Background(), orgId).Data(data).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.CreateOrUpdateDraftOffer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateOrUpdateDraftOffer`: WorkloadOffer
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.CreateOrUpdateDraftOffer`: %v\n", resp)
 }
 ```
 
@@ -225,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -251,25 +250,25 @@ delete offer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    offerId := "offerId_example" // string | Offer ID
+	orgId := "orgId_example" // string | Organization ID
+	offerId := "offerId_example" // string | Offer ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfferAPI.DeleteOffer(context.Background(), orgId, offerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.DeleteOffer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteOffer`: string
-    fmt.Fprintf(os.Stdout, "Response from `OfferAPI.DeleteOffer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.DeleteOffer(context.Background(), orgId, offerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.DeleteOffer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteOffer`: string
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.DeleteOffer`: %v\n", resp)
 }
 ```
 
@@ -298,7 +297,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -324,26 +323,26 @@ extend offer expiry date
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    offerId := "offerId_example" // string | Offer ID
-    newExpiryDate := "newExpiryDate_example" // string | new expiry date in YYYY-MM-DD format
+	orgId := "orgId_example" // string | Organization ID
+	offerId := "offerId_example" // string | Offer ID
+	newExpiryDate := "newExpiryDate_example" // string | new expiry date in YYYY-MM-DD format
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfferAPI.ExtendPrivateOfferExpiryDate(context.Background(), orgId, offerId).NewExpiryDate(newExpiryDate).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.ExtendPrivateOfferExpiryDate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ExtendPrivateOfferExpiryDate`: string
-    fmt.Fprintf(os.Stdout, "Response from `OfferAPI.ExtendPrivateOfferExpiryDate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.ExtendPrivateOfferExpiryDate(context.Background(), orgId, offerId).NewExpiryDate(newExpiryDate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.ExtendPrivateOfferExpiryDate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ExtendPrivateOfferExpiryDate`: string
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.ExtendPrivateOfferExpiryDate`: %v\n", resp)
 }
 ```
 
@@ -373,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -399,25 +398,25 @@ get offer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    offerId := "offerId_example" // string | Offer ID
+	orgId := "orgId_example" // string | Organization ID
+	offerId := "offerId_example" // string | Offer ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfferAPI.GetOffer(context.Background(), orgId, offerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.GetOffer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOffer`: WorkloadOffer
-    fmt.Fprintf(os.Stdout, "Response from `OfferAPI.GetOffer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.GetOffer(context.Background(), orgId, offerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.GetOffer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOffer`: WorkloadOffer
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.GetOffer`: %v\n", resp)
 }
 ```
 
@@ -446,7 +445,80 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOfferByExternalId
+
+> WorkloadOffer GetOfferByExternalId(ctx, orgId, offerExternalId).Execute()
+
+get offer by external ID
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	offerExternalId := "offerExternalId_example" // string | Offer External ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.GetOfferByExternalId(context.Background(), orgId, offerExternalId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.GetOfferByExternalId``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOfferByExternalId`: WorkloadOffer
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.GetOfferByExternalId`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+**offerExternalId** | **string** | Offer External ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOfferByExternalIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**WorkloadOffer**](WorkloadOffer.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -472,25 +544,25 @@ get offer EULA
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    offerId := "offerId_example" // string | Offer ID
+	orgId := "orgId_example" // string | Organization ID
+	offerId := "offerId_example" // string | Offer ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfferAPI.GetOfferEula(context.Background(), orgId, offerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.GetOfferEula``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOfferEula`: string
-    fmt.Fprintf(os.Stdout, "Response from `OfferAPI.GetOfferEula`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.GetOfferEula(context.Background(), orgId, offerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.GetOfferEula``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOfferEula`: string
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.GetOfferEula`: %v\n", resp)
 }
 ```
 
@@ -519,7 +591,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -531,11 +603,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListOffersByContact
+## GetOfferResellerEula
 
-> []WorkloadOffer ListOffersByContact(ctx, orgId, contactId).Execute()
+> string GetOfferResellerEula(ctx, orgId, offerId).Execute()
 
-list offers by contact
+get offer reseller EULA
 
 
 
@@ -545,25 +617,25 @@ list offers by contact
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    contactId := "contactId_example" // string | Contact ID
+	orgId := "orgId_example" // string | Organization ID
+	offerId := "offerId_example" // string | Offer ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfferAPI.ListOffersByContact(context.Background(), orgId, contactId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.ListOffersByContact``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListOffersByContact`: []WorkloadOffer
-    fmt.Fprintf(os.Stdout, "Response from `OfferAPI.ListOffersByContact`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.GetOfferResellerEula(context.Background(), orgId, offerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.GetOfferResellerEula``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOfferResellerEula`: string
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.GetOfferResellerEula`: %v\n", resp)
 }
 ```
 
@@ -574,11 +646,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **orgId** | **string** | Organization ID | 
-**contactId** | **string** | Contact ID | 
+**offerId** | **string** | Offer ID | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListOffersByContactRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetOfferResellerEulaRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -588,11 +660,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]WorkloadOffer**](WorkloadOffer.md)
+**string**
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -604,11 +676,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListOffersByOrganization
+## ListOffers
 
-> []WorkloadOffer ListOffersByOrganization(ctx, orgId).Execute()
+> []WorkloadOffer ListOffers(ctx, orgId).Status(status).Partner(partner).OfferType(offerType).ProductId(productId).BuyerId(buyerId).HubspotDealId(hubspotDealId).ContactId(contactId).Limit(limit).Offset(offset).Execute()
 
-list offers by organization
+list offers
 
 
 
@@ -618,24 +690,33 @@ list offers by organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
+	orgId := "orgId_example" // string | Organization ID
+	status := "status_example" // string | filter by offer status (optional)
+	partner := "partner_example" // string | filter by partner (optional)
+	offerType := "offerType_example" // string | filter by offerType (optional)
+	productId := "productId_example" // string | filter by productId (optional)
+	buyerId := "buyerId_example" // string | filter by buyerId (optional)
+	hubspotDealId := "hubspotDealId_example" // string | filter by hubspotDealId (optional)
+	contactId := "contactId_example" // string | filter by contactId (optional)
+	limit := int32(56) // int32 | List pagination size, default 1000, max value is 1000 (optional)
+	offset := int32(56) // int32 | List pagination offset, default 0 (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfferAPI.ListOffersByOrganization(context.Background(), orgId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.ListOffersByOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListOffersByOrganization`: []WorkloadOffer
-    fmt.Fprintf(os.Stdout, "Response from `OfferAPI.ListOffersByOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.ListOffers(context.Background(), orgId).Status(status).Partner(partner).OfferType(offerType).ProductId(productId).BuyerId(buyerId).HubspotDealId(hubspotDealId).ContactId(contactId).Limit(limit).Offset(offset).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.ListOffers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOffers`: []WorkloadOffer
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.ListOffers`: %v\n", resp)
 }
 ```
 
@@ -649,12 +730,21 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListOffersByOrganizationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListOffersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **status** | **string** | filter by offer status | 
+ **partner** | **string** | filter by partner | 
+ **offerType** | **string** | filter by offerType | 
+ **productId** | **string** | filter by productId | 
+ **buyerId** | **string** | filter by buyerId | 
+ **hubspotDealId** | **string** | filter by hubspotDealId | 
+ **contactId** | **string** | filter by contactId | 
+ **limit** | **int32** | List pagination size, default 1000, max value is 1000 | 
+ **offset** | **int32** | List pagination offset, default 0 | 
 
 ### Return type
 
@@ -662,153 +752,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListOffersByPartner
-
-> []WorkloadOffer ListOffersByPartner(ctx, orgId, partner).Execute()
-
-list offers by partner
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
-)
-
-func main() {
-    orgId := "orgId_example" // string | Organization ID
-    partner := "partner_example" // string | Cloud Partner
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfferAPI.ListOffersByPartner(context.Background(), orgId, partner).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.ListOffersByPartner``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListOffersByPartner`: []WorkloadOffer
-    fmt.Fprintf(os.Stdout, "Response from `OfferAPI.ListOffersByPartner`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Organization ID | 
-**partner** | **string** | Cloud Partner | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListOffersByPartnerRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**[]WorkloadOffer**](WorkloadOffer.md)
-
-### Authorization
-
-[BearerTokenAuth](../README.md#BearerTokenAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListOffersByProduct
-
-> []WorkloadOffer ListOffersByProduct(ctx, orgId, productId).Execute()
-
-list offers by product
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
-)
-
-func main() {
-    orgId := "orgId_example" // string | Organization ID
-    productId := "productId_example" // string | Product ID
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfferAPI.ListOffersByProduct(context.Background(), orgId, productId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.ListOffersByProduct``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListOffersByProduct`: []WorkloadOffer
-    fmt.Fprintf(os.Stdout, "Response from `OfferAPI.ListOffersByProduct`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Organization ID | 
-**productId** | **string** | Product ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListOffersByProductRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**[]WorkloadOffer**](WorkloadOffer.md)
-
-### Authorization
-
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -834,26 +778,26 @@ notify offer contacts
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    offerId := "offerId_example" // string | Offer ID
-    contactIds := []string{"Property_example"} // []string | List of Contact IDs, if emoty or nil, send notifications to all contacts of the offer (optional)
+	orgId := "orgId_example" // string | Organization ID
+	offerId := "offerId_example" // string | Offer ID
+	contactIds := []string{"Property_example"} // []string | List of Contact IDs, if emoty or nil, send notifications to all contacts of the offer (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfferAPI.SendOfferNotifications(context.Background(), orgId, offerId).ContactIds(contactIds).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.SendOfferNotifications``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SendOfferNotifications`: NotificationEvent
-    fmt.Fprintf(os.Stdout, "Response from `OfferAPI.SendOfferNotifications`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.SendOfferNotifications(context.Background(), orgId, offerId).ContactIds(contactIds).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.SendOfferNotifications``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SendOfferNotifications`: NotificationEvent
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.SendOfferNotifications`: %v\n", resp)
 }
 ```
 
@@ -883,7 +827,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -909,26 +853,26 @@ update offer meta info
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/sugerio/suger-sdk-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 )
 
 func main() {
-    orgId := "orgId_example" // string | Organization ID
-    offerId := "offerId_example" // string | Offer ID
-    data := *openapiclient.NewWorkloadMetaInfo() // WorkloadMetaInfo | Offer meta info to update
+	orgId := "orgId_example" // string | Organization ID
+	offerId := "offerId_example" // string | Offer ID
+	data := *openapiclient.NewWorkloadMetaInfo() // WorkloadMetaInfo | Offer meta info to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfferAPI.UpdateOfferMetaInfo(context.Background(), orgId, offerId).Data(data).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.UpdateOfferMetaInfo``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateOfferMetaInfo`: WorkloadMetaInfo
-    fmt.Fprintf(os.Stdout, "Response from `OfferAPI.UpdateOfferMetaInfo`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.UpdateOfferMetaInfo(context.Background(), orgId, offerId).Data(data).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.UpdateOfferMetaInfo``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateOfferMetaInfo`: WorkloadMetaInfo
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.UpdateOfferMetaInfo`: %v\n", resp)
 }
 ```
 
@@ -958,7 +902,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 

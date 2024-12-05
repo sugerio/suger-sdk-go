@@ -11,11 +11,10 @@ package openapi
 
 import (
 	"context"
-	"testing"
-
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	openapiclient "github.com/sugerio/suger-sdk-go"
+	"testing"
 )
 
 func Test_openapi_NotificationAPIService(t *testing.T) {
@@ -31,6 +30,36 @@ func Test_openapi_NotificationAPIService(t *testing.T) {
 		var notificationMessageId string
 
 		resp, httpRes, err := apiClient.NotificationAPI.GetNotificationMessage(context.Background(), orgId, notificationMessageId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NotificationAPIService ListNotificationEvents", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+
+		resp, httpRes, err := apiClient.NotificationAPI.ListNotificationEvents(context.Background(), orgId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NotificationAPIService ListNotificationEventsByEntity", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var entityType string
+		var entityId string
+
+		resp, httpRes, err := apiClient.NotificationAPI.ListNotificationEventsByEntity(context.Background(), orgId, entityType, entityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

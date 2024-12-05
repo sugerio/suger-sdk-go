@@ -20,7 +20,7 @@ var _ MappedNullable = &CommitDimension{}
 
 // CommitDimension The commit dimension. There may be one or more commit dimensions defined in single product, offer or entitlement.
 type CommitDimension struct {
-	Category *string `json:"category,omitempty"`
+	Category    *string `json:"category,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// Whether this commit dimension is newly created by user, when creating AWS Marketplace Contract private offer.
 	IsUserCreated *bool `json:"isUserCreated,omitempty"`
@@ -42,7 +42,9 @@ type CommitDimension struct {
 	Term *string `json:"term,omitempty"`
 	// The end time of the commit term.
 	TermEndTime *string `json:"termEndTime,omitempty"`
-	TimeUnit *CommitDimensionTimeUnit `json:"timeUnit,omitempty"`
+	// The term unit for the commit amount.
+	TimeUnit *TimeUnit `json:"timeUnit,omitempty"`
+	// The type of the commit dimension. Applicable only to Azure Marketplace.
 	Type *CommitDimensionType `json:"type,omitempty"`
 	// These indicate whether the dimension covers metering, entitlement, or support for external metering
 	Types []string `json:"types,omitempty"`
@@ -450,9 +452,9 @@ func (o *CommitDimension) SetTermEndTime(v string) {
 }
 
 // GetTimeUnit returns the TimeUnit field value if set, zero value otherwise.
-func (o *CommitDimension) GetTimeUnit() CommitDimensionTimeUnit {
+func (o *CommitDimension) GetTimeUnit() TimeUnit {
 	if o == nil || IsNil(o.TimeUnit) {
-		var ret CommitDimensionTimeUnit
+		var ret TimeUnit
 		return ret
 	}
 	return *o.TimeUnit
@@ -460,7 +462,7 @@ func (o *CommitDimension) GetTimeUnit() CommitDimensionTimeUnit {
 
 // GetTimeUnitOk returns a tuple with the TimeUnit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CommitDimension) GetTimeUnitOk() (*CommitDimensionTimeUnit, bool) {
+func (o *CommitDimension) GetTimeUnitOk() (*TimeUnit, bool) {
 	if o == nil || IsNil(o.TimeUnit) {
 		return nil, false
 	}
@@ -476,8 +478,8 @@ func (o *CommitDimension) HasTimeUnit() bool {
 	return false
 }
 
-// SetTimeUnit gets a reference to the given CommitDimensionTimeUnit and assigns it to the TimeUnit field.
-func (o *CommitDimension) SetTimeUnit(v CommitDimensionTimeUnit) {
+// SetTimeUnit gets a reference to the given TimeUnit and assigns it to the TimeUnit field.
+func (o *CommitDimension) SetTimeUnit(v TimeUnit) {
 	o.TimeUnit = &v
 }
 
@@ -546,7 +548,7 @@ func (o *CommitDimension) SetTypes(v []string) {
 }
 
 func (o CommitDimension) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -638,5 +640,3 @@ func (v *NullableCommitDimension) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,26 +21,27 @@ var _ MappedNullable = &WorkloadOffer{}
 
 // WorkloadOffer struct for WorkloadOffer
 type WorkloadOffer struct {
-	ContactIds []string `json:"contactIds,omitempty"`
-	CreatedBy *string `json:"createdBy,omitempty"`
+	BuyerID      *string    `json:"buyerID,omitempty"`
+	ContactIds   []string   `json:"contactIds,omitempty"`
+	CreatedBy    *string    `json:"createdBy,omitempty"`
 	CreationTime *time.Time `json:"creationTime,omitempty"`
 	// nullable
 	EndTime *time.Time `json:"endTime,omitempty"`
 	// nullable
-	ExpireTime *time.Time `json:"expireTime,omitempty"`
-	ExternalID *string `json:"externalID,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Info *OfferInfo `json:"info,omitempty"`
-	LastUpdateTime *time.Time `json:"lastUpdateTime,omitempty"`
-	LastUpdatedBy *string `json:"lastUpdatedBy,omitempty"`
-	MetaInfo *WorkloadMetaInfo `json:"metaInfo,omitempty"`
-	Name *string `json:"name,omitempty"`
-	OfferType *string `json:"offerType,omitempty"`
-	OrganizationID *string `json:"organizationID,omitempty"`
-	Partner *Partner `json:"partner,omitempty"`
-	ProductID *string `json:"productID,omitempty"`
-	Service *PartnerService `json:"service,omitempty"`
-	Status *string `json:"status,omitempty"`
+	ExpireTime     *time.Time        `json:"expireTime,omitempty"`
+	ExternalID     *string           `json:"externalID,omitempty"`
+	Id             *string           `json:"id,omitempty"`
+	Info           *OfferInfo        `json:"info,omitempty"`
+	LastUpdateTime *time.Time        `json:"lastUpdateTime,omitempty"`
+	LastUpdatedBy  *string           `json:"lastUpdatedBy,omitempty"`
+	MetaInfo       *WorkloadMetaInfo `json:"metaInfo,omitempty"`
+	Name           *string           `json:"name,omitempty"`
+	OfferType      *OfferType        `json:"offerType,omitempty"`
+	OrganizationID *string           `json:"organizationID,omitempty"`
+	Partner        *Partner          `json:"partner,omitempty"`
+	ProductID      *string           `json:"productID,omitempty"`
+	Service        *PartnerService   `json:"service,omitempty"`
+	Status         *OfferStatus      `json:"status,omitempty"`
 }
 
 // NewWorkloadOffer instantiates a new WorkloadOffer object
@@ -58,6 +59,38 @@ func NewWorkloadOffer() *WorkloadOffer {
 func NewWorkloadOfferWithDefaults() *WorkloadOffer {
 	this := WorkloadOffer{}
 	return &this
+}
+
+// GetBuyerID returns the BuyerID field value if set, zero value otherwise.
+func (o *WorkloadOffer) GetBuyerID() string {
+	if o == nil || IsNil(o.BuyerID) {
+		var ret string
+		return ret
+	}
+	return *o.BuyerID
+}
+
+// GetBuyerIDOk returns a tuple with the BuyerID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadOffer) GetBuyerIDOk() (*string, bool) {
+	if o == nil || IsNil(o.BuyerID) {
+		return nil, false
+	}
+	return o.BuyerID, true
+}
+
+// HasBuyerID returns a boolean if a field has been set.
+func (o *WorkloadOffer) HasBuyerID() bool {
+	if o != nil && !IsNil(o.BuyerID) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuyerID gets a reference to the given string and assigns it to the BuyerID field.
+func (o *WorkloadOffer) SetBuyerID(v string) {
+	o.BuyerID = &v
 }
 
 // GetContactIds returns the ContactIds field value if set, zero value otherwise.
@@ -445,9 +478,9 @@ func (o *WorkloadOffer) SetName(v string) {
 }
 
 // GetOfferType returns the OfferType field value if set, zero value otherwise.
-func (o *WorkloadOffer) GetOfferType() string {
+func (o *WorkloadOffer) GetOfferType() OfferType {
 	if o == nil || IsNil(o.OfferType) {
-		var ret string
+		var ret OfferType
 		return ret
 	}
 	return *o.OfferType
@@ -455,7 +488,7 @@ func (o *WorkloadOffer) GetOfferType() string {
 
 // GetOfferTypeOk returns a tuple with the OfferType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkloadOffer) GetOfferTypeOk() (*string, bool) {
+func (o *WorkloadOffer) GetOfferTypeOk() (*OfferType, bool) {
 	if o == nil || IsNil(o.OfferType) {
 		return nil, false
 	}
@@ -471,8 +504,8 @@ func (o *WorkloadOffer) HasOfferType() bool {
 	return false
 }
 
-// SetOfferType gets a reference to the given string and assigns it to the OfferType field.
-func (o *WorkloadOffer) SetOfferType(v string) {
+// SetOfferType gets a reference to the given OfferType and assigns it to the OfferType field.
+func (o *WorkloadOffer) SetOfferType(v OfferType) {
 	o.OfferType = &v
 }
 
@@ -605,9 +638,9 @@ func (o *WorkloadOffer) SetService(v PartnerService) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *WorkloadOffer) GetStatus() string {
+func (o *WorkloadOffer) GetStatus() OfferStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret string
+		var ret OfferStatus
 		return ret
 	}
 	return *o.Status
@@ -615,7 +648,7 @@ func (o *WorkloadOffer) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkloadOffer) GetStatusOk() (*string, bool) {
+func (o *WorkloadOffer) GetStatusOk() (*OfferStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -631,13 +664,13 @@ func (o *WorkloadOffer) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *WorkloadOffer) SetStatus(v string) {
+// SetStatus gets a reference to the given OfferStatus and assigns it to the Status field.
+func (o *WorkloadOffer) SetStatus(v OfferStatus) {
 	o.Status = &v
 }
 
 func (o WorkloadOffer) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -646,6 +679,9 @@ func (o WorkloadOffer) MarshalJSON() ([]byte, error) {
 
 func (o WorkloadOffer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BuyerID) {
+		toSerialize["buyerID"] = o.BuyerID
+	}
 	if !IsNil(o.ContactIds) {
 		toSerialize["contactIds"] = o.ContactIds
 	}
@@ -738,5 +774,3 @@ func (v *NullableWorkloadOffer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

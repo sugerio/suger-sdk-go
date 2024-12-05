@@ -21,26 +21,62 @@ type EntityType string
 
 // List of EntityType
 const (
-	EntityType_ORGANIZATION EntityType = "ORGANIZATION"
-	EntityType_PRODUCT EntityType = "PRODUCT"
-	EntityType_OFFER EntityType = "OFFER"
-	EntityType_ENTITLEMENT EntityType = "ENTITLEMENT"
-	EntityType_ENTITLEMENT_TERM EntityType = "ENTITLEMENT_TERM"
-	EntityType_INTEGRATION EntityType = "INTEGRATION"
-	EntityType_NOTIFICATION_MESSAGE EntityType = "NOTIFICATION_MESSAGE"
-	EntityType_REVENUE_RECORD EntityType = "REVENUE_RECORD"
+	EntityType_UNKNOWN               EntityType = ""
+	EntityType_API_CLIENT            EntityType = "API_CLIENT"
+	EntityType_AUDITING_EVENT        EntityType = "AUDITING_EVENT"
+	EntityType_AUTO_SHARE_TASK       EntityType = "AUTO_SHARE_TASK"
+	EntityType_BUYER                 EntityType = "BUYER"
+	EntityType_CONTACT               EntityType = "CONTACT"
+	EntityType_ENTITLEMENT           EntityType = "ENTITLEMENT"
+	EntityType_ENTITLEMENT_TERM      EntityType = "ENTITLEMENT_TERM"
+	EntityType_HEADLESS_ENTITLEMENTS EntityType = "HEADLESS_ENTITLEMENTS"
+	EntityType_HUBSPOT_USER          EntityType = "HUBSPOT_USER"
+	EntityType_INTEGRATION           EntityType = "INTEGRATION"
+	EntityType_INVOICE               EntityType = "INVOICE"
+	EntityType_NEW_CLIENT            EntityType = "NEW_CLIENT"
+	EntityType_NOTIFICATION_MESSAGE  EntityType = "NOTIFICATION_MESSAGE"
+	EntityType_OFFER                 EntityType = "OFFER"
+	EntityType_ORGANIZATION          EntityType = "ORGANIZATION"
+	EntityType_PAYMENT_TRANSACTION   EntityType = "PAYMENT_TRANSACTION"
+	EntityType_PRODUCT               EntityType = "PRODUCT"
+	EntityType_REFERRAL              EntityType = "REFERRAL"
+	EntityType_REVENUE_RECORD        EntityType = "REVENUE_RECORD"
+	EntityType_SUPPORT_TICKET        EntityType = "SUPPORT_TICKET"
+	EntityType_UNPURCHASED_OFFERS    EntityType = "UNPURCHASED_OFFERS"
+	EntityType_USAGE_RECORD_GROUP    EntityType = "USAGE_RECORD_GROUP"
+	EntityType_USAGE_RECORD_REPORT   EntityType = "USAGE_RECORD_REPORT"
+	EntityType_USER                  EntityType = "USER"
+	EntityType_WORKFLOW              EntityType = "WORKFLOW"
 )
 
 // All allowed values of EntityType enum
 var AllowedEntityTypeEnumValues = []EntityType{
-	"ORGANIZATION",
-	"PRODUCT",
-	"OFFER",
+	"",
+	"API_CLIENT",
+	"AUDITING_EVENT",
+	"AUTO_SHARE_TASK",
+	"BUYER",
+	"CONTACT",
 	"ENTITLEMENT",
 	"ENTITLEMENT_TERM",
+	"HEADLESS_ENTITLEMENTS",
+	"HUBSPOT_USER",
 	"INTEGRATION",
+	"INVOICE",
+	"NEW_CLIENT",
 	"NOTIFICATION_MESSAGE",
+	"OFFER",
+	"ORGANIZATION",
+	"PAYMENT_TRANSACTION",
+	"PRODUCT",
+	"REFERRAL",
 	"REVENUE_RECORD",
+	"SUPPORT_TICKET",
+	"UNPURCHASED_OFFERS",
+	"USAGE_RECORD_GROUP",
+	"USAGE_RECORD_REPORT",
+	"USER",
+	"WORKFLOW",
 }
 
 func (v *EntityType) UnmarshalJSON(src []byte) error {
@@ -121,4 +157,3 @@ func (v *NullableEntityType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

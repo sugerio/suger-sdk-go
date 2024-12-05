@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **InstallmentTimeline** | Pointer to [**GcpMarketplacePrivateOfferInstallmentTimeline**](GcpMarketplacePrivateOfferInstallmentTimeline.md) |  | [optional] 
 **Name** | Pointer to **string** | GCP private offer resource name. | [optional] 
 **OfferTerm** | Pointer to [**GcpMarketplacePrivateOfferTerm**](GcpMarketplacePrivateOfferTerm.md) |  | [optional] 
-**PaymentSchedule** | Pointer to [**GcpMarketplacePaymentScheduleType**](GcpMarketplacePaymentScheduleType.md) |  | [optional] 
-**PriceModel** | Pointer to [**GcpMarketplacePrivateOfferPriceModel**](GcpMarketplacePrivateOfferPriceModel.md) |  | [optional] 
+**PaymentSchedule** | Pointer to [**PaymentScheduleType**](PaymentScheduleType.md) |  | [optional] 
+**PriceModel** | Pointer to [**GcpMarketplacePrivateOfferPriceModel**](GcpMarketplacePrivateOfferPriceModel.md) | Nill if the offer has payment installments. | [optional] 
 **ServiceLevel** | Pointer to **string** | The Plan of the offer. | [optional] 
 
 ## Methods
@@ -159,20 +159,20 @@ HasOfferTerm returns a boolean if a field has been set.
 
 ### GetPaymentSchedule
 
-`func (o *GcpMarketplaceExistingPrivateOffer) GetPaymentSchedule() GcpMarketplacePaymentScheduleType`
+`func (o *GcpMarketplaceExistingPrivateOffer) GetPaymentSchedule() PaymentScheduleType`
 
 GetPaymentSchedule returns the PaymentSchedule field if non-nil, zero value otherwise.
 
 ### GetPaymentScheduleOk
 
-`func (o *GcpMarketplaceExistingPrivateOffer) GetPaymentScheduleOk() (*GcpMarketplacePaymentScheduleType, bool)`
+`func (o *GcpMarketplaceExistingPrivateOffer) GetPaymentScheduleOk() (*PaymentScheduleType, bool)`
 
 GetPaymentScheduleOk returns a tuple with the PaymentSchedule field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPaymentSchedule
 
-`func (o *GcpMarketplaceExistingPrivateOffer) SetPaymentSchedule(v GcpMarketplacePaymentScheduleType)`
+`func (o *GcpMarketplaceExistingPrivateOffer) SetPaymentSchedule(v PaymentScheduleType)`
 
 SetPaymentSchedule sets PaymentSchedule field to given value.
 

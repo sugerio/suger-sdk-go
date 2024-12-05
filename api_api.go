@@ -20,162 +20,13 @@ import (
 	"strings"
 )
 
-
 // APIAPIService APIAPI service
 type APIAPIService service
 
-type ApiCreateApiClientRequest struct {
-	ctx context.Context
-	ApiService *APIAPIService
-	orgId string
-	type_ *string
-}
-
-// API client type, the default is BEARER_TOKEN if not provided
-func (r ApiCreateApiClientRequest) Type_(type_ string) ApiCreateApiClientRequest {
-	r.type_ = &type_
-	return r
-}
-
-func (r ApiCreateApiClientRequest) Execute() (*GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient, *http.Response, error) {
-	return r.ApiService.CreateApiClientExecute(r)
-}
-
-/*
-CreateApiClient create api client
-
-Create an API client to access Suger API. Please note that only one API client is permitted per organization at this moment.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @return ApiCreateApiClientRequest
-*/
-func (a *APIAPIService) CreateApiClient(ctx context.Context, orgId string) ApiCreateApiClientRequest {
-	return ApiCreateApiClientRequest{
-		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-	}
-}
-
-// Execute executes the request
-//  @return GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient
-func (a *APIAPIService) CreateApiClientExecute(r ApiCreateApiClientRequest) (*GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIAPIService.CreateApiClient")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/org/{orgId}/apiClient"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiGetApiClientRequest struct {
-	ctx context.Context
-	ApiService *APIAPIService
-	orgId string
+	ctx         context.Context
+	ApiService  *APIAPIService
+	orgId       string
 	apiClientId string
 }
 
@@ -188,28 +39,29 @@ GetApiClient get api client
 
 Get the API client by ID.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param apiClientId API client ID
- @return ApiGetApiClientRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param apiClientId API client ID
+	@return ApiGetApiClientRequest
 */
 func (a *APIAPIService) GetApiClient(ctx context.Context, orgId string, apiClientId string) ApiGetApiClientRequest {
 	return ApiGetApiClientRequest{
-		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
+		ApiService:  a,
+		ctx:         ctx,
+		orgId:       orgId,
 		apiClientId: apiClientId,
 	}
 }
 
 // Execute executes the request
-//  @return GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient
+//
+//	@return GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient
 func (a *APIAPIService) GetApiClientExecute(r ApiGetApiClientRequest) (*GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIAPIService.GetApiClient")
@@ -245,7 +97,7 @@ func (a *APIAPIService) GetApiClientExecute(r ApiGetApiClientRequest) (*GithubCo
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -285,8 +137,8 @@ func (a *APIAPIService) GetApiClientExecute(r ApiGetApiClientRequest) (*GithubCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -296,8 +148,8 @@ func (a *APIAPIService) GetApiClientExecute(r ApiGetApiClientRequest) (*GithubCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -315,9 +167,9 @@ func (a *APIAPIService) GetApiClientExecute(r ApiGetApiClientRequest) (*GithubCo
 }
 
 type ApiGetApiClientAccessTokenRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *APIAPIService
-	data *GetApiClientAccessTokenParams
+	data       *GetApiClientAccessTokenParams
 }
 
 // Suger API Client
@@ -335,24 +187,25 @@ GetApiClientAccessToken get api access token
 
 Get the Bearer Access Token by giving the Suger API Client ID & Client Secret.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetApiClientAccessTokenRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetApiClientAccessTokenRequest
 */
 func (a *APIAPIService) GetApiClientAccessToken(ctx context.Context) ApiGetApiClientAccessTokenRequest {
 	return ApiGetApiClientAccessTokenRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiClientAccessToken
+//
+//	@return ApiClientAccessToken
 func (a *APIAPIService) GetApiClientAccessTokenExecute(r ApiGetApiClientAccessTokenRequest) (*ApiClientAccessToken, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiClientAccessToken
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiClientAccessToken
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIAPIService.GetApiClientAccessToken")
@@ -417,8 +270,8 @@ func (a *APIAPIService) GetApiClientAccessTokenExecute(r ApiGetApiClientAccessTo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -428,8 +281,8 @@ func (a *APIAPIService) GetApiClientAccessTokenExecute(r ApiGetApiClientAccessTo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -447,9 +300,9 @@ func (a *APIAPIService) GetApiClientAccessTokenExecute(r ApiGetApiClientAccessTo
 }
 
 type ApiListApiClientsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *APIAPIService
-	orgId string
+	orgId      string
 }
 
 func (r ApiListApiClientsRequest) Execute() ([]GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient, *http.Response, error) {
@@ -461,26 +314,27 @@ ListApiClients list api clients
 
 List all API clients in the given organization.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @return ApiListApiClientsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@return ApiListApiClientsRequest
 */
 func (a *APIAPIService) ListApiClients(ctx context.Context, orgId string) ApiListApiClientsRequest {
 	return ApiListApiClientsRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
+		ctx:        ctx,
+		orgId:      orgId,
 	}
 }
 
 // Execute executes the request
-//  @return []GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient
+//
+//	@return []GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient
 func (a *APIAPIService) ListApiClientsExecute(r ApiListApiClientsRequest) ([]GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIAPIService.ListApiClients")
@@ -515,7 +369,7 @@ func (a *APIAPIService) ListApiClientsExecute(r ApiListApiClientsRequest) ([]Git
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -555,8 +409,8 @@ func (a *APIAPIService) ListApiClientsExecute(r ApiListApiClientsRequest) ([]Git
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -566,8 +420,8 @@ func (a *APIAPIService) ListApiClientsExecute(r ApiListApiClientsRequest) ([]Git
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -20,22 +20,24 @@ var _ MappedNullable = &AwsMarketplaceEventBridgeEventDetail{}
 
 // AwsMarketplaceEventBridgeEventDetail struct for AwsMarketplaceEventBridgeEventDetail
 type AwsMarketplaceEventBridgeEventDetail struct {
-	Catalog *string `json:"catalog,omitempty"`
-	EventCategory *string `json:"eventCategory,omitempty"`
-	EventID *string `json:"eventID,omitempty"`
-	EventName *string `json:"eventName,omitempty"`
-	EventSource *string `json:"eventSource,omitempty"`
-	EventType *string `json:"eventType,omitempty"`
-	EventVersion *string `json:"eventVersion,omitempty"`
-	ManagementEvent *bool `json:"managementEvent,omitempty"`
-	Manufacturer *AwsMarketplaceEventBridgeEventAccount `json:"manufacturer,omitempty"`
-	Offer *AwsMarketplaceEventBridgeEventOffer `json:"offer,omitempty"`
-	Product *AwsMarketplaceEventBridgeEventProduct `json:"product,omitempty"`
-	RequestID *string `json:"requestID,omitempty"`
-	RequestParameters map[string]interface{} `json:"requestParameters,omitempty"`
-	ResponseElements map[string]interface{} `json:"responseElements,omitempty"`
-	SellerOfRecord *AwsMarketplaceEventBridgeEventAccount `json:"sellerOfRecord,omitempty"`
-	TargetedBuyerAccountIds []string `json:"targetedBuyerAccountIds,omitempty"`
+	Catalog         *string `json:"catalog,omitempty"`
+	EventCategory   *string `json:"eventCategory,omitempty"`
+	EventID         *string `json:"eventID,omitempty"`
+	EventName       *string `json:"eventName,omitempty"`
+	EventSource     *string `json:"eventSource,omitempty"`
+	EventType       *string `json:"eventType,omitempty"`
+	EventVersion    *string `json:"eventVersion,omitempty"`
+	ManagementEvent *bool   `json:"managementEvent,omitempty"`
+	// The seller/ISV's AWS Account Id.
+	Manufacturer      *AwsMarketplaceEventBridgeEventAccount `json:"manufacturer,omitempty"`
+	Offer             *AwsMarketplaceEventBridgeEventOffer   `json:"offer,omitempty"`
+	Product           *AwsMarketplaceEventBridgeEventProduct `json:"product,omitempty"`
+	RequestID         *string                                `json:"requestID,omitempty"`
+	RequestParameters map[string]interface{}                 `json:"requestParameters,omitempty"`
+	ResponseElements  map[string]interface{}                 `json:"responseElements,omitempty"`
+	// For private offer created by a channel partner, this is the channel partner's AWS Account Id. For private offer created by a seller/ISV, this is the seller/ISV's AWS Account Id.
+	SellerOfRecord          *AwsMarketplaceEventBridgeEventAccount `json:"sellerOfRecord,omitempty"`
+	TargetedBuyerAccountIds []string                               `json:"targetedBuyerAccountIds,omitempty"`
 }
 
 // NewAwsMarketplaceEventBridgeEventDetail instantiates a new AwsMarketplaceEventBridgeEventDetail object
@@ -568,7 +570,7 @@ func (o *AwsMarketplaceEventBridgeEventDetail) SetTargetedBuyerAccountIds(v []st
 }
 
 func (o AwsMarketplaceEventBridgeEventDetail) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -663,5 +665,3 @@ func (v *NullableAwsMarketplaceEventBridgeEventDetail) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

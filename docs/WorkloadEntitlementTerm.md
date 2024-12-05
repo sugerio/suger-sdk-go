@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **OrganizationID** | Pointer to **string** |  | [optional] 
 **Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
 **ProductID** | Pointer to **string** |  | [optional] 
+**ReportedAmount** | Pointer to **float32** |  | [optional] 
 **Service** | Pointer to [**PartnerService**](PartnerService.md) |  | [optional] 
 **StartTime** | Pointer to **time.Time** |  | [optional] 
 **UsedCommitAmount** | Pointer to **float32** |  | [optional] 
@@ -365,6 +366,31 @@ SetProductID sets ProductID field to given value.
 `func (o *WorkloadEntitlementTerm) HasProductID() bool`
 
 HasProductID returns a boolean if a field has been set.
+
+### GetReportedAmount
+
+`func (o *WorkloadEntitlementTerm) GetReportedAmount() float32`
+
+GetReportedAmount returns the ReportedAmount field if non-nil, zero value otherwise.
+
+### GetReportedAmountOk
+
+`func (o *WorkloadEntitlementTerm) GetReportedAmountOk() (*float32, bool)`
+
+GetReportedAmountOk returns a tuple with the ReportedAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReportedAmount
+
+`func (o *WorkloadEntitlementTerm) SetReportedAmount(v float32)`
+
+SetReportedAmount sets ReportedAmount field to given value.
+
+### HasReportedAmount
+
+`func (o *WorkloadEntitlementTerm) HasReportedAmount() bool`
+
+HasReportedAmount returns a boolean if a field has been set.
 
 ### GetService
 

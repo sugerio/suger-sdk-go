@@ -20,34 +20,34 @@ var _ MappedNullable = &GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBill
 
 // GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent struct for GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent
 type GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent struct {
-	Action *string `json:"action,omitempty"`
-	AgreementID *string `json:"agreementID,omitempty"`
-	Amount *float32 `json:"amount,omitempty"`
-	BalanceImpacting *int32 `json:"balanceImpacting,omitempty"`
-	BankTraceID *string `json:"bankTraceID,omitempty"`
-	BillingAddressID *string `json:"billingAddressID,omitempty"`
-	BrokerID *string `json:"brokerID,omitempty"`
-	BuyerID *string `json:"buyerID,omitempty"`
-	Currency *string `json:"currency,omitempty"`
-	DataFeedProductID *string `json:"dataFeedProductID,omitempty"`
-	DisbursementBillingEventID *string `json:"disbursementBillingEventID,omitempty"`
-	EndUserAccountID *string `json:"endUserAccountID,omitempty"`
-	EntitlementID *string `json:"entitlementID,omitempty"`
-	FromAccountID *string `json:"fromAccountID,omitempty"`
-	Id *string `json:"id,omitempty"`
-	InsertDate *SqlNullTime `json:"insertDate,omitempty"`
-	InvoiceDate *SqlNullTime `json:"invoiceDate,omitempty"`
-	InvoiceID *string `json:"invoiceID,omitempty"`
-	OfferID *string `json:"offerID,omitempty"`
-	OrganizationID *string `json:"organizationID,omitempty"`
-	ParentBillingEventID *string `json:"parentBillingEventID,omitempty"`
-	PaymentDueDate *SqlNullTime `json:"paymentDueDate,omitempty"`
-	ProductID *string `json:"productID,omitempty"`
-	ToAccountID *string `json:"toAccountID,omitempty"`
-	TransactionReferenceID *string `json:"transactionReferenceID,omitempty"`
-	TransactionType *string `json:"transactionType,omitempty"`
-	UsagePeriodEndDate *SqlNullTime `json:"usagePeriodEndDate,omitempty"`
-	UsagePeriodStartDate *SqlNullTime `json:"usagePeriodStartDate,omitempty"`
+	Action                     *string              `json:"action,omitempty"`
+	AgreementID                *string              `json:"agreementID,omitempty"`
+	Amount                     *float32             `json:"amount,omitempty"`
+	BalanceImpacting           *int32               `json:"balanceImpacting,omitempty"`
+	BankTraceID                *string              `json:"bankTraceID,omitempty"`
+	BillingAddressID           *string              `json:"billingAddressID,omitempty"`
+	BrokerID                   *string              `json:"brokerID,omitempty"`
+	BuyerID                    *string              `json:"buyerID,omitempty"`
+	Currency                   *string              `json:"currency,omitempty"`
+	DataFeedProductID          *string              `json:"dataFeedProductID,omitempty"`
+	DisbursementBillingEventID *string              `json:"disbursementBillingEventID,omitempty"`
+	EndUserAccountID           *string              `json:"endUserAccountID,omitempty"`
+	EntitlementID              *string              `json:"entitlementID,omitempty"`
+	FromAccountID              *string              `json:"fromAccountID,omitempty"`
+	Id                         *string              `json:"id,omitempty"`
+	InsertDate                 *DatabaseSqlNullTime `json:"insertDate,omitempty"`
+	InvoiceDate                *DatabaseSqlNullTime `json:"invoiceDate,omitempty"`
+	InvoiceID                  *string              `json:"invoiceID,omitempty"`
+	OfferID                    *string              `json:"offerID,omitempty"`
+	OrganizationID             *string              `json:"organizationID,omitempty"`
+	ParentBillingEventID       *string              `json:"parentBillingEventID,omitempty"`
+	PaymentDueDate             *DatabaseSqlNullTime `json:"paymentDueDate,omitempty"`
+	ProductID                  *string              `json:"productID,omitempty"`
+	ToAccountID                *string              `json:"toAccountID,omitempty"`
+	TransactionReferenceID     *string              `json:"transactionReferenceID,omitempty"`
+	TransactionType            *string              `json:"transactionType,omitempty"`
+	UsagePeriodEndDate         *DatabaseSqlNullTime `json:"usagePeriodEndDate,omitempty"`
+	UsagePeriodStartDate       *DatabaseSqlNullTime `json:"usagePeriodStartDate,omitempty"`
 }
 
 // NewGithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent instantiates a new GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent object
@@ -548,9 +548,9 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetId
 }
 
 // GetInsertDate returns the InsertDate field value if set, zero value otherwise.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInsertDate() SqlNullTime {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInsertDate() DatabaseSqlNullTime {
 	if o == nil || IsNil(o.InsertDate) {
-		var ret SqlNullTime
+		var ret DatabaseSqlNullTime
 		return ret
 	}
 	return *o.InsertDate
@@ -558,7 +558,7 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetIn
 
 // GetInsertDateOk returns a tuple with the InsertDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInsertDateOk() (*SqlNullTime, bool) {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInsertDateOk() (*DatabaseSqlNullTime, bool) {
 	if o == nil || IsNil(o.InsertDate) {
 		return nil, false
 	}
@@ -574,15 +574,15 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) HasIn
 	return false
 }
 
-// SetInsertDate gets a reference to the given SqlNullTime and assigns it to the InsertDate field.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetInsertDate(v SqlNullTime) {
+// SetInsertDate gets a reference to the given DatabaseSqlNullTime and assigns it to the InsertDate field.
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetInsertDate(v DatabaseSqlNullTime) {
 	o.InsertDate = &v
 }
 
 // GetInvoiceDate returns the InvoiceDate field value if set, zero value otherwise.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInvoiceDate() SqlNullTime {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInvoiceDate() DatabaseSqlNullTime {
 	if o == nil || IsNil(o.InvoiceDate) {
-		var ret SqlNullTime
+		var ret DatabaseSqlNullTime
 		return ret
 	}
 	return *o.InvoiceDate
@@ -590,7 +590,7 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetIn
 
 // GetInvoiceDateOk returns a tuple with the InvoiceDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInvoiceDateOk() (*SqlNullTime, bool) {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetInvoiceDateOk() (*DatabaseSqlNullTime, bool) {
 	if o == nil || IsNil(o.InvoiceDate) {
 		return nil, false
 	}
@@ -606,8 +606,8 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) HasIn
 	return false
 }
 
-// SetInvoiceDate gets a reference to the given SqlNullTime and assigns it to the InvoiceDate field.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetInvoiceDate(v SqlNullTime) {
+// SetInvoiceDate gets a reference to the given DatabaseSqlNullTime and assigns it to the InvoiceDate field.
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetInvoiceDate(v DatabaseSqlNullTime) {
 	o.InvoiceDate = &v
 }
 
@@ -740,9 +740,9 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetPa
 }
 
 // GetPaymentDueDate returns the PaymentDueDate field value if set, zero value otherwise.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetPaymentDueDate() SqlNullTime {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetPaymentDueDate() DatabaseSqlNullTime {
 	if o == nil || IsNil(o.PaymentDueDate) {
-		var ret SqlNullTime
+		var ret DatabaseSqlNullTime
 		return ret
 	}
 	return *o.PaymentDueDate
@@ -750,7 +750,7 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetPa
 
 // GetPaymentDueDateOk returns a tuple with the PaymentDueDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetPaymentDueDateOk() (*SqlNullTime, bool) {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetPaymentDueDateOk() (*DatabaseSqlNullTime, bool) {
 	if o == nil || IsNil(o.PaymentDueDate) {
 		return nil, false
 	}
@@ -766,8 +766,8 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) HasPa
 	return false
 }
 
-// SetPaymentDueDate gets a reference to the given SqlNullTime and assigns it to the PaymentDueDate field.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetPaymentDueDate(v SqlNullTime) {
+// SetPaymentDueDate gets a reference to the given DatabaseSqlNullTime and assigns it to the PaymentDueDate field.
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetPaymentDueDate(v DatabaseSqlNullTime) {
 	o.PaymentDueDate = &v
 }
 
@@ -900,9 +900,9 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetTr
 }
 
 // GetUsagePeriodEndDate returns the UsagePeriodEndDate field value if set, zero value otherwise.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodEndDate() SqlNullTime {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodEndDate() DatabaseSqlNullTime {
 	if o == nil || IsNil(o.UsagePeriodEndDate) {
-		var ret SqlNullTime
+		var ret DatabaseSqlNullTime
 		return ret
 	}
 	return *o.UsagePeriodEndDate
@@ -910,7 +910,7 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUs
 
 // GetUsagePeriodEndDateOk returns a tuple with the UsagePeriodEndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodEndDateOk() (*SqlNullTime, bool) {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodEndDateOk() (*DatabaseSqlNullTime, bool) {
 	if o == nil || IsNil(o.UsagePeriodEndDate) {
 		return nil, false
 	}
@@ -926,15 +926,15 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) HasUs
 	return false
 }
 
-// SetUsagePeriodEndDate gets a reference to the given SqlNullTime and assigns it to the UsagePeriodEndDate field.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetUsagePeriodEndDate(v SqlNullTime) {
+// SetUsagePeriodEndDate gets a reference to the given DatabaseSqlNullTime and assigns it to the UsagePeriodEndDate field.
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetUsagePeriodEndDate(v DatabaseSqlNullTime) {
 	o.UsagePeriodEndDate = &v
 }
 
 // GetUsagePeriodStartDate returns the UsagePeriodStartDate field value if set, zero value otherwise.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodStartDate() SqlNullTime {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodStartDate() DatabaseSqlNullTime {
 	if o == nil || IsNil(o.UsagePeriodStartDate) {
-		var ret SqlNullTime
+		var ret DatabaseSqlNullTime
 		return ret
 	}
 	return *o.UsagePeriodStartDate
@@ -942,7 +942,7 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUs
 
 // GetUsagePeriodStartDateOk returns a tuple with the UsagePeriodStartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodStartDateOk() (*SqlNullTime, bool) {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) GetUsagePeriodStartDateOk() (*DatabaseSqlNullTime, bool) {
 	if o == nil || IsNil(o.UsagePeriodStartDate) {
 		return nil, false
 	}
@@ -958,13 +958,13 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) HasUs
 	return false
 }
 
-// SetUsagePeriodStartDate gets a reference to the given SqlNullTime and assigns it to the UsagePeriodStartDate field.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetUsagePeriodStartDate(v SqlNullTime) {
+// SetUsagePeriodStartDate gets a reference to the given DatabaseSqlNullTime and assigns it to the UsagePeriodStartDate field.
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) SetUsagePeriodStartDate(v DatabaseSqlNullTime) {
 	o.UsagePeriodStartDate = &v
 }
 
 func (o GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1095,5 +1095,3 @@ func (v *NullableGithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEven
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

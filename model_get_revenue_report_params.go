@@ -12,7 +12,9 @@ Contact: support@suger.io
 package openapi
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the GetRevenueReportParams type satisfies the MappedNullable interface at compile time
@@ -26,12 +28,14 @@ type GetRevenueReportParams struct {
 	EntitlementID *string `json:"entitlementID,omitempty"`
 	// Required. If the productID & entitlementID are emtpy, return the report for the entire Organization.
 	OrganizationID string `json:"organizationID"`
-	Partner string `json:"partner"`
+	Partner        string `json:"partner"`
 	// Optional, if available, return the report for the Product.
-	ProductID *string `json:"productID,omitempty"`
+	ProductID  *string           `json:"productID,omitempty"`
 	ReportType RevenueReportType `json:"reportType"`
-	Service string `json:"service"`
+	Service    string            `json:"service"`
 }
+
+type _GetRevenueReportParams GetRevenueReportParams
 
 // NewGetRevenueReportParams instantiates a new GetRevenueReportParams object
 // This constructor will assign default values to properties that have it defined,
@@ -247,7 +251,7 @@ func (o *GetRevenueReportParams) SetService(v string) {
 }
 
 func (o GetRevenueReportParams) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -270,6 +274,46 @@ func (o GetRevenueReportParams) ToMap() (map[string]interface{}, error) {
 	toSerialize["reportType"] = o.ReportType
 	toSerialize["service"] = o.Service
 	return toSerialize, nil
+}
+
+func (o *GetRevenueReportParams) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"organizationID",
+		"partner",
+		"reportType",
+		"service",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varGetRevenueReportParams := _GetRevenueReportParams{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGetRevenueReportParams)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GetRevenueReportParams(varGetRevenueReportParams)
+
+	return err
 }
 
 type NullableGetRevenueReportParams struct {
@@ -307,5 +351,3 @@ func (v *NullableGetRevenueReportParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

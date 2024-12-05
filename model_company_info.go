@@ -22,12 +22,14 @@ var _ MappedNullable = &CompanyInfo{}
 type CompanyInfo struct {
 	AddressLine1 *string `json:"addressLine1,omitempty"`
 	AddressLine2 *string `json:"addressLine2,omitempty"`
-	City *string `json:"city,omitempty"`
-	Country *string `json:"country,omitempty"`
-	EmailDomain *string `json:"emailDomain,omitempty"`
-	Name *string `json:"name,omitempty"`
-	PostalCode *string `json:"postalCode,omitempty"`
-	State *string `json:"state,omitempty"`
+	City         *string `json:"city,omitempty"`
+	Country      *string `json:"country,omitempty"`
+	EmailDomain  *string `json:"emailDomain,omitempty"`
+	Name         *string `json:"name,omitempty"`
+	PostalCode   *string `json:"postalCode,omitempty"`
+	State        *string `json:"state,omitempty"`
+	// When the company info becomes valid. in format \"2006-01-02T15:04:05Z\"
+	ValidFrom *string `json:"validFrom,omitempty"`
 }
 
 // NewCompanyInfo instantiates a new CompanyInfo object
@@ -303,8 +305,40 @@ func (o *CompanyInfo) SetState(v string) {
 	o.State = &v
 }
 
+// GetValidFrom returns the ValidFrom field value if set, zero value otherwise.
+func (o *CompanyInfo) GetValidFrom() string {
+	if o == nil || IsNil(o.ValidFrom) {
+		var ret string
+		return ret
+	}
+	return *o.ValidFrom
+}
+
+// GetValidFromOk returns a tuple with the ValidFrom field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompanyInfo) GetValidFromOk() (*string, bool) {
+	if o == nil || IsNil(o.ValidFrom) {
+		return nil, false
+	}
+	return o.ValidFrom, true
+}
+
+// HasValidFrom returns a boolean if a field has been set.
+func (o *CompanyInfo) HasValidFrom() bool {
+	if o != nil && !IsNil(o.ValidFrom) {
+		return true
+	}
+
+	return false
+}
+
+// SetValidFrom gets a reference to the given string and assigns it to the ValidFrom field.
+func (o *CompanyInfo) SetValidFrom(v string) {
+	o.ValidFrom = &v
+}
+
 func (o CompanyInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -336,6 +370,9 @@ func (o CompanyInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.ValidFrom) {
+		toSerialize["validFrom"] = o.ValidFrom
 	}
 	return toSerialize, nil
 }
@@ -375,5 +412,3 @@ func (v *NullableCompanyInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

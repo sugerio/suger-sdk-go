@@ -22,17 +22,16 @@ var _ MappedNullable = &AzureADIdentifier{}
 type AzureADIdentifier struct {
 	// Azure Billing Account ID
 	BillingAccountId *string `json:"billingAccountId,omitempty"`
-	CompanyInfo *CompanyInfo `json:"companyInfo,omitempty"`
-	CustomerId *string `json:"customerId,omitempty"`
+	CustomerId       *string `json:"customerId,omitempty"`
 	// Email address
-	EmailId *string `json:"emailId,omitempty"`
+	EmailId   *string `json:"emailId,omitempty"`
 	FirstName *string `json:"firstName,omitempty"`
-	LastName *string `json:"lastName,omitempty"`
+	LastName  *string `json:"lastName,omitempty"`
 	// Azure License Type
 	LicenseType *string `json:"licenseType,omitempty"`
-	ObjectId *string `json:"objectId,omitempty"`
+	ObjectId    *string `json:"objectId,omitempty"`
 	// ID of the user, used as External ID of suger IdentityBuyer.
-	Puid *string `json:"puid,omitempty"`
+	Puid     *string `json:"puid,omitempty"`
 	TenantId *string `json:"tenantId,omitempty"`
 }
 
@@ -83,38 +82,6 @@ func (o *AzureADIdentifier) HasBillingAccountId() bool {
 // SetBillingAccountId gets a reference to the given string and assigns it to the BillingAccountId field.
 func (o *AzureADIdentifier) SetBillingAccountId(v string) {
 	o.BillingAccountId = &v
-}
-
-// GetCompanyInfo returns the CompanyInfo field value if set, zero value otherwise.
-func (o *AzureADIdentifier) GetCompanyInfo() CompanyInfo {
-	if o == nil || IsNil(o.CompanyInfo) {
-		var ret CompanyInfo
-		return ret
-	}
-	return *o.CompanyInfo
-}
-
-// GetCompanyInfoOk returns a tuple with the CompanyInfo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AzureADIdentifier) GetCompanyInfoOk() (*CompanyInfo, bool) {
-	if o == nil || IsNil(o.CompanyInfo) {
-		return nil, false
-	}
-	return o.CompanyInfo, true
-}
-
-// HasCompanyInfo returns a boolean if a field has been set.
-func (o *AzureADIdentifier) HasCompanyInfo() bool {
-	if o != nil && !IsNil(o.CompanyInfo) {
-		return true
-	}
-
-	return false
-}
-
-// SetCompanyInfo gets a reference to the given CompanyInfo and assigns it to the CompanyInfo field.
-func (o *AzureADIdentifier) SetCompanyInfo(v CompanyInfo) {
-	o.CompanyInfo = &v
 }
 
 // GetCustomerId returns the CustomerId field value if set, zero value otherwise.
@@ -374,7 +341,7 @@ func (o *AzureADIdentifier) SetTenantId(v string) {
 }
 
 func (o AzureADIdentifier) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -385,9 +352,6 @@ func (o AzureADIdentifier) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.BillingAccountId) {
 		toSerialize["billingAccountId"] = o.BillingAccountId
-	}
-	if !IsNil(o.CompanyInfo) {
-		toSerialize["companyInfo"] = o.CompanyInfo
 	}
 	if !IsNil(o.CustomerId) {
 		toSerialize["customerId"] = o.CustomerId
@@ -451,5 +415,3 @@ func (v *NullableAzureADIdentifier) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

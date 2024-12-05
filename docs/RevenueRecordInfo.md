@@ -6,8 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AwsRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent**](GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent.md) | For raw revenue records in AWS Marketplace | [optional] 
 **AzureRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue**](GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue.md) | For raw revenue records in Azure Marketplace | [optional] 
+**CreditAmount** | Pointer to **float32** | The credit amount used in the revenue record. | [optional] 
 **DisbursementNotificationSent** | Pointer to **bool** | Whether the disbursement notification has been sent to the seller/ISV. | [optional] 
 **GcpRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage**](GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage.md) | For raw revenue records in GCP Marketplace | [optional] 
+**IdSource** | Pointer to **string** | Source of the revenue record ID. | [optional] 
 **Resource** | Pointer to **string** | Resource name for the revenue record. Applicable only to GCP Marketplace. | [optional] 
 
 ## Methods
@@ -79,6 +81,31 @@ SetAzureRevenueRecords sets AzureRevenueRecords field to given value.
 
 HasAzureRevenueRecords returns a boolean if a field has been set.
 
+### GetCreditAmount
+
+`func (o *RevenueRecordInfo) GetCreditAmount() float32`
+
+GetCreditAmount returns the CreditAmount field if non-nil, zero value otherwise.
+
+### GetCreditAmountOk
+
+`func (o *RevenueRecordInfo) GetCreditAmountOk() (*float32, bool)`
+
+GetCreditAmountOk returns a tuple with the CreditAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreditAmount
+
+`func (o *RevenueRecordInfo) SetCreditAmount(v float32)`
+
+SetCreditAmount sets CreditAmount field to given value.
+
+### HasCreditAmount
+
+`func (o *RevenueRecordInfo) HasCreditAmount() bool`
+
+HasCreditAmount returns a boolean if a field has been set.
+
 ### GetDisbursementNotificationSent
 
 `func (o *RevenueRecordInfo) GetDisbursementNotificationSent() bool`
@@ -128,6 +155,31 @@ SetGcpRevenueRecords sets GcpRevenueRecords field to given value.
 `func (o *RevenueRecordInfo) HasGcpRevenueRecords() bool`
 
 HasGcpRevenueRecords returns a boolean if a field has been set.
+
+### GetIdSource
+
+`func (o *RevenueRecordInfo) GetIdSource() string`
+
+GetIdSource returns the IdSource field if non-nil, zero value otherwise.
+
+### GetIdSourceOk
+
+`func (o *RevenueRecordInfo) GetIdSourceOk() (*string, bool)`
+
+GetIdSourceOk returns a tuple with the IdSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdSource
+
+`func (o *RevenueRecordInfo) SetIdSource(v string)`
+
+SetIdSource sets IdSource field to given value.
+
+### HasIdSource
+
+`func (o *RevenueRecordInfo) HasIdSource() bool`
+
+HasIdSource returns a boolean if a field has been set.
 
 ### GetResource
 

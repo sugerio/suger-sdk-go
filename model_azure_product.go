@@ -20,21 +20,22 @@ var _ MappedNullable = &AzureProduct{}
 
 // AzureProduct struct for AzureProduct
 type AzureProduct struct {
-	Availabilities []AzureProductAvailability `json:"availabilities,omitempty"`
-	Branches []AzureProductBranch `json:"branches,omitempty"`
-	ExternalIDs []AzureTypeValue `json:"externalIDs,omitempty"`
-	Id *string `json:"id,omitempty"`
-	IsModularPublishing *bool `json:"isModularPublishing,omitempty"`
-	Listings []AzureProductListing `json:"listings,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Availabilities        []AzureProductAvailability         `json:"availabilities,omitempty"`
+	Branches              []AzureProductBranch               `json:"branches,omitempty"`
+	ExternalIDs           []AzureTypeValue                   `json:"externalIDs,omitempty"`
+	Id                    *string                            `json:"id,omitempty"`
+	IsModularPublishing   *bool                              `json:"isModularPublishing,omitempty"`
+	Listings              []AzureProductListing              `json:"listings,omitempty"`
+	Name                  *string                            `json:"name,omitempty"`
 	PackageConfigurations []AzureProductPackageConfiguration `json:"packageConfigurations,omitempty"`
 	// All plans under this product
-	Plans []AzurePriceAndAvailabilityPrivateOfferPlan `json:"plans,omitempty"`
-	Properties []AzureProductProperty `json:"properties,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
-	Setup *AzureProductSetup `json:"setup,omitempty"`
+	Plans        []AzureMarketplacePriceAndAvailabilityPrivateOfferPlan `json:"plans,omitempty"`
+	Properties   []AzureProductProperty                                 `json:"properties,omitempty"`
+	ResourceType *string                                                `json:"resourceType,omitempty"`
+	// Not original fields. They are populated by other API calls
+	Setup       *AzureProductSetup       `json:"setup,omitempty"`
 	Submissions []AzureProductSubmission `json:"submissions,omitempty"`
-	Variants []AzureProductVariant `json:"variants,omitempty"`
+	Variants    []AzureProductVariant    `json:"variants,omitempty"`
 }
 
 // NewAzureProduct instantiates a new AzureProduct object
@@ -311,9 +312,9 @@ func (o *AzureProduct) SetPackageConfigurations(v []AzureProductPackageConfigura
 }
 
 // GetPlans returns the Plans field value if set, zero value otherwise.
-func (o *AzureProduct) GetPlans() []AzurePriceAndAvailabilityPrivateOfferPlan {
+func (o *AzureProduct) GetPlans() []AzureMarketplacePriceAndAvailabilityPrivateOfferPlan {
 	if o == nil || IsNil(o.Plans) {
-		var ret []AzurePriceAndAvailabilityPrivateOfferPlan
+		var ret []AzureMarketplacePriceAndAvailabilityPrivateOfferPlan
 		return ret
 	}
 	return o.Plans
@@ -321,7 +322,7 @@ func (o *AzureProduct) GetPlans() []AzurePriceAndAvailabilityPrivateOfferPlan {
 
 // GetPlansOk returns a tuple with the Plans field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AzureProduct) GetPlansOk() ([]AzurePriceAndAvailabilityPrivateOfferPlan, bool) {
+func (o *AzureProduct) GetPlansOk() ([]AzureMarketplacePriceAndAvailabilityPrivateOfferPlan, bool) {
 	if o == nil || IsNil(o.Plans) {
 		return nil, false
 	}
@@ -337,8 +338,8 @@ func (o *AzureProduct) HasPlans() bool {
 	return false
 }
 
-// SetPlans gets a reference to the given []AzurePriceAndAvailabilityPrivateOfferPlan and assigns it to the Plans field.
-func (o *AzureProduct) SetPlans(v []AzurePriceAndAvailabilityPrivateOfferPlan) {
+// SetPlans gets a reference to the given []AzureMarketplacePriceAndAvailabilityPrivateOfferPlan and assigns it to the Plans field.
+func (o *AzureProduct) SetPlans(v []AzureMarketplacePriceAndAvailabilityPrivateOfferPlan) {
 	o.Plans = v
 }
 
@@ -503,7 +504,7 @@ func (o *AzureProduct) SetVariants(v []AzureProductVariant) {
 }
 
 func (o AzureProduct) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -592,5 +593,3 @@ func (v *NullableAzureProduct) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

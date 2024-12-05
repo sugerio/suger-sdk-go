@@ -20,13 +20,17 @@ var _ MappedNullable = &NotificationMessageInfo{}
 
 // NotificationMessageInfo struct for NotificationMessageInfo
 type NotificationMessageInfo struct {
-	CcRecipients []string `json:"ccRecipients,omitempty"`
-	// The custom fields to render the email content.
-	CustomFields *map[string]string `json:"customFields,omitempty"`
+	// The action of this notification message.
+	Action       *NotificationEventAction `json:"action,omitempty"`
+	CcRecipients []string                 `json:"ccRecipients,omitempty"`
+	// All other fields
+	CustomFields map[string]interface{} `json:"customFields,omitempty"`
 	// The HTML content of the email.
-	HtmlContent *string `json:"htmlContent,omitempty"`
+	HtmlContent   *string  `json:"htmlContent,omitempty"`
 	RccRecipients []string `json:"rccRecipients,omitempty"`
-	Subject *string `json:"subject,omitempty"`
+	// The standard fields to render the email content.
+	StandardFields map[string]interface{} `json:"standardFields,omitempty"`
+	Subject        *string                `json:"subject,omitempty"`
 	// The text content of the email in case the recipient's email client does not support HTML.
 	TextContent *string `json:"textContent,omitempty"`
 }
@@ -46,6 +50,38 @@ func NewNotificationMessageInfo() *NotificationMessageInfo {
 func NewNotificationMessageInfoWithDefaults() *NotificationMessageInfo {
 	this := NotificationMessageInfo{}
 	return &this
+}
+
+// GetAction returns the Action field value if set, zero value otherwise.
+func (o *NotificationMessageInfo) GetAction() NotificationEventAction {
+	if o == nil || IsNil(o.Action) {
+		var ret NotificationEventAction
+		return ret
+	}
+	return *o.Action
+}
+
+// GetActionOk returns a tuple with the Action field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationMessageInfo) GetActionOk() (*NotificationEventAction, bool) {
+	if o == nil || IsNil(o.Action) {
+		return nil, false
+	}
+	return o.Action, true
+}
+
+// HasAction returns a boolean if a field has been set.
+func (o *NotificationMessageInfo) HasAction() bool {
+	if o != nil && !IsNil(o.Action) {
+		return true
+	}
+
+	return false
+}
+
+// SetAction gets a reference to the given NotificationEventAction and assigns it to the Action field.
+func (o *NotificationMessageInfo) SetAction(v NotificationEventAction) {
+	o.Action = &v
 }
 
 // GetCcRecipients returns the CcRecipients field value if set, zero value otherwise.
@@ -81,19 +117,19 @@ func (o *NotificationMessageInfo) SetCcRecipients(v []string) {
 }
 
 // GetCustomFields returns the CustomFields field value if set, zero value otherwise.
-func (o *NotificationMessageInfo) GetCustomFields() map[string]string {
+func (o *NotificationMessageInfo) GetCustomFields() map[string]interface{} {
 	if o == nil || IsNil(o.CustomFields) {
-		var ret map[string]string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.CustomFields
+	return o.CustomFields
 }
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationMessageInfo) GetCustomFieldsOk() (*map[string]string, bool) {
+func (o *NotificationMessageInfo) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.CustomFields, true
 }
@@ -107,9 +143,9 @@ func (o *NotificationMessageInfo) HasCustomFields() bool {
 	return false
 }
 
-// SetCustomFields gets a reference to the given map[string]string and assigns it to the CustomFields field.
-func (o *NotificationMessageInfo) SetCustomFields(v map[string]string) {
-	o.CustomFields = &v
+// SetCustomFields gets a reference to the given map[string]interface{} and assigns it to the CustomFields field.
+func (o *NotificationMessageInfo) SetCustomFields(v map[string]interface{}) {
+	o.CustomFields = v
 }
 
 // GetHtmlContent returns the HtmlContent field value if set, zero value otherwise.
@@ -174,6 +210,38 @@ func (o *NotificationMessageInfo) HasRccRecipients() bool {
 // SetRccRecipients gets a reference to the given []string and assigns it to the RccRecipients field.
 func (o *NotificationMessageInfo) SetRccRecipients(v []string) {
 	o.RccRecipients = v
+}
+
+// GetStandardFields returns the StandardFields field value if set, zero value otherwise.
+func (o *NotificationMessageInfo) GetStandardFields() map[string]interface{} {
+	if o == nil || IsNil(o.StandardFields) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.StandardFields
+}
+
+// GetStandardFieldsOk returns a tuple with the StandardFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationMessageInfo) GetStandardFieldsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.StandardFields) {
+		return map[string]interface{}{}, false
+	}
+	return o.StandardFields, true
+}
+
+// HasStandardFields returns a boolean if a field has been set.
+func (o *NotificationMessageInfo) HasStandardFields() bool {
+	if o != nil && !IsNil(o.StandardFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetStandardFields gets a reference to the given map[string]interface{} and assigns it to the StandardFields field.
+func (o *NotificationMessageInfo) SetStandardFields(v map[string]interface{}) {
+	o.StandardFields = v
 }
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
@@ -241,7 +309,7 @@ func (o *NotificationMessageInfo) SetTextContent(v string) {
 }
 
 func (o NotificationMessageInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -250,6 +318,9 @@ func (o NotificationMessageInfo) MarshalJSON() ([]byte, error) {
 
 func (o NotificationMessageInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Action) {
+		toSerialize["action"] = o.Action
+	}
 	if !IsNil(o.CcRecipients) {
 		toSerialize["ccRecipients"] = o.CcRecipients
 	}
@@ -261,6 +332,9 @@ func (o NotificationMessageInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RccRecipients) {
 		toSerialize["rccRecipients"] = o.RccRecipients
+	}
+	if !IsNil(o.StandardFields) {
+		toSerialize["standardFields"] = o.StandardFields
 	}
 	if !IsNil(o.Subject) {
 		toSerialize["subject"] = o.Subject
@@ -306,5 +380,3 @@ func (v *NullableNotificationMessageInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

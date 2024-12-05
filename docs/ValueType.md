@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `ValueType_UNKNOWN` (value: `""`)
+
 * `ValueType_UNSPECIFIED` (value: `"VALUE_TYPE_UNSPECIFIED"`)
 
 * `ValueType_BOOL` (value: `"BOOL"`)

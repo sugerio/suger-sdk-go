@@ -4,25 +4,31 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AlibabaMeteringRequest** | Pointer to [**ClientPushMeteringDataRequest**](ClientPushMeteringDataRequest.md) |  | [optional] 
-**AlibabaMeteringResponse** | Pointer to [**ClientPushMeteringDataResponseBody**](ClientPushMeteringDataResponseBody.md) |  | [optional] 
-**AwsMeteringResponse** | Pointer to [**MarketplacemeteringBatchMeterUsageOutput**](MarketplacemeteringBatchMeterUsageOutput.md) |  | [optional] 
-**AzureMeteringResponse** | Pointer to [**GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse**](GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse.md) |  | [optional] 
+**AggregatedBillableRecords** | Pointer to [**[]AggregatedMeteringUsageRecord**](AggregatedMeteringUsageRecord.md) | The aggregated billable records from the usage metering API v2. | [optional] 
+**AlibabaMeteringRequest** | Pointer to [**ClientPushMeteringDataRequest**](ClientPushMeteringDataRequest.md) | The raw request to call Alibaba metering service. | [optional] 
+**AlibabaMeteringResponse** | Pointer to [**ClientPushMeteringDataResponseBody**](ClientPushMeteringDataResponseBody.md) | The raw response from Alibaba metering service. | [optional] 
+**AwsMeteringRequest** | Pointer to [**AwsMarketplaceMeteringBatchMeterUsageInput**](AwsMarketplaceMeteringBatchMeterUsageInput.md) | The raw request to call AWS metering service. | [optional] 
+**AwsMeteringResponse** | Pointer to [**MarketplacemeteringBatchMeterUsageOutput**](MarketplacemeteringBatchMeterUsageOutput.md) | The raw response from AWS metering service. | [optional] 
+**AzureMeteringRequest** | Pointer to [**AzureMarketplaceMeteringBatchUsageEvent**](AzureMarketplaceMeteringBatchUsageEvent.md) | The raw request to call Azure metering service. | [optional] 
+**AzureMeteringResponse** | Pointer to [**GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse**](GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse.md) | The raw response from Azure metering service. | [optional] 
 **CommitAmount** | Pointer to **float32** | The amount of the commit if applicable. | [optional] 
 **CreditAmount** | Pointer to **float32** | The amount of the credit if applicable. | [optional] 
-**CreditRecords** | Pointer to **map[string]float32** | The credit usage records in the map of &lt;DimensionKey, Count&gt; | [optional] 
+**CreditRecords** | Pointer to **map[string]float32** | The credit usage records in the map of &lt;DimensionKey, Count&gt; for usage metering API v1. | [optional] 
 **DecimalParts** | Pointer to **map[string]float32** | The decimal parts of the usage dimension quantity in the map of &lt;DimensionKey, DecimalPart&gt;, before this usage record report. | [optional] 
 **DimensionCategories** | Pointer to **map[string]string** | The categories of the usage records in the map of &lt;DimensionKey, Category&gt;. The dimension category is required when reporting usage records to Alibaba Marketplace. It comes from the metering dimension category. | [optional] 
 **DimensionUnitListPrice** | Pointer to **map[string]float32** | The public list price of each dimension in the map of &lt;DimensionKey, UnitPrice&gt;. | [optional] 
 **DimensionUnitPrice** | Pointer to **map[string]float32** | The unit price of each dimension in the map of &lt;DimensionKey, UnitPrice&gt;. It can be the negotiated price in the private offer or the public list price. | [optional] 
 **EndTime** | Pointer to **time.Time** | time in UTC when the UsageRecordReport ends | [optional] 
-**GcpMeteringResponse** | Pointer to [**ServicecontrolReportResponse**](ServicecontrolReportResponse.md) |  | [optional] 
-**IncludedRecords** | Pointer to **map[string]float32** | The included usage records in the map of &lt;DimensionKey, Count&gt; | [optional] 
+**GcpMeteringRequest** | Pointer to [**GcpMarketplaceMeteringOperation**](GcpMarketplaceMeteringOperation.md) | The raw request to call GCP metering service. | [optional] 
+**GcpMeteringResponse** | Pointer to [**ServicecontrolReportResponse**](ServicecontrolReportResponse.md) | The raw response from GCP metering service. | [optional] 
+**IncludedRecords** | Pointer to **map[string]float32** | The included usage records in the map of &lt;DimensionKey, Count&gt; for usage metering API v1. | [optional] 
+**Message** | Pointer to **string** |  | [optional] 
 **NewDecimalParts** | Pointer to **map[string]float32** | The decimal parts of the usage dimension quantity in the map of &lt;DimensionKey, DecimalPart&gt;, after this usage record report. | [optional] 
 **Partner** | Pointer to **string** | The partner where this usage record report is sent to. Such as AWS, AZURE or GCP. | [optional] 
 **RecordsToReportBeforeAdjustmentAtListPrice** | Pointer to **map[string]float32** | The usage records to report before the adjustment by the commit with additional usage at list price, in the map of &lt;DimensionKey, Count&gt;. | [optional] 
-**ReportedRecords** | Pointer to **map[string]float32** | The reported usage records in the map of &lt;DimensionKey, Count&gt; | [optional] 
+**ReportedRecords** | Pointer to **map[string]float32** | The reported usage records in the map of &lt;DimensionKey, Count&gt; for usage metering API v1. | [optional] 
 **StartTime** | Pointer to **time.Time** | time in UTC when the UsageRecordReport starts | [optional] 
+**Status** | Pointer to [**UsageRecordReportStatus**](UsageRecordReportStatus.md) |  | [optional] 
 **UsageRecordGroupIds** | Pointer to **[]string** | The IDs of UsageRecordGroups aggregated in this UsageRecordReport. | [optional] 
 **UsedCommitAmount** | Pointer to **float32** | The amount of the used commit before this usage record report if applicable. | [optional] 
 **UsedCommitAmountIncrement** | Pointer to **float32** | The amount of the used commit increment in this usage record report if applicable. | [optional] 
@@ -47,6 +53,31 @@ will change when the set of required properties is changed
 NewMeteringUsageRecordReportInfoWithDefaults instantiates a new MeteringUsageRecordReportInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAggregatedBillableRecords
+
+`func (o *MeteringUsageRecordReportInfo) GetAggregatedBillableRecords() []AggregatedMeteringUsageRecord`
+
+GetAggregatedBillableRecords returns the AggregatedBillableRecords field if non-nil, zero value otherwise.
+
+### GetAggregatedBillableRecordsOk
+
+`func (o *MeteringUsageRecordReportInfo) GetAggregatedBillableRecordsOk() (*[]AggregatedMeteringUsageRecord, bool)`
+
+GetAggregatedBillableRecordsOk returns a tuple with the AggregatedBillableRecords field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregatedBillableRecords
+
+`func (o *MeteringUsageRecordReportInfo) SetAggregatedBillableRecords(v []AggregatedMeteringUsageRecord)`
+
+SetAggregatedBillableRecords sets AggregatedBillableRecords field to given value.
+
+### HasAggregatedBillableRecords
+
+`func (o *MeteringUsageRecordReportInfo) HasAggregatedBillableRecords() bool`
+
+HasAggregatedBillableRecords returns a boolean if a field has been set.
 
 ### GetAlibabaMeteringRequest
 
@@ -98,6 +129,31 @@ SetAlibabaMeteringResponse sets AlibabaMeteringResponse field to given value.
 
 HasAlibabaMeteringResponse returns a boolean if a field has been set.
 
+### GetAwsMeteringRequest
+
+`func (o *MeteringUsageRecordReportInfo) GetAwsMeteringRequest() AwsMarketplaceMeteringBatchMeterUsageInput`
+
+GetAwsMeteringRequest returns the AwsMeteringRequest field if non-nil, zero value otherwise.
+
+### GetAwsMeteringRequestOk
+
+`func (o *MeteringUsageRecordReportInfo) GetAwsMeteringRequestOk() (*AwsMarketplaceMeteringBatchMeterUsageInput, bool)`
+
+GetAwsMeteringRequestOk returns a tuple with the AwsMeteringRequest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsMeteringRequest
+
+`func (o *MeteringUsageRecordReportInfo) SetAwsMeteringRequest(v AwsMarketplaceMeteringBatchMeterUsageInput)`
+
+SetAwsMeteringRequest sets AwsMeteringRequest field to given value.
+
+### HasAwsMeteringRequest
+
+`func (o *MeteringUsageRecordReportInfo) HasAwsMeteringRequest() bool`
+
+HasAwsMeteringRequest returns a boolean if a field has been set.
+
 ### GetAwsMeteringResponse
 
 `func (o *MeteringUsageRecordReportInfo) GetAwsMeteringResponse() MarketplacemeteringBatchMeterUsageOutput`
@@ -122,6 +178,31 @@ SetAwsMeteringResponse sets AwsMeteringResponse field to given value.
 `func (o *MeteringUsageRecordReportInfo) HasAwsMeteringResponse() bool`
 
 HasAwsMeteringResponse returns a boolean if a field has been set.
+
+### GetAzureMeteringRequest
+
+`func (o *MeteringUsageRecordReportInfo) GetAzureMeteringRequest() AzureMarketplaceMeteringBatchUsageEvent`
+
+GetAzureMeteringRequest returns the AzureMeteringRequest field if non-nil, zero value otherwise.
+
+### GetAzureMeteringRequestOk
+
+`func (o *MeteringUsageRecordReportInfo) GetAzureMeteringRequestOk() (*AzureMarketplaceMeteringBatchUsageEvent, bool)`
+
+GetAzureMeteringRequestOk returns a tuple with the AzureMeteringRequest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureMeteringRequest
+
+`func (o *MeteringUsageRecordReportInfo) SetAzureMeteringRequest(v AzureMarketplaceMeteringBatchUsageEvent)`
+
+SetAzureMeteringRequest sets AzureMeteringRequest field to given value.
+
+### HasAzureMeteringRequest
+
+`func (o *MeteringUsageRecordReportInfo) HasAzureMeteringRequest() bool`
+
+HasAzureMeteringRequest returns a boolean if a field has been set.
 
 ### GetAzureMeteringResponse
 
@@ -348,6 +429,31 @@ SetEndTime sets EndTime field to given value.
 
 HasEndTime returns a boolean if a field has been set.
 
+### GetGcpMeteringRequest
+
+`func (o *MeteringUsageRecordReportInfo) GetGcpMeteringRequest() GcpMarketplaceMeteringOperation`
+
+GetGcpMeteringRequest returns the GcpMeteringRequest field if non-nil, zero value otherwise.
+
+### GetGcpMeteringRequestOk
+
+`func (o *MeteringUsageRecordReportInfo) GetGcpMeteringRequestOk() (*GcpMarketplaceMeteringOperation, bool)`
+
+GetGcpMeteringRequestOk returns a tuple with the GcpMeteringRequest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpMeteringRequest
+
+`func (o *MeteringUsageRecordReportInfo) SetGcpMeteringRequest(v GcpMarketplaceMeteringOperation)`
+
+SetGcpMeteringRequest sets GcpMeteringRequest field to given value.
+
+### HasGcpMeteringRequest
+
+`func (o *MeteringUsageRecordReportInfo) HasGcpMeteringRequest() bool`
+
+HasGcpMeteringRequest returns a boolean if a field has been set.
+
 ### GetGcpMeteringResponse
 
 `func (o *MeteringUsageRecordReportInfo) GetGcpMeteringResponse() ServicecontrolReportResponse`
@@ -397,6 +503,31 @@ SetIncludedRecords sets IncludedRecords field to given value.
 `func (o *MeteringUsageRecordReportInfo) HasIncludedRecords() bool`
 
 HasIncludedRecords returns a boolean if a field has been set.
+
+### GetMessage
+
+`func (o *MeteringUsageRecordReportInfo) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *MeteringUsageRecordReportInfo) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *MeteringUsageRecordReportInfo) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
+### HasMessage
+
+`func (o *MeteringUsageRecordReportInfo) HasMessage() bool`
+
+HasMessage returns a boolean if a field has been set.
 
 ### GetNewDecimalParts
 
@@ -522,6 +653,31 @@ SetStartTime sets StartTime field to given value.
 `func (o *MeteringUsageRecordReportInfo) HasStartTime() bool`
 
 HasStartTime returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *MeteringUsageRecordReportInfo) GetStatus() UsageRecordReportStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *MeteringUsageRecordReportInfo) GetStatusOk() (*UsageRecordReportStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *MeteringUsageRecordReportInfo) SetStatus(v UsageRecordReportStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *MeteringUsageRecordReportInfo) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 ### GetUsageRecordGroupIds
 

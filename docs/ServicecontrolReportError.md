@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OperationId** | Pointer to **string** | OperationId: The Operation.operation_id value from the request. | [optional] 
-**Status** | Pointer to [**ServicecontrolStatus**](ServicecontrolStatus.md) |  | [optional] 
+**Status** | Pointer to [**ServicecontrolStatus**](ServicecontrolStatus.md) | Status: Details of the error when processing the Operation. | [optional] 
 
 ## Methods
 

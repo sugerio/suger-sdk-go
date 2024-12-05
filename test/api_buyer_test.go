@@ -11,17 +11,77 @@ package openapi
 
 import (
 	"context"
-	"testing"
-
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	openapiclient "github.com/sugerio/suger-sdk-go"
+	"testing"
 )
 
 func Test_openapi_BuyerAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
+
+	t.Run("Test BuyerAPIService CloseCreditWallet", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var buyerId string
+		var walletId string
+
+		resp, httpRes, err := apiClient.BuyerAPI.CloseCreditWallet(context.Background(), orgId, buyerId, walletId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BuyerAPIService CreateBuyer", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+
+		resp, httpRes, err := apiClient.BuyerAPI.CreateBuyer(context.Background(), orgId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BuyerAPIService CreateCreditWallet", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var buyerId string
+
+		resp, httpRes, err := apiClient.BuyerAPI.CreateCreditWallet(context.Background(), orgId, buyerId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BuyerAPIService DeleteBuyerWallet", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var buyerId string
+		var walletId string
+
+		resp, httpRes, err := apiClient.BuyerAPI.DeleteBuyerWallet(context.Background(), orgId, buyerId, walletId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
 
 	t.Run("Test BuyerAPIService GetBuyer", func(t *testing.T) {
 
@@ -38,14 +98,14 @@ func Test_openapi_BuyerAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BuyerAPIService ListBuyersByContact", func(t *testing.T) {
+	t.Run("Test BuyerAPIService ListBuyerWallets", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var orgId string
-		var contactId string
+		var buyerId string
 
-		resp, httpRes, err := apiClient.BuyerAPI.ListBuyersByContact(context.Background(), orgId, contactId).Execute()
+		resp, httpRes, err := apiClient.BuyerAPI.ListBuyerWallets(context.Background(), orgId, buyerId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -53,13 +113,13 @@ func Test_openapi_BuyerAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BuyerAPIService ListBuyersByOrganization", func(t *testing.T) {
+	t.Run("Test BuyerAPIService ListBuyers", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var orgId string
 
-		resp, httpRes, err := apiClient.BuyerAPI.ListBuyersByOrganization(context.Background(), orgId).Execute()
+		resp, httpRes, err := apiClient.BuyerAPI.ListBuyers(context.Background(), orgId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -67,14 +127,15 @@ func Test_openapi_BuyerAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BuyerAPIService ListBuyersByPartner", func(t *testing.T) {
+	t.Run("Test BuyerAPIService SetBuyerDefaultWallet", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var orgId string
-		var partner string
+		var buyerId string
+		var walletId string
 
-		resp, httpRes, err := apiClient.BuyerAPI.ListBuyersByPartner(context.Background(), orgId, partner).Execute()
+		resp, httpRes, err := apiClient.BuyerAPI.SetBuyerDefaultWallet(context.Background(), orgId, buyerId, walletId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -90,6 +151,22 @@ func Test_openapi_BuyerAPIService(t *testing.T) {
 		var buyerId string
 
 		resp, httpRes, err := apiClient.BuyerAPI.UpdateBuyer(context.Background(), orgId, buyerId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BuyerAPIService UpdateCreditWallet", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var buyerId string
+		var walletId string
+
+		resp, httpRes, err := apiClient.BuyerAPI.UpdateCreditWallet(context.Background(), orgId, buyerId, walletId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

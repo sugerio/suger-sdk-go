@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **BaseOffer** | Pointer to **string** | in format of \&quot;projects/{projectNumber}/services/service-name.endpoints.gcp-project-id.cloud.goog/standardOffers/base-offer-id\&quot; | [optional] 
 **Commitment** | Pointer to [**GcpMarketplacePrivateOfferPriceModelCommitment**](GcpMarketplacePrivateOfferPriceModelCommitment.md) |  | [optional] 
 **FixedPrice** | Pointer to [**GcpMarketplacePrivateOfferPriceModelFixed**](GcpMarketplacePrivateOfferPriceModelFixed.md) |  | [optional] 
-**OneTimeCredit** | Pointer to [**GcpPriceValue**](GcpPriceValue.md) |  | [optional] 
+**OneTimeCredit** | Pointer to [**GcpPriceValue**](GcpPriceValue.md) | The one time credit in amount of money | [optional] 
 **Overage** | Pointer to [**GcpMarketplacePrivateOfferPriceModelOverage**](GcpMarketplacePrivateOfferPriceModelOverage.md) |  | [optional] 
-**Payg** | Pointer to [**GcpMarketplacePrivateOfferPriceModelPayg**](GcpMarketplacePrivateOfferPriceModelPayg.md) |  | [optional] 
+**Payg** | Pointer to [**GcpMarketplacePrivateOfferPriceModelPayg**](GcpMarketplacePrivateOfferPriceModelPayg.md) | Pay as you go. | [optional] 
 **PreviousCreditBalancePolicy** | Pointer to **string** | such as \&quot;PREVIOUS_CREDIT_BALANCE_POLICY_UNSPECIFIED\&quot; | [optional] 
 
 ## Methods

@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AwsAccountID** | Pointer to **string** | The AWS Account ID of the buyer in AWS Marketplace | [optional] 
 **AwsCustomerID** | Pointer to **string** | The AWS Customer ID of the buyer in AWS Marketplace | [optional] 
-**CompanyInfo** | Pointer to [**CompanyInfo**](CompanyInfo.md) |  | [optional] 
 **DataFeedAccountID** | Pointer to **string** | The Account ID in AWS Marketplace Data Feed service | [optional] 
 
 ## Methods
@@ -77,31 +76,6 @@ SetAwsCustomerID sets AwsCustomerID field to given value.
 `func (o *AwsAccountIdentifier) HasAwsCustomerID() bool`
 
 HasAwsCustomerID returns a boolean if a field has been set.
-
-### GetCompanyInfo
-
-`func (o *AwsAccountIdentifier) GetCompanyInfo() CompanyInfo`
-
-GetCompanyInfo returns the CompanyInfo field if non-nil, zero value otherwise.
-
-### GetCompanyInfoOk
-
-`func (o *AwsAccountIdentifier) GetCompanyInfoOk() (*CompanyInfo, bool)`
-
-GetCompanyInfoOk returns a tuple with the CompanyInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCompanyInfo
-
-`func (o *AwsAccountIdentifier) SetCompanyInfo(v CompanyInfo)`
-
-SetCompanyInfo sets CompanyInfo field to given value.
-
-### HasCompanyInfo
-
-`func (o *AwsAccountIdentifier) HasCompanyInfo() bool`
-
-HasCompanyInfo returns a boolean if a field has been set.
 
 ### GetDataFeedAccountID
 

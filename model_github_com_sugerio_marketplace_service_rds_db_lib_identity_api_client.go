@@ -20,16 +20,16 @@ var _ MappedNullable = &GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiCli
 
 // GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient struct for GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient
 type GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient struct {
-	ApiKeyHash *string `json:"apiKeyHash,omitempty"`
-	CreationTime *string `json:"creationTime,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Info *string `json:"info,omitempty"`
+	ApiKeyHash     *string `json:"apiKeyHash,omitempty"`
+	CreationTime   *string `json:"creationTime,omitempty"`
+	Id             *string `json:"id,omitempty"`
+	Info           []int32 `json:"info,omitempty"`
 	LastUpdateTime *string `json:"lastUpdateTime,omitempty"`
 	OrganizationID *string `json:"organizationID,omitempty"`
-	Provider *string `json:"provider,omitempty"`
-	Role *string `json:"role,omitempty"`
-	Secret *string `json:"secret,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Provider       *string `json:"provider,omitempty"`
+	Role           *string `json:"role,omitempty"`
+	Secret         *string `json:"secret,omitempty"`
+	Type           *string `json:"type,omitempty"`
 }
 
 // NewGithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient instantiates a new GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient object
@@ -146,17 +146,17 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) SetId(v st
 }
 
 // GetInfo returns the Info field value if set, zero value otherwise.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) GetInfo() string {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) GetInfo() []int32 {
 	if o == nil || IsNil(o.Info) {
-		var ret string
+		var ret []int32
 		return ret
 	}
-	return *o.Info
+	return o.Info
 }
 
 // GetInfoOk returns a tuple with the Info field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) GetInfoOk() (*string, bool) {
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) GetInfoOk() ([]int32, bool) {
 	if o == nil || IsNil(o.Info) {
 		return nil, false
 	}
@@ -172,9 +172,9 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) HasInfo() 
 	return false
 }
 
-// SetInfo gets a reference to the given string and assigns it to the Info field.
-func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) SetInfo(v string) {
-	o.Info = &v
+// SetInfo gets a reference to the given []int32 and assigns it to the Info field.
+func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) SetInfo(v []int32) {
+	o.Info = v
 }
 
 // GetLastUpdateTime returns the LastUpdateTime field value if set, zero value otherwise.
@@ -370,7 +370,7 @@ func (o *GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) SetType(v 
 }
 
 func (o GithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -447,5 +447,3 @@ func (v *NullableGithubComSugerioMarketplaceServiceRdsDbLibIdentityApiClient) Un
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

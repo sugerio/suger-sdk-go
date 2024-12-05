@@ -4,16 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BasePlan** | Pointer to **string** | required for SaasNewCustomizedPlans | [optional] 
 **DiscountPercentage** | Pointer to **float32** | between 0.01 to 100 | [optional] 
 **DiscountType** | Pointer to [**PrivateOfferDiscountType**](PrivateOfferDiscountType.md) |  | [optional] 
 **MarkupPercentage** | Pointer to **float32** | between 0.00000001 to 100 | [optional] 
-**OriginalPlan** | Pointer to [**AzurePriceAndAvailabilityPrivateOfferPlan**](AzurePriceAndAvailabilityPrivateOfferPlan.md) |  | [optional] 
-**Plan** | Pointer to **string** | in format of \&quot;plan/product-durable-id/plan-durable-id\&quot; | [optional] 
+**NewPlanDetails** | Pointer to [**AzureMarketplacePrivateOfferPricingNewPlanDetails**](AzureMarketplacePrivateOfferPricingNewPlanDetails.md) | required for SaasNewCustomizedPlans | [optional] 
+**OriginalPlan** | Pointer to [**AzureMarketplacePriceAndAvailabilityPrivateOfferPlan**](AzureMarketplacePriceAndAvailabilityPrivateOfferPlan.md) | the pricing plan of the original plan. | [optional] 
+**Plan** | Pointer to **string** | The base/original/default plan of the private offer, in format of \&quot;plan/product-durable-id/plan-durable-id\&quot; | [optional] 
 **PlanId** | Pointer to **string** |  | [optional] 
 **PlanName** | Pointer to **string** |  | [optional] 
 **PlanType** | Pointer to **string** | The type of the plan, FLAT_RATE or PER_USER. | [optional] 
-**PriceDetails** | Pointer to **string** |  | [optional] 
-**PrivateOfferPlan** | Pointer to [**AzurePriceAndAvailabilityPrivateOfferPlan**](AzurePriceAndAvailabilityPrivateOfferPlan.md) |  | [optional] 
+**PriceDetails** | Pointer to **map[string]interface{}** |  | [optional] 
+**PrivateOfferPlan** | Pointer to [**AzureMarketplacePriceAndAvailabilityPrivateOfferPlan**](AzureMarketplacePriceAndAvailabilityPrivateOfferPlan.md) | the pricing plan of the private offer | [optional] 
 **Product** | Pointer to **string** | in format of \&quot;product/product-durable-id\&quot; | [optional] 
 **ProductName** | Pointer to **string** |  | [optional] 
 **SugerOfferId** | Pointer to **string** |  | [optional] 
@@ -36,6 +38,31 @@ will change when the set of required properties is changed
 NewAzureMarketplacePrivateOfferPricingWithDefaults instantiates a new AzureMarketplacePrivateOfferPricing object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBasePlan
+
+`func (o *AzureMarketplacePrivateOfferPricing) GetBasePlan() string`
+
+GetBasePlan returns the BasePlan field if non-nil, zero value otherwise.
+
+### GetBasePlanOk
+
+`func (o *AzureMarketplacePrivateOfferPricing) GetBasePlanOk() (*string, bool)`
+
+GetBasePlanOk returns a tuple with the BasePlan field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBasePlan
+
+`func (o *AzureMarketplacePrivateOfferPricing) SetBasePlan(v string)`
+
+SetBasePlan sets BasePlan field to given value.
+
+### HasBasePlan
+
+`func (o *AzureMarketplacePrivateOfferPricing) HasBasePlan() bool`
+
+HasBasePlan returns a boolean if a field has been set.
 
 ### GetDiscountPercentage
 
@@ -112,22 +139,47 @@ SetMarkupPercentage sets MarkupPercentage field to given value.
 
 HasMarkupPercentage returns a boolean if a field has been set.
 
+### GetNewPlanDetails
+
+`func (o *AzureMarketplacePrivateOfferPricing) GetNewPlanDetails() AzureMarketplacePrivateOfferPricingNewPlanDetails`
+
+GetNewPlanDetails returns the NewPlanDetails field if non-nil, zero value otherwise.
+
+### GetNewPlanDetailsOk
+
+`func (o *AzureMarketplacePrivateOfferPricing) GetNewPlanDetailsOk() (*AzureMarketplacePrivateOfferPricingNewPlanDetails, bool)`
+
+GetNewPlanDetailsOk returns a tuple with the NewPlanDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewPlanDetails
+
+`func (o *AzureMarketplacePrivateOfferPricing) SetNewPlanDetails(v AzureMarketplacePrivateOfferPricingNewPlanDetails)`
+
+SetNewPlanDetails sets NewPlanDetails field to given value.
+
+### HasNewPlanDetails
+
+`func (o *AzureMarketplacePrivateOfferPricing) HasNewPlanDetails() bool`
+
+HasNewPlanDetails returns a boolean if a field has been set.
+
 ### GetOriginalPlan
 
-`func (o *AzureMarketplacePrivateOfferPricing) GetOriginalPlan() AzurePriceAndAvailabilityPrivateOfferPlan`
+`func (o *AzureMarketplacePrivateOfferPricing) GetOriginalPlan() AzureMarketplacePriceAndAvailabilityPrivateOfferPlan`
 
 GetOriginalPlan returns the OriginalPlan field if non-nil, zero value otherwise.
 
 ### GetOriginalPlanOk
 
-`func (o *AzureMarketplacePrivateOfferPricing) GetOriginalPlanOk() (*AzurePriceAndAvailabilityPrivateOfferPlan, bool)`
+`func (o *AzureMarketplacePrivateOfferPricing) GetOriginalPlanOk() (*AzureMarketplacePriceAndAvailabilityPrivateOfferPlan, bool)`
 
 GetOriginalPlanOk returns a tuple with the OriginalPlan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOriginalPlan
 
-`func (o *AzureMarketplacePrivateOfferPricing) SetOriginalPlan(v AzurePriceAndAvailabilityPrivateOfferPlan)`
+`func (o *AzureMarketplacePrivateOfferPricing) SetOriginalPlan(v AzureMarketplacePriceAndAvailabilityPrivateOfferPlan)`
 
 SetOriginalPlan sets OriginalPlan field to given value.
 
@@ -239,20 +291,20 @@ HasPlanType returns a boolean if a field has been set.
 
 ### GetPriceDetails
 
-`func (o *AzureMarketplacePrivateOfferPricing) GetPriceDetails() string`
+`func (o *AzureMarketplacePrivateOfferPricing) GetPriceDetails() map[string]interface{}`
 
 GetPriceDetails returns the PriceDetails field if non-nil, zero value otherwise.
 
 ### GetPriceDetailsOk
 
-`func (o *AzureMarketplacePrivateOfferPricing) GetPriceDetailsOk() (*string, bool)`
+`func (o *AzureMarketplacePrivateOfferPricing) GetPriceDetailsOk() (*map[string]interface{}, bool)`
 
 GetPriceDetailsOk returns a tuple with the PriceDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPriceDetails
 
-`func (o *AzureMarketplacePrivateOfferPricing) SetPriceDetails(v string)`
+`func (o *AzureMarketplacePrivateOfferPricing) SetPriceDetails(v map[string]interface{})`
 
 SetPriceDetails sets PriceDetails field to given value.
 
@@ -264,20 +316,20 @@ HasPriceDetails returns a boolean if a field has been set.
 
 ### GetPrivateOfferPlan
 
-`func (o *AzureMarketplacePrivateOfferPricing) GetPrivateOfferPlan() AzurePriceAndAvailabilityPrivateOfferPlan`
+`func (o *AzureMarketplacePrivateOfferPricing) GetPrivateOfferPlan() AzureMarketplacePriceAndAvailabilityPrivateOfferPlan`
 
 GetPrivateOfferPlan returns the PrivateOfferPlan field if non-nil, zero value otherwise.
 
 ### GetPrivateOfferPlanOk
 
-`func (o *AzureMarketplacePrivateOfferPricing) GetPrivateOfferPlanOk() (*AzurePriceAndAvailabilityPrivateOfferPlan, bool)`
+`func (o *AzureMarketplacePrivateOfferPricing) GetPrivateOfferPlanOk() (*AzureMarketplacePriceAndAvailabilityPrivateOfferPlan, bool)`
 
 GetPrivateOfferPlanOk returns a tuple with the PrivateOfferPlan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPrivateOfferPlan
 
-`func (o *AzureMarketplacePrivateOfferPricing) SetPrivateOfferPlan(v AzurePriceAndAvailabilityPrivateOfferPlan)`
+`func (o *AzureMarketplacePrivateOfferPricing) SetPrivateOfferPlan(v AzureMarketplacePriceAndAvailabilityPrivateOfferPlan)`
 
 SetPrivateOfferPlan sets PrivateOfferPlan field to given value.
 

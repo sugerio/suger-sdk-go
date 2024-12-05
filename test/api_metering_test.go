@@ -11,11 +11,10 @@ package openapi
 
 import (
 	"context"
-	"testing"
-
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	openapiclient "github.com/sugerio/suger-sdk-go"
+	"testing"
 )
 
 func Test_openapi_MeteringAPIService(t *testing.T) {
@@ -51,6 +50,20 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MeteringAPIService CreateBillableMetric", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+
+		resp, httpRes, err := apiClient.MeteringAPI.CreateBillableMetric(context.Background(), orgId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MeteringAPIService DeleteUsageRecordGroup", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -59,6 +72,21 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 		var usageRecordGroupId string
 
 		resp, httpRes, err := apiClient.MeteringAPI.DeleteUsageRecordGroup(context.Background(), orgId, usageRecordGroupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MeteringAPIService GetBillableMetric", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var billableMetricId string
+
+		resp, httpRes, err := apiClient.MeteringAPI.GetBillableMetric(context.Background(), orgId, billableMetricId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -80,29 +108,13 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MeteringAPIService GetUsageRecordGroup", func(t *testing.T) {
+	t.Run("Test MeteringAPIService ListBillableMetrics", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var orgId string
-		var usageRecordGroupId string
 
-		resp, httpRes, err := apiClient.MeteringAPI.GetUsageRecordGroup(context.Background(), orgId, usageRecordGroupId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MeteringAPIService GetUsageRecordReport", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var orgId string
-		var usageRecordReportId string
-
-		resp, httpRes, err := apiClient.MeteringAPI.GetUsageRecordReport(context.Background(), orgId, usageRecordReportId).Execute()
+		resp, httpRes, err := apiClient.MeteringAPI.ListBillableMetrics(context.Background(), orgId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -117,36 +129,6 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 		var orgId string
 
 		resp, httpRes, err := apiClient.MeteringAPI.ListUsageRecordGroups(context.Background(), orgId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MeteringAPIService ListUsageRecordGroupsByEntitlement", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var orgId string
-		var entitlementId string
-
-		resp, httpRes, err := apiClient.MeteringAPI.ListUsageRecordGroupsByEntitlement(context.Background(), orgId, entitlementId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MeteringAPIService ListUsageRecordGroupsByProduct", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var orgId string
-		var productId string
-
-		resp, httpRes, err := apiClient.MeteringAPI.ListUsageRecordGroupsByProduct(context.Background(), orgId, productId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -176,6 +158,36 @@ func Test_openapi_MeteringAPIService(t *testing.T) {
 		var entitlementId string
 
 		resp, httpRes, err := apiClient.MeteringAPI.ReportUsageRecordGroup(context.Background(), orgId, entitlementId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MeteringAPIService RetryUsageRecordGroup", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var usageRecordGroupId string
+
+		resp, httpRes, err := apiClient.MeteringAPI.RetryUsageRecordGroup(context.Background(), orgId, usageRecordGroupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MeteringAPIService UpdateBillableMetric", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var billableMetricId string
+
+		resp, httpRes, err := apiClient.MeteringAPI.UpdateBillableMetric(context.Background(), orgId, billableMetricId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

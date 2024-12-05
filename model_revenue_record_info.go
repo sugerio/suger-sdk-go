@@ -24,10 +24,14 @@ type RevenueRecordInfo struct {
 	AwsRevenueRecords []GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent `json:"awsRevenueRecords,omitempty"`
 	// For raw revenue records in Azure Marketplace
 	AzureRevenueRecords []GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue `json:"azureRevenueRecords,omitempty"`
+	// The credit amount used in the revenue record.
+	CreditAmount *float32 `json:"creditAmount,omitempty"`
 	// Whether the disbursement notification has been sent to the seller/ISV.
 	DisbursementNotificationSent *bool `json:"disbursementNotificationSent,omitempty"`
 	// For raw revenue records in GCP Marketplace
 	GcpRevenueRecords []GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage `json:"gcpRevenueRecords,omitempty"`
+	// Source of the revenue record ID.
+	IdSource *string `json:"idSource,omitempty"`
 	// Resource name for the revenue record. Applicable only to GCP Marketplace.
 	Resource *string `json:"resource,omitempty"`
 }
@@ -113,6 +117,38 @@ func (o *RevenueRecordInfo) SetAzureRevenueRecords(v []GithubComSugerioMarketpla
 	o.AzureRevenueRecords = v
 }
 
+// GetCreditAmount returns the CreditAmount field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetCreditAmount() float32 {
+	if o == nil || IsNil(o.CreditAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.CreditAmount
+}
+
+// GetCreditAmountOk returns a tuple with the CreditAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetCreditAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.CreditAmount) {
+		return nil, false
+	}
+	return o.CreditAmount, true
+}
+
+// HasCreditAmount returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasCreditAmount() bool {
+	if o != nil && !IsNil(o.CreditAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreditAmount gets a reference to the given float32 and assigns it to the CreditAmount field.
+func (o *RevenueRecordInfo) SetCreditAmount(v float32) {
+	o.CreditAmount = &v
+}
+
 // GetDisbursementNotificationSent returns the DisbursementNotificationSent field value if set, zero value otherwise.
 func (o *RevenueRecordInfo) GetDisbursementNotificationSent() bool {
 	if o == nil || IsNil(o.DisbursementNotificationSent) {
@@ -177,6 +213,38 @@ func (o *RevenueRecordInfo) SetGcpRevenueRecords(v []GithubComSugerioMarketplace
 	o.GcpRevenueRecords = v
 }
 
+// GetIdSource returns the IdSource field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetIdSource() string {
+	if o == nil || IsNil(o.IdSource) {
+		var ret string
+		return ret
+	}
+	return *o.IdSource
+}
+
+// GetIdSourceOk returns a tuple with the IdSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetIdSourceOk() (*string, bool) {
+	if o == nil || IsNil(o.IdSource) {
+		return nil, false
+	}
+	return o.IdSource, true
+}
+
+// HasIdSource returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasIdSource() bool {
+	if o != nil && !IsNil(o.IdSource) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdSource gets a reference to the given string and assigns it to the IdSource field.
+func (o *RevenueRecordInfo) SetIdSource(v string) {
+	o.IdSource = &v
+}
+
 // GetResource returns the Resource field value if set, zero value otherwise.
 func (o *RevenueRecordInfo) GetResource() string {
 	if o == nil || IsNil(o.Resource) {
@@ -210,7 +278,7 @@ func (o *RevenueRecordInfo) SetResource(v string) {
 }
 
 func (o RevenueRecordInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -225,11 +293,17 @@ func (o RevenueRecordInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AzureRevenueRecords) {
 		toSerialize["azureRevenueRecords"] = o.AzureRevenueRecords
 	}
+	if !IsNil(o.CreditAmount) {
+		toSerialize["creditAmount"] = o.CreditAmount
+	}
 	if !IsNil(o.DisbursementNotificationSent) {
 		toSerialize["disbursementNotificationSent"] = o.DisbursementNotificationSent
 	}
 	if !IsNil(o.GcpRevenueRecords) {
 		toSerialize["gcpRevenueRecords"] = o.GcpRevenueRecords
+	}
+	if !IsNil(o.IdSource) {
+		toSerialize["idSource"] = o.IdSource
 	}
 	if !IsNil(o.Resource) {
 		toSerialize["resource"] = o.Resource
@@ -272,5 +346,3 @@ func (v *NullableRevenueRecordInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

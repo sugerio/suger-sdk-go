@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `RevenueReportType_GrossAmount` (value: `"GrossAmount"`)
+
 * `RevenueReportType_InvoicedAmount` (value: `"InvoicedAmount"`)
 
 * `RevenueReportType_CollectableAmount` (value: `"CollectableAmount"`)

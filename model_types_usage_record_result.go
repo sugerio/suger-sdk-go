@@ -22,7 +22,9 @@ var _ MappedNullable = &TypesUsageRecordResult{}
 type TypesUsageRecordResult struct {
 	// The MeteringRecordId is a unique identifier for this metering event.
 	MeteringRecordId *string `json:"meteringRecordId,omitempty"`
+	// The UsageRecordResult Status indicates the status of an individual UsageRecord processed by BatchMeterUsage .   - Success- The UsageRecord was accepted and honored by BatchMeterUsage .   - CustomerNotSubscribed- The CustomerIdentifier specified is not able to use   your product. The UsageRecord was not honored. There are three causes for this   result:   - The customer identifier is invalid.   - The customer identifier provided in the metering record does not have an   active agreement or subscription with this product. Future UsageRecords for   this customer will fail until the customer subscribes to your product.   - The customer's AWS account was suspended.   - DuplicateRecord- Indicates that the UsageRecord was invalid and not honored.   A previously metered UsageRecord had the same customer, dimension, and time,   but a different quantity.
 	Status *TypesUsageRecordResultStatus `json:"status,omitempty"`
+	// The UsageRecord that was part of the BatchMeterUsage request.
 	UsageRecord *TypesUsageRecord `json:"usageRecord,omitempty"`
 }
 
@@ -140,7 +142,7 @@ func (o *TypesUsageRecordResult) SetUsageRecord(v TypesUsageRecord) {
 }
 
 func (o TypesUsageRecordResult) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -196,5 +198,3 @@ func (v *NullableTypesUsageRecordResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

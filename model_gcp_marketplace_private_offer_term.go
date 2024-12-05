@@ -21,12 +21,11 @@ var _ MappedNullable = &GcpMarketplacePrivateOfferTerm{}
 
 // GcpMarketplacePrivateOfferTerm struct for GcpMarketplacePrivateOfferTerm
 type GcpMarketplacePrivateOfferTerm struct {
-	EnableScheduledStartTimes *bool `json:"enableScheduledStartTimes,omitempty"`
-	EndTime *time.Time `json:"endTime,omitempty"`
-	// such as \"OFFER_START_POLICY_IMMEDIATE\"
-	StartPolicy *string `json:"startPolicy,omitempty"`
-	StartTime *time.Time `json:"startTime,omitempty"`
-	TermDuration *GcpPeriodDuration `json:"termDuration,omitempty"`
+	EnableScheduledStartTimes *bool                           `json:"enableScheduledStartTimes,omitempty"`
+	EndTime                   *time.Time                      `json:"endTime,omitempty"`
+	StartPolicy               *GcpMarketplaceOfferStartPolicy `json:"startPolicy,omitempty"`
+	StartTime                 *time.Time                      `json:"startTime,omitempty"`
+	TermDuration              *GcpPeriodDuration              `json:"termDuration,omitempty"`
 }
 
 // NewGcpMarketplacePrivateOfferTerm instantiates a new GcpMarketplacePrivateOfferTerm object
@@ -111,9 +110,9 @@ func (o *GcpMarketplacePrivateOfferTerm) SetEndTime(v time.Time) {
 }
 
 // GetStartPolicy returns the StartPolicy field value if set, zero value otherwise.
-func (o *GcpMarketplacePrivateOfferTerm) GetStartPolicy() string {
+func (o *GcpMarketplacePrivateOfferTerm) GetStartPolicy() GcpMarketplaceOfferStartPolicy {
 	if o == nil || IsNil(o.StartPolicy) {
-		var ret string
+		var ret GcpMarketplaceOfferStartPolicy
 		return ret
 	}
 	return *o.StartPolicy
@@ -121,7 +120,7 @@ func (o *GcpMarketplacePrivateOfferTerm) GetStartPolicy() string {
 
 // GetStartPolicyOk returns a tuple with the StartPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GcpMarketplacePrivateOfferTerm) GetStartPolicyOk() (*string, bool) {
+func (o *GcpMarketplacePrivateOfferTerm) GetStartPolicyOk() (*GcpMarketplaceOfferStartPolicy, bool) {
 	if o == nil || IsNil(o.StartPolicy) {
 		return nil, false
 	}
@@ -137,8 +136,8 @@ func (o *GcpMarketplacePrivateOfferTerm) HasStartPolicy() bool {
 	return false
 }
 
-// SetStartPolicy gets a reference to the given string and assigns it to the StartPolicy field.
-func (o *GcpMarketplacePrivateOfferTerm) SetStartPolicy(v string) {
+// SetStartPolicy gets a reference to the given GcpMarketplaceOfferStartPolicy and assigns it to the StartPolicy field.
+func (o *GcpMarketplacePrivateOfferTerm) SetStartPolicy(v GcpMarketplaceOfferStartPolicy) {
 	o.StartPolicy = &v
 }
 
@@ -207,7 +206,7 @@ func (o *GcpMarketplacePrivateOfferTerm) SetTermDuration(v GcpPeriodDuration) {
 }
 
 func (o GcpMarketplacePrivateOfferTerm) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,5 +268,3 @@ func (v *NullableGcpMarketplacePrivateOfferTerm) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

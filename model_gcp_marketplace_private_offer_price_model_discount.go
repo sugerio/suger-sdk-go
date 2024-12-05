@@ -20,7 +20,9 @@ var _ MappedNullable = &GcpMarketplacePrivateOfferPriceModelDiscount{}
 
 // GcpMarketplacePrivateOfferPriceModelDiscount struct for GcpMarketplacePrivateOfferPriceModelDiscount
 type GcpMarketplacePrivateOfferPriceModelDiscount struct {
-	DiscountPercentage *GcpDiscountPercentage `json:"discountPercentage,omitempty"`
+	// such as {\"units\": \"0\", \"nanos\": 0} as no discount, or {\"units\": \"10\", \"nanos\": 0} as 10% off discount
+	DiscountPercentage *GcpAmountUnit `json:"discountPercentage,omitempty"`
+	// The discounted price of the private offer. If the discount is 10% off, and the original price is $100, then the discounted price is $90.
 	DiscountedPrice *GcpPriceValue `json:"discountedPrice,omitempty"`
 }
 
@@ -42,9 +44,9 @@ func NewGcpMarketplacePrivateOfferPriceModelDiscountWithDefaults() *GcpMarketpla
 }
 
 // GetDiscountPercentage returns the DiscountPercentage field value if set, zero value otherwise.
-func (o *GcpMarketplacePrivateOfferPriceModelDiscount) GetDiscountPercentage() GcpDiscountPercentage {
+func (o *GcpMarketplacePrivateOfferPriceModelDiscount) GetDiscountPercentage() GcpAmountUnit {
 	if o == nil || IsNil(o.DiscountPercentage) {
-		var ret GcpDiscountPercentage
+		var ret GcpAmountUnit
 		return ret
 	}
 	return *o.DiscountPercentage
@@ -52,7 +54,7 @@ func (o *GcpMarketplacePrivateOfferPriceModelDiscount) GetDiscountPercentage() G
 
 // GetDiscountPercentageOk returns a tuple with the DiscountPercentage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GcpMarketplacePrivateOfferPriceModelDiscount) GetDiscountPercentageOk() (*GcpDiscountPercentage, bool) {
+func (o *GcpMarketplacePrivateOfferPriceModelDiscount) GetDiscountPercentageOk() (*GcpAmountUnit, bool) {
 	if o == nil || IsNil(o.DiscountPercentage) {
 		return nil, false
 	}
@@ -68,8 +70,8 @@ func (o *GcpMarketplacePrivateOfferPriceModelDiscount) HasDiscountPercentage() b
 	return false
 }
 
-// SetDiscountPercentage gets a reference to the given GcpDiscountPercentage and assigns it to the DiscountPercentage field.
-func (o *GcpMarketplacePrivateOfferPriceModelDiscount) SetDiscountPercentage(v GcpDiscountPercentage) {
+// SetDiscountPercentage gets a reference to the given GcpAmountUnit and assigns it to the DiscountPercentage field.
+func (o *GcpMarketplacePrivateOfferPriceModelDiscount) SetDiscountPercentage(v GcpAmountUnit) {
 	o.DiscountPercentage = &v
 }
 
@@ -106,7 +108,7 @@ func (o *GcpMarketplacePrivateOfferPriceModelDiscount) SetDiscountedPrice(v GcpP
 }
 
 func (o GcpMarketplacePrivateOfferPriceModelDiscount) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,5 +161,3 @@ func (v *NullableGcpMarketplacePrivateOfferPriceModelDiscount) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

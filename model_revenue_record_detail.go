@@ -20,8 +20,11 @@ var _ MappedNullable = &RevenueRecordDetail{}
 
 // RevenueRecordDetail struct for RevenueRecordDetail
 type RevenueRecordDetail struct {
+	// For AWS Marketplace
 	AwsRevenueRecordDetail *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent `json:"awsRevenueRecordDetail,omitempty"`
+	// For Azure Marketplace
 	AzureRevenueRecordDetail *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue `json:"azureRevenueRecordDetail,omitempty"`
+	// For GCP Marketplace
 	GcpRevenueRecordDetail *GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage `json:"gcpRevenueRecordDetail,omitempty"`
 }
 
@@ -139,7 +142,7 @@ func (o *RevenueRecordDetail) SetGcpRevenueRecordDetail(v GithubComSugerioMarket
 }
 
 func (o RevenueRecordDetail) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,5 +198,3 @@ func (v *NullableRevenueRecordDetail) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

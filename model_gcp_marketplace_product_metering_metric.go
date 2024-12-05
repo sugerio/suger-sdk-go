@@ -41,6 +41,7 @@ type GcpMarketplaceProductMeteringMetric struct {
 	SkuId *string `json:"skuId,omitempty"`
 	// such as \"min\"
 	Unit *string `json:"unit,omitempty"`
+	// such as \"INT64\"
 	ValueType *ValueType `json:"valueType,omitempty"`
 }
 
@@ -446,7 +447,7 @@ func (o *GcpMarketplaceProductMeteringMetric) SetValueType(v ValueType) {
 }
 
 func (o GcpMarketplaceProductMeteringMetric) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -529,5 +530,3 @@ func (v *NullableGcpMarketplaceProductMeteringMetric) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

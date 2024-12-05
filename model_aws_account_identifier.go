@@ -24,7 +24,6 @@ type AwsAccountIdentifier struct {
 	AwsAccountID *string `json:"awsAccountID,omitempty"`
 	// The AWS Customer ID of the buyer in AWS Marketplace
 	AwsCustomerID *string `json:"awsCustomerID,omitempty"`
-	CompanyInfo *CompanyInfo `json:"companyInfo,omitempty"`
 	// The Account ID in AWS Marketplace Data Feed service
 	DataFeedAccountID *string `json:"dataFeedAccountID,omitempty"`
 }
@@ -110,38 +109,6 @@ func (o *AwsAccountIdentifier) SetAwsCustomerID(v string) {
 	o.AwsCustomerID = &v
 }
 
-// GetCompanyInfo returns the CompanyInfo field value if set, zero value otherwise.
-func (o *AwsAccountIdentifier) GetCompanyInfo() CompanyInfo {
-	if o == nil || IsNil(o.CompanyInfo) {
-		var ret CompanyInfo
-		return ret
-	}
-	return *o.CompanyInfo
-}
-
-// GetCompanyInfoOk returns a tuple with the CompanyInfo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AwsAccountIdentifier) GetCompanyInfoOk() (*CompanyInfo, bool) {
-	if o == nil || IsNil(o.CompanyInfo) {
-		return nil, false
-	}
-	return o.CompanyInfo, true
-}
-
-// HasCompanyInfo returns a boolean if a field has been set.
-func (o *AwsAccountIdentifier) HasCompanyInfo() bool {
-	if o != nil && !IsNil(o.CompanyInfo) {
-		return true
-	}
-
-	return false
-}
-
-// SetCompanyInfo gets a reference to the given CompanyInfo and assigns it to the CompanyInfo field.
-func (o *AwsAccountIdentifier) SetCompanyInfo(v CompanyInfo) {
-	o.CompanyInfo = &v
-}
-
 // GetDataFeedAccountID returns the DataFeedAccountID field value if set, zero value otherwise.
 func (o *AwsAccountIdentifier) GetDataFeedAccountID() string {
 	if o == nil || IsNil(o.DataFeedAccountID) {
@@ -175,7 +142,7 @@ func (o *AwsAccountIdentifier) SetDataFeedAccountID(v string) {
 }
 
 func (o AwsAccountIdentifier) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -189,9 +156,6 @@ func (o AwsAccountIdentifier) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AwsCustomerID) {
 		toSerialize["awsCustomerID"] = o.AwsCustomerID
-	}
-	if !IsNil(o.CompanyInfo) {
-		toSerialize["companyInfo"] = o.CompanyInfo
 	}
 	if !IsNil(o.DataFeedAccountID) {
 		toSerialize["dataFeedAccountID"] = o.DataFeedAccountID
@@ -234,5 +198,3 @@ func (v *NullableAwsAccountIdentifier) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

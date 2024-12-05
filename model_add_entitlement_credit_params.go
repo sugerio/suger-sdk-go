@@ -12,7 +12,9 @@ Contact: support@suger.io
 package openapi
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AddEntitlementCreditParams type satisfies the MappedNullable interface at compile time
@@ -22,9 +24,13 @@ var _ MappedNullable = &AddEntitlementCreditParams{}
 type AddEntitlementCreditParams struct {
 	// The amount to be added to the credit amount.
 	CreditAmountIncrement float32 `json:"creditAmountIncrement"`
-	EntitlementID string `json:"entitlementID"`
-	OrganizationID string `json:"organizationID"`
+	EntitlementID         string  `json:"entitlementID"`
+	// This is optional. If it is empty, the credit will be added to the default entitlement term of the entitlement.
+	EntitlementTermID *string `json:"entitlementTermID,omitempty"`
+	OrganizationID    string  `json:"organizationID"`
 }
+
+type _AddEntitlementCreditParams AddEntitlementCreditParams
 
 // NewAddEntitlementCreditParams instantiates a new AddEntitlementCreditParams object
 // This constructor will assign default values to properties that have it defined,
@@ -94,6 +100,38 @@ func (o *AddEntitlementCreditParams) SetEntitlementID(v string) {
 	o.EntitlementID = v
 }
 
+// GetEntitlementTermID returns the EntitlementTermID field value if set, zero value otherwise.
+func (o *AddEntitlementCreditParams) GetEntitlementTermID() string {
+	if o == nil || IsNil(o.EntitlementTermID) {
+		var ret string
+		return ret
+	}
+	return *o.EntitlementTermID
+}
+
+// GetEntitlementTermIDOk returns a tuple with the EntitlementTermID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddEntitlementCreditParams) GetEntitlementTermIDOk() (*string, bool) {
+	if o == nil || IsNil(o.EntitlementTermID) {
+		return nil, false
+	}
+	return o.EntitlementTermID, true
+}
+
+// HasEntitlementTermID returns a boolean if a field has been set.
+func (o *AddEntitlementCreditParams) HasEntitlementTermID() bool {
+	if o != nil && !IsNil(o.EntitlementTermID) {
+		return true
+	}
+
+	return false
+}
+
+// SetEntitlementTermID gets a reference to the given string and assigns it to the EntitlementTermID field.
+func (o *AddEntitlementCreditParams) SetEntitlementTermID(v string) {
+	o.EntitlementTermID = &v
+}
+
 // GetOrganizationID returns the OrganizationID field value
 func (o *AddEntitlementCreditParams) GetOrganizationID() string {
 	if o == nil {
@@ -119,7 +157,7 @@ func (o *AddEntitlementCreditParams) SetOrganizationID(v string) {
 }
 
 func (o AddEntitlementCreditParams) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -130,8 +168,50 @@ func (o AddEntitlementCreditParams) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["creditAmountIncrement"] = o.CreditAmountIncrement
 	toSerialize["entitlementID"] = o.EntitlementID
+	if !IsNil(o.EntitlementTermID) {
+		toSerialize["entitlementTermID"] = o.EntitlementTermID
+	}
 	toSerialize["organizationID"] = o.OrganizationID
 	return toSerialize, nil
+}
+
+func (o *AddEntitlementCreditParams) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"creditAmountIncrement",
+		"entitlementID",
+		"organizationID",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAddEntitlementCreditParams := _AddEntitlementCreditParams{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAddEntitlementCreditParams)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AddEntitlementCreditParams(varAddEntitlementCreditParams)
+
+	return err
 }
 
 type NullableAddEntitlementCreditParams struct {
@@ -169,5 +249,3 @@ func (v *NullableAddEntitlementCreditParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

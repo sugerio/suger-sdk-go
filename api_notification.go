@@ -20,14 +20,13 @@ import (
 	"strings"
 )
 
-
 // NotificationAPIService NotificationAPI service
 type NotificationAPIService service
 
 type ApiGetNotificationMessageRequest struct {
-	ctx context.Context
-	ApiService *NotificationAPIService
-	orgId string
+	ctx                   context.Context
+	ApiService            *NotificationAPIService
+	orgId                 string
 	notificationMessageId string
 }
 
@@ -36,32 +35,33 @@ func (r ApiGetNotificationMessageRequest) Execute() (*NotificationMessage, *http
 }
 
 /*
-GetNotificationMessage Get the notification message
+GetNotificationMessage get notification message
 
 Get the notification message of the organization & notification message ID.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @param notificationMessageId Notification Message ID
- @return ApiGetNotificationMessageRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param notificationMessageId Notification Message ID
+	@return ApiGetNotificationMessageRequest
 */
 func (a *NotificationAPIService) GetNotificationMessage(ctx context.Context, orgId string, notificationMessageId string) ApiGetNotificationMessageRequest {
 	return ApiGetNotificationMessageRequest{
-		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 orgId,
 		notificationMessageId: notificationMessageId,
 	}
 }
 
 // Execute executes the request
-//  @return NotificationMessage
+//
+//	@return NotificationMessage
 func (a *NotificationAPIService) GetNotificationMessageExecute(r ApiGetNotificationMessageRequest) (*NotificationMessage, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *NotificationMessage
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *NotificationMessage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.GetNotificationMessage")
@@ -97,7 +97,7 @@ func (a *NotificationAPIService) GetNotificationMessageExecute(r ApiGetNotificat
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -137,8 +137,8 @@ func (a *NotificationAPIService) GetNotificationMessageExecute(r ApiGetNotificat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -148,8 +148,8 @@ func (a *NotificationAPIService) GetNotificationMessageExecute(r ApiGetNotificat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -166,74 +166,105 @@ func (a *NotificationAPIService) GetNotificationMessageExecute(r ApiGetNotificat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListNotificationMessagesRequest struct {
-	ctx context.Context
+type ApiListNotificationEventsRequest struct {
+	ctx        context.Context
 	ApiService *NotificationAPIService
-	orgId string
-	limit *int32
-	offset *int32
+	orgId      string
+	startDate  *string
+	endDate    *string
+	limit      *int32
+	offset     *int32
+	priorities *string
 }
 
-// List pagination size, default 20, max value is 1000
-func (r ApiListNotificationMessagesRequest) Limit(limit int32) ApiListNotificationMessagesRequest {
+// start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+func (r ApiListNotificationEventsRequest) StartDate(startDate string) ApiListNotificationEventsRequest {
+	r.startDate = &startDate
+	return r
+}
+
+// end date (UTC) in YYYY-MM-DD format, default is today
+func (r ApiListNotificationEventsRequest) EndDate(endDate string) ApiListNotificationEventsRequest {
+	r.endDate = &endDate
+	return r
+}
+
+// List pagination size, default 1000, max value is 1000
+func (r ApiListNotificationEventsRequest) Limit(limit int32) ApiListNotificationEventsRequest {
 	r.limit = &limit
 	return r
 }
 
 // List pagination offset, default 0
-func (r ApiListNotificationMessagesRequest) Offset(offset int32) ApiListNotificationMessagesRequest {
+func (r ApiListNotificationEventsRequest) Offset(offset int32) ApiListNotificationEventsRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiListNotificationMessagesRequest) Execute() (*ListNotificationMessagesResponse, *http.Response, error) {
-	return r.ApiService.ListNotificationMessagesExecute(r)
+// Filter by priorities, empty means all priorities. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma.
+func (r ApiListNotificationEventsRequest) Priorities(priorities string) ApiListNotificationEventsRequest {
+	r.priorities = &priorities
+	return r
+}
+
+func (r ApiListNotificationEventsRequest) Execute() (*ListNotificationEventsResponse, *http.Response, error) {
+	return r.ApiService.ListNotificationEventsExecute(r)
 }
 
 /*
-ListNotificationMessages List the notification messages
+ListNotificationEvents list notification events
 
-List the notification messages of the organization.
+List the notification events of the given organization with pagination and optional filters.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Organization ID
- @return ApiListNotificationMessagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@return ApiListNotificationEventsRequest
 */
-func (a *NotificationAPIService) ListNotificationMessages(ctx context.Context, orgId string) ApiListNotificationMessagesRequest {
-	return ApiListNotificationMessagesRequest{
+func (a *NotificationAPIService) ListNotificationEvents(ctx context.Context, orgId string) ApiListNotificationEventsRequest {
+	return ApiListNotificationEventsRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
+		ctx:        ctx,
+		orgId:      orgId,
 	}
 }
 
 // Execute executes the request
-//  @return ListNotificationMessagesResponse
-func (a *NotificationAPIService) ListNotificationMessagesExecute(r ApiListNotificationMessagesRequest) (*ListNotificationMessagesResponse, *http.Response, error) {
+//
+//	@return ListNotificationEventsResponse
+func (a *NotificationAPIService) ListNotificationEventsExecute(r ApiListNotificationEventsRequest) (*ListNotificationEventsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ListNotificationMessagesResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ListNotificationEventsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.ListNotificationMessages")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.ListNotificationEvents")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/org/{orgId}/notificationMessage"
+	localVarPath := localBasePath + "/org/{orgId}/notificationEvent"
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.startDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "form", "")
+	}
+	if r.endDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "form", "")
+	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	if r.priorities != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "priorities", r.priorities, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -255,7 +286,7 @@ func (a *NotificationAPIService) ListNotificationMessagesExecute(r ApiListNotifi
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["BearerTokenAuth"]; ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + " " + apiKey.Key
@@ -295,8 +326,8 @@ func (a *NotificationAPIService) ListNotificationMessagesExecute(r ApiListNotifi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -306,8 +337,334 @@ func (a *NotificationAPIService) ListNotificationMessagesExecute(r ApiListNotifi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListNotificationEventsByEntityRequest struct {
+	ctx        context.Context
+	ApiService *NotificationAPIService
+	orgId      string
+	entityType string
+	entityId   string
+	limit      *int32
+	offset     *int32
+}
+
+// List pagination size, default 1000, max value is 1000
+func (r ApiListNotificationEventsByEntityRequest) Limit(limit int32) ApiListNotificationEventsByEntityRequest {
+	r.limit = &limit
+	return r
+}
+
+// List pagination offset, default 0
+func (r ApiListNotificationEventsByEntityRequest) Offset(offset int32) ApiListNotificationEventsByEntityRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiListNotificationEventsByEntityRequest) Execute() (*ListNotificationEventsResponse, *http.Response, error) {
+	return r.ApiService.ListNotificationEventsByEntityExecute(r)
+}
+
+/*
+ListNotificationEventsByEntity list notification events by entity
+
+List the notification events of the given organization and entity with pagination.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@param entityType Entity type, valid values are: PRODUCT, OFFER, ENTITLEMENT, INTEGRATION etc.
+	@param entityId Entity ID
+	@return ApiListNotificationEventsByEntityRequest
+*/
+func (a *NotificationAPIService) ListNotificationEventsByEntity(ctx context.Context, orgId string, entityType string, entityId string) ApiListNotificationEventsByEntityRequest {
+	return ApiListNotificationEventsByEntityRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+		entityType: entityType,
+		entityId:   entityId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListNotificationEventsResponse
+func (a *NotificationAPIService) ListNotificationEventsByEntityExecute(r ApiListNotificationEventsByEntityRequest) (*ListNotificationEventsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ListNotificationEventsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.ListNotificationEventsByEntity")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/notificationEvent/{entityType}/{entityId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"entityType"+"}", url.PathEscape(parameterValueToString(r.entityType, "entityType")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"entityId"+"}", url.PathEscape(parameterValueToString(r.entityId, "entityId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListNotificationMessagesRequest struct {
+	ctx        context.Context
+	ApiService *NotificationAPIService
+	orgId      string
+	limit      *int32
+	offset     *int32
+}
+
+// List pagination size, default 1000, max value is 1000
+func (r ApiListNotificationMessagesRequest) Limit(limit int32) ApiListNotificationMessagesRequest {
+	r.limit = &limit
+	return r
+}
+
+// List pagination offset, default 0
+func (r ApiListNotificationMessagesRequest) Offset(offset int32) ApiListNotificationMessagesRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiListNotificationMessagesRequest) Execute() (*ListNotificationMessagesResponse, *http.Response, error) {
+	return r.ApiService.ListNotificationMessagesExecute(r)
+}
+
+/*
+ListNotificationMessages list notification messages
+
+List the notification messages of the given organization with pagination.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Organization ID
+	@return ApiListNotificationMessagesRequest
+*/
+func (a *NotificationAPIService) ListNotificationMessages(ctx context.Context, orgId string) ApiListNotificationMessagesRequest {
+	return ApiListNotificationMessagesRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListNotificationMessagesResponse
+func (a *NotificationAPIService) ListNotificationMessagesExecute(r ApiListNotificationMessagesRequest) (*ListNotificationMessagesResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ListNotificationMessagesResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.ListNotificationMessages")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/notificationMessage"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

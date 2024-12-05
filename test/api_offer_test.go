@@ -11,17 +11,19 @@ package openapi
 
 import (
 	"context"
-	"testing"
-
+	"encoding/json"
+	"fmt"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	openapiclient "github.com/sugerio/suger-sdk-go"
+	"testing"
 )
 
 func Test_openapi_OfferAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
+	//configuration.AddDefaultHeader("Authorization", "Key b277c95e5e92ff7a8e96e74baf6ee2fb080db3e6507977c0067791abc1f52da4220e866e2081117a1721788aa2e9dc6fe009f2a699f17a7bba23973af6954db4")
 
 	t.Run("Test OfferAPIService CancelOffer", func(t *testing.T) {
 
@@ -100,10 +102,37 @@ func Test_openapi_OfferAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var orgId string
-		var offerId string
+		var orgId = "w43Vc6UfM"
+		var offerId = "1Edc6L49p"
 
-		resp, httpRes, err := apiClient.OfferAPI.GetOffer(context.Background(), orgId, offerId).Execute()
+		auth := context.WithValue(
+			context.Background(),
+			openapiclient.ContextAPIKeys,
+			map[string]openapiclient.APIKey{
+				"APIKeyAuth": {Key: "Key b277c95e5e92ff7a8e96e74baf6ee2fb080db3e6507977c0067791abc1f52da4220e866e2081117a1721788aa2e9dc6fe009f2a699f17a7bba23973af6954db4"},
+			},
+		)
+
+		resp, httpRes, err := apiClient.OfferAPI.GetOffer(auth, orgId, offerId).Execute()
+
+		jsonData, err := json.Marshal(resp)
+		fmt.Printf(string(jsonData))
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OfferAPIService GetOfferByExternalId", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId = "w43Vc6UfM"
+		var offerExternalId = "eb2b1be2-42cc-4eb4-a227-57cc8943e8ba"
+
+		resp, httpRes, err := apiClient.OfferAPI.GetOfferByExternalId(context.Background(), orgId, offerExternalId).Execute()
+		jsonData, err := json.Marshal(resp)
+		fmt.Printf(string(jsonData))
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -126,14 +155,14 @@ func Test_openapi_OfferAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OfferAPIService ListOffersByContact", func(t *testing.T) {
+	t.Run("Test OfferAPIService GetOfferResellerEula", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var orgId string
-		var contactId string
+		var offerId string
 
-		resp, httpRes, err := apiClient.OfferAPI.ListOffersByContact(context.Background(), orgId, contactId).Execute()
+		resp, httpRes, err := apiClient.OfferAPI.GetOfferResellerEula(context.Background(), orgId, offerId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -141,43 +170,13 @@ func Test_openapi_OfferAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OfferAPIService ListOffersByOrganization", func(t *testing.T) {
+	t.Run("Test OfferAPIService ListOffers", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var orgId string
 
-		resp, httpRes, err := apiClient.OfferAPI.ListOffersByOrganization(context.Background(), orgId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test OfferAPIService ListOffersByPartner", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var orgId string
-		var partner string
-
-		resp, httpRes, err := apiClient.OfferAPI.ListOffersByPartner(context.Background(), orgId, partner).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test OfferAPIService ListOffersByProduct", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var orgId string
-		var productId string
-
-		resp, httpRes, err := apiClient.OfferAPI.ListOffersByProduct(context.Background(), orgId, productId).Execute()
+		resp, httpRes, err := apiClient.OfferAPI.ListOffers(context.Background(), orgId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
