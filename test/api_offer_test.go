@@ -23,8 +23,7 @@ func Test_openapi_OfferAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	header := apiClient.GetConfig().DefaultHeader
-	header["Authorization"] = "Key b277c95e5e92ff7a8e96e74baf6ee2fb080db3e6507977c0067791abc1f52da4220e866e2081117a1721788aa2e9dc6fe009f2a699f17a7bba23973af6954db4"
+	//configuration.AddDefaultHeader("Authorization", "Key b277c95e5e92ff7a8e96e74baf6ee2fb080db3e6507977c0067791abc1f52da4220e866e2081117a1721788aa2e9dc6fe009f2a699f17a7bba23973af6954db4")
 
 	t.Run("Test OfferAPIService CancelOffer", func(t *testing.T) {
 
@@ -105,7 +104,16 @@ func Test_openapi_OfferAPIService(t *testing.T) {
 
 		var orgId = "w43Vc6UfM"
 		var offerId = "1Edc6L49p"
-		resp, httpRes, err := apiClient.OfferAPI.GetOffer(context.Background(), orgId, offerId).Execute()
+
+		auth := context.WithValue(
+			context.Background(),
+			openapiclient.ContextAPIKeys,
+			map[string]openapiclient.APIKey{
+				"APIKeyAuth": {Key: "Key b277c95e5e92ff7a8e96e74baf6ee2fb080db3e6507977c0067791abc1f52da4220e866e2081117a1721788aa2e9dc6fe009f2a699f17a7bba23973af6954db4"},
+			},
+		)
+
+		resp, httpRes, err := apiClient.OfferAPI.GetOffer(auth, orgId, offerId).Execute()
 
 		jsonData, err := json.Marshal(resp)
 		fmt.Printf(string(jsonData))
