@@ -22,3 +22,5 @@ _testmain.go
 *.exe
 *.test
 *.prof
+/.idea/.gitignore
+/.idea/vcs.xml

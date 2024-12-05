@@ -75,7 +75,7 @@ ctx = context.WithValue(context.Background(), openapi.ContextOperationServerVari
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://https://api.suger.cloud*
+All URIs are relative to *https://api.suger.cloud*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -698,7 +698,7 @@ auth := context.WithValue(
 		context.Background(),
 		openapi.ContextAPIKeys,
 		map[string]openapi.APIKey{
-			"BearerTokenAuth": {Key: "API_KEY_STRING"},
+			"Authorization": {Key: "API_KEY_STRING"},
 		},
 	)
 r, err := client.Service.Operation(auth, args)

@@ -21,6 +21,8 @@ func Test_openapi_ProductAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
+	header := apiClient.GetConfig().DefaultHeader
+	header["Authorization"] = "Key b277c95e5e92ff7a8e96e74baf6ee2fb080db3e6507977c0067791abc1f52da4220e866e2081117a1721788aa2e9dc6fe009f2a699f17a7bba23973af6954db4"
 
 	t.Run("Test ProductAPIService CreateOrUpdateDraftProduct", func(t *testing.T) {
 
@@ -69,8 +71,8 @@ func Test_openapi_ProductAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var orgId string
-		var productId string
+		var orgId = "w43Vc6UfM"
+		var productId = "5BXI1hZRl"
 
 		resp, httpRes, err := apiClient.ProductAPI.GetProduct(context.Background(), orgId, productId).Execute()
 

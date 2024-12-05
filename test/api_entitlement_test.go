@@ -11,6 +11,8 @@ package openapi
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -21,6 +23,8 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
+	header := apiClient.GetConfig().DefaultHeader
+	header["Authorization"] = "Key b277c95e5e92ff7a8e96e74baf6ee2fb080db3e6507977c0067791abc1f52da4220e866e2081117a1721788aa2e9dc6fe009f2a699f17a7bba23973af6954db4"
 
 	t.Run("Test EntitlementAPIService AddEntitlementCredit", func(t *testing.T) {
 
@@ -131,11 +135,12 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var orgId string
-		var entitlementId string
+		var orgId = "w43Vc6UfM"
+		var entitlementId = "3LviYKS_S"
 
 		resp, httpRes, err := apiClient.EntitlementAPI.GetEntitlement(context.Background(), orgId, entitlementId).Execute()
-
+		jsonData, err := json.Marshal(resp)
+		fmt.Printf(string(jsonData))
 		require.Nil(t, err)
 		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -162,11 +167,12 @@ func Test_openapi_EntitlementAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var orgId string
-		var entitlementId string
+		var orgId = "w43Vc6UfM"
+		var entitlementId = "3LviYKS_S"
 
 		resp, httpRes, err := apiClient.EntitlementAPI.ListEntitlementTerms(context.Background(), orgId, entitlementId).Execute()
-
+		jsonData, err := json.Marshal(resp)
+		fmt.Printf(string(jsonData))
 		require.Nil(t, err)
 		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)

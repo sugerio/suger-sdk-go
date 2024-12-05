@@ -94,7 +94,7 @@ func NewConfiguration() *Configuration {
 		Debug:         false,
 		Servers: ServerConfigurations{
 			{
-				URL:         "//https://api.suger.cloud",
+				URL:         "https://api.suger.cloud",
 				Description: "No description provided",
 			},
 		},

@@ -21,6 +21,8 @@ func Test_openapi_BillingAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
+	header := apiClient.GetConfig().DefaultHeader
+	header["Authorization"] = "Key b277c95e5e92ff7a8e96e74baf6ee2fb080db3e6507977c0067791abc1f52da4220e866e2081117a1721788aa2e9dc6fe009f2a699f17a7bba23973af6954db4"
 
 	t.Run("Test BillingAPIService CreateAddon", func(t *testing.T) {
 
