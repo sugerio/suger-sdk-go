@@ -13,9 +13,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	openapiclient "github.com/sugerio/suger-sdk-go"
 	"testing"
 )
 
@@ -101,7 +101,7 @@ func Test_openapi_OfferAPIService(t *testing.T) {
 
 	t.Run("Test OfferAPIService GetOffer", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		//t.Skip("skip test") // remove to run test
 
 		var orgId = "w43Vc6UfM"
 		var offerId = "1Edc6L49p"
