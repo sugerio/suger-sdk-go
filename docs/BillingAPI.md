@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## CreateRefund
 
-> string CreateRefund(ctx, orgId, buyerId, paymentTransactionId).Amount(amount).Execute()
+> BillingPaymentTransaction CreateRefund(ctx, orgId, buyerId, paymentTransactionId).Amount(amount).Execute()
 
 create refund.
 
@@ -125,7 +125,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.CreateRefund``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateRefund`: string
+	// response from `CreateRefund`: BillingPaymentTransaction
 	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.CreateRefund`: %v\n", resp)
 }
 ```
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**BillingPaymentTransaction**](BillingPaymentTransaction.md)
 
 ### Authorization
 
@@ -394,7 +394,7 @@ Name | Type | Description  | Notes
 
 ## IssueInvoice
 
-> string IssueInvoice(ctx, orgId, entitlementId, invoiceId).Execute()
+> BillingInvoice IssueInvoice(ctx, orgId, entitlementId, invoiceId).Execute()
 
 issue invoice
 
@@ -424,7 +424,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.IssueInvoice``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IssueInvoice`: string
+	// response from `IssueInvoice`: BillingInvoice
 	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.IssueInvoice`: %v\n", resp)
 }
 ```
@@ -452,7 +452,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**BillingInvoice**](BillingInvoice.md)
 
 ### Authorization
 
@@ -784,7 +784,7 @@ Name | Type | Description  | Notes
 
 ## PayInvoice
 
-> string PayInvoice(ctx, orgId, entitlementId, invoiceId).Execute()
+> BillingInvoice PayInvoice(ctx, orgId, entitlementId, invoiceId).Execute()
 
 pay invoice
 
@@ -814,7 +814,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.PayInvoice``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PayInvoice`: string
+	// response from `PayInvoice`: BillingInvoice
 	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.PayInvoice`: %v\n", resp)
 }
 ```
@@ -842,7 +842,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**BillingInvoice**](BillingInvoice.md)
 
 ### Authorization
 
@@ -935,7 +935,7 @@ Name | Type | Description  | Notes
 
 ## VoidInvoice
 
-> string VoidInvoice(ctx, orgId, entitlementId, invoiceId).Execute()
+> BillingInvoice VoidInvoice(ctx, orgId, entitlementId, invoiceId).Execute()
 
 void invoice
 
@@ -965,7 +965,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.VoidInvoice``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `VoidInvoice`: string
+	// response from `VoidInvoice`: BillingInvoice
 	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.VoidInvoice`: %v\n", resp)
 }
 ```
@@ -993,7 +993,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**BillingInvoice**](BillingInvoice.md)
 
 ### Authorization
 

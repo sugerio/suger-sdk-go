@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## AddContactToBuyer
 
-> string AddContactToBuyer(ctx, orgId, buyerId, contactId).Execute()
+> IdentityBuyer AddContactToBuyer(ctx, orgId, buyerId, contactId).Execute()
 
 add contact to buyer
 
@@ -48,7 +48,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ContactAPI.AddContactToBuyer``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddContactToBuyer`: string
+	// response from `AddContactToBuyer`: IdentityBuyer
 	fmt.Fprintf(os.Stdout, "Response from `ContactAPI.AddContactToBuyer`: %v\n", resp)
 }
 ```
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**IdentityBuyer**](IdentityBuyer.md)
 
 ### Authorization
 

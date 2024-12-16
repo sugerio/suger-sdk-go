@@ -69,6 +69,8 @@
 
 * `NotificationEventAction_ACE_SALES_REP_UPDATE` (value: `"ACE_SALES_REP_UPDATE"`)
 
+* `NotificationEventAction_ACE_CUSTOMER_EMAIL_UPDATE` (value: `"ACE_CUSTOMER_EMAIL_UPDATE"`)
+
 * `NotificationEventAction_SUBMIT_APPROVAL_REQUEST` (value: `"SUBMIT_APPROVAL_REQUEST"`)
 
 * `NotificationEventAction_REVIEW_APPROVAL_REQUEST` (value: `"REVIEW_APPROVAL_REQUEST"`)

@@ -1,0 +1,28 @@
+name: Deploy golang package and release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.23.x
+          cache: false
+
+      - name: Install deps
+        run: |
+          go get github.com/stretchr/testify/assert
+          go get golang.org/x/net/context
+      
+      - name : Test
+        run: go test -v ./...
+

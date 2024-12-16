@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ## DeleteBuyerWallet
 
-> BillingWallet DeleteBuyerWallet(ctx, orgId, buyerId, walletId).Execute()
+> string DeleteBuyerWallet(ctx, orgId, buyerId, walletId).Execute()
 
 delete buyer wallet
 
@@ -270,7 +270,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.DeleteBuyerWallet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteBuyerWallet`: BillingWallet
+	// response from `DeleteBuyerWallet`: string
 	fmt.Fprintf(os.Stdout, "Response from `BuyerAPI.DeleteBuyerWallet`: %v\n", resp)
 }
 ```
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BillingWallet**](BillingWallet.md)
+**string**
 
 ### Authorization
 

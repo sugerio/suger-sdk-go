@@ -11,6 +11,8 @@
 
 * `GcpMarketplaceResellerPrivateOfferPlanStateType_READY_TO_USE` (value: `"STATE_TYPE_READY_TO_USE"`)
 
+* `GcpMarketplaceResellerPrivateOfferPlanStateType_REJECTED` (value: `"STATE_TYPE_REJECTED"`)
+
 * `GcpMarketplaceResellerPrivateOfferPlanStateType_USED` (value: `"STATE_TYPE_USED"`)
 
 * `GcpMarketplaceResellerPrivateOfferPlanStateType_CANCELED` (value: `"STATE_TYPE_CANCELED"`)

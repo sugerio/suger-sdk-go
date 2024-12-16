@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ## CancelOffer
 
-> string CancelOffer(ctx, orgId, offerId).Execute()
+> WorkloadOffer CancelOffer(ctx, orgId, offerId).Execute()
 
 cancel offer
 
@@ -50,7 +50,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.CancelOffer``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CancelOffer`: string
+	// response from `CancelOffer`: WorkloadOffer
 	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.CancelOffer`: %v\n", resp)
 }
 ```
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**WorkloadOffer**](WorkloadOffer.md)
 
 ### Authorization
 
@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
 
 ## ExtendPrivateOfferExpiryDate
 
-> string ExtendPrivateOfferExpiryDate(ctx, orgId, offerId).NewExpiryDate(newExpiryDate).Execute()
+> WorkloadOffer ExtendPrivateOfferExpiryDate(ctx, orgId, offerId).NewExpiryDate(newExpiryDate).Execute()
 
 extend offer expiry date
 
@@ -341,7 +341,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.ExtendPrivateOfferExpiryDate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ExtendPrivateOfferExpiryDate`: string
+	// response from `ExtendPrivateOfferExpiryDate`: WorkloadOffer
 	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.ExtendPrivateOfferExpiryDate`: %v\n", resp)
 }
 ```
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**WorkloadOffer**](WorkloadOffer.md)
 
 ### Authorization
 
@@ -532,7 +532,7 @@ Name | Type | Description  | Notes
 
 ## GetOfferEula
 
-> string GetOfferEula(ctx, orgId, offerId).Execute()
+> string GetOfferEula(ctx, orgId, offerId).Format(format).Execute()
 
 get offer EULA
 
@@ -553,10 +553,11 @@ import (
 func main() {
 	orgId := "orgId_example" // string | Organization ID
 	offerId := "offerId_example" // string | Offer ID
+	format := "format_example" // string | response format in JSON or string (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OfferAPI.GetOfferEula(context.Background(), orgId, offerId).Execute()
+	resp, r, err := apiClient.OfferAPI.GetOfferEula(context.Background(), orgId, offerId).Format(format).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.GetOfferEula``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -584,6 +585,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **format** | **string** | response format in JSON or string | 
 
 ### Return type
 

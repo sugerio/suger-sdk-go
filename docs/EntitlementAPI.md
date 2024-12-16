@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ## ApplyAddonToEntitlement
 
-> string ApplyAddonToEntitlement(ctx, orgId, entitlementId).Data(data).Execute()
+> WorkloadEntitlement ApplyAddonToEntitlement(ctx, orgId, entitlementId).Data(data).Execute()
 
 apply addon to entitlement
 
@@ -130,7 +130,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementAPI.ApplyAddonToEntitlement``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ApplyAddonToEntitlement`: string
+	// response from `ApplyAddonToEntitlement`: WorkloadEntitlement
 	fmt.Fprintf(os.Stdout, "Response from `EntitlementAPI.ApplyAddonToEntitlement`: %v\n", resp)
 }
 ```
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**WorkloadEntitlement**](WorkloadEntitlement.md)
 
 ### Authorization
 
@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 
 ## CancelEntitlement
 
-> string CancelEntitlement(ctx, orgId, entitlementId).Execute()
+> WorkloadEntitlement CancelEntitlement(ctx, orgId, entitlementId).Execute()
 
 cancel entitlement
 
@@ -277,7 +277,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementAPI.CancelEntitlement``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CancelEntitlement`: string
+	// response from `CancelEntitlement`: WorkloadEntitlement
 	fmt.Fprintf(os.Stdout, "Response from `EntitlementAPI.CancelEntitlement`: %v\n", resp)
 }
 ```
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**WorkloadEntitlement**](WorkloadEntitlement.md)
 
 ### Authorization
 
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BearerTokenAuth](../README.md#BearerTokenAuth)
+[APIKeyAuth](../README.md#APIKeyAuth)
 
 ### HTTP request headers
 
@@ -848,7 +848,7 @@ Name | Type | Description  | Notes
 
 ## ScheduleEntitlementCancellation
 
-> string ScheduleEntitlementCancellation(ctx, orgId, entitlementId).Data(data).Execute()
+> WorkloadEntitlement ScheduleEntitlementCancellation(ctx, orgId, entitlementId).Data(data).Execute()
 
 schedule entitlement cancellation
 
@@ -878,7 +878,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementAPI.ScheduleEntitlementCancellation``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ScheduleEntitlementCancellation`: string
+	// response from `ScheduleEntitlementCancellation`: WorkloadEntitlement
 	fmt.Fprintf(os.Stdout, "Response from `EntitlementAPI.ScheduleEntitlementCancellation`: %v\n", resp)
 }
 ```
@@ -905,7 +905,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**WorkloadEntitlement**](WorkloadEntitlement.md)
 
 ### Authorization
 
@@ -923,7 +923,7 @@ Name | Type | Description  | Notes
 
 ## UnscheduleEntitlementCancellation
 
-> string UnscheduleEntitlementCancellation(ctx, orgId, entitlementId).Execute()
+> WorkloadEntitlement UnscheduleEntitlementCancellation(ctx, orgId, entitlementId).Execute()
 
 unschedule entitlement cancellation
 
@@ -952,7 +952,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementAPI.UnscheduleEntitlementCancellation``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UnscheduleEntitlementCancellation`: string
+	// response from `UnscheduleEntitlementCancellation`: WorkloadEntitlement
 	fmt.Fprintf(os.Stdout, "Response from `EntitlementAPI.UnscheduleEntitlementCancellation`: %v\n", resp)
 }
 ```
@@ -978,7 +978,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**WorkloadEntitlement**](WorkloadEntitlement.md)
 
 ### Authorization
 
@@ -1146,7 +1146,7 @@ Name | Type | Description  | Notes
 
 ## UpdateEntitlementSeat
 
-> string UpdateEntitlementSeat(ctx, orgId, entitlementId).NewSeat(newSeat).Execute()
+> WorkloadEntitlement UpdateEntitlementSeat(ctx, orgId, entitlementId).NewSeat(newSeat).Execute()
 
 update seat for the active AZURE subscription
 
@@ -1176,7 +1176,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementAPI.UpdateEntitlementSeat``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateEntitlementSeat`: string
+	// response from `UpdateEntitlementSeat`: WorkloadEntitlement
 	fmt.Fprintf(os.Stdout, "Response from `EntitlementAPI.UpdateEntitlementSeat`: %v\n", resp)
 }
 ```
@@ -1203,7 +1203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**WorkloadEntitlement**](WorkloadEntitlement.md)
 
 ### Authorization
 

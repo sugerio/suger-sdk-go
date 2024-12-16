@@ -39,6 +39,10 @@
 
 * `OfferStatus_PREVIEW` (value: `"PREVIEW"`)
 
+* `OfferStatus_READY_TO_USE` (value: `"READY_TO_USE"`)
+
+* `OfferStatus_REJECTED` (value: `"REJECTED"`)
+
 * `OfferStatus_RESTRICTED` (value: `"RESTRICTED"`)
 
 * `OfferStatus_TEST` (value: `"TEST"`)

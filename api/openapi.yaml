@@ -958,8 +958,8 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-          description: Empty string if succeed
+                $ref: '#/components/schemas/BillingPaymentTransaction'
+          description: OK
         "400":
           content:
             application/json:
@@ -1103,7 +1103,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BillingWallet'
+                type: string
           description: OK
         "400":
           content:
@@ -1568,8 +1568,8 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-          description: empty string if success
+                $ref: '#/components/schemas/IdentityBuyer'
+          description: OK
         "400":
           content:
             application/json:
@@ -2209,8 +2209,8 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-          description: OK
+                $ref: '#/components/schemas/WorkloadEntitlement'
+          description: Entitlement
         "400":
           content:
             application/json:
@@ -2308,8 +2308,8 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-          description: OK
+                $ref: '#/components/schemas/WorkloadEntitlement'
+          description: the canceled Entitlement
         "400":
           content:
             application/json:
@@ -2537,7 +2537,7 @@ paths:
                 type: string
           description: Internal server error
       security:
-      - BearerTokenAuth: []
+      - APIKeyAuth: []
       summary: delete entitlement term
       tags:
       - Entitlement
@@ -2681,8 +2681,8 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-          description: Empty string if issue is successful
+                $ref: '#/components/schemas/BillingInvoice'
+          description: the issued Invoice
         "400":
           content:
             application/json:
@@ -2735,8 +2735,8 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-          description: Empty string if pay is successful
+                $ref: '#/components/schemas/BillingInvoice'
+          description: OK
         "400":
           content:
             application/json:
@@ -2789,8 +2789,8 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-          description: Empty string if void is successful
+                $ref: '#/components/schemas/BillingInvoice'
+          description: OK
         "400":
           content:
             application/json:
@@ -2894,7 +2894,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/WorkloadEntitlement'
           description: OK
         "400":
           content:
@@ -2948,8 +2948,8 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-          description: OK
+                $ref: '#/components/schemas/WorkloadEntitlement'
+          description: the original entitlement before the seat update
         "400":
           content:
             application/json:
@@ -2993,7 +2993,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/WorkloadEntitlement'
           description: OK
         "400":
           content:
@@ -3708,8 +3708,8 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-          description: Empty string if cancellation is successful
+                $ref: '#/components/schemas/WorkloadOffer'
+          description: OK
         "400":
           content:
             application/json:
@@ -3754,6 +3754,14 @@ paths:
         schema:
           type: string
         style: simple
+      - description: response format in JSON or string
+        explode: true
+        in: query
+        name: format
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -3819,8 +3827,8 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-          description: Empty string if extension is successful
+                $ref: '#/components/schemas/WorkloadOffer'
+          description: OK
         "400":
           content:
             application/json:
@@ -19521,10 +19529,17 @@ components:
     GcpMarketplaceResellerInfo:
       example:
         billingAccountOrgDisplayName: billingAccountOrgDisplayName
+        resellerPrivateOfferPlanScope: resellerPrivateOfferPlanScope
+        partnerAccountName: partnerAccountName
         notesToReseller: notesToReseller
+        resellerContactName: resellerContactName
+        resellOfferTemplateId: resellOfferTemplateId
         billingAccountId: billingAccountId
         billingAccountType: billingAccountType
         billingAccountNickname: billingAccountNickname
+        resellerContactEmail: resellerContactEmail
+        resellerPrivateOfferPlanId: resellerPrivateOfferPlanId
+        subBillingAccount: subBillingAccount
       properties:
         billingAccountId:
           type: string
@@ -19535,6 +19550,22 @@ components:
         billingAccountType:
           type: string
         notesToReseller:
+          type: string
+        partnerAccountName:
+          description: "In the format of \"\"organizations/{GcpOrganizationID}/partnerAccounts/{partnerAccountID}\""
+          type: string
+        resellOfferTemplateId:
+          type: string
+        resellerContactEmail:
+          type: string
+        resellerContactName:
+          type: string
+        resellerPrivateOfferPlanId:
+          type: string
+        resellerPrivateOfferPlanScope:
+          type: string
+        subBillingAccount:
+          description: In the format of "billingAccounts/..."
           type: string
       type: object
     GcpMarketplaceResellerPrivateOfferPlan:
@@ -19851,10 +19882,17 @@ components:
           gcpProjectNumber: gcpProjectNumber
         resellerInfo:
           billingAccountOrgDisplayName: billingAccountOrgDisplayName
+          resellerPrivateOfferPlanScope: resellerPrivateOfferPlanScope
+          partnerAccountName: partnerAccountName
           notesToReseller: notesToReseller
+          resellerContactName: resellerContactName
+          resellOfferTemplateId: resellOfferTemplateId
           billingAccountId: billingAccountId
           billingAccountType: billingAccountType
           billingAccountNickname: billingAccountNickname
+          resellerContactEmail: resellerContactEmail
+          resellerPrivateOfferPlanId: resellerPrivateOfferPlanId
+          subBillingAccount: subBillingAccount
         name: name
         resellOfferTemplate: resellOfferTemplate
         replacementMetadata: "{}"
@@ -20750,6 +20788,7 @@ components:
       - STATE_TYPE_DRAFT
       - STATE_TYPE_READY_TO_ACCEPT
       - STATE_TYPE_READY_TO_USE
+      - STATE_TYPE_REJECTED
       - STATE_TYPE_USED
       - STATE_TYPE_CANCELED
       - STATE_TYPE_EXPIRED_NEVER_ACCEPTED
@@ -20760,6 +20799,7 @@ components:
       - GcpMarketplaceResellerPrivateOfferPlanStateType_DRAFT
       - GcpMarketplaceResellerPrivateOfferPlanStateType_READY_TO_ACCEPT
       - GcpMarketplaceResellerPrivateOfferPlanStateType_READY_TO_USE
+      - GcpMarketplaceResellerPrivateOfferPlanStateType_REJECTED
       - GcpMarketplaceResellerPrivateOfferPlanStateType_USED
       - GcpMarketplaceResellerPrivateOfferPlanStateType_CANCELED
       - GcpMarketplaceResellerPrivateOfferPlanStateType_EXPIRED_NEVER_ACCEPTED
@@ -23380,6 +23420,7 @@ components:
       - UPDATE
       - ACE_ENGAGEMENT_SCORE_UPDATE
       - ACE_SALES_REP_UPDATE
+      - ACE_CUSTOMER_EMAIL_UPDATE
       - SUBMIT_APPROVAL_REQUEST
       - REVIEW_APPROVAL_REQUEST
       - COMPLETE
@@ -23420,6 +23461,7 @@ components:
       - NotificationEventAction_UPDATE
       - NotificationEventAction_ACE_ENGAGEMENT_SCORE_UPDATE
       - NotificationEventAction_ACE_SALES_REP_UPDATE
+      - NotificationEventAction_ACE_CUSTOMER_EMAIL_UPDATE
       - NotificationEventAction_SUBMIT_APPROVAL_REQUEST
       - NotificationEventAction_REVIEW_APPROVAL_REQUEST
       - NotificationEventAction_COMPLETE
@@ -23908,10 +23950,17 @@ components:
             gcpProjectNumber: gcpProjectNumber
           resellerInfo:
             billingAccountOrgDisplayName: billingAccountOrgDisplayName
+            resellerPrivateOfferPlanScope: resellerPrivateOfferPlanScope
+            partnerAccountName: partnerAccountName
             notesToReseller: notesToReseller
+            resellerContactName: resellerContactName
+            resellOfferTemplateId: resellOfferTemplateId
             billingAccountId: billingAccountId
             billingAccountType: billingAccountType
             billingAccountNickname: billingAccountNickname
+            resellerContactEmail: resellerContactEmail
+            resellerPrivateOfferPlanId: resellerPrivateOfferPlanId
+            subBillingAccount: subBillingAccount
           name: name
           resellOfferTemplate: resellOfferTemplate
           replacementMetadata: "{}"
@@ -24517,6 +24566,8 @@ components:
       - PENDING_CREATE
       - PENDING_UPDATE
       - PREVIEW
+      - READY_TO_USE
+      - REJECTED
       - RESTRICTED
       - TEST
       - UPDATE_FAILED
@@ -24544,6 +24595,8 @@ components:
       - OfferStatus_PENDING_CREATE
       - OfferStatus_PENDING_UPDATE
       - OfferStatus_PREVIEW
+      - OfferStatus_READY_TO_USE
+      - OfferStatus_REJECTED
       - OfferStatus_RESTRICTED
       - OfferStatus_TEST
       - OfferStatus_UPDATE_FAILED
@@ -33096,10 +33149,17 @@ components:
               gcpProjectNumber: gcpProjectNumber
             resellerInfo:
               billingAccountOrgDisplayName: billingAccountOrgDisplayName
+              resellerPrivateOfferPlanScope: resellerPrivateOfferPlanScope
+              partnerAccountName: partnerAccountName
               notesToReseller: notesToReseller
+              resellerContactName: resellerContactName
+              resellOfferTemplateId: resellOfferTemplateId
               billingAccountId: billingAccountId
               billingAccountType: billingAccountType
               billingAccountNickname: billingAccountNickname
+              resellerContactEmail: resellerContactEmail
+              resellerPrivateOfferPlanId: resellerPrivateOfferPlanId
+              subBillingAccount: subBillingAccount
             name: name
             resellOfferTemplate: resellOfferTemplate
             replacementMetadata: "{}"
@@ -38107,12 +38167,6 @@ components:
   securitySchemes:
     APIKeyAuth:
       description: API Key for authorization in format of <Key *****>.
-      in: header
-      name: Authorization
-      type: apiKey
-    BearerTokenAuth:
-      description: Bearer token for authorization in format of <Bearer *****>. It
-        is from the API GetApiClientAccessToken.
       in: header
       name: Authorization
       type: apiKey
