@@ -2,19 +2,19 @@
 
 All URIs are relative to *http://https://api.suger.cloud*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**CreateOrUpdateDraftProduct**](ProductAPI.md#CreateOrUpdateDraftProduct) | **Post** /org/{orgId}/draftProduct | create or update draft product
-[**CreateProduct**](ProductAPI.md#CreateProduct) | **Post** /org/{orgId}/product | create product
-[**DeleteProduct**](ProductAPI.md#DeleteProduct) | **Delete** /org/{orgId}/product/{productId} | delete product
-[**GetProduct**](ProductAPI.md#GetProduct) | **Get** /org/{orgId}/product/{productId} | get product
-[**ListProductMeteringDimensions**](ProductAPI.md#ListProductMeteringDimensions) | **Get** /org/{orgId}/product/{productId}/dimension | list metering dimensions of product
-[**ListProductsByOrganization**](ProductAPI.md#ListProductsByOrganization) | **Get** /org/{orgId}/product | list products by organization
-[**ListProductsByPartner**](ProductAPI.md#ListProductsByPartner) | **Get** /org/{orgId}/partner/{partner}/product | list products by partner
-[**PublishProduct**](ProductAPI.md#PublishProduct) | **Patch** /org/{orgId}/product/{productId}/publish | publish product
-[**UpdateProduct**](ProductAPI.md#UpdateProduct) | **Patch** /org/{orgId}/product/{productId} | update product
-[**UpdateProductFulfillmentUrl**](ProductAPI.md#UpdateProductFulfillmentUrl) | **Patch** /org/{orgId}/product/{productId}/fulfillmentUrl | update product fulfillment url
-[**UpdateProductMetaInfo**](ProductAPI.md#UpdateProductMetaInfo) | **Patch** /org/{orgId}/product/{productId}/metaInfo | update product meta info
+ Method                                                                           | HTTP request                                              | Description                         
+----------------------------------------------------------------------------------|-----------------------------------------------------------|-------------------------------------
+ [**CreateOrUpdateDraftProduct**](ProductAPI.md#CreateOrUpdateDraftProduct)       | **Post** /org/{orgId}/draftProduct                        | create or update draft product      
+ [**CreateProduct**](ProductAPI.md#CreateProduct)                                 | **Post** /org/{orgId}/product                             | create product                      
+ [**DeleteProduct**](ProductAPI.md#DeleteProduct)                                 | **Delete** /org/{orgId}/product/{productId}               | delete product                      
+ [**GetProduct**](ProductAPI.md#GetProduct)                                       | **Get** /org/{orgId}/product/{productId}                  | get product                         
+ [**ListProductMeteringDimensions**](ProductAPI.md#ListProductMeteringDimensions) | **Get** /org/{orgId}/product/{productId}/dimension        | list metering dimensions of product 
+ [**ListProducts**](ProductAPI.md#ListProducts)                                   | **Get** /org/{orgId}/product                              | list products                       
+ [**ListProductsByPartner**](ProductAPI.md#ListProductsByPartner)                 | **Get** /org/{orgId}/partner/{partner}/product            | list products by partner            
+ [**PublishProduct**](ProductAPI.md#PublishProduct)                               | **Patch** /org/{orgId}/product/{productId}/publish        | publish product                     
+ [**UpdateProduct**](ProductAPI.md#UpdateProduct)                                 | **Patch** /org/{orgId}/product/{productId}                | update product                      
+ [**UpdateProductFulfillmentUrl**](ProductAPI.md#UpdateProductFulfillmentUrl)     | **Patch** /org/{orgId}/product/{productId}/fulfillmentUrl | update product fulfillment url      
+ [**UpdateProductMetaInfo**](ProductAPI.md#UpdateProductMetaInfo)                 | **Patch** /org/{orgId}/product/{productId}/metaInfo       | update product meta info            
 
 
 
@@ -380,12 +380,11 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## ListProducts
 
-## ListProductsByOrganization
+> []WorkloadProduct ListProducts(ctx, orgId).Partner(partner).Limit(limit).Offset(offset).Execute()
 
-> []WorkloadProduct ListProductsByOrganization(ctx, orgId).Execute()
-
-list products by organization
+list products
 
 
 
@@ -403,16 +402,19 @@ import (
 
 func main() {
 	orgId := "orgId_example" // string | Organization ID
+	partner := "partner_example" // string | filter by partner (optional)
+	limit := int32(56) // int32 | List pagination size, default 100, max value is 1000 (optional)
+	offset := int32(56) // int32 | List pagination offset, default 0 (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ListProductsByOrganization(context.Background(), orgId).Execute()
+	resp, r, err := apiClient.ProductAPI.ListProducts(context.Background(), orgId).Partner(partner).Limit(limit).Offset(offset).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ListProductsByOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ListProducts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListProductsByOrganization`: []WorkloadProduct
-	fmt.Fprintf(os.Stdout, "Response from `ProductAPI.ListProductsByOrganization`: %v\n", resp)
+	// response from `ListProducts`: []WorkloadProduct
+	fmt.Fprintf(os.Stdout, "Response from `ProductAPI.ListProducts`: %v\n", resp)
 }
 ```
 
@@ -426,12 +428,15 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListProductsByOrganizationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListProductsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+**partner** | **string** | filter by partner |
+**limit** | **int32** | List pagination size, default 100, max value is 1000 |
+**offset** | **int32** | List pagination offset, default 0 |
 
 ### Return type
 

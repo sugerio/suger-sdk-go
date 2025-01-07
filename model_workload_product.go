@@ -33,6 +33,7 @@ type WorkloadProduct struct {
 	Name           *string           `json:"name,omitempty"`
 	OrganizationID *string           `json:"organizationID,omitempty"`
 	Partner        *Partner          `json:"partner,omitempty"`
+	PartnerID      *string           `json:"partnerID,omitempty"`
 	ProductType    *string           `json:"productType,omitempty"`
 	Service        *PartnerService   `json:"service,omitempty"`
 	Status         *string           `json:"status,omitempty"`
@@ -439,6 +440,38 @@ func (o *WorkloadProduct) SetPartner(v Partner) {
 	o.Partner = &v
 }
 
+// GetPartnerID returns the PartnerID field value if set, zero value otherwise.
+func (o *WorkloadProduct) GetPartnerID() string {
+	if o == nil || IsNil(o.PartnerID) {
+		var ret string
+		return ret
+	}
+	return *o.PartnerID
+}
+
+// GetPartnerIDOk returns a tuple with the PartnerID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadProduct) GetPartnerIDOk() (*string, bool) {
+	if o == nil || IsNil(o.PartnerID) {
+		return nil, false
+	}
+	return o.PartnerID, true
+}
+
+// HasPartnerID returns a boolean if a field has been set.
+func (o *WorkloadProduct) HasPartnerID() bool {
+	if o != nil && !IsNil(o.PartnerID) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerID gets a reference to the given string and assigns it to the PartnerID field.
+func (o *WorkloadProduct) SetPartnerID(v string) {
+	o.PartnerID = &v
+}
+
 // GetProductType returns the ProductType field value if set, zero value otherwise.
 func (o *WorkloadProduct) GetProductType() string {
 	if o == nil || IsNil(o.ProductType) {
@@ -580,6 +613,9 @@ func (o WorkloadProduct) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Partner) {
 		toSerialize["partner"] = o.Partner
+	}
+	if !IsNil(o.PartnerID) {
+		toSerialize["partnerID"] = o.PartnerID
 	}
 	if !IsNil(o.ProductType) {
 		toSerialize["productType"] = o.ProductType

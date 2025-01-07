@@ -2,28 +2,29 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**BuyerID** | Pointer to **string** |  | [optional] 
-**CreationTime** | Pointer to **time.Time** |  | [optional] 
-**EndTime** | Pointer to **time.Time** | nullable | [optional] 
-**EntitlementTermID** | Pointer to **string** |  | [optional] 
-**ExternalBuyerID** | Pointer to **string** |  | [optional] 
-**ExternalID** | Pointer to **string** |  | [optional] 
-**ExternalProductID** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
-**Info** | Pointer to [**EntitlementInfo**](EntitlementInfo.md) |  | [optional] 
-**LastUpdateTime** | Pointer to **time.Time** |  | [optional] 
-**MetaInfo** | Pointer to [**WorkloadMetaInfo**](WorkloadMetaInfo.md) |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**OfferID** | Pointer to **string** |  | [optional] 
-**OrganizationID** | Pointer to **string** |  | [optional] 
-**Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
-**ProductID** | Pointer to **string** |  | [optional] 
-**Service** | Pointer to [**PartnerService**](PartnerService.md) |  | [optional] 
-**StartTime** | Pointer to **time.Time** |  | [optional] 
-**Status** | Pointer to [**EntitlementStatus**](EntitlementStatus.md) |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+ Name                  | Type                                                     | Description | Notes      
+-----------------------|----------------------------------------------------------|-------------|------------
+ **BuyerID**           | Pointer to **string**                                    |             | [optional] 
+ **CreationTime**      | Pointer to **time.Time**                                 |             | [optional] 
+ **EndTime**           | Pointer to **time.Time**                                 | nullable    | [optional] 
+ **EntitlementTermID** | Pointer to **string**                                    |             | [optional] 
+ **ExternalBuyerID**   | Pointer to **string**                                    |             | [optional] 
+ **ExternalID**        | Pointer to **string**                                    |             | [optional] 
+ **ExternalProductID** | Pointer to **string**                                    |             | [optional] 
+ **Id**                | Pointer to **string**                                    |             | [optional] 
+ **Info**              | Pointer to [**EntitlementInfo**](EntitlementInfo.md)     |             | [optional] 
+ **LastUpdateTime**    | Pointer to **time.Time**                                 |             | [optional] 
+ **MetaInfo**          | Pointer to [**WorkloadMetaInfo**](WorkloadMetaInfo.md)   |             | [optional] 
+ **Name**              | Pointer to **string**                                    |             | [optional] 
+ **OfferID**           | Pointer to **string**                                    |             | [optional] 
+ **OrganizationID**    | Pointer to **string**                                    |             | [optional] 
+ **Partner**           | Pointer to [**Partner**](Partner.md)                     |             | [optional] 
+ **PartnerID**         | Pointer to **string**                                    |             | [optional] 
+ **ProductID**         | Pointer to **string**                                    |             | [optional] 
+ **Service**           | Pointer to [**PartnerService**](PartnerService.md)       |             | [optional] 
+ **StartTime**         | Pointer to **time.Time**                                 |             | [optional] 
+ **Status**            | Pointer to [**EntitlementStatus**](EntitlementStatus.md) |             | [optional] 
+ **Type**              | Pointer to **string**                                    |             | [optional] 
 
 ## Methods
 
@@ -418,6 +419,31 @@ SetPartner sets Partner field to given value.
 `func (o *WorkloadEntitlement) HasPartner() bool`
 
 HasPartner returns a boolean if a field has been set.
+
+### GetPartnerID
+
+`func (o *WorkloadEntitlement) GetPartnerID() string`
+
+GetPartnerID returns the PartnerID field if non-nil, zero value otherwise.
+
+### GetPartnerIDOk
+
+`func (o *WorkloadEntitlement) GetPartnerIDOk() (*string, bool)`
+
+GetPartnerIDOk returns a tuple with the PartnerID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnerID
+
+`func (o *WorkloadEntitlement) SetPartnerID(v string)`
+
+SetPartnerID sets PartnerID field to given value.
+
+### HasPartnerID
+
+`func (o *WorkloadEntitlement) HasPartnerID() bool`
+
+HasPartnerID returns a boolean if a field has been set.
 
 ### GetProductID
 

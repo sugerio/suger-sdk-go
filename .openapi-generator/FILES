@@ -968,15 +968,4 @@ model_workload_meta_info.go
 model_workload_offer.go
 model_workload_product.go
 response.go
-test/api_api_test.go
-test/api_billing_test.go
-test/api_buyer_test.go
-test/api_contact_test.go
-test/api_entitlement_test.go
-test/api_metering_test.go
-test/api_notification_test.go
-test/api_offer_test.go
-test/api_product_test.go
-test/api_report_test.go
-test/api_support_test.go
 utils.go

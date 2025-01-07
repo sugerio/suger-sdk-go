@@ -33,9 +33,9 @@ type WorkloadMetaInfo struct {
 	Contacts []Contact `json:"contacts,omitempty"`
 	// The Suger CPPO_IN offer ID.
 	CppoInOfferId *string `json:"cppoInOfferId,omitempty"`
-	// The Suger CPPO offer ID.
+	// The Suger CPPO offer ID. Reseller to end buyer
 	CppoOfferId *string `json:"cppoOfferId,omitempty"`
-	// The Suger CPPO_OUT offer ID.
+	// The Suger CPPO_OUT offer ID. ISV to reseller
 	CppoOutOfferId *string `json:"cppoOutOfferId,omitempty"`
 	// The custom meta info of the offer can be updated by seller via API or console.
 	CustomMetaInfo *map[string]string `json:"customMetaInfo,omitempty"`

@@ -787,27 +787,48 @@ func (a *ProductAPIService) ListProductMeteringDimensionsExecute(r ApiListProduc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListProductsByOrganizationRequest struct {
+type ApiListProductsRequest struct {
 	ctx        context.Context
 	ApiService *ProductAPIService
 	orgId      string
+	partner    *string
+	limit      *int32
+	offset     *int32
 }
 
-func (r ApiListProductsByOrganizationRequest) Execute() ([]WorkloadProduct, *http.Response, error) {
-	return r.ApiService.ListProductsByOrganizationExecute(r)
+// filter by partner
+func (r ApiListProductsRequest) Partner(partner string) ApiListProductsRequest {
+	r.partner = &partner
+	return r
+}
+
+// List pagination size, default 100, max value is 1000
+func (r ApiListProductsRequest) Limit(limit int32) ApiListProductsRequest {
+	r.limit = &limit
+	return r
+}
+
+// List pagination offset, default 0
+func (r ApiListProductsRequest) Offset(offset int32) ApiListProductsRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiListProductsRequest) Execute() ([]WorkloadProduct, *http.Response, error) {
+	return r.ApiService.ListProductsExecute(r)
 }
 
 /*
-ListProductsByOrganization list products by organization
+ListProducts list products
 
 list all products under the given organization
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Organization ID
-	@return ApiListProductsByOrganizationRequest
+	@return ApiListProductsRequest
 */
-func (a *ProductAPIService) ListProductsByOrganization(ctx context.Context, orgId string) ApiListProductsByOrganizationRequest {
-	return ApiListProductsByOrganizationRequest{
+func (a *ProductAPIService) ListProducts(ctx context.Context, orgId string) ApiListProductsRequest {
+	return ApiListProductsRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      orgId,
@@ -817,7 +838,7 @@ func (a *ProductAPIService) ListProductsByOrganization(ctx context.Context, orgI
 // Execute executes the request
 //
 //	@return []WorkloadProduct
-func (a *ProductAPIService) ListProductsByOrganizationExecute(r ApiListProductsByOrganizationRequest) ([]WorkloadProduct, *http.Response, error) {
+func (a *ProductAPIService) ListProductsExecute(r ApiListProductsRequest) ([]WorkloadProduct, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -825,7 +846,7 @@ func (a *ProductAPIService) ListProductsByOrganizationExecute(r ApiListProductsB
 		localVarReturnValue []WorkloadProduct
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ListProductsByOrganization")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ListProducts")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -837,6 +858,15 @@ func (a *ProductAPIService) ListProductsByOrganizationExecute(r ApiListProductsB
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.partner != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

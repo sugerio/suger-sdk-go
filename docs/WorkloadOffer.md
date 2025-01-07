@@ -2,27 +2,28 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**BuyerID** | Pointer to **string** |  | [optional] 
-**ContactIds** | Pointer to **[]string** |  | [optional] 
-**CreatedBy** | Pointer to **string** |  | [optional] 
-**CreationTime** | Pointer to **time.Time** |  | [optional] 
-**EndTime** | Pointer to **time.Time** | nullable | [optional] 
-**ExpireTime** | Pointer to **time.Time** | nullable | [optional] 
-**ExternalID** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
-**Info** | Pointer to [**OfferInfo**](OfferInfo.md) |  | [optional] 
-**LastUpdateTime** | Pointer to **time.Time** |  | [optional] 
-**LastUpdatedBy** | Pointer to **string** |  | [optional] 
-**MetaInfo** | Pointer to [**WorkloadMetaInfo**](WorkloadMetaInfo.md) |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**OfferType** | Pointer to [**OfferType**](OfferType.md) |  | [optional] 
-**OrganizationID** | Pointer to **string** |  | [optional] 
-**Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
-**ProductID** | Pointer to **string** |  | [optional] 
-**Service** | Pointer to [**PartnerService**](PartnerService.md) |  | [optional] 
-**Status** | Pointer to [**OfferStatus**](OfferStatus.md) |  | [optional] 
+ Name               | Type                                                   | Description | Notes      
+--------------------|--------------------------------------------------------|-------------|------------
+ **BuyerID**        | Pointer to **string**                                  |             | [optional] 
+ **ContactIds**     | Pointer to **[]string**                                |             | [optional] 
+ **CreatedBy**      | Pointer to **string**                                  |             | [optional] 
+ **CreationTime**   | Pointer to **time.Time**                               |             | [optional] 
+ **EndTime**        | Pointer to **time.Time**                               | nullable    | [optional] 
+ **ExpireTime**     | Pointer to **time.Time**                               | nullable    | [optional] 
+ **ExternalID**     | Pointer to **string**                                  |             | [optional] 
+ **Id**             | Pointer to **string**                                  |             | [optional] 
+ **Info**           | Pointer to [**OfferInfo**](OfferInfo.md)               |             | [optional] 
+ **LastUpdateTime** | Pointer to **time.Time**                               |             | [optional] 
+ **LastUpdatedBy**  | Pointer to **string**                                  |             | [optional] 
+ **MetaInfo**       | Pointer to [**WorkloadMetaInfo**](WorkloadMetaInfo.md) |             | [optional] 
+ **Name**           | Pointer to **string**                                  |             | [optional] 
+ **OfferType**      | Pointer to [**OfferType**](OfferType.md)               |             | [optional] 
+ **OrganizationID** | Pointer to **string**                                  |             | [optional] 
+ **Partner**        | Pointer to [**Partner**](Partner.md)                   |             | [optional] 
+ **PartnerID**      | Pointer to **string**                                  |             | [optional] 
+ **ProductID**      | Pointer to **string**                                  |             | [optional] 
+ **Service**        | Pointer to [**PartnerService**](PartnerService.md)     |             | [optional] 
+ **Status**         | Pointer to [**OfferStatus**](OfferStatus.md)           |             | [optional] 
 
 ## Methods
 
@@ -442,6 +443,31 @@ SetPartner sets Partner field to given value.
 `func (o *WorkloadOffer) HasPartner() bool`
 
 HasPartner returns a boolean if a field has been set.
+
+### GetPartnerID
+
+`func (o *WorkloadOffer) GetPartnerID() string`
+
+GetPartnerID returns the PartnerID field if non-nil, zero value otherwise.
+
+### GetPartnerIDOk
+
+`func (o *WorkloadOffer) GetPartnerIDOk() (*string, bool)`
+
+GetPartnerIDOk returns a tuple with the PartnerID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnerID
+
+`func (o *WorkloadOffer) SetPartnerID(v string)`
+
+SetPartnerID sets PartnerID field to given value.
+
+### HasPartnerID
+
+`func (o *WorkloadOffer) HasPartnerID() bool`
+
+HasPartnerID returns a boolean if a field has been set.
 
 ### GetProductID
 

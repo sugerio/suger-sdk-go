@@ -47,6 +47,7 @@ const (
 	EntityType_USAGE_RECORD_REPORT   EntityType = "USAGE_RECORD_REPORT"
 	EntityType_USER                  EntityType = "USER"
 	EntityType_WORKFLOW              EntityType = "WORKFLOW"
+	EntityType_WORKFLOW_WEBHOOK      EntityType = "WORKFLOW_WEBHOOK"
 )
 
 // All allowed values of EntityType enum
@@ -77,6 +78,7 @@ var AllowedEntityTypeEnumValues = []EntityType{
 	"USAGE_RECORD_REPORT",
 	"USER",
 	"WORKFLOW",
+	"WORKFLOW_WEBHOOK",
 }
 
 func (v *EntityType) UnmarshalJSON(src []byte) error {
