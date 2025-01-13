@@ -21,18 +21,20 @@ var _ MappedNullable = &MeteringUsageRecordGroup{}
 
 // MeteringUsageRecordGroup struct for MeteringUsageRecordGroup
 type MeteringUsageRecordGroup struct {
-	BuyerID             *string                           `json:"buyerID,omitempty"`
-	CreationTime        *time.Time                        `json:"creationTime,omitempty"`
-	EntitlementID       *string                           `json:"entitlementID,omitempty"`
-	Id                  *string                           `json:"id,omitempty"`
-	LastUpdateTime      *time.Time                        `json:"lastUpdateTime,omitempty"`
-	MetaInfo            *MeteringUsageRecordGroupMetaInfo `json:"metaInfo,omitempty"`
-	OrganizationID      *string                           `json:"organizationID,omitempty"`
-	Partner             *string                           `json:"partner,omitempty"`
-	Records             *map[string]float32               `json:"records,omitempty"`
-	SerialID            *int32                            `json:"serialID,omitempty"`
-	Status              *string                           `json:"status,omitempty"`
-	UsageRecordReportID *string                           `json:"usageRecordReportID,omitempty"`
+	BuyerID        *string                           `json:"buyerID,omitempty"`
+	CreationTime   *time.Time                        `json:"creationTime,omitempty"`
+	EntitlementID  *string                           `json:"entitlementID,omitempty"`
+	Id             *string                           `json:"id,omitempty"`
+	LastUpdateTime *time.Time                        `json:"lastUpdateTime,omitempty"`
+	MetaInfo       *MeteringUsageRecordGroupMetaInfo `json:"metaInfo,omitempty"`
+	OrganizationID *string                           `json:"organizationID,omitempty"`
+	Partner        *string                           `json:"partner,omitempty"`
+	Records        *map[string]float32               `json:"records,omitempty"`
+	// nullable
+	ReportedTime        *time.Time `json:"reportedTime,omitempty"`
+	SerialID            *int32     `json:"serialID,omitempty"`
+	Status              *string    `json:"status,omitempty"`
+	UsageRecordReportID *string    `json:"usageRecordReportID,omitempty"`
 }
 
 // NewMeteringUsageRecordGroup instantiates a new MeteringUsageRecordGroup object
@@ -340,6 +342,38 @@ func (o *MeteringUsageRecordGroup) SetRecords(v map[string]float32) {
 	o.Records = &v
 }
 
+// GetReportedTime returns the ReportedTime field value if set, zero value otherwise.
+func (o *MeteringUsageRecordGroup) GetReportedTime() time.Time {
+	if o == nil || IsNil(o.ReportedTime) {
+		var ret time.Time
+		return ret
+	}
+	return *o.ReportedTime
+}
+
+// GetReportedTimeOk returns a tuple with the ReportedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordGroup) GetReportedTimeOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.ReportedTime) {
+		return nil, false
+	}
+	return o.ReportedTime, true
+}
+
+// HasReportedTime returns a boolean if a field has been set.
+func (o *MeteringUsageRecordGroup) HasReportedTime() bool {
+	if o != nil && !IsNil(o.ReportedTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetReportedTime gets a reference to the given time.Time and assigns it to the ReportedTime field.
+func (o *MeteringUsageRecordGroup) SetReportedTime(v time.Time) {
+	o.ReportedTime = &v
+}
+
 // GetSerialID returns the SerialID field value if set, zero value otherwise.
 func (o *MeteringUsageRecordGroup) GetSerialID() int32 {
 	if o == nil || IsNil(o.SerialID) {
@@ -472,6 +506,9 @@ func (o MeteringUsageRecordGroup) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Records) {
 		toSerialize["records"] = o.Records
+	}
+	if !IsNil(o.ReportedTime) {
+		toSerialize["reportedTime"] = o.ReportedTime
 	}
 	if !IsNil(o.SerialID) {
 		toSerialize["serialID"] = o.SerialID

@@ -2,20 +2,21 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**BuyerID** | Pointer to **string** |  | [optional] 
-**CreationTime** | Pointer to **time.Time** |  | [optional] 
-**EntitlementID** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
-**LastUpdateTime** | Pointer to **time.Time** |  | [optional] 
-**MetaInfo** | Pointer to [**MeteringUsageRecordGroupMetaInfo**](MeteringUsageRecordGroupMetaInfo.md) |  | [optional] 
-**OrganizationID** | Pointer to **string** |  | [optional] 
-**Partner** | Pointer to **string** |  | [optional] 
-**Records** | Pointer to **map[string]float32** |  | [optional] 
-**SerialID** | Pointer to **int32** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
-**UsageRecordReportID** | Pointer to **string** |  | [optional] 
+ Name                    | Type                                                                                   | Description | Notes      
+-------------------------|----------------------------------------------------------------------------------------|-------------|------------
+ **BuyerID**             | Pointer to **string**                                                                  |             | [optional] 
+ **CreationTime**        | Pointer to **time.Time**                                                               |             | [optional] 
+ **EntitlementID**       | Pointer to **string**                                                                  |             | [optional] 
+ **Id**                  | Pointer to **string**                                                                  |             | [optional] 
+ **LastUpdateTime**      | Pointer to **time.Time**                                                               |             | [optional] 
+ **MetaInfo**            | Pointer to [**MeteringUsageRecordGroupMetaInfo**](MeteringUsageRecordGroupMetaInfo.md) |             | [optional] 
+ **OrganizationID**      | Pointer to **string**                                                                  |             | [optional] 
+ **Partner**             | Pointer to **string**                                                                  |             | [optional] 
+ **Records**             | Pointer to **map[string]float32**                                                      |             | [optional] 
+ **ReportedTime**        | Pointer to **time.Time**                                                               | nullable    | [optional] 
+ **SerialID**            | Pointer to **int32**                                                                   |             | [optional] 
+ **Status**              | Pointer to **string**                                                                  |             | [optional] 
+ **UsageRecordReportID** | Pointer to **string**                                                                  |             | [optional] 
 
 ## Methods
 
@@ -260,6 +261,31 @@ SetRecords sets Records field to given value.
 `func (o *MeteringUsageRecordGroup) HasRecords() bool`
 
 HasRecords returns a boolean if a field has been set.
+
+### GetReportedTime
+
+`func (o *MeteringUsageRecordGroup) GetReportedTime() time.Time`
+
+GetReportedTime returns the ReportedTime field if non-nil, zero value otherwise.
+
+### GetReportedTimeOk
+
+`func (o *MeteringUsageRecordGroup) GetReportedTimeOk() (*time.Time, bool)`
+
+GetReportedTimeOk returns a tuple with the ReportedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReportedTime
+
+`func (o *MeteringUsageRecordGroup) SetReportedTime(v time.Time)`
+
+SetReportedTime sets ReportedTime field to given value.
+
+### HasReportedTime
+
+`func (o *MeteringUsageRecordGroup) HasReportedTime() bool`
+
+HasReportedTime returns a boolean if a field has been set.
 
 ### GetSerialID
 

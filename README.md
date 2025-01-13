@@ -682,21 +682,7 @@ map[string]suger.APIKey{
 )
 r, err := client.Service.Operation(auth, args)
 ```
-```demo
-		configuration := openapiclient.NewConfiguration()
-		apiClient := openapiclient.NewAPIClient(configuration)
-		var orgId = "***"
-		var offerId = "***"
-		auth := context.WithValue(
-			context.Background(),
-			openapiclient.ContextAPIKeys,
-			map[string]openapiclient.APIKey{
-				"APIKeyAuth": {Key: "Key API_KEY_STRING"},
-			},
-		)
 
-		resp, httpRes, err := apiClient.OfferAPI.GetOffer(auth, orgId, offerId).Execute()
-```
 
 ## Documentation for Utility Methods
 
