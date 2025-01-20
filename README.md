@@ -94,6 +94,7 @@ All URIs are relative to *http://https://api.suger.cloud*
  *BillingAPI*      | [**ListRefundOfPaymentTransaction**](docs/BillingAPI.md#listrefundofpaymenttransaction)           | **Get** /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund   | list refunds.                                 
  *BillingAPI*      | [**PayInvoice**](docs/BillingAPI.md#payinvoice)                                                   | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/pay              | pay invoice                                   
  *BillingAPI*      | [**UpdateAddon**](docs/BillingAPI.md#updateaddon)                                                 | **Patch** /org/{orgId}/addon/{addonId}                                                  | update addon                                  
+ *BillingAPI*      | [**UpdateInvoiceInfo**](docs/BillingAPI.md#updateinvoiceinfo)                                     | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/info             | Update invoice info                           
  *BillingAPI*      | [**VoidInvoice**](docs/BillingAPI.md#voidinvoice)                                                 | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/void             | void invoice                                  
  *BuyerAPI*        | [**CloseCreditWallet**](docs/BuyerAPI.md#closecreditwallet)                                       | **Patch** /org/{orgId}/buyer/{buyerId}/wallet/{walletId}/close                          | close credit wallet                           
  *BuyerAPI*        | [**CreateBuyer**](docs/BuyerAPI.md#createbuyer)                                                   | **Post** /org/{orgId}/buyer                                                             | create buyer                                  
@@ -641,6 +642,7 @@ All URIs are relative to *http://https://api.suger.cloud*
  - [UniqueCountAggregationResult](docs/UniqueCountAggregationResult.md)
  - [UpdateBillableMetricParams](docs/UpdateBillableMetricParams.md)
  - [UpdateBuyerParams](docs/UpdateBuyerParams.md)
+- [UpdateInvoiceInfoRequest](docs/UpdateInvoiceInfoRequest.md)
  - [UpdateProductParams](docs/UpdateProductParams.md)
  - [UpdateSupportTicketRequest](docs/UpdateSupportTicketRequest.md)
  - [UsageCount](docs/UsageCount.md)
@@ -677,7 +679,7 @@ auth := context.WithValue(
 context.Background(),
 suger.ContextAPIKeys,
 map[string]suger.APIKey{
-"APIKeyAuth": {Key: "Key " + API_KEY_STRING},
+"APIKeyAuth": {Key: "API_KEY_STRING"},
 },
 )
 r, err := client.Service.Operation(auth, args)

@@ -57,6 +57,8 @@ type BuyerInfo struct {
 	SpaUrl *string `json:"spaUrl,omitempty"`
 	// Buyer as Customer on Stripe
 	StripeBuyer *StripeCustomer `json:"stripeBuyer,omitempty"`
+	// The stripe customer ID for the buyer if it is connected to a stripe customer.
+	StripeCustomerId *string `json:"stripeCustomerId,omitempty"`
 }
 
 // NewBuyerInfo instantiates a new BuyerInfo object
@@ -684,6 +686,38 @@ func (o *BuyerInfo) SetStripeBuyer(v StripeCustomer) {
 	o.StripeBuyer = &v
 }
 
+// GetStripeCustomerId returns the StripeCustomerId field value if set, zero value otherwise.
+func (o *BuyerInfo) GetStripeCustomerId() string {
+	if o == nil || IsNil(o.StripeCustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.StripeCustomerId
+}
+
+// GetStripeCustomerIdOk returns a tuple with the StripeCustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetStripeCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StripeCustomerId) {
+		return nil, false
+	}
+	return o.StripeCustomerId, true
+}
+
+// HasStripeCustomerId returns a boolean if a field has been set.
+func (o *BuyerInfo) HasStripeCustomerId() bool {
+	if o != nil && !IsNil(o.StripeCustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStripeCustomerId gets a reference to the given string and assigns it to the StripeCustomerId field.
+func (o *BuyerInfo) SetStripeCustomerId(v string) {
+	o.StripeCustomerId = &v
+}
+
 func (o BuyerInfo) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -750,6 +784,9 @@ func (o BuyerInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.StripeBuyer) {
 		toSerialize["stripeBuyer"] = o.StripeBuyer
+	}
+	if !IsNil(o.StripeCustomerId) {
+		toSerialize["stripeCustomerId"] = o.StripeCustomerId
 	}
 	return toSerialize, nil
 }

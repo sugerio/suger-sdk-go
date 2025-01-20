@@ -36,6 +36,8 @@ type UpdateBuyerParams struct {
 	OrbCustomerId *string `json:"orbCustomerId,omitempty"`
 	// Optional. PaymentConfig of the buyer. The currency can't be updated.
 	PaymentConfig *PaymentConfig `json:"paymentConfig,omitempty"`
+	// The Stripe Customer ID of the buyer. If not provided, the Stripe Customer ID will not be updated.
+	StripeCustomerId *string `json:"stripeCustomerId,omitempty"`
 }
 
 // NewUpdateBuyerParams instantiates a new UpdateBuyerParams object
@@ -311,6 +313,38 @@ func (o *UpdateBuyerParams) SetPaymentConfig(v PaymentConfig) {
 	o.PaymentConfig = &v
 }
 
+// GetStripeCustomerId returns the StripeCustomerId field value if set, zero value otherwise.
+func (o *UpdateBuyerParams) GetStripeCustomerId() string {
+	if o == nil || IsNil(o.StripeCustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.StripeCustomerId
+}
+
+// GetStripeCustomerIdOk returns a tuple with the StripeCustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateBuyerParams) GetStripeCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StripeCustomerId) {
+		return nil, false
+	}
+	return o.StripeCustomerId, true
+}
+
+// HasStripeCustomerId returns a boolean if a field has been set.
+func (o *UpdateBuyerParams) HasStripeCustomerId() bool {
+	if o != nil && !IsNil(o.StripeCustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStripeCustomerId gets a reference to the given string and assigns it to the StripeCustomerId field.
+func (o *UpdateBuyerParams) SetStripeCustomerId(v string) {
+	o.StripeCustomerId = &v
+}
+
 func (o UpdateBuyerParams) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -344,6 +378,9 @@ func (o UpdateBuyerParams) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PaymentConfig) {
 		toSerialize["paymentConfig"] = o.PaymentConfig
+	}
+	if !IsNil(o.StripeCustomerId) {
+		toSerialize["stripeCustomerId"] = o.StripeCustomerId
 	}
 	return toSerialize, nil
 }

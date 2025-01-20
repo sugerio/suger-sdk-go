@@ -32,7 +32,6 @@ type BillingInvoiceInfo struct {
 	AdjustOverallDiscount *InvoiceAdjustOverallDiscount `json:"adjustOverallDiscount,omitempty"`
 	// add or adjust overall minimum spend calculate each dimension's minimum spend first, then apply the overall minimum spend
 	AdjustOverallMinimumSpend *InvoiceAdjustOverallMinimumSpend   `json:"adjustOverallMinimumSpend,omitempty"`
-	Amount                    *float32                            `json:"amount,omitempty"`
 	BillableDimensionDetails  []BillableDimensionPriceModelDetail `json:"billableDimensionDetails,omitempty"`
 	// Recurring flat fee for the invoice. There should be only one type fee for each invoice, commits, or usage.
 	CommitsRevenueDetails []CommitRevenueDetail `json:"commitsRevenueDetails,omitempty"`
@@ -40,6 +39,8 @@ type BillingInvoiceInfo struct {
 	CreationDate *time.Time `json:"creationDate,omitempty"`
 	Currency     *string    `json:"currency,omitempty"`
 	Description  *string    `json:"description,omitempty"`
+	// Due amount = SubtotalAmount + TaxAmount - AdjustOverallDiscount
+	DueAmount *float32 `json:"dueAmount,omitempty"`
 	// DueDate = IssueDate + NetTerm
 	DueDate *time.Time `json:"dueDate,omitempty"`
 	// Grace Period in number of days
@@ -54,6 +55,9 @@ type BillingInvoiceInfo struct {
 	ReceiptUrl *string `json:"receiptUrl,omitempty"`
 	// SPA url with JWT.
 	SpaUrl *string `json:"spaUrl,omitempty"`
+	// Subtotal amount calculated from the user usage.
+	SubtotalAmount *float32 `json:"subtotalAmount,omitempty"`
+	TaxAmount      *float32 `json:"taxAmount,omitempty"`
 	// Trial period in number of days
 	TrialPeriodInDays *int32 `json:"trialPeriodInDays,omitempty"`
 	// Billable dimension fees for the invoice.
@@ -269,38 +273,6 @@ func (o *BillingInvoiceInfo) SetAdjustOverallMinimumSpend(v InvoiceAdjustOverall
 	o.AdjustOverallMinimumSpend = &v
 }
 
-// GetAmount returns the Amount field value if set, zero value otherwise.
-func (o *BillingInvoiceInfo) GetAmount() float32 {
-	if o == nil || IsNil(o.Amount) {
-		var ret float32
-		return ret
-	}
-	return *o.Amount
-}
-
-// GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BillingInvoiceInfo) GetAmountOk() (*float32, bool) {
-	if o == nil || IsNil(o.Amount) {
-		return nil, false
-	}
-	return o.Amount, true
-}
-
-// HasAmount returns a boolean if a field has been set.
-func (o *BillingInvoiceInfo) HasAmount() bool {
-	if o != nil && !IsNil(o.Amount) {
-		return true
-	}
-
-	return false
-}
-
-// SetAmount gets a reference to the given float32 and assigns it to the Amount field.
-func (o *BillingInvoiceInfo) SetAmount(v float32) {
-	o.Amount = &v
-}
-
 // GetBillableDimensionDetails returns the BillableDimensionDetails field value if set, zero value otherwise.
 func (o *BillingInvoiceInfo) GetBillableDimensionDetails() []BillableDimensionPriceModelDetail {
 	if o == nil || IsNil(o.BillableDimensionDetails) {
@@ -459,6 +431,38 @@ func (o *BillingInvoiceInfo) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *BillingInvoiceInfo) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetDueAmount returns the DueAmount field value if set, zero value otherwise.
+func (o *BillingInvoiceInfo) GetDueAmount() float32 {
+	if o == nil || IsNil(o.DueAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.DueAmount
+}
+
+// GetDueAmountOk returns a tuple with the DueAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInvoiceInfo) GetDueAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.DueAmount) {
+		return nil, false
+	}
+	return o.DueAmount, true
+}
+
+// HasDueAmount returns a boolean if a field has been set.
+func (o *BillingInvoiceInfo) HasDueAmount() bool {
+	if o != nil && !IsNil(o.DueAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetDueAmount gets a reference to the given float32 and assigns it to the DueAmount field.
+func (o *BillingInvoiceInfo) SetDueAmount(v float32) {
+	o.DueAmount = &v
 }
 
 // GetDueDate returns the DueDate field value if set, zero value otherwise.
@@ -717,6 +721,70 @@ func (o *BillingInvoiceInfo) SetSpaUrl(v string) {
 	o.SpaUrl = &v
 }
 
+// GetSubtotalAmount returns the SubtotalAmount field value if set, zero value otherwise.
+func (o *BillingInvoiceInfo) GetSubtotalAmount() float32 {
+	if o == nil || IsNil(o.SubtotalAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.SubtotalAmount
+}
+
+// GetSubtotalAmountOk returns a tuple with the SubtotalAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInvoiceInfo) GetSubtotalAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.SubtotalAmount) {
+		return nil, false
+	}
+	return o.SubtotalAmount, true
+}
+
+// HasSubtotalAmount returns a boolean if a field has been set.
+func (o *BillingInvoiceInfo) HasSubtotalAmount() bool {
+	if o != nil && !IsNil(o.SubtotalAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubtotalAmount gets a reference to the given float32 and assigns it to the SubtotalAmount field.
+func (o *BillingInvoiceInfo) SetSubtotalAmount(v float32) {
+	o.SubtotalAmount = &v
+}
+
+// GetTaxAmount returns the TaxAmount field value if set, zero value otherwise.
+func (o *BillingInvoiceInfo) GetTaxAmount() float32 {
+	if o == nil || IsNil(o.TaxAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.TaxAmount
+}
+
+// GetTaxAmountOk returns a tuple with the TaxAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInvoiceInfo) GetTaxAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.TaxAmount) {
+		return nil, false
+	}
+	return o.TaxAmount, true
+}
+
+// HasTaxAmount returns a boolean if a field has been set.
+func (o *BillingInvoiceInfo) HasTaxAmount() bool {
+	if o != nil && !IsNil(o.TaxAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetTaxAmount gets a reference to the given float32 and assigns it to the TaxAmount field.
+func (o *BillingInvoiceInfo) SetTaxAmount(v float32) {
+	o.TaxAmount = &v
+}
+
 // GetTrialPeriodInDays returns the TrialPeriodInDays field value if set, zero value otherwise.
 func (o *BillingInvoiceInfo) GetTrialPeriodInDays() int32 {
 	if o == nil || IsNil(o.TrialPeriodInDays) {
@@ -809,9 +877,6 @@ func (o BillingInvoiceInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdjustOverallMinimumSpend) {
 		toSerialize["adjustOverallMinimumSpend"] = o.AdjustOverallMinimumSpend
 	}
-	if !IsNil(o.Amount) {
-		toSerialize["amount"] = o.Amount
-	}
 	if !IsNil(o.BillableDimensionDetails) {
 		toSerialize["billableDimensionDetails"] = o.BillableDimensionDetails
 	}
@@ -826,6 +891,9 @@ func (o BillingInvoiceInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.DueAmount) {
+		toSerialize["dueAmount"] = o.DueAmount
 	}
 	if !IsNil(o.DueDate) {
 		toSerialize["dueDate"] = o.DueDate
@@ -850,6 +918,12 @@ func (o BillingInvoiceInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SpaUrl) {
 		toSerialize["spaUrl"] = o.SpaUrl
+	}
+	if !IsNil(o.SubtotalAmount) {
+		toSerialize["subtotalAmount"] = o.SubtotalAmount
+	}
+	if !IsNil(o.TaxAmount) {
+		toSerialize["taxAmount"] = o.TaxAmount
 	}
 	if !IsNil(o.TrialPeriodInDays) {
 		toSerialize["trialPeriodInDays"] = o.TrialPeriodInDays

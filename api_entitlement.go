@@ -1631,22 +1631,22 @@ func (a *EntitlementAPIService) ListEntitlementsExecute(r ApiListEntitlementsReq
 	localVarFormParams := url.Values{}
 
 	if r.partner != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
 	}
 	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "form", "")
 	}
 	if r.offerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offerId", r.offerId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offerId", r.offerId, "form", "")
 	}
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2409,7 +2409,7 @@ func (a *EntitlementAPIService) UpdateEntitlementSeatExecute(r ApiUpdateEntitlem
 		return localVarReturnValue, nil, reportError("newSeat is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "newSeat", r.newSeat, "", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "newSeat", r.newSeat, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

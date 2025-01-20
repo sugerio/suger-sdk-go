@@ -909,13 +909,14 @@ func (a *BuyerAPIService) ListBuyerWalletsExecute(r ApiListBuyerWalletsRequest) 
 }
 
 type ApiListBuyersRequest struct {
-	ctx        context.Context
-	ApiService *BuyerAPIService
-	orgId      string
-	partner    *string
-	contactId  *string
-	limit      *int32
-	offset     *int32
+	ctx          context.Context
+	ApiService   *BuyerAPIService
+	orgId        string
+	partner      *string
+	contactId    *string
+	awsAccountId *string
+	limit        *int32
+	offset       *int32
 }
 
 // filter by partner
@@ -927,6 +928,12 @@ func (r ApiListBuyersRequest) Partner(partner string) ApiListBuyersRequest {
 // filter by contactId
 func (r ApiListBuyersRequest) ContactId(contactId string) ApiListBuyersRequest {
 	r.contactId = &contactId
+	return r
+}
+
+// filter by awsAccountId
+func (r ApiListBuyersRequest) AwsAccountId(awsAccountId string) ApiListBuyersRequest {
+	r.awsAccountId = &awsAccountId
 	return r
 }
 
@@ -987,16 +994,19 @@ func (a *BuyerAPIService) ListBuyersExecute(r ApiListBuyersRequest) ([]IdentityB
 	localVarFormParams := url.Values{}
 
 	if r.partner != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
 	}
 	if r.contactId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "contactId", r.contactId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "contactId", r.contactId, "form", "")
+	}
+	if r.awsAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "awsAccountId", r.awsAccountId, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

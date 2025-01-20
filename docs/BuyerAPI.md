@@ -462,7 +462,8 @@ Name | Type | Description  | Notes
 
 ## ListBuyers
 
-> []IdentityBuyer ListBuyers(ctx, orgId).Partner(partner).ContactId(contactId).Limit(limit).Offset(offset).Execute()
+> []IdentityBuyer ListBuyers(ctx, orgId).Partner(partner).ContactId(contactId).AwsAccountId(awsAccountId).Limit(limit)
+> .Offset(offset).Execute()
 
 list buyers
 
@@ -484,12 +485,13 @@ func main() {
 	orgId := "orgId_example" // string | Organization ID
 	partner := "partner_example" // string | filter by partner (optional)
 	contactId := "contactId_example" // string | filter by contactId (optional)
+	awsAccountId := "awsAccountId_example" // string | filter by awsAccountId (optional)
 	limit := int32(56) // int32 | List pagination size, default 1000, max value is 1000 (optional)
 	offset := int32(56) // int32 | List pagination offset, default 0 (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BuyerAPI.ListBuyers(context.Background(), orgId).Partner(partner).ContactId(contactId).Limit(limit).Offset(offset).Execute()
+	resp, r, err := apiClient.BuyerAPI.ListBuyers(context.Background(), orgId).Partner(partner).ContactId(contactId).AwsAccountId(awsAccountId).Limit(limit).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BuyerAPI.ListBuyers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -516,7 +518,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **partner** | **string** | filter by partner | 
- **contactId** | **string** | filter by contactId | 
+ **contactId** | **string** | filter by contactId |
+ **awsAccountId** | **string** | filter by awsAccountId |
  **limit** | **int32** | List pagination size, default 1000, max value is 1000 | 
  **offset** | **int32** | List pagination offset, default 0 | 
 

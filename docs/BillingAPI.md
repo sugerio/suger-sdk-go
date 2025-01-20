@@ -2,21 +2,22 @@
 
 All URIs are relative to *http://https://api.suger.cloud*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**CreateAddon**](BillingAPI.md#CreateAddon) | **Post** /org/{orgId}/addon | create addon
-[**CreateRefund**](BillingAPI.md#CreateRefund) | **Post** /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund | create refund.
-[**DeleteAddon**](BillingAPI.md#DeleteAddon) | **Delete** /org/{orgId}/addon/{addonId} | delete addon
-[**GetAddon**](BillingAPI.md#GetAddon) | **Get** /org/{orgId}/addon/{addonId} | get addon
-[**GetInvoice**](BillingAPI.md#GetInvoice) | **Get** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId} | get invoice
-[**IssueInvoice**](BillingAPI.md#IssueInvoice) | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/issue | issue invoice
-[**ListAddons**](BillingAPI.md#ListAddons) | **Get** /org/{orgId}/addon | list addons
-[**ListInvoices**](BillingAPI.md#ListInvoices) | **Get** /org/{orgId}/invoice | list invoices
-[**ListPaymentTransactions**](BillingAPI.md#ListPaymentTransactions) | **Get** /org/{orgId}/paymentTransaction | list payment transactions
-[**ListRefundOfPaymentTransaction**](BillingAPI.md#ListRefundOfPaymentTransaction) | **Get** /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund | list refunds.
-[**PayInvoice**](BillingAPI.md#PayInvoice) | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/pay | pay invoice
-[**UpdateAddon**](BillingAPI.md#UpdateAddon) | **Patch** /org/{orgId}/addon/{addonId} | update addon
-[**VoidInvoice**](BillingAPI.md#VoidInvoice) | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/void | void invoice
+ Method                                                                             | HTTP request                                                                           | Description               
+------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|---------------------------
+ [**CreateAddon**](BillingAPI.md#CreateAddon)                                       | **Post** /org/{orgId}/addon                                                            | create addon              
+ [**CreateRefund**](BillingAPI.md#CreateRefund)                                     | **Post** /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund | create refund.            
+ [**DeleteAddon**](BillingAPI.md#DeleteAddon)                                       | **Delete** /org/{orgId}/addon/{addonId}                                                | delete addon              
+ [**GetAddon**](BillingAPI.md#GetAddon)                                             | **Get** /org/{orgId}/addon/{addonId}                                                   | get addon                 
+ [**GetInvoice**](BillingAPI.md#GetInvoice)                                         | **Get** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}                   | get invoice               
+ [**IssueInvoice**](BillingAPI.md#IssueInvoice)                                     | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/issue           | issue invoice             
+ [**ListAddons**](BillingAPI.md#ListAddons)                                         | **Get** /org/{orgId}/addon                                                             | list addons               
+ [**ListInvoices**](BillingAPI.md#ListInvoices)                                     | **Get** /org/{orgId}/invoice                                                           | list invoices             
+ [**ListPaymentTransactions**](BillingAPI.md#ListPaymentTransactions)               | **Get** /org/{orgId}/paymentTransaction                                                | list payment transactions 
+ [**ListRefundOfPaymentTransaction**](BillingAPI.md#ListRefundOfPaymentTransaction) | **Get** /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund  | list refunds.             
+ [**PayInvoice**](BillingAPI.md#PayInvoice)                                         | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/pay             | pay invoice               
+ [**UpdateAddon**](BillingAPI.md#UpdateAddon)                                       | **Patch** /org/{orgId}/addon/{addonId}                                                 | update addon              
+ [**UpdateInvoiceInfo**](BillingAPI.md#UpdateInvoiceInfo)                           | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/info            | Update invoice info       
+ [**VoidInvoice**](BillingAPI.md#VoidInvoice)                                       | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/void            | void invoice              
 
 
 
@@ -918,6 +919,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BillingAddon**](BillingAddon.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## UpdateInvoiceInfo
+
+> BillingInvoiceInfo UpdateInvoiceInfo(ctx, orgId, entitlementId, invoiceId).Data(data).Execute()
+
+Update invoice info
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	entitlementId := "entitlementId_example" // string | Entitlement ID
+	invoiceId := "invoiceId_example" // string | Invoice ID
+	data := *openapiclient.NewUpdateInvoiceInfoRequest() // UpdateInvoiceInfoRequest | Update Invoice Info Request Params
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.UpdateInvoiceInfo(context.Background(), orgId, entitlementId, invoiceId).Data(data).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.UpdateInvoiceInfo``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateInvoiceInfo`: BillingInvoiceInfo
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.UpdateInvoiceInfo`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+ Name              | Type                | Description                                                                 | Notes 
+-------------------|---------------------|-----------------------------------------------------------------------------|-------
+ **ctx**           | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
+ **orgId**         | **string**          | Organization ID                                                             |
+ **entitlementId** | **string**          | Entitlement ID                                                              |
+ **invoiceId**     | **string**          | Invoice ID                                                                  |
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateInvoiceInfoRequest struct via the builder pattern
+
+ Name | Type | Description | Notes 
+------|------|-------------|-------
+
+**data** | [**UpdateInvoiceInfoRequest**](UpdateInvoiceInfoRequest.md) | Update Invoice Info Request Params |
+
+### Return type
+
+[**BillingInvoiceInfo**](BillingInvoiceInfo.md)
 
 ### Authorization
 

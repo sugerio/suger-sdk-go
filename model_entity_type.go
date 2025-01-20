@@ -47,6 +47,7 @@ const (
 	EntityType_USAGE_RECORD_REPORT   EntityType = "USAGE_RECORD_REPORT"
 	EntityType_USER                  EntityType = "USER"
 	EntityType_WORKFLOW              EntityType = "WORKFLOW"
+	EntityType_WORKFLOW_EXECUTION    EntityType = "WORKFLOW_EXECUTION"
 	EntityType_WORKFLOW_WEBHOOK      EntityType = "WORKFLOW_WEBHOOK"
 )
 
@@ -78,6 +79,7 @@ var AllowedEntityTypeEnumValues = []EntityType{
 	"USAGE_RECORD_REPORT",
 	"USER",
 	"WORKFLOW",
+	"WORKFLOW_EXECUTION",
 	"WORKFLOW_WEBHOOK",
 }
 

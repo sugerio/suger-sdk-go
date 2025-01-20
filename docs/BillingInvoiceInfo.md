@@ -2,30 +2,32 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AddFixedFees** | Pointer to [**[]InvoiceAddFixedFee**](InvoiceAddFixedFee.md) | Adjust charge fields The fixed fees to be added to the invoice. | [optional] 
-**AddonDetail** | Pointer to [**BillingAddonRecord**](BillingAddonRecord.md) |  | [optional] 
-**AdjustDiscountByDimensions** | Pointer to [**[]InvoiceAdjustDiscountByDimension**](InvoiceAdjustDiscountByDimension.md) | add or adjust discount for a specific dimension | [optional] 
-**AdjustMinimumSpendByDimensions** | Pointer to [**[]InvoiceAdjustMinimumSpendByDimension**](InvoiceAdjustMinimumSpendByDimension.md) | add or adjust minimum spend for a specific dimension | [optional] 
-**AdjustOverallDiscount** | Pointer to [**InvoiceAdjustOverallDiscount**](InvoiceAdjustOverallDiscount.md) | add or adjust overall discount calculate each dimension&#39;s discount first, then apply the overall discount | [optional] 
-**AdjustOverallMinimumSpend** | Pointer to [**InvoiceAdjustOverallMinimumSpend**](InvoiceAdjustOverallMinimumSpend.md) | add or adjust overall minimum spend calculate each dimension&#39;s minimum spend first, then apply the overall minimum spend | [optional] 
-**Amount** | Pointer to **float32** |  | [optional] 
-**BillableDimensionDetails** | Pointer to [**[]BillableDimensionPriceModelDetail**](BillableDimensionPriceModelDetail.md) |  | [optional] 
-**CommitsRevenueDetails** | Pointer to [**[]CommitRevenueDetail**](CommitRevenueDetail.md) | Recurring flat fee for the invoice. There should be only one type fee for each invoice, commits, or usage. | [optional] 
-**CreationDate** | Pointer to **time.Time** | The creation date of the invoice when the status of the invoice may be draft or issued. It may be different from the issue date. | [optional] 
-**Currency** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
-**DueDate** | Pointer to **time.Time** | DueDate &#x3D; IssueDate + NetTerm | [optional] 
-**GracePeriodInDays** | Pointer to **int32** | Grace Period in number of days | [optional] 
-**IssueDate** | Pointer to **time.Time** | IssueDate, issue invoice automatically when CreationDate + GracePeriod, or issue invoice manually IssueDate &gt;&#x3D; CreationDate &amp;&amp; IssueDate &lt;&#x3D; CreationDate + GracePeriod | [optional] 
-**Memo** | Pointer to **string** |  | [optional] 
-**NetTermsInDays** | Pointer to **int32** | Net Terms period in number of days | [optional] 
-**PaymentInstallmentsDetail** | Pointer to [**BillingPaymentInstallmentDetail**](BillingPaymentInstallmentDetail.md) |  | [optional] 
-**ReceiptUrl** | Pointer to **string** | Invoice receipt url, it only exists when there are transactions. | [optional] 
-**SpaUrl** | Pointer to **string** | SPA url with JWT. | [optional] 
-**TrialPeriodInDays** | Pointer to **int32** | Trial period in number of days | [optional] 
-**UsageDailyRevenues** | Pointer to [**[]BillableDimensionUsageDailyRevenue**](BillableDimensionUsageDailyRevenue.md) | Billable dimension fees for the invoice. | [optional] 
+ Name                               | Type                                                                                             | Description                                                                                                                                                                                    | Notes      
+------------------------------------|--------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------
+ **AddFixedFees**                   | Pointer to [**[]InvoiceAddFixedFee**](InvoiceAddFixedFee.md)                                     | Adjust charge fields The fixed fees to be added to the invoice.                                                                                                                                | [optional] 
+ **AddonDetail**                    | Pointer to [**BillingAddonRecord**](BillingAddonRecord.md)                                       |                                                                                                                                                                                                | [optional] 
+ **AdjustDiscountByDimensions**     | Pointer to [**[]InvoiceAdjustDiscountByDimension**](InvoiceAdjustDiscountByDimension.md)         | add or adjust discount for a specific dimension                                                                                                                                                | [optional] 
+ **AdjustMinimumSpendByDimensions** | Pointer to [**[]InvoiceAdjustMinimumSpendByDimension**](InvoiceAdjustMinimumSpendByDimension.md) | add or adjust minimum spend for a specific dimension                                                                                                                                           | [optional] 
+ **AdjustOverallDiscount**          | Pointer to [**InvoiceAdjustOverallDiscount**](InvoiceAdjustOverallDiscount.md)                   | add or adjust overall discount calculate each dimension&#39;s discount first, then apply the overall discount                                                                                  | [optional] 
+ **AdjustOverallMinimumSpend**      | Pointer to [**InvoiceAdjustOverallMinimumSpend**](InvoiceAdjustOverallMinimumSpend.md)           | add or adjust overall minimum spend calculate each dimension&#39;s minimum spend first, then apply the overall minimum spend                                                                   | [optional] 
+ **BillableDimensionDetails**       | Pointer to [**[]BillableDimensionPriceModelDetail**](BillableDimensionPriceModelDetail.md)       |                                                                                                                                                                                                | [optional] 
+ **CommitsRevenueDetails**          | Pointer to [**[]CommitRevenueDetail**](CommitRevenueDetail.md)                                   | Recurring flat fee for the invoice. There should be only one type fee for each invoice, commits, or usage.                                                                                     | [optional] 
+ **CreationDate**                   | Pointer to **time.Time**                                                                         | The creation date of the invoice when the status of the invoice may be draft or issued. It may be different from the issue date.                                                               | [optional] 
+ **Currency**                       | Pointer to **string**                                                                            |                                                                                                                                                                                                | [optional] 
+ **Description**                    | Pointer to **string**                                                                            |                                                                                                                                                                                                | [optional] 
+ **DueAmount**                      | Pointer to **float32**                                                                           | Due amount &#x3D; SubtotalAmount + TaxAmount - AdjustOverallDiscount                                                                                                                           | [optional] 
+ **DueDate**                        | Pointer to **time.Time**                                                                         | DueDate &#x3D; IssueDate + NetTerm                                                                                                                                                             | [optional] 
+ **GracePeriodInDays**              | Pointer to **int32**                                                                             | Grace Period in number of days                                                                                                                                                                 | [optional] 
+ **IssueDate**                      | Pointer to **time.Time**                                                                         | IssueDate, issue invoice automatically when CreationDate + GracePeriod, or issue invoice manually IssueDate &gt;&#x3D; CreationDate &amp;&amp; IssueDate &lt;&#x3D; CreationDate + GracePeriod | [optional] 
+ **Memo**                           | Pointer to **string**                                                                            |                                                                                                                                                                                                | [optional] 
+ **NetTermsInDays**                 | Pointer to **int32**                                                                             | Net Terms period in number of days                                                                                                                                                             | [optional] 
+ **PaymentInstallmentsDetail**      | Pointer to [**BillingPaymentInstallmentDetail**](BillingPaymentInstallmentDetail.md)             |                                                                                                                                                                                                | [optional] 
+ **ReceiptUrl**                     | Pointer to **string**                                                                            | Invoice receipt url, it only exists when there are transactions.                                                                                                                               | [optional] 
+ **SpaUrl**                         | Pointer to **string**                                                                            | SPA url with JWT.                                                                                                                                                                              | [optional] 
+ **SubtotalAmount**                 | Pointer to **float32**                                                                           | Subtotal amount calculated from the user usage.                                                                                                                                                | [optional] 
+ **TaxAmount**                      | Pointer to **float32**                                                                           |                                                                                                                                                                                                | [optional] 
+ **TrialPeriodInDays**              | Pointer to **int32**                                                                             | Trial period in number of days                                                                                                                                                                 | [optional] 
+ **UsageDailyRevenues**             | Pointer to [**[]BillableDimensionUsageDailyRevenue**](BillableDimensionUsageDailyRevenue.md)     | Billable dimension fees for the invoice.                                                                                                                                                       | [optional] 
 
 ## Methods
 
@@ -196,31 +198,6 @@ SetAdjustOverallMinimumSpend sets AdjustOverallMinimumSpend field to given value
 
 HasAdjustOverallMinimumSpend returns a boolean if a field has been set.
 
-### GetAmount
-
-`func (o *BillingInvoiceInfo) GetAmount() float32`
-
-GetAmount returns the Amount field if non-nil, zero value otherwise.
-
-### GetAmountOk
-
-`func (o *BillingInvoiceInfo) GetAmountOk() (*float32, bool)`
-
-GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAmount
-
-`func (o *BillingInvoiceInfo) SetAmount(v float32)`
-
-SetAmount sets Amount field to given value.
-
-### HasAmount
-
-`func (o *BillingInvoiceInfo) HasAmount() bool`
-
-HasAmount returns a boolean if a field has been set.
-
 ### GetBillableDimensionDetails
 
 `func (o *BillingInvoiceInfo) GetBillableDimensionDetails() []BillableDimensionPriceModelDetail`
@@ -345,6 +322,31 @@ SetDescription sets Description field to given value.
 `func (o *BillingInvoiceInfo) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetDueAmount
+
+`func (o *BillingInvoiceInfo) GetDueAmount() float32`
+
+GetDueAmount returns the DueAmount field if non-nil, zero value otherwise.
+
+### GetDueAmountOk
+
+`func (o *BillingInvoiceInfo) GetDueAmountOk() (*float32, bool)`
+
+GetDueAmountOk returns a tuple with the DueAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDueAmount
+
+`func (o *BillingInvoiceInfo) SetDueAmount(v float32)`
+
+SetDueAmount sets DueAmount field to given value.
+
+### HasDueAmount
+
+`func (o *BillingInvoiceInfo) HasDueAmount() bool`
+
+HasDueAmount returns a boolean if a field has been set.
 
 ### GetDueDate
 
@@ -545,6 +547,56 @@ SetSpaUrl sets SpaUrl field to given value.
 `func (o *BillingInvoiceInfo) HasSpaUrl() bool`
 
 HasSpaUrl returns a boolean if a field has been set.
+
+### GetSubtotalAmount
+
+`func (o *BillingInvoiceInfo) GetSubtotalAmount() float32`
+
+GetSubtotalAmount returns the SubtotalAmount field if non-nil, zero value otherwise.
+
+### GetSubtotalAmountOk
+
+`func (o *BillingInvoiceInfo) GetSubtotalAmountOk() (*float32, bool)`
+
+GetSubtotalAmountOk returns a tuple with the SubtotalAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubtotalAmount
+
+`func (o *BillingInvoiceInfo) SetSubtotalAmount(v float32)`
+
+SetSubtotalAmount sets SubtotalAmount field to given value.
+
+### HasSubtotalAmount
+
+`func (o *BillingInvoiceInfo) HasSubtotalAmount() bool`
+
+HasSubtotalAmount returns a boolean if a field has been set.
+
+### GetTaxAmount
+
+`func (o *BillingInvoiceInfo) GetTaxAmount() float32`
+
+GetTaxAmount returns the TaxAmount field if non-nil, zero value otherwise.
+
+### GetTaxAmountOk
+
+`func (o *BillingInvoiceInfo) GetTaxAmountOk() (*float32, bool)`
+
+GetTaxAmountOk returns a tuple with the TaxAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTaxAmount
+
+`func (o *BillingInvoiceInfo) SetTaxAmount(v float32)`
+
+SetTaxAmount sets TaxAmount field to given value.
+
+### HasTaxAmount
+
+`func (o *BillingInvoiceInfo) HasTaxAmount() bool`
+
+HasTaxAmount returns a boolean if a field has been set.
 
 ### GetTrialPeriodInDays
 

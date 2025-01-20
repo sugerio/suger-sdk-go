@@ -480,6 +480,7 @@ docs/TypesUsageRecordResultStatus.md
 docs/UniqueCountAggregationResult.md
 docs/UpdateBillableMetricParams.md
 docs/UpdateBuyerParams.md
+docs/UpdateInvoiceInfoRequest.md
 docs/UpdateProductParams.md
 docs/UpdateSupportTicketRequest.md
 docs/UsageCount.md
@@ -952,6 +953,7 @@ model_types_usage_record_result_status.go
 model_unique_count_aggregation_result.go
 model_update_billable_metric_params.go
 model_update_buyer_params.go
+model_update_invoice_info_request.go
 model_update_product_params.go
 model_update_support_ticket_request.go
 model_usage_count.go
@@ -968,15 +970,4 @@ model_workload_meta_info.go
 model_workload_offer.go
 model_workload_product.go
 response.go
-test/api_api_test.go
-test/api_billing_test.go
-test/api_buyer_test.go
-test/api_contact_test.go
-test/api_entitlement_test.go
-test/api_metering_test.go
-test/api_notification_test.go
-test/api_offer_test.go
-test/api_product_test.go
-test/api_report_test.go
-test/api_support_test.go
 utils.go
