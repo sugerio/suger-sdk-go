@@ -859,13 +859,13 @@ func (a *ProductAPIService) ListProductsExecute(r ApiListProductsRequest) ([]Wor
 	localVarFormParams := url.Values{}
 
 	if r.partner != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

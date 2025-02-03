@@ -981,7 +981,7 @@ func (a *MeteringAPIService) ListBillableMetricsExecute(r ApiListBillableMetrics
 	localVarFormParams := url.Values{}
 
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1193,34 +1193,34 @@ func (a *MeteringAPIService) ListUsageRecordGroupsExecute(r ApiListUsageRecordGr
 	localVarFormParams := url.Values{}
 
 	if r.partner != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "", "")
 	}
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "", "")
 	}
 	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "", "")
 	}
 	if r.source != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "", "")
 	}
 	if r.metaInfo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "metaInfo", r.metaInfo, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metaInfo", r.metaInfo, "", "")
 	}
 	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "", "")
 	}
 	if r.endDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1411,25 +1411,25 @@ func (a *MeteringAPIService) ListUsageRecordReportsExecute(r ApiListUsageRecordR
 	localVarFormParams := url.Values{}
 
 	if r.partner != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "", "")
 	}
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "", "")
 	}
 	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "", "")
 	}
 	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "", "")
 	}
 	if r.endDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

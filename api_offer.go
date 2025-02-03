@@ -719,7 +719,7 @@ func (a *OfferAPIService) ExtendPrivateOfferExpiryDateExecute(r ApiExtendPrivate
 		return localVarReturnValue, nil, reportError("newExpiryDate is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "newExpiryDate", r.newExpiryDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "newExpiryDate", r.newExpiryDate, "", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1212,7 +1212,7 @@ func (a *OfferAPIService) GetOfferEulaExecute(r ApiGetOfferEulaRequest) (string,
 	localVarFormParams := url.Values{}
 
 	if r.format != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "format", r.format, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "format", r.format, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1582,31 +1582,31 @@ func (a *OfferAPIService) ListOffersExecute(r ApiListOffersRequest) ([]WorkloadO
 	localVarFormParams := url.Values{}
 
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "", "")
 	}
 	if r.partner != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "", "")
 	}
 	if r.offerType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offerType", r.offerType, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offerType", r.offerType, "", "")
 	}
 	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "", "")
 	}
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "", "")
 	}
 	if r.hubspotDealId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "hubspotDealId", r.hubspotDealId, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "hubspotDealId", r.hubspotDealId, "", "")
 	}
 	if r.contactId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "contactId", r.contactId, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "contactId", r.contactId, "", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

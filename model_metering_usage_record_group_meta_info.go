@@ -42,7 +42,15 @@ type MeteringUsageRecordGroupMetaInfo struct {
 	// The original records reported by the customer before convertion. If no dimension mapping is applied, this field is the same as the records field.
 	OriginRecords *map[string]float32 `json:"originRecords,omitempty"`
 	// The source of the usage record group. Can be from Suger API or other third party services, such as Metronome.
-	Source *UsageRecordGroupSource `json:"source,omitempty"`
+	Source          *UsageRecordGroupSource `json:"source,omitempty"`
+	StripeInvoiceID *string                 `json:"stripeInvoiceID,omitempty"`
+	// The stripe period end time of the summary or invoice. UTC time in format \"YYYY-MM-DDTHH:MM:SSZ\".
+	StripePeriodEndTime *time.Time `json:"stripePeriodEndTime,omitempty"`
+	// The stripe period start time of the summary or invoice. UTC time in format \"YYYY-MM-DDTHH:MM:SSZ\".
+	StripePeriodStartTime              *time.Time `json:"stripePeriodStartTime,omitempty"`
+	StripeSubscriptionItemID           *string    `json:"stripeSubscriptionItemID,omitempty"`
+	StripeUsageRecordSummaryID         *string    `json:"stripeUsageRecordSummaryID,omitempty"`
+	StripeUsageRecordSummaryTotalUsage *int32     `json:"stripeUsageRecordSummaryTotalUsage,omitempty"`
 	// The timestamp (UTC)) of when the usage records were generated. Optional, if not provided, the current report timestamp will be used.
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 }
@@ -416,6 +424,198 @@ func (o *MeteringUsageRecordGroupMetaInfo) SetSource(v UsageRecordGroupSource) {
 	o.Source = &v
 }
 
+// GetStripeInvoiceID returns the StripeInvoiceID field value if set, zero value otherwise.
+func (o *MeteringUsageRecordGroupMetaInfo) GetStripeInvoiceID() string {
+	if o == nil || IsNil(o.StripeInvoiceID) {
+		var ret string
+		return ret
+	}
+	return *o.StripeInvoiceID
+}
+
+// GetStripeInvoiceIDOk returns a tuple with the StripeInvoiceID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) GetStripeInvoiceIDOk() (*string, bool) {
+	if o == nil || IsNil(o.StripeInvoiceID) {
+		return nil, false
+	}
+	return o.StripeInvoiceID, true
+}
+
+// HasStripeInvoiceID returns a boolean if a field has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) HasStripeInvoiceID() bool {
+	if o != nil && !IsNil(o.StripeInvoiceID) {
+		return true
+	}
+
+	return false
+}
+
+// SetStripeInvoiceID gets a reference to the given string and assigns it to the StripeInvoiceID field.
+func (o *MeteringUsageRecordGroupMetaInfo) SetStripeInvoiceID(v string) {
+	o.StripeInvoiceID = &v
+}
+
+// GetStripePeriodEndTime returns the StripePeriodEndTime field value if set, zero value otherwise.
+func (o *MeteringUsageRecordGroupMetaInfo) GetStripePeriodEndTime() time.Time {
+	if o == nil || IsNil(o.StripePeriodEndTime) {
+		var ret time.Time
+		return ret
+	}
+	return *o.StripePeriodEndTime
+}
+
+// GetStripePeriodEndTimeOk returns a tuple with the StripePeriodEndTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) GetStripePeriodEndTimeOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.StripePeriodEndTime) {
+		return nil, false
+	}
+	return o.StripePeriodEndTime, true
+}
+
+// HasStripePeriodEndTime returns a boolean if a field has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) HasStripePeriodEndTime() bool {
+	if o != nil && !IsNil(o.StripePeriodEndTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetStripePeriodEndTime gets a reference to the given time.Time and assigns it to the StripePeriodEndTime field.
+func (o *MeteringUsageRecordGroupMetaInfo) SetStripePeriodEndTime(v time.Time) {
+	o.StripePeriodEndTime = &v
+}
+
+// GetStripePeriodStartTime returns the StripePeriodStartTime field value if set, zero value otherwise.
+func (o *MeteringUsageRecordGroupMetaInfo) GetStripePeriodStartTime() time.Time {
+	if o == nil || IsNil(o.StripePeriodStartTime) {
+		var ret time.Time
+		return ret
+	}
+	return *o.StripePeriodStartTime
+}
+
+// GetStripePeriodStartTimeOk returns a tuple with the StripePeriodStartTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) GetStripePeriodStartTimeOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.StripePeriodStartTime) {
+		return nil, false
+	}
+	return o.StripePeriodStartTime, true
+}
+
+// HasStripePeriodStartTime returns a boolean if a field has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) HasStripePeriodStartTime() bool {
+	if o != nil && !IsNil(o.StripePeriodStartTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetStripePeriodStartTime gets a reference to the given time.Time and assigns it to the StripePeriodStartTime field.
+func (o *MeteringUsageRecordGroupMetaInfo) SetStripePeriodStartTime(v time.Time) {
+	o.StripePeriodStartTime = &v
+}
+
+// GetStripeSubscriptionItemID returns the StripeSubscriptionItemID field value if set, zero value otherwise.
+func (o *MeteringUsageRecordGroupMetaInfo) GetStripeSubscriptionItemID() string {
+	if o == nil || IsNil(o.StripeSubscriptionItemID) {
+		var ret string
+		return ret
+	}
+	return *o.StripeSubscriptionItemID
+}
+
+// GetStripeSubscriptionItemIDOk returns a tuple with the StripeSubscriptionItemID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) GetStripeSubscriptionItemIDOk() (*string, bool) {
+	if o == nil || IsNil(o.StripeSubscriptionItemID) {
+		return nil, false
+	}
+	return o.StripeSubscriptionItemID, true
+}
+
+// HasStripeSubscriptionItemID returns a boolean if a field has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) HasStripeSubscriptionItemID() bool {
+	if o != nil && !IsNil(o.StripeSubscriptionItemID) {
+		return true
+	}
+
+	return false
+}
+
+// SetStripeSubscriptionItemID gets a reference to the given string and assigns it to the StripeSubscriptionItemID field.
+func (o *MeteringUsageRecordGroupMetaInfo) SetStripeSubscriptionItemID(v string) {
+	o.StripeSubscriptionItemID = &v
+}
+
+// GetStripeUsageRecordSummaryID returns the StripeUsageRecordSummaryID field value if set, zero value otherwise.
+func (o *MeteringUsageRecordGroupMetaInfo) GetStripeUsageRecordSummaryID() string {
+	if o == nil || IsNil(o.StripeUsageRecordSummaryID) {
+		var ret string
+		return ret
+	}
+	return *o.StripeUsageRecordSummaryID
+}
+
+// GetStripeUsageRecordSummaryIDOk returns a tuple with the StripeUsageRecordSummaryID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) GetStripeUsageRecordSummaryIDOk() (*string, bool) {
+	if o == nil || IsNil(o.StripeUsageRecordSummaryID) {
+		return nil, false
+	}
+	return o.StripeUsageRecordSummaryID, true
+}
+
+// HasStripeUsageRecordSummaryID returns a boolean if a field has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) HasStripeUsageRecordSummaryID() bool {
+	if o != nil && !IsNil(o.StripeUsageRecordSummaryID) {
+		return true
+	}
+
+	return false
+}
+
+// SetStripeUsageRecordSummaryID gets a reference to the given string and assigns it to the StripeUsageRecordSummaryID field.
+func (o *MeteringUsageRecordGroupMetaInfo) SetStripeUsageRecordSummaryID(v string) {
+	o.StripeUsageRecordSummaryID = &v
+}
+
+// GetStripeUsageRecordSummaryTotalUsage returns the StripeUsageRecordSummaryTotalUsage field value if set, zero value otherwise.
+func (o *MeteringUsageRecordGroupMetaInfo) GetStripeUsageRecordSummaryTotalUsage() int32 {
+	if o == nil || IsNil(o.StripeUsageRecordSummaryTotalUsage) {
+		var ret int32
+		return ret
+	}
+	return *o.StripeUsageRecordSummaryTotalUsage
+}
+
+// GetStripeUsageRecordSummaryTotalUsageOk returns a tuple with the StripeUsageRecordSummaryTotalUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) GetStripeUsageRecordSummaryTotalUsageOk() (*int32, bool) {
+	if o == nil || IsNil(o.StripeUsageRecordSummaryTotalUsage) {
+		return nil, false
+	}
+	return o.StripeUsageRecordSummaryTotalUsage, true
+}
+
+// HasStripeUsageRecordSummaryTotalUsage returns a boolean if a field has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) HasStripeUsageRecordSummaryTotalUsage() bool {
+	if o != nil && !IsNil(o.StripeUsageRecordSummaryTotalUsage) {
+		return true
+	}
+
+	return false
+}
+
+// SetStripeUsageRecordSummaryTotalUsage gets a reference to the given int32 and assigns it to the StripeUsageRecordSummaryTotalUsage field.
+func (o *MeteringUsageRecordGroupMetaInfo) SetStripeUsageRecordSummaryTotalUsage(v int32) {
+	o.StripeUsageRecordSummaryTotalUsage = &v
+}
+
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *MeteringUsageRecordGroupMetaInfo) GetTimestamp() time.Time {
 	if o == nil || IsNil(o.Timestamp) {
@@ -490,6 +690,24 @@ func (o MeteringUsageRecordGroupMetaInfo) ToMap() (map[string]interface{}, error
 	}
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
+	}
+	if !IsNil(o.StripeInvoiceID) {
+		toSerialize["stripeInvoiceID"] = o.StripeInvoiceID
+	}
+	if !IsNil(o.StripePeriodEndTime) {
+		toSerialize["stripePeriodEndTime"] = o.StripePeriodEndTime
+	}
+	if !IsNil(o.StripePeriodStartTime) {
+		toSerialize["stripePeriodStartTime"] = o.StripePeriodStartTime
+	}
+	if !IsNil(o.StripeSubscriptionItemID) {
+		toSerialize["stripeSubscriptionItemID"] = o.StripeSubscriptionItemID
+	}
+	if !IsNil(o.StripeUsageRecordSummaryID) {
+		toSerialize["stripeUsageRecordSummaryID"] = o.StripeUsageRecordSummaryID
+	}
+	if !IsNil(o.StripeUsageRecordSummaryTotalUsage) {
+		toSerialize["stripeUsageRecordSummaryTotalUsage"] = o.StripeUsageRecordSummaryTotalUsage
 	}
 	if !IsNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp

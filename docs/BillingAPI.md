@@ -395,7 +395,7 @@ Name | Type | Description  | Notes
 
 ## IssueInvoice
 
-> BillingInvoice IssueInvoice(ctx, orgId, entitlementId, invoiceId).Execute()
+> BillingInvoice IssueInvoice(ctx, orgId, entitlementId, invoiceId).ContactIds(contactIds).Execute()
 
 issue invoice
 
@@ -417,10 +417,11 @@ func main() {
 	orgId := "orgId_example" // string | Organization ID
 	entitlementId := "entitlementId_example" // string | Entitlement ID
 	invoiceId := "invoiceId_example" // string | Invoice ID
+	contactIds := []string{"Property_example"} // []string | List of Contact IDs (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.IssueInvoice(context.Background(), orgId, entitlementId, invoiceId).Execute()
+	resp, r, err := apiClient.BillingAPI.IssueInvoice(context.Background(), orgId, entitlementId, invoiceId).ContactIds(contactIds).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.IssueInvoice``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -448,8 +449,7 @@ Other parameters are passed through a pointer to a apiIssueInvoiceRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
-
+**contactIds** | **[]string** | List of Contact IDs |
 
 ### Return type
 
@@ -461,7 +461,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -933,6 +933,7 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+
 ## UpdateInvoiceInfo
 
 > BillingInvoiceInfo UpdateInvoiceInfo(ctx, orgId, entitlementId, invoiceId).Data(data).Execute()
@@ -971,19 +972,19 @@ func main() {
 
 ### Path Parameters
 
- Name              | Type                | Description                                                                 | Notes 
--------------------|---------------------|-----------------------------------------------------------------------------|-------
- **ctx**           | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **orgId**         | **string**          | Organization ID                                                             |
- **entitlementId** | **string**          | Entitlement ID                                                              |
- **invoiceId**     | **string**          | Invoice ID                                                                  |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID |
+**entitlementId** | **string** | Entitlement ID |
+**invoiceId** | **string** | Invoice ID |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUpdateInvoiceInfoRequest struct via the builder pattern
 
- Name | Type | Description | Notes 
-------|------|-------------|-------
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 **data** | [**UpdateInvoiceInfoRequest**](UpdateInvoiceInfoRequest.md) | Update Invoice Info Request Params |
 
