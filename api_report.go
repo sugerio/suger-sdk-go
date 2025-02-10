@@ -267,22 +267,22 @@ func (a *ReportAPIService) ListDailyRevenueRecordsExecute(r ApiListDailyRevenueR
 	localVarFormParams := url.Values{}
 
 	if r.partner != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
 	}
 	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "form", "")
 	}
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
 	}
 	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
 	}
 	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "form", "")
 	}
 	if r.endDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -477,25 +477,25 @@ func (a *ReportAPIService) ListRevenueRecordDetailsExecute(r ApiListRevenueRecor
 	localVarFormParams := url.Values{}
 
 	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "form", "")
 	}
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
 	}
 	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
 	}
 	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "form", "")
 	}
 	if r.endDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -690,25 +690,25 @@ func (a *ReportAPIService) ListRevenueRecordsExecute(r ApiListRevenueRecordsRequ
 	localVarFormParams := url.Values{}
 
 	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "form", "")
 	}
 	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
 	}
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
 	}
 	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "form", "")
 	}
 	if r.endDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -896,22 +896,22 @@ func (a *ReportAPIService) ListUsageMeteringDailyRecordsExecute(r ApiListUsageMe
 	localVarFormParams := url.Values{}
 
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
 	}
 	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
 	}
 	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "form", "")
 	}
 	if r.endDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

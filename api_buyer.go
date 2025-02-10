@@ -994,19 +994,19 @@ func (a *BuyerAPIService) ListBuyersExecute(r ApiListBuyersRequest) ([]IdentityB
 	localVarFormParams := url.Values{}
 
 	if r.partner != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
 	}
 	if r.contactId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "contactId", r.contactId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "contactId", r.contactId, "form", "")
 	}
 	if r.awsAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "awsAccountId", r.awsAccountId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "awsAccountId", r.awsAccountId, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

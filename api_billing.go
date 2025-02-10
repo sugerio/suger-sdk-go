@@ -242,7 +242,7 @@ func (a *BillingAPIService) CreateRefundExecute(r ApiCreateRefundRequest) (*Bill
 		return localVarReturnValue, nil, reportError("amount is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "amount", r.amount, "", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "amount", r.amount, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -986,10 +986,10 @@ func (a *BillingAPIService) ListAddonsExecute(r ApiListAddonsRequest) ([]Billing
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1166,19 +1166,19 @@ func (a *BillingAPIService) ListInvoicesExecute(r ApiListInvoicesRequest) ([]Bil
 	localVarFormParams := url.Values{}
 
 	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
 	}
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1369,25 +1369,25 @@ func (a *BillingAPIService) ListPaymentTransactionsExecute(r ApiListPaymentTrans
 	localVarFormParams := url.Values{}
 
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
 	}
 	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
 	}
 	if r.invoiceId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "invoiceId", r.invoiceId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "invoiceId", r.invoiceId, "form", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
 	}
 	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -972,19 +972,20 @@ func main() {
 
 ### Path Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Organization ID |
-**entitlementId** | **string** | Entitlement ID |
-**invoiceId** | **string** | Invoice ID |
+
+ Name              | Type                | Description                                                                 | Notes 
+-------------------|---------------------|-----------------------------------------------------------------------------|-------
+ **ctx**           | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
+ **orgId**         | **string**          | Organization ID                                                             |
+ **entitlementId** | **string**          | Entitlement ID                                                              |
+ **invoiceId**     | **string**          | Invoice ID                                                                  |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUpdateInvoiceInfoRequest struct via the builder pattern
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+ Name | Type | Description | Notes 
+------|------|-------------|-------
 
 **data** | [**UpdateInvoiceInfoRequest**](UpdateInvoiceInfoRequest.md) | Update Invoice Info Request Params |
 
