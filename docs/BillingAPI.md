@@ -972,7 +972,6 @@ func main() {
 
 ### Path Parameters
 
-
  Name              | Type                | Description                                                                 | Notes 
 -------------------|---------------------|-----------------------------------------------------------------------------|-------
  **ctx**           | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
@@ -984,8 +983,8 @@ func main() {
 
 Other parameters are passed through a pointer to a apiUpdateInvoiceInfoRequest struct via the builder pattern
 
- Name | Type | Description | Notes 
-------|------|-------------|-------
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 **data** | [**UpdateInvoiceInfoRequest**](UpdateInvoiceInfoRequest.md) | Update Invoice Info Request Params |
 

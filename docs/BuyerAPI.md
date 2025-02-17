@@ -520,8 +520,8 @@ Name | Type | Description  | Notes
 **partner** | **string** | filter by partner |
 **contactId** | **string** | filter by contactId |
 **awsAccountId** | **string** | filter by awsAccountId |
-**limit** | **int32** | List pagination size, default 1000, max value is 1000 | 
- **offset** | **int32** | List pagination offset, default 0 | 
+**limit** | **int32** | List pagination size, default 1000, max value is 1000 |
+**offset** | **int32** | List pagination offset, default 0 | 
 
 ### Return type
 
