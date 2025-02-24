@@ -2,20 +2,20 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Description** | Pointer to **string** | Description: A detailed description of the metric, which can be used in documentation. | [optional] 
-**DisplayName** | Pointer to **string** |  | [optional] 
-**DisplayUnit** | Pointer to **string** | such as \&quot;min\&quot; | [optional] 
-**DisplayUnitDescription** | Pointer to **string** | such as \&quot;minute\&quot; | [optional] 
-**Id** | Pointer to **string** | The usage metering metric/dimension key, all in lower case with underscore. It is in format of \&quot;{plan_id}_{usage_dimension_key}\&quot;. For example, \&quot;basic_plan_storage\&quot;. | [optional] 
-**MetricKind** | Pointer to **string** | such as \&quot;DELTA\&quot; | [optional] 
-**Name** | Pointer to **string** | Name: The resource name of the metric descriptor, in format of \&quot;{productServiceName}/{plan_id}_{usage_dimension_key}\&quot; | [optional] 
-**PriceTiers** | Pointer to [**[]GcpPriceTier**](GcpPriceTier.md) | Price info of this usage metering metric. Only applicable for the default offer (plan) and private offer. | [optional] 
-**ReportingUnit** | Pointer to **string** | such as \&quot;min\&quot; | [optional] 
-**SkuId** | Pointer to **string** | The SKU ID of this usage metering metric. Applicable only in Private Offer. | [optional] 
-**Unit** | Pointer to **string** | such as \&quot;min\&quot; | [optional] 
-**ValueType** | Pointer to [**ValueType**](ValueType.md) | such as \&quot;INT64\&quot; | [optional] 
+ Name                       | Type                                             | Description                                                                                                                                              | Notes      
+----------------------------|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|------------
+ **Description**            | Pointer to **string**                            | Description: A detailed description of the metric, which can be used in documentation.                                                                   | [optional] 
+ **DisplayName**            | Pointer to **string**                            |                                                                                                                                                          | [optional] 
+ **DisplayUnit**            | Pointer to **string**                            | such as \&quot;min\&quot;                                                                                                                                | [optional] 
+ **DisplayUnitDescription** | Pointer to **string**                            | such as \&quot;minute\&quot;                                                                                                                             | [optional] 
+ **Id**                     | Pointer to **string**                            | The usage metering metric/dimension key It is in format of \&quot;{plan_id}_{usage_dimension_key}\&quot;. For example, \&quot;basic_plan_storage\&quot;. | [optional] 
+ **MetricKind**             | Pointer to **string**                            | such as \&quot;DELTA\&quot;                                                                                                                              | [optional] 
+ **Name**                   | Pointer to **string**                            | Name: The resource name of the metric descriptor, in format of \&quot;{productServiceName}/{plan_id}_{usage_dimension_key}\&quot;                        | [optional] 
+ **PriceTiers**             | Pointer to [**[]GcpPriceTier**](GcpPriceTier.md) | Price info of this usage metering metric. Only applicable for the default offer (plan) and private offer.                                                | [optional] 
+ **ReportingUnit**          | Pointer to **string**                            | such as \&quot;min\&quot;                                                                                                                                | [optional] 
+ **SkuId**                  | Pointer to **string**                            | The SKU ID of this usage metering metric. Applicable only in Private Offer.                                                                              | [optional] 
+ **Unit**                   | Pointer to **string**                            | such as \&quot;min\&quot;                                                                                                                                | [optional] 
+ **ValueType**              | Pointer to [**ValueType**](ValueType.md)         | such as \&quot;INT64\&quot;                                                                                                                              | [optional] 
 
 ## Methods
 

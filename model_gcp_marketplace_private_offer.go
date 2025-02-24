@@ -24,15 +24,14 @@ type GcpMarketplacePrivateOffer struct {
 	ActiveEntitlement *GcpMarketplaceEntitlement `json:"activeEntitlement,omitempty"`
 	AgencyEnabled     *bool                      `json:"agencyEnabled,omitempty"`
 	// The resource name of agreement(entitlement) In format of \"projects/{projectNumber}/agreements/{agreementId}\"
-	Agreement             *string                                        `json:"agreement,omitempty"`
-	CancelTime            *time.Time                                     `json:"cancelTime,omitempty"`
-	CustomEula            *GcpMarketplaceDocument                        `json:"customEula,omitempty"`
-	CustomerInfo          *GcpMarketplacePrivateOfferCustomerInfo        `json:"customerInfo,omitempty"`
-	EulaAgreementDocument *GcpMarketplaceDocument                        `json:"eulaAgreementDocument,omitempty"`
-	ExistingOfferData     *GcpMarketplaceExistingOfferData               `json:"existingOfferData,omitempty"`
-	ExpireTime            *time.Time                                     `json:"expireTime,omitempty"`
-	Features              []GcpMarketplaceProductFeatureValue            `json:"features,omitempty"`
-	InstallmentTimeline   *GcpMarketplacePrivateOfferInstallmentTimeline `json:"installmentTimeline,omitempty"`
+	Agreement           *string                                        `json:"agreement,omitempty"`
+	AgreementDocuments  *GcpMarketplaceAgreementDocument               `json:"agreementDocuments,omitempty"`
+	CancelTime          *time.Time                                     `json:"cancelTime,omitempty"`
+	CustomerInfo        *GcpMarketplacePrivateOfferCustomerInfo        `json:"customerInfo,omitempty"`
+	ExistingOfferData   *GcpMarketplaceExistingOfferData               `json:"existingOfferData,omitempty"`
+	ExpireTime          *time.Time                                     `json:"expireTime,omitempty"`
+	Features            []GcpMarketplaceProductFeatureValue            `json:"features,omitempty"`
+	InstallmentTimeline *GcpMarketplacePrivateOfferInstallmentTimeline `json:"installmentTimeline,omitempty"`
 	// such as \"PUBLISHED\"
 	LifecycleState    *string                                      `json:"lifecycleState,omitempty"`
 	MetricInformation *GcpMarketplacePrivateOfferMetricInformation `json:"metricInformation,omitempty"`
@@ -183,6 +182,38 @@ func (o *GcpMarketplacePrivateOffer) SetAgreement(v string) {
 	o.Agreement = &v
 }
 
+// GetAgreementDocuments returns the AgreementDocuments field value if set, zero value otherwise.
+func (o *GcpMarketplacePrivateOffer) GetAgreementDocuments() GcpMarketplaceAgreementDocument {
+	if o == nil || IsNil(o.AgreementDocuments) {
+		var ret GcpMarketplaceAgreementDocument
+		return ret
+	}
+	return *o.AgreementDocuments
+}
+
+// GetAgreementDocumentsOk returns a tuple with the AgreementDocuments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GcpMarketplacePrivateOffer) GetAgreementDocumentsOk() (*GcpMarketplaceAgreementDocument, bool) {
+	if o == nil || IsNil(o.AgreementDocuments) {
+		return nil, false
+	}
+	return o.AgreementDocuments, true
+}
+
+// HasAgreementDocuments returns a boolean if a field has been set.
+func (o *GcpMarketplacePrivateOffer) HasAgreementDocuments() bool {
+	if o != nil && !IsNil(o.AgreementDocuments) {
+		return true
+	}
+
+	return false
+}
+
+// SetAgreementDocuments gets a reference to the given GcpMarketplaceAgreementDocument and assigns it to the AgreementDocuments field.
+func (o *GcpMarketplacePrivateOffer) SetAgreementDocuments(v GcpMarketplaceAgreementDocument) {
+	o.AgreementDocuments = &v
+}
+
 // GetCancelTime returns the CancelTime field value if set, zero value otherwise.
 func (o *GcpMarketplacePrivateOffer) GetCancelTime() time.Time {
 	if o == nil || IsNil(o.CancelTime) {
@@ -215,38 +246,6 @@ func (o *GcpMarketplacePrivateOffer) SetCancelTime(v time.Time) {
 	o.CancelTime = &v
 }
 
-// GetCustomEula returns the CustomEula field value if set, zero value otherwise.
-func (o *GcpMarketplacePrivateOffer) GetCustomEula() GcpMarketplaceDocument {
-	if o == nil || IsNil(o.CustomEula) {
-		var ret GcpMarketplaceDocument
-		return ret
-	}
-	return *o.CustomEula
-}
-
-// GetCustomEulaOk returns a tuple with the CustomEula field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GcpMarketplacePrivateOffer) GetCustomEulaOk() (*GcpMarketplaceDocument, bool) {
-	if o == nil || IsNil(o.CustomEula) {
-		return nil, false
-	}
-	return o.CustomEula, true
-}
-
-// HasCustomEula returns a boolean if a field has been set.
-func (o *GcpMarketplacePrivateOffer) HasCustomEula() bool {
-	if o != nil && !IsNil(o.CustomEula) {
-		return true
-	}
-
-	return false
-}
-
-// SetCustomEula gets a reference to the given GcpMarketplaceDocument and assigns it to the CustomEula field.
-func (o *GcpMarketplacePrivateOffer) SetCustomEula(v GcpMarketplaceDocument) {
-	o.CustomEula = &v
-}
-
 // GetCustomerInfo returns the CustomerInfo field value if set, zero value otherwise.
 func (o *GcpMarketplacePrivateOffer) GetCustomerInfo() GcpMarketplacePrivateOfferCustomerInfo {
 	if o == nil || IsNil(o.CustomerInfo) {
@@ -277,38 +276,6 @@ func (o *GcpMarketplacePrivateOffer) HasCustomerInfo() bool {
 // SetCustomerInfo gets a reference to the given GcpMarketplacePrivateOfferCustomerInfo and assigns it to the CustomerInfo field.
 func (o *GcpMarketplacePrivateOffer) SetCustomerInfo(v GcpMarketplacePrivateOfferCustomerInfo) {
 	o.CustomerInfo = &v
-}
-
-// GetEulaAgreementDocument returns the EulaAgreementDocument field value if set, zero value otherwise.
-func (o *GcpMarketplacePrivateOffer) GetEulaAgreementDocument() GcpMarketplaceDocument {
-	if o == nil || IsNil(o.EulaAgreementDocument) {
-		var ret GcpMarketplaceDocument
-		return ret
-	}
-	return *o.EulaAgreementDocument
-}
-
-// GetEulaAgreementDocumentOk returns a tuple with the EulaAgreementDocument field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GcpMarketplacePrivateOffer) GetEulaAgreementDocumentOk() (*GcpMarketplaceDocument, bool) {
-	if o == nil || IsNil(o.EulaAgreementDocument) {
-		return nil, false
-	}
-	return o.EulaAgreementDocument, true
-}
-
-// HasEulaAgreementDocument returns a boolean if a field has been set.
-func (o *GcpMarketplacePrivateOffer) HasEulaAgreementDocument() bool {
-	if o != nil && !IsNil(o.EulaAgreementDocument) {
-		return true
-	}
-
-	return false
-}
-
-// SetEulaAgreementDocument gets a reference to the given GcpMarketplaceDocument and assigns it to the EulaAgreementDocument field.
-func (o *GcpMarketplacePrivateOffer) SetEulaAgreementDocument(v GcpMarketplaceDocument) {
-	o.EulaAgreementDocument = &v
 }
 
 // GetExistingOfferData returns the ExistingOfferData field value if set, zero value otherwise.
@@ -1290,17 +1257,14 @@ func (o GcpMarketplacePrivateOffer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Agreement) {
 		toSerialize["agreement"] = o.Agreement
 	}
+	if !IsNil(o.AgreementDocuments) {
+		toSerialize["agreementDocuments"] = o.AgreementDocuments
+	}
 	if !IsNil(o.CancelTime) {
 		toSerialize["cancelTime"] = o.CancelTime
 	}
-	if !IsNil(o.CustomEula) {
-		toSerialize["customEula"] = o.CustomEula
-	}
 	if !IsNil(o.CustomerInfo) {
 		toSerialize["customerInfo"] = o.CustomerInfo
-	}
-	if !IsNil(o.EulaAgreementDocument) {
-		toSerialize["eulaAgreementDocument"] = o.EulaAgreementDocument
 	}
 	if !IsNil(o.ExistingOfferData) {
 		toSerialize["existingOfferData"] = o.ExistingOfferData

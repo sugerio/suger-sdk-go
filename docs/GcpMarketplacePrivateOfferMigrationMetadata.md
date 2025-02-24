@@ -2,12 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**InventoryFlavorExternalName** | Pointer to **string** | Plan name maybe with term suffix, such as \&quot;plan-name-P1Y\&quot; | [optional] 
-**ProductExternalName** | Pointer to **string** | in format of \&quot;product-service-id.endpoints.gcp-project-id.cloud.goog\&quot; | [optional] 
-**ProjectNumber** | Pointer to **string** | The GCP project number of the provider. | [optional] 
-**ProviderId** | Pointer to **string** | The GCP project ID of the provider. | [optional] 
+ Name                            | Type                  | Description                                                                                                                                      | Notes      
+---------------------------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|------------
+ **InventoryFlavorExternalName** | Pointer to **string** | Plan name maybe with term suffix, such as \&quot;plan-name-P1Y\&quot;                                                                            | [optional] 
+ **ProductExternalName**         | Pointer to **string** | in format of \&quot;product-service-id.endpoints.gcp-project-id.cloud.goog\&quot;                                                                | [optional] 
+ **ProjectId**                   | Pointer to **string** | The GCP project ID of the GCP marketplace integration.                                                                                           | [optional] 
+ **ProjectNumber**               | Pointer to **string** | The GCP project number of the provider.                                                                                                          | [optional] 
+ **ProviderId**                  | Pointer to **string** | The GCP provider ID / partner ID of the GCP marketplace integration. In most cases, it is the same as the project ID. But it could be different. | [optional] 
 
 ## Methods
 
@@ -77,6 +78,31 @@ SetProductExternalName sets ProductExternalName field to given value.
 `func (o *GcpMarketplacePrivateOfferMigrationMetadata) HasProductExternalName() bool`
 
 HasProductExternalName returns a boolean if a field has been set.
+
+### GetProjectId
+
+`func (o *GcpMarketplacePrivateOfferMigrationMetadata) GetProjectId() string`
+
+GetProjectId returns the ProjectId field if non-nil, zero value otherwise.
+
+### GetProjectIdOk
+
+`func (o *GcpMarketplacePrivateOfferMigrationMetadata) GetProjectIdOk() (*string, bool)`
+
+GetProjectIdOk returns a tuple with the ProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectId
+
+`func (o *GcpMarketplacePrivateOfferMigrationMetadata) SetProjectId(v string)`
+
+SetProjectId sets ProjectId field to given value.
+
+### HasProjectId
+
+`func (o *GcpMarketplacePrivateOfferMigrationMetadata) HasProjectId() bool`
+
+HasProjectId returns a boolean if a field has been set.
 
 ### GetProjectNumber
 

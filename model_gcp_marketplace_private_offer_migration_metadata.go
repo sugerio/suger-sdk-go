@@ -24,9 +24,11 @@ type GcpMarketplacePrivateOfferMigrationMetadata struct {
 	InventoryFlavorExternalName *string `json:"inventoryFlavorExternalName,omitempty"`
 	// in format of \"product-service-id.endpoints.gcp-project-id.cloud.goog\"
 	ProductExternalName *string `json:"productExternalName,omitempty"`
+	// The GCP project ID of the GCP marketplace integration.
+	ProjectId *string `json:"projectId,omitempty"`
 	// The GCP project number of the provider.
 	ProjectNumber *string `json:"projectNumber,omitempty"`
-	// The GCP project ID of the provider.
+	// The GCP provider ID / partner ID of the GCP marketplace integration. In most cases, it is the same as the project ID. But it could be different.
 	ProviderId *string `json:"providerId,omitempty"`
 }
 
@@ -111,6 +113,38 @@ func (o *GcpMarketplacePrivateOfferMigrationMetadata) SetProductExternalName(v s
 	o.ProductExternalName = &v
 }
 
+// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+func (o *GcpMarketplacePrivateOfferMigrationMetadata) GetProjectId() string {
+	if o == nil || IsNil(o.ProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.ProjectId
+}
+
+// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GcpMarketplacePrivateOfferMigrationMetadata) GetProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ProjectId) {
+		return nil, false
+	}
+	return o.ProjectId, true
+}
+
+// HasProjectId returns a boolean if a field has been set.
+func (o *GcpMarketplacePrivateOfferMigrationMetadata) HasProjectId() bool {
+	if o != nil && !IsNil(o.ProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
+func (o *GcpMarketplacePrivateOfferMigrationMetadata) SetProjectId(v string) {
+	o.ProjectId = &v
+}
+
 // GetProjectNumber returns the ProjectNumber field value if set, zero value otherwise.
 func (o *GcpMarketplacePrivateOfferMigrationMetadata) GetProjectNumber() string {
 	if o == nil || IsNil(o.ProjectNumber) {
@@ -190,6 +224,9 @@ func (o GcpMarketplacePrivateOfferMigrationMetadata) ToMap() (map[string]interfa
 	}
 	if !IsNil(o.ProductExternalName) {
 		toSerialize["productExternalName"] = o.ProductExternalName
+	}
+	if !IsNil(o.ProjectId) {
+		toSerialize["projectId"] = o.ProjectId
 	}
 	if !IsNil(o.ProjectNumber) {
 		toSerialize["projectNumber"] = o.ProjectNumber

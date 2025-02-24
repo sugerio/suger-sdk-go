@@ -43,6 +43,7 @@ const (
 	Partner_SNOWFLAKE  Partner = "SNOWFLAKE"
 	Partner_STRIPE     Partner = "STRIPE"
 	Partner_ZOHO       Partner = "ZOHO"
+	Partner_DATABRICKS Partner = "DATABRICKS"
 )
 
 // All allowed values of Partner enum
@@ -69,6 +70,7 @@ var AllowedPartnerEnumValues = []Partner{
 	"SNOWFLAKE",
 	"STRIPE",
 	"ZOHO",
+	"DATABRICKS",
 }
 
 func (v *Partner) UnmarshalJSON(src []byte) error {

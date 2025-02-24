@@ -27,7 +27,7 @@ type GcpMarketplaceProductMeteringMetric struct {
 	DisplayUnit *string `json:"displayUnit,omitempty"`
 	// such as \"minute\"
 	DisplayUnitDescription *string `json:"displayUnitDescription,omitempty"`
-	// The usage metering metric/dimension key, all in lower case with underscore. It is in format of \"{plan_id}_{usage_dimension_key}\". For example, \"basic_plan_storage\".
+	// The usage metering metric/dimension key It is in format of \"{plan_id}_{usage_dimension_key}\". For example, \"basic_plan_storage\".
 	Id *string `json:"id,omitempty"`
 	// such as \"DELTA\"
 	MetricKind *string `json:"metricKind,omitempty"`

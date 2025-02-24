@@ -2,22 +2,28 @@
 
 All URIs are relative to *http://https://api.suger.cloud*
 
- Method                                                                             | HTTP request                                                                           | Description               
-------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|---------------------------
- [**CreateAddon**](BillingAPI.md#CreateAddon)                                       | **Post** /org/{orgId}/addon                                                            | create addon              
- [**CreateRefund**](BillingAPI.md#CreateRefund)                                     | **Post** /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund | create refund.            
- [**DeleteAddon**](BillingAPI.md#DeleteAddon)                                       | **Delete** /org/{orgId}/addon/{addonId}                                                | delete addon              
- [**GetAddon**](BillingAPI.md#GetAddon)                                             | **Get** /org/{orgId}/addon/{addonId}                                                   | get addon                 
- [**GetInvoice**](BillingAPI.md#GetInvoice)                                         | **Get** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}                   | get invoice               
- [**IssueInvoice**](BillingAPI.md#IssueInvoice)                                     | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/issue           | issue invoice             
- [**ListAddons**](BillingAPI.md#ListAddons)                                         | **Get** /org/{orgId}/addon                                                             | list addons               
- [**ListInvoices**](BillingAPI.md#ListInvoices)                                     | **Get** /org/{orgId}/invoice                                                           | list invoices             
- [**ListPaymentTransactions**](BillingAPI.md#ListPaymentTransactions)               | **Get** /org/{orgId}/paymentTransaction                                                | list payment transactions 
- [**ListRefundOfPaymentTransaction**](BillingAPI.md#ListRefundOfPaymentTransaction) | **Get** /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund  | list refunds.             
- [**PayInvoice**](BillingAPI.md#PayInvoice)                                         | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/pay             | pay invoice               
- [**UpdateAddon**](BillingAPI.md#UpdateAddon)                                       | **Patch** /org/{orgId}/addon/{addonId}                                                 | update addon              
- [**UpdateInvoiceInfo**](BillingAPI.md#UpdateInvoiceInfo)                           | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/info            | Update invoice info       
- [**VoidInvoice**](BillingAPI.md#VoidInvoice)                                       | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/void            | void invoice              
+ Method                                                                             | HTTP request                                                                           | Description                                 
+------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|---------------------------------------------
+ [**CreateAddon**](BillingAPI.md#CreateAddon)                                       | **Post** /org/{orgId}/addon                                                            | create addon                                
+ [**CreateRefund**](BillingAPI.md#CreateRefund)                                     | **Post** /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund | create refund.                              
+ [**DeleteAddon**](BillingAPI.md#DeleteAddon)                                       | **Delete** /org/{orgId}/addon/{addonId}                                                | delete addon                                
+ [**GetAddon**](BillingAPI.md#GetAddon)                                             | **Get** /org/{orgId}/addon/{addonId}                                                   | get addon                                   
+ [**GetInvoice**](BillingAPI.md#GetInvoice)                                         | **Get** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}                   | get invoice                                 
+ [**GetInvoiceIssuedEmailPreview**](BillingAPI.md#GetInvoiceIssuedEmailPreview)     | **Get** /org/{orgId}/invoice/{invoiceId}/preview                                       | Get the preview of the invoice issued email 
+ [**GetInvoiceV2**](BillingAPI.md#GetInvoiceV2)                                     | **Get** /org/{orgId}/invoice/{invoiceId}                                               | get invoice                                 
+ [**IssueInvoice**](BillingAPI.md#IssueInvoice)                                     | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/issue           | issue invoice                               
+ [**IssueInvoiceV2**](BillingAPI.md#IssueInvoiceV2)                                 | **Patch** /org/{orgId}/invoice/{invoiceId}/issue                                       | issue invoice                               
+ [**ListAddons**](BillingAPI.md#ListAddons)                                         | **Get** /org/{orgId}/addon                                                             | list addons                                 
+ [**ListInvoices**](BillingAPI.md#ListInvoices)                                     | **Get** /org/{orgId}/invoice                                                           | list invoices                               
+ [**ListPaymentTransactions**](BillingAPI.md#ListPaymentTransactions)               | **Get** /org/{orgId}/paymentTransaction                                                | list payment transactions                   
+ [**ListRefundOfPaymentTransaction**](BillingAPI.md#ListRefundOfPaymentTransaction) | **Get** /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund  | list refunds.                               
+ [**PayInvoice**](BillingAPI.md#PayInvoice)                                         | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/pay             | pay invoice                                 
+ [**PayInvoiceV2**](BillingAPI.md#PayInvoiceV2)                                     | **Patch** /org/{orgId}/invoice/{invoiceId}/pay                                         | pay invoice                                 
+ [**UpdateAddon**](BillingAPI.md#UpdateAddon)                                       | **Patch** /org/{orgId}/addon/{addonId}                                                 | update addon                                
+ [**UpdateInvoiceInfo**](BillingAPI.md#UpdateInvoiceInfo)                           | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/info            | Update invoice info                         
+ [**UpdateInvoiceInfoV2**](BillingAPI.md#UpdateInvoiceInfoV2)                       | **Patch** /org/{orgId}/invoice/{invoiceId}/info                                        | Update invoice info                         
+ [**VoidInvoice**](BillingAPI.md#VoidInvoice)                                       | **Patch** /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/void            | void invoice                                
+ [**VoidInvoiceV2**](BillingAPI.md#VoidInvoiceV2)                                   | **Patch** /org/{orgId}/invoice/{invoiceId}/void                                        | void invoice                                
 
 
 
@@ -392,6 +398,137 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## GetInvoiceIssuedEmailPreview
+
+> string GetInvoiceIssuedEmailPreview(ctx, orgId, invoiceId).Execute()
+
+Get the preview of the invoice issued email
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	invoiceId := "invoiceId_example" // string | Invoice ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.GetInvoiceIssuedEmailPreview(context.Background(), orgId, invoiceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetInvoiceIssuedEmailPreview``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetInvoiceIssuedEmailPreview`: string
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetInvoiceIssuedEmailPreview`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID |
+**invoiceId** | **string** | Invoice ID |
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetInvoiceIssuedEmailPreviewRequest struct via the builder pattern
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+**string**
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## GetInvoiceV2
+
+> BillingInvoice GetInvoiceV2(ctx, orgId, invoiceId).Execute()
+
+get invoice
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	invoiceId := "invoiceId_example" // string | Invoice ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.GetInvoiceV2(context.Background(), orgId, invoiceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetInvoiceV2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetInvoiceV2`: BillingInvoice
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetInvoiceV2`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID |
+**invoiceId** | **string** | Invoice ID |
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetInvoiceV2Request struct via the builder pattern
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+[**BillingInvoice**](BillingInvoice.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 ## IssueInvoice
 
@@ -445,6 +582,75 @@ Name | Type | Description  | Notes
 
 Other parameters are passed through a pointer to a apiIssueInvoiceRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+**contactIds** | **[]string** | List of Contact IDs |
+
+### Return type
+
+[**BillingInvoice**](BillingInvoice.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## IssueInvoiceV2
+
+> BillingInvoice IssueInvoiceV2(ctx, orgId, invoiceId).ContactIds(contactIds).Execute()
+
+issue invoice
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example"                   // string | Organization ID
+	invoiceId := "invoiceId_example"           // string | Invoice ID
+	contactIds := []string{"Property_example"} // []string | List of Contact IDs (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.IssueInvoiceV2(context.Background(), orgId, invoiceId).ContactIds(contactIds).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.IssueInvoiceV2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `IssueInvoiceV2`: BillingInvoice
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.IssueInvoiceV2`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID |
+**invoiceId** | **string** | Invoice ID |
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiIssueInvoiceV2Request struct via the builder pattern
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -858,6 +1064,71 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## PayInvoiceV2
+
+> BillingInvoice PayInvoiceV2(ctx, orgId, invoiceId).Execute()
+
+pay invoice
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	invoiceId := "invoiceId_example" // string | Invoice ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.PayInvoiceV2(context.Background(), orgId, invoiceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.PayInvoiceV2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PayInvoiceV2`: BillingInvoice
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.PayInvoiceV2`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID |
+**invoiceId** | **string** | Invoice ID |
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPayInvoiceV2Request struct via the builder pattern
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+[**BillingInvoice**](BillingInvoice.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 ## UpdateAddon
 
@@ -972,12 +1243,12 @@ func main() {
 
 ### Path Parameters
 
- Name              | Type                | Description                                                                 | Notes 
--------------------|---------------------|-----------------------------------------------------------------------------|-------
- **ctx**           | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **orgId**         | **string**          | Organization ID                                                             |
- **entitlementId** | **string**          | Entitlement ID                                                              |
- **invoiceId**     | **string**          | Invoice ID                                                                  |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID |
+**entitlementId** | **string** | Entitlement ID |
+**invoiceId** | **string** | Invoice ID |
 
 ### Other Parameters
 
@@ -985,6 +1256,75 @@ Other parameters are passed through a pointer to a apiUpdateInvoiceInfoRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+**data** | [**UpdateInvoiceInfoRequest**](UpdateInvoiceInfoRequest.md) | Update Invoice Info Request Params |
+
+### Return type
+
+[**BillingInvoiceInfo**](BillingInvoiceInfo.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## UpdateInvoiceInfoV2
+
+> BillingInvoiceInfo UpdateInvoiceInfoV2(ctx, orgId, invoiceId).Data(data).Execute()
+
+Update invoice info
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	invoiceId := "invoiceId_example" // string | Invoice ID
+	data := *openapiclient.NewUpdateInvoiceInfoRequest() // UpdateInvoiceInfoRequest | Update Invoice Info Request Params
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.UpdateInvoiceInfoV2(context.Background(), orgId, invoiceId).Data(data).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.UpdateInvoiceInfoV2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateInvoiceInfoV2`: BillingInvoiceInfo
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.UpdateInvoiceInfoV2`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+ Name          | Type                | Description                                                                 | Notes 
+---------------|---------------------|-----------------------------------------------------------------------------|-------
+ **ctx**       | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
+ **orgId**     | **string**          | Organization ID                                                             |
+ **invoiceId** | **string**          | Invoice ID                                                                  |
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateInvoiceInfoV2Request struct via the builder pattern
+
+ Name | Type | Description | Notes 
+------|------|-------------|-------
 
 **data** | [**UpdateInvoiceInfoRequest**](UpdateInvoiceInfoRequest.md) | Update Invoice Info Request Params |
 
@@ -1061,8 +1401,71 @@ Other parameters are passed through a pointer to a apiVoidInvoiceRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+### Return type
 
+[**BillingInvoice**](BillingInvoice.md)
 
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+## VoidInvoiceV2
+
+> BillingInvoice VoidInvoiceV2(ctx, orgId, invoiceId).Execute()
+
+void invoice
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	invoiceId := "invoiceId_example" // string | Invoice ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.VoidInvoiceV2(context.Background(), orgId, invoiceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.VoidInvoiceV2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `VoidInvoiceV2`: BillingInvoice
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.VoidInvoiceV2`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID |
+**invoiceId** | **string** | Invoice ID |
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiVoidInvoiceV2Request struct via the builder pattern
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 ### Return type
 

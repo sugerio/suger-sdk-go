@@ -261,6 +261,7 @@ docs/EulaType.md
 docs/GcpAmountConstraint.md
 docs/GcpAmountUnit.md
 docs/GcpCommitmentAmountPerPeriodTemplate.md
+docs/GcpMarketplaceAgreementDocument.md
 docs/GcpMarketplaceConsumer.md
 docs/GcpMarketplaceDocument.md
 docs/GcpMarketplaceEntitlement.md
@@ -740,6 +741,7 @@ model_eula_type.go
 model_gcp_amount_constraint.go
 model_gcp_amount_unit.go
 model_gcp_commitment_amount_per_period_template.go
+model_gcp_marketplace_agreement_document.go
 model_gcp_marketplace_consumer.go
 model_gcp_marketplace_document.go
 model_gcp_marketplace_entitlement.go

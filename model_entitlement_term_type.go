@@ -21,13 +21,13 @@ type EntitlementTermType string
 
 // List of EntitlementTermType
 const (
-	EntitlementTermType_Unknown        EntitlementTermType = ""
-	EntitlementTermType_AutoRenew      EntitlementTermType = "AutoRenew"
-	EntitlementTermType_ManualRenew    EntitlementTermType = "ManualRenew"
-	EntitlementTermType_PlanChange     EntitlementTermType = "PlanChange"
-	EntitlementTermType_QuantityChange EntitlementTermType = "QuantityChange"
-	EntitlementTermType_Signup         EntitlementTermType = "Signup"
-	EntitlementTermType_DivideCommit   EntitlementTermType = "DivideCommit"
+	EntitlementTermTypeUnknown        EntitlementTermType = ""
+	EntitlementTermTypeAutoRenew      EntitlementTermType = "AutoRenew"
+	EntitlementTermTypeManualRenew    EntitlementTermType = "ManualRenew"
+	EntitlementTermTypePlanChange     EntitlementTermType = "PlanChange"
+	EntitlementTermTypeQuantityChange EntitlementTermType = "QuantityChange"
+	EntitlementTermTypeSignup         EntitlementTermType = "Signup"
+	EntitlementTermTypeDivideCommit   EntitlementTermType = "DivideCommit"
 )
 
 // All allowed values of EntitlementTermType enum
