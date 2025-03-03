@@ -2,24 +2,24 @@
 
 All URIs are relative to *http://https://api.suger.cloud*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**AddEntitlementCredit**](EntitlementAPI.md#AddEntitlementCredit) | **Post** /org/{orgId}/entitlement/{entitlementId}/addCredit | add entitlement credit
-[**ApplyAddonToEntitlement**](EntitlementAPI.md#ApplyAddonToEntitlement) | **Post** /org/{orgId}/entitlement/{entitlementId}/addon | apply addon to entitlement
-[**ApproveEntitlement**](EntitlementAPI.md#ApproveEntitlement) | **Post** /org/{orgId}/entitlement/{entitlementId}/approve | approve entitlement
-[**CancelEntitlement**](EntitlementAPI.md#CancelEntitlement) | **Post** /org/{orgId}/entitlement/{entitlementId}/cancel | cancel entitlement
-[**CreateEntitlement**](EntitlementAPI.md#CreateEntitlement) | **Post** /org/{orgId}/entitlement | create entitlement
-[**DeleteEntitlementTerm**](EntitlementAPI.md#DeleteEntitlementTerm) | **Delete** /org/{orgId}/entitlement/{entitlementId}/entitlementTerm/{entitlementTermId} | delete entitlement term
-[**DivideEntitlementCommit**](EntitlementAPI.md#DivideEntitlementCommit) | **Post** /org/{orgId}/entitlement/{entitlementId}/divideCommit | divide entitlement commit
-[**GetEntitlement**](EntitlementAPI.md#GetEntitlement) | **Get** /org/{orgId}/entitlement/{entitlementId} | get entitlement
-[**GetEntitlementTerm**](EntitlementAPI.md#GetEntitlementTerm) | **Get** /org/{orgId}/entitlement/{entitlementId}/entitlementTerm/{entitlementTermId} | get entitlement term
-[**ListEntitlementTerms**](EntitlementAPI.md#ListEntitlementTerms) | **Get** /org/{orgId}/entitlement/{entitlementId}/entitlementTerm | list entitlement terms
-[**ListEntitlements**](EntitlementAPI.md#ListEntitlements) | **Get** /org/{orgId}/entitlement | list entitlements
-[**ScheduleEntitlementCancellation**](EntitlementAPI.md#ScheduleEntitlementCancellation) | **Post** /org/{orgId}/entitlement/{entitlementId}/scheduleCancellation | schedule entitlement cancellation
-[**UnscheduleEntitlementCancellation**](EntitlementAPI.md#UnscheduleEntitlementCancellation) | **Post** /org/{orgId}/entitlement/{entitlementId}/unscheduleCancellation | unschedule entitlement cancellation
-[**UpdateEntitlementMetaInfo**](EntitlementAPI.md#UpdateEntitlementMetaInfo) | **Patch** /org/{orgId}/entitlement/{entitlementId}/metaInfo | update entitlement meta info
-[**UpdateEntitlementName**](EntitlementAPI.md#UpdateEntitlementName) | **Patch** /org/{orgId}/entitlement/{entitlementId}/entitlementName | update entitlement name
-[**UpdateEntitlementSeat**](EntitlementAPI.md#UpdateEntitlementSeat) | **Patch** /org/{orgId}/entitlement/{entitlementId}/seat | update seat for the active AZURE subscription
+ Method                                                                                       | HTTP request                                                                            | Description                         
+----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|-------------------------------------
+ [**AddEntitlementCredit**](EntitlementAPI.md#AddEntitlementCredit)                           | **Post** /org/{orgId}/entitlement/{entitlementId}/addCredit                             | add entitlement credit              
+ [**ApplyAddonToEntitlement**](EntitlementAPI.md#ApplyAddonToEntitlement)                     | **Post** /org/{orgId}/entitlement/{entitlementId}/addon                                 | apply addon to entitlement          
+ [**ApproveEntitlement**](EntitlementAPI.md#ApproveEntitlement)                               | **Post** /org/{orgId}/entitlement/{entitlementId}/approve                               | approve entitlement                 
+ [**CancelEntitlement**](EntitlementAPI.md#CancelEntitlement)                                 | **Post** /org/{orgId}/entitlement/{entitlementId}/cancel                                | cancel entitlement                  
+ [**CreateEntitlement**](EntitlementAPI.md#CreateEntitlement)                                 | **Post** /org/{orgId}/entitlement                                                       | create entitlement                  
+ [**DeleteEntitlementTerm**](EntitlementAPI.md#DeleteEntitlementTerm)                         | **Delete** /org/{orgId}/entitlement/{entitlementId}/entitlementTerm/{entitlementTermId} | delete entitlement term             
+ [**DivideEntitlementCommit**](EntitlementAPI.md#DivideEntitlementCommit)                     | **Post** /org/{orgId}/entitlement/{entitlementId}/divideCommit                          | divide entitlement commit           
+ [**GetEntitlement**](EntitlementAPI.md#GetEntitlement)                                       | **Get** /org/{orgId}/entitlement/{entitlementId}                                        | get entitlement                     
+ [**GetEntitlementTerm**](EntitlementAPI.md#GetEntitlementTerm)                               | **Get** /org/{orgId}/entitlement/{entitlementId}/entitlementTerm/{entitlementTermId}    | get entitlement term                
+ [**ListEntitlementTerms**](EntitlementAPI.md#ListEntitlementTerms)                           | **Get** /org/{orgId}/entitlement/{entitlementId}/entitlementTerm                        | list entitlement terms              
+ [**ListEntitlements**](EntitlementAPI.md#ListEntitlements)                                   | **Get** /org/{orgId}/entitlement                                                        | list entitlements                   
+ [**ScheduleEntitlementCancellation**](EntitlementAPI.md#ScheduleEntitlementCancellation)     | **Post** /org/{orgId}/entitlement/{entitlementId}/scheduleCancellation                  | schedule entitlement cancellation   
+ [**UnscheduleEntitlementCancellation**](EntitlementAPI.md#UnscheduleEntitlementCancellation) | **Post** /org/{orgId}/entitlement/{entitlementId}/unscheduleCancellation                | unschedule entitlement cancellation 
+ [**UpdateEntitlementMetaInfo**](EntitlementAPI.md#UpdateEntitlementMetaInfo)                 | **Patch** /org/{orgId}/entitlement/{entitlementId}/metaInfo                             | update entitlement meta info        
+ [**UpdateEntitlementName**](EntitlementAPI.md#UpdateEntitlementName)                         | **Patch** /org/{orgId}/entitlement/{entitlementId}/entitlementName                      | update entitlement name             
+ [**UpdateEntitlementSeat**](EntitlementAPI.md#UpdateEntitlementSeat)                         | **Patch** /org/{orgId}/entitlement/{entitlementId}/seat                                 | update entitlement seat             
 
 
 
@@ -1092,7 +1092,7 @@ import (
 func main() {
 	orgId := "orgId_example" // string | Organization ID
 	entitlementId := "entitlementId_example" // string | Entitlement ID
-	data := *openapiclient.NewGithubComSugerioMarketplaceServiceRdsDbLibUpdateEntitlementNameParams() // GithubComSugerioMarketplaceServiceRdsDbLibUpdateEntitlementNameParams | UpdateEntitlementNameParams
+	data := *openapiclient.NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibUpdateEntitlementNameParams() // GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibUpdateEntitlementNameParams | UpdateEntitlementNameParams
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1123,8 +1123,8 @@ Other parameters are passed through a pointer to a apiUpdateEntitlementNameReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
- **data** | [**GithubComSugerioMarketplaceServiceRdsDbLibUpdateEntitlementNameParams**](GithubComSugerioMarketplaceServiceRdsDbLibUpdateEntitlementNameParams.md) | UpdateEntitlementNameParams | 
+**data** | [**GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibUpdateEntitlementNameParams
+**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibUpdateEntitlementNameParams.md) | UpdateEntitlementNameParams |
 
 ### Return type
 
@@ -1148,7 +1148,7 @@ Name | Type | Description  | Notes
 
 > WorkloadEntitlement UpdateEntitlementSeat(ctx, orgId, entitlementId).NewSeat(newSeat).Execute()
 
-update seat for the active AZURE subscription
+update entitlement seat
 
 
 

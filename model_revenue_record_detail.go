@@ -21,11 +21,11 @@ var _ MappedNullable = &RevenueRecordDetail{}
 // RevenueRecordDetail struct for RevenueRecordDetail
 type RevenueRecordDetail struct {
 	// For AWS Marketplace
-	AwsRevenueRecordDetail *GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent `json:"awsRevenueRecordDetail,omitempty"`
+	AwsRevenueRecordDetail *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent `json:"awsRevenueRecordDetail,omitempty"`
 	// For Azure Marketplace
-	AzureRevenueRecordDetail *GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue `json:"azureRevenueRecordDetail,omitempty"`
+	AzureRevenueRecordDetail *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue `json:"azureRevenueRecordDetail,omitempty"`
 	// For GCP Marketplace
-	GcpRevenueRecordDetail *GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage `json:"gcpRevenueRecordDetail,omitempty"`
+	GcpRevenueRecordDetail *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage `json:"gcpRevenueRecordDetail,omitempty"`
 }
 
 // NewRevenueRecordDetail instantiates a new RevenueRecordDetail object
@@ -46,9 +46,9 @@ func NewRevenueRecordDetailWithDefaults() *RevenueRecordDetail {
 }
 
 // GetAwsRevenueRecordDetail returns the AwsRevenueRecordDetail field value if set, zero value otherwise.
-func (o *RevenueRecordDetail) GetAwsRevenueRecordDetail() GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent {
+func (o *RevenueRecordDetail) GetAwsRevenueRecordDetail() GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent {
 	if o == nil || IsNil(o.AwsRevenueRecordDetail) {
-		var ret GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent
+		var ret GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent
 		return ret
 	}
 	return *o.AwsRevenueRecordDetail
@@ -56,7 +56,7 @@ func (o *RevenueRecordDetail) GetAwsRevenueRecordDetail() GithubComSugerioMarket
 
 // GetAwsRevenueRecordDetailOk returns a tuple with the AwsRevenueRecordDetail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RevenueRecordDetail) GetAwsRevenueRecordDetailOk() (*GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent, bool) {
+func (o *RevenueRecordDetail) GetAwsRevenueRecordDetailOk() (*GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent, bool) {
 	if o == nil || IsNil(o.AwsRevenueRecordDetail) {
 		return nil, false
 	}
@@ -72,15 +72,15 @@ func (o *RevenueRecordDetail) HasAwsRevenueRecordDetail() bool {
 	return false
 }
 
-// SetAwsRevenueRecordDetail gets a reference to the given GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent and assigns it to the AwsRevenueRecordDetail field.
-func (o *RevenueRecordDetail) SetAwsRevenueRecordDetail(v GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) {
+// SetAwsRevenueRecordDetail gets a reference to the given GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent and assigns it to the AwsRevenueRecordDetail field.
+func (o *RevenueRecordDetail) SetAwsRevenueRecordDetail(v GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) {
 	o.AwsRevenueRecordDetail = &v
 }
 
 // GetAzureRevenueRecordDetail returns the AzureRevenueRecordDetail field value if set, zero value otherwise.
-func (o *RevenueRecordDetail) GetAzureRevenueRecordDetail() GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue {
+func (o *RevenueRecordDetail) GetAzureRevenueRecordDetail() GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue {
 	if o == nil || IsNil(o.AzureRevenueRecordDetail) {
-		var ret GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue
+		var ret GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue
 		return ret
 	}
 	return *o.AzureRevenueRecordDetail
@@ -88,7 +88,7 @@ func (o *RevenueRecordDetail) GetAzureRevenueRecordDetail() GithubComSugerioMark
 
 // GetAzureRevenueRecordDetailOk returns a tuple with the AzureRevenueRecordDetail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RevenueRecordDetail) GetAzureRevenueRecordDetailOk() (*GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue, bool) {
+func (o *RevenueRecordDetail) GetAzureRevenueRecordDetailOk() (*GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue, bool) {
 	if o == nil || IsNil(o.AzureRevenueRecordDetail) {
 		return nil, false
 	}
@@ -104,15 +104,15 @@ func (o *RevenueRecordDetail) HasAzureRevenueRecordDetail() bool {
 	return false
 }
 
-// SetAzureRevenueRecordDetail gets a reference to the given GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue and assigns it to the AzureRevenueRecordDetail field.
-func (o *RevenueRecordDetail) SetAzureRevenueRecordDetail(v GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) {
+// SetAzureRevenueRecordDetail gets a reference to the given GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue and assigns it to the AzureRevenueRecordDetail field.
+func (o *RevenueRecordDetail) SetAzureRevenueRecordDetail(v GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) {
 	o.AzureRevenueRecordDetail = &v
 }
 
 // GetGcpRevenueRecordDetail returns the GcpRevenueRecordDetail field value if set, zero value otherwise.
-func (o *RevenueRecordDetail) GetGcpRevenueRecordDetail() GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage {
+func (o *RevenueRecordDetail) GetGcpRevenueRecordDetail() GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage {
 	if o == nil || IsNil(o.GcpRevenueRecordDetail) {
-		var ret GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage
+		var ret GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage
 		return ret
 	}
 	return *o.GcpRevenueRecordDetail
@@ -120,7 +120,7 @@ func (o *RevenueRecordDetail) GetGcpRevenueRecordDetail() GithubComSugerioMarket
 
 // GetGcpRevenueRecordDetailOk returns a tuple with the GcpRevenueRecordDetail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RevenueRecordDetail) GetGcpRevenueRecordDetailOk() (*GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage, bool) {
+func (o *RevenueRecordDetail) GetGcpRevenueRecordDetailOk() (*GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage, bool) {
 	if o == nil || IsNil(o.GcpRevenueRecordDetail) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *RevenueRecordDetail) HasGcpRevenueRecordDetail() bool {
 	return false
 }
 
-// SetGcpRevenueRecordDetail gets a reference to the given GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage and assigns it to the GcpRevenueRecordDetail field.
-func (o *RevenueRecordDetail) SetGcpRevenueRecordDetail(v GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage) {
+// SetGcpRevenueRecordDetail gets a reference to the given GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage and assigns it to the GcpRevenueRecordDetail field.
+func (o *RevenueRecordDetail) SetGcpRevenueRecordDetail(v GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage) {
 	o.GcpRevenueRecordDetail = &v
 }
 

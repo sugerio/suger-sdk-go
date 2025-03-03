@@ -23,12 +23,14 @@ type OfferType string
 const (
 	OfferType_UNKNOWN                OfferType = "UNKNOWN"
 	OfferType_AMI                    OfferType = "AMI"
+	OfferType_APPLICATION            OfferType = "APPLICATION"
 	OfferType_CONTAINER              OfferType = "CONTAINER"
 	OfferType_CONTRACT               OfferType = "CONTRACT"
 	OfferType_CPPO_OUT               OfferType = "CPPO_OUT"
 	OfferType_CPPO_IN                OfferType = "CPPO_IN"
 	OfferType_CPPO                   OfferType = "CPPO"
 	OfferType_CUD                    OfferType = "CUD"
+	OfferType_DATA                   OfferType = "DATA"
 	OfferType_DEFAULT                OfferType = "DEFAULT"
 	OfferType_FIXED_FEE              OfferType = "FIXED_FEE"
 	OfferType_FIXED_FEE_WITH_OVERAGE OfferType = "FIXED_FEE_WITH_OVERAGE"
@@ -46,12 +48,14 @@ const (
 var AllowedOfferTypeEnumValues = []OfferType{
 	"UNKNOWN",
 	"AMI",
+	"APPLICATION",
 	"CONTAINER",
 	"CONTRACT",
 	"CPPO_OUT",
 	"CPPO_IN",
 	"CPPO",
 	"CUD",
+	"DATA",
 	"DEFAULT",
 	"FIXED_FEE",
 	"FIXED_FEE_WITH_OVERAGE",

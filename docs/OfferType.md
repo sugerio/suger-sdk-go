@@ -7,6 +7,8 @@
 
 * `OfferType_AMI` (value: `"AMI"`)
 
+* `OfferType_APPLICATION` (value: `"APPLICATION"`)
+
 * `OfferType_CONTAINER` (value: `"CONTAINER"`)
 
 * `OfferType_CONTRACT` (value: `"CONTRACT"`)
@@ -18,6 +20,8 @@
 * `OfferType_CPPO` (value: `"CPPO"`)
 
 * `OfferType_CUD` (value: `"CUD"`)
+
+* `OfferType_DATA` (value: `"DATA"`)
 
 * `OfferType_DEFAULT` (value: `"DEFAULT"`)
 

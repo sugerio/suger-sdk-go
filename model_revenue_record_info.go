@@ -21,15 +21,15 @@ var _ MappedNullable = &RevenueRecordInfo{}
 // RevenueRecordInfo struct for RevenueRecordInfo
 type RevenueRecordInfo struct {
 	// For raw revenue records in AWS Marketplace
-	AwsRevenueRecords []GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent `json:"awsRevenueRecords,omitempty"`
+	AwsRevenueRecords []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent `json:"awsRevenueRecords,omitempty"`
 	// For raw revenue records in Azure Marketplace
-	AzureRevenueRecords []GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue `json:"azureRevenueRecords,omitempty"`
+	AzureRevenueRecords []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue `json:"azureRevenueRecords,omitempty"`
 	// The credit amount used in the revenue record.
 	CreditAmount *float32 `json:"creditAmount,omitempty"`
 	// Whether the disbursement notification has been sent to the seller/ISV.
 	DisbursementNotificationSent *bool `json:"disbursementNotificationSent,omitempty"`
 	// For raw revenue records in GCP Marketplace
-	GcpRevenueRecords []GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage `json:"gcpRevenueRecords,omitempty"`
+	GcpRevenueRecords []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage `json:"gcpRevenueRecords,omitempty"`
 	// Source of the revenue record ID.
 	IdSource *string `json:"idSource,omitempty"`
 	// Resource name for the revenue record. Applicable only to GCP Marketplace.
@@ -54,9 +54,9 @@ func NewRevenueRecordInfoWithDefaults() *RevenueRecordInfo {
 }
 
 // GetAwsRevenueRecords returns the AwsRevenueRecords field value if set, zero value otherwise.
-func (o *RevenueRecordInfo) GetAwsRevenueRecords() []GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent {
+func (o *RevenueRecordInfo) GetAwsRevenueRecords() []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent {
 	if o == nil || IsNil(o.AwsRevenueRecords) {
-		var ret []GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent
+		var ret []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent
 		return ret
 	}
 	return o.AwsRevenueRecords
@@ -64,7 +64,7 @@ func (o *RevenueRecordInfo) GetAwsRevenueRecords() []GithubComSugerioMarketplace
 
 // GetAwsRevenueRecordsOk returns a tuple with the AwsRevenueRecords field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RevenueRecordInfo) GetAwsRevenueRecordsOk() ([]GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent, bool) {
+func (o *RevenueRecordInfo) GetAwsRevenueRecordsOk() ([]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent, bool) {
 	if o == nil || IsNil(o.AwsRevenueRecords) {
 		return nil, false
 	}
@@ -80,15 +80,15 @@ func (o *RevenueRecordInfo) HasAwsRevenueRecords() bool {
 	return false
 }
 
-// SetAwsRevenueRecords gets a reference to the given []GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent and assigns it to the AwsRevenueRecords field.
-func (o *RevenueRecordInfo) SetAwsRevenueRecords(v []GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent) {
+// SetAwsRevenueRecords gets a reference to the given []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent and assigns it to the AwsRevenueRecords field.
+func (o *RevenueRecordInfo) SetAwsRevenueRecords(v []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) {
 	o.AwsRevenueRecords = v
 }
 
 // GetAzureRevenueRecords returns the AzureRevenueRecords field value if set, zero value otherwise.
-func (o *RevenueRecordInfo) GetAzureRevenueRecords() []GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue {
+func (o *RevenueRecordInfo) GetAzureRevenueRecords() []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue {
 	if o == nil || IsNil(o.AzureRevenueRecords) {
-		var ret []GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue
+		var ret []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue
 		return ret
 	}
 	return o.AzureRevenueRecords
@@ -96,7 +96,7 @@ func (o *RevenueRecordInfo) GetAzureRevenueRecords() []GithubComSugerioMarketpla
 
 // GetAzureRevenueRecordsOk returns a tuple with the AzureRevenueRecords field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RevenueRecordInfo) GetAzureRevenueRecordsOk() ([]GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue, bool) {
+func (o *RevenueRecordInfo) GetAzureRevenueRecordsOk() ([]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue, bool) {
 	if o == nil || IsNil(o.AzureRevenueRecords) {
 		return nil, false
 	}
@@ -112,8 +112,8 @@ func (o *RevenueRecordInfo) HasAzureRevenueRecords() bool {
 	return false
 }
 
-// SetAzureRevenueRecords gets a reference to the given []GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue and assigns it to the AzureRevenueRecords field.
-func (o *RevenueRecordInfo) SetAzureRevenueRecords(v []GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue) {
+// SetAzureRevenueRecords gets a reference to the given []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue and assigns it to the AzureRevenueRecords field.
+func (o *RevenueRecordInfo) SetAzureRevenueRecords(v []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) {
 	o.AzureRevenueRecords = v
 }
 
@@ -182,9 +182,9 @@ func (o *RevenueRecordInfo) SetDisbursementNotificationSent(v bool) {
 }
 
 // GetGcpRevenueRecords returns the GcpRevenueRecords field value if set, zero value otherwise.
-func (o *RevenueRecordInfo) GetGcpRevenueRecords() []GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage {
+func (o *RevenueRecordInfo) GetGcpRevenueRecords() []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage {
 	if o == nil || IsNil(o.GcpRevenueRecords) {
-		var ret []GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage
+		var ret []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage
 		return ret
 	}
 	return o.GcpRevenueRecords
@@ -192,7 +192,7 @@ func (o *RevenueRecordInfo) GetGcpRevenueRecords() []GithubComSugerioMarketplace
 
 // GetGcpRevenueRecordsOk returns a tuple with the GcpRevenueRecords field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RevenueRecordInfo) GetGcpRevenueRecordsOk() ([]GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage, bool) {
+func (o *RevenueRecordInfo) GetGcpRevenueRecordsOk() ([]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage, bool) {
 	if o == nil || IsNil(o.GcpRevenueRecords) {
 		return nil, false
 	}
@@ -208,8 +208,8 @@ func (o *RevenueRecordInfo) HasGcpRevenueRecords() bool {
 	return false
 }
 
-// SetGcpRevenueRecords gets a reference to the given []GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage and assigns it to the GcpRevenueRecords field.
-func (o *RevenueRecordInfo) SetGcpRevenueRecords(v []GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage) {
+// SetGcpRevenueRecords gets a reference to the given []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage and assigns it to the GcpRevenueRecords field.
+func (o *RevenueRecordInfo) SetGcpRevenueRecords(v []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage) {
 	o.GcpRevenueRecords = v
 }
 

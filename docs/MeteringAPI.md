@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 ## DeleteUsageRecordGroup
 
-> MeteringUsageRecordGroup DeleteUsageRecordGroup(ctx, orgId, usageRecordGroupId).Execute()
+> MeteringUsageRecordGroup DeleteUsageRecordGroup(ctx, orgId, usageRecordGroupId).CreationDate(creationDate).Execute()
 
 delete usageRecordGroup
 
@@ -259,10 +259,11 @@ import (
 func main() {
 	orgId := "orgId_example" // string | Organization ID
 	usageRecordGroupId := "usageRecordGroupId_example" // string | UsageRecordGroup ID
+	creationDate := "creationDate_example" // string | UsageRecordGroup's creation date (UTC) in YYYY-MM-DD format (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MeteringAPI.DeleteUsageRecordGroup(context.Background(), orgId, usageRecordGroupId).Execute()
+	resp, r, err := apiClient.MeteringAPI.DeleteUsageRecordGroup(context.Background(), orgId, usageRecordGroupId).CreationDate(creationDate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MeteringAPI.DeleteUsageRecordGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -289,7 +290,7 @@ Other parameters are passed through a pointer to a apiDeleteUsageRecordGroupRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
+**creationDate** | **string** | UsageRecordGroup&#39;s creation date (UTC) in YYYY-MM-DD format |
 
 ### Return type
 
@@ -775,7 +776,7 @@ Name | Type | Description  | Notes
 
 ## RetryUsageRecordGroup
 
-> MeteringUsageRecordGroup RetryUsageRecordGroup(ctx, orgId, usageRecordGroupId).Execute()
+> MeteringUsageRecordGroup RetryUsageRecordGroup(ctx, orgId, usageRecordGroupId).CreationDate(creationDate).Execute()
 
 retry usageRecordGroup
 
@@ -796,10 +797,11 @@ import (
 func main() {
 	orgId := "orgId_example" // string | Organization ID
 	usageRecordGroupId := "usageRecordGroupId_example" // string | UsageRecordGroup ID
+	creationDate := "creationDate_example" // string | UsageRecordGroup's creation date (UTC) in YYYY-MM-DD format (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MeteringAPI.RetryUsageRecordGroup(context.Background(), orgId, usageRecordGroupId).Execute()
+	resp, r, err := apiClient.MeteringAPI.RetryUsageRecordGroup(context.Background(), orgId, usageRecordGroupId).CreationDate(creationDate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MeteringAPI.RetryUsageRecordGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -826,7 +828,7 @@ Other parameters are passed through a pointer to a apiRetryUsageRecordGroupReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
+**creationDate** | **string** | UsageRecordGroup&#39;s creation date (UTC) in YYYY-MM-DD format |
 
 ### Return type
 

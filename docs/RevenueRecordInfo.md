@@ -2,15 +2,15 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AwsRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent**](GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent.md) | For raw revenue records in AWS Marketplace | [optional] 
-**AzureRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue**](GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue.md) | For raw revenue records in Azure Marketplace | [optional] 
-**CreditAmount** | Pointer to **float32** | The credit amount used in the revenue record. | [optional] 
-**DisbursementNotificationSent** | Pointer to **bool** | Whether the disbursement notification has been sent to the seller/ISV. | [optional] 
-**GcpRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage**](GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage.md) | For raw revenue records in GCP Marketplace | [optional] 
-**IdSource** | Pointer to **string** | Source of the revenue record ID. | [optional] 
-**Resource** | Pointer to **string** | Resource name for the revenue record. Applicable only to GCP Marketplace. | [optional] 
+ Name                             | Type                                                                                                                                                                       | Description                                                               | Notes      
+----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|------------
+ **AwsRevenueRecords**            | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent.md) | For raw revenue records in AWS Marketplace                                | [optional] 
+ **AzureRevenueRecords**          | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue.md) | For raw revenue records in Azure Marketplace                              | [optional] 
+ **CreditAmount**                 | Pointer to **float32**                                                                                                                                                     | The credit amount used in the revenue record.                             | [optional] 
+ **DisbursementNotificationSent** | Pointer to **bool**                                                                                                                                                        | Whether the disbursement notification has been sent to the seller/ISV.    | [optional] 
+ **GcpRevenueRecords**            | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage.md)   | For raw revenue records in GCP Marketplace                                | [optional] 
+ **IdSource**                     | Pointer to **string**                                                                                                                                                      | Source of the revenue record ID.                                          | [optional] 
+ **Resource**                     | Pointer to **string**                                                                                                                                                      | Resource name for the revenue record. Applicable only to GCP Marketplace. | [optional] 
 
 ## Methods
 
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAwsRevenueRecords
 
-`func (o *RevenueRecordInfo) GetAwsRevenueRecords() []GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent`
+`func (o *RevenueRecordInfo) GetAwsRevenueRecords() []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent`
 
 GetAwsRevenueRecords returns the AwsRevenueRecords field if non-nil, zero value otherwise.
 
 ### GetAwsRevenueRecordsOk
 
-`func (o *RevenueRecordInfo) GetAwsRevenueRecordsOk() (*[]GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent, bool)`
+`func (o *RevenueRecordInfo) GetAwsRevenueRecordsOk() (*[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent, bool)`
 
 GetAwsRevenueRecordsOk returns a tuple with the AwsRevenueRecords field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAwsRevenueRecords
 
-`func (o *RevenueRecordInfo) SetAwsRevenueRecords(v []GithubComSugerioMarketplaceServiceRdsDbLibBillingAwsBillingEvent)`
+`func (o *RevenueRecordInfo) SetAwsRevenueRecords(v []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent)`
 
 SetAwsRevenueRecords sets AwsRevenueRecords field to given value.
 
@@ -58,20 +58,20 @@ HasAwsRevenueRecords returns a boolean if a field has been set.
 
 ### GetAzureRevenueRecords
 
-`func (o *RevenueRecordInfo) GetAzureRevenueRecords() []GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue`
+`func (o *RevenueRecordInfo) GetAzureRevenueRecords() []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue`
 
 GetAzureRevenueRecords returns the AzureRevenueRecords field if non-nil, zero value otherwise.
 
 ### GetAzureRevenueRecordsOk
 
-`func (o *RevenueRecordInfo) GetAzureRevenueRecordsOk() (*[]GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue, bool)`
+`func (o *RevenueRecordInfo) GetAzureRevenueRecordsOk() (*[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue, bool)`
 
 GetAzureRevenueRecordsOk returns a tuple with the AzureRevenueRecords field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAzureRevenueRecords
 
-`func (o *RevenueRecordInfo) SetAzureRevenueRecords(v []GithubComSugerioMarketplaceServiceRdsDbLibBillingAzureCmaRevenue)`
+`func (o *RevenueRecordInfo) SetAzureRevenueRecords(v []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue)`
 
 SetAzureRevenueRecords sets AzureRevenueRecords field to given value.
 
@@ -133,20 +133,20 @@ HasDisbursementNotificationSent returns a boolean if a field has been set.
 
 ### GetGcpRevenueRecords
 
-`func (o *RevenueRecordInfo) GetGcpRevenueRecords() []GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage`
+`func (o *RevenueRecordInfo) GetGcpRevenueRecords() []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage`
 
 GetGcpRevenueRecords returns the GcpRevenueRecords field if non-nil, zero value otherwise.
 
 ### GetGcpRevenueRecordsOk
 
-`func (o *RevenueRecordInfo) GetGcpRevenueRecordsOk() (*[]GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage, bool)`
+`func (o *RevenueRecordInfo) GetGcpRevenueRecordsOk() (*[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage, bool)`
 
 GetGcpRevenueRecordsOk returns a tuple with the GcpRevenueRecords field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGcpRevenueRecords
 
-`func (o *RevenueRecordInfo) SetGcpRevenueRecords(v []GithubComSugerioMarketplaceServiceRdsDbLibBillingGcpChargeUsage)`
+`func (o *RevenueRecordInfo) SetGcpRevenueRecords(v []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage)`
 
 SetGcpRevenueRecords sets GcpRevenueRecords field to given value.
 

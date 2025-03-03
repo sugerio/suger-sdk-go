@@ -35,11 +35,12 @@ type ProductInfo struct {
 	// The public offer's EULA type.
 	EulaType *EulaType `json:"eulaType,omitempty"`
 	// The public offer's EULA URL.
-	EulaUrl                  *string                `json:"eulaUrl,omitempty"`
-	GcpProduct               *GcpMarketplaceProduct `json:"gcpProduct,omitempty"`
-	RefundCancellationPolicy *string                `json:"refundCancellationPolicy,omitempty"`
-	SellerNotes              *string                `json:"sellerNotes,omitempty"`
-	StripeProduct            *StripeProduct         `json:"stripeProduct,omitempty"`
+	EulaUrl                  *string                                `json:"eulaUrl,omitempty"`
+	GcpProduct               *GcpMarketplaceProduct                 `json:"gcpProduct,omitempty"`
+	RefundCancellationPolicy *string                                `json:"refundCancellationPolicy,omitempty"`
+	SellerNotes              *string                                `json:"sellerNotes,omitempty"`
+	SnowflakeProduct         *PkgStructsSnowflakeMarketplaceProduct `json:"snowflakeProduct,omitempty"`
+	StripeProduct            *StripeProduct                         `json:"stripeProduct,omitempty"`
 }
 
 // NewProductInfo instantiates a new ProductInfo object
@@ -603,6 +604,38 @@ func (o *ProductInfo) SetSellerNotes(v string) {
 	o.SellerNotes = &v
 }
 
+// GetSnowflakeProduct returns the SnowflakeProduct field value if set, zero value otherwise.
+func (o *ProductInfo) GetSnowflakeProduct() PkgStructsSnowflakeMarketplaceProduct {
+	if o == nil || IsNil(o.SnowflakeProduct) {
+		var ret PkgStructsSnowflakeMarketplaceProduct
+		return ret
+	}
+	return *o.SnowflakeProduct
+}
+
+// GetSnowflakeProductOk returns a tuple with the SnowflakeProduct field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductInfo) GetSnowflakeProductOk() (*PkgStructsSnowflakeMarketplaceProduct, bool) {
+	if o == nil || IsNil(o.SnowflakeProduct) {
+		return nil, false
+	}
+	return o.SnowflakeProduct, true
+}
+
+// HasSnowflakeProduct returns a boolean if a field has been set.
+func (o *ProductInfo) HasSnowflakeProduct() bool {
+	if o != nil && !IsNil(o.SnowflakeProduct) {
+		return true
+	}
+
+	return false
+}
+
+// SetSnowflakeProduct gets a reference to the given PkgStructsSnowflakeMarketplaceProduct and assigns it to the SnowflakeProduct field.
+func (o *ProductInfo) SetSnowflakeProduct(v PkgStructsSnowflakeMarketplaceProduct) {
+	o.SnowflakeProduct = &v
+}
+
 // GetStripeProduct returns the StripeProduct field value if set, zero value otherwise.
 func (o *ProductInfo) GetStripeProduct() StripeProduct {
 	if o == nil || IsNil(o.StripeProduct) {
@@ -695,6 +728,9 @@ func (o ProductInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SellerNotes) {
 		toSerialize["sellerNotes"] = o.SellerNotes
+	}
+	if !IsNil(o.SnowflakeProduct) {
+		toSerialize["snowflakeProduct"] = o.SnowflakeProduct
 	}
 	if !IsNil(o.StripeProduct) {
 		toSerialize["stripeProduct"] = o.StripeProduct

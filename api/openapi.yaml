@@ -40,29 +40,21 @@ paths:
       operationId: ListAddons
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -89,20 +81,16 @@ paths:
       summary: list addons
       tags:
       - Billing
-      x-accepts:
-        - application/json
     post:
       description: Create an addon template
       operationId: CreateAddon
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -135,30 +123,23 @@ paths:
       tags:
       - Billing
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/addon/{addonId}:
     delete:
       description: Soft delete an addon template
       operationId: DeleteAddon
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Addon ID
-        explode: false
         in: path
         name: addonId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -183,28 +164,22 @@ paths:
       summary: delete addon
       tags:
       - Billing
-      x-accepts:
-        - application/json
     get:
       description: Get an addon template
       operationId: GetAddon
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Addon ID
-        explode: false
         in: path
         name: addonId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -229,28 +204,22 @@ paths:
       summary: get addon
       tags:
       - Billing
-      x-accepts:
-        - application/json
     patch:
       description: Update an addon template
       operationId: UpdateAddon
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Addon ID
-        explode: false
         in: path
         name: addonId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -283,29 +252,24 @@ paths:
       tags:
       - Billing
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/apiClient:
     get:
       description: List all API clients in the given organization.
       operationId: ListApiClients
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/github_com_sugerio_marketplace-service_rds-db_lib.IdentityApiClient'
+                  $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.IdentityApiClient'
                 type: array
           description: OK
         "400":
@@ -325,35 +289,29 @@ paths:
       summary: list api clients
       tags:
       - API
-      x-accepts:
-        - application/json
   /org/{orgId}/apiClient/{apiClientId}:
     get:
       description: Get the API client by ID.
       operationId: GetApiClient
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: API client ID
-        explode: false
         in: path
         name: apiClientId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/github_com_sugerio_marketplace-service_rds-db_lib.IdentityApiClient'
+                $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.IdentityApiClient'
           description: OK
         "400":
           content:
@@ -372,21 +330,17 @@ paths:
       summary: get api client
       tags:
       - API
-      x-accepts:
-        - application/json
   /org/{orgId}/batchCreateUsageRecordGroups:
     post:
       description: Batch report new usage record groups.
       operationId: BatchReportUsageRecordGroups
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -423,9 +377,6 @@ paths:
       tags:
       - Metering
       x-codegen-request-body-name: usageRecordGroups
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/batchValidateUsageRecordGroups:
     post:
       description: Provide a batch of usage record groups and validate each individual
@@ -433,13 +384,11 @@ paths:
       operationId: BatchValidateUsageRecordGroups
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -474,30 +423,22 @@ paths:
       tags:
       - Metering
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/billableMetric:
     get:
       description: list billable metrics for the given organization.
       operationId: ListBillableMetrics
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Status of the billable metric
-        explode: true
         in: query
         name: status
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -524,20 +465,16 @@ paths:
       summary: list billable metrics
       tags:
       - Metering
-      x-accepts:
-        - application/json
     post:
       description: Create a new billable metric for the given organization.
       operationId: CreateBillableMetric
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -570,9 +507,6 @@ paths:
       tags:
       - Metering
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/billableMetric/{billableMetricId}:
     get:
       description: Get the billable metric for the given organization and billable
@@ -580,21 +514,17 @@ paths:
       operationId: GetBillableMetric
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Billable Metric ID
-        explode: false
         in: path
         name: billableMetricId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -625,29 +555,23 @@ paths:
       summary: get billable metric
       tags:
       - Metering
-      x-accepts:
-        - application/json
     patch:
       description: "Update the name, description and status of the billable metric\
         \ for the given organization."
       operationId: UpdateBillableMetric
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Billable Metric ID
-        explode: false
         in: path
         name: billableMetricId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -686,9 +610,6 @@ paths:
       tags:
       - Metering
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/buyer:
     get:
       description: list buyers by the given organization with pagination and optional
@@ -696,53 +617,36 @@ paths:
       operationId: ListBuyers
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: filter by partner
-        explode: true
         in: query
         name: partner
-        required: false
         schema:
           type: string
-        style: form
       - description: filter by contactId
-        explode: true
         in: query
         name: contactId
-        required: false
         schema:
           type: string
-        style: form
       - description: filter by awsAccountId
-        explode: true
         in: query
         name: awsAccountId
-        required: false
         schema:
           type: string
-        style: form
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -760,20 +664,16 @@ paths:
       summary: list buyers
       tags:
       - Buyer
-      x-accepts:
-        - application/json
     post:
       description: create a new buyer for Stripe or Adyen under the given organization.
       operationId: CreateBuyer
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -806,30 +706,23 @@ paths:
       tags:
       - Buyer
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/buyer/{buyerId}:
     get:
       description: get buyer by the given organization and buyer id.
       operationId: GetBuyer
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Buyer ID
-        explode: false
         in: path
         name: buyerId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -860,28 +753,22 @@ paths:
       summary: get buyer
       tags:
       - Buyer
-      x-accepts:
-        - application/json
     patch:
       description: update buyer by the given organization and buyer id.
       operationId: UpdateBuyer
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Buyer ID
-        explode: false
         in: path
         name: buyerId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -908,38 +795,29 @@ paths:
       tags:
       - Buyer
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund:
     get:
       description: list refunds of the payment transactions.
       operationId: ListRefundOfPaymentTransaction
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Buyer ID
-        explode: false
         in: path
         name: buyerId
         required: true
         schema:
           type: string
-        style: simple
       - description: Payment transaction ID
-        explode: false
         in: path
         name: paymentTransactionId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -966,45 +844,35 @@ paths:
       summary: list refunds.
       tags:
       - Billing
-      x-accepts:
-        - application/json
     post:
       description: "create refund on the payment transaction, support partial refunds\
         \ multiple times."
       operationId: CreateRefund
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Buyer ID
-        explode: false
         in: path
         name: buyerId
         required: true
         schema:
           type: string
-        style: simple
       - description: Payment transaction ID
-        explode: false
         in: path
         name: paymentTransactionId
         required: true
         schema:
           type: string
-        style: simple
       - description: Refund amount
-        explode: true
         in: query
         name: amount
         required: true
         schema:
           type: number
-        style: form
       responses:
         "200":
           content:
@@ -1029,29 +897,23 @@ paths:
       summary: create refund.
       tags:
       - Billing
-      x-accepts:
-        - application/json
   /org/{orgId}/buyer/{buyerId}/wallet:
     get:
       description: list all wallets of a buyer.
       operationId: ListBuyerWallets
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Buyer ID
-        explode: false
         in: path
         name: buyerId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1078,28 +940,22 @@ paths:
       summary: list buyer's wallets
       tags:
       - Buyer
-      x-accepts:
-        - application/json
     post:
       description: create a new credit wallet for the buyer.
       operationId: CreateCreditWallet
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Buyer ID
-        explode: false
         in: path
         name: buyerId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1124,8 +980,6 @@ paths:
       summary: create credit wallet
       tags:
       - Buyer
-      x-accepts:
-        - application/json
   /org/{orgId}/buyer/{buyerId}/wallet/{walletId}:
     delete:
       description: "delete a wallet of the buyer, if it's a payment method, sync to\
@@ -1133,29 +987,23 @@ paths:
       operationId: DeleteBuyerWallet
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Buyer ID
-        explode: false
         in: path
         name: buyerId
         required: true
         schema:
           type: string
-        style: simple
       - description: Wallet ID
-        explode: false
         in: path
         name: walletId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1180,36 +1028,28 @@ paths:
       summary: delete buyer wallet
       tags:
       - Buyer
-      x-accepts:
-        - application/json
     patch:
       description: update startTime or expireTime of the wallet.
       operationId: UpdateCreditWallet
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Buyer ID
-        explode: false
         in: path
         name: buyerId
         required: true
         schema:
           type: string
-        style: simple
       - description: Wallet ID
-        explode: false
         in: path
         name: walletId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1234,8 +1074,6 @@ paths:
       summary: update credit wallet
       tags:
       - Buyer
-      x-accepts:
-        - application/json
   /org/{orgId}/buyer/{buyerId}/wallet/{walletId}/close:
     patch:
       description: "Close the given credit wallet, if it's a payment method, sync\
@@ -1243,29 +1081,23 @@ paths:
       operationId: CloseCreditWallet
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Buyer ID
-        explode: false
         in: path
         name: buyerId
         required: true
         schema:
           type: string
-        style: simple
       - description: Wallet ID
-        explode: false
         in: path
         name: walletId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1290,37 +1122,29 @@ paths:
       summary: close credit wallet
       tags:
       - Buyer
-      x-accepts:
-        - application/json
   /org/{orgId}/buyer/{buyerId}/wallet/{walletId}/default:
     patch:
       description: set a payment method wallet as buyer's default wallet.
       operationId: SetBuyerDefaultWallet
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Buyer ID
-        explode: false
         in: path
         name: buyerId
         required: true
         schema:
           type: string
-        style: simple
       - description: Wallet ID
-        explode: false
         in: path
         name: walletId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1345,37 +1169,27 @@ paths:
       summary: set buyer default wallet
       tags:
       - Buyer
-      x-accepts:
-        - application/json
   /org/{orgId}/contact:
     get:
       description: List all contacts under the given organization.
       operationId: ListContactsByOrganization
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -1402,21 +1216,17 @@ paths:
       summary: list contacts by organization
       tags:
       - Contact
-      x-accepts:
-        - application/json
     post:
       description: "Create a contact under the given organization. If the email address\
         \ already exists, return the existing contact."
       operationId: CreateContact
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1449,30 +1259,23 @@ paths:
       tags:
       - Contact
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/contact/{contactId}:
     get:
       description: Get the Contact by the given contact ID.
       operationId: GetContact
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Contact ID
-        explode: false
         in: path
         name: contactId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1497,8 +1300,6 @@ paths:
       summary: get contact
       tags:
       - Contact
-      x-accepts:
-        - application/json
     patch:
       description: update contact by the given organization and buyer id. The given
         name and information should be complete. Please note that this function does
@@ -1506,21 +1307,17 @@ paths:
       operationId: UpdateContact
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Contact ID
-        explode: false
         in: path
         name: contactId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1553,9 +1350,6 @@ paths:
       tags:
       - Contact
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/contact/{contactId}/buyer/{buyerId}:
     delete:
       description: "remove contact from buyer by the given organization, buyer id\
@@ -1563,29 +1357,23 @@ paths:
       operationId: RemoveContactFromBuyer
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Buyer ID
-        explode: false
         in: path
         name: buyerId
         required: true
         schema:
           type: string
-        style: simple
       - description: Contact ID
-        explode: false
         in: path
         name: contactId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1610,37 +1398,29 @@ paths:
       summary: remove contact from buyer
       tags:
       - Contact
-      x-accepts:
-        - application/json
     post:
       description: "add contact to buyer by the given organization, buyer id and contact\
         \ id."
       operationId: AddContactToBuyer
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Buyer ID
-        explode: false
         in: path
         name: buyerId
         required: true
         schema:
           type: string
-        style: simple
       - description: Contact ID
-        explode: false
         in: path
         name: contactId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1665,8 +1445,6 @@ paths:
       summary: add contact to buyer
       tags:
       - Contact
-      x-accepts:
-        - application/json
   /org/{orgId}/contact/{contactId}/offer/{offerId}:
     delete:
       description: "remove contact from offer by given organization, offer id and\
@@ -1674,29 +1452,23 @@ paths:
       operationId: RemoveContactFromOffer
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Contact ID
-        explode: false
         in: path
         name: contactId
         required: true
         schema:
           type: string
-        style: simple
       - description: Offer ID
-        explode: false
         in: path
         name: offerId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1721,37 +1493,29 @@ paths:
       summary: remove contact from offer
       tags:
       - Contact
-      x-accepts:
-        - application/json
     post:
       description: "add contact to offer by the given organization, offer id and contact\
         \ id."
       operationId: AddContactToOffer
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Contact ID
-        explode: false
         in: path
         name: contactId
         required: true
         schema:
           type: string
-        style: simple
       - description: Offer ID
-        explode: false
         in: path
         name: offerId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1776,8 +1540,6 @@ paths:
       summary: add contact to offer
       tags:
       - Contact
-      x-accepts:
-        - application/json
   /org/{orgId}/contact/batch:
     post:
       description: "Create multiple contacts under the given organization. If an email\
@@ -1785,13 +1547,11 @@ paths:
       operationId: BatchCreateContacts
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1830,9 +1590,6 @@ paths:
       tags:
       - Contact
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/dailyRevenueRecord:
     get:
       description: "list daily revenue records for the given organization, partner,\
@@ -1840,66 +1597,46 @@ paths:
       operationId: ListDailyRevenueRecords
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Cloud Partner
-        explode: true
         in: query
         name: partner
-        required: false
         schema:
           enum:
           - AWS
           - AZURE
           - GCP
           type: string
-        style: form
       - description: Filter daily revenue records by the given product ID
-        explode: true
         in: query
         name: productId
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter daily revenue records by the given buyer ID
-        explode: true
         in: query
         name: buyerId
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter daily revenue records by the given entitlement ID
-        explode: true
         in: query
         name: entitlementId
-        required: false
         schema:
           type: string
-        style: form
       - description: "start date (UTC) in YYYY-MM-DD format, default is 30 days before\
           \ the endDate"
-        explode: true
         in: query
         name: startDate
-        required: false
         schema:
           type: string
-        style: form
       - description: "end date (UTC) in YYYY-MM-DD format, default is today"
-        explode: true
         in: query
         name: endDate
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -1926,8 +1663,6 @@ paths:
       summary: list daily revenue records
       tags:
       - Report
-      x-accepts:
-        - application/json
   /org/{orgId}/draftOffer:
     post:
       description: "Create a new draft offer or update the existing draft offer. When\
@@ -1935,13 +1670,11 @@ paths:
       operationId: CreateOrUpdateDraftOffer
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1980,9 +1713,6 @@ paths:
       tags:
       - Offer
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/draftProduct:
     post:
       description: "Create a new draft product or update the existing draft product.\
@@ -1990,13 +1720,11 @@ paths:
       operationId: CreateOrUpdateDraftProduct
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2029,9 +1757,6 @@ paths:
       tags:
       - Product
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement:
     get:
       description: List entitlements under the given organization with pagination
@@ -2039,61 +1764,41 @@ paths:
       operationId: ListEntitlements
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: filter by partner
-        explode: true
         in: query
         name: partner
-        required: false
         schema:
           type: string
-        style: form
       - description: filter by productId
-        explode: true
         in: query
         name: productId
-        required: false
         schema:
           type: string
-        style: form
       - description: filter by offerId
-        explode: true
         in: query
         name: offerId
-        required: false
         schema:
           type: string
-        style: form
       - description: filter by buyerId
-        explode: true
         in: query
         name: buyerId
-        required: false
         schema:
           type: string
-        style: form
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -2120,21 +1825,17 @@ paths:
       summary: list entitlements
       tags:
       - Entitlement
-      x-accepts:
-        - application/json
     post:
       description: Create an new entitlement for the given buyer & offer. Only applicable
         to non cloud billing partners.
       operationId: CreateEntitlement
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2167,30 +1868,23 @@ paths:
       tags:
       - Entitlement
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}:
     get:
       description: Get the entitlement by ID.
       operationId: GetEntitlement
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2221,8 +1915,6 @@ paths:
       summary: get entitlement
       tags:
       - Entitlement
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}/addCredit:
     post:
       description: Add the credit amount to the given Entitlement. The credit amount
@@ -2230,21 +1922,17 @@ paths:
       operationId: AddEntitlementCredit
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2277,9 +1965,6 @@ paths:
       tags:
       - Entitlement
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}/addon:
     post:
       description: Apply one billing addon to the given Entitlement. The entitlement
@@ -2287,21 +1972,17 @@ paths:
       operationId: ApplyAddonToEntitlement
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2334,9 +2015,6 @@ paths:
       tags:
       - Entitlement
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}/approve:
     post:
       description: Approve the given Entitlement. Only applicable to the Azure or
@@ -2345,21 +2023,17 @@ paths:
       operationId: ApproveEntitlement
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2390,29 +2064,23 @@ paths:
       summary: approve entitlement
       tags:
       - Entitlement
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}/cancel:
     post:
       description: Cancel the active subscription in Azure Marketplace.
       operationId: CancelEntitlement
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2443,8 +2111,6 @@ paths:
       summary: cancel entitlement
       tags:
       - Entitlement
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}/divideCommit:
     post:
       description: Divide the commit equally from the given entitlement into sub entitlement
@@ -2452,21 +2118,17 @@ paths:
       operationId: DivideEntitlementCommit
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2499,35 +2161,28 @@ paths:
       tags:
       - Entitlement
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}/entitlementName:
     patch:
       description: Update the name of the given Entitlement.
       operationId: UpdateEntitlementName
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/github_com_sugerio_marketplace-service_rds-db_lib.UpdateEntitlementNameParams'
+              $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.UpdateEntitlementNameParams'
         description: UpdateEntitlementNameParams
         required: true
       responses:
@@ -2555,30 +2210,23 @@ paths:
       tags:
       - Entitlement
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}/entitlementTerm:
     get:
       description: List all Entitlement Terms of the given Entitlement.
       operationId: ListEntitlementTerms
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2605,8 +2253,6 @@ paths:
       summary: list entitlement terms
       tags:
       - Entitlement
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}/entitlementTerm/{entitlementTermId}:
     delete:
       description: Delete the entitlement term by the given entitlement ID and entitlement
@@ -2614,29 +2260,23 @@ paths:
       operationId: DeleteEntitlementTerm
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement Term ID
-        explode: false
         in: path
         name: entitlementTermId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2661,36 +2301,28 @@ paths:
       summary: delete entitlement term
       tags:
       - Entitlement
-      x-accepts:
-        - application/json
     get:
       description: Get the entitlement term by ID.
       operationId: GetEntitlementTerm
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement Term ID
-        explode: false
         in: path
         name: entitlementTermId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2715,328 +2347,23 @@ paths:
       summary: get entitlement term
       tags:
       - Entitlement
-      x-accepts:
-        - application/json
-  /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}:
-    get:
-      description: Get the invoice by ID
-      operationId: GetInvoice
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: orgId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Entitlement ID
-        explode: false
-        in: path
-        name: entitlementId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Invoice ID
-        explode: false
-        in: path
-        name: invoiceId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingInvoice'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Bad request error
-        "500":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Internal server error
-      security:
-      - APIKeyAuth: []
-      summary: get invoice
-      tags:
-      - Billing
-      x-accepts:
-        - application/json
-  /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/info:
-    patch:
-      description: "Update a draft invoice. Only DueDate, OverallDiscount, and Memo\
-        \ can be updated."
-      operationId: UpdateInvoiceInfo
-      parameters:
-        - description: Organization ID
-          explode: false
-          in: path
-          name: orgId
-          required: true
-          schema:
-            type: string
-          style: simple
-        - description: Entitlement ID
-          explode: false
-          in: path
-          name: entitlementId
-          required: true
-          schema:
-            type: string
-          style: simple
-        - description: Invoice ID
-          explode: false
-          in: path
-          name: invoiceId
-          required: true
-          schema:
-            type: string
-          style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateInvoiceInfoRequest'
-        description: Update Invoice Info Request Params
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingInvoiceInfo'
-          description: Updated Invoice info
-        "400":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Bad request error
-        "500":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Internal server error
-      security:
-        - APIKeyAuth: [ ]
-      summary: Update invoice info
-      tags:
-        - Billing
-      x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
-  /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/issue:
-    patch:
-      description: Issue the invoice immediately. It can be used for manual issue
-        or reissue invoice.
-      operationId: IssueInvoice
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: orgId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Entitlement ID
-        explode: false
-        in: path
-        name: entitlementId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Invoice ID
-        explode: false
-        in: path
-        name: invoiceId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              items:
-                type: string
-              type: array
-        description: List of Contact IDs
-        required: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingInvoice'
-          description: the issued Invoice
-        "400":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Bad request error
-        "500":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Internal server error
-      security:
-      - APIKeyAuth: []
-      summary: issue invoice
-      tags:
-      - Billing
-      x-codegen-request-body-name: contactIds
-      x-content-type: application/json
-      x-accepts:
-        - application/json
-  /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/pay:
-    patch:
-      description: Initiate the payment for the invoice immediately. It can be used
-        for manual payment or retry payment.
-      operationId: PayInvoice
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: orgId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Entitlement ID
-        explode: false
-        in: path
-        name: entitlementId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Invoice ID
-        explode: false
-        in: path
-        name: invoiceId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingInvoice'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Bad request error
-        "500":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Internal server error
-      security:
-      - APIKeyAuth: []
-      summary: pay invoice
-      tags:
-      - Billing
-      x-accepts:
-        - application/json
-  /org/{orgId}/entitlement/{entitlementId}/invoice/{invoiceId}/void:
-    patch:
-      description: Void the invoice. It can be used for manual void or cancel the
-        invoice.
-      operationId: VoidInvoice
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: orgId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Entitlement ID
-        explode: false
-        in: path
-        name: entitlementId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Invoice ID
-        explode: false
-        in: path
-        name: invoiceId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingInvoice'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Bad request error
-        "500":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Internal server error
-      security:
-      - APIKeyAuth: []
-      summary: void invoice
-      tags:
-      - Billing
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}/metaInfo:
     patch:
       description: Update the meta info of the given entitlement.
       operationId: UpdateEntitlementMetaInfo
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3069,30 +2396,23 @@ paths:
       tags:
       - Entitlement
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}/scheduleCancellation:
     post:
       description: Schedule the cancellation of the given Entitlement.
       operationId: ScheduleEntitlementCancellation
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3125,38 +2445,30 @@ paths:
       tags:
       - Entitlement
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}/seat:
     patch:
-      description: Update the seat number for the active AZURE subscription.
+      description: Update the seat number of the entitlement. Only active AZURE entitlement
+        can be updated.
       operationId: UpdateEntitlementSeat
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       - description: New seat number
-        explode: true
         in: query
         name: newSeat
         required: true
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -3178,32 +2490,26 @@ paths:
           description: Internal server error
       security:
       - APIKeyAuth: []
-      summary: update seat for the active AZURE subscription
+      summary: update entitlement seat
       tags:
       - Entitlement
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}/unscheduleCancellation:
     post:
       description: Unschedule the cancellation of the given Entitlement.
       operationId: UnscheduleEntitlementCancellation
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3228,8 +2534,6 @@ paths:
       summary: unschedule entitlement cancellation
       tags:
       - Entitlement
-      x-accepts:
-        - application/json
   /org/{orgId}/entitlement/{entitlementId}/usageRecordGroup:
     post:
       description: "It is recommended to provide the ID in the request body CreateUsageRecordGroupParams,\
@@ -3238,21 +2542,17 @@ paths:
       operationId: ReportUsageRecordGroup
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Entitlement ID
-        explode: false
         in: path
         name: entitlementId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3285,44 +2585,31 @@ paths:
       tags:
       - Metering
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/invoice:
     get:
       description: List invoices with pagination and filter by status (optional)
       operationId: ListInvoices
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: "Optional, filter by the entitlement ID"
-        explode: true
         in: query
         name: entitlementId
-        required: false
         schema:
           type: string
-        style: form
       - description: "Optional, filter by the given buyer ID"
-        explode: true
         in: query
         name: buyerId
-        required: false
         schema:
           type: string
-        style: form
       - description: "Optional, filter by invoice status as filter, if not provided,\
           \ all status invoices are returned"
-        explode: true
         in: query
         name: status
-        required: false
         schema:
           enum:
           - DRAFT
@@ -3331,23 +2618,16 @@ paths:
           - DELETED
           - ""
           type: string
-        style: form
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -3374,29 +2654,23 @@ paths:
       summary: list invoices
       tags:
       - Billing
-      x-accepts:
-        - application/json
   /org/{orgId}/invoice/{invoiceId}:
     get:
       description: Get the invoice by ID
       operationId: GetInvoiceV2
       parameters:
         - description: Organization ID
-          explode: false
           in: path
           name: orgId
           required: true
           schema:
             type: string
-          style: simple
         - description: Invoice ID
-          explode: false
           in: path
           name: invoiceId
           required: true
           schema:
             type: string
-          style: simple
       responses:
         "200":
           content:
@@ -3421,8 +2695,6 @@ paths:
       summary: get invoice
       tags:
         - Billing
-      x-accepts:
-        - application/json
   /org/{orgId}/invoice/{invoiceId}/info:
     patch:
       description: "Update a draft invoice. Only DueDate, OverallDiscount, and Memo\
@@ -3430,21 +2702,17 @@ paths:
       operationId: UpdateInvoiceInfoV2
       parameters:
         - description: Organization ID
-          explode: false
           in: path
           name: orgId
           required: true
           schema:
             type: string
-          style: simple
         - description: Invoice ID
-          explode: false
           in: path
           name: invoiceId
           required: true
           schema:
             type: string
-          style: simple
       requestBody:
         content:
           application/json:
@@ -3473,13 +2741,10 @@ paths:
           description: Internal server error
       security:
         - APIKeyAuth: [ ]
-      summary: Update invoice info
+      summary: update invoice info
       tags:
         - Billing
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/invoice/{invoiceId}/issue:
     patch:
       description: Issue the invoice immediately. It can be used for manual issue
@@ -3487,21 +2752,17 @@ paths:
       operationId: IssueInvoiceV2
       parameters:
         - description: Organization ID
-          explode: false
           in: path
           name: orgId
           required: true
           schema:
             type: string
-          style: simple
         - description: Invoice ID
-          explode: false
           in: path
           name: invoiceId
           required: true
           schema:
             type: string
-          style: simple
       requestBody:
         content:
           application/json:
@@ -3536,9 +2797,6 @@ paths:
       tags:
         - Billing
       x-codegen-request-body-name: contactIds
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/invoice/{invoiceId}/pay:
     patch:
       description: Initiate the payment for the invoice immediately. It can be used
@@ -3546,21 +2804,17 @@ paths:
       operationId: PayInvoiceV2
       parameters:
         - description: Organization ID
-          explode: false
           in: path
           name: orgId
           required: true
           schema:
             type: string
-          style: simple
         - description: Invoice ID
-          explode: false
           in: path
           name: invoiceId
           required: true
           schema:
             type: string
-          style: simple
       responses:
         "200":
           content:
@@ -3585,29 +2839,23 @@ paths:
       summary: pay invoice
       tags:
         - Billing
-      x-accepts:
-        - application/json
   /org/{orgId}/invoice/{invoiceId}/preview:
     get:
       description: Returns the preview HTML content of the invoice issued email.
-      operationId: GetInvoiceIssuedEmailPreview
+      operationId: PreviewInvoiceEmail
       parameters:
         - description: Organization ID
-          explode: false
           in: path
           name: orgId
           required: true
           schema:
             type: string
-          style: simple
         - description: Invoice ID
-          explode: false
           in: path
           name: invoiceId
           required: true
           schema:
             type: string
-          style: simple
       responses:
         "200":
           content:
@@ -3629,11 +2877,9 @@ paths:
           description: Internal server error
       security:
         - APIKeyAuth: [ ]
-      summary: Get the preview of the invoice issued email
+      summary: preview invoice email
       tags:
         - Billing
-      x-accepts:
-        - text/html
   /org/{orgId}/invoice/{invoiceId}/void:
     patch:
       description: Void the invoice. It can be used for manual void or cancel the
@@ -3641,21 +2887,17 @@ paths:
       operationId: VoidInvoiceV2
       parameters:
         - description: Organization ID
-          explode: false
           in: path
           name: orgId
           required: true
           schema:
             type: string
-          style: simple
         - description: Invoice ID
-          explode: false
           in: path
           name: invoiceId
           required: true
           schema:
             type: string
-          style: simple
       responses:
         "200":
           content:
@@ -3680,8 +2922,6 @@ paths:
       summary: void invoice
       tags:
         - Billing
-      x-accepts:
-        - application/json
   /org/{orgId}/notificationEvent:
     get:
       description: List the notification events of the given organization with pagination
@@ -3689,56 +2929,39 @@ paths:
       operationId: ListNotificationEvents
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: "start date (UTC) in YYYY-MM-DD format, default is 30 days before\
           \ the endDate"
-        explode: true
         in: query
         name: startDate
-        required: false
         schema:
           type: string
-        style: form
       - description: "end date (UTC) in YYYY-MM-DD format, default is today"
-        explode: true
         in: query
         name: endDate
-        required: false
         schema:
           type: string
-        style: form
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       - description: "Filter by priorities, empty means all priorities. Valid values\
           \ are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated\
           \ by comma."
-        explode: true
         in: query
         name: priorities
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -3763,8 +2986,6 @@ paths:
       summary: list notification events
       tags:
       - Notification
-      x-accepts:
-        - application/json
   /org/{orgId}/notificationEvent/{entityType}/{entityId}:
     get:
       description: List the notification events of the given organization and entity
@@ -3772,46 +2993,34 @@ paths:
       operationId: ListNotificationEventsByEntity
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: "Entity type, valid values are: PRODUCT, OFFER, ENTITLEMENT,\
           \ INTEGRATION etc."
-        explode: false
         in: path
         name: entityType
         required: true
         schema:
           type: string
-        style: simple
       - description: Entity ID
-        explode: false
         in: path
         name: entityId
         required: true
         schema:
           type: string
-        style: simple
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -3836,37 +3045,27 @@ paths:
       summary: list notification events by entity
       tags:
       - Notification
-      x-accepts:
-        - application/json
   /org/{orgId}/notificationMessage:
     get:
       description: List the notification messages of the given organization with pagination.
       operationId: ListNotificationMessages
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -3891,8 +3090,6 @@ paths:
       summary: list notification messages
       tags:
       - Notification
-      x-accepts:
-        - application/json
   /org/{orgId}/notificationMessage/{notificationMessageId}:
     get:
       description: Get the notification message of the organization & notification
@@ -3900,21 +3097,17 @@ paths:
       operationId: GetNotificationMessage
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Notification Message ID
-        explode: false
         in: path
         name: notificationMessageId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3939,8 +3132,6 @@ paths:
       summary: get notification message
       tags:
       - Notification
-      x-accepts:
-        - application/json
   /org/{orgId}/offer:
     get:
       description: List offers under the given organization with pagination and optional
@@ -3948,85 +3139,56 @@ paths:
       operationId: ListOffers
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: filter by offer status
-        explode: true
         in: query
         name: status
-        required: false
         schema:
           type: string
-        style: form
       - description: filter by partner
-        explode: true
         in: query
         name: partner
-        required: false
         schema:
           type: string
-        style: form
       - description: filter by offerType
-        explode: true
         in: query
         name: offerType
-        required: false
         schema:
           type: string
-        style: form
       - description: filter by productId
-        explode: true
         in: query
         name: productId
-        required: false
         schema:
           type: string
-        style: form
       - description: filter by buyerId
-        explode: true
         in: query
         name: buyerId
-        required: false
         schema:
           type: string
-        style: form
       - description: filter by hubspotDealId
-        explode: true
         in: query
         name: hubspotDealId
-        required: false
         schema:
           type: string
-        style: form
       - description: filter by contactId
-        explode: true
         in: query
         name: contactId
-        required: false
         schema:
           type: string
-        style: form
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -4059,20 +3221,16 @@ paths:
       summary: list offers
       tags:
       - Offer
-      x-accepts:
-        - application/json
     post:
       description: Create a private offer under the given organization.
       operationId: CreateOffer
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -4111,9 +3269,6 @@ paths:
       tags:
       - Offer
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/offer/{offerId}:
     delete:
       description: "The offer is soft deleted (marked as DELETED status) in Suger\
@@ -4122,21 +3277,17 @@ paths:
       operationId: DeleteOffer
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Offer ID
-        explode: false
         in: path
         name: offerId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -4167,28 +3318,22 @@ paths:
       summary: delete offer
       tags:
       - Offer
-      x-accepts:
-        - application/json
     get:
       description: Get the offer by the given offer ID.
       operationId: GetOffer
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Offer ID
-        explode: false
         in: path
         name: offerId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -4225,8 +3370,6 @@ paths:
       summary: get offer
       tags:
       - Offer
-      x-accepts:
-        - application/json
   /org/{orgId}/offer/{offerId}/cancel:
     post:
       description: "Only the offer with status = \"PENDING_ACCEPTANCE\", \"PENDING_CANCEL\"\
@@ -4234,21 +3377,17 @@ paths:
       operationId: CancelOffer
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Offer ID
-        explode: false
         in: path
         name: offerId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -4279,37 +3418,28 @@ paths:
       summary: cancel offer
       tags:
       - Offer
-      x-accepts:
-        - application/json
   /org/{orgId}/offer/{offerId}/eula:
     get:
       description: Get the EULA file of the given offer ID.
       operationId: GetOfferEula
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Offer ID
-        explode: false
         in: path
         name: offerId
         required: true
         schema:
           type: string
-        style: simple
       - description: response format in JSON or string
-        explode: true
         in: query
         name: format
-        required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -4340,8 +3470,6 @@ paths:
       summary: get offer EULA
       tags:
       - Offer
-      x-accepts:
-        - application/json
   /org/{orgId}/offer/{offerId}/extendExpiryDate:
     post:
       description: "Only the offer with status = \"PENDING_ACCEPTANCE\", \"EXPIRED\"\
@@ -4349,29 +3477,23 @@ paths:
       operationId: ExtendPrivateOfferExpiryDate
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Offer ID
-        explode: false
         in: path
         name: offerId
         required: true
         schema:
           type: string
-        style: simple
       - description: new expiry date in YYYY-MM-DD format
-        explode: true
         in: query
         name: newExpiryDate
         required: true
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -4402,29 +3524,23 @@ paths:
       summary: extend offer expiry date
       tags:
       - Offer
-      x-accepts:
-        - application/json
   /org/{orgId}/offer/{offerId}/metaInfo:
     patch:
       description: Update the meta info of the given offer.
       operationId: UpdateOfferMetaInfo
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Offer ID
-        explode: false
         in: path
         name: offerId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -4463,9 +3579,6 @@ paths:
       tags:
       - Offer
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/offer/{offerId}/notifyContacts:
     post:
       description: "Send offer notifications to the given contact ids. If contactIds\
@@ -4473,21 +3586,17 @@ paths:
       operationId: SendOfferNotifications
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Offer ID
-        explode: false
         in: path
         name: offerId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -4529,30 +3638,23 @@ paths:
       tags:
       - Offer
       x-codegen-request-body-name: contactIds
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/offer/{offerId}/resellerEula:
     get:
       description: Get the Reseller EULA file of the given offer ID.
       operationId: GetOfferResellerEula
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Offer ID
-        explode: false
         in: path
         name: offerId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -4583,29 +3685,23 @@ paths:
       summary: get offer reseller EULA
       tags:
       - Offer
-      x-accepts:
-        - application/json
   /org/{orgId}/offerExternalId/{offerExternalId}:
     get:
       description: Get the offer by the given offer external ID.
       operationId: GetOfferByExternalId
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Offer External ID
-        explode: false
         in: path
         name: offerExternalId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -4642,23 +3738,18 @@ paths:
       summary: get offer by external ID
       tags:
       - Offer
-      x-accepts:
-        - application/json
   /org/{orgId}/partner/{partner}/product:
     get:
       description: list all products under the given organization and cloud partner
       operationId: ListProductsByPartner
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Cloud Partner
-        explode: false
         in: path
         name: partner
         required: true
@@ -4668,7 +3759,6 @@ paths:
           - AZURE
           - GCP
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -4695,8 +3785,6 @@ paths:
       summary: list products by partner
       tags:
       - Product
-      x-accepts:
-        - application/json
   /org/{orgId}/partner/{partner}/revenueRecord:
     get:
       description: "list the revenue records for the given organization, product,\
@@ -4704,15 +3792,12 @@ paths:
       operationId: ListRevenueRecords
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Cloud Partner
-        explode: false
         in: path
         name: partner
         required: true
@@ -4722,64 +3807,42 @@ paths:
           - AZURE
           - GCP
           type: string
-        style: simple
       - description: Filter revenue records by the given product ID
-        explode: true
         in: query
         name: productId
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter revenue records by the given entitlement ID
-        explode: true
         in: query
         name: entitlementId
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter revenue records by the given buyer ID
-        explode: true
         in: query
         name: buyerId
-        required: false
         schema:
           type: string
-        style: form
       - description: "start date (UTC) in YYYY-MM-DD format, default is 30 days before\
           \ the endDate"
-        explode: true
         in: query
         name: startDate
-        required: false
         schema:
           type: string
-        style: form
       - description: "end date (UTC) in YYYY-MM-DD format, default is today"
-        explode: true
         in: query
         name: endDate
-        required: false
         schema:
           type: string
-        style: form
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -4804,8 +3867,6 @@ paths:
       summary: list revenue records
       tags:
       - Report
-      x-accepts:
-        - application/json
   /org/{orgId}/partner/{partner}/revenueRecordDetail:
     get:
       description: "list the raw revenue record details for the given organization,\
@@ -4813,15 +3874,12 @@ paths:
       operationId: ListRevenueRecordDetails
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Cloud Partner
-        explode: false
         in: path
         name: partner
         required: true
@@ -4831,64 +3889,42 @@ paths:
           - AZURE
           - GCP
           type: string
-        style: simple
       - description: Filter revenue record details by the given product ID
-        explode: true
         in: query
         name: productId
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter revenue record details by the given buyer ID
-        explode: true
         in: query
         name: buyerId
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter revenue record details by the given entitlement ID
-        explode: true
         in: query
         name: entitlementId
-        required: false
         schema:
           type: string
-        style: form
       - description: "start date (UTC) in YYYY-MM-DD format, default is 30 days before\
           \ the endDate"
-        explode: true
         in: query
         name: startDate
-        required: false
         schema:
           type: string
-        style: form
       - description: "end date (UTC) in YYYY-MM-DD format, default is today"
-        explode: true
         in: query
         name: endDate
-        required: false
         schema:
           type: string
-        style: form
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -4913,8 +3949,6 @@ paths:
       summary: list revenue record details
       tags:
       - Report
-      x-accepts:
-        - application/json
   /org/{orgId}/partner/{partner}/usageMeteringDailyRecord:
     get:
       description: "list the daily records of the usage metering from the cloud marketplace\
@@ -4922,15 +3956,12 @@ paths:
       operationId: ListUsageMeteringDailyRecords
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Filter by the Cloud Partner
-        explode: false
         in: path
         name: partner
         required: true
@@ -4940,57 +3971,38 @@ paths:
           - AZURE
           - GCP
           type: string
-        style: simple
       - description: Filter usage metering daily records by the given buyer ID
-        explode: true
         in: query
         name: buyerId
-        required: false
         schema:
           type: string
-        style: form
       - description: Filter usage metering daily records by the given entitlement
           ID
-        explode: true
         in: query
         name: entitlementId
-        required: false
         schema:
           type: string
-        style: form
       - description: "start date (UTC) in YYYY-MM-DD format, default is 30 days before\
           \ the endDate"
-        explode: true
         in: query
         name: startDate
-        required: false
         schema:
           type: string
-        style: form
       - description: "end date (UTC) in YYYY-MM-DD format, default is today"
-        explode: true
         in: query
         name: endDate
-        required: false
         schema:
           type: string
-        style: form
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -5015,50 +4027,35 @@ paths:
       summary: list usage metering daily records
       tags:
       - Report
-      x-accepts:
-        - application/json
   /org/{orgId}/paymentTransaction:
     get:
       description: List payment transactions with pagination and filters
       operationId: ListPaymentTransactions
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: "Optional, filter by the given buyer ID"
-        explode: true
         in: query
         name: buyerId
-        required: false
         schema:
           type: string
-        style: form
       - description: "Optional, filter by the given entitlement ID"
-        explode: true
         in: query
         name: entitlementId
-        required: false
         schema:
           type: string
-        style: form
       - description: "Optional, filter by the given invoice ID"
-        explode: true
         in: query
         name: invoiceId
-        required: false
         schema:
           type: string
-        style: form
       - description: "Optional, filter by status"
-        explode: true
         in: query
         name: status
-        required: false
         schema:
           enum:
           - PENDING
@@ -5066,34 +4063,24 @@ paths:
           - SUCCESS
           - FAILED
           type: string
-        style: form
       - description: "Optional, filter by transaction type"
-        explode: true
         in: query
         name: type
-        required: false
         schema:
           enum:
           - CHARGE
           - REFUND
           type: string
-        style: form
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -5120,26 +4107,20 @@ paths:
       summary: list payment transactions
       tags:
       - Billing
-      x-accepts:
-        - application/json
   /org/{orgId}/product:
     get:
       description: list all products under the given organization
       operationId: ListProducts
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: filter by partner
-        explode: true
         in: query
         name: partner
-        required: false
         schema:
           enum:
             - AWS
@@ -5147,23 +4128,16 @@ paths:
             - GCP
             - STRIPE
           type: string
-        style: form
       - description: "List pagination size, default 100, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -5190,20 +4164,16 @@ paths:
       summary: list products
       tags:
       - Product
-      x-accepts:
-        - application/json
     post:
       description: create a new product in the marketplace
       operationId: CreateProduct
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -5236,9 +4206,6 @@ paths:
       tags:
       - Product
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/product/{productId}:
     delete:
       description: The product is soft deleted (marked as DELETED status) in Suger
@@ -5246,21 +4213,17 @@ paths:
       operationId: DeleteProduct
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Product ID
-        explode: false
         in: path
         name: productId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -5291,28 +4254,22 @@ paths:
       summary: delete product
       tags:
       - Product
-      x-accepts:
-        - application/json
     get:
       description: get product by product id
       operationId: GetProduct
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Product ID
-        explode: false
         in: path
         name: productId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -5343,28 +4300,22 @@ paths:
       summary: get product
       tags:
       - Product
-      x-accepts:
-        - application/json
     patch:
       description: "update product info, no price update is allowed via this API."
       operationId: UpdateProduct
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Product ID
-        explode: false
         in: path
         name: productId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -5397,30 +4348,23 @@ paths:
       tags:
       - Product
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/product/{productId}/dimension:
     get:
       description: list all metering dimensions of the given product
       operationId: ListProductMeteringDimensions
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Product ID
-        explode: false
         in: path
         name: productId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -5453,29 +4397,23 @@ paths:
       summary: list metering dimensions of product
       tags:
       - Product
-      x-accepts:
-        - application/json
   /org/{orgId}/product/{productId}/fulfillmentUrl:
     patch:
       description: update the fulfillment url of the given product
       operationId: UpdateProductFulfillmentUrl
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Product ID
-        explode: false
         in: path
         name: productId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -5499,30 +4437,23 @@ paths:
       tags:
       - Product
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/product/{productId}/metaInfo:
     patch:
       description: Update the meta info of the given product.
       operationId: UpdateProductMetaInfo
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Product ID
-        explode: false
         in: path
         name: productId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -5555,30 +4486,23 @@ paths:
       tags:
       - Product
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/product/{productId}/publish:
     patch:
       description: publish the given product to the public status in the marketplace
       operationId: PublishProduct
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Product ID
-        explode: false
         in: path
         name: productId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -5617,9 +4541,6 @@ paths:
       tags:
       - Product
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/revenueReport:
     post:
       description: "Get the revenue report of the given organization, product, entitlement,\
@@ -5627,13 +4548,11 @@ paths:
       operationId: GetRevenueReport
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -5666,38 +4585,27 @@ paths:
       tags:
       - Report
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/support/ticket:
     get:
       description: list support tickets
       operationId: ListSupportTickets
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -5722,20 +4630,16 @@ paths:
       summary: list support tickets
       tags:
       - Support
-      x-accepts:
-        - application/json
     post:
       description: create support ticket
       operationId: CreateSupportTicket
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -5768,30 +4672,23 @@ paths:
       tags:
       - Support
       x-codegen-request-body-name: body
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/support/ticket/{ticketId}:
     get:
       description: get support ticket
       operationId: GetSupportTicket
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Ticket ID
-        explode: false
         in: path
         name: ticketId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -5816,28 +4713,22 @@ paths:
       summary: get support ticket
       tags:
       - Support
-      x-accepts:
-        - application/json
     patch:
       description: update support ticket
       operationId: UpdateSupportTicket
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Ticket ID
-        explode: false
         in: path
         name: ticketId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -5870,30 +4761,23 @@ paths:
       tags:
       - Support
       x-codegen-request-body-name: body
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/support/ticket/{ticketId}/attachment:
     post:
       description: create support ticket attachment
       operationId: CreateSupportTicketAttachment
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Ticket ID
-        explode: false
         in: path
         name: ticketId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           multipart/form-data:
@@ -5926,30 +4810,23 @@ paths:
       summary: create support ticket attachment
       tags:
       - Support
-      x-content-type: multipart/form-data
-      x-accepts:
-        - application/json
   /org/{orgId}/support/ticket/{ticketId}/close:
     patch:
       description: close suuport ticket
       operationId: CloseSupportTicket
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Ticket ID
-        explode: false
         in: path
         name: ticketId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -5974,29 +4851,23 @@ paths:
       summary: close support ticket
       tags:
       - Support
-      x-accepts:
-        - application/json
   /org/{orgId}/support/ticket/{ticketId}/comment:
     post:
       description: create support ticket comment
       operationId: CreateSupportTicketComment
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Ticket ID
-        explode: false
         in: path
         name: ticketId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -6029,30 +4900,23 @@ paths:
       tags:
       - Support
       x-codegen-request-body-name: body
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/support/ticket/{ticketId}/reopen:
     patch:
       description: reopen support ticket
       operationId: ReopenSupportTicket
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Ticket ID
-        explode: false
         in: path
         name: ticketId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -6077,21 +4941,17 @@ paths:
       summary: reopen support ticket
       tags:
       - Support
-      x-accepts:
-        - application/json
   /org/{orgId}/usageMeteringConfigInfo:
     get:
       description: Get the usage metering config info of the given organization.
       operationId: GetUsageMeteringConfigInfo
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -6116,20 +4976,16 @@ paths:
       summary: get usage metering config info
       tags:
       - Metering
-      x-accepts:
-        - application/json
     patch:
       description: Update the usage metering config info of the given organization.
       operationId: UpdateUsageMeteringConfigInfo
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -6162,9 +5018,6 @@ paths:
       tags:
       - Metering
       x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
   /org/{orgId}/usageRecordGroup:
     get:
       description: "List UsageRecordGroups by the given organization, partner, product,\
@@ -6173,48 +5026,35 @@ paths:
       operationId: ListUsageRecordGroups
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Cloud Partner
-        explode: true
         in: query
         name: partner
-        required: false
         schema:
           enum:
           - AWS
           - AZURE
           - GCP
           type: string
-        style: form
       - description: "filter by buyer ID, default no filter by buyerId if not provided"
-        explode: true
         in: query
         name: buyerId
-        required: false
         schema:
           type: string
-        style: form
       - description: "filter by entitlement ID, default no filter by entitlementId\
           \ if not provided"
-        explode: true
         in: query
         name: entitlementId
-        required: false
         schema:
           type: string
-        style: form
       - description: "The status of the usage record group, default no filter by status\
           \ if not provided"
-        explode: true
         in: query
         name: status
-        required: false
         schema:
           enum:
           - CREATED
@@ -6224,13 +5064,10 @@ paths:
           - REPORT_PENDING
           - REPORT_FAILED
           type: string
-        style: form
       - description: "The source of the usage record group, default no filter by source\
           \ if not provided"
-        explode: true
         in: query
         name: source
-        required: false
         schema:
           enum:
           - ""
@@ -6241,48 +5078,32 @@ paths:
           - ORB
           - STRIPE
           type: string
-        style: form
       - description: metaInfo filter
-        explode: true
         in: query
         name: metaInfo
-        required: false
         schema:
           type: string
-        style: form
       - description: "start date (UTC) in YYYY-MM-DD format, default is 30 days before\
           \ the endDate"
-        explode: true
         in: query
         name: startDate
-        required: false
         schema:
           type: string
-        style: form
       - description: "end date (UTC) in YYYY-MM-DD format, default is today"
-        explode: true
         in: query
         name: endDate
-        required: false
         schema:
           type: string
-        style: form
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -6307,8 +5128,6 @@ paths:
       summary: list usageRecordGroups
       tags:
       - Metering
-      x-accepts:
-        - application/json
   /org/{orgId}/usageRecordGroup/{usageRecordGroupId}:
     delete:
       description: delete the UsageRecordGroup for the given organization and usageRecordGroup
@@ -6316,21 +5135,22 @@ paths:
       operationId: DeleteUsageRecordGroup
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: UsageRecordGroup ID
-        explode: false
         in: path
         name: usageRecordGroupId
         required: true
         schema:
           type: string
-        style: simple
+      - description: UsageRecordGroup's creation date (UTC) in YYYY-MM-DD format
+        in: query
+        name: creationDate
+        schema:
+          type: string
       responses:
         "200":
           content:
@@ -6361,8 +5181,6 @@ paths:
       summary: delete usageRecordGroup
       tags:
       - Metering
-      x-accepts:
-        - application/json
   /org/{orgId}/usageRecordGroup/{usageRecordGroupId}/retry:
     post:
       description: "Retry the given UsageRecordGroup by setting from status \"REPORT_FAILED\"\
@@ -6371,21 +5189,22 @@ paths:
       operationId: RetryUsageRecordGroup
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: UsageRecordGroup ID
-        explode: false
         in: path
         name: usageRecordGroupId
         required: true
         schema:
           type: string
-        style: simple
+      - description: UsageRecordGroup's creation date (UTC) in YYYY-MM-DD format
+        in: query
+        name: creationDate
+        schema:
+          type: string
       responses:
         "200":
           content:
@@ -6416,8 +5235,6 @@ paths:
       summary: retry usageRecordGroup
       tags:
       - Metering
-      x-accepts:
-        - application/json
   /org/{orgId}/usageRecordReport:
     get:
       description: "List usageRecordReports under the given organization, partner,\
@@ -6425,74 +5242,51 @@ paths:
       operationId: ListUsageRecordReports
       parameters:
       - description: Organization ID
-        explode: false
         in: path
         name: orgId
         required: true
         schema:
           type: string
-        style: simple
       - description: Cloud Partner
-        explode: true
         in: query
         name: partner
-        required: false
         schema:
           enum:
           - AWS
           - AZURE
           - GCP
           type: string
-        style: form
       - description: buyer ID
-        explode: true
         in: query
         name: buyerId
-        required: false
         schema:
           type: string
-        style: form
       - description: entitlement ID
-        explode: true
         in: query
         name: entitlementId
-        required: false
         schema:
           type: string
-        style: form
       - description: "start date (UTC) in YYYY-MM-DD format, default is 30 days before\
           \ the endDate"
-        explode: true
         in: query
         name: startDate
-        required: false
         schema:
           type: string
-        style: form
       - description: "end date (UTC) in YYYY-MM-DD format, default is today"
-        explode: true
         in: query
         name: endDate
-        required: false
         schema:
           type: string
-        style: form
       - description: "List pagination size, default 1000, max value is 1000"
-        explode: true
         in: query
         name: limit
-        required: false
         schema:
           type: integer
-        style: form
       - description: "List pagination offset, default 0"
-        explode: true
         in: query
         name: offset
-        required: false
         schema:
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -6517,46 +5311,6 @@ paths:
       summary: list usageRecordReports
       tags:
       - Metering
-      x-accepts:
-        - application/json
-  /public/apiClient/accessToken:
-    post:
-      description: Get the Bearer Access Token by giving the Suger API Client ID &
-        Client Secret.
-      operationId: GetApiClientAccessToken
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GetApiClientAccessTokenParams'
-        description: Suger API Client
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiClientAccessToken'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Bad request error
-        "500":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Internal server error
-      summary: get api access token
-      tags:
-      - API
-      x-codegen-request-body-name: data
-      x-content-type: application/json
-      x-accepts:
-        - application/json
 components:
   schemas:
     AddEntitlementCreditParams:
@@ -7716,26 +6470,6 @@ components:
           items:
             $ref: '#/components/schemas/AlibabaMarketplaceProductSku'
           type: array
-      type: object
-    ApiClientAccessToken:
-      example:
-        access_token: access_token
-        expires_on: 2000-01-23T04:56:07.000+00:00
-        token_type: Bearer
-        expires_in: 0
-      properties:
-        access_token:
-          type: string
-        expires_in:
-          description: The token expires in 1 hour
-          type: integer
-        expires_on:
-          description: The UTC timestamp when the token expires
-          format: date-time
-          type: string
-        token_type:
-          default: Bearer
-          type: string
       type: object
     AuditingEventPriority:
       enum:
@@ -17924,6 +16658,7 @@ components:
       - WORKFLOW
       - WORKFLOW_EXECUTION
       - WORKFLOW_WEBHOOK
+      - CLICKUP_TASK_WEBHOOK
       type: string
       x-enum-varnames:
       - EntityType_UNKNOWN
@@ -17954,6 +16689,7 @@ components:
       - EntityType_WORKFLOW
       - EntityType_WORKFLOW_EXECUTION
       - EntityType_WORKFLOW_WEBHOOK
+      - EntityType_CLICKUP_TASK_WEBHOOK
     EulaType:
       enum:
       - ""
@@ -21701,25 +20437,6 @@ components:
             \ Open ID Connect."
           type: string
       type: object
-    GetApiClientAccessTokenParams:
-      example:
-        organizationID: organizationID
-        id: id
-        secret: secret
-      properties:
-        id:
-          description: The ID of the API Client.
-          type: string
-        organizationID:
-          type: string
-        secret:
-          description: The secret of the API Client.
-          type: string
-      required:
-      - id
-      - organizationID
-      - secret
-      type: object
     GetRevenueReportParams:
       example:
         organizationID: organizationID
@@ -23801,7 +22518,7 @@ components:
           type: object
         azureMeteringResponse:
           allOf:
-          - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_azure_sdk_marketplacemeteringv1.BatchUsageEventOkResponse'
+            - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.BatchUsageEventOkResponse'
           description: The raw response from Azure metering service.
           type: object
         commitAmount:
@@ -25351,12 +24068,14 @@ components:
       enum:
       - UNKNOWN
       - AMI
+      - APPLICATION
       - CONTAINER
       - CONTRACT
       - CPPO_OUT
       - CPPO_IN
       - CPPO
       - CUD
+      - DATA
       - DEFAULT
       - FIXED_FEE
       - FIXED_FEE_WITH_OVERAGE
@@ -25372,12 +24091,14 @@ components:
       x-enum-varnames:
       - OfferType_UNKNOWN
       - OfferType_AMI
+      - OfferType_APPLICATION
       - OfferType_CONTAINER
       - OfferType_CONTRACT
       - OfferType_CPPO_OUT
       - OfferType_CPPO_IN
       - OfferType_CPPO
       - OfferType_CUD
+      - OfferType_DATA
       - OfferType_DEFAULT
       - OfferType_FIXED_FEE
       - OfferType_FIXED_FEE_WITH_OVERAGE
@@ -27166,6 +25887,85 @@ components:
             Description: Description
         eulaUrl: eulaUrl
         sellerNotes: sellerNotes
+        snowflakeProduct:
+          UniformListingLocator:
+            valid: true
+            string: string
+          IsByRequest:
+            valid: true
+            bool: true
+          Owner:
+            valid: true
+            string: string
+          PublishedOn:
+            valid: true
+            time: time
+          DetailedTargetAccounts:
+            valid: true
+            string: string
+          RejectedOn:
+            valid: true
+            time: time
+          TargetAccounts:
+            valid: true
+            string: string
+          Profile:
+            valid: true
+            string: string
+          IsApplication:
+            valid: true
+            bool: true
+          IsLimitedTrial:
+            valid: true
+            bool: true
+          organizationProfileName:
+            valid: true
+            string: string
+          UpdatedOn:
+            valid: true
+            time: time
+          CreatedOn:
+            valid: true
+            time: time
+          Comment:
+            valid: true
+            string: string
+          IsMonetized:
+            valid: true
+            bool: true
+          Title:
+            valid: true
+            string: string
+          Regions:
+            valid: true
+            string: string
+          IsTargeted:
+            valid: true
+            bool: true
+          GlobalName:
+            valid: true
+            string: string
+          Subtitle:
+            valid: true
+            string: string
+          OwnerRoleType:
+            valid: true
+            string: string
+          ReviewState:
+            valid: true
+            string: string
+          State:
+            valid: true
+            string: string
+          Distribution:
+            valid: true
+            string: string
+          name:
+            valid: true
+            string: string
+          IsMountlessQueryable:
+            valid: true
+            bool: true
         azureProduct:
           availabilities:
           - visibility: visibility
@@ -28993,6 +27793,8 @@ components:
           type: string
         sellerNotes:
           type: string
+        snowflakeProduct:
+          $ref: '#/components/schemas/pkg_structs.SnowflakeMarketplaceProduct'
         stripeProduct:
           $ref: '#/components/schemas/StripeProduct'
       type: object
@@ -29267,17 +28069,17 @@ components:
       properties:
         awsRevenueRecordDetail:
           allOf:
-          - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_rds-db_lib.BillingAwsBillingEvent'
+            - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingAwsBillingEvent'
           description: For AWS Marketplace
           type: object
         azureRevenueRecordDetail:
           allOf:
-          - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_rds-db_lib.BillingAzureCmaRevenue'
+            - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingAzureCmaRevenue'
           description: For Azure Marketplace
           type: object
         gcpRevenueRecordDetail:
           allOf:
-          - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_rds-db_lib.BillingGcpChargeUsage'
+            - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingGcpChargeUsage'
           description: For GCP Marketplace
           type: object
       type: object
@@ -29472,12 +28274,12 @@ components:
         awsRevenueRecords:
           description: For raw revenue records in AWS Marketplace
           items:
-            $ref: '#/components/schemas/github_com_sugerio_marketplace-service_rds-db_lib.BillingAwsBillingEvent'
+            $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingAwsBillingEvent'
           type: array
         azureRevenueRecords:
           description: For raw revenue records in Azure Marketplace
           items:
-            $ref: '#/components/schemas/github_com_sugerio_marketplace-service_rds-db_lib.BillingAzureCmaRevenue'
+            $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingAzureCmaRevenue'
           type: array
         creditAmount:
           description: The credit amount used in the revenue record.
@@ -29489,7 +28291,7 @@ components:
         gcpRevenueRecords:
           description: For raw revenue records in GCP Marketplace
           items:
-            $ref: '#/components/schemas/github_com_sugerio_marketplace-service_rds-db_lib.BillingGcpChargeUsage'
+            $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingGcpChargeUsage'
           type: array
         idSource:
           description: Source of the revenue record ID.
@@ -35867,6 +34669,85 @@ components:
               Description: Description
           eulaUrl: eulaUrl
           sellerNotes: sellerNotes
+          snowflakeProduct:
+            UniformListingLocator:
+              valid: true
+              string: string
+            IsByRequest:
+              valid: true
+              bool: true
+            Owner:
+              valid: true
+              string: string
+            PublishedOn:
+              valid: true
+              time: time
+            DetailedTargetAccounts:
+              valid: true
+              string: string
+            RejectedOn:
+              valid: true
+              time: time
+            TargetAccounts:
+              valid: true
+              string: string
+            Profile:
+              valid: true
+              string: string
+            IsApplication:
+              valid: true
+              bool: true
+            IsLimitedTrial:
+              valid: true
+              bool: true
+            organizationProfileName:
+              valid: true
+              string: string
+            UpdatedOn:
+              valid: true
+              time: time
+            CreatedOn:
+              valid: true
+              time: time
+            Comment:
+              valid: true
+              string: string
+            IsMonetized:
+              valid: true
+              bool: true
+            Title:
+              valid: true
+              string: string
+            Regions:
+              valid: true
+              string: string
+            IsTargeted:
+              valid: true
+              bool: true
+            GlobalName:
+              valid: true
+              string: string
+            Subtitle:
+              valid: true
+              string: string
+            OwnerRoleType:
+              valid: true
+              string: string
+            ReviewState:
+              valid: true
+              string: string
+            State:
+              valid: true
+              string: string
+            Distribution:
+              valid: true
+              string: string
+            name:
+              valid: true
+              string: string
+            IsMountlessQueryable:
+              valid: true
+              bool: true
           azureProduct:
             availabilities:
             - visibility: visibility
@@ -38254,6 +37135,28 @@ components:
         Success:
           type: boolean
       type: object
+    database_sql.NullBool:
+      example:
+        valid: true
+        bool: true
+      properties:
+        bool:
+          type: boolean
+        valid:
+          description: Valid is true if Bool is not NULL
+          type: boolean
+      type: object
+    database_sql.NullString:
+      example:
+        valid: true
+        string: string
+      properties:
+        string:
+          type: string
+        valid:
+          description: Valid is true if String is not NULL
+          type: boolean
+      type: object
     database_sql.NullTime:
       example:
         valid: true
@@ -38282,120 +37185,7 @@ components:
             This member is required.
           type: string
       type: object
-    github_com_sugerio_marketplace-service_azure_sdk_marketplacemeteringv1.BatchUsageEventOkResponse:
-      properties:
-        count:
-          type: integer
-        result:
-          items:
-            $ref: '#/components/schemas/github_com_sugerio_marketplace-service_azure_sdk_marketplacemeteringv1.UsageBatchEventOkMessage'
-          type: array
-      type: object
-    github_com_sugerio_marketplace-service_azure_sdk_marketplacemeteringv1.UsageBatchEventOkMessage:
-      properties:
-        dimension:
-          description: Dimension identifier
-          type: string
-        effectiveStartTime:
-          description: Time in UTC when the usage event occurred
-          type: string
-        error:
-          $ref: '#/components/schemas/github_com_sugerio_marketplace-service_azure_sdk_marketplacemeteringv1.UsageEventConflictResponse'
-        messageTime:
-          description: Time this message was created in UTC
-          type: string
-        planId:
-          description: Plan associated with the purchased offer
-          type: string
-        quantity:
-          description: Number of units consumed
-          type: number
-        resourceId:
-          description: Identifier of the resource against which usage is emitted
-          type: string
-        resourceUri:
-          description: Identifier of the managed app resource against which usage
-            is emitted
-          type: string
-        status:
-          allOf:
-          - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_azure_sdk_marketplacemeteringv1.UsageEventStatusEnum'
-          description: Status of the operation.
-          type: object
-        usageEventId:
-          description: Unique identifier associated with the usage event
-          type: string
-      type: object
-    github_com_sugerio_marketplace-service_azure_sdk_marketplacemeteringv1.UsageEventConflictResponse:
-      properties:
-        additionalInfo:
-          $ref: '#/components/schemas/github_com_sugerio_marketplace-service_azure_sdk_marketplacemeteringv1.UsageEventConflictResponseAdditionalInfo'
-        code:
-          type: string
-        message:
-          type: string
-      type: object
-    github_com_sugerio_marketplace-service_azure_sdk_marketplacemeteringv1.UsageEventConflictResponseAdditionalInfo:
-      properties:
-        acceptedMessage:
-          $ref: '#/components/schemas/github_com_sugerio_marketplace-service_azure_sdk_marketplacemeteringv1.UsageEventOkResponse'
-      type: object
-    github_com_sugerio_marketplace-service_azure_sdk_marketplacemeteringv1.UsageEventOkResponse:
-      properties:
-        dimension:
-          description: Dimension identifier
-          type: string
-        effectiveStartTime:
-          description: Time in UTC when the usage event occurred
-          type: string
-        messageTime:
-          description: Time this message was created in UTC
-          type: string
-        planId:
-          description: Plan associated with the purchased offer
-          type: string
-        quantity:
-          description: Number of units consumed
-          type: number
-        resourceId:
-          description: Identifier of the resource against which usage is emitted
-          type: string
-        resourceUri:
-          description: Identifier of the managed app resource against which usage
-            is emitted
-          type: string
-        status:
-          allOf:
-          - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_azure_sdk_marketplacemeteringv1.UsageEventStatusEnum'
-          description: Status of the operation.
-          type: object
-        usageEventId:
-          description: Unique identifier associated with the usage event
-          type: string
-      type: object
-    github_com_sugerio_marketplace-service_azure_sdk_marketplacemeteringv1.UsageEventStatusEnum:
-      enum:
-      - Accepted
-      - Expired
-      - Duplicate
-      - Error
-      - ResourceNotFound
-      - ResourceNotAuthorized
-      - InvalidDimension
-      - InvalidQuantity
-      - BadArgument
-      type: string
-      x-enum-varnames:
-      - UsageEventStatusEnumAccepted
-      - UsageEventStatusEnumExpired
-      - UsageEventStatusEnumDuplicate
-      - UsageEventStatusEnumError
-      - UsageEventStatusEnumResourceNotFound
-      - UsageEventStatusEnumResourceNotAuthorized
-      - UsageEventStatusEnumInvalidDimension
-      - UsageEventStatusEnumInvalidQuantity
-      - UsageEventStatusEnumBadArgument
-    github_com_sugerio_marketplace-service_rds-db_lib.BillingAwsBillingEvent:
+    github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingAwsBillingEvent:
       example:
         brokerID: brokerID
         usagePeriodStartDate:
@@ -38493,7 +37283,7 @@ components:
         usagePeriodStartDate:
           $ref: '#/components/schemas/database_sql.NullTime'
       type: object
-    github_com_sugerio_marketplace-service_rds-db_lib.BillingAzureCmaRevenue:
+    github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingAzureCmaRevenue:
       example:
         purchaseRecordID: purchaseRecordID
         revenueUsd: 7.061401241503109
@@ -38558,7 +37348,7 @@ components:
         termStartDate:
           type: string
       type: object
-    github_com_sugerio_marketplace-service_rds-db_lib.BillingGcpChargeUsage:
+    github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingGcpChargeUsage:
       example:
         productID: productID
         usage: 1.1730742509559433
@@ -38646,7 +37436,7 @@ components:
         withheld:
           type: number
       type: object
-    github_com_sugerio_marketplace-service_rds-db_lib.IdentityApiClient:
+    github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.IdentityApiClient:
       example:
         organizationID: organizationID
         role: role
@@ -38684,7 +37474,7 @@ components:
         type:
           type: string
       type: object
-    github_com_sugerio_marketplace-service_rds-db_lib.UpdateEntitlementNameParams:
+    github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.UpdateEntitlementNameParams:
       properties:
         id:
           type: string
@@ -38693,6 +37483,119 @@ components:
         organizationID:
           type: string
       type: object
+    github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.BatchUsageEventOkResponse:
+      properties:
+        count:
+          type: integer
+        result:
+          items:
+            $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageBatchEventOkMessage'
+          type: array
+      type: object
+    github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageBatchEventOkMessage:
+      properties:
+        dimension:
+          description: Dimension identifier
+          type: string
+        effectiveStartTime:
+          description: Time in UTC when the usage event occurred
+          type: string
+        error:
+          $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventConflictResponse'
+        messageTime:
+          description: Time this message was created in UTC
+          type: string
+        planId:
+          description: Plan associated with the purchased offer
+          type: string
+        quantity:
+          description: Number of units consumed
+          type: number
+        resourceId:
+          description: Identifier of the resource against which usage is emitted
+          type: string
+        resourceUri:
+          description: Identifier of the managed app resource against which usage
+            is emitted
+          type: string
+        status:
+          allOf:
+            - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventStatusEnum'
+          description: Status of the operation.
+          type: object
+        usageEventId:
+          description: Unique identifier associated with the usage event
+          type: string
+      type: object
+    github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventConflictResponse:
+      properties:
+        additionalInfo:
+          $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventConflictResponseAdditionalInfo'
+        code:
+          type: string
+        message:
+          type: string
+      type: object
+    github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventConflictResponseAdditionalInfo:
+      properties:
+        acceptedMessage:
+          $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventOkResponse'
+      type: object
+    github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventOkResponse:
+      properties:
+        dimension:
+          description: Dimension identifier
+          type: string
+        effectiveStartTime:
+          description: Time in UTC when the usage event occurred
+          type: string
+        messageTime:
+          description: Time this message was created in UTC
+          type: string
+        planId:
+          description: Plan associated with the purchased offer
+          type: string
+        quantity:
+          description: Number of units consumed
+          type: number
+        resourceId:
+          description: Identifier of the resource against which usage is emitted
+          type: string
+        resourceUri:
+          description: Identifier of the managed app resource against which usage
+            is emitted
+          type: string
+        status:
+          allOf:
+            - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventStatusEnum'
+          description: Status of the operation.
+          type: object
+        usageEventId:
+          description: Unique identifier associated with the usage event
+          type: string
+      type: object
+    github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventStatusEnum:
+      enum:
+        - Accepted
+        - Expired
+        - Duplicate
+        - Error
+        - ResourceNotFound
+        - ResourceNotAuthorized
+        - InvalidDimension
+        - InvalidQuantity
+        - BadArgument
+      type: string
+      x-enum-varnames:
+        - UsageEventStatusEnumAccepted
+        - UsageEventStatusEnumExpired
+        - UsageEventStatusEnumDuplicate
+        - UsageEventStatusEnumError
+        - UsageEventStatusEnumResourceNotFound
+        - UsageEventStatusEnumResourceNotAuthorized
+        - UsageEventStatusEnumInvalidDimension
+        - UsageEventStatusEnumInvalidQuantity
+        - UsageEventStatusEnumBadArgument
     marketplacemetering.BatchMeterUsageOutput:
       properties:
         resultMetadata:
@@ -38718,6 +37621,140 @@ components:
           type: array
       type: object
     middleware.Metadata:
+      type: object
+    pkg_structs.SnowflakeMarketplaceProduct:
+      example:
+        UniformListingLocator:
+          valid: true
+          string: string
+        IsByRequest:
+          valid: true
+          bool: true
+        Owner:
+          valid: true
+          string: string
+        PublishedOn:
+          valid: true
+          time: time
+        DetailedTargetAccounts:
+          valid: true
+          string: string
+        RejectedOn:
+          valid: true
+          time: time
+        TargetAccounts:
+          valid: true
+          string: string
+        Profile:
+          valid: true
+          string: string
+        IsApplication:
+          valid: true
+          bool: true
+        IsLimitedTrial:
+          valid: true
+          bool: true
+        organizationProfileName:
+          valid: true
+          string: string
+        UpdatedOn:
+          valid: true
+          time: time
+        CreatedOn:
+          valid: true
+          time: time
+        Comment:
+          valid: true
+          string: string
+        IsMonetized:
+          valid: true
+          bool: true
+        Title:
+          valid: true
+          string: string
+        Regions:
+          valid: true
+          string: string
+        IsTargeted:
+          valid: true
+          bool: true
+        GlobalName:
+          valid: true
+          string: string
+        Subtitle:
+          valid: true
+          string: string
+        OwnerRoleType:
+          valid: true
+          string: string
+        ReviewState:
+          valid: true
+          string: string
+        State:
+          valid: true
+          string: string
+        Distribution:
+          valid: true
+          string: string
+        name:
+          valid: true
+          string: string
+        IsMountlessQueryable:
+          valid: true
+          bool: true
+      properties:
+        Comment:
+          $ref: '#/components/schemas/database_sql.NullString'
+        CreatedOn:
+          $ref: '#/components/schemas/database_sql.NullTime'
+        DetailedTargetAccounts:
+          $ref: '#/components/schemas/database_sql.NullString'
+        Distribution:
+          $ref: '#/components/schemas/database_sql.NullString'
+        GlobalName:
+          $ref: '#/components/schemas/database_sql.NullString'
+        IsApplication:
+          $ref: '#/components/schemas/database_sql.NullBool'
+        IsByRequest:
+          $ref: '#/components/schemas/database_sql.NullBool'
+        IsLimitedTrial:
+          $ref: '#/components/schemas/database_sql.NullBool'
+        IsMonetized:
+          $ref: '#/components/schemas/database_sql.NullBool'
+        IsMountlessQueryable:
+          $ref: '#/components/schemas/database_sql.NullBool'
+        IsTargeted:
+          $ref: '#/components/schemas/database_sql.NullBool'
+        Owner:
+          $ref: '#/components/schemas/database_sql.NullString'
+        OwnerRoleType:
+          $ref: '#/components/schemas/database_sql.NullString'
+        Profile:
+          $ref: '#/components/schemas/database_sql.NullString'
+        PublishedOn:
+          $ref: '#/components/schemas/database_sql.NullTime'
+        Regions:
+          $ref: '#/components/schemas/database_sql.NullString'
+        RejectedOn:
+          $ref: '#/components/schemas/database_sql.NullTime'
+        ReviewState:
+          $ref: '#/components/schemas/database_sql.NullString'
+        State:
+          $ref: '#/components/schemas/database_sql.NullString'
+        Subtitle:
+          $ref: '#/components/schemas/database_sql.NullString'
+        TargetAccounts:
+          $ref: '#/components/schemas/database_sql.NullString'
+        Title:
+          $ref: '#/components/schemas/database_sql.NullString'
+        UniformListingLocator:
+          $ref: '#/components/schemas/database_sql.NullString'
+        UpdatedOn:
+          $ref: '#/components/schemas/database_sql.NullTime'
+        name:
+          $ref: '#/components/schemas/database_sql.NullString'
+        organizationProfileName:
+          $ref: '#/components/schemas/database_sql.NullString'
       type: object
     servicecontrol.ReportError:
       properties:

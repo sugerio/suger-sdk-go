@@ -34,7 +34,7 @@ type MeteringUsageRecordReportInfo struct {
 	// The raw request to call Azure metering service.
 	AzureMeteringRequest *AzureMarketplaceMeteringBatchUsageEvent `json:"azureMeteringRequest,omitempty"`
 	// The raw response from Azure metering service.
-	AzureMeteringResponse *GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse `json:"azureMeteringResponse,omitempty"`
+	AzureMeteringResponse *GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse `json:"azureMeteringResponse,omitempty"`
 	// The amount of the commit if applicable.
 	CommitAmount *float32 `json:"commitAmount,omitempty"`
 	// The amount of the credit if applicable.
@@ -291,9 +291,9 @@ func (o *MeteringUsageRecordReportInfo) SetAzureMeteringRequest(v AzureMarketpla
 }
 
 // GetAzureMeteringResponse returns the AzureMeteringResponse field value if set, zero value otherwise.
-func (o *MeteringUsageRecordReportInfo) GetAzureMeteringResponse() GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse {
+func (o *MeteringUsageRecordReportInfo) GetAzureMeteringResponse() GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse {
 	if o == nil || IsNil(o.AzureMeteringResponse) {
-		var ret GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse
+		var ret GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse
 		return ret
 	}
 	return *o.AzureMeteringResponse
@@ -301,7 +301,7 @@ func (o *MeteringUsageRecordReportInfo) GetAzureMeteringResponse() GithubComSuge
 
 // GetAzureMeteringResponseOk returns a tuple with the AzureMeteringResponse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MeteringUsageRecordReportInfo) GetAzureMeteringResponseOk() (*GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse, bool) {
+func (o *MeteringUsageRecordReportInfo) GetAzureMeteringResponseOk() (*GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse, bool) {
 	if o == nil || IsNil(o.AzureMeteringResponse) {
 		return nil, false
 	}
@@ -317,8 +317,8 @@ func (o *MeteringUsageRecordReportInfo) HasAzureMeteringResponse() bool {
 	return false
 }
 
-// SetAzureMeteringResponse gets a reference to the given GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse and assigns it to the AzureMeteringResponse field.
-func (o *MeteringUsageRecordReportInfo) SetAzureMeteringResponse(v GithubComSugerioMarketplaceServiceAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse) {
+// SetAzureMeteringResponse gets a reference to the given GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse and assigns it to the AzureMeteringResponse field.
+func (o *MeteringUsageRecordReportInfo) SetAzureMeteringResponse(v GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse) {
 	o.AzureMeteringResponse = &v
 }
 

@@ -1631,22 +1631,22 @@ func (a *EntitlementAPIService) ListEntitlementsExecute(r ApiListEntitlementsReq
 	localVarFormParams := url.Values{}
 
 	if r.partner != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "", "")
 	}
 	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "", "")
 	}
 	if r.offerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offerId", r.offerId, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offerId", r.offerId, "", "")
 	}
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2195,11 +2195,11 @@ type ApiUpdateEntitlementNameRequest struct {
 	ApiService    *EntitlementAPIService
 	orgId         string
 	entitlementId string
-	data          *GithubComSugerioMarketplaceServiceRdsDbLibUpdateEntitlementNameParams
+	data          *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibUpdateEntitlementNameParams
 }
 
 // UpdateEntitlementNameParams
-func (r ApiUpdateEntitlementNameRequest) Data(data GithubComSugerioMarketplaceServiceRdsDbLibUpdateEntitlementNameParams) ApiUpdateEntitlementNameRequest {
+func (r ApiUpdateEntitlementNameRequest) Data(data GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibUpdateEntitlementNameParams) ApiUpdateEntitlementNameRequest {
 	r.data = &data
 	return r
 }
@@ -2364,9 +2364,9 @@ func (r ApiUpdateEntitlementSeatRequest) Execute() (*WorkloadEntitlement, *http.
 }
 
 /*
-UpdateEntitlementSeat update seat for the active AZURE subscription
+UpdateEntitlementSeat update entitlement seat
 
-Update the seat number for the active AZURE subscription.
+Update the seat number of the entitlement. Only active AZURE entitlement can be updated.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Organization ID
@@ -2409,7 +2409,7 @@ func (a *EntitlementAPIService) UpdateEntitlementSeatExecute(r ApiUpdateEntitlem
 		return localVarReturnValue, nil, reportError("newSeat is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "newSeat", r.newSeat, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "newSeat", r.newSeat, "", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
