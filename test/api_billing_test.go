@@ -82,15 +82,14 @@ func Test_suger_BillingAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BillingAPIService GetInvoice", func(t *testing.T) {
+	t.Run("Test BillingAPIService GetInvoiceV2", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var orgId string
-		var entitlementId string
 		var invoiceId string
 
-		resp, httpRes, err := apiClient.BillingAPI.GetInvoice(context.Background(), orgId, entitlementId, invoiceId).Execute()
+		resp, httpRes, err := apiClient.BillingAPI.GetInvoiceV2(context.Background(), orgId, invoiceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -98,15 +97,14 @@ func Test_suger_BillingAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BillingAPIService IssueInvoice", func(t *testing.T) {
+	t.Run("Test BillingAPIService IssueInvoiceV2", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var orgId string
-		var entitlementId string
 		var invoiceId string
 
-		resp, httpRes, err := apiClient.BillingAPI.IssueInvoice(context.Background(), orgId, entitlementId, invoiceId).Execute()
+		resp, httpRes, err := apiClient.BillingAPI.IssueInvoiceV2(context.Background(), orgId, invoiceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -172,15 +170,29 @@ func Test_suger_BillingAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BillingAPIService PayInvoice", func(t *testing.T) {
+	t.Run("Test BillingAPIService PayInvoiceV2", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var orgId string
-		var entitlementId string
 		var invoiceId string
 
-		resp, httpRes, err := apiClient.BillingAPI.PayInvoice(context.Background(), orgId, entitlementId, invoiceId).Execute()
+		resp, httpRes, err := apiClient.BillingAPI.PayInvoiceV2(context.Background(), orgId, invoiceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BillingAPIService PreviewInvoiceEmail", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var invoiceId string
+
+		resp, httpRes, err := apiClient.BillingAPI.PreviewInvoiceEmail(context.Background(), orgId, invoiceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -203,15 +215,29 @@ func Test_suger_BillingAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BillingAPIService VoidInvoice", func(t *testing.T) {
+	t.Run("Test BillingAPIService UpdateInvoiceInfoV2", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var orgId string
-		var entitlementId string
 		var invoiceId string
 
-		resp, httpRes, err := apiClient.BillingAPI.VoidInvoice(context.Background(), orgId, entitlementId, invoiceId).Execute()
+		resp, httpRes, err := apiClient.BillingAPI.UpdateInvoiceInfoV2(context.Background(), orgId, invoiceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BillingAPIService VoidInvoiceV2", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var orgId string
+		var invoiceId string
+
+		resp, httpRes, err := apiClient.BillingAPI.VoidInvoiceV2(context.Background(), orgId, invoiceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

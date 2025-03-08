@@ -825,7 +825,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **partner** | **string** | filter by partner | 
- **productId** | **string** | filter by productId | 
+ **productId** | **string** | filter by productId |
  **offerId** | **string** | filter by offerId |
  **buyerId** | **string** | filter by buyerId |
  **externalId** | **string** | filter by externalId |
