@@ -38,13 +38,19 @@ type BillingInvoiceInfo struct {
 	// The creation date of the invoice when the status of the invoice may be draft or issued. It may be different from the issue date.
 	CreationDate *time.Time `json:"creationDate,omitempty"`
 	Currency     *string    `json:"currency,omitempty"`
-	Description  *string    `json:"description,omitempty"`
+	// The amount of the committed amount that has been deducted from the usage. It works only when IsMeteringOverageCommit is true.
+	DeductedCommitAmount *int32 `json:"deductedCommitAmount,omitempty"`
+	// The ID of the commit invoice that has been deducted from the usage. It works only when IsMeteringOverageCommit is true.
+	DeductedCommitInvoiceID *string `json:"deductedCommitInvoiceID,omitempty"`
+	Description             *string `json:"description,omitempty"`
 	// Due amount = SubtotalAmount + TaxAmount - AdjustOverallDiscount
 	DueAmount *float32 `json:"dueAmount,omitempty"`
 	// DueDate = IssueDate + NetTerm
 	DueDate *time.Time `json:"dueDate,omitempty"`
 	// Grace Period in number of days
 	GracePeriodInDays *int32 `json:"gracePeriodInDays,omitempty"`
+	// Whether the usage metering is charged for the amount that exceeds the committed amount from the entitlement.
+	IsMeteringOverageCommit *bool `json:"isMeteringOverageCommit,omitempty"`
 	// IssueDate, issue invoice automatically when CreationDate + GracePeriod, or issue invoice manually IssueDate >= CreationDate && IssueDate <= CreationDate + GracePeriod
 	IssueDate *time.Time `json:"issueDate,omitempty"`
 	Memo      *string    `json:"memo,omitempty"`
@@ -401,6 +407,70 @@ func (o *BillingInvoiceInfo) SetCurrency(v string) {
 	o.Currency = &v
 }
 
+// GetDeductedCommitAmount returns the DeductedCommitAmount field value if set, zero value otherwise.
+func (o *BillingInvoiceInfo) GetDeductedCommitAmount() int32 {
+	if o == nil || IsNil(o.DeductedCommitAmount) {
+		var ret int32
+		return ret
+	}
+	return *o.DeductedCommitAmount
+}
+
+// GetDeductedCommitAmountOk returns a tuple with the DeductedCommitAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInvoiceInfo) GetDeductedCommitAmountOk() (*int32, bool) {
+	if o == nil || IsNil(o.DeductedCommitAmount) {
+		return nil, false
+	}
+	return o.DeductedCommitAmount, true
+}
+
+// HasDeductedCommitAmount returns a boolean if a field has been set.
+func (o *BillingInvoiceInfo) HasDeductedCommitAmount() bool {
+	if o != nil && !IsNil(o.DeductedCommitAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeductedCommitAmount gets a reference to the given int32 and assigns it to the DeductedCommitAmount field.
+func (o *BillingInvoiceInfo) SetDeductedCommitAmount(v int32) {
+	o.DeductedCommitAmount = &v
+}
+
+// GetDeductedCommitInvoiceID returns the DeductedCommitInvoiceID field value if set, zero value otherwise.
+func (o *BillingInvoiceInfo) GetDeductedCommitInvoiceID() string {
+	if o == nil || IsNil(o.DeductedCommitInvoiceID) {
+		var ret string
+		return ret
+	}
+	return *o.DeductedCommitInvoiceID
+}
+
+// GetDeductedCommitInvoiceIDOk returns a tuple with the DeductedCommitInvoiceID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInvoiceInfo) GetDeductedCommitInvoiceIDOk() (*string, bool) {
+	if o == nil || IsNil(o.DeductedCommitInvoiceID) {
+		return nil, false
+	}
+	return o.DeductedCommitInvoiceID, true
+}
+
+// HasDeductedCommitInvoiceID returns a boolean if a field has been set.
+func (o *BillingInvoiceInfo) HasDeductedCommitInvoiceID() bool {
+	if o != nil && !IsNil(o.DeductedCommitInvoiceID) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeductedCommitInvoiceID gets a reference to the given string and assigns it to the DeductedCommitInvoiceID field.
+func (o *BillingInvoiceInfo) SetDeductedCommitInvoiceID(v string) {
+	o.DeductedCommitInvoiceID = &v
+}
+
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *BillingInvoiceInfo) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
@@ -527,6 +597,38 @@ func (o *BillingInvoiceInfo) HasGracePeriodInDays() bool {
 // SetGracePeriodInDays gets a reference to the given int32 and assigns it to the GracePeriodInDays field.
 func (o *BillingInvoiceInfo) SetGracePeriodInDays(v int32) {
 	o.GracePeriodInDays = &v
+}
+
+// GetIsMeteringOverageCommit returns the IsMeteringOverageCommit field value if set, zero value otherwise.
+func (o *BillingInvoiceInfo) GetIsMeteringOverageCommit() bool {
+	if o == nil || IsNil(o.IsMeteringOverageCommit) {
+		var ret bool
+		return ret
+	}
+	return *o.IsMeteringOverageCommit
+}
+
+// GetIsMeteringOverageCommitOk returns a tuple with the IsMeteringOverageCommit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInvoiceInfo) GetIsMeteringOverageCommitOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsMeteringOverageCommit) {
+		return nil, false
+	}
+	return o.IsMeteringOverageCommit, true
+}
+
+// HasIsMeteringOverageCommit returns a boolean if a field has been set.
+func (o *BillingInvoiceInfo) HasIsMeteringOverageCommit() bool {
+	if o != nil && !IsNil(o.IsMeteringOverageCommit) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsMeteringOverageCommit gets a reference to the given bool and assigns it to the IsMeteringOverageCommit field.
+func (o *BillingInvoiceInfo) SetIsMeteringOverageCommit(v bool) {
+	o.IsMeteringOverageCommit = &v
 }
 
 // GetIssueDate returns the IssueDate field value if set, zero value otherwise.
@@ -889,6 +991,12 @@ func (o BillingInvoiceInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
 	}
+	if !IsNil(o.DeductedCommitAmount) {
+		toSerialize["deductedCommitAmount"] = o.DeductedCommitAmount
+	}
+	if !IsNil(o.DeductedCommitInvoiceID) {
+		toSerialize["deductedCommitInvoiceID"] = o.DeductedCommitInvoiceID
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -900,6 +1008,9 @@ func (o BillingInvoiceInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GracePeriodInDays) {
 		toSerialize["gracePeriodInDays"] = o.GracePeriodInDays
+	}
+	if !IsNil(o.IsMeteringOverageCommit) {
+		toSerialize["isMeteringOverageCommit"] = o.IsMeteringOverageCommit
 	}
 	if !IsNil(o.IssueDate) {
 		toSerialize["issueDate"] = o.IssueDate

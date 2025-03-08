@@ -42,6 +42,8 @@ type EntitlementInfo struct {
 	BillableDimensions []BillableDimension `json:"billableDimensions,omitempty"`
 	// Billing Cycle
 	BillingCycle *BillingCycle `json:"billingCycle,omitempty"`
+	// The billing interval from the offer.
+	BillingIntervalInMonths *int32 `json:"billingIntervalInMonths,omitempty"`
 	// The amount that the seller can collect. It excludes the marketplace commision fee.
 	CollectableAmount *float32 `json:"collectableAmount,omitempty"`
 	// The amount that the buyer has committed to pay. It can be the sum of payment installments if applicable.
@@ -68,6 +70,8 @@ type EntitlementInfo struct {
 	GrossAmount *float32 `json:"grossAmount,omitempty"`
 	// The amount that the buyer has got invoiced.
 	InvoicedAmount *float32 `json:"invoicedAmount,omitempty"`
+	// Whether the usage metering will be charged for the amount that exceeds the committed amount from the offer.
+	IsMeteringOverageCommit *bool `json:"isMeteringOverageCommit,omitempty"`
 	// The net terms for the offer. It is same as the TrialConfig in DirectOfferInfo. But can be overridden at the entitlement level.
 	NetTermsInDays *int32 `json:"netTermsInDays,omitempty"`
 	// For flexible payment schedules
@@ -449,6 +453,38 @@ func (o *EntitlementInfo) HasBillingCycle() bool {
 // SetBillingCycle gets a reference to the given BillingCycle and assigns it to the BillingCycle field.
 func (o *EntitlementInfo) SetBillingCycle(v BillingCycle) {
 	o.BillingCycle = &v
+}
+
+// GetBillingIntervalInMonths returns the BillingIntervalInMonths field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetBillingIntervalInMonths() int32 {
+	if o == nil || IsNil(o.BillingIntervalInMonths) {
+		var ret int32
+		return ret
+	}
+	return *o.BillingIntervalInMonths
+}
+
+// GetBillingIntervalInMonthsOk returns a tuple with the BillingIntervalInMonths field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetBillingIntervalInMonthsOk() (*int32, bool) {
+	if o == nil || IsNil(o.BillingIntervalInMonths) {
+		return nil, false
+	}
+	return o.BillingIntervalInMonths, true
+}
+
+// HasBillingIntervalInMonths returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasBillingIntervalInMonths() bool {
+	if o != nil && !IsNil(o.BillingIntervalInMonths) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingIntervalInMonths gets a reference to the given int32 and assigns it to the BillingIntervalInMonths field.
+func (o *EntitlementInfo) SetBillingIntervalInMonths(v int32) {
+	o.BillingIntervalInMonths = &v
 }
 
 // GetCollectableAmount returns the CollectableAmount field value if set, zero value otherwise.
@@ -899,6 +935,38 @@ func (o *EntitlementInfo) SetInvoicedAmount(v float32) {
 	o.InvoicedAmount = &v
 }
 
+// GetIsMeteringOverageCommit returns the IsMeteringOverageCommit field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetIsMeteringOverageCommit() bool {
+	if o == nil || IsNil(o.IsMeteringOverageCommit) {
+		var ret bool
+		return ret
+	}
+	return *o.IsMeteringOverageCommit
+}
+
+// GetIsMeteringOverageCommitOk returns a tuple with the IsMeteringOverageCommit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetIsMeteringOverageCommitOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsMeteringOverageCommit) {
+		return nil, false
+	}
+	return o.IsMeteringOverageCommit, true
+}
+
+// HasIsMeteringOverageCommit returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasIsMeteringOverageCommit() bool {
+	if o != nil && !IsNil(o.IsMeteringOverageCommit) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsMeteringOverageCommit gets a reference to the given bool and assigns it to the IsMeteringOverageCommit field.
+func (o *EntitlementInfo) SetIsMeteringOverageCommit(v bool) {
+	o.IsMeteringOverageCommit = &v
+}
+
 // GetNetTermsInDays returns the NetTermsInDays field value if set, zero value otherwise.
 func (o *EntitlementInfo) GetNetTermsInDays() int32 {
 	if o == nil || IsNil(o.NetTermsInDays) {
@@ -1166,6 +1234,9 @@ func (o EntitlementInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BillingCycle) {
 		toSerialize["billingCycle"] = o.BillingCycle
 	}
+	if !IsNil(o.BillingIntervalInMonths) {
+		toSerialize["billingIntervalInMonths"] = o.BillingIntervalInMonths
+	}
 	if !IsNil(o.CollectableAmount) {
 		toSerialize["collectableAmount"] = o.CollectableAmount
 	}
@@ -1207,6 +1278,9 @@ func (o EntitlementInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.InvoicedAmount) {
 		toSerialize["invoicedAmount"] = o.InvoicedAmount
+	}
+	if !IsNil(o.IsMeteringOverageCommit) {
+		toSerialize["isMeteringOverageCommit"] = o.IsMeteringOverageCommit
 	}
 	if !IsNil(o.NetTermsInDays) {
 		toSerialize["netTermsInDays"] = o.NetTermsInDays

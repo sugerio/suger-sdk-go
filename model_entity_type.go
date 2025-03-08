@@ -49,7 +49,6 @@ const (
 	EntityType_WORKFLOW              EntityType = "WORKFLOW"
 	EntityType_WORKFLOW_EXECUTION    EntityType = "WORKFLOW_EXECUTION"
 	EntityType_WORKFLOW_WEBHOOK      EntityType = "WORKFLOW_WEBHOOK"
-	EntityType_CLICKUP_TASK_WEBHOOK  EntityType = "CLICKUP_TASK_WEBHOOK"
 )
 
 // All allowed values of EntityType enum
@@ -82,7 +81,6 @@ var AllowedEntityTypeEnumValues = []EntityType{
 	"WORKFLOW",
 	"WORKFLOW_EXECUTION",
 	"WORKFLOW_WEBHOOK",
-	"CLICKUP_TASK_WEBHOOK",
 }
 
 func (v *EntityType) UnmarshalJSON(src []byte) error {

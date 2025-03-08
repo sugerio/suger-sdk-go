@@ -51,13 +51,15 @@ type OfferInfo struct {
 	BillableDimensions []BillableDimension `json:"billableDimensions,omitempty"`
 	// Billing Cycle for the offer.
 	BillingCycle *BillingCycle `json:"billingCycle,omitempty"`
+	// Billing interval in months for the offer.
+	BillingIntervalInMonths *int32 `json:"billingIntervalInMonths,omitempty"`
 	// The buyers' AWS Account IDs of this offer.
 	BuyerAwsAccountIds []string `json:"buyerAwsAccountIds,omitempty"`
 	// The buyers' Azure tenants of this offer.
 	BuyerAzureTenants []AzureAudience `json:"buyerAzureTenants,omitempty"`
 	// The amount that the buyer has committed to pay, before discount if applicable. It can be monthly commitment or total commitment. For frontend display or analysis purposes, not used for billing.
 	CommitAmount *float32 `json:"commitAmount,omitempty"`
-	// Billing interval in months for commitDimensions
+	// Deprecated: Use BillingIntervalInMonths instead.
 	CommitBillingIntervalInMonths *int32 `json:"commitBillingIntervalInMonths,omitempty"`
 	// Recurring flat fee for the offer, managed by cloud marketplaces or Suger.
 	Commits []CommitDimension `json:"commits,omitempty"`
@@ -92,6 +94,8 @@ type OfferInfo struct {
 	GcpUsagePlanPriceModel *GcpMarketplaceUsagePlanPriceModel `json:"gcpUsagePlanPriceModel,omitempty"`
 	// The grace period in days for the offer. This is the number of days during which invoices remain in draft status, for reviewing. This filed can be overridden at the entitlement level.
 	GracePeriodInDays *int32 `json:"gracePeriodInDays,omitempty"`
+	// Whether the usage metering will only be charged for the amount that exceeds the committed amount. e.g. the buyer has committed $100, and the usage is $120, - if true, the buyer will be charged for the usage at $20, and the commit at $100. - if false, the buyer will be charged for the usage at $120, and the commit at $100.
+	IsMeteringOverageCommit *bool `json:"isMeteringOverageCommit,omitempty"`
 	// The net terms in days for the offer. This is the number of days the buyer has to pay the invoice. This filed can be overridden at the entitlement level.
 	NetTermsInDays *int32 `json:"netTermsInDays,omitempty"`
 	// For flexible payment schedule, managed by cloud marketplaces or Suger.
@@ -115,7 +119,7 @@ type OfferInfo struct {
 	TaxIds []string `json:"taxIds,omitempty"`
 	// The offer for Direct. Only applicable for Direct offers. It is used in Stripe, Adyen, and other direct payment providers. The trial configuration for the offer.
 	TrialConfig *TrialConfig `json:"trialConfig,omitempty"`
-	// Billing interval in months for billableDimensions
+	// Deprecated: Use BillingIntervalInMonths instead.
 	UsageBillingIntervalInMonths *int32 `json:"usageBillingIntervalInMonths,omitempty"`
 	// The default visibility of offer is PRIVATE.
 	Visibility *string `json:"visibility,omitempty"`
@@ -616,6 +620,38 @@ func (o *OfferInfo) HasBillingCycle() bool {
 // SetBillingCycle gets a reference to the given BillingCycle and assigns it to the BillingCycle field.
 func (o *OfferInfo) SetBillingCycle(v BillingCycle) {
 	o.BillingCycle = &v
+}
+
+// GetBillingIntervalInMonths returns the BillingIntervalInMonths field value if set, zero value otherwise.
+func (o *OfferInfo) GetBillingIntervalInMonths() int32 {
+	if o == nil || IsNil(o.BillingIntervalInMonths) {
+		var ret int32
+		return ret
+	}
+	return *o.BillingIntervalInMonths
+}
+
+// GetBillingIntervalInMonthsOk returns a tuple with the BillingIntervalInMonths field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OfferInfo) GetBillingIntervalInMonthsOk() (*int32, bool) {
+	if o == nil || IsNil(o.BillingIntervalInMonths) {
+		return nil, false
+	}
+	return o.BillingIntervalInMonths, true
+}
+
+// HasBillingIntervalInMonths returns a boolean if a field has been set.
+func (o *OfferInfo) HasBillingIntervalInMonths() bool {
+	if o != nil && !IsNil(o.BillingIntervalInMonths) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingIntervalInMonths gets a reference to the given int32 and assigns it to the BillingIntervalInMonths field.
+func (o *OfferInfo) SetBillingIntervalInMonths(v int32) {
+	o.BillingIntervalInMonths = &v
 }
 
 // GetBuyerAwsAccountIds returns the BuyerAwsAccountIds field value if set, zero value otherwise.
@@ -1322,6 +1358,38 @@ func (o *OfferInfo) SetGracePeriodInDays(v int32) {
 	o.GracePeriodInDays = &v
 }
 
+// GetIsMeteringOverageCommit returns the IsMeteringOverageCommit field value if set, zero value otherwise.
+func (o *OfferInfo) GetIsMeteringOverageCommit() bool {
+	if o == nil || IsNil(o.IsMeteringOverageCommit) {
+		var ret bool
+		return ret
+	}
+	return *o.IsMeteringOverageCommit
+}
+
+// GetIsMeteringOverageCommitOk returns a tuple with the IsMeteringOverageCommit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OfferInfo) GetIsMeteringOverageCommitOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsMeteringOverageCommit) {
+		return nil, false
+	}
+	return o.IsMeteringOverageCommit, true
+}
+
+// HasIsMeteringOverageCommit returns a boolean if a field has been set.
+func (o *OfferInfo) HasIsMeteringOverageCommit() bool {
+	if o != nil && !IsNil(o.IsMeteringOverageCommit) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsMeteringOverageCommit gets a reference to the given bool and assigns it to the IsMeteringOverageCommit field.
+func (o *OfferInfo) SetIsMeteringOverageCommit(v bool) {
+	o.IsMeteringOverageCommit = &v
+}
+
 // GetNetTermsInDays returns the NetTermsInDays field value if set, zero value otherwise.
 func (o *OfferInfo) GetNetTermsInDays() int32 {
 	if o == nil || IsNil(o.NetTermsInDays) {
@@ -1857,6 +1925,9 @@ func (o OfferInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BillingCycle) {
 		toSerialize["billingCycle"] = o.BillingCycle
 	}
+	if !IsNil(o.BillingIntervalInMonths) {
+		toSerialize["billingIntervalInMonths"] = o.BillingIntervalInMonths
+	}
 	if !IsNil(o.BuyerAwsAccountIds) {
 		toSerialize["buyerAwsAccountIds"] = o.BuyerAwsAccountIds
 	}
@@ -1922,6 +1993,9 @@ func (o OfferInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GracePeriodInDays) {
 		toSerialize["gracePeriodInDays"] = o.GracePeriodInDays
+	}
+	if !IsNil(o.IsMeteringOverageCommit) {
+		toSerialize["isMeteringOverageCommit"] = o.IsMeteringOverageCommit
 	}
 	if !IsNil(o.NetTermsInDays) {
 		toSerialize["netTermsInDays"] = o.NetTermsInDays

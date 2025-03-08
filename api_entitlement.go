@@ -1539,15 +1539,17 @@ func (a *EntitlementAPIService) ListEntitlementTermsExecute(r ApiListEntitlement
 }
 
 type ApiListEntitlementsRequest struct {
-	ctx        context.Context
-	ApiService *EntitlementAPIService
-	orgId      string
-	partner    *string
-	productId  *string
-	offerId    *string
-	buyerId    *string
-	limit      *int32
-	offset     *int32
+	ctx            context.Context
+	ApiService     *EntitlementAPIService
+	orgId          string
+	partner        *string
+	productId      *string
+	offerId        *string
+	buyerId        *string
+	externalId     *string
+	buyerAccountId *string
+	limit          *int32
+	offset         *int32
 }
 
 // filter by partner
@@ -1571,6 +1573,18 @@ func (r ApiListEntitlementsRequest) OfferId(offerId string) ApiListEntitlementsR
 // filter by buyerId
 func (r ApiListEntitlementsRequest) BuyerId(buyerId string) ApiListEntitlementsRequest {
 	r.buyerId = &buyerId
+	return r
+}
+
+// filter by externalId
+func (r ApiListEntitlementsRequest) ExternalId(externalId string) ApiListEntitlementsRequest {
+	r.externalId = &externalId
+	return r
+}
+
+// filter by buyerAccountId is currently supported only for AWS
+func (r ApiListEntitlementsRequest) BuyerAccountId(buyerAccountId string) ApiListEntitlementsRequest {
+	r.buyerAccountId = &buyerAccountId
 	return r
 }
 
@@ -1631,22 +1645,28 @@ func (a *EntitlementAPIService) ListEntitlementsExecute(r ApiListEntitlementsReq
 	localVarFormParams := url.Values{}
 
 	if r.partner != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
 	}
 	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "form", "")
 	}
 	if r.offerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offerId", r.offerId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offerId", r.offerId, "form", "")
 	}
 	if r.buyerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerId", r.buyerId, "form", "")
+	}
+	if r.externalId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "externalId", r.externalId, "form", "")
+	}
+	if r.buyerAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerAccountId", r.buyerAccountId, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2364,9 +2384,9 @@ func (r ApiUpdateEntitlementSeatRequest) Execute() (*WorkloadEntitlement, *http.
 }
 
 /*
-UpdateEntitlementSeat update entitlement seat
+UpdateEntitlementSeat update seat for the active AZURE subscription
 
-Update the seat number of the entitlement. Only active AZURE entitlement can be updated.
+Update the seat number for the active AZURE subscription.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Organization ID
@@ -2409,7 +2429,7 @@ func (a *EntitlementAPIService) UpdateEntitlementSeatExecute(r ApiUpdateEntitlem
 		return localVarReturnValue, nil, reportError("newSeat is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "newSeat", r.newSeat, "", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "newSeat", r.newSeat, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

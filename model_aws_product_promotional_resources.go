@@ -22,8 +22,7 @@ var _ MappedNullable = &AwsProductPromotionalResources{}
 type AwsProductPromotionalResources struct {
 	AdditionalResources []AwsProductAdditionalResource `json:"AdditionalResources,omitempty"`
 	LogoUrl             *string                        `json:"LogoUrl,omitempty"`
-	// Currently, AWS only support 1 url in the array.
-	VideoUrls []string `json:"VideoUrls,omitempty"`
+	Videos              []AwsProductVideo              `json:"Videos,omitempty"`
 }
 
 // NewAwsProductPromotionalResources instantiates a new AwsProductPromotionalResources object
@@ -107,36 +106,36 @@ func (o *AwsProductPromotionalResources) SetLogoUrl(v string) {
 	o.LogoUrl = &v
 }
 
-// GetVideoUrls returns the VideoUrls field value if set, zero value otherwise.
-func (o *AwsProductPromotionalResources) GetVideoUrls() []string {
-	if o == nil || IsNil(o.VideoUrls) {
-		var ret []string
+// GetVideos returns the Videos field value if set, zero value otherwise.
+func (o *AwsProductPromotionalResources) GetVideos() []AwsProductVideo {
+	if o == nil || IsNil(o.Videos) {
+		var ret []AwsProductVideo
 		return ret
 	}
-	return o.VideoUrls
+	return o.Videos
 }
 
-// GetVideoUrlsOk returns a tuple with the VideoUrls field value if set, nil otherwise
+// GetVideosOk returns a tuple with the Videos field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AwsProductPromotionalResources) GetVideoUrlsOk() ([]string, bool) {
-	if o == nil || IsNil(o.VideoUrls) {
+func (o *AwsProductPromotionalResources) GetVideosOk() ([]AwsProductVideo, bool) {
+	if o == nil || IsNil(o.Videos) {
 		return nil, false
 	}
-	return o.VideoUrls, true
+	return o.Videos, true
 }
 
-// HasVideoUrls returns a boolean if a field has been set.
-func (o *AwsProductPromotionalResources) HasVideoUrls() bool {
-	if o != nil && !IsNil(o.VideoUrls) {
+// HasVideos returns a boolean if a field has been set.
+func (o *AwsProductPromotionalResources) HasVideos() bool {
+	if o != nil && !IsNil(o.Videos) {
 		return true
 	}
 
 	return false
 }
 
-// SetVideoUrls gets a reference to the given []string and assigns it to the VideoUrls field.
-func (o *AwsProductPromotionalResources) SetVideoUrls(v []string) {
-	o.VideoUrls = v
+// SetVideos gets a reference to the given []AwsProductVideo and assigns it to the Videos field.
+func (o *AwsProductPromotionalResources) SetVideos(v []AwsProductVideo) {
+	o.Videos = v
 }
 
 func (o AwsProductPromotionalResources) MarshalJSON() ([]byte, error) {
@@ -155,8 +154,8 @@ func (o AwsProductPromotionalResources) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.LogoUrl) {
 		toSerialize["LogoUrl"] = o.LogoUrl
 	}
-	if !IsNil(o.VideoUrls) {
-		toSerialize["VideoUrls"] = o.VideoUrls
+	if !IsNil(o.Videos) {
+		toSerialize["Videos"] = o.Videos
 	}
 	return toSerialize, nil
 }

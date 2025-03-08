@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AdditionalResources** | Pointer to [**[]AwsProductAdditionalResource**](AwsProductAdditionalResource.md) |  | [optional] 
-**LogoUrl** | Pointer to **string** |  | [optional] 
-**VideoUrls** | Pointer to **[]string** | Currently, AWS only support 1 url in the array. | [optional] 
+ Name                    | Type                                                                             | Description | Notes      
+-------------------------|----------------------------------------------------------------------------------|-------------|------------
+ **AdditionalResources** | Pointer to [**[]AwsProductAdditionalResource**](AwsProductAdditionalResource.md) |             | [optional] 
+ **LogoUrl**             | Pointer to **string**                                                            |             | [optional] 
+ **Videos**              | Pointer to [**[]AwsProductVideo**](AwsProductVideo.md)                           |             | [optional] 
 
 ## Methods
 
@@ -77,30 +77,30 @@ SetLogoUrl sets LogoUrl field to given value.
 
 HasLogoUrl returns a boolean if a field has been set.
 
-### GetVideoUrls
+### GetVideos
 
-`func (o *AwsProductPromotionalResources) GetVideoUrls() []string`
+`func (o *AwsProductPromotionalResources) GetVideos() []AwsProductVideo`
 
-GetVideoUrls returns the VideoUrls field if non-nil, zero value otherwise.
+GetVideos returns the Videos field if non-nil, zero value otherwise.
 
-### GetVideoUrlsOk
+### GetVideosOk
 
-`func (o *AwsProductPromotionalResources) GetVideoUrlsOk() (*[]string, bool)`
+`func (o *AwsProductPromotionalResources) GetVideosOk() (*[]AwsProductVideo, bool)`
 
-GetVideoUrlsOk returns a tuple with the VideoUrls field if it's non-nil, zero value otherwise
+GetVideosOk returns a tuple with the Videos field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVideoUrls
+### SetVideos
 
-`func (o *AwsProductPromotionalResources) SetVideoUrls(v []string)`
+`func (o *AwsProductPromotionalResources) SetVideos(v []AwsProductVideo)`
 
-SetVideoUrls sets VideoUrls field to given value.
+SetVideos sets Videos field to given value.
 
-### HasVideoUrls
+### HasVideos
 
-`func (o *AwsProductPromotionalResources) HasVideoUrls() bool`
+`func (o *AwsProductPromotionalResources) HasVideos() bool`
 
-HasVideoUrls returns a boolean if a field has been set.
+HasVideos returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -82,6 +82,7 @@ docs/AwsProductRepository.md
 docs/AwsProductSignatureVerificationKey.md
 docs/AwsProductSupportInformation.md
 docs/AwsProductVersion.md
+docs/AwsProductVideo.md
 docs/AwsRenewalOfferType.md
 docs/AwsSnsSubscription.md
 docs/AwsSnsSubscriptionStatus.md
@@ -412,7 +413,6 @@ docs/PartnerUsageMeteringConfig.md
 docs/PaymentConfig.md
 docs/PaymentInstallment.md
 docs/PaymentScheduleType.md
-docs/PkgStructsSnowflakeMarketplaceProduct.md
 docs/PriceModelBasic.md
 docs/PriceModelBulk.md
 docs/PriceModelCategory.md
@@ -438,6 +438,7 @@ docs/RevenueReportType.md
 docs/ServicecontrolReportError.md
 docs/ServicecontrolReportResponse.md
 docs/ServicecontrolStatus.md
+docs/SnowflakeMarketplaceProduct.md
 docs/StripeBalanceTransaction.md
 docs/StripeBalanceTransactionFeeDetail.md
 docs/StripeCustomer.md
@@ -567,6 +568,7 @@ model_aws_product_repository.go
 model_aws_product_signature_verification_key.go
 model_aws_product_support_information.go
 model_aws_product_version.go
+model_aws_product_video.go
 model_aws_renewal_offer_type.go
 model_aws_sns_subscription.go
 model_aws_sns_subscription_status.go
@@ -890,7 +892,6 @@ model_partner_usage_metering_config.go
 model_payment_config.go
 model_payment_installment.go
 model_payment_schedule_type.go
-model_pkg_structs_snowflake_marketplace_product.go
 model_price_model_basic.go
 model_price_model_bulk.go
 model_price_model_category.go
@@ -914,6 +915,7 @@ model_revenue_report_type.go
 model_servicecontrol_report_error.go
 model_servicecontrol_report_response.go
 model_servicecontrol_status.go
+model_snowflake_marketplace_product.go
 model_stripe_balance_transaction.go
 model_stripe_balance_transaction_fee_detail.go
 model_stripe_customer.go
@@ -974,4 +976,5 @@ model_workload_meta_info.go
 model_workload_offer.go
 model_workload_product.go
 response.go
+test/api_api_test.go
 utils.go

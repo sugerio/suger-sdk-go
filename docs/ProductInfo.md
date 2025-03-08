@@ -2,27 +2,27 @@
 
 ## Properties
 
- Name                               | Type                                                                                             | Description                       | Notes      
-------------------------------------|--------------------------------------------------------------------------------------------------|-----------------------------------|------------
- **AlibabaProduct**                 | Pointer to [**AlibabaMarketplaceProduct**](AlibabaMarketplaceProduct.md)                         |                                   | [optional] 
- **Attributes**                     | Pointer to **map[string]string**                                                                 |                                   | [optional] 
- **AwsAmiProduct**                  | Pointer to [**AwsProduct**](AwsProduct.md)                                                       |                                   | [optional] 
- **AwsContainerProduct**            | Pointer to [**AwsProduct**](AwsProduct.md)                                                       |                                   | [optional] 
- **AwsProfessionalServicesProduct** | Pointer to [**AwsProduct**](AwsProduct.md)                                                       |                                   | [optional] 
- **AwsSaasProduct**                 | Pointer to [**AwsProduct**](AwsProduct.md)                                                       |                                   | [optional] 
- **AwsSnsSubscriptions**            | Pointer to [**[]AwsSnsSubscription**](AwsSnsSubscription.md)                                     |                                   | [optional] 
- **AzureProduct**                   | Pointer to [**AzureProduct**](AzureProduct.md)                                                   |                                   | [optional] 
- **AzureProductResource**           | Pointer to [**AzureMarketplaceProductResource**](AzureMarketplaceProductResource.md)             |                                   | [optional] 
- **Commits**                        | Pointer to [**[]CommitDimension**](CommitDimension.md)                                           |                                   | [optional] 
- **Currency**                       | Pointer to **string**                                                                            |                                   | [optional] 
- **Dimensions**                     | Pointer to [**[]MeteringDimension**](MeteringDimension.md)                                       |                                   | [optional] 
- **EulaType**                       | Pointer to [**EulaType**](EulaType.md)                                                           | The public offer&#39;s EULA type. | [optional] 
- **EulaUrl**                        | Pointer to **string**                                                                            | The public offer&#39;s EULA URL.  | [optional] 
- **GcpProduct**                     | Pointer to [**GcpMarketplaceProduct**](GcpMarketplaceProduct.md)                                 |                                   | [optional] 
- **RefundCancellationPolicy**       | Pointer to **string**                                                                            |                                   | [optional] 
- **SellerNotes**                    | Pointer to **string**                                                                            |                                   | [optional] 
- **SnowflakeProduct**               | Pointer to [**PkgStructsSnowflakeMarketplaceProduct**](PkgStructsSnowflakeMarketplaceProduct.md) |                                   | [optional] 
- **StripeProduct**                  | Pointer to [**StripeProduct**](StripeProduct.md)                                                 |                                   | [optional] 
+ Name                               | Type                                                                                 | Description                       | Notes      
+------------------------------------|--------------------------------------------------------------------------------------|-----------------------------------|------------
+ **AlibabaProduct**                 | Pointer to [**AlibabaMarketplaceProduct**](AlibabaMarketplaceProduct.md)             |                                   | [optional] 
+ **Attributes**                     | Pointer to **map[string]string**                                                     |                                   | [optional] 
+ **AwsAmiProduct**                  | Pointer to [**AwsProduct**](AwsProduct.md)                                           |                                   | [optional] 
+ **AwsContainerProduct**            | Pointer to [**AwsProduct**](AwsProduct.md)                                           |                                   | [optional] 
+ **AwsProfessionalServicesProduct** | Pointer to [**AwsProduct**](AwsProduct.md)                                           |                                   | [optional] 
+ **AwsSaasProduct**                 | Pointer to [**AwsProduct**](AwsProduct.md)                                           |                                   | [optional] 
+ **AwsSnsSubscriptions**            | Pointer to [**[]AwsSnsSubscription**](AwsSnsSubscription.md)                         |                                   | [optional] 
+ **AzureProduct**                   | Pointer to [**AzureProduct**](AzureProduct.md)                                       |                                   | [optional] 
+ **AzureProductResource**           | Pointer to [**AzureMarketplaceProductResource**](AzureMarketplaceProductResource.md) |                                   | [optional] 
+ **Commits**                        | Pointer to [**[]CommitDimension**](CommitDimension.md)                               |                                   | [optional] 
+ **Currency**                       | Pointer to **string**                                                                |                                   | [optional] 
+ **Dimensions**                     | Pointer to [**[]MeteringDimension**](MeteringDimension.md)                           |                                   | [optional] 
+ **EulaType**                       | Pointer to [**EulaType**](EulaType.md)                                               | The public offer&#39;s EULA type. | [optional] 
+ **EulaUrl**                        | Pointer to **string**                                                                | The public offer&#39;s EULA URL.  | [optional] 
+ **GcpProduct**                     | Pointer to [**GcpMarketplaceProduct**](GcpMarketplaceProduct.md)                     |                                   | [optional] 
+ **RefundCancellationPolicy**       | Pointer to **string**                                                                |                                   | [optional] 
+ **SellerNotes**                    | Pointer to **string**                                                                |                                   | [optional] 
+ **SnowflakeProduct**               | Pointer to [**SnowflakeMarketplaceProduct**](SnowflakeMarketplaceProduct.md)         |                                   | [optional] 
+ **StripeProduct**                  | Pointer to [**StripeProduct**](StripeProduct.md)                                     |                                   | [optional] 
 
 ## Methods
 
@@ -470,20 +470,20 @@ HasSellerNotes returns a boolean if a field has been set.
 
 ### GetSnowflakeProduct
 
-`func (o *ProductInfo) GetSnowflakeProduct() PkgStructsSnowflakeMarketplaceProduct`
+`func (o *ProductInfo) GetSnowflakeProduct() SnowflakeMarketplaceProduct`
 
 GetSnowflakeProduct returns the SnowflakeProduct field if non-nil, zero value otherwise.
 
 ### GetSnowflakeProductOk
 
-`func (o *ProductInfo) GetSnowflakeProductOk() (*PkgStructsSnowflakeMarketplaceProduct, bool)`
+`func (o *ProductInfo) GetSnowflakeProductOk() (*SnowflakeMarketplaceProduct, bool)`
 
 GetSnowflakeProductOk returns a tuple with the SnowflakeProduct field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSnowflakeProduct
 
-`func (o *ProductInfo) SetSnowflakeProduct(v PkgStructsSnowflakeMarketplaceProduct)`
+`func (o *ProductInfo) SetSnowflakeProduct(v SnowflakeMarketplaceProduct)`
 
 SetSnowflakeProduct sets SnowflakeProduct field to given value.
 

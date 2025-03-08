@@ -29,23 +29,24 @@ type RevenueRecord struct {
 	// The currency of the revenue in ISO 4217 format, such as \"USD\".
 	Currency *string `json:"currency,omitempty"`
 	// The date for the revenue report
-	Date                 *time.Time         `json:"date,omitempty"`
-	DisburseAmount       *float32           `json:"disburseAmount,omitempty"`
-	DisburseDate         *time.Time         `json:"disburseDate,omitempty"`
-	EntitlementID        *string            `json:"entitlementID,omitempty"`
-	Id                   *string            `json:"id,omitempty"`
-	Info                 *RevenueRecordInfo `json:"info,omitempty"`
-	InvoiceAmount        *float32           `json:"invoiceAmount,omitempty"`
-	InvoiceDate          *time.Time         `json:"invoiceDate,omitempty"`
-	OrganizationID       *string            `json:"organizationID,omitempty"`
-	Partner              *string            `json:"partner,omitempty"`
-	PaymentDueDate       *time.Time         `json:"paymentDueDate,omitempty"`
-	ProductID            *string            `json:"productID,omitempty"`
-	RefundDisburseAmount *float32           `json:"refundDisburseAmount,omitempty"`
-	RefundDisburseDate   *time.Time         `json:"refundDisburseDate,omitempty"`
-	RefundInvoiceAmount  *float32           `json:"refundInvoiceAmount,omitempty"`
-	RefundInvoiceDate    *time.Time         `json:"refundInvoiceDate,omitempty"`
-	TaxAmount            *float32           `json:"taxAmount,omitempty"`
+	Date           *time.Time         `json:"date,omitempty"`
+	DisburseAmount *float32           `json:"disburseAmount,omitempty"`
+	DisburseDate   *time.Time         `json:"disburseDate,omitempty"`
+	EntitlementID  *string            `json:"entitlementID,omitempty"`
+	Id             *string            `json:"id,omitempty"`
+	Info           *RevenueRecordInfo `json:"info,omitempty"`
+	InvoiceAmount  *float32           `json:"invoiceAmount,omitempty"`
+	InvoiceDate    *time.Time         `json:"invoiceDate,omitempty"`
+	OrganizationID *string            `json:"organizationID,omitempty"`
+	// The value is from type Partner string
+	Partner              *string    `json:"partner,omitempty"`
+	PaymentDueDate       *time.Time `json:"paymentDueDate,omitempty"`
+	ProductID            *string    `json:"productID,omitempty"`
+	RefundDisburseAmount *float32   `json:"refundDisburseAmount,omitempty"`
+	RefundDisburseDate   *time.Time `json:"refundDisburseDate,omitempty"`
+	RefundInvoiceAmount  *float32   `json:"refundInvoiceAmount,omitempty"`
+	RefundInvoiceDate    *time.Time `json:"refundInvoiceDate,omitempty"`
+	TaxAmount            *float32   `json:"taxAmount,omitempty"`
 }
 
 // NewRevenueRecord instantiates a new RevenueRecord object

@@ -354,20 +354,18 @@ func main() {
 
 ### Path Parameters
 
-
- Name          | Type                | Description                                                                 | Notes 
----------------|---------------------|-----------------------------------------------------------------------------|-------
- **ctx**       | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **orgId**     | **string**          | Organization ID                                                             |
- **invoiceId** | **string**          | Invoice ID                                                                  |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID |
+**invoiceId** | **string** | Invoice ID |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetInvoiceV2Request struct via the builder pattern
 
-
- Name | Type | Description | Notes 
-------|------|-------------|-------
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 ### Return type
 
@@ -424,7 +422,6 @@ func main() {
 
 ### Path Parameters
 
-
  Name          | Type                | Description                                                                 | Notes 
 ---------------|---------------------|-----------------------------------------------------------------------------|-------
  **ctx**       | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
@@ -435,9 +432,8 @@ func main() {
 
 Other parameters are passed through a pointer to a apiIssueInvoiceV2Request struct via the builder pattern
 
-
- Name | Type | Description | Notes 
-------|------|-------------|-------
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 **contactIds** | **[]string** | List of Contact IDs |
 
@@ -772,6 +768,7 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+
 ## PayInvoiceV2
 
 > BillingInvoice PayInvoiceV2(ctx, orgId, invoiceId).Execute()
@@ -844,6 +841,7 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+
 ## PreviewInvoiceEmail
 
 > string PreviewInvoiceEmail(ctx, orgId, invoiceId).Execute()
@@ -880,16 +878,16 @@ func main() {
 
 ### Path Parameters
 
-
- Name          | Type                | Description                                                                 | Notes 
----------------|---------------------|-----------------------------------------------------------------------------|-------
- **ctx**       | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **orgId**     | **string**          | Organization ID                                                             |
- **invoiceId** | **string**          | Invoice ID                                                                  |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID |
+**invoiceId** | **string** | Invoice ID |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPreviewInvoiceEmailRequest struct via the builder pattern
+
 
  Name | Type | Description | Notes 
 ------|------|-------------|-------
@@ -1024,6 +1022,7 @@ func main() {
 
 ### Path Parameters
 
+
  Name          | Type                | Description                                                                 | Notes 
 ---------------|---------------------|-----------------------------------------------------------------------------|-------
  **ctx**       | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
@@ -1033,6 +1032,7 @@ func main() {
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUpdateInvoiceInfoV2Request struct via the builder pattern
+
 
  Name | Type | Description | Notes 
 ------|------|-------------|-------

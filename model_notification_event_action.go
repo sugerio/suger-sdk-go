@@ -59,6 +59,7 @@ const (
 	NotificationEventAction_REVIEW_APPROVAL_REQUEST     NotificationEventAction = "REVIEW_APPROVAL_REQUEST"
 	NotificationEventAction_COMPLETE                    NotificationEventAction = "COMPLETE"
 	NotificationEventAction_FAIL                        NotificationEventAction = "FAIL"
+	NotificationEventAction_WEBHOOK                     NotificationEventAction = "WEBHOOK"
 )
 
 // All allowed values of NotificationEventAction enum
@@ -101,6 +102,7 @@ var AllowedNotificationEventActionEnumValues = []NotificationEventAction{
 	"REVIEW_APPROVAL_REQUEST",
 	"COMPLETE",
 	"FAIL",
+	"WEBHOOK",
 }
 
 func (v *NotificationEventAction) UnmarshalJSON(src []byte) error {

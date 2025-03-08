@@ -14,10 +14,13 @@
  **CommitsRevenueDetails**          | Pointer to [**[]CommitRevenueDetail**](CommitRevenueDetail.md)                                   | Recurring flat fee for the invoice. There should be only one type fee for each invoice, commits, or usage.                                                                                     | [optional] 
  **CreationDate**                   | Pointer to **time.Time**                                                                         | The creation date of the invoice when the status of the invoice may be draft or issued. It may be different from the issue date.                                                               | [optional] 
  **Currency**                       | Pointer to **string**                                                                            |                                                                                                                                                                                                | [optional] 
+ **DeductedCommitAmount**           | Pointer to **int32**                                                                             | The amount of the committed amount that has been deducted from the usage. It works only when IsMeteringOverageCommit is true.                                                                  | [optional] 
+ **DeductedCommitInvoiceID**        | Pointer to **string**                                                                            | The ID of the commit invoice that has been deducted from the usage. It works only when IsMeteringOverageCommit is true.                                                                        | [optional] 
  **Description**                    | Pointer to **string**                                                                            |                                                                                                                                                                                                | [optional] 
  **DueAmount**                      | Pointer to **float32**                                                                           | Due amount &#x3D; SubtotalAmount + TaxAmount - AdjustOverallDiscount                                                                                                                           | [optional] 
  **DueDate**                        | Pointer to **time.Time**                                                                         | DueDate &#x3D; IssueDate + NetTerm                                                                                                                                                             | [optional] 
  **GracePeriodInDays**              | Pointer to **int32**                                                                             | Grace Period in number of days                                                                                                                                                                 | [optional] 
+ **IsMeteringOverageCommit**        | Pointer to **bool**                                                                              | Whether the usage metering is charged for the amount that exceeds the committed amount from the entitlement.                                                                                   | [optional] 
  **IssueDate**                      | Pointer to **time.Time**                                                                         | IssueDate, issue invoice automatically when CreationDate + GracePeriod, or issue invoice manually IssueDate &gt;&#x3D; CreationDate &amp;&amp; IssueDate &lt;&#x3D; CreationDate + GracePeriod | [optional] 
  **Memo**                           | Pointer to **string**                                                                            |                                                                                                                                                                                                | [optional] 
  **NetTermsInDays**                 | Pointer to **int32**                                                                             | Net Terms period in number of days                                                                                                                                                             | [optional] 
@@ -298,6 +301,57 @@ SetCurrency sets Currency field to given value.
 
 HasCurrency returns a boolean if a field has been set.
 
+### GetDeductedCommitAmount
+
+`func (o *BillingInvoiceInfo) GetDeductedCommitAmount() int32`
+
+GetDeductedCommitAmount returns the DeductedCommitAmount field if non-nil, zero value otherwise.
+
+### GetDeductedCommitAmountOk
+
+`func (o *BillingInvoiceInfo) GetDeductedCommitAmountOk() (*int32, bool)`
+
+GetDeductedCommitAmountOk returns a tuple with the DeductedCommitAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeductedCommitAmount
+
+`func (o *BillingInvoiceInfo) SetDeductedCommitAmount(v int32)`
+
+SetDeductedCommitAmount sets DeductedCommitAmount field to given value.
+
+### HasDeductedCommitAmount
+
+`func (o *BillingInvoiceInfo) HasDeductedCommitAmount() bool`
+
+HasDeductedCommitAmount returns a boolean if a field has been set.
+
+### GetDeductedCommitInvoiceID
+
+`func (o *BillingInvoiceInfo) GetDeductedCommitInvoiceID() string`
+
+GetDeductedCommitInvoiceID returns the DeductedCommitInvoiceID field if non-nil, zero value otherwise.
+
+### GetDeductedCommitInvoiceIDOk
+
+`func (o *BillingInvoiceInfo) GetDeductedCommitInvoiceIDOk() (*string, bool)`
+
+GetDeductedCommitInvoiceIDOk returns a tuple with the DeductedCommitInvoiceID field if it's non-nil, zero value
+otherwise
+and a boolean to check if the value has been set.
+
+### SetDeductedCommitInvoiceID
+
+`func (o *BillingInvoiceInfo) SetDeductedCommitInvoiceID(v string)`
+
+SetDeductedCommitInvoiceID sets DeductedCommitInvoiceID field to given value.
+
+### HasDeductedCommitInvoiceID
+
+`func (o *BillingInvoiceInfo) HasDeductedCommitInvoiceID() bool`
+
+HasDeductedCommitInvoiceID returns a boolean if a field has been set.
+
 ### GetDescription
 
 `func (o *BillingInvoiceInfo) GetDescription() string`
@@ -397,6 +451,32 @@ SetGracePeriodInDays sets GracePeriodInDays field to given value.
 `func (o *BillingInvoiceInfo) HasGracePeriodInDays() bool`
 
 HasGracePeriodInDays returns a boolean if a field has been set.
+
+### GetIsMeteringOverageCommit
+
+`func (o *BillingInvoiceInfo) GetIsMeteringOverageCommit() bool`
+
+GetIsMeteringOverageCommit returns the IsMeteringOverageCommit field if non-nil, zero value otherwise.
+
+### GetIsMeteringOverageCommitOk
+
+`func (o *BillingInvoiceInfo) GetIsMeteringOverageCommitOk() (*bool, bool)`
+
+GetIsMeteringOverageCommitOk returns a tuple with the IsMeteringOverageCommit field if it's non-nil, zero value
+otherwise
+and a boolean to check if the value has been set.
+
+### SetIsMeteringOverageCommit
+
+`func (o *BillingInvoiceInfo) SetIsMeteringOverageCommit(v bool)`
+
+SetIsMeteringOverageCommit sets IsMeteringOverageCommit field to given value.
+
+### HasIsMeteringOverageCommit
+
+`func (o *BillingInvoiceInfo) HasIsMeteringOverageCommit() bool`
+
+HasIsMeteringOverageCommit returns a boolean if a field has been set.
 
 ### GetIssueDate
 

@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**NextOffset** | Pointer to **int32** |  | [optional] 
-**RevenueRecords** | Pointer to [**[]RevenueRecord**](RevenueRecord.md) |  | [optional] 
+ Name               | Type                                               | Description              | Notes      
+--------------------|----------------------------------------------------|--------------------------|------------
+ **NextOffset**     | Pointer to **int32**                               |                          | [optional] 
+ **RevenueRecords** | Pointer to [**[]RevenueRecord**](RevenueRecord.md) | list of revenue records. | [optional] 
 
 ## Methods
 

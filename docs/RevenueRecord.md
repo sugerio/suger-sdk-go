@@ -2,29 +2,29 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Amount** | Pointer to **float32** | The revenue amount for the revenue report | [optional] 
-**BuyerID** | Pointer to **string** |  | [optional] 
-**CollectableAmount** | Pointer to **float32** | The revenue amount that the seller/ISV can collect. | [optional] 
-**Currency** | Pointer to **string** | The currency of the revenue in ISO 4217 format, such as \&quot;USD\&quot;. | [optional] 
-**Date** | Pointer to **time.Time** | The date for the revenue report | [optional] 
-**DisburseAmount** | Pointer to **float32** |  | [optional] 
-**DisburseDate** | Pointer to **time.Time** |  | [optional] 
-**EntitlementID** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
-**Info** | Pointer to [**RevenueRecordInfo**](RevenueRecordInfo.md) |  | [optional] 
-**InvoiceAmount** | Pointer to **float32** |  | [optional] 
-**InvoiceDate** | Pointer to **time.Time** |  | [optional] 
-**OrganizationID** | Pointer to **string** |  | [optional] 
-**Partner** | Pointer to **string** |  | [optional] 
-**PaymentDueDate** | Pointer to **time.Time** |  | [optional] 
-**ProductID** | Pointer to **string** |  | [optional] 
-**RefundDisburseAmount** | Pointer to **float32** |  | [optional] 
-**RefundDisburseDate** | Pointer to **time.Time** |  | [optional] 
-**RefundInvoiceAmount** | Pointer to **float32** |  | [optional] 
-**RefundInvoiceDate** | Pointer to **time.Time** |  | [optional] 
-**TaxAmount** | Pointer to **float32** |  | [optional] 
+ Name                     | Type                                                     | Description                                                                | Notes      
+--------------------------|----------------------------------------------------------|----------------------------------------------------------------------------|------------
+ **Amount**               | Pointer to **float32**                                   | The revenue amount for the revenue report                                  | [optional] 
+ **BuyerID**              | Pointer to **string**                                    |                                                                            | [optional] 
+ **CollectableAmount**    | Pointer to **float32**                                   | The revenue amount that the seller/ISV can collect.                        | [optional] 
+ **Currency**             | Pointer to **string**                                    | The currency of the revenue in ISO 4217 format, such as \&quot;USD\&quot;. | [optional] 
+ **Date**                 | Pointer to **time.Time**                                 | The date for the revenue report                                            | [optional] 
+ **DisburseAmount**       | Pointer to **float32**                                   |                                                                            | [optional] 
+ **DisburseDate**         | Pointer to **time.Time**                                 |                                                                            | [optional] 
+ **EntitlementID**        | Pointer to **string**                                    |                                                                            | [optional] 
+ **Id**                   | Pointer to **string**                                    |                                                                            | [optional] 
+ **Info**                 | Pointer to [**RevenueRecordInfo**](RevenueRecordInfo.md) |                                                                            | [optional] 
+ **InvoiceAmount**        | Pointer to **float32**                                   |                                                                            | [optional] 
+ **InvoiceDate**          | Pointer to **time.Time**                                 |                                                                            | [optional] 
+ **OrganizationID**       | Pointer to **string**                                    |                                                                            | [optional] 
+ **Partner**              | Pointer to **string**                                    | The value is from type Partner string                                      | [optional] 
+ **PaymentDueDate**       | Pointer to **time.Time**                                 |                                                                            | [optional] 
+ **ProductID**            | Pointer to **string**                                    |                                                                            | [optional] 
+ **RefundDisburseAmount** | Pointer to **float32**                                   |                                                                            | [optional] 
+ **RefundDisburseDate**   | Pointer to **time.Time**                                 |                                                                            | [optional] 
+ **RefundInvoiceAmount**  | Pointer to **float32**                                   |                                                                            | [optional] 
+ **RefundInvoiceDate**    | Pointer to **time.Time**                                 |                                                                            | [optional] 
+ **TaxAmount**            | Pointer to **float32**                                   |                                                                            | [optional] 
 
 ## Methods
 

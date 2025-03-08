@@ -59,7 +59,6 @@
 
 * `EntityType_WORKFLOW_WEBHOOK` (value: `"WORKFLOW_WEBHOOK"`)
 
-* `EntityType_CLICKUP_TASK_WEBHOOK` (value: `"CLICKUP_TASK_WEBHOOK"`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

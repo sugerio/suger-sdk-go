@@ -20,7 +20,8 @@ var _ MappedNullable = &ListRevenueRecordsResponse{}
 
 // ListRevenueRecordsResponse struct for ListRevenueRecordsResponse
 type ListRevenueRecordsResponse struct {
-	NextOffset     *int32          `json:"nextOffset,omitempty"`
+	NextOffset *int32 `json:"nextOffset,omitempty"`
+	// list of revenue records.
 	RevenueRecords []RevenueRecord `json:"revenueRecords,omitempty"`
 }
 

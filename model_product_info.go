@@ -35,12 +35,12 @@ type ProductInfo struct {
 	// The public offer's EULA type.
 	EulaType *EulaType `json:"eulaType,omitempty"`
 	// The public offer's EULA URL.
-	EulaUrl                  *string                                `json:"eulaUrl,omitempty"`
-	GcpProduct               *GcpMarketplaceProduct                 `json:"gcpProduct,omitempty"`
-	RefundCancellationPolicy *string                                `json:"refundCancellationPolicy,omitempty"`
-	SellerNotes              *string                                `json:"sellerNotes,omitempty"`
-	SnowflakeProduct         *PkgStructsSnowflakeMarketplaceProduct `json:"snowflakeProduct,omitempty"`
-	StripeProduct            *StripeProduct                         `json:"stripeProduct,omitempty"`
+	EulaUrl                  *string                      `json:"eulaUrl,omitempty"`
+	GcpProduct               *GcpMarketplaceProduct       `json:"gcpProduct,omitempty"`
+	RefundCancellationPolicy *string                      `json:"refundCancellationPolicy,omitempty"`
+	SellerNotes              *string                      `json:"sellerNotes,omitempty"`
+	SnowflakeProduct         *SnowflakeMarketplaceProduct `json:"snowflakeProduct,omitempty"`
+	StripeProduct            *StripeProduct               `json:"stripeProduct,omitempty"`
 }
 
 // NewProductInfo instantiates a new ProductInfo object
@@ -605,9 +605,9 @@ func (o *ProductInfo) SetSellerNotes(v string) {
 }
 
 // GetSnowflakeProduct returns the SnowflakeProduct field value if set, zero value otherwise.
-func (o *ProductInfo) GetSnowflakeProduct() PkgStructsSnowflakeMarketplaceProduct {
+func (o *ProductInfo) GetSnowflakeProduct() SnowflakeMarketplaceProduct {
 	if o == nil || IsNil(o.SnowflakeProduct) {
-		var ret PkgStructsSnowflakeMarketplaceProduct
+		var ret SnowflakeMarketplaceProduct
 		return ret
 	}
 	return *o.SnowflakeProduct
@@ -615,7 +615,7 @@ func (o *ProductInfo) GetSnowflakeProduct() PkgStructsSnowflakeMarketplaceProduc
 
 // GetSnowflakeProductOk returns a tuple with the SnowflakeProduct field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductInfo) GetSnowflakeProductOk() (*PkgStructsSnowflakeMarketplaceProduct, bool) {
+func (o *ProductInfo) GetSnowflakeProductOk() (*SnowflakeMarketplaceProduct, bool) {
 	if o == nil || IsNil(o.SnowflakeProduct) {
 		return nil, false
 	}
@@ -631,8 +631,8 @@ func (o *ProductInfo) HasSnowflakeProduct() bool {
 	return false
 }
 
-// SetSnowflakeProduct gets a reference to the given PkgStructsSnowflakeMarketplaceProduct and assigns it to the SnowflakeProduct field.
-func (o *ProductInfo) SetSnowflakeProduct(v PkgStructsSnowflakeMarketplaceProduct) {
+// SetSnowflakeProduct gets a reference to the given SnowflakeMarketplaceProduct and assigns it to the SnowflakeProduct field.
+func (o *ProductInfo) SetSnowflakeProduct(v SnowflakeMarketplaceProduct) {
 	o.SnowflakeProduct = &v
 }
 
