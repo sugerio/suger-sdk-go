@@ -22,8 +22,8 @@ var _ MappedNullable = &AzureMarketplacePriceAndAvailabilityCustomMeterItem{}
 type AzureMarketplacePriceAndAvailabilityCustomMeterItem struct {
 	DisplayName *string `json:"displayName,omitempty"`
 	// Suger's custom field, for Suger internal use only. Not from Microsoft official schema.
-	Price         *float32 `json:"price,omitempty"`
-	UnitOfMeasure *string  `json:"unitOfMeasure,omitempty"`
+	Price *float32 `json:"price,omitempty"`
+	UnitOfMeasure *string `json:"unitOfMeasure,omitempty"`
 }
 
 // NewAzureMarketplacePriceAndAvailabilityCustomMeterItem instantiates a new AzureMarketplacePriceAndAvailabilityCustomMeterItem object
@@ -140,7 +140,7 @@ func (o *AzureMarketplacePriceAndAvailabilityCustomMeterItem) SetUnitOfMeasure(v
 }
 
 func (o AzureMarketplacePriceAndAvailabilityCustomMeterItem) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -196,3 +196,5 @@ func (v *NullableAzureMarketplacePriceAndAvailabilityCustomMeterItem) UnmarshalJ
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

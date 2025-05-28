@@ -21,11 +21,11 @@ var _ MappedNullable = &AzureMarketplacePriceAndAvailabilityRecurrentPrice{}
 // AzureMarketplacePriceAndAvailabilityRecurrentPrice struct for AzureMarketplacePriceAndAvailabilityRecurrentPrice
 type AzureMarketplacePriceAndAvailabilityRecurrentPrice struct {
 	// default \"usd\"
-	PriceInputOption *string                                                  `json:"priceInputOption,omitempty"`
-	Prices           []AzureMarketplacePriceAndAvailabilityRecurrentPriceItem `json:"prices,omitempty"`
+	PriceInputOption *string `json:"priceInputOption,omitempty"`
+	Prices []AzureMarketplacePriceAndAvailabilityRecurrentPriceItem `json:"prices,omitempty"`
 	// default \"flatRate\"
-	RecurrentPriceMode *string                                                      `json:"recurrentPriceMode,omitempty"`
-	UserLimits         *AzureMarketplacePriceAndAvailabilityRecurrentPriceUserLimit `json:"userLimits,omitempty"`
+	RecurrentPriceMode *string `json:"recurrentPriceMode,omitempty"`
+	UserLimits *AzureMarketplacePriceAndAvailabilityRecurrentPriceUserLimit `json:"userLimits,omitempty"`
 }
 
 // NewAzureMarketplacePriceAndAvailabilityRecurrentPrice instantiates a new AzureMarketplacePriceAndAvailabilityRecurrentPrice object
@@ -174,7 +174,7 @@ func (o *AzureMarketplacePriceAndAvailabilityRecurrentPrice) SetUserLimits(v Azu
 }
 
 func (o AzureMarketplacePriceAndAvailabilityRecurrentPrice) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,3 +233,5 @@ func (v *NullableAzureMarketplacePriceAndAvailabilityRecurrentPrice) UnmarshalJS
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

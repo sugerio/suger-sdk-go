@@ -20,11 +20,11 @@ var _ MappedNullable = &AwsSnsSubscription{}
 
 // AwsSnsSubscription struct for AwsSnsSubscription
 type AwsSnsSubscription struct {
-	Endpoint        *string                   `json:"Endpoint,omitempty"`
-	Protocol        *string                   `json:"Protocol,omitempty"`
-	Status          *AwsSnsSubscriptionStatus `json:"Status,omitempty"`
-	SubscriptionArn *string                   `json:"SubscriptionArn,omitempty"`
-	TopicArn        *string                   `json:"TopicArn,omitempty"`
+	Endpoint *string `json:"Endpoint,omitempty"`
+	Protocol *string `json:"Protocol,omitempty"`
+	Status *AwsSnsSubscriptionStatus `json:"Status,omitempty"`
+	SubscriptionArn *string `json:"SubscriptionArn,omitempty"`
+	TopicArn *string `json:"TopicArn,omitempty"`
 }
 
 // NewAwsSnsSubscription instantiates a new AwsSnsSubscription object
@@ -205,7 +205,7 @@ func (o *AwsSnsSubscription) SetTopicArn(v string) {
 }
 
 func (o AwsSnsSubscription) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -267,3 +267,5 @@ func (v *NullableAwsSnsSubscription) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

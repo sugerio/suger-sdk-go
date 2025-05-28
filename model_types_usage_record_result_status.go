@@ -21,9 +21,9 @@ type TypesUsageRecordResultStatus string
 
 // List of types.UsageRecordResultStatus
 const (
-	UsageRecordResultStatusSuccess               TypesUsageRecordResultStatus = "Success"
+	UsageRecordResultStatusSuccess TypesUsageRecordResultStatus = "Success"
 	UsageRecordResultStatusCustomerNotSubscribed TypesUsageRecordResultStatus = "CustomerNotSubscribed"
-	UsageRecordResultStatusDuplicateRecord       TypesUsageRecordResultStatus = "DuplicateRecord"
+	UsageRecordResultStatusDuplicateRecord TypesUsageRecordResultStatus = "DuplicateRecord"
 )
 
 // All allowed values of TypesUsageRecordResultStatus enum
@@ -111,3 +111,4 @@ func (v *NullableTypesUsageRecordResultStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

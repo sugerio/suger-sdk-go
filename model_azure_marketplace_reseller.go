@@ -20,13 +20,13 @@ var _ MappedNullable = &AzureMarketplaceReseller{}
 
 // AzureMarketplaceReseller struct for AzureMarketplaceReseller
 type AzureMarketplaceReseller struct {
-	Schema               *string                           `json:"$schema,omitempty"`
-	Audiences            []AzureMarketplacePreviewAudience `json:"audiences,omitempty"`
-	Id                   *string                           `json:"id,omitempty"`
-	Product              *string                           `json:"product,omitempty"`
-	ResellerChannelState *string                           `json:"resellerChannelState,omitempty"`
-	ResourceName         *string                           `json:"resourceName,omitempty"`
-	Validations          []AzureMarketplaceValidation      `json:"validations,omitempty"`
+	Schema *string `json:"$schema,omitempty"`
+	Audiences []AzureMarketplacePreviewAudience `json:"audiences,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Product *string `json:"product,omitempty"`
+	ResellerChannelState *string `json:"resellerChannelState,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty"`
+	Validations []AzureMarketplaceValidation `json:"validations,omitempty"`
 }
 
 // NewAzureMarketplaceReseller instantiates a new AzureMarketplaceReseller object
@@ -271,7 +271,7 @@ func (o *AzureMarketplaceReseller) SetValidations(v []AzureMarketplaceValidation
 }
 
 func (o AzureMarketplaceReseller) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -339,3 +339,5 @@ func (v *NullableAzureMarketplaceReseller) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,14 +20,15 @@ import (
 	"strings"
 )
 
+
 // ProductAPIService ProductAPI service
 type ProductAPIService service
 
 type ApiCreateOrUpdateDraftProductRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProductAPIService
-	orgId      string
-	data       *WorkloadProduct
+	orgId string
+	data *WorkloadProduct
 }
 
 // the draft product to create
@@ -45,27 +46,26 @@ CreateOrUpdateDraftProduct create or update draft product
 
 Create a new draft product or update the existing draft product. When updating draft product, the product.ID is required.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiCreateOrUpdateDraftProductRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiCreateOrUpdateDraftProductRequest
 */
 func (a *ProductAPIService) CreateOrUpdateDraftProduct(ctx context.Context, orgId string) ApiCreateOrUpdateDraftProductRequest {
 	return ApiCreateOrUpdateDraftProductRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadProduct
+//  @return WorkloadProduct
 func (a *ProductAPIService) CreateOrUpdateDraftProductExecute(r ApiCreateOrUpdateDraftProductRequest) (*WorkloadProduct, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadProduct
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadProduct
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.CreateOrUpdateDraftProduct")
@@ -145,8 +145,8 @@ func (a *ProductAPIService) CreateOrUpdateDraftProductExecute(r ApiCreateOrUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -156,8 +156,8 @@ func (a *ProductAPIService) CreateOrUpdateDraftProductExecute(r ApiCreateOrUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -175,10 +175,10 @@ func (a *ProductAPIService) CreateOrUpdateDraftProductExecute(r ApiCreateOrUpdat
 }
 
 type ApiCreateProductRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProductAPIService
-	orgId      string
-	data       *WorkloadProduct
+	orgId string
+	data *WorkloadProduct
 }
 
 // the product to create
@@ -196,27 +196,26 @@ CreateProduct create product
 
 create a new product in the marketplace
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiCreateProductRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiCreateProductRequest
 */
 func (a *ProductAPIService) CreateProduct(ctx context.Context, orgId string) ApiCreateProductRequest {
 	return ApiCreateProductRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadProduct
+//  @return WorkloadProduct
 func (a *ProductAPIService) CreateProductExecute(r ApiCreateProductRequest) (*WorkloadProduct, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadProduct
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadProduct
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.CreateProduct")
@@ -296,8 +295,8 @@ func (a *ProductAPIService) CreateProductExecute(r ApiCreateProductRequest) (*Wo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -307,8 +306,8 @@ func (a *ProductAPIService) CreateProductExecute(r ApiCreateProductRequest) (*Wo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -326,10 +325,10 @@ func (a *ProductAPIService) CreateProductExecute(r ApiCreateProductRequest) (*Wo
 }
 
 type ApiDeleteProductRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProductAPIService
-	orgId      string
-	productId  string
+	orgId string
+	productId string
 }
 
 func (r ApiDeleteProductRequest) Execute() (string, *http.Response, error) {
@@ -341,29 +340,28 @@ DeleteProduct delete product
 
 The product is soft deleted (marked as DELETED status) in Suger service. only the products with non PUBLIC status are allowed to be deleted.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param productId Product ID
-	@return ApiDeleteProductRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param productId Product ID
+ @return ApiDeleteProductRequest
 */
 func (a *ProductAPIService) DeleteProduct(ctx context.Context, orgId string, productId string) ApiDeleteProductRequest {
 	return ApiDeleteProductRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		productId:  productId,
+		ctx: ctx,
+		orgId: orgId,
+		productId: productId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *ProductAPIService) DeleteProductExecute(r ApiDeleteProductRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.DeleteProduct")
@@ -439,8 +437,8 @@ func (a *ProductAPIService) DeleteProductExecute(r ApiDeleteProductRequest) (str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -450,8 +448,8 @@ func (a *ProductAPIService) DeleteProductExecute(r ApiDeleteProductRequest) (str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -461,8 +459,8 @@ func (a *ProductAPIService) DeleteProductExecute(r ApiDeleteProductRequest) (str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -480,10 +478,10 @@ func (a *ProductAPIService) DeleteProductExecute(r ApiDeleteProductRequest) (str
 }
 
 type ApiGetProductRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProductAPIService
-	orgId      string
-	productId  string
+	orgId string
+	productId string
 }
 
 func (r ApiGetProductRequest) Execute() (*WorkloadProduct, *http.Response, error) {
@@ -495,29 +493,28 @@ GetProduct get product
 
 get product by product id
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param productId Product ID
-	@return ApiGetProductRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param productId Product ID
+ @return ApiGetProductRequest
 */
 func (a *ProductAPIService) GetProduct(ctx context.Context, orgId string, productId string) ApiGetProductRequest {
 	return ApiGetProductRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		productId:  productId,
+		ctx: ctx,
+		orgId: orgId,
+		productId: productId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadProduct
+//  @return WorkloadProduct
 func (a *ProductAPIService) GetProductExecute(r ApiGetProductRequest) (*WorkloadProduct, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadProduct
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadProduct
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.GetProduct")
@@ -593,8 +590,8 @@ func (a *ProductAPIService) GetProductExecute(r ApiGetProductRequest) (*Workload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -604,8 +601,8 @@ func (a *ProductAPIService) GetProductExecute(r ApiGetProductRequest) (*Workload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -615,8 +612,8 @@ func (a *ProductAPIService) GetProductExecute(r ApiGetProductRequest) (*Workload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -634,10 +631,10 @@ func (a *ProductAPIService) GetProductExecute(r ApiGetProductRequest) (*Workload
 }
 
 type ApiListProductMeteringDimensionsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProductAPIService
-	orgId      string
-	productId  string
+	orgId string
+	productId string
 }
 
 func (r ApiListProductMeteringDimensionsRequest) Execute() ([]MeteringDimension, *http.Response, error) {
@@ -649,29 +646,28 @@ ListProductMeteringDimensions list metering dimensions of product
 
 list all metering dimensions of the given product
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param productId Product ID
-	@return ApiListProductMeteringDimensionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param productId Product ID
+ @return ApiListProductMeteringDimensionsRequest
 */
 func (a *ProductAPIService) ListProductMeteringDimensions(ctx context.Context, orgId string, productId string) ApiListProductMeteringDimensionsRequest {
 	return ApiListProductMeteringDimensionsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		productId:  productId,
+		ctx: ctx,
+		orgId: orgId,
+		productId: productId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []MeteringDimension
+//  @return []MeteringDimension
 func (a *ProductAPIService) ListProductMeteringDimensionsExecute(r ApiListProductMeteringDimensionsRequest) ([]MeteringDimension, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []MeteringDimension
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []MeteringDimension
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ListProductMeteringDimensions")
@@ -747,8 +743,8 @@ func (a *ProductAPIService) ListProductMeteringDimensionsExecute(r ApiListProduc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -758,8 +754,8 @@ func (a *ProductAPIService) ListProductMeteringDimensionsExecute(r ApiListProduc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -769,8 +765,8 @@ func (a *ProductAPIService) ListProductMeteringDimensionsExecute(r ApiListProduc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -788,12 +784,12 @@ func (a *ProductAPIService) ListProductMeteringDimensionsExecute(r ApiListProduc
 }
 
 type ApiListProductsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProductAPIService
-	orgId      string
-	partner    *string
-	limit      *int32
-	offset     *int32
+	orgId string
+	partner *string
+	limit *int32
+	offset *int32
 }
 
 // filter by partner
@@ -823,27 +819,26 @@ ListProducts list products
 
 list all products under the given organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListProductsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListProductsRequest
 */
 func (a *ProductAPIService) ListProducts(ctx context.Context, orgId string) ApiListProductsRequest {
 	return ApiListProductsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []WorkloadProduct
+//  @return []WorkloadProduct
 func (a *ProductAPIService) ListProductsExecute(r ApiListProductsRequest) ([]WorkloadProduct, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []WorkloadProduct
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []WorkloadProduct
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ListProducts")
@@ -927,8 +922,8 @@ func (a *ProductAPIService) ListProductsExecute(r ApiListProductsRequest) ([]Wor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -938,8 +933,8 @@ func (a *ProductAPIService) ListProductsExecute(r ApiListProductsRequest) ([]Wor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -957,10 +952,10 @@ func (a *ProductAPIService) ListProductsExecute(r ApiListProductsRequest) ([]Wor
 }
 
 type ApiListProductsByPartnerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProductAPIService
-	orgId      string
-	partner    string
+	orgId string
+	partner string
 }
 
 func (r ApiListProductsByPartnerRequest) Execute() ([]WorkloadProduct, *http.Response, error) {
@@ -972,29 +967,28 @@ ListProductsByPartner list products by partner
 
 list all products under the given organization and cloud partner
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param partner Cloud Partner
-	@return ApiListProductsByPartnerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param partner Cloud Partner
+ @return ApiListProductsByPartnerRequest
 */
 func (a *ProductAPIService) ListProductsByPartner(ctx context.Context, orgId string, partner string) ApiListProductsByPartnerRequest {
 	return ApiListProductsByPartnerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		partner:    partner,
+		ctx: ctx,
+		orgId: orgId,
+		partner: partner,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []WorkloadProduct
+//  @return []WorkloadProduct
 func (a *ProductAPIService) ListProductsByPartnerExecute(r ApiListProductsByPartnerRequest) ([]WorkloadProduct, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []WorkloadProduct
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []WorkloadProduct
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ListProductsByPartner")
@@ -1070,8 +1064,8 @@ func (a *ProductAPIService) ListProductsByPartnerExecute(r ApiListProductsByPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1081,8 +1075,8 @@ func (a *ProductAPIService) ListProductsByPartnerExecute(r ApiListProductsByPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1100,11 +1094,11 @@ func (a *ProductAPIService) ListProductsByPartnerExecute(r ApiListProductsByPart
 }
 
 type ApiPublishProductRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProductAPIService
-	orgId      string
-	productId  string
-	data       *WorkloadProduct
+	orgId string
+	productId string
+	data *WorkloadProduct
 }
 
 // the product to publish
@@ -1122,29 +1116,28 @@ PublishProduct publish product
 
 publish the given product to the public status in the marketplace
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param productId Product ID
-	@return ApiPublishProductRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param productId Product ID
+ @return ApiPublishProductRequest
 */
 func (a *ProductAPIService) PublishProduct(ctx context.Context, orgId string, productId string) ApiPublishProductRequest {
 	return ApiPublishProductRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		productId:  productId,
+		ctx: ctx,
+		orgId: orgId,
+		productId: productId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadProduct
+//  @return WorkloadProduct
 func (a *ProductAPIService) PublishProductExecute(r ApiPublishProductRequest) (*WorkloadProduct, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadProduct
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadProduct
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.PublishProduct")
@@ -1225,8 +1218,8 @@ func (a *ProductAPIService) PublishProductExecute(r ApiPublishProductRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1236,8 +1229,8 @@ func (a *ProductAPIService) PublishProductExecute(r ApiPublishProductRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1247,8 +1240,8 @@ func (a *ProductAPIService) PublishProductExecute(r ApiPublishProductRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1266,11 +1259,11 @@ func (a *ProductAPIService) PublishProductExecute(r ApiPublishProductRequest) (*
 }
 
 type ApiUpdateProductRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProductAPIService
-	orgId      string
-	productId  string
-	data       *WorkloadProduct
+	orgId string
+	productId string
+	data *WorkloadProduct
 }
 
 // the product to update
@@ -1288,29 +1281,28 @@ UpdateProduct update product
 
 update product info, no price update is allowed via this API.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param productId Product ID
-	@return ApiUpdateProductRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param productId Product ID
+ @return ApiUpdateProductRequest
 */
 func (a *ProductAPIService) UpdateProduct(ctx context.Context, orgId string, productId string) ApiUpdateProductRequest {
 	return ApiUpdateProductRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		productId:  productId,
+		ctx: ctx,
+		orgId: orgId,
+		productId: productId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadProduct
+//  @return WorkloadProduct
 func (a *ProductAPIService) UpdateProductExecute(r ApiUpdateProductRequest) (*WorkloadProduct, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadProduct
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadProduct
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.UpdateProduct")
@@ -1391,8 +1383,8 @@ func (a *ProductAPIService) UpdateProductExecute(r ApiUpdateProductRequest) (*Wo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1402,8 +1394,8 @@ func (a *ProductAPIService) UpdateProductExecute(r ApiUpdateProductRequest) (*Wo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1421,11 +1413,11 @@ func (a *ProductAPIService) UpdateProductExecute(r ApiUpdateProductRequest) (*Wo
 }
 
 type ApiUpdateProductFulfillmentUrlRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProductAPIService
-	orgId      string
-	productId  string
-	data       *UpdateProductParams
+	orgId string
+	productId string
+	data *UpdateProductParams
 }
 
 // Update Product Params
@@ -1443,29 +1435,28 @@ UpdateProductFulfillmentUrl update product fulfillment url
 
 update the fulfillment url of the given product
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param productId Product ID
-	@return ApiUpdateProductFulfillmentUrlRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param productId Product ID
+ @return ApiUpdateProductFulfillmentUrlRequest
 */
 func (a *ProductAPIService) UpdateProductFulfillmentUrl(ctx context.Context, orgId string, productId string) ApiUpdateProductFulfillmentUrlRequest {
 	return ApiUpdateProductFulfillmentUrlRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		productId:  productId,
+		ctx: ctx,
+		orgId: orgId,
+		productId: productId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadProduct
+//  @return WorkloadProduct
 func (a *ProductAPIService) UpdateProductFulfillmentUrlExecute(r ApiUpdateProductFulfillmentUrlRequest) (*WorkloadProduct, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadProduct
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadProduct
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.UpdateProductFulfillmentUrl")
@@ -1555,11 +1546,11 @@ func (a *ProductAPIService) UpdateProductFulfillmentUrlExecute(r ApiUpdateProduc
 }
 
 type ApiUpdateProductMetaInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProductAPIService
-	orgId      string
-	productId  string
-	data       *WorkloadMetaInfo
+	orgId string
+	productId string
+	data *WorkloadMetaInfo
 }
 
 // Product meta info to update
@@ -1577,29 +1568,28 @@ UpdateProductMetaInfo update product meta info
 
 Update the meta info of the given product.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param productId Product ID
-	@return ApiUpdateProductMetaInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param productId Product ID
+ @return ApiUpdateProductMetaInfoRequest
 */
 func (a *ProductAPIService) UpdateProductMetaInfo(ctx context.Context, orgId string, productId string) ApiUpdateProductMetaInfoRequest {
 	return ApiUpdateProductMetaInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		productId:  productId,
+		ctx: ctx,
+		orgId: orgId,
+		productId: productId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadMetaInfo
+//  @return WorkloadMetaInfo
 func (a *ProductAPIService) UpdateProductMetaInfoExecute(r ApiUpdateProductMetaInfoRequest) (*WorkloadMetaInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadMetaInfo
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadMetaInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.UpdateProductMetaInfo")
@@ -1680,8 +1670,8 @@ func (a *ProductAPIService) UpdateProductMetaInfoExecute(r ApiUpdateProductMetaI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1691,8 +1681,8 @@ func (a *ProductAPIService) UpdateProductMetaInfoExecute(r ApiUpdateProductMetaI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

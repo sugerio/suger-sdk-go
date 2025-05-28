@@ -21,16 +21,16 @@ type GcpMarketplaceResellerPrivateOfferPlanStateType string
 
 // List of GcpMarketplaceResellerPrivateOfferPlanStateType
 const (
-	GcpMarketplaceResellerPrivateOfferPlanStateType_UNKNOWN                GcpMarketplaceResellerPrivateOfferPlanStateType = ""
-	GcpMarketplaceResellerPrivateOfferPlanStateType_DRAFT                  GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_DRAFT"
-	GcpMarketplaceResellerPrivateOfferPlanStateType_READY_TO_ACCEPT        GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_READY_TO_ACCEPT"
-	GcpMarketplaceResellerPrivateOfferPlanStateType_READY_TO_USE           GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_READY_TO_USE"
-	GcpMarketplaceResellerPrivateOfferPlanStateType_REJECTED               GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_REJECTED"
-	GcpMarketplaceResellerPrivateOfferPlanStateType_USED                   GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_USED"
-	GcpMarketplaceResellerPrivateOfferPlanStateType_CANCELED               GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_CANCELED"
+	GcpMarketplaceResellerPrivateOfferPlanStateType_UNKNOWN GcpMarketplaceResellerPrivateOfferPlanStateType = ""
+	GcpMarketplaceResellerPrivateOfferPlanStateType_DRAFT GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_DRAFT"
+	GcpMarketplaceResellerPrivateOfferPlanStateType_READY_TO_ACCEPT GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_READY_TO_ACCEPT"
+	GcpMarketplaceResellerPrivateOfferPlanStateType_READY_TO_USE GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_READY_TO_USE"
+	GcpMarketplaceResellerPrivateOfferPlanStateType_REJECTED GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_REJECTED"
+	GcpMarketplaceResellerPrivateOfferPlanStateType_USED GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_USED"
+	GcpMarketplaceResellerPrivateOfferPlanStateType_CANCELED GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_CANCELED"
 	GcpMarketplaceResellerPrivateOfferPlanStateType_EXPIRED_NEVER_ACCEPTED GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_EXPIRED_NEVER_ACCEPTED"
-	GcpMarketplaceResellerPrivateOfferPlanStateType_EXPIRED_ACCEPTED       GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_EXPIRED_ACCEPTED"
-	GcpMarketplaceResellerPrivateOfferPlanStateType_COMPLETED              GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_COMPLETED"
+	GcpMarketplaceResellerPrivateOfferPlanStateType_EXPIRED_ACCEPTED GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_EXPIRED_ACCEPTED"
+	GcpMarketplaceResellerPrivateOfferPlanStateType_COMPLETED GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_COMPLETED"
 )
 
 // All allowed values of GcpMarketplaceResellerPrivateOfferPlanStateType enum
@@ -125,3 +125,4 @@ func (v *NullableGcpMarketplaceResellerPrivateOfferPlanStateType) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

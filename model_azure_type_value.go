@@ -20,7 +20,7 @@ var _ MappedNullable = &AzureTypeValue{}
 
 // AzureTypeValue struct for AzureTypeValue
 type AzureTypeValue struct {
-	Type  *string `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 	Value *string `json:"value,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *AzureTypeValue) SetValue(v string) {
 }
 
 func (o AzureTypeValue) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAzureTypeValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -22,16 +22,16 @@ var _ MappedNullable = &AzureADIdentifier{}
 type AzureADIdentifier struct {
 	// Azure Billing Account ID
 	BillingAccountId *string `json:"billingAccountId,omitempty"`
-	CustomerId       *string `json:"customerId,omitempty"`
+	CustomerId *string `json:"customerId,omitempty"`
 	// Email address
-	EmailId   *string `json:"emailId,omitempty"`
+	EmailId *string `json:"emailId,omitempty"`
 	FirstName *string `json:"firstName,omitempty"`
-	LastName  *string `json:"lastName,omitempty"`
+	LastName *string `json:"lastName,omitempty"`
 	// Azure License Type
 	LicenseType *string `json:"licenseType,omitempty"`
-	ObjectId    *string `json:"objectId,omitempty"`
+	ObjectId *string `json:"objectId,omitempty"`
 	// ID of the user, used as External ID of suger IdentityBuyer.
-	Puid     *string `json:"puid,omitempty"`
+	Puid *string `json:"puid,omitempty"`
 	TenantId *string `json:"tenantId,omitempty"`
 }
 
@@ -341,7 +341,7 @@ func (o *AzureADIdentifier) SetTenantId(v string) {
 }
 
 func (o AzureADIdentifier) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -415,3 +415,5 @@ func (v *NullableAzureADIdentifier) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

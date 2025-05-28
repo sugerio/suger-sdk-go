@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AllowAutoRenewal** | Pointer to **bool** |  | [optional] 
 **AllowScheduledStartDate** | Pointer to **bool** |  | [optional] 
 **MaxRenewalTimes** | Pointer to **string** | such as \&quot;3\&quot; | [optional] 
+**OfferDealType** | Pointer to [**GcpMarketplaceOfferDealType**](GcpMarketplaceOfferDealType.md) |  | [optional] 
 **Proration** | Pointer to [**GcpMarketplaceOfferProration**](GcpMarketplaceOfferProration.md) |  | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetMaxRenewalTimes sets MaxRenewalTimes field to given value.
 `func (o *GcpMarketplaceOfferTemplatePolicies) HasMaxRenewalTimes() bool`
 
 HasMaxRenewalTimes returns a boolean if a field has been set.
+
+### GetOfferDealType
+
+`func (o *GcpMarketplaceOfferTemplatePolicies) GetOfferDealType() GcpMarketplaceOfferDealType`
+
+GetOfferDealType returns the OfferDealType field if non-nil, zero value otherwise.
+
+### GetOfferDealTypeOk
+
+`func (o *GcpMarketplaceOfferTemplatePolicies) GetOfferDealTypeOk() (*GcpMarketplaceOfferDealType, bool)`
+
+GetOfferDealTypeOk returns a tuple with the OfferDealType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOfferDealType
+
+`func (o *GcpMarketplaceOfferTemplatePolicies) SetOfferDealType(v GcpMarketplaceOfferDealType)`
+
+SetOfferDealType sets OfferDealType field to given value.
+
+### HasOfferDealType
+
+`func (o *GcpMarketplaceOfferTemplatePolicies) HasOfferDealType() bool`
+
+HasOfferDealType returns a boolean if a field has been set.
 
 ### GetProration
 

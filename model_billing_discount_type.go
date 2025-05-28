@@ -22,7 +22,7 @@ type BillingDiscountType string
 // List of BillingDiscountType
 const (
 	BillingDiscountType_PERCENTAGE BillingDiscountType = "PERCENTAGE"
-	BillingDiscountType_ABSOLUTE   BillingDiscountType = "ABSOLUTE"
+	BillingDiscountType_ABSOLUTE BillingDiscountType = "ABSOLUTE"
 )
 
 // All allowed values of BillingDiscountType enum
@@ -109,3 +109,4 @@ func (v *NullableBillingDiscountType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

@@ -210,7 +210,7 @@ func (o *GcpMarketplacePrivateOfferMetricDetail) SetUnitDescription(v string) {
 }
 
 func (o GcpMarketplacePrivateOfferMetricDetail) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -272,3 +272,5 @@ func (v *NullableGcpMarketplacePrivateOfferMetricDetail) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

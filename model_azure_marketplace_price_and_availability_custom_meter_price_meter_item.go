@@ -20,11 +20,11 @@ var _ MappedNullable = &AzureMarketplacePriceAndAvailabilityCustomMeterPriceMete
 
 // AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem struct for AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem
 type AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem struct {
-	BillingTerm          *AzureMarketplaceTerm                                                      `json:"billingTerm,omitempty"`
-	IncludedQuantities   []AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem `json:"includedQuantities,omitempty"`
-	PaymentOption        *AzureMarketplaceTerm                                                      `json:"paymentOption,omitempty"`
-	PricePerPaymentInUsd *float32                                                                   `json:"pricePerPaymentInUsd,omitempty"`
-	Prices               []AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem   `json:"prices,omitempty"`
+	BillingTerm *AzureMarketplaceTerm `json:"billingTerm,omitempty"`
+	IncludedQuantities []AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem `json:"includedQuantities,omitempty"`
+	PaymentOption *AzureMarketplaceTerm `json:"paymentOption,omitempty"`
+	PricePerPaymentInUsd *float32 `json:"pricePerPaymentInUsd,omitempty"`
+	Prices []AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem `json:"prices,omitempty"`
 }
 
 // NewAzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem instantiates a new AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem object
@@ -205,7 +205,7 @@ func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) SetPrice
 }
 
 func (o AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -267,3 +267,5 @@ func (v *NullableAzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

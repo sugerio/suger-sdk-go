@@ -21,9 +21,9 @@ type BillingInvoiceType string
 
 // List of BillingInvoiceType
 const (
-	BillingInvoiceType_COMMIT      BillingInvoiceType = "COMMIT"
-	BillingInvoiceType_USAGE       BillingInvoiceType = "USAGE"
-	BillingInvoiceType_ADDON       BillingInvoiceType = "ADDON"
+	BillingInvoiceType_COMMIT BillingInvoiceType = "COMMIT"
+	BillingInvoiceType_USAGE BillingInvoiceType = "USAGE"
+	BillingInvoiceType_ADDON BillingInvoiceType = "ADDON"
 	BillingInvoiceType_INSTALLMENT BillingInvoiceType = "INSTALLMENT"
 )
 
@@ -113,3 +113,4 @@ func (v *NullableBillingInvoiceType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

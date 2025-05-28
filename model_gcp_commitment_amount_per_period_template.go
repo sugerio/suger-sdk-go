@@ -20,7 +20,7 @@ var _ MappedNullable = &GcpCommitmentAmountPerPeriodTemplate{}
 
 // GcpCommitmentAmountPerPeriodTemplate struct for GcpCommitmentAmountPerPeriodTemplate
 type GcpCommitmentAmountPerPeriodTemplate struct {
-	CurrencyCode            *string              `json:"currencyCode,omitempty"`
+	CurrencyCode *string `json:"currencyCode,omitempty"`
 	DecimalAmountConstraint *GcpAmountConstraint `json:"decimalAmountConstraint,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *GcpCommitmentAmountPerPeriodTemplate) SetDecimalAmountConstraint(v GcpA
 }
 
 func (o GcpCommitmentAmountPerPeriodTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableGcpCommitmentAmountPerPeriodTemplate) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

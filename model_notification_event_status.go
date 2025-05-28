@@ -21,11 +21,11 @@ type NotificationEventStatus string
 
 // List of NotificationEventStatus
 const (
-	NotificationEventStatus_UNKNOWN   NotificationEventStatus = ""
+	NotificationEventStatus_UNKNOWN NotificationEventStatus = ""
 	NotificationEventStatus_SCHEDULED NotificationEventStatus = "SCHEDULED"
-	NotificationEventStatus_PENDING   NotificationEventStatus = "PENDING"
-	NotificationEventStatus_DONE      NotificationEventStatus = "DONE"
-	NotificationEventStatus_FAILED    NotificationEventStatus = "FAILED"
+	NotificationEventStatus_PENDING NotificationEventStatus = "PENDING"
+	NotificationEventStatus_DONE NotificationEventStatus = "DONE"
+	NotificationEventStatus_FAILED NotificationEventStatus = "FAILED"
 )
 
 // All allowed values of NotificationEventStatus enum
@@ -115,3 +115,4 @@ func (v *NullableNotificationEventStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

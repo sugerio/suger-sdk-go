@@ -24,14 +24,14 @@ type AzureMarketplaceSaasTechnicalConfiguration struct {
 	// Azure AD Application Id
 	AzureAdAppId *string `json:"azureAdAppId,omitempty"`
 	// Azure AD Tenant Id
-	AzureAdTenantId   *string `json:"azureAdTenantId,omitempty"`
+	AzureAdTenantId *string `json:"azureAdTenantId,omitempty"`
 	ConnectionWebhook *string `json:"connectionWebhook,omitempty"`
-	Id                *string `json:"id,omitempty"`
-	LandingPageUrl    *string `json:"landingPageUrl,omitempty"`
+	Id *string `json:"id,omitempty"`
+	LandingPageUrl *string `json:"landingPageUrl,omitempty"`
 	// in format of \"product/product-durable-id\"
-	Product      *string                      `json:"product,omitempty"`
-	ResourceName *string                      `json:"resourceName,omitempty"`
-	Validations  []AzureMarketplaceValidation `json:"validations,omitempty"`
+	Product *string `json:"product,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty"`
+	Validations []AzureMarketplaceValidation `json:"validations,omitempty"`
 }
 
 // NewAzureMarketplaceSaasTechnicalConfiguration instantiates a new AzureMarketplaceSaasTechnicalConfiguration object
@@ -340,7 +340,7 @@ func (o *AzureMarketplaceSaasTechnicalConfiguration) SetValidations(v []AzureMar
 }
 
 func (o AzureMarketplaceSaasTechnicalConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -414,3 +414,5 @@ func (v *NullableAzureMarketplaceSaasTechnicalConfiguration) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

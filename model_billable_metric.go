@@ -22,14 +22,14 @@ var _ MappedNullable = &BillableMetric{}
 // BillableMetric struct for BillableMetric
 type BillableMetric struct {
 	AggregationType *BillableMetricAggregationType `json:"aggregationType,omitempty"`
-	CreationTime    *time.Time                     `json:"creationTime,omitempty"`
-	Description     *string                        `json:"description,omitempty"`
-	Id              *string                        `json:"id,omitempty"`
-	Info            *BillableMetricInfo            `json:"info,omitempty"`
-	LastUpdateTime  *time.Time                     `json:"lastUpdateTime,omitempty"`
-	Name            *string                        `json:"name,omitempty"`
-	OrganizationId  *string                        `json:"organizationId,omitempty"`
-	Status          *BillableMetricStatus          `json:"status,omitempty"`
+	CreationTime *time.Time `json:"creationTime,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Info *BillableMetricInfo `json:"info,omitempty"`
+	LastUpdateTime *time.Time `json:"lastUpdateTime,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty"`
+	Status *BillableMetricStatus `json:"status,omitempty"`
 }
 
 // NewBillableMetric instantiates a new BillableMetric object
@@ -338,7 +338,7 @@ func (o *BillableMetric) SetStatus(v BillableMetricStatus) {
 }
 
 func (o BillableMetric) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -412,3 +412,5 @@ func (v *NullableBillableMetric) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

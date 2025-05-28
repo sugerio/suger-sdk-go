@@ -22,7 +22,7 @@ var _ MappedNullable = &AzureMarketplacePrivateOfferAcceptanceLink{}
 type AzureMarketplacePrivateOfferAcceptanceLink struct {
 	// The Customer Billing Account ID.
 	BeneficiaryId *string `json:"beneficiaryId,omitempty"`
-	Link          *string `json:"link,omitempty"`
+	Link *string `json:"link,omitempty"`
 }
 
 // NewAzureMarketplacePrivateOfferAcceptanceLink instantiates a new AzureMarketplacePrivateOfferAcceptanceLink object
@@ -107,7 +107,7 @@ func (o *AzureMarketplacePrivateOfferAcceptanceLink) SetLink(v string) {
 }
 
 func (o AzureMarketplacePrivateOfferAcceptanceLink) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableAzureMarketplacePrivateOfferAcceptanceLink) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

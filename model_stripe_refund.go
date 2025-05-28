@@ -28,7 +28,7 @@ type StripeRefund struct {
 	FailureBalanceTransactionId *string `json:"failureBalanceTransactionId,omitempty"`
 	// Provides the reason for the refund failure. Possible values are: `lost_or_stolen_card`, `expired_or_canceled_card`, `charge_for_pending_refund_disputed`, `insufficient_funds`, `declined`, `merchant_request`, or `unknown`.
 	FailureReason *string `json:"failureReason,omitempty"`
-	Id            *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	// ID of the PaymentIntent that's refunded.
 	PaymentIntentId *string `json:"paymentIntentId,omitempty"`
 	// Status of the refund. This can be `pending`, `requires_action`, `succeeded`, `failed`, or `canceled`. Learn more about [failed refunds](https://stripe.com/docs/refunds#failed-refunds).
@@ -277,7 +277,7 @@ func (o *StripeRefund) SetStatus(v StripeRefundStatus) {
 }
 
 func (o StripeRefund) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -345,3 +345,5 @@ func (v *NullableStripeRefund) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,7 +20,7 @@ var _ MappedNullable = &AzurePendingUpdateInfo{}
 
 // AzurePendingUpdateInfo struct for AzurePendingUpdateInfo
 type AzurePendingUpdateInfo struct {
-	Status     *string `json:"status,omitempty"`
+	Status *string `json:"status,omitempty"`
 	UpdateType *string `json:"updateType,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *AzurePendingUpdateInfo) SetUpdateType(v string) {
 }
 
 func (o AzurePendingUpdateInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAzurePendingUpdateInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

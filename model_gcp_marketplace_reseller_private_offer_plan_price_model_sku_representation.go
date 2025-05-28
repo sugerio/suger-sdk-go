@@ -20,9 +20,9 @@ var _ MappedNullable = &GcpMarketplaceResellerPrivateOfferPlanPriceModelSkuRepre
 
 // GcpMarketplaceResellerPrivateOfferPlanPriceModelSkuRepresentation struct for GcpMarketplaceResellerPrivateOfferPlanPriceModelSkuRepresentation
 type GcpMarketplaceResellerPrivateOfferPlanPriceModelSkuRepresentation struct {
-	SkuGroupList map[string]interface{}                                   `json:"skuGroupList,omitempty"`
-	SkuList      *GcpMarketplaceResellerPrivateOfferPlanPriceModelSkuList `json:"skuList,omitempty"`
-	Skus         *string                                                  `json:"skus,omitempty"`
+	SkuGroupList map[string]interface{} `json:"skuGroupList,omitempty"`
+	SkuList *GcpMarketplaceResellerPrivateOfferPlanPriceModelSkuList `json:"skuList,omitempty"`
+	Skus *string `json:"skus,omitempty"`
 }
 
 // NewGcpMarketplaceResellerPrivateOfferPlanPriceModelSkuRepresentation instantiates a new GcpMarketplaceResellerPrivateOfferPlanPriceModelSkuRepresentation object
@@ -139,7 +139,7 @@ func (o *GcpMarketplaceResellerPrivateOfferPlanPriceModelSkuRepresentation) SetS
 }
 
 func (o GcpMarketplaceResellerPrivateOfferPlanPriceModelSkuRepresentation) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableGcpMarketplaceResellerPrivateOfferPlanPriceModelSkuRepresentati
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

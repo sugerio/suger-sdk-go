@@ -21,6 +21,7 @@ var _ MappedNullable = &GcpMarketplaceAgreementDocument{}
 // GcpMarketplaceAgreementDocument struct for GcpMarketplaceAgreementDocument
 type GcpMarketplaceAgreementDocument struct {
 	EulaAgreementDocument *GcpMarketplaceDocument `json:"eulaAgreementDocument,omitempty"`
+	SowAgreementDocument *GcpMarketplaceDocument `json:"sowAgreementDocument,omitempty"`
 }
 
 // NewGcpMarketplaceAgreementDocument instantiates a new GcpMarketplaceAgreementDocument object
@@ -72,8 +73,40 @@ func (o *GcpMarketplaceAgreementDocument) SetEulaAgreementDocument(v GcpMarketpl
 	o.EulaAgreementDocument = &v
 }
 
+// GetSowAgreementDocument returns the SowAgreementDocument field value if set, zero value otherwise.
+func (o *GcpMarketplaceAgreementDocument) GetSowAgreementDocument() GcpMarketplaceDocument {
+	if o == nil || IsNil(o.SowAgreementDocument) {
+		var ret GcpMarketplaceDocument
+		return ret
+	}
+	return *o.SowAgreementDocument
+}
+
+// GetSowAgreementDocumentOk returns a tuple with the SowAgreementDocument field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GcpMarketplaceAgreementDocument) GetSowAgreementDocumentOk() (*GcpMarketplaceDocument, bool) {
+	if o == nil || IsNil(o.SowAgreementDocument) {
+		return nil, false
+	}
+	return o.SowAgreementDocument, true
+}
+
+// HasSowAgreementDocument returns a boolean if a field has been set.
+func (o *GcpMarketplaceAgreementDocument) HasSowAgreementDocument() bool {
+	if o != nil && !IsNil(o.SowAgreementDocument) {
+		return true
+	}
+
+	return false
+}
+
+// SetSowAgreementDocument gets a reference to the given GcpMarketplaceDocument and assigns it to the SowAgreementDocument field.
+func (o *GcpMarketplaceAgreementDocument) SetSowAgreementDocument(v GcpMarketplaceDocument) {
+	o.SowAgreementDocument = &v
+}
+
 func (o GcpMarketplaceAgreementDocument) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -84,6 +117,9 @@ func (o GcpMarketplaceAgreementDocument) ToMap() (map[string]interface{}, error)
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.EulaAgreementDocument) {
 		toSerialize["eulaAgreementDocument"] = o.EulaAgreementDocument
+	}
+	if !IsNil(o.SowAgreementDocument) {
+		toSerialize["sowAgreementDocument"] = o.SowAgreementDocument
 	}
 	return toSerialize, nil
 }
@@ -123,3 +159,5 @@ func (v *NullableGcpMarketplaceAgreementDocument) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -2,21 +2,21 @@
 
 ## Properties
 
- Name                    | Type                                                                                   | Description | Notes      
--------------------------|----------------------------------------------------------------------------------------|-------------|------------
- **BuyerID**             | Pointer to **string**                                                                  |             | [optional] 
- **CreationTime**        | Pointer to **time.Time**                                                               |             | [optional] 
- **EntitlementID**       | Pointer to **string**                                                                  |             | [optional] 
- **Id**                  | Pointer to **string**                                                                  |             | [optional] 
- **LastUpdateTime**      | Pointer to **time.Time**                                                               |             | [optional] 
- **MetaInfo**            | Pointer to [**MeteringUsageRecordGroupMetaInfo**](MeteringUsageRecordGroupMetaInfo.md) |             | [optional] 
- **OrganizationID**      | Pointer to **string**                                                                  |             | [optional] 
- **Partner**             | Pointer to **string**                                                                  |             | [optional] 
- **Records**             | Pointer to **map[string]float32**                                                      |             | [optional] 
- **ReportedTime**        | Pointer to **time.Time**                                                               | nullable    | [optional] 
- **SerialID**            | Pointer to **int32**                                                                   |             | [optional] 
- **Status**              | Pointer to **string**                                                                  |             | [optional] 
- **UsageRecordReportID** | Pointer to **string**                                                                  |             | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**BuyerID** | Pointer to **string** |  | [optional] 
+**CreationTime** | Pointer to **time.Time** |  | [optional] 
+**EntitlementID** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
+**LastUpdateTime** | Pointer to **time.Time** |  | [optional] 
+**MetaInfo** | Pointer to [**MeteringUsageRecordGroupMetaInfo**](MeteringUsageRecordGroupMetaInfo.md) |  | [optional] 
+**OrganizationID** | Pointer to **string** |  | [optional] 
+**Partner** | Pointer to **string** |  | [optional] 
+**Records** | Pointer to **map[string]float32** |  | [optional] 
+**ReportedTime** | Pointer to **time.Time** | nullable | [optional] 
+**SerialID** | Pointer to **int32** |  | [optional] 
+**Status** | Pointer to **string** |  | [optional] 
+**UsageRecordReportID** | Pointer to **string** |  | [optional] 
 
 ## Methods
 

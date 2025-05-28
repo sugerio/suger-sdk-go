@@ -22,7 +22,7 @@ var _ MappedNullable = &AwsProductAdditionalResource{}
 type AwsProductAdditionalResource struct {
 	Text *string `json:"Text,omitempty"`
 	Type *string `json:"Type,omitempty"`
-	Url  *string `json:"Url,omitempty"`
+	Url *string `json:"Url,omitempty"`
 }
 
 // NewAwsProductAdditionalResource instantiates a new AwsProductAdditionalResource object
@@ -139,7 +139,7 @@ func (o *AwsProductAdditionalResource) SetUrl(v string) {
 }
 
 func (o AwsProductAdditionalResource) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableAwsProductAdditionalResource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

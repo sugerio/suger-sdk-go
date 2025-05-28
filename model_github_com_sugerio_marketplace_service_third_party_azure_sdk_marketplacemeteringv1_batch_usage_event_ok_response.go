@@ -20,7 +20,7 @@ var _ MappedNullable = &GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMark
 
 // GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse struct for GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse
 type GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse struct {
-	Count  *int32                                                                                              `json:"count,omitempty"`
+	Count *int32 `json:"count,omitempty"`
 	Result []GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessage `json:"result,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemetering
 }
 
 func (o GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableGithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplace
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

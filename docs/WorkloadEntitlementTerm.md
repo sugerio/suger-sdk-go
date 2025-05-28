@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BuyerID** | Pointer to **string** |  | [optional] 
 **CommitAmount** | Pointer to **float32** |  | [optional] 
+**CreationTime** | Pointer to **string** |  | [optional] 
 **CreditAmount** | Pointer to **float32** |  | [optional] 
 **EndTime** | Pointer to **time.Time** | nullable | [optional] 
 **EntitlementID** | Pointer to **string** |  | [optional] 
@@ -13,6 +14,7 @@ Name | Type | Description | Notes
 **ExternalEntitlementID** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Info** | Pointer to [**EntitlementTermInfo**](EntitlementTermInfo.md) |  | [optional] 
+**LastUpdateTime** | Pointer to **string** |  | [optional] 
 **OfferID** | Pointer to **string** |  | [optional] 
 **OrganizationID** | Pointer to **string** |  | [optional] 
 **Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
@@ -91,6 +93,31 @@ SetCommitAmount sets CommitAmount field to given value.
 `func (o *WorkloadEntitlementTerm) HasCommitAmount() bool`
 
 HasCommitAmount returns a boolean if a field has been set.
+
+### GetCreationTime
+
+`func (o *WorkloadEntitlementTerm) GetCreationTime() string`
+
+GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
+
+### GetCreationTimeOk
+
+`func (o *WorkloadEntitlementTerm) GetCreationTimeOk() (*string, bool)`
+
+GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreationTime
+
+`func (o *WorkloadEntitlementTerm) SetCreationTime(v string)`
+
+SetCreationTime sets CreationTime field to given value.
+
+### HasCreationTime
+
+`func (o *WorkloadEntitlementTerm) HasCreationTime() bool`
+
+HasCreationTime returns a boolean if a field has been set.
 
 ### GetCreditAmount
 
@@ -266,6 +293,31 @@ SetInfo sets Info field to given value.
 `func (o *WorkloadEntitlementTerm) HasInfo() bool`
 
 HasInfo returns a boolean if a field has been set.
+
+### GetLastUpdateTime
+
+`func (o *WorkloadEntitlementTerm) GetLastUpdateTime() string`
+
+GetLastUpdateTime returns the LastUpdateTime field if non-nil, zero value otherwise.
+
+### GetLastUpdateTimeOk
+
+`func (o *WorkloadEntitlementTerm) GetLastUpdateTimeOk() (*string, bool)`
+
+GetLastUpdateTimeOk returns a tuple with the LastUpdateTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUpdateTime
+
+`func (o *WorkloadEntitlementTerm) SetLastUpdateTime(v string)`
+
+SetLastUpdateTime sets LastUpdateTime field to given value.
+
+### HasLastUpdateTime
+
+`func (o *WorkloadEntitlementTerm) HasLastUpdateTime() bool`
+
+HasLastUpdateTime returns a boolean if a field has been set.
 
 ### GetOfferID
 

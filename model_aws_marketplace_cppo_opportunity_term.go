@@ -20,20 +20,20 @@ var _ MappedNullable = &AwsMarketplaceCppoOpportunityTerm{}
 
 // AwsMarketplaceCppoOpportunityTerm struct for AwsMarketplaceCppoOpportunityTerm
 type AwsMarketplaceCppoOpportunityTerm struct {
-	CurrencyCode *string                                  `json:"CurrencyCode,omitempty"`
-	Documents    []AwsMarketplaceCatalogLegalTermDocument `json:"Documents,omitempty"`
+	CurrencyCode *string `json:"CurrencyCode,omitempty"`
+	Documents []AwsMarketplaceCatalogLegalTermDocument `json:"Documents,omitempty"`
 	// ISO 8601 duration format. For example, \"P12M\" represents 12 months.
-	Duration                  *string                                          `json:"Duration,omitempty"`
-	Grants                    []AwsMarketplaceCppoOpportunityUpfrontPriceGrant `json:"Grants,omitempty"`
-	Id                        *string                                          `json:"Id,omitempty"`
-	MaximumAgreementStartDate *string                                          `json:"MaximumAgreementStartDate,omitempty"`
-	PositiveTargeting         *AwsMarketplaceCppoOpportunityPositiveTargeting  `json:"PositiveTargeting,omitempty"`
+	Duration *string `json:"Duration,omitempty"`
+	Grants []AwsMarketplaceCppoOpportunityUpfrontPriceGrant `json:"Grants,omitempty"`
+	Id *string `json:"Id,omitempty"`
+	MaximumAgreementStartDate *string `json:"MaximumAgreementStartDate,omitempty"`
+	PositiveTargeting *AwsMarketplaceCppoOpportunityPositiveTargeting `json:"PositiveTargeting,omitempty"`
 	// For ResaleFixedUpfrontPricingTerm
-	Price     *string                                    `json:"Price,omitempty"`
+	Price *string `json:"Price,omitempty"`
 	RateCards []AwsMarketplaceCatalogPricingTermRateCard `json:"RateCards,omitempty"`
 	// For ResalePaymentScheduleTerm
 	Schedule []AwsMarketplaceCppoOpportunityPaymentSchedule `json:"Schedule,omitempty"`
-	Type     *AwsMarketplaceCppoOpportunityTermType         `json:"Type,omitempty"`
+	Type *AwsMarketplaceCppoOpportunityTermType `json:"Type,omitempty"`
 }
 
 // NewAwsMarketplaceCppoOpportunityTerm instantiates a new AwsMarketplaceCppoOpportunityTerm object
@@ -406,7 +406,7 @@ func (o *AwsMarketplaceCppoOpportunityTerm) SetType(v AwsMarketplaceCppoOpportun
 }
 
 func (o AwsMarketplaceCppoOpportunityTerm) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -486,3 +486,5 @@ func (v *NullableAwsMarketplaceCppoOpportunityTerm) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

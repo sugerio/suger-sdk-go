@@ -20,11 +20,11 @@ var _ MappedNullable = &StripeError{}
 
 // StripeError struct for StripeError
 type StripeError struct {
-	Code    *string `json:"code,omitempty"`
+	Code *string `json:"code,omitempty"`
 	Message *string `json:"message,omitempty"`
-	Param   *string `json:"param,omitempty"`
-	Status  *int32  `json:"status,omitempty"`
-	Type    *string `json:"type,omitempty"`
+	Param *string `json:"param,omitempty"`
+	Status *int32 `json:"status,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewStripeError instantiates a new StripeError object
@@ -205,7 +205,7 @@ func (o *StripeError) SetType(v string) {
 }
 
 func (o StripeError) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -267,3 +267,5 @@ func (v *NullableStripeError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

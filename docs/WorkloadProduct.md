@@ -2,24 +2,24 @@
 
 ## Properties
 
- Name               | Type                                                   | Description | Notes      
---------------------|--------------------------------------------------------|-------------|------------
- **CreatedBy**      | Pointer to **string**                                  |             | [optional] 
- **CreationTime**   | Pointer to **time.Time**                               |             | [optional] 
- **ExternalID**     | Pointer to **string**                                  |             | [optional] 
- **FulfillmentUrl** | Pointer to **string**                                  |             | [optional] 
- **Id**             | Pointer to **string**                                  |             | [optional] 
- **Info**           | Pointer to [**ProductInfo**](ProductInfo.md)           |             | [optional] 
- **LastUpdateTime** | Pointer to **time.Time**                               |             | [optional] 
- **LastUpdatedBy**  | Pointer to **string**                                  |             | [optional] 
- **MetaInfo**       | Pointer to [**WorkloadMetaInfo**](WorkloadMetaInfo.md) |             | [optional] 
- **Name**           | Pointer to **string**                                  |             | [optional] 
- **OrganizationID** | Pointer to **string**                                  |             | [optional] 
- **Partner**        | Pointer to [**Partner**](Partner.md)                   |             | [optional] 
- **PartnerID**      | Pointer to **string**                                  |             | [optional] 
- **ProductType**    | Pointer to **string**                                  |             | [optional] 
- **Service**        | Pointer to [**PartnerService**](PartnerService.md)     |             | [optional] 
- **Status**         | Pointer to **string**                                  |             | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**CreatedBy** | Pointer to **string** |  | [optional] 
+**CreationTime** | Pointer to **time.Time** |  | [optional] 
+**ExternalID** | Pointer to **string** |  | [optional] 
+**FulfillmentUrl** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
+**Info** | Pointer to [**ProductInfo**](ProductInfo.md) |  | [optional] 
+**LastUpdateTime** | Pointer to **time.Time** |  | [optional] 
+**LastUpdatedBy** | Pointer to **string** |  | [optional] 
+**MetaInfo** | Pointer to [**WorkloadMetaInfo**](WorkloadMetaInfo.md) |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
+**OrganizationID** | Pointer to **string** |  | [optional] 
+**Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
+**PartnerID** | Pointer to **string** |  | [optional] 
+**ProductType** | Pointer to **string** |  | [optional] 
+**Service** | Pointer to [**PartnerService**](PartnerService.md) |  | [optional] 
+**Status** | Pointer to **string** |  | [optional] 
 
 ## Methods
 

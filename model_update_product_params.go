@@ -12,8 +12,8 @@ Contact: support@suger.io
 package suger
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &UpdateProductParams{}
 // UpdateProductParams struct for UpdateProductParams
 type UpdateProductParams struct {
 	FulfillmentUrl string `json:"fulfillmentUrl"`
-	Id             string `json:"id"`
+	Id string `json:"id"`
 	OrganizationID string `json:"organizationID"`
 }
 
@@ -122,7 +122,7 @@ func (o *UpdateProductParams) SetOrganizationID(v string) {
 }
 
 func (o UpdateProductParams) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,10 +152,10 @@ func (o *UpdateProductParams) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -211,3 +211,5 @@ func (v *NullableUpdateProductParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

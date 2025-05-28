@@ -15,6 +15,12 @@
 
 * `Partner_AZURE` (value: `"AZURE"`)
 
+* `Partner_CHARGEBEE` (value: `"CHARGEBEE"`)
+
+* `Partner_DATABRICKS` (value: `"DATABRICKS"`)
+
+* `Partner_DOCUSIGN` (value: `"DOCUSIGN"`)
+
 * `Partner_GCP` (value: `"GCP"`)
 
 * `Partner_GOOGLE` (value: `"GOOGLE"`)
@@ -47,7 +53,6 @@
 
 * `Partner_ZOHO` (value: `"ZOHO"`)
 
-* `Partner_DATABRICKS` (value: `"DATABRICKS"`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,37 +23,39 @@ var _ MappedNullable = &AzureMarketplacePrivateOffer{}
 type AzureMarketplacePrivateOffer struct {
 	Schema *string `json:"$schema,omitempty"`
 	// in format YYYY-MM-DD
-	AcceptBy        *time.Time                                   `json:"acceptBy,omitempty"`
+	AcceptBy *time.Time `json:"acceptBy,omitempty"`
 	AcceptanceLinks []AzureMarketplacePrivateOfferAcceptanceLink `json:"acceptanceLinks,omitempty"`
-	Beneficiaries   []AzureMarketplacePrivateOfferBeneficiary    `json:"beneficiaries,omitempty"`
-	ETag            *string                                      `json:"eTag,omitempty"`
+	Beneficiaries []AzureMarketplacePrivateOfferBeneficiary `json:"beneficiaries,omitempty"`
+	// If true, it is a renewal offer for an existing customer.
+	CustomerContractRenewal *bool `json:"customerContractRenewal,omitempty"`
+	ETag *string `json:"eTag,omitempty"`
 	// in format YYYY-MM-DD
 	End *time.Time `json:"end,omitempty"`
 	// in format of \"private-offer/private-offer-durable-id\"
 	Id *string `json:"id,omitempty"`
 	// in format YYYY-MM-DD
 	LastModified *time.Time `json:"lastModified,omitempty"`
-	Name         *string    `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// array of email addresses of the users to be notified of any changes in the private offer status.
-	NotificationContacts []string                              `json:"notificationContacts,omitempty"`
-	OfferPricingType     *AzureMarketplaceOfferPricingType     `json:"offerPricingType,omitempty"`
-	Partners             []AzureMarketplacePrivateOfferPartner `json:"partners,omitempty"`
-	PreparedBy           *string                               `json:"preparedBy,omitempty"`
+	NotificationContacts []string `json:"notificationContacts,omitempty"`
+	OfferPricingType *AzureMarketplaceOfferPricingType `json:"offerPricingType,omitempty"`
+	Partners []AzureMarketplacePrivateOfferPartner `json:"partners,omitempty"`
+	PreparedBy *string `json:"preparedBy,omitempty"`
 	// Up to 10 pricing entries are allowed.
-	Pricing          []AzureMarketplacePrivateOfferPricing `json:"pricing,omitempty"`
-	PrivateOfferType *AzureMarketplacePrivateOfferType     `json:"privateOfferType,omitempty"`
-	ResourceName     *string                               `json:"resourceName,omitempty"`
+	Pricing []AzureMarketplacePrivateOfferPricing `json:"pricing,omitempty"`
+	PrivateOfferType *AzureMarketplacePrivateOfferType `json:"privateOfferType,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty"`
 	// in format YYYY-MM-DD, if VariableStartDate = true, this field should be empty.
-	Start    *time.Time                            `json:"start,omitempty"`
-	State    *AzureMarketplacePrivateOfferState    `json:"state,omitempty"`
+	Start *time.Time `json:"start,omitempty"`
+	State *AzureMarketplacePrivateOfferState `json:"state,omitempty"`
 	SubState *AzureMarketplacePrivateOfferSubState `json:"subState,omitempty"`
 	// Only applicable to private offers with privateOfferType = customerPromotion || cspPromotion
 	TermsAndConditionsDocSasUrl *string `json:"termsAndConditionsDocSasUrl,omitempty"`
 	// Only applicable to private offers with privateOfferType = multipartyPromotionOriginator || multipartyPromotionChannelPartner
-	TermsAndConditionsDocs []AzureMarketplacePrivateOfferTermsDoc          `json:"termsAndConditionsDocs,omitempty"`
-	UpgradedFrom           *AzureMarketplacePrivateOfferPromotionReference `json:"upgradedFrom,omitempty"`
-	Validations            []AzureMarketplaceValidation                    `json:"validations,omitempty"`
-	VariableStartDate      *bool                                           `json:"variableStartDate,omitempty"`
+	TermsAndConditionsDocs []AzureMarketplacePrivateOfferTermsDoc `json:"termsAndConditionsDocs,omitempty"`
+	UpgradedFrom *AzureMarketplacePrivateOfferPromotionReference `json:"upgradedFrom,omitempty"`
+	Validations []AzureMarketplaceValidation `json:"validations,omitempty"`
+	VariableStartDate *bool `json:"variableStartDate,omitempty"`
 }
 
 // NewAzureMarketplacePrivateOffer instantiates a new AzureMarketplacePrivateOffer object
@@ -199,6 +201,38 @@ func (o *AzureMarketplacePrivateOffer) HasBeneficiaries() bool {
 // SetBeneficiaries gets a reference to the given []AzureMarketplacePrivateOfferBeneficiary and assigns it to the Beneficiaries field.
 func (o *AzureMarketplacePrivateOffer) SetBeneficiaries(v []AzureMarketplacePrivateOfferBeneficiary) {
 	o.Beneficiaries = v
+}
+
+// GetCustomerContractRenewal returns the CustomerContractRenewal field value if set, zero value otherwise.
+func (o *AzureMarketplacePrivateOffer) GetCustomerContractRenewal() bool {
+	if o == nil || IsNil(o.CustomerContractRenewal) {
+		var ret bool
+		return ret
+	}
+	return *o.CustomerContractRenewal
+}
+
+// GetCustomerContractRenewalOk returns a tuple with the CustomerContractRenewal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureMarketplacePrivateOffer) GetCustomerContractRenewalOk() (*bool, bool) {
+	if o == nil || IsNil(o.CustomerContractRenewal) {
+		return nil, false
+	}
+	return o.CustomerContractRenewal, true
+}
+
+// HasCustomerContractRenewal returns a boolean if a field has been set.
+func (o *AzureMarketplacePrivateOffer) HasCustomerContractRenewal() bool {
+	if o != nil && !IsNil(o.CustomerContractRenewal) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerContractRenewal gets a reference to the given bool and assigns it to the CustomerContractRenewal field.
+func (o *AzureMarketplacePrivateOffer) SetCustomerContractRenewal(v bool) {
+	o.CustomerContractRenewal = &v
 }
 
 // GetETag returns the ETag field value if set, zero value otherwise.
@@ -842,7 +876,7 @@ func (o *AzureMarketplacePrivateOffer) SetVariableStartDate(v bool) {
 }
 
 func (o AzureMarketplacePrivateOffer) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -862,6 +896,9 @@ func (o AzureMarketplacePrivateOffer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Beneficiaries) {
 		toSerialize["beneficiaries"] = o.Beneficiaries
+	}
+	if !IsNil(o.CustomerContractRenewal) {
+		toSerialize["customerContractRenewal"] = o.CustomerContractRenewal
 	}
 	if !IsNil(o.ETag) {
 		toSerialize["eTag"] = o.ETag
@@ -961,3 +998,5 @@ func (v *NullableAzureMarketplacePrivateOffer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

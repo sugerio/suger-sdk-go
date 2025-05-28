@@ -21,29 +21,31 @@ type Partner string
 
 // List of Partner
 const (
-	Partner_UNKNOWN    Partner = ""
-	Partner_ADYEN      Partner = "ADYEN"
-	Partner_ALIBABA    Partner = "ALIBABA"
-	Partner_AWS        Partner = "AWS"
-	Partner_AWS_CHINA  Partner = "AWS_CHINA"
-	Partner_AZURE      Partner = "AZURE"
-	Partner_GCP        Partner = "GCP"
-	Partner_GOOGLE     Partner = "GOOGLE"
-	Partner_HUBSPOT    Partner = "HUBSPOT"
-	Partner_INTUIT     Partner = "INTUIT"
-	Partner_LAGO       Partner = "LAGO"
-	Partner_MARKETO    Partner = "MARKETO"
-	Partner_METRONOME  Partner = "METRONOME"
-	Partner_MICROSOFT  Partner = "MICROSOFT"
-	Partner_ORACLE     Partner = "ORACLE"
-	Partner_ORB        Partner = "ORB"
-	Partner_REDHAT     Partner = "REDHAT"
-	Partner_SALESFORCE Partner = "SALESFORCE"
-	Partner_SLACK      Partner = "SLACK"
-	Partner_SNOWFLAKE  Partner = "SNOWFLAKE"
-	Partner_STRIPE     Partner = "STRIPE"
-	Partner_ZOHO       Partner = "ZOHO"
+	Partner_UNKNOWN Partner = ""
+	Partner_ADYEN Partner = "ADYEN"
+	Partner_ALIBABA Partner = "ALIBABA"
+	Partner_AWS Partner = "AWS"
+	Partner_AWS_CHINA Partner = "AWS_CHINA"
+	Partner_AZURE Partner = "AZURE"
+	Partner_CHARGEBEE Partner = "CHARGEBEE"
 	Partner_DATABRICKS Partner = "DATABRICKS"
+	Partner_DOCUSIGN Partner = "DOCUSIGN"
+	Partner_GCP Partner = "GCP"
+	Partner_GOOGLE Partner = "GOOGLE"
+	Partner_HUBSPOT Partner = "HUBSPOT"
+	Partner_INTUIT Partner = "INTUIT"
+	Partner_LAGO Partner = "LAGO"
+	Partner_MARKETO Partner = "MARKETO"
+	Partner_METRONOME Partner = "METRONOME"
+	Partner_MICROSOFT Partner = "MICROSOFT"
+	Partner_ORACLE Partner = "ORACLE"
+	Partner_ORB Partner = "ORB"
+	Partner_REDHAT Partner = "REDHAT"
+	Partner_SALESFORCE Partner = "SALESFORCE"
+	Partner_SLACK Partner = "SLACK"
+	Partner_SNOWFLAKE Partner = "SNOWFLAKE"
+	Partner_STRIPE Partner = "STRIPE"
+	Partner_ZOHO Partner = "ZOHO"
 )
 
 // All allowed values of Partner enum
@@ -54,6 +56,9 @@ var AllowedPartnerEnumValues = []Partner{
 	"AWS",
 	"AWS_CHINA",
 	"AZURE",
+	"CHARGEBEE",
+	"DATABRICKS",
+	"DOCUSIGN",
 	"GCP",
 	"GOOGLE",
 	"HUBSPOT",
@@ -70,7 +75,6 @@ var AllowedPartnerEnumValues = []Partner{
 	"SNOWFLAKE",
 	"STRIPE",
 	"ZOHO",
-	"DATABRICKS",
 }
 
 func (v *Partner) UnmarshalJSON(src []byte) error {
@@ -151,3 +155,4 @@ func (v *NullablePartner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

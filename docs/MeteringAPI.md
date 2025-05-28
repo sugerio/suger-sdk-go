@@ -290,7 +290,8 @@ Other parameters are passed through a pointer to a apiDeleteUsageRecordGroupRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-**creationDate** | **string** | UsageRecordGroup&#39;s creation date (UTC) in YYYY-MM-DD format |
+
+ **creationDate** | **string** | UsageRecordGroup&#39;s creation date (UTC) in YYYY-MM-DD format | 
 
 ### Return type
 
@@ -828,7 +829,8 @@ Other parameters are passed through a pointer to a apiRetryUsageRecordGroupReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-**creationDate** | **string** | UsageRecordGroup&#39;s creation date (UTC) in YYYY-MM-DD format |
+
+ **creationDate** | **string** | UsageRecordGroup&#39;s creation date (UTC) in YYYY-MM-DD format | 
 
 ### Return type
 

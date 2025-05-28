@@ -20,32 +20,44 @@ var _ MappedNullable = &SnowflakeMarketplaceProduct{}
 
 // SnowflakeMarketplaceProduct struct for SnowflakeMarketplaceProduct
 type SnowflakeMarketplaceProduct struct {
-	Comment                 *DatabaseSqlNullString `json:"Comment,omitempty"`
-	CreatedOn               *DatabaseSqlNullTime   `json:"CreatedOn,omitempty"`
-	DetailedTargetAccounts  *DatabaseSqlNullString `json:"DetailedTargetAccounts,omitempty"`
-	Distribution            *DatabaseSqlNullString `json:"Distribution,omitempty"`
-	GlobalName              *DatabaseSqlNullString `json:"GlobalName,omitempty"`
-	IsApplication           *DatabaseSqlNullBool   `json:"IsApplication,omitempty"`
-	IsByRequest             *DatabaseSqlNullBool   `json:"IsByRequest,omitempty"`
-	IsLimitedTrial          *DatabaseSqlNullBool   `json:"IsLimitedTrial,omitempty"`
-	IsMonetized             *DatabaseSqlNullBool   `json:"IsMonetized,omitempty"`
-	IsMountlessQueryable    *DatabaseSqlNullBool   `json:"IsMountlessQueryable,omitempty"`
-	IsTargeted              *DatabaseSqlNullBool   `json:"IsTargeted,omitempty"`
-	Owner                   *DatabaseSqlNullString `json:"Owner,omitempty"`
-	OwnerRoleType           *DatabaseSqlNullString `json:"OwnerRoleType,omitempty"`
-	Profile                 *DatabaseSqlNullString `json:"Profile,omitempty"`
-	PublishedOn             *DatabaseSqlNullTime   `json:"PublishedOn,omitempty"`
-	Regions                 *DatabaseSqlNullString `json:"Regions,omitempty"`
-	RejectedOn              *DatabaseSqlNullTime   `json:"RejectedOn,omitempty"`
-	ReviewState             *DatabaseSqlNullString `json:"ReviewState,omitempty"`
-	State                   *DatabaseSqlNullString `json:"State,omitempty"`
-	Subtitle                *DatabaseSqlNullString `json:"Subtitle,omitempty"`
-	TargetAccounts          *DatabaseSqlNullString `json:"TargetAccounts,omitempty"`
-	Title                   *DatabaseSqlNullString `json:"Title,omitempty"`
-	UniformListingLocator   *DatabaseSqlNullString `json:"UniformListingLocator,omitempty"`
-	UpdatedOn               *DatabaseSqlNullTime   `json:"UpdatedOn,omitempty"`
-	Name                    *DatabaseSqlNullString `json:"name,omitempty"`
-	OrganizationProfileName *DatabaseSqlNullString `json:"organizationProfileName,omitempty"`
+	AdditionalRegions *string `json:"additionalRegions,omitempty"`
+	ApplicationPackageName *string `json:"applicationPackageName,omitempty"`
+	AttachedShare *string `json:"attachedShare,omitempty"`
+	Autofulfillment *bool `json:"autofulfillment,omitempty"`
+	Comment *string `json:"comment,omitempty"`
+	CreatedOn *string `json:"createdOn,omitempty"`
+	CustomizedContactInfo *string `json:"customizedContactInfo,omitempty"`
+	DefaultPricingPlan *SnowflakeMarketplaceProductDefaultPricingPlan `json:"defaultPricingPlan,omitempty"`
+	DetailedTargetAccounts []SnowflakeMarketplaceProductDetailedTargetAccount `json:"detailedTargetAccounts,omitempty"`
+	Distribution *string `json:"distribution,omitempty"`
+	EvaluationPlan *string `json:"evaluationPlan,omitempty"`
+	FirstPublishedOn *string `json:"firstPublishedOn,omitempty"`
+	Flags *string `json:"flags,omitempty"`
+	FulfillmentType *string `json:"fulfillmentType,omitempty"`
+	GlobalName *string `json:"globalName,omitempty"`
+	IsMountlessQueryable *bool `json:"isMountlessQueryable,omitempty"`
+	LastApprovedOn *string `json:"lastApprovedOn,omitempty"`
+	LastPublishedOn *string `json:"lastPublishedOn,omitempty"`
+	LastSubmittedOn *string `json:"lastSubmittedOn,omitempty"`
+	ListingType *string `json:"listingType,omitempty"`
+	Metadata *SnowflakeMarketplaceProductMetadata `json:"metadata,omitempty"`
+	Name *string `json:"name,omitempty"`
+	PricingPlans []SnowflakeMarketplaceProductPricingPlan `json:"pricingPlans,omitempty"`
+	Private *bool `json:"private,omitempty"`
+	ProfileName *string `json:"profileName,omitempty"`
+	PublishOnApproval *bool `json:"publishOnApproval,omitempty"`
+	Regions *string `json:"regions,omitempty"`
+	RejectedOn *string `json:"rejectedOn,omitempty"`
+	RejectedReason *string `json:"rejectedReason,omitempty"`
+	ReplicationSchedule *string `json:"replicationSchedule,omitempty"`
+	RetiredOn *string `json:"retiredOn,omitempty"`
+	ScheduledDropTime *string `json:"scheduledDropTime,omitempty"`
+	ShareType *string `json:"shareType,omitempty"`
+	State *string `json:"state,omitempty"`
+	TargetAccounts *string `json:"targetAccounts,omitempty"`
+	TrialDetails *SnowflakeMarketplaceTrialDetails `json:"trialDetails,omitempty"`
+	UnpublishedByAdminReason *string `json:"unpublishedByAdminReason,omitempty"`
+	UpdatedOn *string `json:"updatedOn,omitempty"`
 }
 
 // NewSnowflakeMarketplaceProduct instantiates a new SnowflakeMarketplaceProduct object
@@ -65,10 +77,138 @@ func NewSnowflakeMarketplaceProductWithDefaults() *SnowflakeMarketplaceProduct {
 	return &this
 }
 
+// GetAdditionalRegions returns the AdditionalRegions field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetAdditionalRegions() string {
+	if o == nil || IsNil(o.AdditionalRegions) {
+		var ret string
+		return ret
+	}
+	return *o.AdditionalRegions
+}
+
+// GetAdditionalRegionsOk returns a tuple with the AdditionalRegions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetAdditionalRegionsOk() (*string, bool) {
+	if o == nil || IsNil(o.AdditionalRegions) {
+		return nil, false
+	}
+	return o.AdditionalRegions, true
+}
+
+// HasAdditionalRegions returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasAdditionalRegions() bool {
+	if o != nil && !IsNil(o.AdditionalRegions) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalRegions gets a reference to the given string and assigns it to the AdditionalRegions field.
+func (o *SnowflakeMarketplaceProduct) SetAdditionalRegions(v string) {
+	o.AdditionalRegions = &v
+}
+
+// GetApplicationPackageName returns the ApplicationPackageName field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetApplicationPackageName() string {
+	if o == nil || IsNil(o.ApplicationPackageName) {
+		var ret string
+		return ret
+	}
+	return *o.ApplicationPackageName
+}
+
+// GetApplicationPackageNameOk returns a tuple with the ApplicationPackageName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetApplicationPackageNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ApplicationPackageName) {
+		return nil, false
+	}
+	return o.ApplicationPackageName, true
+}
+
+// HasApplicationPackageName returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasApplicationPackageName() bool {
+	if o != nil && !IsNil(o.ApplicationPackageName) {
+		return true
+	}
+
+	return false
+}
+
+// SetApplicationPackageName gets a reference to the given string and assigns it to the ApplicationPackageName field.
+func (o *SnowflakeMarketplaceProduct) SetApplicationPackageName(v string) {
+	o.ApplicationPackageName = &v
+}
+
+// GetAttachedShare returns the AttachedShare field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetAttachedShare() string {
+	if o == nil || IsNil(o.AttachedShare) {
+		var ret string
+		return ret
+	}
+	return *o.AttachedShare
+}
+
+// GetAttachedShareOk returns a tuple with the AttachedShare field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetAttachedShareOk() (*string, bool) {
+	if o == nil || IsNil(o.AttachedShare) {
+		return nil, false
+	}
+	return o.AttachedShare, true
+}
+
+// HasAttachedShare returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasAttachedShare() bool {
+	if o != nil && !IsNil(o.AttachedShare) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttachedShare gets a reference to the given string and assigns it to the AttachedShare field.
+func (o *SnowflakeMarketplaceProduct) SetAttachedShare(v string) {
+	o.AttachedShare = &v
+}
+
+// GetAutofulfillment returns the Autofulfillment field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetAutofulfillment() bool {
+	if o == nil || IsNil(o.Autofulfillment) {
+		var ret bool
+		return ret
+	}
+	return *o.Autofulfillment
+}
+
+// GetAutofulfillmentOk returns a tuple with the Autofulfillment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetAutofulfillmentOk() (*bool, bool) {
+	if o == nil || IsNil(o.Autofulfillment) {
+		return nil, false
+	}
+	return o.Autofulfillment, true
+}
+
+// HasAutofulfillment returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasAutofulfillment() bool {
+	if o != nil && !IsNil(o.Autofulfillment) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutofulfillment gets a reference to the given bool and assigns it to the Autofulfillment field.
+func (o *SnowflakeMarketplaceProduct) SetAutofulfillment(v bool) {
+	o.Autofulfillment = &v
+}
+
 // GetComment returns the Comment field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetComment() DatabaseSqlNullString {
+func (o *SnowflakeMarketplaceProduct) GetComment() string {
 	if o == nil || IsNil(o.Comment) {
-		var ret DatabaseSqlNullString
+		var ret string
 		return ret
 	}
 	return *o.Comment
@@ -76,7 +216,7 @@ func (o *SnowflakeMarketplaceProduct) GetComment() DatabaseSqlNullString {
 
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetCommentOk() (*DatabaseSqlNullString, bool) {
+func (o *SnowflakeMarketplaceProduct) GetCommentOk() (*string, bool) {
 	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
@@ -92,15 +232,15 @@ func (o *SnowflakeMarketplaceProduct) HasComment() bool {
 	return false
 }
 
-// SetComment gets a reference to the given DatabaseSqlNullString and assigns it to the Comment field.
-func (o *SnowflakeMarketplaceProduct) SetComment(v DatabaseSqlNullString) {
+// SetComment gets a reference to the given string and assigns it to the Comment field.
+func (o *SnowflakeMarketplaceProduct) SetComment(v string) {
 	o.Comment = &v
 }
 
 // GetCreatedOn returns the CreatedOn field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetCreatedOn() DatabaseSqlNullTime {
+func (o *SnowflakeMarketplaceProduct) GetCreatedOn() string {
 	if o == nil || IsNil(o.CreatedOn) {
-		var ret DatabaseSqlNullTime
+		var ret string
 		return ret
 	}
 	return *o.CreatedOn
@@ -108,7 +248,7 @@ func (o *SnowflakeMarketplaceProduct) GetCreatedOn() DatabaseSqlNullTime {
 
 // GetCreatedOnOk returns a tuple with the CreatedOn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetCreatedOnOk() (*DatabaseSqlNullTime, bool) {
+func (o *SnowflakeMarketplaceProduct) GetCreatedOnOk() (*string, bool) {
 	if o == nil || IsNil(o.CreatedOn) {
 		return nil, false
 	}
@@ -124,23 +264,87 @@ func (o *SnowflakeMarketplaceProduct) HasCreatedOn() bool {
 	return false
 }
 
-// SetCreatedOn gets a reference to the given DatabaseSqlNullTime and assigns it to the CreatedOn field.
-func (o *SnowflakeMarketplaceProduct) SetCreatedOn(v DatabaseSqlNullTime) {
+// SetCreatedOn gets a reference to the given string and assigns it to the CreatedOn field.
+func (o *SnowflakeMarketplaceProduct) SetCreatedOn(v string) {
 	o.CreatedOn = &v
 }
 
-// GetDetailedTargetAccounts returns the DetailedTargetAccounts field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetDetailedTargetAccounts() DatabaseSqlNullString {
-	if o == nil || IsNil(o.DetailedTargetAccounts) {
-		var ret DatabaseSqlNullString
+// GetCustomizedContactInfo returns the CustomizedContactInfo field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetCustomizedContactInfo() string {
+	if o == nil || IsNil(o.CustomizedContactInfo) {
+		var ret string
 		return ret
 	}
-	return *o.DetailedTargetAccounts
+	return *o.CustomizedContactInfo
+}
+
+// GetCustomizedContactInfoOk returns a tuple with the CustomizedContactInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetCustomizedContactInfoOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomizedContactInfo) {
+		return nil, false
+	}
+	return o.CustomizedContactInfo, true
+}
+
+// HasCustomizedContactInfo returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasCustomizedContactInfo() bool {
+	if o != nil && !IsNil(o.CustomizedContactInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomizedContactInfo gets a reference to the given string and assigns it to the CustomizedContactInfo field.
+func (o *SnowflakeMarketplaceProduct) SetCustomizedContactInfo(v string) {
+	o.CustomizedContactInfo = &v
+}
+
+// GetDefaultPricingPlan returns the DefaultPricingPlan field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetDefaultPricingPlan() SnowflakeMarketplaceProductDefaultPricingPlan {
+	if o == nil || IsNil(o.DefaultPricingPlan) {
+		var ret SnowflakeMarketplaceProductDefaultPricingPlan
+		return ret
+	}
+	return *o.DefaultPricingPlan
+}
+
+// GetDefaultPricingPlanOk returns a tuple with the DefaultPricingPlan field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetDefaultPricingPlanOk() (*SnowflakeMarketplaceProductDefaultPricingPlan, bool) {
+	if o == nil || IsNil(o.DefaultPricingPlan) {
+		return nil, false
+	}
+	return o.DefaultPricingPlan, true
+}
+
+// HasDefaultPricingPlan returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasDefaultPricingPlan() bool {
+	if o != nil && !IsNil(o.DefaultPricingPlan) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultPricingPlan gets a reference to the given SnowflakeMarketplaceProductDefaultPricingPlan and assigns it to the DefaultPricingPlan field.
+func (o *SnowflakeMarketplaceProduct) SetDefaultPricingPlan(v SnowflakeMarketplaceProductDefaultPricingPlan) {
+	o.DefaultPricingPlan = &v
+}
+
+// GetDetailedTargetAccounts returns the DetailedTargetAccounts field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetDetailedTargetAccounts() []SnowflakeMarketplaceProductDetailedTargetAccount {
+	if o == nil || IsNil(o.DetailedTargetAccounts) {
+		var ret []SnowflakeMarketplaceProductDetailedTargetAccount
+		return ret
+	}
+	return o.DetailedTargetAccounts
 }
 
 // GetDetailedTargetAccountsOk returns a tuple with the DetailedTargetAccounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetDetailedTargetAccountsOk() (*DatabaseSqlNullString, bool) {
+func (o *SnowflakeMarketplaceProduct) GetDetailedTargetAccountsOk() ([]SnowflakeMarketplaceProductDetailedTargetAccount, bool) {
 	if o == nil || IsNil(o.DetailedTargetAccounts) {
 		return nil, false
 	}
@@ -156,15 +360,15 @@ func (o *SnowflakeMarketplaceProduct) HasDetailedTargetAccounts() bool {
 	return false
 }
 
-// SetDetailedTargetAccounts gets a reference to the given DatabaseSqlNullString and assigns it to the DetailedTargetAccounts field.
-func (o *SnowflakeMarketplaceProduct) SetDetailedTargetAccounts(v DatabaseSqlNullString) {
-	o.DetailedTargetAccounts = &v
+// SetDetailedTargetAccounts gets a reference to the given []SnowflakeMarketplaceProductDetailedTargetAccount and assigns it to the DetailedTargetAccounts field.
+func (o *SnowflakeMarketplaceProduct) SetDetailedTargetAccounts(v []SnowflakeMarketplaceProductDetailedTargetAccount) {
+	o.DetailedTargetAccounts = v
 }
 
 // GetDistribution returns the Distribution field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetDistribution() DatabaseSqlNullString {
+func (o *SnowflakeMarketplaceProduct) GetDistribution() string {
 	if o == nil || IsNil(o.Distribution) {
-		var ret DatabaseSqlNullString
+		var ret string
 		return ret
 	}
 	return *o.Distribution
@@ -172,7 +376,7 @@ func (o *SnowflakeMarketplaceProduct) GetDistribution() DatabaseSqlNullString {
 
 // GetDistributionOk returns a tuple with the Distribution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetDistributionOk() (*DatabaseSqlNullString, bool) {
+func (o *SnowflakeMarketplaceProduct) GetDistributionOk() (*string, bool) {
 	if o == nil || IsNil(o.Distribution) {
 		return nil, false
 	}
@@ -188,15 +392,143 @@ func (o *SnowflakeMarketplaceProduct) HasDistribution() bool {
 	return false
 }
 
-// SetDistribution gets a reference to the given DatabaseSqlNullString and assigns it to the Distribution field.
-func (o *SnowflakeMarketplaceProduct) SetDistribution(v DatabaseSqlNullString) {
+// SetDistribution gets a reference to the given string and assigns it to the Distribution field.
+func (o *SnowflakeMarketplaceProduct) SetDistribution(v string) {
 	o.Distribution = &v
 }
 
+// GetEvaluationPlan returns the EvaluationPlan field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetEvaluationPlan() string {
+	if o == nil || IsNil(o.EvaluationPlan) {
+		var ret string
+		return ret
+	}
+	return *o.EvaluationPlan
+}
+
+// GetEvaluationPlanOk returns a tuple with the EvaluationPlan field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetEvaluationPlanOk() (*string, bool) {
+	if o == nil || IsNil(o.EvaluationPlan) {
+		return nil, false
+	}
+	return o.EvaluationPlan, true
+}
+
+// HasEvaluationPlan returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasEvaluationPlan() bool {
+	if o != nil && !IsNil(o.EvaluationPlan) {
+		return true
+	}
+
+	return false
+}
+
+// SetEvaluationPlan gets a reference to the given string and assigns it to the EvaluationPlan field.
+func (o *SnowflakeMarketplaceProduct) SetEvaluationPlan(v string) {
+	o.EvaluationPlan = &v
+}
+
+// GetFirstPublishedOn returns the FirstPublishedOn field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetFirstPublishedOn() string {
+	if o == nil || IsNil(o.FirstPublishedOn) {
+		var ret string
+		return ret
+	}
+	return *o.FirstPublishedOn
+}
+
+// GetFirstPublishedOnOk returns a tuple with the FirstPublishedOn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetFirstPublishedOnOk() (*string, bool) {
+	if o == nil || IsNil(o.FirstPublishedOn) {
+		return nil, false
+	}
+	return o.FirstPublishedOn, true
+}
+
+// HasFirstPublishedOn returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasFirstPublishedOn() bool {
+	if o != nil && !IsNil(o.FirstPublishedOn) {
+		return true
+	}
+
+	return false
+}
+
+// SetFirstPublishedOn gets a reference to the given string and assigns it to the FirstPublishedOn field.
+func (o *SnowflakeMarketplaceProduct) SetFirstPublishedOn(v string) {
+	o.FirstPublishedOn = &v
+}
+
+// GetFlags returns the Flags field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetFlags() string {
+	if o == nil || IsNil(o.Flags) {
+		var ret string
+		return ret
+	}
+	return *o.Flags
+}
+
+// GetFlagsOk returns a tuple with the Flags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetFlagsOk() (*string, bool) {
+	if o == nil || IsNil(o.Flags) {
+		return nil, false
+	}
+	return o.Flags, true
+}
+
+// HasFlags returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasFlags() bool {
+	if o != nil && !IsNil(o.Flags) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlags gets a reference to the given string and assigns it to the Flags field.
+func (o *SnowflakeMarketplaceProduct) SetFlags(v string) {
+	o.Flags = &v
+}
+
+// GetFulfillmentType returns the FulfillmentType field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetFulfillmentType() string {
+	if o == nil || IsNil(o.FulfillmentType) {
+		var ret string
+		return ret
+	}
+	return *o.FulfillmentType
+}
+
+// GetFulfillmentTypeOk returns a tuple with the FulfillmentType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetFulfillmentTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.FulfillmentType) {
+		return nil, false
+	}
+	return o.FulfillmentType, true
+}
+
+// HasFulfillmentType returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasFulfillmentType() bool {
+	if o != nil && !IsNil(o.FulfillmentType) {
+		return true
+	}
+
+	return false
+}
+
+// SetFulfillmentType gets a reference to the given string and assigns it to the FulfillmentType field.
+func (o *SnowflakeMarketplaceProduct) SetFulfillmentType(v string) {
+	o.FulfillmentType = &v
+}
+
 // GetGlobalName returns the GlobalName field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetGlobalName() DatabaseSqlNullString {
+func (o *SnowflakeMarketplaceProduct) GetGlobalName() string {
 	if o == nil || IsNil(o.GlobalName) {
-		var ret DatabaseSqlNullString
+		var ret string
 		return ret
 	}
 	return *o.GlobalName
@@ -204,7 +536,7 @@ func (o *SnowflakeMarketplaceProduct) GetGlobalName() DatabaseSqlNullString {
 
 // GetGlobalNameOk returns a tuple with the GlobalName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetGlobalNameOk() (*DatabaseSqlNullString, bool) {
+func (o *SnowflakeMarketplaceProduct) GetGlobalNameOk() (*string, bool) {
 	if o == nil || IsNil(o.GlobalName) {
 		return nil, false
 	}
@@ -220,143 +552,15 @@ func (o *SnowflakeMarketplaceProduct) HasGlobalName() bool {
 	return false
 }
 
-// SetGlobalName gets a reference to the given DatabaseSqlNullString and assigns it to the GlobalName field.
-func (o *SnowflakeMarketplaceProduct) SetGlobalName(v DatabaseSqlNullString) {
+// SetGlobalName gets a reference to the given string and assigns it to the GlobalName field.
+func (o *SnowflakeMarketplaceProduct) SetGlobalName(v string) {
 	o.GlobalName = &v
 }
 
-// GetIsApplication returns the IsApplication field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetIsApplication() DatabaseSqlNullBool {
-	if o == nil || IsNil(o.IsApplication) {
-		var ret DatabaseSqlNullBool
-		return ret
-	}
-	return *o.IsApplication
-}
-
-// GetIsApplicationOk returns a tuple with the IsApplication field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetIsApplicationOk() (*DatabaseSqlNullBool, bool) {
-	if o == nil || IsNil(o.IsApplication) {
-		return nil, false
-	}
-	return o.IsApplication, true
-}
-
-// HasIsApplication returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasIsApplication() bool {
-	if o != nil && !IsNil(o.IsApplication) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsApplication gets a reference to the given DatabaseSqlNullBool and assigns it to the IsApplication field.
-func (o *SnowflakeMarketplaceProduct) SetIsApplication(v DatabaseSqlNullBool) {
-	o.IsApplication = &v
-}
-
-// GetIsByRequest returns the IsByRequest field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetIsByRequest() DatabaseSqlNullBool {
-	if o == nil || IsNil(o.IsByRequest) {
-		var ret DatabaseSqlNullBool
-		return ret
-	}
-	return *o.IsByRequest
-}
-
-// GetIsByRequestOk returns a tuple with the IsByRequest field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetIsByRequestOk() (*DatabaseSqlNullBool, bool) {
-	if o == nil || IsNil(o.IsByRequest) {
-		return nil, false
-	}
-	return o.IsByRequest, true
-}
-
-// HasIsByRequest returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasIsByRequest() bool {
-	if o != nil && !IsNil(o.IsByRequest) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsByRequest gets a reference to the given DatabaseSqlNullBool and assigns it to the IsByRequest field.
-func (o *SnowflakeMarketplaceProduct) SetIsByRequest(v DatabaseSqlNullBool) {
-	o.IsByRequest = &v
-}
-
-// GetIsLimitedTrial returns the IsLimitedTrial field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetIsLimitedTrial() DatabaseSqlNullBool {
-	if o == nil || IsNil(o.IsLimitedTrial) {
-		var ret DatabaseSqlNullBool
-		return ret
-	}
-	return *o.IsLimitedTrial
-}
-
-// GetIsLimitedTrialOk returns a tuple with the IsLimitedTrial field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetIsLimitedTrialOk() (*DatabaseSqlNullBool, bool) {
-	if o == nil || IsNil(o.IsLimitedTrial) {
-		return nil, false
-	}
-	return o.IsLimitedTrial, true
-}
-
-// HasIsLimitedTrial returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasIsLimitedTrial() bool {
-	if o != nil && !IsNil(o.IsLimitedTrial) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsLimitedTrial gets a reference to the given DatabaseSqlNullBool and assigns it to the IsLimitedTrial field.
-func (o *SnowflakeMarketplaceProduct) SetIsLimitedTrial(v DatabaseSqlNullBool) {
-	o.IsLimitedTrial = &v
-}
-
-// GetIsMonetized returns the IsMonetized field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetIsMonetized() DatabaseSqlNullBool {
-	if o == nil || IsNil(o.IsMonetized) {
-		var ret DatabaseSqlNullBool
-		return ret
-	}
-	return *o.IsMonetized
-}
-
-// GetIsMonetizedOk returns a tuple with the IsMonetized field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetIsMonetizedOk() (*DatabaseSqlNullBool, bool) {
-	if o == nil || IsNil(o.IsMonetized) {
-		return nil, false
-	}
-	return o.IsMonetized, true
-}
-
-// HasIsMonetized returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasIsMonetized() bool {
-	if o != nil && !IsNil(o.IsMonetized) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsMonetized gets a reference to the given DatabaseSqlNullBool and assigns it to the IsMonetized field.
-func (o *SnowflakeMarketplaceProduct) SetIsMonetized(v DatabaseSqlNullBool) {
-	o.IsMonetized = &v
-}
-
 // GetIsMountlessQueryable returns the IsMountlessQueryable field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetIsMountlessQueryable() DatabaseSqlNullBool {
+func (o *SnowflakeMarketplaceProduct) GetIsMountlessQueryable() bool {
 	if o == nil || IsNil(o.IsMountlessQueryable) {
-		var ret DatabaseSqlNullBool
+		var ret bool
 		return ret
 	}
 	return *o.IsMountlessQueryable
@@ -364,7 +568,7 @@ func (o *SnowflakeMarketplaceProduct) GetIsMountlessQueryable() DatabaseSqlNullB
 
 // GetIsMountlessQueryableOk returns a tuple with the IsMountlessQueryable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetIsMountlessQueryableOk() (*DatabaseSqlNullBool, bool) {
+func (o *SnowflakeMarketplaceProduct) GetIsMountlessQueryableOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsMountlessQueryable) {
 		return nil, false
 	}
@@ -380,463 +584,175 @@ func (o *SnowflakeMarketplaceProduct) HasIsMountlessQueryable() bool {
 	return false
 }
 
-// SetIsMountlessQueryable gets a reference to the given DatabaseSqlNullBool and assigns it to the IsMountlessQueryable field.
-func (o *SnowflakeMarketplaceProduct) SetIsMountlessQueryable(v DatabaseSqlNullBool) {
+// SetIsMountlessQueryable gets a reference to the given bool and assigns it to the IsMountlessQueryable field.
+func (o *SnowflakeMarketplaceProduct) SetIsMountlessQueryable(v bool) {
 	o.IsMountlessQueryable = &v
 }
 
-// GetIsTargeted returns the IsTargeted field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetIsTargeted() DatabaseSqlNullBool {
-	if o == nil || IsNil(o.IsTargeted) {
-		var ret DatabaseSqlNullBool
+// GetLastApprovedOn returns the LastApprovedOn field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetLastApprovedOn() string {
+	if o == nil || IsNil(o.LastApprovedOn) {
+		var ret string
 		return ret
 	}
-	return *o.IsTargeted
+	return *o.LastApprovedOn
 }
 
-// GetIsTargetedOk returns a tuple with the IsTargeted field value if set, nil otherwise
+// GetLastApprovedOnOk returns a tuple with the LastApprovedOn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetIsTargetedOk() (*DatabaseSqlNullBool, bool) {
-	if o == nil || IsNil(o.IsTargeted) {
+func (o *SnowflakeMarketplaceProduct) GetLastApprovedOnOk() (*string, bool) {
+	if o == nil || IsNil(o.LastApprovedOn) {
 		return nil, false
 	}
-	return o.IsTargeted, true
+	return o.LastApprovedOn, true
 }
 
-// HasIsTargeted returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasIsTargeted() bool {
-	if o != nil && !IsNil(o.IsTargeted) {
+// HasLastApprovedOn returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasLastApprovedOn() bool {
+	if o != nil && !IsNil(o.LastApprovedOn) {
 		return true
 	}
 
 	return false
 }
 
-// SetIsTargeted gets a reference to the given DatabaseSqlNullBool and assigns it to the IsTargeted field.
-func (o *SnowflakeMarketplaceProduct) SetIsTargeted(v DatabaseSqlNullBool) {
-	o.IsTargeted = &v
+// SetLastApprovedOn gets a reference to the given string and assigns it to the LastApprovedOn field.
+func (o *SnowflakeMarketplaceProduct) SetLastApprovedOn(v string) {
+	o.LastApprovedOn = &v
 }
 
-// GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetOwner() DatabaseSqlNullString {
-	if o == nil || IsNil(o.Owner) {
-		var ret DatabaseSqlNullString
+// GetLastPublishedOn returns the LastPublishedOn field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetLastPublishedOn() string {
+	if o == nil || IsNil(o.LastPublishedOn) {
+		var ret string
 		return ret
 	}
-	return *o.Owner
+	return *o.LastPublishedOn
 }
 
-// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// GetLastPublishedOnOk returns a tuple with the LastPublishedOn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetOwnerOk() (*DatabaseSqlNullString, bool) {
-	if o == nil || IsNil(o.Owner) {
+func (o *SnowflakeMarketplaceProduct) GetLastPublishedOnOk() (*string, bool) {
+	if o == nil || IsNil(o.LastPublishedOn) {
 		return nil, false
 	}
-	return o.Owner, true
+	return o.LastPublishedOn, true
 }
 
-// HasOwner returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasOwner() bool {
-	if o != nil && !IsNil(o.Owner) {
+// HasLastPublishedOn returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasLastPublishedOn() bool {
+	if o != nil && !IsNil(o.LastPublishedOn) {
 		return true
 	}
 
 	return false
 }
 
-// SetOwner gets a reference to the given DatabaseSqlNullString and assigns it to the Owner field.
-func (o *SnowflakeMarketplaceProduct) SetOwner(v DatabaseSqlNullString) {
-	o.Owner = &v
+// SetLastPublishedOn gets a reference to the given string and assigns it to the LastPublishedOn field.
+func (o *SnowflakeMarketplaceProduct) SetLastPublishedOn(v string) {
+	o.LastPublishedOn = &v
 }
 
-// GetOwnerRoleType returns the OwnerRoleType field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetOwnerRoleType() DatabaseSqlNullString {
-	if o == nil || IsNil(o.OwnerRoleType) {
-		var ret DatabaseSqlNullString
+// GetLastSubmittedOn returns the LastSubmittedOn field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetLastSubmittedOn() string {
+	if o == nil || IsNil(o.LastSubmittedOn) {
+		var ret string
 		return ret
 	}
-	return *o.OwnerRoleType
+	return *o.LastSubmittedOn
 }
 
-// GetOwnerRoleTypeOk returns a tuple with the OwnerRoleType field value if set, nil otherwise
+// GetLastSubmittedOnOk returns a tuple with the LastSubmittedOn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetOwnerRoleTypeOk() (*DatabaseSqlNullString, bool) {
-	if o == nil || IsNil(o.OwnerRoleType) {
+func (o *SnowflakeMarketplaceProduct) GetLastSubmittedOnOk() (*string, bool) {
+	if o == nil || IsNil(o.LastSubmittedOn) {
 		return nil, false
 	}
-	return o.OwnerRoleType, true
+	return o.LastSubmittedOn, true
 }
 
-// HasOwnerRoleType returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasOwnerRoleType() bool {
-	if o != nil && !IsNil(o.OwnerRoleType) {
+// HasLastSubmittedOn returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasLastSubmittedOn() bool {
+	if o != nil && !IsNil(o.LastSubmittedOn) {
 		return true
 	}
 
 	return false
 }
 
-// SetOwnerRoleType gets a reference to the given DatabaseSqlNullString and assigns it to the OwnerRoleType field.
-func (o *SnowflakeMarketplaceProduct) SetOwnerRoleType(v DatabaseSqlNullString) {
-	o.OwnerRoleType = &v
+// SetLastSubmittedOn gets a reference to the given string and assigns it to the LastSubmittedOn field.
+func (o *SnowflakeMarketplaceProduct) SetLastSubmittedOn(v string) {
+	o.LastSubmittedOn = &v
 }
 
-// GetProfile returns the Profile field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetProfile() DatabaseSqlNullString {
-	if o == nil || IsNil(o.Profile) {
-		var ret DatabaseSqlNullString
+// GetListingType returns the ListingType field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetListingType() string {
+	if o == nil || IsNil(o.ListingType) {
+		var ret string
 		return ret
 	}
-	return *o.Profile
+	return *o.ListingType
 }
 
-// GetProfileOk returns a tuple with the Profile field value if set, nil otherwise
+// GetListingTypeOk returns a tuple with the ListingType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetProfileOk() (*DatabaseSqlNullString, bool) {
-	if o == nil || IsNil(o.Profile) {
+func (o *SnowflakeMarketplaceProduct) GetListingTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ListingType) {
 		return nil, false
 	}
-	return o.Profile, true
+	return o.ListingType, true
 }
 
-// HasProfile returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasProfile() bool {
-	if o != nil && !IsNil(o.Profile) {
+// HasListingType returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasListingType() bool {
+	if o != nil && !IsNil(o.ListingType) {
 		return true
 	}
 
 	return false
 }
 
-// SetProfile gets a reference to the given DatabaseSqlNullString and assigns it to the Profile field.
-func (o *SnowflakeMarketplaceProduct) SetProfile(v DatabaseSqlNullString) {
-	o.Profile = &v
+// SetListingType gets a reference to the given string and assigns it to the ListingType field.
+func (o *SnowflakeMarketplaceProduct) SetListingType(v string) {
+	o.ListingType = &v
 }
 
-// GetPublishedOn returns the PublishedOn field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetPublishedOn() DatabaseSqlNullTime {
-	if o == nil || IsNil(o.PublishedOn) {
-		var ret DatabaseSqlNullTime
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetMetadata() SnowflakeMarketplaceProductMetadata {
+	if o == nil || IsNil(o.Metadata) {
+		var ret SnowflakeMarketplaceProductMetadata
 		return ret
 	}
-	return *o.PublishedOn
+	return *o.Metadata
 }
 
-// GetPublishedOnOk returns a tuple with the PublishedOn field value if set, nil otherwise
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetPublishedOnOk() (*DatabaseSqlNullTime, bool) {
-	if o == nil || IsNil(o.PublishedOn) {
+func (o *SnowflakeMarketplaceProduct) GetMetadataOk() (*SnowflakeMarketplaceProductMetadata, bool) {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
-	return o.PublishedOn, true
+	return o.Metadata, true
 }
 
-// HasPublishedOn returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasPublishedOn() bool {
-	if o != nil && !IsNil(o.PublishedOn) {
+// HasMetadata returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
 	return false
 }
 
-// SetPublishedOn gets a reference to the given DatabaseSqlNullTime and assigns it to the PublishedOn field.
-func (o *SnowflakeMarketplaceProduct) SetPublishedOn(v DatabaseSqlNullTime) {
-	o.PublishedOn = &v
-}
-
-// GetRegions returns the Regions field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetRegions() DatabaseSqlNullString {
-	if o == nil || IsNil(o.Regions) {
-		var ret DatabaseSqlNullString
-		return ret
-	}
-	return *o.Regions
-}
-
-// GetRegionsOk returns a tuple with the Regions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetRegionsOk() (*DatabaseSqlNullString, bool) {
-	if o == nil || IsNil(o.Regions) {
-		return nil, false
-	}
-	return o.Regions, true
-}
-
-// HasRegions returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasRegions() bool {
-	if o != nil && !IsNil(o.Regions) {
-		return true
-	}
-
-	return false
-}
-
-// SetRegions gets a reference to the given DatabaseSqlNullString and assigns it to the Regions field.
-func (o *SnowflakeMarketplaceProduct) SetRegions(v DatabaseSqlNullString) {
-	o.Regions = &v
-}
-
-// GetRejectedOn returns the RejectedOn field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetRejectedOn() DatabaseSqlNullTime {
-	if o == nil || IsNil(o.RejectedOn) {
-		var ret DatabaseSqlNullTime
-		return ret
-	}
-	return *o.RejectedOn
-}
-
-// GetRejectedOnOk returns a tuple with the RejectedOn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetRejectedOnOk() (*DatabaseSqlNullTime, bool) {
-	if o == nil || IsNil(o.RejectedOn) {
-		return nil, false
-	}
-	return o.RejectedOn, true
-}
-
-// HasRejectedOn returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasRejectedOn() bool {
-	if o != nil && !IsNil(o.RejectedOn) {
-		return true
-	}
-
-	return false
-}
-
-// SetRejectedOn gets a reference to the given DatabaseSqlNullTime and assigns it to the RejectedOn field.
-func (o *SnowflakeMarketplaceProduct) SetRejectedOn(v DatabaseSqlNullTime) {
-	o.RejectedOn = &v
-}
-
-// GetReviewState returns the ReviewState field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetReviewState() DatabaseSqlNullString {
-	if o == nil || IsNil(o.ReviewState) {
-		var ret DatabaseSqlNullString
-		return ret
-	}
-	return *o.ReviewState
-}
-
-// GetReviewStateOk returns a tuple with the ReviewState field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetReviewStateOk() (*DatabaseSqlNullString, bool) {
-	if o == nil || IsNil(o.ReviewState) {
-		return nil, false
-	}
-	return o.ReviewState, true
-}
-
-// HasReviewState returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasReviewState() bool {
-	if o != nil && !IsNil(o.ReviewState) {
-		return true
-	}
-
-	return false
-}
-
-// SetReviewState gets a reference to the given DatabaseSqlNullString and assigns it to the ReviewState field.
-func (o *SnowflakeMarketplaceProduct) SetReviewState(v DatabaseSqlNullString) {
-	o.ReviewState = &v
-}
-
-// GetState returns the State field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetState() DatabaseSqlNullString {
-	if o == nil || IsNil(o.State) {
-		var ret DatabaseSqlNullString
-		return ret
-	}
-	return *o.State
-}
-
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetStateOk() (*DatabaseSqlNullString, bool) {
-	if o == nil || IsNil(o.State) {
-		return nil, false
-	}
-	return o.State, true
-}
-
-// HasState returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasState() bool {
-	if o != nil && !IsNil(o.State) {
-		return true
-	}
-
-	return false
-}
-
-// SetState gets a reference to the given DatabaseSqlNullString and assigns it to the State field.
-func (o *SnowflakeMarketplaceProduct) SetState(v DatabaseSqlNullString) {
-	o.State = &v
-}
-
-// GetSubtitle returns the Subtitle field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetSubtitle() DatabaseSqlNullString {
-	if o == nil || IsNil(o.Subtitle) {
-		var ret DatabaseSqlNullString
-		return ret
-	}
-	return *o.Subtitle
-}
-
-// GetSubtitleOk returns a tuple with the Subtitle field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetSubtitleOk() (*DatabaseSqlNullString, bool) {
-	if o == nil || IsNil(o.Subtitle) {
-		return nil, false
-	}
-	return o.Subtitle, true
-}
-
-// HasSubtitle returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasSubtitle() bool {
-	if o != nil && !IsNil(o.Subtitle) {
-		return true
-	}
-
-	return false
-}
-
-// SetSubtitle gets a reference to the given DatabaseSqlNullString and assigns it to the Subtitle field.
-func (o *SnowflakeMarketplaceProduct) SetSubtitle(v DatabaseSqlNullString) {
-	o.Subtitle = &v
-}
-
-// GetTargetAccounts returns the TargetAccounts field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetTargetAccounts() DatabaseSqlNullString {
-	if o == nil || IsNil(o.TargetAccounts) {
-		var ret DatabaseSqlNullString
-		return ret
-	}
-	return *o.TargetAccounts
-}
-
-// GetTargetAccountsOk returns a tuple with the TargetAccounts field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetTargetAccountsOk() (*DatabaseSqlNullString, bool) {
-	if o == nil || IsNil(o.TargetAccounts) {
-		return nil, false
-	}
-	return o.TargetAccounts, true
-}
-
-// HasTargetAccounts returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasTargetAccounts() bool {
-	if o != nil && !IsNil(o.TargetAccounts) {
-		return true
-	}
-
-	return false
-}
-
-// SetTargetAccounts gets a reference to the given DatabaseSqlNullString and assigns it to the TargetAccounts field.
-func (o *SnowflakeMarketplaceProduct) SetTargetAccounts(v DatabaseSqlNullString) {
-	o.TargetAccounts = &v
-}
-
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetTitle() DatabaseSqlNullString {
-	if o == nil || IsNil(o.Title) {
-		var ret DatabaseSqlNullString
-		return ret
-	}
-	return *o.Title
-}
-
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetTitleOk() (*DatabaseSqlNullString, bool) {
-	if o == nil || IsNil(o.Title) {
-		return nil, false
-	}
-	return o.Title, true
-}
-
-// HasTitle returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
-		return true
-	}
-
-	return false
-}
-
-// SetTitle gets a reference to the given DatabaseSqlNullString and assigns it to the Title field.
-func (o *SnowflakeMarketplaceProduct) SetTitle(v DatabaseSqlNullString) {
-	o.Title = &v
-}
-
-// GetUniformListingLocator returns the UniformListingLocator field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetUniformListingLocator() DatabaseSqlNullString {
-	if o == nil || IsNil(o.UniformListingLocator) {
-		var ret DatabaseSqlNullString
-		return ret
-	}
-	return *o.UniformListingLocator
-}
-
-// GetUniformListingLocatorOk returns a tuple with the UniformListingLocator field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetUniformListingLocatorOk() (*DatabaseSqlNullString, bool) {
-	if o == nil || IsNil(o.UniformListingLocator) {
-		return nil, false
-	}
-	return o.UniformListingLocator, true
-}
-
-// HasUniformListingLocator returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasUniformListingLocator() bool {
-	if o != nil && !IsNil(o.UniformListingLocator) {
-		return true
-	}
-
-	return false
-}
-
-// SetUniformListingLocator gets a reference to the given DatabaseSqlNullString and assigns it to the UniformListingLocator field.
-func (o *SnowflakeMarketplaceProduct) SetUniformListingLocator(v DatabaseSqlNullString) {
-	o.UniformListingLocator = &v
-}
-
-// GetUpdatedOn returns the UpdatedOn field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetUpdatedOn() DatabaseSqlNullTime {
-	if o == nil || IsNil(o.UpdatedOn) {
-		var ret DatabaseSqlNullTime
-		return ret
-	}
-	return *o.UpdatedOn
-}
-
-// GetUpdatedOnOk returns a tuple with the UpdatedOn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetUpdatedOnOk() (*DatabaseSqlNullTime, bool) {
-	if o == nil || IsNil(o.UpdatedOn) {
-		return nil, false
-	}
-	return o.UpdatedOn, true
-}
-
-// HasUpdatedOn returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasUpdatedOn() bool {
-	if o != nil && !IsNil(o.UpdatedOn) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedOn gets a reference to the given DatabaseSqlNullTime and assigns it to the UpdatedOn field.
-func (o *SnowflakeMarketplaceProduct) SetUpdatedOn(v DatabaseSqlNullTime) {
-	o.UpdatedOn = &v
+// SetMetadata gets a reference to the given SnowflakeMarketplaceProductMetadata and assigns it to the Metadata field.
+func (o *SnowflakeMarketplaceProduct) SetMetadata(v SnowflakeMarketplaceProductMetadata) {
+	o.Metadata = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetName() DatabaseSqlNullString {
+func (o *SnowflakeMarketplaceProduct) GetName() string {
 	if o == nil || IsNil(o.Name) {
-		var ret DatabaseSqlNullString
+		var ret string
 		return ret
 	}
 	return *o.Name
@@ -844,7 +760,7 @@ func (o *SnowflakeMarketplaceProduct) GetName() DatabaseSqlNullString {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetNameOk() (*DatabaseSqlNullString, bool) {
+func (o *SnowflakeMarketplaceProduct) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -860,45 +776,525 @@ func (o *SnowflakeMarketplaceProduct) HasName() bool {
 	return false
 }
 
-// SetName gets a reference to the given DatabaseSqlNullString and assigns it to the Name field.
-func (o *SnowflakeMarketplaceProduct) SetName(v DatabaseSqlNullString) {
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *SnowflakeMarketplaceProduct) SetName(v string) {
 	o.Name = &v
 }
 
-// GetOrganizationProfileName returns the OrganizationProfileName field value if set, zero value otherwise.
-func (o *SnowflakeMarketplaceProduct) GetOrganizationProfileName() DatabaseSqlNullString {
-	if o == nil || IsNil(o.OrganizationProfileName) {
-		var ret DatabaseSqlNullString
+// GetPricingPlans returns the PricingPlans field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetPricingPlans() []SnowflakeMarketplaceProductPricingPlan {
+	if o == nil || IsNil(o.PricingPlans) {
+		var ret []SnowflakeMarketplaceProductPricingPlan
 		return ret
 	}
-	return *o.OrganizationProfileName
+	return o.PricingPlans
 }
 
-// GetOrganizationProfileNameOk returns a tuple with the OrganizationProfileName field value if set, nil otherwise
+// GetPricingPlansOk returns a tuple with the PricingPlans field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnowflakeMarketplaceProduct) GetOrganizationProfileNameOk() (*DatabaseSqlNullString, bool) {
-	if o == nil || IsNil(o.OrganizationProfileName) {
+func (o *SnowflakeMarketplaceProduct) GetPricingPlansOk() ([]SnowflakeMarketplaceProductPricingPlan, bool) {
+	if o == nil || IsNil(o.PricingPlans) {
 		return nil, false
 	}
-	return o.OrganizationProfileName, true
+	return o.PricingPlans, true
 }
 
-// HasOrganizationProfileName returns a boolean if a field has been set.
-func (o *SnowflakeMarketplaceProduct) HasOrganizationProfileName() bool {
-	if o != nil && !IsNil(o.OrganizationProfileName) {
+// HasPricingPlans returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasPricingPlans() bool {
+	if o != nil && !IsNil(o.PricingPlans) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationProfileName gets a reference to the given DatabaseSqlNullString and assigns it to the OrganizationProfileName field.
-func (o *SnowflakeMarketplaceProduct) SetOrganizationProfileName(v DatabaseSqlNullString) {
-	o.OrganizationProfileName = &v
+// SetPricingPlans gets a reference to the given []SnowflakeMarketplaceProductPricingPlan and assigns it to the PricingPlans field.
+func (o *SnowflakeMarketplaceProduct) SetPricingPlans(v []SnowflakeMarketplaceProductPricingPlan) {
+	o.PricingPlans = v
+}
+
+// GetPrivate returns the Private field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetPrivate() bool {
+	if o == nil || IsNil(o.Private) {
+		var ret bool
+		return ret
+	}
+	return *o.Private
+}
+
+// GetPrivateOk returns a tuple with the Private field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetPrivateOk() (*bool, bool) {
+	if o == nil || IsNil(o.Private) {
+		return nil, false
+	}
+	return o.Private, true
+}
+
+// HasPrivate returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasPrivate() bool {
+	if o != nil && !IsNil(o.Private) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivate gets a reference to the given bool and assigns it to the Private field.
+func (o *SnowflakeMarketplaceProduct) SetPrivate(v bool) {
+	o.Private = &v
+}
+
+// GetProfileName returns the ProfileName field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetProfileName() string {
+	if o == nil || IsNil(o.ProfileName) {
+		var ret string
+		return ret
+	}
+	return *o.ProfileName
+}
+
+// GetProfileNameOk returns a tuple with the ProfileName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetProfileNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ProfileName) {
+		return nil, false
+	}
+	return o.ProfileName, true
+}
+
+// HasProfileName returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasProfileName() bool {
+	if o != nil && !IsNil(o.ProfileName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProfileName gets a reference to the given string and assigns it to the ProfileName field.
+func (o *SnowflakeMarketplaceProduct) SetProfileName(v string) {
+	o.ProfileName = &v
+}
+
+// GetPublishOnApproval returns the PublishOnApproval field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetPublishOnApproval() bool {
+	if o == nil || IsNil(o.PublishOnApproval) {
+		var ret bool
+		return ret
+	}
+	return *o.PublishOnApproval
+}
+
+// GetPublishOnApprovalOk returns a tuple with the PublishOnApproval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetPublishOnApprovalOk() (*bool, bool) {
+	if o == nil || IsNil(o.PublishOnApproval) {
+		return nil, false
+	}
+	return o.PublishOnApproval, true
+}
+
+// HasPublishOnApproval returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasPublishOnApproval() bool {
+	if o != nil && !IsNil(o.PublishOnApproval) {
+		return true
+	}
+
+	return false
+}
+
+// SetPublishOnApproval gets a reference to the given bool and assigns it to the PublishOnApproval field.
+func (o *SnowflakeMarketplaceProduct) SetPublishOnApproval(v bool) {
+	o.PublishOnApproval = &v
+}
+
+// GetRegions returns the Regions field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetRegions() string {
+	if o == nil || IsNil(o.Regions) {
+		var ret string
+		return ret
+	}
+	return *o.Regions
+}
+
+// GetRegionsOk returns a tuple with the Regions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetRegionsOk() (*string, bool) {
+	if o == nil || IsNil(o.Regions) {
+		return nil, false
+	}
+	return o.Regions, true
+}
+
+// HasRegions returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasRegions() bool {
+	if o != nil && !IsNil(o.Regions) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegions gets a reference to the given string and assigns it to the Regions field.
+func (o *SnowflakeMarketplaceProduct) SetRegions(v string) {
+	o.Regions = &v
+}
+
+// GetRejectedOn returns the RejectedOn field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetRejectedOn() string {
+	if o == nil || IsNil(o.RejectedOn) {
+		var ret string
+		return ret
+	}
+	return *o.RejectedOn
+}
+
+// GetRejectedOnOk returns a tuple with the RejectedOn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetRejectedOnOk() (*string, bool) {
+	if o == nil || IsNil(o.RejectedOn) {
+		return nil, false
+	}
+	return o.RejectedOn, true
+}
+
+// HasRejectedOn returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasRejectedOn() bool {
+	if o != nil && !IsNil(o.RejectedOn) {
+		return true
+	}
+
+	return false
+}
+
+// SetRejectedOn gets a reference to the given string and assigns it to the RejectedOn field.
+func (o *SnowflakeMarketplaceProduct) SetRejectedOn(v string) {
+	o.RejectedOn = &v
+}
+
+// GetRejectedReason returns the RejectedReason field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetRejectedReason() string {
+	if o == nil || IsNil(o.RejectedReason) {
+		var ret string
+		return ret
+	}
+	return *o.RejectedReason
+}
+
+// GetRejectedReasonOk returns a tuple with the RejectedReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetRejectedReasonOk() (*string, bool) {
+	if o == nil || IsNil(o.RejectedReason) {
+		return nil, false
+	}
+	return o.RejectedReason, true
+}
+
+// HasRejectedReason returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasRejectedReason() bool {
+	if o != nil && !IsNil(o.RejectedReason) {
+		return true
+	}
+
+	return false
+}
+
+// SetRejectedReason gets a reference to the given string and assigns it to the RejectedReason field.
+func (o *SnowflakeMarketplaceProduct) SetRejectedReason(v string) {
+	o.RejectedReason = &v
+}
+
+// GetReplicationSchedule returns the ReplicationSchedule field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetReplicationSchedule() string {
+	if o == nil || IsNil(o.ReplicationSchedule) {
+		var ret string
+		return ret
+	}
+	return *o.ReplicationSchedule
+}
+
+// GetReplicationScheduleOk returns a tuple with the ReplicationSchedule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetReplicationScheduleOk() (*string, bool) {
+	if o == nil || IsNil(o.ReplicationSchedule) {
+		return nil, false
+	}
+	return o.ReplicationSchedule, true
+}
+
+// HasReplicationSchedule returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasReplicationSchedule() bool {
+	if o != nil && !IsNil(o.ReplicationSchedule) {
+		return true
+	}
+
+	return false
+}
+
+// SetReplicationSchedule gets a reference to the given string and assigns it to the ReplicationSchedule field.
+func (o *SnowflakeMarketplaceProduct) SetReplicationSchedule(v string) {
+	o.ReplicationSchedule = &v
+}
+
+// GetRetiredOn returns the RetiredOn field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetRetiredOn() string {
+	if o == nil || IsNil(o.RetiredOn) {
+		var ret string
+		return ret
+	}
+	return *o.RetiredOn
+}
+
+// GetRetiredOnOk returns a tuple with the RetiredOn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetRetiredOnOk() (*string, bool) {
+	if o == nil || IsNil(o.RetiredOn) {
+		return nil, false
+	}
+	return o.RetiredOn, true
+}
+
+// HasRetiredOn returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasRetiredOn() bool {
+	if o != nil && !IsNil(o.RetiredOn) {
+		return true
+	}
+
+	return false
+}
+
+// SetRetiredOn gets a reference to the given string and assigns it to the RetiredOn field.
+func (o *SnowflakeMarketplaceProduct) SetRetiredOn(v string) {
+	o.RetiredOn = &v
+}
+
+// GetScheduledDropTime returns the ScheduledDropTime field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetScheduledDropTime() string {
+	if o == nil || IsNil(o.ScheduledDropTime) {
+		var ret string
+		return ret
+	}
+	return *o.ScheduledDropTime
+}
+
+// GetScheduledDropTimeOk returns a tuple with the ScheduledDropTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetScheduledDropTimeOk() (*string, bool) {
+	if o == nil || IsNil(o.ScheduledDropTime) {
+		return nil, false
+	}
+	return o.ScheduledDropTime, true
+}
+
+// HasScheduledDropTime returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasScheduledDropTime() bool {
+	if o != nil && !IsNil(o.ScheduledDropTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetScheduledDropTime gets a reference to the given string and assigns it to the ScheduledDropTime field.
+func (o *SnowflakeMarketplaceProduct) SetScheduledDropTime(v string) {
+	o.ScheduledDropTime = &v
+}
+
+// GetShareType returns the ShareType field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetShareType() string {
+	if o == nil || IsNil(o.ShareType) {
+		var ret string
+		return ret
+	}
+	return *o.ShareType
+}
+
+// GetShareTypeOk returns a tuple with the ShareType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetShareTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ShareType) {
+		return nil, false
+	}
+	return o.ShareType, true
+}
+
+// HasShareType returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasShareType() bool {
+	if o != nil && !IsNil(o.ShareType) {
+		return true
+	}
+
+	return false
+}
+
+// SetShareType gets a reference to the given string and assigns it to the ShareType field.
+func (o *SnowflakeMarketplaceProduct) SetShareType(v string) {
+	o.ShareType = &v
+}
+
+// GetState returns the State field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetState() string {
+	if o == nil || IsNil(o.State) {
+		var ret string
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetStateOk() (*string, bool) {
+	if o == nil || IsNil(o.State) {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
+func (o *SnowflakeMarketplaceProduct) SetState(v string) {
+	o.State = &v
+}
+
+// GetTargetAccounts returns the TargetAccounts field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetTargetAccounts() string {
+	if o == nil || IsNil(o.TargetAccounts) {
+		var ret string
+		return ret
+	}
+	return *o.TargetAccounts
+}
+
+// GetTargetAccountsOk returns a tuple with the TargetAccounts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetTargetAccountsOk() (*string, bool) {
+	if o == nil || IsNil(o.TargetAccounts) {
+		return nil, false
+	}
+	return o.TargetAccounts, true
+}
+
+// HasTargetAccounts returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasTargetAccounts() bool {
+	if o != nil && !IsNil(o.TargetAccounts) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetAccounts gets a reference to the given string and assigns it to the TargetAccounts field.
+func (o *SnowflakeMarketplaceProduct) SetTargetAccounts(v string) {
+	o.TargetAccounts = &v
+}
+
+// GetTrialDetails returns the TrialDetails field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetTrialDetails() SnowflakeMarketplaceTrialDetails {
+	if o == nil || IsNil(o.TrialDetails) {
+		var ret SnowflakeMarketplaceTrialDetails
+		return ret
+	}
+	return *o.TrialDetails
+}
+
+// GetTrialDetailsOk returns a tuple with the TrialDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetTrialDetailsOk() (*SnowflakeMarketplaceTrialDetails, bool) {
+	if o == nil || IsNil(o.TrialDetails) {
+		return nil, false
+	}
+	return o.TrialDetails, true
+}
+
+// HasTrialDetails returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasTrialDetails() bool {
+	if o != nil && !IsNil(o.TrialDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrialDetails gets a reference to the given SnowflakeMarketplaceTrialDetails and assigns it to the TrialDetails field.
+func (o *SnowflakeMarketplaceProduct) SetTrialDetails(v SnowflakeMarketplaceTrialDetails) {
+	o.TrialDetails = &v
+}
+
+// GetUnpublishedByAdminReason returns the UnpublishedByAdminReason field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetUnpublishedByAdminReason() string {
+	if o == nil || IsNil(o.UnpublishedByAdminReason) {
+		var ret string
+		return ret
+	}
+	return *o.UnpublishedByAdminReason
+}
+
+// GetUnpublishedByAdminReasonOk returns a tuple with the UnpublishedByAdminReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetUnpublishedByAdminReasonOk() (*string, bool) {
+	if o == nil || IsNil(o.UnpublishedByAdminReason) {
+		return nil, false
+	}
+	return o.UnpublishedByAdminReason, true
+}
+
+// HasUnpublishedByAdminReason returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasUnpublishedByAdminReason() bool {
+	if o != nil && !IsNil(o.UnpublishedByAdminReason) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnpublishedByAdminReason gets a reference to the given string and assigns it to the UnpublishedByAdminReason field.
+func (o *SnowflakeMarketplaceProduct) SetUnpublishedByAdminReason(v string) {
+	o.UnpublishedByAdminReason = &v
+}
+
+// GetUpdatedOn returns the UpdatedOn field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetUpdatedOn() string {
+	if o == nil || IsNil(o.UpdatedOn) {
+		var ret string
+		return ret
+	}
+	return *o.UpdatedOn
+}
+
+// GetUpdatedOnOk returns a tuple with the UpdatedOn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetUpdatedOnOk() (*string, bool) {
+	if o == nil || IsNil(o.UpdatedOn) {
+		return nil, false
+	}
+	return o.UpdatedOn, true
+}
+
+// HasUpdatedOn returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasUpdatedOn() bool {
+	if o != nil && !IsNil(o.UpdatedOn) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedOn gets a reference to the given string and assigns it to the UpdatedOn field.
+func (o *SnowflakeMarketplaceProduct) SetUpdatedOn(v string) {
+	o.UpdatedOn = &v
 }
 
 func (o SnowflakeMarketplaceProduct) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -907,83 +1303,119 @@ func (o SnowflakeMarketplaceProduct) MarshalJSON() ([]byte, error) {
 
 func (o SnowflakeMarketplaceProduct) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AdditionalRegions) {
+		toSerialize["additionalRegions"] = o.AdditionalRegions
+	}
+	if !IsNil(o.ApplicationPackageName) {
+		toSerialize["applicationPackageName"] = o.ApplicationPackageName
+	}
+	if !IsNil(o.AttachedShare) {
+		toSerialize["attachedShare"] = o.AttachedShare
+	}
+	if !IsNil(o.Autofulfillment) {
+		toSerialize["autofulfillment"] = o.Autofulfillment
+	}
 	if !IsNil(o.Comment) {
-		toSerialize["Comment"] = o.Comment
+		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.CreatedOn) {
-		toSerialize["CreatedOn"] = o.CreatedOn
+		toSerialize["createdOn"] = o.CreatedOn
+	}
+	if !IsNil(o.CustomizedContactInfo) {
+		toSerialize["customizedContactInfo"] = o.CustomizedContactInfo
+	}
+	if !IsNil(o.DefaultPricingPlan) {
+		toSerialize["defaultPricingPlan"] = o.DefaultPricingPlan
 	}
 	if !IsNil(o.DetailedTargetAccounts) {
-		toSerialize["DetailedTargetAccounts"] = o.DetailedTargetAccounts
+		toSerialize["detailedTargetAccounts"] = o.DetailedTargetAccounts
 	}
 	if !IsNil(o.Distribution) {
-		toSerialize["Distribution"] = o.Distribution
+		toSerialize["distribution"] = o.Distribution
+	}
+	if !IsNil(o.EvaluationPlan) {
+		toSerialize["evaluationPlan"] = o.EvaluationPlan
+	}
+	if !IsNil(o.FirstPublishedOn) {
+		toSerialize["firstPublishedOn"] = o.FirstPublishedOn
+	}
+	if !IsNil(o.Flags) {
+		toSerialize["flags"] = o.Flags
+	}
+	if !IsNil(o.FulfillmentType) {
+		toSerialize["fulfillmentType"] = o.FulfillmentType
 	}
 	if !IsNil(o.GlobalName) {
-		toSerialize["GlobalName"] = o.GlobalName
-	}
-	if !IsNil(o.IsApplication) {
-		toSerialize["IsApplication"] = o.IsApplication
-	}
-	if !IsNil(o.IsByRequest) {
-		toSerialize["IsByRequest"] = o.IsByRequest
-	}
-	if !IsNil(o.IsLimitedTrial) {
-		toSerialize["IsLimitedTrial"] = o.IsLimitedTrial
-	}
-	if !IsNil(o.IsMonetized) {
-		toSerialize["IsMonetized"] = o.IsMonetized
+		toSerialize["globalName"] = o.GlobalName
 	}
 	if !IsNil(o.IsMountlessQueryable) {
-		toSerialize["IsMountlessQueryable"] = o.IsMountlessQueryable
+		toSerialize["isMountlessQueryable"] = o.IsMountlessQueryable
 	}
-	if !IsNil(o.IsTargeted) {
-		toSerialize["IsTargeted"] = o.IsTargeted
+	if !IsNil(o.LastApprovedOn) {
+		toSerialize["lastApprovedOn"] = o.LastApprovedOn
 	}
-	if !IsNil(o.Owner) {
-		toSerialize["Owner"] = o.Owner
+	if !IsNil(o.LastPublishedOn) {
+		toSerialize["lastPublishedOn"] = o.LastPublishedOn
 	}
-	if !IsNil(o.OwnerRoleType) {
-		toSerialize["OwnerRoleType"] = o.OwnerRoleType
+	if !IsNil(o.LastSubmittedOn) {
+		toSerialize["lastSubmittedOn"] = o.LastSubmittedOn
 	}
-	if !IsNil(o.Profile) {
-		toSerialize["Profile"] = o.Profile
+	if !IsNil(o.ListingType) {
+		toSerialize["listingType"] = o.ListingType
 	}
-	if !IsNil(o.PublishedOn) {
-		toSerialize["PublishedOn"] = o.PublishedOn
-	}
-	if !IsNil(o.Regions) {
-		toSerialize["Regions"] = o.Regions
-	}
-	if !IsNil(o.RejectedOn) {
-		toSerialize["RejectedOn"] = o.RejectedOn
-	}
-	if !IsNil(o.ReviewState) {
-		toSerialize["ReviewState"] = o.ReviewState
-	}
-	if !IsNil(o.State) {
-		toSerialize["State"] = o.State
-	}
-	if !IsNil(o.Subtitle) {
-		toSerialize["Subtitle"] = o.Subtitle
-	}
-	if !IsNil(o.TargetAccounts) {
-		toSerialize["TargetAccounts"] = o.TargetAccounts
-	}
-	if !IsNil(o.Title) {
-		toSerialize["Title"] = o.Title
-	}
-	if !IsNil(o.UniformListingLocator) {
-		toSerialize["UniformListingLocator"] = o.UniformListingLocator
-	}
-	if !IsNil(o.UpdatedOn) {
-		toSerialize["UpdatedOn"] = o.UpdatedOn
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.OrganizationProfileName) {
-		toSerialize["organizationProfileName"] = o.OrganizationProfileName
+	if !IsNil(o.PricingPlans) {
+		toSerialize["pricingPlans"] = o.PricingPlans
+	}
+	if !IsNil(o.Private) {
+		toSerialize["private"] = o.Private
+	}
+	if !IsNil(o.ProfileName) {
+		toSerialize["profileName"] = o.ProfileName
+	}
+	if !IsNil(o.PublishOnApproval) {
+		toSerialize["publishOnApproval"] = o.PublishOnApproval
+	}
+	if !IsNil(o.Regions) {
+		toSerialize["regions"] = o.Regions
+	}
+	if !IsNil(o.RejectedOn) {
+		toSerialize["rejectedOn"] = o.RejectedOn
+	}
+	if !IsNil(o.RejectedReason) {
+		toSerialize["rejectedReason"] = o.RejectedReason
+	}
+	if !IsNil(o.ReplicationSchedule) {
+		toSerialize["replicationSchedule"] = o.ReplicationSchedule
+	}
+	if !IsNil(o.RetiredOn) {
+		toSerialize["retiredOn"] = o.RetiredOn
+	}
+	if !IsNil(o.ScheduledDropTime) {
+		toSerialize["scheduledDropTime"] = o.ScheduledDropTime
+	}
+	if !IsNil(o.ShareType) {
+		toSerialize["shareType"] = o.ShareType
+	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.TargetAccounts) {
+		toSerialize["targetAccounts"] = o.TargetAccounts
+	}
+	if !IsNil(o.TrialDetails) {
+		toSerialize["trialDetails"] = o.TrialDetails
+	}
+	if !IsNil(o.UnpublishedByAdminReason) {
+		toSerialize["unpublishedByAdminReason"] = o.UnpublishedByAdminReason
+	}
+	if !IsNil(o.UpdatedOn) {
+		toSerialize["updatedOn"] = o.UpdatedOn
 	}
 	return toSerialize, nil
 }
@@ -1023,3 +1455,5 @@ func (v *NullableSnowflakeMarketplaceProduct) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

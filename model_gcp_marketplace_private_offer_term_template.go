@@ -21,13 +21,13 @@ var _ MappedNullable = &GcpMarketplacePrivateOfferTermTemplate{}
 
 // GcpMarketplacePrivateOfferTermTemplate struct for GcpMarketplacePrivateOfferTermTemplate
 type GcpMarketplacePrivateOfferTermTemplate struct {
-	EnableScheduledStartTimes *bool                                             `json:"enableScheduledStartTimes,omitempty"`
-	EndTime                   *time.Time                                        `json:"endTime,omitempty"`
-	PaymentRecurrence         *string                                           `json:"paymentRecurrence,omitempty"`
-	StartPolicy               *GcpMarketplaceOfferStartPolicy                   `json:"startPolicy,omitempty"`
-	StartTime                 *time.Time                                        `json:"startTime,omitempty"`
-	TermDuration              *GcpPeriodDuration                                `json:"termDuration,omitempty"`
-	TermDurationConstraint    *GcpMarketplacePrivateOfferTermDurationConstraint `json:"termDurationConstraint,omitempty"`
+	EnableScheduledStartTimes *bool `json:"enableScheduledStartTimes,omitempty"`
+	EndTime *time.Time `json:"endTime,omitempty"`
+	PaymentRecurrence *string `json:"paymentRecurrence,omitempty"`
+	StartPolicy *GcpMarketplaceOfferStartPolicy `json:"startPolicy,omitempty"`
+	StartTime *time.Time `json:"startTime,omitempty"`
+	TermDuration *GcpPeriodDuration `json:"termDuration,omitempty"`
+	TermDurationConstraint *GcpMarketplacePrivateOfferTermDurationConstraint `json:"termDurationConstraint,omitempty"`
 }
 
 // NewGcpMarketplacePrivateOfferTermTemplate instantiates a new GcpMarketplacePrivateOfferTermTemplate object
@@ -272,7 +272,7 @@ func (o *GcpMarketplacePrivateOfferTermTemplate) SetTermDurationConstraint(v Gcp
 }
 
 func (o GcpMarketplacePrivateOfferTermTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -340,3 +340,5 @@ func (v *NullableGcpMarketplacePrivateOfferTermTemplate) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

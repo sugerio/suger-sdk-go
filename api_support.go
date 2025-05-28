@@ -17,18 +17,19 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
+	"os"
 )
+
 
 // SupportAPIService SupportAPI service
 type SupportAPIService service
 
 type ApiCloseSupportTicketRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SupportAPIService
-	orgId      string
-	ticketId   string
+	orgId string
+	ticketId string
 }
 
 func (r ApiCloseSupportTicketRequest) Execute() (*SupportTicket, *http.Response, error) {
@@ -40,29 +41,28 @@ CloseSupportTicket close support ticket
 
 close suuport ticket
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param ticketId Ticket ID
-	@return ApiCloseSupportTicketRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param ticketId Ticket ID
+ @return ApiCloseSupportTicketRequest
 */
 func (a *SupportAPIService) CloseSupportTicket(ctx context.Context, orgId string, ticketId string) ApiCloseSupportTicketRequest {
 	return ApiCloseSupportTicketRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		ticketId:   ticketId,
+		ctx: ctx,
+		orgId: orgId,
+		ticketId: ticketId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return SupportTicket
+//  @return SupportTicket
 func (a *SupportAPIService) CloseSupportTicketExecute(r ApiCloseSupportTicketRequest) (*SupportTicket, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SupportTicket
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SupportTicket
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupportAPIService.CloseSupportTicket")
@@ -138,8 +138,8 @@ func (a *SupportAPIService) CloseSupportTicketExecute(r ApiCloseSupportTicketReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -149,8 +149,8 @@ func (a *SupportAPIService) CloseSupportTicketExecute(r ApiCloseSupportTicketReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -168,10 +168,10 @@ func (a *SupportAPIService) CloseSupportTicketExecute(r ApiCloseSupportTicketReq
 }
 
 type ApiCreateSupportTicketRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SupportAPIService
-	orgId      string
-	body       *SupportTicket
+	orgId string
+	body *SupportTicket
 }
 
 // Ticket create request
@@ -189,27 +189,26 @@ CreateSupportTicket create support ticket
 
 create support ticket
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiCreateSupportTicketRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiCreateSupportTicketRequest
 */
 func (a *SupportAPIService) CreateSupportTicket(ctx context.Context, orgId string) ApiCreateSupportTicketRequest {
 	return ApiCreateSupportTicketRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return SupportTicket
+//  @return SupportTicket
 func (a *SupportAPIService) CreateSupportTicketExecute(r ApiCreateSupportTicketRequest) (*SupportTicket, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SupportTicket
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SupportTicket
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupportAPIService.CreateSupportTicket")
@@ -289,8 +288,8 @@ func (a *SupportAPIService) CreateSupportTicketExecute(r ApiCreateSupportTicketR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -300,8 +299,8 @@ func (a *SupportAPIService) CreateSupportTicketExecute(r ApiCreateSupportTicketR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -319,11 +318,11 @@ func (a *SupportAPIService) CreateSupportTicketExecute(r ApiCreateSupportTicketR
 }
 
 type ApiCreateSupportTicketAttachmentRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SupportAPIService
-	orgId      string
-	ticketId   string
-	file       *os.File
+	orgId string
+	ticketId string
+	file *os.File
 }
 
 // File to upload
@@ -341,29 +340,28 @@ CreateSupportTicketAttachment create support ticket attachment
 
 create support ticket attachment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param ticketId Ticket ID
-	@return ApiCreateSupportTicketAttachmentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param ticketId Ticket ID
+ @return ApiCreateSupportTicketAttachmentRequest
 */
 func (a *SupportAPIService) CreateSupportTicketAttachment(ctx context.Context, orgId string, ticketId string) ApiCreateSupportTicketAttachmentRequest {
 	return ApiCreateSupportTicketAttachmentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		ticketId:   ticketId,
+		ctx: ctx,
+		orgId: orgId,
+		ticketId: ticketId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []SupportTicketAttachment
+//  @return []SupportTicketAttachment
 func (a *SupportAPIService) CreateSupportTicketAttachmentExecute(r ApiCreateSupportTicketAttachmentRequest) ([]SupportTicketAttachment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []SupportTicketAttachment
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []SupportTicketAttachment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupportAPIService.CreateSupportTicketAttachment")
@@ -400,8 +398,8 @@ func (a *SupportAPIService) CreateSupportTicketAttachmentExecute(r ApiCreateSupp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var fileLocalVarFormFileName string
-	var fileLocalVarFileName string
-	var fileLocalVarFileBytes []byte
+	var fileLocalVarFileName     string
+	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
 	fileLocalVarFile := r.file
@@ -457,8 +455,8 @@ func (a *SupportAPIService) CreateSupportTicketAttachmentExecute(r ApiCreateSupp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -468,8 +466,8 @@ func (a *SupportAPIService) CreateSupportTicketAttachmentExecute(r ApiCreateSupp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -487,11 +485,11 @@ func (a *SupportAPIService) CreateSupportTicketAttachmentExecute(r ApiCreateSupp
 }
 
 type ApiCreateSupportTicketCommentRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SupportAPIService
-	orgId      string
-	ticketId   string
-	body       *SupportTicketComment
+	orgId string
+	ticketId string
+	body *SupportTicketComment
 }
 
 // Ticket create request
@@ -509,29 +507,28 @@ CreateSupportTicketComment create support ticket comment
 
 create support ticket comment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param ticketId Ticket ID
-	@return ApiCreateSupportTicketCommentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param ticketId Ticket ID
+ @return ApiCreateSupportTicketCommentRequest
 */
 func (a *SupportAPIService) CreateSupportTicketComment(ctx context.Context, orgId string, ticketId string) ApiCreateSupportTicketCommentRequest {
 	return ApiCreateSupportTicketCommentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		ticketId:   ticketId,
+		ctx: ctx,
+		orgId: orgId,
+		ticketId: ticketId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return SupportTicketComment
+//  @return SupportTicketComment
 func (a *SupportAPIService) CreateSupportTicketCommentExecute(r ApiCreateSupportTicketCommentRequest) (*SupportTicketComment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SupportTicketComment
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SupportTicketComment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupportAPIService.CreateSupportTicketComment")
@@ -612,8 +609,8 @@ func (a *SupportAPIService) CreateSupportTicketCommentExecute(r ApiCreateSupport
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -623,8 +620,8 @@ func (a *SupportAPIService) CreateSupportTicketCommentExecute(r ApiCreateSupport
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -642,10 +639,10 @@ func (a *SupportAPIService) CreateSupportTicketCommentExecute(r ApiCreateSupport
 }
 
 type ApiGetSupportTicketRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SupportAPIService
-	orgId      string
-	ticketId   string
+	orgId string
+	ticketId string
 }
 
 func (r ApiGetSupportTicketRequest) Execute() (*SupportTicket, *http.Response, error) {
@@ -657,29 +654,28 @@ GetSupportTicket get support ticket
 
 get support ticket
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param ticketId Ticket ID
-	@return ApiGetSupportTicketRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param ticketId Ticket ID
+ @return ApiGetSupportTicketRequest
 */
 func (a *SupportAPIService) GetSupportTicket(ctx context.Context, orgId string, ticketId string) ApiGetSupportTicketRequest {
 	return ApiGetSupportTicketRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		ticketId:   ticketId,
+		ctx: ctx,
+		orgId: orgId,
+		ticketId: ticketId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return SupportTicket
+//  @return SupportTicket
 func (a *SupportAPIService) GetSupportTicketExecute(r ApiGetSupportTicketRequest) (*SupportTicket, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SupportTicket
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SupportTicket
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupportAPIService.GetSupportTicket")
@@ -755,8 +751,8 @@ func (a *SupportAPIService) GetSupportTicketExecute(r ApiGetSupportTicketRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -766,8 +762,8 @@ func (a *SupportAPIService) GetSupportTicketExecute(r ApiGetSupportTicketRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -785,11 +781,11 @@ func (a *SupportAPIService) GetSupportTicketExecute(r ApiGetSupportTicketRequest
 }
 
 type ApiListSupportTicketsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SupportAPIService
-	orgId      string
-	limit      *int32
-	offset     *int32
+	orgId string
+	limit *int32
+	offset *int32
 }
 
 // List pagination size, default 1000, max value is 1000
@@ -813,27 +809,26 @@ ListSupportTickets list support tickets
 
 list support tickets
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListSupportTicketsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListSupportTicketsRequest
 */
 func (a *SupportAPIService) ListSupportTickets(ctx context.Context, orgId string) ApiListSupportTicketsRequest {
 	return ApiListSupportTicketsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListSupportTicketsResponse
+//  @return ListSupportTicketsResponse
 func (a *SupportAPIService) ListSupportTicketsExecute(r ApiListSupportTicketsRequest) (*ListSupportTicketsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListSupportTicketsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListSupportTicketsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupportAPIService.ListSupportTickets")
@@ -914,8 +909,8 @@ func (a *SupportAPIService) ListSupportTicketsExecute(r ApiListSupportTicketsReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -925,8 +920,8 @@ func (a *SupportAPIService) ListSupportTicketsExecute(r ApiListSupportTicketsReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -944,10 +939,10 @@ func (a *SupportAPIService) ListSupportTicketsExecute(r ApiListSupportTicketsReq
 }
 
 type ApiReopenSupportTicketRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SupportAPIService
-	orgId      string
-	ticketId   string
+	orgId string
+	ticketId string
 }
 
 func (r ApiReopenSupportTicketRequest) Execute() (*SupportTicket, *http.Response, error) {
@@ -959,29 +954,28 @@ ReopenSupportTicket reopen support ticket
 
 reopen support ticket
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param ticketId Ticket ID
-	@return ApiReopenSupportTicketRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param ticketId Ticket ID
+ @return ApiReopenSupportTicketRequest
 */
 func (a *SupportAPIService) ReopenSupportTicket(ctx context.Context, orgId string, ticketId string) ApiReopenSupportTicketRequest {
 	return ApiReopenSupportTicketRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		ticketId:   ticketId,
+		ctx: ctx,
+		orgId: orgId,
+		ticketId: ticketId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return SupportTicket
+//  @return SupportTicket
 func (a *SupportAPIService) ReopenSupportTicketExecute(r ApiReopenSupportTicketRequest) (*SupportTicket, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SupportTicket
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SupportTicket
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupportAPIService.ReopenSupportTicket")
@@ -1057,8 +1051,8 @@ func (a *SupportAPIService) ReopenSupportTicketExecute(r ApiReopenSupportTicketR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1068,8 +1062,8 @@ func (a *SupportAPIService) ReopenSupportTicketExecute(r ApiReopenSupportTicketR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1087,11 +1081,11 @@ func (a *SupportAPIService) ReopenSupportTicketExecute(r ApiReopenSupportTicketR
 }
 
 type ApiUpdateSupportTicketRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SupportAPIService
-	orgId      string
-	ticketId   string
-	body       *UpdateSupportTicketRequest
+	orgId string
+	ticketId string
+	body *UpdateSupportTicketRequest
 }
 
 // Ticket create request
@@ -1109,29 +1103,28 @@ UpdateSupportTicket update support ticket
 
 update support ticket
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param ticketId Ticket ID
-	@return ApiUpdateSupportTicketRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param ticketId Ticket ID
+ @return ApiUpdateSupportTicketRequest
 */
 func (a *SupportAPIService) UpdateSupportTicket(ctx context.Context, orgId string, ticketId string) ApiUpdateSupportTicketRequest {
 	return ApiUpdateSupportTicketRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		ticketId:   ticketId,
+		ctx: ctx,
+		orgId: orgId,
+		ticketId: ticketId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return SupportTicket
+//  @return SupportTicket
 func (a *SupportAPIService) UpdateSupportTicketExecute(r ApiUpdateSupportTicketRequest) (*SupportTicket, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SupportTicket
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SupportTicket
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupportAPIService.UpdateSupportTicket")
@@ -1212,8 +1205,8 @@ func (a *SupportAPIService) UpdateSupportTicketExecute(r ApiUpdateSupportTicketR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1223,8 +1216,8 @@ func (a *SupportAPIService) UpdateSupportTicketExecute(r ApiUpdateSupportTicketR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

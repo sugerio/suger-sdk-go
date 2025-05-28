@@ -24,9 +24,9 @@ type SupportTicketUser struct {
 	// The Suger user ID.
 	Id *string `json:"id,omitempty"`
 	// Whether the user is a Suger employee.
-	IsSugerEmployee *bool   `json:"isSugerEmployee,omitempty"`
-	ProfilePicture  *string `json:"profilePicture,omitempty"`
-	Username        *string `json:"username,omitempty"`
+	IsSugerEmployee *bool `json:"isSugerEmployee,omitempty"`
+	ProfilePicture *string `json:"profilePicture,omitempty"`
+	Username *string `json:"username,omitempty"`
 }
 
 // NewSupportTicketUser instantiates a new SupportTicketUser object
@@ -207,7 +207,7 @@ func (o *SupportTicketUser) SetUsername(v string) {
 }
 
 func (o SupportTicketUser) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,3 +269,5 @@ func (v *NullableSupportTicketUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

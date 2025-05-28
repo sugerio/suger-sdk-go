@@ -20,19 +20,19 @@ var _ MappedNullable = &AzureMarketplacePriceAndAvailabilityPrivateOfferPlan{}
 
 // AzureMarketplacePriceAndAvailabilityPrivateOfferPlan struct for AzureMarketplacePriceAndAvailabilityPrivateOfferPlan
 type AzureMarketplacePriceAndAvailabilityPrivateOfferPlan struct {
-	Schema         *string                                 `json:"$schema,omitempty"`
-	Id             *string                                 `json:"id,omitempty"`
+	Schema *string `json:"$schema,omitempty"`
+	Id *string `json:"id,omitempty"`
 	LifecycleState *AzureMarketplaceResourceLifecycleState `json:"lifecycleState,omitempty"`
 	// default \"editExistingOfferPricingOnly\"
 	OfferPricingType *AzureMarketplaceOfferPricingType `json:"offerPricingType,omitempty"`
-	Plan             *string                           `json:"plan,omitempty"`
+	Plan *string `json:"plan,omitempty"`
 	// The azure plan friendly name, from the Azure Marketplace.
-	PlanName            *string                                                                  `json:"planName,omitempty"`
-	Pricing             *AzureMarketplacePriceAndAvailabilityPrivateOfferPrice                   `json:"pricing,omitempty"`
-	Product             *string                                                                  `json:"product,omitempty"`
-	ResourceName        *string                                                                  `json:"resourceName,omitempty"`
+	PlanName *string `json:"planName,omitempty"`
+	Pricing *AzureMarketplacePriceAndAvailabilityPrivateOfferPrice `json:"pricing,omitempty"`
+	Product *string `json:"product,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty"`
 	SoftwareReservation *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation `json:"softwareReservation,omitempty"`
-	Validations         []AzureMarketplaceValidation                                             `json:"validations,omitempty"`
+	Validations []AzureMarketplaceValidation `json:"validations,omitempty"`
 	// default \"visible\"
 	Visibility *string `json:"visibility,omitempty"`
 }
@@ -439,7 +439,7 @@ func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlan) SetVisibility(v s
 }
 
 func (o AzureMarketplacePriceAndAvailabilityPrivateOfferPlan) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -522,3 +522,5 @@ func (v *NullableAzureMarketplacePriceAndAvailabilityPrivateOfferPlan) Unmarshal
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

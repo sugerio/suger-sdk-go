@@ -20,27 +20,28 @@ var _ MappedNullable = &ProductInfo{}
 
 // ProductInfo struct for ProductInfo
 type ProductInfo struct {
-	AlibabaProduct                 *AlibabaMarketplaceProduct       `json:"alibabaProduct,omitempty"`
-	Attributes                     *map[string]string               `json:"attributes,omitempty"`
-	AwsAmiProduct                  *AwsProduct                      `json:"awsAmiProduct,omitempty"`
-	AwsContainerProduct            *AwsProduct                      `json:"awsContainerProduct,omitempty"`
-	AwsProfessionalServicesProduct *AwsProduct                      `json:"awsProfessionalServicesProduct,omitempty"`
-	AwsSaasProduct                 *AwsProduct                      `json:"awsSaasProduct,omitempty"`
-	AwsSnsSubscriptions            []AwsSnsSubscription             `json:"awsSnsSubscriptions,omitempty"`
-	AzureProduct                   *AzureProduct                    `json:"azureProduct,omitempty"`
-	AzureProductResource           *AzureMarketplaceProductResource `json:"azureProductResource,omitempty"`
-	Commits                        []CommitDimension                `json:"commits,omitempty"`
-	Currency                       *string                          `json:"currency,omitempty"`
-	Dimensions                     []MeteringDimension              `json:"dimensions,omitempty"`
+	AlibabaProduct *AlibabaMarketplaceProduct `json:"alibabaProduct,omitempty"`
+	Attributes *map[string]string `json:"attributes,omitempty"`
+	AwsAmiProduct *AwsProduct `json:"awsAmiProduct,omitempty"`
+	AwsContainerProduct *AwsProduct `json:"awsContainerProduct,omitempty"`
+	AwsMachineLearningProduct *AwsProduct `json:"awsMachineLearningProduct,omitempty"`
+	AwsProfessionalServicesProduct *AwsProduct `json:"awsProfessionalServicesProduct,omitempty"`
+	AwsSaasProduct *AwsProduct `json:"awsSaasProduct,omitempty"`
+	AwsSnsSubscriptions []AwsSnsSubscription `json:"awsSnsSubscriptions,omitempty"`
+	AzureProduct *AzureProduct `json:"azureProduct,omitempty"`
+	AzureProductResource *AzureMarketplaceProductResource `json:"azureProductResource,omitempty"`
+	Commits []CommitDimension `json:"commits,omitempty"`
+	Currency *string `json:"currency,omitempty"`
+	Dimensions []MeteringDimension `json:"dimensions,omitempty"`
 	// The public offer's EULA type.
 	EulaType *EulaType `json:"eulaType,omitempty"`
 	// The public offer's EULA URL.
-	EulaUrl                  *string                      `json:"eulaUrl,omitempty"`
-	GcpProduct               *GcpMarketplaceProduct       `json:"gcpProduct,omitempty"`
-	RefundCancellationPolicy *string                      `json:"refundCancellationPolicy,omitempty"`
-	SellerNotes              *string                      `json:"sellerNotes,omitempty"`
-	SnowflakeProduct         *SnowflakeMarketplaceProduct `json:"snowflakeProduct,omitempty"`
-	StripeProduct            *StripeProduct               `json:"stripeProduct,omitempty"`
+	EulaUrl *string `json:"eulaUrl,omitempty"`
+	GcpProduct *GcpMarketplaceProduct `json:"gcpProduct,omitempty"`
+	RefundCancellationPolicy *string `json:"refundCancellationPolicy,omitempty"`
+	SellerNotes *string `json:"sellerNotes,omitempty"`
+	SnowflakeProduct *SnowflakeMarketplaceProduct `json:"snowflakeProduct,omitempty"`
+	StripeProduct *StripeProduct `json:"stripeProduct,omitempty"`
 }
 
 // NewProductInfo instantiates a new ProductInfo object
@@ -186,6 +187,38 @@ func (o *ProductInfo) HasAwsContainerProduct() bool {
 // SetAwsContainerProduct gets a reference to the given AwsProduct and assigns it to the AwsContainerProduct field.
 func (o *ProductInfo) SetAwsContainerProduct(v AwsProduct) {
 	o.AwsContainerProduct = &v
+}
+
+// GetAwsMachineLearningProduct returns the AwsMachineLearningProduct field value if set, zero value otherwise.
+func (o *ProductInfo) GetAwsMachineLearningProduct() AwsProduct {
+	if o == nil || IsNil(o.AwsMachineLearningProduct) {
+		var ret AwsProduct
+		return ret
+	}
+	return *o.AwsMachineLearningProduct
+}
+
+// GetAwsMachineLearningProductOk returns a tuple with the AwsMachineLearningProduct field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductInfo) GetAwsMachineLearningProductOk() (*AwsProduct, bool) {
+	if o == nil || IsNil(o.AwsMachineLearningProduct) {
+		return nil, false
+	}
+	return o.AwsMachineLearningProduct, true
+}
+
+// HasAwsMachineLearningProduct returns a boolean if a field has been set.
+func (o *ProductInfo) HasAwsMachineLearningProduct() bool {
+	if o != nil && !IsNil(o.AwsMachineLearningProduct) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsMachineLearningProduct gets a reference to the given AwsProduct and assigns it to the AwsMachineLearningProduct field.
+func (o *ProductInfo) SetAwsMachineLearningProduct(v AwsProduct) {
+	o.AwsMachineLearningProduct = &v
 }
 
 // GetAwsProfessionalServicesProduct returns the AwsProfessionalServicesProduct field value if set, zero value otherwise.
@@ -669,7 +702,7 @@ func (o *ProductInfo) SetStripeProduct(v StripeProduct) {
 }
 
 func (o ProductInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -689,6 +722,9 @@ func (o ProductInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AwsContainerProduct) {
 		toSerialize["awsContainerProduct"] = o.AwsContainerProduct
+	}
+	if !IsNil(o.AwsMachineLearningProduct) {
+		toSerialize["awsMachineLearningProduct"] = o.AwsMachineLearningProduct
 	}
 	if !IsNil(o.AwsProfessionalServicesProduct) {
 		toSerialize["awsProfessionalServicesProduct"] = o.AwsProfessionalServicesProduct
@@ -773,3 +809,5 @@ func (v *NullableProductInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

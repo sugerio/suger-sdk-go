@@ -20,19 +20,19 @@ var _ MappedNullable = &SupportTicket{}
 
 // SupportTicket struct for SupportTicket
 type SupportTicket struct {
-	Attachments    []SupportTicketAttachment `json:"attachments,omitempty"`
-	CloseTime      *string                   `json:"closeTime,omitempty"`
-	Comments       []SupportTicketComment    `json:"comments,omitempty"`
-	CreationTime   *string                   `json:"creationTime,omitempty"`
-	Creator        *string                   `json:"creator,omitempty"`
-	Description    *string                   `json:"description,omitempty"`
-	DueTime        *string                   `json:"dueTime,omitempty"`
-	Id             *string                   `json:"id,omitempty"`
-	Name           *string                   `json:"name,omitempty"`
-	OrganizationId *string                   `json:"organizationId,omitempty"`
-	Priority       *SupportTicketPriority    `json:"priority,omitempty"`
-	Status         *SupportTicketStatus      `json:"status,omitempty"`
-	Watchers       []string                  `json:"watchers,omitempty"`
+	Attachments []SupportTicketAttachment `json:"attachments,omitempty"`
+	CloseTime *string `json:"closeTime,omitempty"`
+	Comments []SupportTicketComment `json:"comments,omitempty"`
+	CreationTime *string `json:"creationTime,omitempty"`
+	Creator *string `json:"creator,omitempty"`
+	Description *string `json:"description,omitempty"`
+	DueTime *string `json:"dueTime,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty"`
+	Priority *SupportTicketPriority `json:"priority,omitempty"`
+	Status *SupportTicketStatus `json:"status,omitempty"`
+	Watchers []string `json:"watchers,omitempty"`
 }
 
 // NewSupportTicket instantiates a new SupportTicket object
@@ -469,7 +469,7 @@ func (o *SupportTicket) SetWatchers(v []string) {
 }
 
 func (o SupportTicket) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -555,3 +555,5 @@ func (v *NullableSupportTicket) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

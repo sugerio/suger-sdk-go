@@ -12,8 +12,8 @@ Contact: support@suger.io
 package suger
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -24,10 +24,10 @@ var _ MappedNullable = &AddEntitlementCreditParams{}
 type AddEntitlementCreditParams struct {
 	// The amount to be added to the credit amount.
 	CreditAmountIncrement float32 `json:"creditAmountIncrement"`
-	EntitlementID         string  `json:"entitlementID"`
+	EntitlementID string `json:"entitlementID"`
 	// This is optional. If it is empty, the credit will be added to the default entitlement term of the entitlement.
 	EntitlementTermID *string `json:"entitlementTermID,omitempty"`
-	OrganizationID    string  `json:"organizationID"`
+	OrganizationID string `json:"organizationID"`
 }
 
 type _AddEntitlementCreditParams AddEntitlementCreditParams
@@ -157,7 +157,7 @@ func (o *AddEntitlementCreditParams) SetOrganizationID(v string) {
 }
 
 func (o AddEntitlementCreditParams) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -190,10 +190,10 @@ func (o *AddEntitlementCreditParams) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -249,3 +249,5 @@ func (v *NullableAddEntitlementCreditParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

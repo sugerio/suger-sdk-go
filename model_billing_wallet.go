@@ -21,24 +21,24 @@ var _ MappedNullable = &BillingWallet{}
 
 // BillingWallet struct for BillingWallet
 type BillingWallet struct {
-	BuyerID      *string    `json:"buyerID,omitempty"`
+	BuyerID *string `json:"buyerID,omitempty"`
 	CreationTime *time.Time `json:"creationTime,omitempty"`
-	Currency     *string    `json:"currency,omitempty"`
+	Currency *string `json:"currency,omitempty"`
 	// nullable
 	ExpireTime *time.Time `json:"expireTime,omitempty"`
 	// The payment method id in payment provider, such as stripe payment method id.
-	ExternalID     *string              `json:"externalID,omitempty"`
-	Id             *string              `json:"id,omitempty"`
-	Info           *BillingWalletInfo   `json:"info,omitempty"`
-	LastUpdateTime *time.Time           `json:"lastUpdateTime,omitempty"`
-	Name           *string              `json:"name,omitempty"`
-	OrganizationID *string              `json:"organizationID,omitempty"`
-	Partner        *Partner             `json:"partner,omitempty"`
-	StartTime      *time.Time           `json:"startTime,omitempty"`
-	Status         *BillingWalletStatus `json:"status,omitempty"`
-	TotalAmount    *float32             `json:"totalAmount,omitempty"`
-	Type           *BillingWalletType   `json:"type,omitempty"`
-	UsedAmount     *float32             `json:"usedAmount,omitempty"`
+	ExternalID *string `json:"externalID,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Info *BillingWalletInfo `json:"info,omitempty"`
+	LastUpdateTime *time.Time `json:"lastUpdateTime,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
+	Partner *Partner `json:"partner,omitempty"`
+	StartTime *time.Time `json:"startTime,omitempty"`
+	Status *BillingWalletStatus `json:"status,omitempty"`
+	TotalAmount *float32 `json:"totalAmount,omitempty"`
+	Type *BillingWalletType `json:"type,omitempty"`
+	UsedAmount *float32 `json:"usedAmount,omitempty"`
 }
 
 // NewBillingWallet instantiates a new BillingWallet object
@@ -571,7 +571,7 @@ func (o *BillingWallet) SetUsedAmount(v float32) {
 }
 
 func (o BillingWallet) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -666,3 +666,5 @@ func (v *NullableBillingWallet) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

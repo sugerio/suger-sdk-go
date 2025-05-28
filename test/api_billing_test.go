@@ -11,10 +11,11 @@ package suger
 
 import (
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	openapiclient "github.com/sugerio/suger-sdk-go"
-	"testing"
 )
 
 func Test_suger_BillingAPIService(t *testing.T) {
@@ -89,7 +90,7 @@ func Test_suger_BillingAPIService(t *testing.T) {
 		var orgId string
 		var invoiceId string
 
-		resp, httpRes, err := apiClient.BillingAPI.GetInvoiceV2(context.Background(), orgId, invoiceId).Execute()
+		resp, httpRes, err := apiClient.BillingAPI.GetInvoice(context.Background(), orgId, invoiceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -104,7 +105,7 @@ func Test_suger_BillingAPIService(t *testing.T) {
 		var orgId string
 		var invoiceId string
 
-		resp, httpRes, err := apiClient.BillingAPI.IssueInvoiceV2(context.Background(), orgId, invoiceId).Execute()
+		resp, httpRes, err := apiClient.BillingAPI.IssueInvoice(context.Background(), orgId, invoiceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -177,7 +178,7 @@ func Test_suger_BillingAPIService(t *testing.T) {
 		var orgId string
 		var invoiceId string
 
-		resp, httpRes, err := apiClient.BillingAPI.PayInvoiceV2(context.Background(), orgId, invoiceId).Execute()
+		resp, httpRes, err := apiClient.BillingAPI.PayInvoice(context.Background(), orgId, invoiceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -222,7 +223,7 @@ func Test_suger_BillingAPIService(t *testing.T) {
 		var orgId string
 		var invoiceId string
 
-		resp, httpRes, err := apiClient.BillingAPI.UpdateInvoiceInfoV2(context.Background(), orgId, invoiceId).Execute()
+		resp, httpRes, err := apiClient.BillingAPI.UpdateInvoiceInfo(context.Background(), orgId, invoiceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -237,7 +238,7 @@ func Test_suger_BillingAPIService(t *testing.T) {
 		var orgId string
 		var invoiceId string
 
-		resp, httpRes, err := apiClient.BillingAPI.VoidInvoiceV2(context.Background(), orgId, invoiceId).Execute()
+		resp, httpRes, err := apiClient.BillingAPI.VoidInvoice(context.Background(), orgId, invoiceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

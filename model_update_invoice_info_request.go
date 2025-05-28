@@ -23,8 +23,8 @@ type UpdateInvoiceInfoRequest struct {
 	DiscountAmount *float32 `json:"discountAmount,omitempty"`
 	// The overall discount of the invoice.
 	DiscountType *BillingDiscountType `json:"discountType,omitempty"`
-	DueDate      *string              `json:"dueDate,omitempty"`
-	Memo         *string              `json:"memo,omitempty"`
+	DueDate *string `json:"dueDate,omitempty"`
+	Memo *string `json:"memo,omitempty"`
 }
 
 // NewUpdateInvoiceInfoRequest instantiates a new UpdateInvoiceInfoRequest object
@@ -173,7 +173,7 @@ func (o *UpdateInvoiceInfoRequest) SetMemo(v string) {
 }
 
 func (o UpdateInvoiceInfoRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -232,3 +232,5 @@ func (v *NullableUpdateInvoiceInfoRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

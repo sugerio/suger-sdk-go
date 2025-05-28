@@ -2,42 +2,44 @@
 
 ## Properties
 
- Name                         | Type                                                                                                   | Description                                                                                                                                                                                                                                                                         | Notes      
-------------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------
- **Addons**                   | Pointer to [**[]BillingAddonRecord**](BillingAddonRecord.md)                                           | The addons for the entitlement.                                                                                                                                                                                                                                                     | [optional] 
- **AlertDaysBeforeEnd**       | Pointer to **int32**                                                                                   | Alert days before the end of the entitlement                                                                                                                                                                                                                                        | [optional] 
- **AlibabaEntitlements**      | Pointer to [**[]ClientDescribeInstanceResponseBody**](ClientDescribeInstanceResponseBody.md)           | Nullable. Alibaba Entitlements from Alibaba Marketplace.                                                                                                                                                                                                                            | [optional] 
- **AlibabaOrders**            | Pointer to [**[]ClientDescribeOrderResponseBody**](ClientDescribeOrderResponseBody.md)                 | Nullable. Alibaba Orders from Alibaba Marketplace.                                                                                                                                                                                                                                  | [optional] 
- **AutoRenew**                | Pointer to **bool**                                                                                    | Is this Entitlement Auto Renew enabled.                                                                                                                                                                                                                                             | [optional] 
- **AwsAgreement**             | Pointer to [**AwsMarketplaceAgreementV2**](AwsMarketplaceAgreementV2.md)                               | Nullable. AWS agreement from AWS Marketplace.                                                                                                                                                                                                                                       | [optional] 
- **AwsChannelPartner**        | Pointer to [**AwsChannelPartner**](AwsChannelPartner.md)                                               | The AWS channel partner (reseller), only applicable if this entitlement is based on AWS CPPO offer.                                                                                                                                                                                 | [optional] 
- **AwsEntitlements**          | Pointer to [**[]TypesEntitlement**](TypesEntitlement.md)                                               | Nullable. AWS Entitlements from AWS Marketplace.                                                                                                                                                                                                                                    | [optional] 
- **AzureSubscriptions**       | Pointer to [**[]AzureMarketplaceSubscription**](AzureMarketplaceSubscription.md)                       | Nullable. Azure Subscriptions from Azure Marketplace.                                                                                                                                                                                                                               | [optional] 
- **BillableDimensions**       | Pointer to [**[]BillableDimension**](BillableDimension.md)                                             | The dimensions for billable metric usage-based metering. It&#39;s for Suger(Stripe, Ayden) metering.                                                                                                                                                                                | [optional] 
- **BillingCycle**             | Pointer to [**BillingCycle**](BillingCycle.md)                                                         | Billing Cycle                                                                                                                                                                                                                                                                       | [optional] 
- **BillingIntervalInMonths**  | Pointer to **int32**                                                                                   | The billing interval from the offer.                                                                                                                                                                                                                                                | [optional] 
- **CollectableAmount**        | Pointer to **float32**                                                                                 | The amount that the seller can collect. It excludes the marketplace commision fee.                                                                                                                                                                                                  | [optional] 
- **CommitAmount**             | Pointer to **float32**                                                                                 | The amount that the buyer has committed to pay. It can be the sum of payment installments if applicable.                                                                                                                                                                            | [optional] 
- **Commits**                  | Pointer to [**[]CommitDimension**](CommitDimension.md)                                                 | The dimensions for flatrate commitment (recurring or one-time).                                                                                                                                                                                                                     | [optional] 
- **Currency**                 | Pointer to **string**                                                                                  | The default Currency is USD.                                                                                                                                                                                                                                                        | [optional] 
- **Dimensions**               | Pointer to [**[]MeteringDimension**](MeteringDimension.md)                                             | The dimensions for usage-based metering. It&#39;s for usage metering in cloud marketplaces. The max size of dimensions is 50. The oversized dimensions won&#39;t be saved in the EntitlementInfo. But the dimensions can be accessed from the connected offer info or product info. | [optional] 
- **DimensionsOversized**      | Pointer to **bool**                                                                                    | Whether the upper metering dimensions are oversized (exceed the max size 50).                                                                                                                                                                                                       | [optional] 
- **DisbursedAmount**          | Pointer to **float32**                                                                                 | The amount that has been disbursed to the seller account.                                                                                                                                                                                                                           | [optional] 
- **EulaType**                 | Pointer to [**EulaType**](EulaType.md)                                                                 |                                                                                                                                                                                                                                                                                     | [optional] 
- **EulaUrl**                  | Pointer to **string**                                                                                  |                                                                                                                                                                                                                                                                                     | [optional] 
- **GcpEntitlements**          | Pointer to [**[]GcpMarketplaceEntitlement**](GcpMarketplaceEntitlement.md)                             | Nullable. GCP Entitlements from GCP Marketplace.                                                                                                                                                                                                                                    | [optional] 
- **GcpPlans**                 | Pointer to [**[]GcpMarketplaceProductPurchaseOptionSpec**](GcpMarketplaceProductPurchaseOptionSpec.md) | Only applicable for GCP Marketplace Entitlements.                                                                                                                                                                                                                                   | [optional] 
- **GracePeriodInDays**        | Pointer to **int32**                                                                                   | The grace period for the offer. It is same as the TrialConfig in DirectOfferInfo. But can be overridden at the entitlement level.                                                                                                                                                   | [optional] 
- **GrossAmount**              | Pointer to **float32**                                                                                 | The gross amount that the buyer has committed to pay, including usage metered amount.                                                                                                                                                                                               | [optional] 
- **InvoicedAmount**           | Pointer to **float32**                                                                                 | The amount that the buyer has got invoiced.                                                                                                                                                                                                                                         | [optional] 
- **IsMeteringOverageCommit**  | Pointer to **bool**                                                                                    | Whether the usage metering will be charged for the amount that exceeds the committed amount from the offer.                                                                                                                                                                         | [optional] 
- **NetTermsInDays**           | Pointer to **int32**                                                                                   | The net terms for the offer. It is same as the TrialConfig in DirectOfferInfo. But can be overridden at the entitlement level.                                                                                                                                                      | [optional] 
- **PaymentInstallments**      | Pointer to [**[]PaymentInstallment**](PaymentInstallment.md)                                           | For flexible payment schedules                                                                                                                                                                                                                                                      | [optional] 
- **PaymentSchedule**          | Pointer to [**PaymentScheduleType**](PaymentScheduleType.md)                                           | The payment schedule for the entitlement. PREPAY means the buyer pays before the service is provided. POSTPAY means the buyer pays after the service is provided.                                                                                                                   | [optional] 
- **RefundCancellationPolicy** | Pointer to **string**                                                                                  |                                                                                                                                                                                                                                                                                     | [optional] 
- **SellerNotes**              | Pointer to **string**                                                                                  |                                                                                                                                                                                                                                                                                     | [optional] 
- **SpaUrl**                   | Pointer to **string**                                                                                  | The URL with JWT as auth method for the entitlement SPA. It can be shared with the buyer to access the SPA without login.                                                                                                                                                           | [optional] 
- **TrialConfig**              | Pointer to [**TrialConfig**](TrialConfig.md)                                                           | The trial configuration for the offer. It is same as the TrialConfig in DirectOfferInfo. But can be overridden at the entitlement level.                                                                                                                                            | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Addons** | Pointer to [**[]BillingAddonRecord**](BillingAddonRecord.md) | The addons for the entitlement. | [optional] 
+**AlertDaysBeforeEnd** | Pointer to **int32** | Alert days before the end of the entitlement | [optional] 
+**AlibabaEntitlements** | Pointer to [**[]ClientDescribeInstanceResponseBody**](ClientDescribeInstanceResponseBody.md) | Nullable. Alibaba Entitlements from Alibaba Marketplace. | [optional] 
+**AlibabaOrders** | Pointer to [**[]ClientDescribeOrderResponseBody**](ClientDescribeOrderResponseBody.md) | Nullable. Alibaba Orders from Alibaba Marketplace. | [optional] 
+**AutoRenew** | Pointer to **bool** | Is this Entitlement Auto Renew enabled. | [optional] 
+**AwsAgreement** | Pointer to [**AwsMarketplaceAgreementV2**](AwsMarketplaceAgreementV2.md) | Nullable. AWS agreement from AWS Marketplace. | [optional] 
+**AwsChannelPartner** | Pointer to [**AwsChannelPartner**](AwsChannelPartner.md) | The AWS channel partner (reseller), only applicable if this entitlement is based on AWS CPPO offer. | [optional] 
+**AwsEntitlements** | Pointer to [**[]TypesEntitlement**](TypesEntitlement.md) | Nullable. AWS Entitlements from AWS Marketplace. | [optional] 
+**AzureSubscriptions** | Pointer to [**[]AzureMarketplaceSubscription**](AzureMarketplaceSubscription.md) | Nullable. Azure Subscriptions from Azure Marketplace. | [optional] 
+**BillableDimensions** | Pointer to [**[]BillableDimension**](BillableDimension.md) | The dimensions for billable metric usage-based metering. It&#39;s for Suger(Stripe, Ayden) metering. | [optional] 
+**BillingCycle** | Pointer to [**BillingCycle**](BillingCycle.md) | Billing Cycle | [optional] 
+**BillingIntervalInMonths** | Pointer to **int32** | The billing interval from the offer. | [optional] 
+**BuyerManagementURL** | Pointer to **string** | The buyer&#39;s management URL in the cloud marketplace. For different cloud marketplaces, the buyer management URL maybe different. | [optional] 
+**CollectableAmount** | Pointer to **float32** | The amount that the seller can collect. It excludes the marketplace commision fee. | [optional] 
+**CommitAmount** | Pointer to **float32** | The amount that the buyer has committed to pay. It can be the sum of payment installments if applicable. | [optional] 
+**Commits** | Pointer to [**[]CommitDimension**](CommitDimension.md) | The dimensions for flatrate commitment (recurring or one-time). | [optional] 
+**Currency** | Pointer to **string** | The default Currency is USD. | [optional] 
+**Dimensions** | Pointer to [**[]MeteringDimension**](MeteringDimension.md) | The dimensions for usage-based metering. It&#39;s for usage metering in cloud marketplaces. The max size of dimensions is 50. The oversized dimensions won&#39;t be saved in the EntitlementInfo. But the dimensions can be accessed from the connected offer info or product info. | [optional] 
+**DimensionsOversized** | Pointer to **bool** | Whether the upper metering dimensions are oversized (exceed the max size 50). | [optional] 
+**DisbursedAmount** | Pointer to **float32** | The amount that has been disbursed to the seller account. | [optional] 
+**EulaType** | Pointer to [**EulaType**](EulaType.md) |  | [optional] 
+**EulaUrl** | Pointer to **string** |  | [optional] 
+**GcpEntitlements** | Pointer to [**[]GcpMarketplaceEntitlement**](GcpMarketplaceEntitlement.md) | Nullable. GCP Entitlements from GCP Marketplace. | [optional] 
+**GcpPlans** | Pointer to [**[]GcpMarketplaceProductPurchaseOptionSpec**](GcpMarketplaceProductPurchaseOptionSpec.md) | Only applicable for GCP Marketplace Entitlements. | [optional] 
+**GracePeriodInDays** | Pointer to **int32** | The grace period for the offer. It is same as the TrialConfig in DirectOfferInfo. But can be overridden at the entitlement level. | [optional] 
+**GrossAmount** | Pointer to **float32** | The gross amount that the buyer has committed to pay, including usage metered amount. | [optional] 
+**InvoicedAmount** | Pointer to **float32** | The amount that the buyer has got invoiced. | [optional] 
+**IsMeteringOverageCommit** | Pointer to **bool** | Whether the usage metering will be charged for the amount that exceeds the committed amount from the offer. | [optional] 
+**NetTermsInDays** | Pointer to **int32** | The net terms for the offer. It is same as the TrialConfig in DirectOfferInfo. But can be overridden at the entitlement level. | [optional] 
+**PaymentInstallments** | Pointer to [**[]PaymentInstallment**](PaymentInstallment.md) | For flexible payment schedules | [optional] 
+**PaymentSchedule** | Pointer to [**PaymentScheduleType**](PaymentScheduleType.md) | The payment schedule for the entitlement. PREPAY means the buyer pays before the service is provided. POSTPAY means the buyer pays after the service is provided. | [optional] 
+**RefundCancellationPolicy** | Pointer to **string** |  | [optional] 
+**SellerNotes** | Pointer to **string** |  | [optional] 
+**SnowflakeOffer** | Pointer to [**SnowflakeMarketplaceOffer**](SnowflakeMarketplaceOffer.md) | Snowfalke offer info | [optional] 
+**SpaUrl** | Pointer to **string** | The URL with JWT as auth method for the entitlement SPA. It can be shared with the buyer to access the SPA without login. | [optional] 
+**TrialConfig** | Pointer to [**TrialConfig**](TrialConfig.md) | The trial configuration for the offer. It is same as the TrialConfig in DirectOfferInfo. But can be overridden at the entitlement level. | [optional] 
 
 ## Methods
 
@@ -343,8 +345,7 @@ GetBillingIntervalInMonths returns the BillingIntervalInMonths field if non-nil,
 
 `func (o *EntitlementInfo) GetBillingIntervalInMonthsOk() (*int32, bool)`
 
-GetBillingIntervalInMonthsOk returns a tuple with the BillingIntervalInMonths field if it's non-nil, zero value
-otherwise
+GetBillingIntervalInMonthsOk returns a tuple with the BillingIntervalInMonths field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBillingIntervalInMonths
@@ -358,6 +359,31 @@ SetBillingIntervalInMonths sets BillingIntervalInMonths field to given value.
 `func (o *EntitlementInfo) HasBillingIntervalInMonths() bool`
 
 HasBillingIntervalInMonths returns a boolean if a field has been set.
+
+### GetBuyerManagementURL
+
+`func (o *EntitlementInfo) GetBuyerManagementURL() string`
+
+GetBuyerManagementURL returns the BuyerManagementURL field if non-nil, zero value otherwise.
+
+### GetBuyerManagementURLOk
+
+`func (o *EntitlementInfo) GetBuyerManagementURLOk() (*string, bool)`
+
+GetBuyerManagementURLOk returns a tuple with the BuyerManagementURL field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuyerManagementURL
+
+`func (o *EntitlementInfo) SetBuyerManagementURL(v string)`
+
+SetBuyerManagementURL sets BuyerManagementURL field to given value.
+
+### HasBuyerManagementURL
+
+`func (o *EntitlementInfo) HasBuyerManagementURL() bool`
+
+HasBuyerManagementURL returns a boolean if a field has been set.
 
 ### GetCollectableAmount
 
@@ -719,8 +745,7 @@ GetIsMeteringOverageCommit returns the IsMeteringOverageCommit field if non-nil,
 
 `func (o *EntitlementInfo) GetIsMeteringOverageCommitOk() (*bool, bool)`
 
-GetIsMeteringOverageCommitOk returns a tuple with the IsMeteringOverageCommit field if it's non-nil, zero value
-otherwise
+GetIsMeteringOverageCommitOk returns a tuple with the IsMeteringOverageCommit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIsMeteringOverageCommit
@@ -859,6 +884,31 @@ SetSellerNotes sets SellerNotes field to given value.
 `func (o *EntitlementInfo) HasSellerNotes() bool`
 
 HasSellerNotes returns a boolean if a field has been set.
+
+### GetSnowflakeOffer
+
+`func (o *EntitlementInfo) GetSnowflakeOffer() SnowflakeMarketplaceOffer`
+
+GetSnowflakeOffer returns the SnowflakeOffer field if non-nil, zero value otherwise.
+
+### GetSnowflakeOfferOk
+
+`func (o *EntitlementInfo) GetSnowflakeOfferOk() (*SnowflakeMarketplaceOffer, bool)`
+
+GetSnowflakeOfferOk returns a tuple with the SnowflakeOffer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSnowflakeOffer
+
+`func (o *EntitlementInfo) SetSnowflakeOffer(v SnowflakeMarketplaceOffer)`
+
+SetSnowflakeOffer sets SnowflakeOffer field to given value.
+
+### HasSnowflakeOffer
+
+`func (o *EntitlementInfo) HasSnowflakeOffer() bool`
+
+HasSnowflakeOffer returns a boolean if a field has been set.
 
 ### GetSpaUrl
 

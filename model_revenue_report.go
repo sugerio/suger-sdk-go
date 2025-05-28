@@ -21,15 +21,17 @@ var _ MappedNullable = &RevenueReport{}
 
 // RevenueReport struct for RevenueReport
 type RevenueReport struct {
-	BuyerID        *string            `json:"buyerID,omitempty"`
-	EntitlementID  *string            `json:"entitlementID,omitempty"`
-	OrganizationID *string            `json:"organizationID,omitempty"`
-	Partner        *string            `json:"partner,omitempty"`
-	ProductID      *string            `json:"productID,omitempty"`
-	ReportDate     *time.Time         `json:"reportDate,omitempty"`
-	ReportType     *RevenueReportType `json:"reportType,omitempty"`
-	RevenueRecords []RevenueRecord    `json:"revenueRecords,omitempty"`
-	Service        *string            `json:"service,omitempty"`
+	BuyerID *string `json:"buyerID,omitempty"`
+	EntitlementID *string `json:"entitlementID,omitempty"`
+	// The group by of the revenue report.
+	GroupBy *GroupByInterval `json:"groupBy,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
+	Partner *string `json:"partner,omitempty"`
+	ProductID *string `json:"productID,omitempty"`
+	ReportDate *time.Time `json:"reportDate,omitempty"`
+	ReportType *RevenueReportType `json:"reportType,omitempty"`
+	RevenueRecords []RevenueRecord `json:"revenueRecords,omitempty"`
+	Service *string `json:"service,omitempty"`
 }
 
 // NewRevenueReport instantiates a new RevenueReport object
@@ -111,6 +113,38 @@ func (o *RevenueReport) HasEntitlementID() bool {
 // SetEntitlementID gets a reference to the given string and assigns it to the EntitlementID field.
 func (o *RevenueReport) SetEntitlementID(v string) {
 	o.EntitlementID = &v
+}
+
+// GetGroupBy returns the GroupBy field value if set, zero value otherwise.
+func (o *RevenueReport) GetGroupBy() GroupByInterval {
+	if o == nil || IsNil(o.GroupBy) {
+		var ret GroupByInterval
+		return ret
+	}
+	return *o.GroupBy
+}
+
+// GetGroupByOk returns a tuple with the GroupBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueReport) GetGroupByOk() (*GroupByInterval, bool) {
+	if o == nil || IsNil(o.GroupBy) {
+		return nil, false
+	}
+	return o.GroupBy, true
+}
+
+// HasGroupBy returns a boolean if a field has been set.
+func (o *RevenueReport) HasGroupBy() bool {
+	if o != nil && !IsNil(o.GroupBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupBy gets a reference to the given GroupByInterval and assigns it to the GroupBy field.
+func (o *RevenueReport) SetGroupBy(v GroupByInterval) {
+	o.GroupBy = &v
 }
 
 // GetOrganizationID returns the OrganizationID field value if set, zero value otherwise.
@@ -338,7 +372,7 @@ func (o *RevenueReport) SetService(v string) {
 }
 
 func (o RevenueReport) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -352,6 +386,9 @@ func (o RevenueReport) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EntitlementID) {
 		toSerialize["entitlementID"] = o.EntitlementID
+	}
+	if !IsNil(o.GroupBy) {
+		toSerialize["groupBy"] = o.GroupBy
 	}
 	if !IsNil(o.OrganizationID) {
 		toSerialize["organizationID"] = o.OrganizationID
@@ -412,3 +449,5 @@ func (v *NullableRevenueReport) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

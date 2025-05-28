@@ -21,18 +21,18 @@ type BillableMetricFilterOperation string
 
 // List of BillableMetricFilterOperation
 const (
-	BillableMetricFilterOperation_IS           BillableMetricFilterOperation = "IS"
-	BillableMetricFilterOperation_NOT_IS       BillableMetricFilterOperation = "NOT_IS"
-	BillableMetricFilterOperation_CONTAINS     BillableMetricFilterOperation = "CONTAINS"
+	BillableMetricFilterOperation_IS BillableMetricFilterOperation = "IS"
+	BillableMetricFilterOperation_NOT_IS BillableMetricFilterOperation = "NOT_IS"
+	BillableMetricFilterOperation_CONTAINS BillableMetricFilterOperation = "CONTAINS"
 	BillableMetricFilterOperation_NOT_CONTAINS BillableMetricFilterOperation = "NOT_CONTAINS"
-	BillableMetricFilterOperation_GT           BillableMetricFilterOperation = "GT"
-	BillableMetricFilterOperation_GTE          BillableMetricFilterOperation = "GTE"
-	BillableMetricFilterOperation_LT           BillableMetricFilterOperation = "LT"
-	BillableMetricFilterOperation_LTE          BillableMetricFilterOperation = "LTE"
-	BillableMetricFilterOperation_EQ           BillableMetricFilterOperation = "EQ"
-	BillableMetricFilterOperation_NEQ          BillableMetricFilterOperation = "NOT_EQ"
-	BillableMetricFilterOperation_EXISTS       BillableMetricFilterOperation = "EXISTS"
-	BillableMetricFilterOperation_NOT_EXISTS   BillableMetricFilterOperation = "NOT_EXISTS"
+	BillableMetricFilterOperation_GT BillableMetricFilterOperation = "GT"
+	BillableMetricFilterOperation_GTE BillableMetricFilterOperation = "GTE"
+	BillableMetricFilterOperation_LT BillableMetricFilterOperation = "LT"
+	BillableMetricFilterOperation_LTE BillableMetricFilterOperation = "LTE"
+	BillableMetricFilterOperation_EQ BillableMetricFilterOperation = "EQ"
+	BillableMetricFilterOperation_NEQ BillableMetricFilterOperation = "NOT_EQ"
+	BillableMetricFilterOperation_EXISTS BillableMetricFilterOperation = "EXISTS"
+	BillableMetricFilterOperation_NOT_EXISTS BillableMetricFilterOperation = "NOT_EXISTS"
 )
 
 // All allowed values of BillableMetricFilterOperation enum
@@ -129,3 +129,4 @@ func (v *NullableBillableMetricFilterOperation) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

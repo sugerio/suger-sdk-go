@@ -21,7 +21,7 @@ var _ MappedNullable = &BillingDiscount{}
 // BillingDiscount struct for BillingDiscount
 type BillingDiscount struct {
 	DiscountType *BillingDiscountType `json:"discountType,omitempty"`
-	Value        *float32             `json:"value,omitempty"`
+	Value *float32 `json:"value,omitempty"`
 }
 
 // NewBillingDiscount instantiates a new BillingDiscount object
@@ -106,7 +106,7 @@ func (o *BillingDiscount) SetValue(v float32) {
 }
 
 func (o BillingDiscount) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableBillingDiscount) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

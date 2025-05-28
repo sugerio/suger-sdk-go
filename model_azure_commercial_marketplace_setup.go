@@ -22,18 +22,18 @@ var _ MappedNullable = &AzureCommercialMarketplaceSetup{}
 type AzureCommercialMarketplaceSetup struct {
 	Schema *string `json:"$schema,omitempty"`
 	// in patern of \"^(http|https)://\"
-	AccessUrl    *string `json:"accessUrl,omitempty"`
+	AccessUrl *string `json:"accessUrl,omitempty"`
 	CallToAction *string `json:"callToAction,omitempty"`
 	// In format of \"commercial-marketplace-setup/setup-durable-id\"
 	Id *string `json:"id,omitempty"`
 	// Product resource name, in format of \"product/product-durable-id\"
-	Product                  *string `json:"product,omitempty"`
-	RequireLicenseForInstall *bool   `json:"requireLicenseForInstall,omitempty"`
-	ResourceName             *string `json:"resourceName,omitempty"`
-	SellThroughMicrosoft     *bool   `json:"sellThroughMicrosoft,omitempty"`
+	Product *string `json:"product,omitempty"`
+	RequireLicenseForInstall *bool `json:"requireLicenseForInstall,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty"`
+	SellThroughMicrosoft *bool `json:"sellThroughMicrosoft,omitempty"`
 	// If true, only per_user pricing model is allowed.
-	UseMicrosoftLicenseManagementService *bool                        `json:"useMicrosoftLicenseManagementService,omitempty"`
-	Validations                          []AzureMarketplaceValidation `json:"validations,omitempty"`
+	UseMicrosoftLicenseManagementService *bool `json:"useMicrosoftLicenseManagementService,omitempty"`
+	Validations []AzureMarketplaceValidation `json:"validations,omitempty"`
 }
 
 // NewAzureCommercialMarketplaceSetup instantiates a new AzureCommercialMarketplaceSetup object
@@ -374,7 +374,7 @@ func (o *AzureCommercialMarketplaceSetup) SetValidations(v []AzureMarketplaceVal
 }
 
 func (o AzureCommercialMarketplaceSetup) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -451,3 +451,5 @@ func (v *NullableAzureCommercialMarketplaceSetup) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

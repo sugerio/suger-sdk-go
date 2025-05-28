@@ -22,7 +22,7 @@ type GcpMarketplaceUserAccountState string
 // List of GcpMarketplaceUserAccountState
 const (
 	GcpMarketplaceUserAccountState_UNSPECIFIED GcpMarketplaceUserAccountState = "ACCOUNT_STATE_UNSPECIFIED"
-	GcpMarketplaceUserAccountState_ACTIVE      GcpMarketplaceUserAccountState = "ACCOUNT_ACTIVE"
+	GcpMarketplaceUserAccountState_ACTIVE GcpMarketplaceUserAccountState = "ACCOUNT_ACTIVE"
 )
 
 // All allowed values of GcpMarketplaceUserAccountState enum
@@ -109,3 +109,4 @@ func (v *NullableGcpMarketplaceUserAccountState) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

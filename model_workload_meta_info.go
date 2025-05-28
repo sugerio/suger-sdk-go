@@ -43,7 +43,7 @@ type WorkloadMetaInfo struct {
 	EnableTestUsageMetering *bool `json:"enableTestUsageMetering,omitempty"`
 	// The cancellation schedule for the entitlement. It is nill if no cancellation schedule.
 	EntitlementCancellationSchedule *CancellationSchedule `json:"entitlementCancellationSchedule,omitempty"`
-	// The error messages when the offer is invalid or offer related tasks failed. Populated by Suger service.
+	// The error messages when the offer is invalid or offer related tasks failed. This is the raw error messages from the offer related tasks.
 	ErrorMessages []string `json:"errorMessages,omitempty"`
 	// Hubsport deal ID of the private offer if available.
 	HubspotDealId *string `json:"hubspotDealId,omitempty"`
@@ -63,6 +63,8 @@ type WorkloadMetaInfo struct {
 	Notifications []NotificationEvent `json:"notifications,omitempty"`
 	// The date when the offer is accepted by the buyer. Only available when the private offer has been accepted.
 	OfferAcceptDate *time.Time `json:"offerAcceptDate,omitempty"`
+	// The prettified ErrorMessages. Using AI to make it more readable and understandable. The prettified error messages will be used for the offer related UI display.
+	PrettifiedErrorMessages []string `json:"prettifiedErrorMessages,omitempty"`
 	// Applicable for AWS Marketplace only, required when the IsRenewalOffer is true.
 	RenewalOfferType *AwsRenewalOfferType `json:"renewalOfferType,omitempty"`
 	// The end time of the replaced offer. Applicable for GCP Marketplace replacement offer only.
@@ -768,6 +770,38 @@ func (o *WorkloadMetaInfo) SetOfferAcceptDate(v time.Time) {
 	o.OfferAcceptDate = &v
 }
 
+// GetPrettifiedErrorMessages returns the PrettifiedErrorMessages field value if set, zero value otherwise.
+func (o *WorkloadMetaInfo) GetPrettifiedErrorMessages() []string {
+	if o == nil || IsNil(o.PrettifiedErrorMessages) {
+		var ret []string
+		return ret
+	}
+	return o.PrettifiedErrorMessages
+}
+
+// GetPrettifiedErrorMessagesOk returns a tuple with the PrettifiedErrorMessages field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadMetaInfo) GetPrettifiedErrorMessagesOk() ([]string, bool) {
+	if o == nil || IsNil(o.PrettifiedErrorMessages) {
+		return nil, false
+	}
+	return o.PrettifiedErrorMessages, true
+}
+
+// HasPrettifiedErrorMessages returns a boolean if a field has been set.
+func (o *WorkloadMetaInfo) HasPrettifiedErrorMessages() bool {
+	if o != nil && !IsNil(o.PrettifiedErrorMessages) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrettifiedErrorMessages gets a reference to the given []string and assigns it to the PrettifiedErrorMessages field.
+func (o *WorkloadMetaInfo) SetPrettifiedErrorMessages(v []string) {
+	o.PrettifiedErrorMessages = v
+}
+
 // GetRenewalOfferType returns the RenewalOfferType field value if set, zero value otherwise.
 func (o *WorkloadMetaInfo) GetRenewalOfferType() AwsRenewalOfferType {
 	if o == nil || IsNil(o.RenewalOfferType) {
@@ -993,7 +1027,7 @@ func (o *WorkloadMetaInfo) SetUpdateMessage(v string) {
 }
 
 func (o WorkloadMetaInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1065,6 +1099,9 @@ func (o WorkloadMetaInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OfferAcceptDate) {
 		toSerialize["offerAcceptDate"] = o.OfferAcceptDate
 	}
+	if !IsNil(o.PrettifiedErrorMessages) {
+		toSerialize["prettifiedErrorMessages"] = o.PrettifiedErrorMessages
+	}
 	if !IsNil(o.RenewalOfferType) {
 		toSerialize["renewalOfferType"] = o.RenewalOfferType
 	}
@@ -1124,3 +1161,5 @@ func (v *NullableWorkloadMetaInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

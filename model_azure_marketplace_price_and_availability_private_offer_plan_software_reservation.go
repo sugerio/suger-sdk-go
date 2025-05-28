@@ -20,9 +20,9 @@ var _ MappedNullable = &AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoft
 
 // AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation struct for AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation
 type AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation struct {
-	PaymentSchedule     *AzureMarketplaceTerm    `json:"paymentSchedule,omitempty"`
-	ReservationDuration *AzureMarketplaceTerm    `json:"reservationDuration,omitempty"`
-	VmPrices            *AzureMarketplaceVmPrice `json:"vmPrices,omitempty"`
+	PaymentSchedule *AzureMarketplaceTerm `json:"paymentSchedule,omitempty"`
+	ReservationDuration *AzureMarketplaceTerm `json:"reservationDuration,omitempty"`
+	VmPrices *AzureMarketplaceVmPrice `json:"vmPrices,omitempty"`
 }
 
 // NewAzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation instantiates a new AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation object
@@ -139,7 +139,7 @@ func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation
 }
 
 func (o AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableAzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareRes
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -66,8 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient
-**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient.md)
+[**GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient.md)
 
 ### Authorization
 
@@ -137,8 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient
-**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient.md)
+[**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient.md)
 
 ### Authorization
 

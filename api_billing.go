@@ -20,14 +20,15 @@ import (
 	"strings"
 )
 
+
 // BillingAPIService BillingAPI service
 type BillingAPIService service
 
 type ApiCreateAddonRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BillingAPIService
-	orgId      string
-	data       *CreateAndUpdateAddonParams
+	orgId string
+	data *CreateAndUpdateAddonParams
 }
 
 // CreateAndUpdateAddonParams
@@ -45,27 +46,26 @@ CreateAddon create addon
 
 Create an addon template
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiCreateAddonRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiCreateAddonRequest
 */
 func (a *BillingAPIService) CreateAddon(ctx context.Context, orgId string) ApiCreateAddonRequest {
 	return ApiCreateAddonRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillingAddon
+//  @return BillingAddon
 func (a *BillingAPIService) CreateAddonExecute(r ApiCreateAddonRequest) (*BillingAddon, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillingAddon
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingAddon
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.CreateAddon")
@@ -145,8 +145,8 @@ func (a *BillingAPIService) CreateAddonExecute(r ApiCreateAddonRequest) (*Billin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -156,8 +156,8 @@ func (a *BillingAPIService) CreateAddonExecute(r ApiCreateAddonRequest) (*Billin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -175,12 +175,12 @@ func (a *BillingAPIService) CreateAddonExecute(r ApiCreateAddonRequest) (*Billin
 }
 
 type ApiCreateRefundRequest struct {
-	ctx                  context.Context
-	ApiService           *BillingAPIService
-	orgId                string
-	buyerId              string
+	ctx context.Context
+	ApiService *BillingAPIService
+	orgId string
+	buyerId string
 	paymentTransactionId string
-	amount               *float32
+	amount *float32
 }
 
 // Refund amount
@@ -198,31 +198,30 @@ CreateRefund create refund.
 
 create refund on the payment transaction, support partial refunds multiple times.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param buyerId Buyer ID
-	@param paymentTransactionId Payment transaction ID
-	@return ApiCreateRefundRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param buyerId Buyer ID
+ @param paymentTransactionId Payment transaction ID
+ @return ApiCreateRefundRequest
 */
 func (a *BillingAPIService) CreateRefund(ctx context.Context, orgId string, buyerId string, paymentTransactionId string) ApiCreateRefundRequest {
 	return ApiCreateRefundRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		orgId:                orgId,
-		buyerId:              buyerId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		buyerId: buyerId,
 		paymentTransactionId: paymentTransactionId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillingPaymentTransaction
+//  @return BillingPaymentTransaction
 func (a *BillingAPIService) CreateRefundExecute(r ApiCreateRefundRequest) (*BillingPaymentTransaction, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillingPaymentTransaction
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingPaymentTransaction
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.CreateRefund")
@@ -303,8 +302,8 @@ func (a *BillingAPIService) CreateRefundExecute(r ApiCreateRefundRequest) (*Bill
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -314,8 +313,8 @@ func (a *BillingAPIService) CreateRefundExecute(r ApiCreateRefundRequest) (*Bill
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -333,10 +332,10 @@ func (a *BillingAPIService) CreateRefundExecute(r ApiCreateRefundRequest) (*Bill
 }
 
 type ApiDeleteAddonRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BillingAPIService
-	orgId      string
-	addonId    string
+	orgId string
+	addonId string
 }
 
 func (r ApiDeleteAddonRequest) Execute() (string, *http.Response, error) {
@@ -348,29 +347,28 @@ DeleteAddon delete addon
 
 Soft delete an addon template
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param addonId Addon ID
-	@return ApiDeleteAddonRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param addonId Addon ID
+ @return ApiDeleteAddonRequest
 */
 func (a *BillingAPIService) DeleteAddon(ctx context.Context, orgId string, addonId string) ApiDeleteAddonRequest {
 	return ApiDeleteAddonRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		addonId:    addonId,
+		ctx: ctx,
+		orgId: orgId,
+		addonId: addonId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *BillingAPIService) DeleteAddonExecute(r ApiDeleteAddonRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.DeleteAddon")
@@ -446,8 +444,8 @@ func (a *BillingAPIService) DeleteAddonExecute(r ApiDeleteAddonRequest) (string,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -457,8 +455,8 @@ func (a *BillingAPIService) DeleteAddonExecute(r ApiDeleteAddonRequest) (string,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -476,10 +474,10 @@ func (a *BillingAPIService) DeleteAddonExecute(r ApiDeleteAddonRequest) (string,
 }
 
 type ApiGetAddonRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BillingAPIService
-	orgId      string
-	addonId    string
+	orgId string
+	addonId string
 }
 
 func (r ApiGetAddonRequest) Execute() (*BillingAddon, *http.Response, error) {
@@ -491,29 +489,28 @@ GetAddon get addon
 
 Get an addon template
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param addonId Addon ID
-	@return ApiGetAddonRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param addonId Addon ID
+ @return ApiGetAddonRequest
 */
 func (a *BillingAPIService) GetAddon(ctx context.Context, orgId string, addonId string) ApiGetAddonRequest {
 	return ApiGetAddonRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		addonId:    addonId,
+		ctx: ctx,
+		orgId: orgId,
+		addonId: addonId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillingAddon
+//  @return BillingAddon
 func (a *BillingAPIService) GetAddonExecute(r ApiGetAddonRequest) (*BillingAddon, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillingAddon
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingAddon
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.GetAddon")
@@ -589,8 +586,8 @@ func (a *BillingAPIService) GetAddonExecute(r ApiGetAddonRequest) (*BillingAddon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -600,8 +597,8 @@ func (a *BillingAPIService) GetAddonExecute(r ApiGetAddonRequest) (*BillingAddon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -618,48 +615,47 @@ func (a *BillingAPIService) GetAddonExecute(r ApiGetAddonRequest) (*BillingAddon
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetInvoiceV2Request struct {
-	ctx        context.Context
+type ApiGetInvoiceRequest struct {
+	ctx context.Context
 	ApiService *BillingAPIService
-	orgId      string
-	invoiceId  string
+	orgId string
+	invoiceId string
 }
 
-func (r ApiGetInvoiceV2Request) Execute() (*BillingInvoice, *http.Response, error) {
-	return r.ApiService.GetInvoiceV2Execute(r)
+func (r ApiGetInvoiceRequest) Execute() (*BillingInvoice, *http.Response, error) {
+	return r.ApiService.GetInvoiceExecute(r)
 }
 
 /*
-GetInvoiceV2 get invoice
+GetInvoice get invoice
 
 Get the invoice by ID
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param invoiceId Invoice ID
-	@return ApiGetInvoiceV2Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param invoiceId Invoice ID
+ @return ApiGetInvoiceRequest
 */
-func (a *BillingAPIService) GetInvoiceV2(ctx context.Context, orgId string, invoiceId string) ApiGetInvoiceV2Request {
-	return ApiGetInvoiceV2Request{
+func (a *BillingAPIService) GetInvoice(ctx context.Context, orgId string, invoiceId string) ApiGetInvoiceRequest {
+	return ApiGetInvoiceRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		invoiceId:  invoiceId,
+		ctx: ctx,
+		orgId: orgId,
+		invoiceId: invoiceId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillingInvoice
-func (a *BillingAPIService) GetInvoiceV2Execute(r ApiGetInvoiceV2Request) (*BillingInvoice, *http.Response, error) {
+//  @return BillingInvoice
+func (a *BillingAPIService) GetInvoiceExecute(r ApiGetInvoiceRequest) (*BillingInvoice, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillingInvoice
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingInvoice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.GetInvoiceV2")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.GetInvoice")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -732,8 +728,8 @@ func (a *BillingAPIService) GetInvoiceV2Execute(r ApiGetInvoiceV2Request) (*Bill
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -743,8 +739,8 @@ func (a *BillingAPIService) GetInvoiceV2Execute(r ApiGetInvoiceV2Request) (*Bill
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -761,55 +757,54 @@ func (a *BillingAPIService) GetInvoiceV2Execute(r ApiGetInvoiceV2Request) (*Bill
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueInvoiceV2Request struct {
-	ctx        context.Context
+type ApiIssueInvoiceRequest struct {
+	ctx context.Context
 	ApiService *BillingAPIService
-	orgId      string
-	invoiceId  string
+	orgId string
+	invoiceId string
 	contactIds *[]string
 }
 
 // List of Contact IDs
-func (r ApiIssueInvoiceV2Request) ContactIds(contactIds []string) ApiIssueInvoiceV2Request {
+func (r ApiIssueInvoiceRequest) ContactIds(contactIds []string) ApiIssueInvoiceRequest {
 	r.contactIds = &contactIds
 	return r
 }
 
-func (r ApiIssueInvoiceV2Request) Execute() (*BillingInvoice, *http.Response, error) {
-	return r.ApiService.IssueInvoiceV2Execute(r)
+func (r ApiIssueInvoiceRequest) Execute() (*BillingInvoice, *http.Response, error) {
+	return r.ApiService.IssueInvoiceExecute(r)
 }
 
 /*
-IssueInvoiceV2 issue invoice
+IssueInvoice issue invoice
 
 Issue the invoice immediately. It can be used for manual issue or reissue invoice.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param invoiceId Invoice ID
-	@return ApiIssueInvoiceV2Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param invoiceId Invoice ID
+ @return ApiIssueInvoiceRequest
 */
-func (a *BillingAPIService) IssueInvoiceV2(ctx context.Context, orgId string, invoiceId string) ApiIssueInvoiceV2Request {
-	return ApiIssueInvoiceV2Request{
+func (a *BillingAPIService) IssueInvoice(ctx context.Context, orgId string, invoiceId string) ApiIssueInvoiceRequest {
+	return ApiIssueInvoiceRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		invoiceId:  invoiceId,
+		ctx: ctx,
+		orgId: orgId,
+		invoiceId: invoiceId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillingInvoice
-func (a *BillingAPIService) IssueInvoiceV2Execute(r ApiIssueInvoiceV2Request) (*BillingInvoice, *http.Response, error) {
+//  @return BillingInvoice
+func (a *BillingAPIService) IssueInvoiceExecute(r ApiIssueInvoiceRequest) (*BillingInvoice, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillingInvoice
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingInvoice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.IssueInvoiceV2")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.IssueInvoice")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -884,8 +879,8 @@ func (a *BillingAPIService) IssueInvoiceV2Execute(r ApiIssueInvoiceV2Request) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -895,8 +890,8 @@ func (a *BillingAPIService) IssueInvoiceV2Execute(r ApiIssueInvoiceV2Request) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -914,11 +909,11 @@ func (a *BillingAPIService) IssueInvoiceV2Execute(r ApiIssueInvoiceV2Request) (*
 }
 
 type ApiListAddonsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BillingAPIService
-	orgId      string
-	limit      *int32
-	offset     *int32
+	orgId string
+	limit *int32
+	offset *int32
 }
 
 // List pagination size, default 1000, max value is 1000
@@ -942,27 +937,26 @@ ListAddons list addons
 
 List all addon templates
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListAddonsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListAddonsRequest
 */
 func (a *BillingAPIService) ListAddons(ctx context.Context, orgId string) ApiListAddonsRequest {
 	return ApiListAddonsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []BillingAddon
+//  @return []BillingAddon
 func (a *BillingAPIService) ListAddonsExecute(r ApiListAddonsRequest) ([]BillingAddon, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []BillingAddon
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []BillingAddon
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.ListAddons")
@@ -1043,8 +1037,8 @@ func (a *BillingAPIService) ListAddonsExecute(r ApiListAddonsRequest) ([]Billing
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1054,8 +1048,8 @@ func (a *BillingAPIService) ListAddonsExecute(r ApiListAddonsRequest) ([]Billing
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1073,14 +1067,14 @@ func (a *BillingAPIService) ListAddonsExecute(r ApiListAddonsRequest) ([]Billing
 }
 
 type ApiListInvoicesRequest struct {
-	ctx           context.Context
-	ApiService    *BillingAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *BillingAPIService
+	orgId string
 	entitlementId *string
-	buyerId       *string
-	status        *string
-	limit         *int32
-	offset        *int32
+	buyerId *string
+	status *string
+	limit *int32
+	offset *int32
 }
 
 // Optional, filter by the entitlement ID
@@ -1122,27 +1116,26 @@ ListInvoices list invoices
 
 List invoices with pagination and filter by status (optional)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListInvoicesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListInvoicesRequest
 */
 func (a *BillingAPIService) ListInvoices(ctx context.Context, orgId string) ApiListInvoicesRequest {
 	return ApiListInvoicesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []BillingInvoice
+//  @return []BillingInvoice
 func (a *BillingAPIService) ListInvoicesExecute(r ApiListInvoicesRequest) ([]BillingInvoice, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []BillingInvoice
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []BillingInvoice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.ListInvoices")
@@ -1232,8 +1225,8 @@ func (a *BillingAPIService) ListInvoicesExecute(r ApiListInvoicesRequest) ([]Bil
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1243,8 +1236,8 @@ func (a *BillingAPIService) ListInvoicesExecute(r ApiListInvoicesRequest) ([]Bil
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1262,16 +1255,16 @@ func (a *BillingAPIService) ListInvoicesExecute(r ApiListInvoicesRequest) ([]Bil
 }
 
 type ApiListPaymentTransactionsRequest struct {
-	ctx           context.Context
-	ApiService    *BillingAPIService
-	orgId         string
-	buyerId       *string
+	ctx context.Context
+	ApiService *BillingAPIService
+	orgId string
+	buyerId *string
 	entitlementId *string
-	invoiceId     *string
-	status        *string
-	type_         *string
-	limit         *int32
-	offset        *int32
+	invoiceId *string
+	status *string
+	type_ *string
+	limit *int32
+	offset *int32
 }
 
 // Optional, filter by the given buyer ID
@@ -1325,27 +1318,26 @@ ListPaymentTransactions list payment transactions
 
 List payment transactions with pagination and filters
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListPaymentTransactionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListPaymentTransactionsRequest
 */
 func (a *BillingAPIService) ListPaymentTransactions(ctx context.Context, orgId string) ApiListPaymentTransactionsRequest {
 	return ApiListPaymentTransactionsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []BillingPaymentTransaction
+//  @return []BillingPaymentTransaction
 func (a *BillingAPIService) ListPaymentTransactionsExecute(r ApiListPaymentTransactionsRequest) ([]BillingPaymentTransaction, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []BillingPaymentTransaction
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []BillingPaymentTransaction
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.ListPaymentTransactions")
@@ -1441,8 +1433,8 @@ func (a *BillingAPIService) ListPaymentTransactionsExecute(r ApiListPaymentTrans
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1452,8 +1444,8 @@ func (a *BillingAPIService) ListPaymentTransactionsExecute(r ApiListPaymentTrans
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1471,10 +1463,10 @@ func (a *BillingAPIService) ListPaymentTransactionsExecute(r ApiListPaymentTrans
 }
 
 type ApiListRefundOfPaymentTransactionRequest struct {
-	ctx                  context.Context
-	ApiService           *BillingAPIService
-	orgId                string
-	buyerId              string
+	ctx context.Context
+	ApiService *BillingAPIService
+	orgId string
+	buyerId string
 	paymentTransactionId string
 }
 
@@ -1487,31 +1479,30 @@ ListRefundOfPaymentTransaction list refunds.
 
 list refunds of the payment transactions.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param buyerId Buyer ID
-	@param paymentTransactionId Payment transaction ID
-	@return ApiListRefundOfPaymentTransactionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param buyerId Buyer ID
+ @param paymentTransactionId Payment transaction ID
+ @return ApiListRefundOfPaymentTransactionRequest
 */
 func (a *BillingAPIService) ListRefundOfPaymentTransaction(ctx context.Context, orgId string, buyerId string, paymentTransactionId string) ApiListRefundOfPaymentTransactionRequest {
 	return ApiListRefundOfPaymentTransactionRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		orgId:                orgId,
-		buyerId:              buyerId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		buyerId: buyerId,
 		paymentTransactionId: paymentTransactionId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []BillingPaymentTransaction
+//  @return []BillingPaymentTransaction
 func (a *BillingAPIService) ListRefundOfPaymentTransactionExecute(r ApiListRefundOfPaymentTransactionRequest) ([]BillingPaymentTransaction, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []BillingPaymentTransaction
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []BillingPaymentTransaction
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.ListRefundOfPaymentTransaction")
@@ -1588,8 +1579,8 @@ func (a *BillingAPIService) ListRefundOfPaymentTransactionExecute(r ApiListRefun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1599,8 +1590,8 @@ func (a *BillingAPIService) ListRefundOfPaymentTransactionExecute(r ApiListRefun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1617,48 +1608,47 @@ func (a *BillingAPIService) ListRefundOfPaymentTransactionExecute(r ApiListRefun
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPayInvoiceV2Request struct {
-	ctx        context.Context
+type ApiPayInvoiceRequest struct {
+	ctx context.Context
 	ApiService *BillingAPIService
-	orgId      string
-	invoiceId  string
+	orgId string
+	invoiceId string
 }
 
-func (r ApiPayInvoiceV2Request) Execute() (*BillingInvoice, *http.Response, error) {
-	return r.ApiService.PayInvoiceV2Execute(r)
+func (r ApiPayInvoiceRequest) Execute() (*BillingInvoice, *http.Response, error) {
+	return r.ApiService.PayInvoiceExecute(r)
 }
 
 /*
-PayInvoiceV2 pay invoice
+PayInvoice pay invoice
 
 Initiate the payment for the invoice immediately. It can be used for manual payment or retry payment.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param invoiceId Invoice ID
-	@return ApiPayInvoiceV2Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param invoiceId Invoice ID
+ @return ApiPayInvoiceRequest
 */
-func (a *BillingAPIService) PayInvoiceV2(ctx context.Context, orgId string, invoiceId string) ApiPayInvoiceV2Request {
-	return ApiPayInvoiceV2Request{
+func (a *BillingAPIService) PayInvoice(ctx context.Context, orgId string, invoiceId string) ApiPayInvoiceRequest {
+	return ApiPayInvoiceRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		invoiceId:  invoiceId,
+		ctx: ctx,
+		orgId: orgId,
+		invoiceId: invoiceId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillingInvoice
-func (a *BillingAPIService) PayInvoiceV2Execute(r ApiPayInvoiceV2Request) (*BillingInvoice, *http.Response, error) {
+//  @return BillingInvoice
+func (a *BillingAPIService) PayInvoiceExecute(r ApiPayInvoiceRequest) (*BillingInvoice, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillingInvoice
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingInvoice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.PayInvoiceV2")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.PayInvoice")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1731,8 +1721,8 @@ func (a *BillingAPIService) PayInvoiceV2Execute(r ApiPayInvoiceV2Request) (*Bill
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1742,8 +1732,8 @@ func (a *BillingAPIService) PayInvoiceV2Execute(r ApiPayInvoiceV2Request) (*Bill
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1761,10 +1751,10 @@ func (a *BillingAPIService) PayInvoiceV2Execute(r ApiPayInvoiceV2Request) (*Bill
 }
 
 type ApiPreviewInvoiceEmailRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BillingAPIService
-	orgId      string
-	invoiceId  string
+	orgId string
+	invoiceId string
 }
 
 func (r ApiPreviewInvoiceEmailRequest) Execute() (string, *http.Response, error) {
@@ -1776,29 +1766,28 @@ PreviewInvoiceEmail preview invoice email
 
 Returns the preview HTML content of the invoice issued email.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param invoiceId Invoice ID
-	@return ApiPreviewInvoiceEmailRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param invoiceId Invoice ID
+ @return ApiPreviewInvoiceEmailRequest
 */
 func (a *BillingAPIService) PreviewInvoiceEmail(ctx context.Context, orgId string, invoiceId string) ApiPreviewInvoiceEmailRequest {
 	return ApiPreviewInvoiceEmailRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		invoiceId:  invoiceId,
+		ctx: ctx,
+		orgId: orgId,
+		invoiceId: invoiceId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *BillingAPIService) PreviewInvoiceEmailExecute(r ApiPreviewInvoiceEmailRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.PreviewInvoiceEmail")
@@ -1874,8 +1863,8 @@ func (a *BillingAPIService) PreviewInvoiceEmailExecute(r ApiPreviewInvoiceEmailR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1885,8 +1874,8 @@ func (a *BillingAPIService) PreviewInvoiceEmailExecute(r ApiPreviewInvoiceEmailR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1904,11 +1893,11 @@ func (a *BillingAPIService) PreviewInvoiceEmailExecute(r ApiPreviewInvoiceEmailR
 }
 
 type ApiUpdateAddonRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BillingAPIService
-	orgId      string
-	addonId    string
-	data       *CreateAndUpdateAddonParams
+	orgId string
+	addonId string
+	data *CreateAndUpdateAddonParams
 }
 
 // CreateAndUpdateAddonParams
@@ -1926,29 +1915,28 @@ UpdateAddon update addon
 
 Update an addon template
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param addonId Addon ID
-	@return ApiUpdateAddonRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param addonId Addon ID
+ @return ApiUpdateAddonRequest
 */
 func (a *BillingAPIService) UpdateAddon(ctx context.Context, orgId string, addonId string) ApiUpdateAddonRequest {
 	return ApiUpdateAddonRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		addonId:    addonId,
+		ctx: ctx,
+		orgId: orgId,
+		addonId: addonId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillingAddon
+//  @return BillingAddon
 func (a *BillingAPIService) UpdateAddonExecute(r ApiUpdateAddonRequest) (*BillingAddon, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillingAddon
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingAddon
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.UpdateAddon")
@@ -2029,8 +2017,8 @@ func (a *BillingAPIService) UpdateAddonExecute(r ApiUpdateAddonRequest) (*Billin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2040,8 +2028,8 @@ func (a *BillingAPIService) UpdateAddonExecute(r ApiUpdateAddonRequest) (*Billin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2058,55 +2046,54 @@ func (a *BillingAPIService) UpdateAddonExecute(r ApiUpdateAddonRequest) (*Billin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateInvoiceInfoV2Request struct {
-	ctx        context.Context
+type ApiUpdateInvoiceInfoRequest struct {
+	ctx context.Context
 	ApiService *BillingAPIService
-	orgId      string
-	invoiceId  string
-	data       *UpdateInvoiceInfoRequest
+	orgId string
+	invoiceId string
+	data *UpdateInvoiceInfoRequest
 }
 
 // Update Invoice Info Request Params
-func (r ApiUpdateInvoiceInfoV2Request) Data(data UpdateInvoiceInfoRequest) ApiUpdateInvoiceInfoV2Request {
+func (r ApiUpdateInvoiceInfoRequest) Data(data UpdateInvoiceInfoRequest) ApiUpdateInvoiceInfoRequest {
 	r.data = &data
 	return r
 }
 
-func (r ApiUpdateInvoiceInfoV2Request) Execute() (*BillingInvoiceInfo, *http.Response, error) {
-	return r.ApiService.UpdateInvoiceInfoV2Execute(r)
+func (r ApiUpdateInvoiceInfoRequest) Execute() (*BillingInvoiceInfo, *http.Response, error) {
+	return r.ApiService.UpdateInvoiceInfoExecute(r)
 }
 
 /*
-UpdateInvoiceInfoV2 update invoice info
+UpdateInvoiceInfo update invoice info
 
 Update a draft invoice. Only DueDate, OverallDiscount, and Memo can be updated.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param invoiceId Invoice ID
-	@return ApiUpdateInvoiceInfoV2Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param invoiceId Invoice ID
+ @return ApiUpdateInvoiceInfoRequest
 */
-func (a *BillingAPIService) UpdateInvoiceInfoV2(ctx context.Context, orgId string, invoiceId string) ApiUpdateInvoiceInfoV2Request {
-	return ApiUpdateInvoiceInfoV2Request{
+func (a *BillingAPIService) UpdateInvoiceInfo(ctx context.Context, orgId string, invoiceId string) ApiUpdateInvoiceInfoRequest {
+	return ApiUpdateInvoiceInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		invoiceId:  invoiceId,
+		ctx: ctx,
+		orgId: orgId,
+		invoiceId: invoiceId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillingInvoiceInfo
-func (a *BillingAPIService) UpdateInvoiceInfoV2Execute(r ApiUpdateInvoiceInfoV2Request) (*BillingInvoiceInfo, *http.Response, error) {
+//  @return BillingInvoiceInfo
+func (a *BillingAPIService) UpdateInvoiceInfoExecute(r ApiUpdateInvoiceInfoRequest) (*BillingInvoiceInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillingInvoiceInfo
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingInvoiceInfo
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.UpdateInvoiceInfoV2")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.UpdateInvoiceInfo")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2184,8 +2171,8 @@ func (a *BillingAPIService) UpdateInvoiceInfoV2Execute(r ApiUpdateInvoiceInfoV2R
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2195,8 +2182,8 @@ func (a *BillingAPIService) UpdateInvoiceInfoV2Execute(r ApiUpdateInvoiceInfoV2R
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2213,48 +2200,47 @@ func (a *BillingAPIService) UpdateInvoiceInfoV2Execute(r ApiUpdateInvoiceInfoV2R
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiVoidInvoiceV2Request struct {
-	ctx        context.Context
+type ApiVoidInvoiceRequest struct {
+	ctx context.Context
 	ApiService *BillingAPIService
-	orgId      string
-	invoiceId  string
+	orgId string
+	invoiceId string
 }
 
-func (r ApiVoidInvoiceV2Request) Execute() (*BillingInvoice, *http.Response, error) {
-	return r.ApiService.VoidInvoiceV2Execute(r)
+func (r ApiVoidInvoiceRequest) Execute() (*BillingInvoice, *http.Response, error) {
+	return r.ApiService.VoidInvoiceExecute(r)
 }
 
 /*
-VoidInvoiceV2 void invoice
+VoidInvoice void invoice
 
 Void the invoice. It can be used for manual void or cancel the invoice.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param invoiceId Invoice ID
-	@return ApiVoidInvoiceV2Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param invoiceId Invoice ID
+ @return ApiVoidInvoiceRequest
 */
-func (a *BillingAPIService) VoidInvoiceV2(ctx context.Context, orgId string, invoiceId string) ApiVoidInvoiceV2Request {
-	return ApiVoidInvoiceV2Request{
+func (a *BillingAPIService) VoidInvoice(ctx context.Context, orgId string, invoiceId string) ApiVoidInvoiceRequest {
+	return ApiVoidInvoiceRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		invoiceId:  invoiceId,
+		ctx: ctx,
+		orgId: orgId,
+		invoiceId: invoiceId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillingInvoice
-func (a *BillingAPIService) VoidInvoiceV2Execute(r ApiVoidInvoiceV2Request) (*BillingInvoice, *http.Response, error) {
+//  @return BillingInvoice
+func (a *BillingAPIService) VoidInvoiceExecute(r ApiVoidInvoiceRequest) (*BillingInvoice, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillingInvoice
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingInvoice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.VoidInvoiceV2")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.VoidInvoice")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2327,8 +2313,8 @@ func (a *BillingAPIService) VoidInvoiceV2Execute(r ApiVoidInvoiceV2Request) (*Bi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2338,8 +2324,8 @@ func (a *BillingAPIService) VoidInvoiceV2Execute(r ApiVoidInvoiceV2Request) (*Bi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

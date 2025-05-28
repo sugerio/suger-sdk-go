@@ -20,7 +20,7 @@ var _ MappedNullable = &AwsMarketplaceCppoOpportunityOfferDetails{}
 
 // AwsMarketplaceCppoOpportunityOfferDetails struct for AwsMarketplaceCppoOpportunityOfferDetails
 type AwsMarketplaceCppoOpportunityOfferDetails struct {
-	OfferCreatedCount   *int32  `json:"OfferCreatedCount,omitempty"`
+	OfferCreatedCount *int32 `json:"OfferCreatedCount,omitempty"`
 	OfferExtendedStatus *string `json:"OfferExtendedStatus,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *AwsMarketplaceCppoOpportunityOfferDetails) SetOfferExtendedStatus(v str
 }
 
 func (o AwsMarketplaceCppoOpportunityOfferDetails) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAwsMarketplaceCppoOpportunityOfferDetails) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -27,8 +27,8 @@ type BuyerInfo struct {
 	// Buyer from Azure Marketplace
 	AzureBuyer *AzureADIdentifier `json:"azureBuyer,omitempty"`
 	// The amount that the seller can collect. It excludes the marketplace commision fee.
-	CollectableAmount *float32     `json:"collectableAmount,omitempty"`
-	CompanyInfo       *CompanyInfo `json:"companyInfo,omitempty"`
+	CollectableAmount *float32 `json:"collectableAmount,omitempty"`
+	CompanyInfo *CompanyInfo `json:"companyInfo,omitempty"`
 	// customerID of buyer on seller's side
 	CustomerId *string `json:"customerId,omitempty"`
 	// The amount that has been disbursed to the seller account.
@@ -53,6 +53,8 @@ type BuyerInfo struct {
 	OrbCustomerId *string `json:"orbCustomerId,omitempty"`
 	// Payment Config for billing.
 	PaymentConfig *PaymentConfig `json:"paymentConfig,omitempty"`
+	// Buyer on Snowflake
+	SnowflakeBuyer *SnowflakeMarketplaceBuyer `json:"snowflakeBuyer,omitempty"`
 	// Buyer SPA url, public page visited with jwt.
 	SpaUrl *string `json:"spaUrl,omitempty"`
 	// Buyer as Customer on Stripe
@@ -622,6 +624,38 @@ func (o *BuyerInfo) SetPaymentConfig(v PaymentConfig) {
 	o.PaymentConfig = &v
 }
 
+// GetSnowflakeBuyer returns the SnowflakeBuyer field value if set, zero value otherwise.
+func (o *BuyerInfo) GetSnowflakeBuyer() SnowflakeMarketplaceBuyer {
+	if o == nil || IsNil(o.SnowflakeBuyer) {
+		var ret SnowflakeMarketplaceBuyer
+		return ret
+	}
+	return *o.SnowflakeBuyer
+}
+
+// GetSnowflakeBuyerOk returns a tuple with the SnowflakeBuyer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetSnowflakeBuyerOk() (*SnowflakeMarketplaceBuyer, bool) {
+	if o == nil || IsNil(o.SnowflakeBuyer) {
+		return nil, false
+	}
+	return o.SnowflakeBuyer, true
+}
+
+// HasSnowflakeBuyer returns a boolean if a field has been set.
+func (o *BuyerInfo) HasSnowflakeBuyer() bool {
+	if o != nil && !IsNil(o.SnowflakeBuyer) {
+		return true
+	}
+
+	return false
+}
+
+// SetSnowflakeBuyer gets a reference to the given SnowflakeMarketplaceBuyer and assigns it to the SnowflakeBuyer field.
+func (o *BuyerInfo) SetSnowflakeBuyer(v SnowflakeMarketplaceBuyer) {
+	o.SnowflakeBuyer = &v
+}
+
 // GetSpaUrl returns the SpaUrl field value if set, zero value otherwise.
 func (o *BuyerInfo) GetSpaUrl() string {
 	if o == nil || IsNil(o.SpaUrl) {
@@ -719,7 +753,7 @@ func (o *BuyerInfo) SetStripeCustomerId(v string) {
 }
 
 func (o BuyerInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -779,6 +813,9 @@ func (o BuyerInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PaymentConfig) {
 		toSerialize["paymentConfig"] = o.PaymentConfig
 	}
+	if !IsNil(o.SnowflakeBuyer) {
+		toSerialize["snowflakeBuyer"] = o.SnowflakeBuyer
+	}
 	if !IsNil(o.SpaUrl) {
 		toSerialize["spaUrl"] = o.SpaUrl
 	}
@@ -826,3 +863,5 @@ func (v *NullableBuyerInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

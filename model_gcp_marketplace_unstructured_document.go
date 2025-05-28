@@ -73,7 +73,7 @@ func (o *GcpMarketplaceUnstructuredDocument) SetContent(v string) {
 }
 
 func (o GcpMarketplaceUnstructuredDocument) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,3 +123,5 @@ func (v *NullableGcpMarketplaceUnstructuredDocument) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

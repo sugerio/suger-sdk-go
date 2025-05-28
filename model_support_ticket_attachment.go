@@ -20,15 +20,15 @@ var _ MappedNullable = &SupportTicketAttachment{}
 
 // SupportTicketAttachment struct for SupportTicketAttachment
 type SupportTicketAttachment struct {
-	Date            *string `json:"date,omitempty"`
-	Id              *string `json:"id,omitempty"`
-	Mimetype        *string `json:"mimetype,omitempty"`
-	Size            *int32  `json:"size,omitempty"`
-	ThumbnailLarge  *string `json:"thumbnail_large,omitempty"`
+	Date *string `json:"date,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Mimetype *string `json:"mimetype,omitempty"`
+	Size *int32 `json:"size,omitempty"`
+	ThumbnailLarge *string `json:"thumbnail_large,omitempty"`
 	ThumbnailMedium *string `json:"thumbnail_medium,omitempty"`
-	ThumbnailSmall  *string `json:"thumbnail_small,omitempty"`
-	Title           *string `json:"title,omitempty"`
-	Url             *string `json:"url,omitempty"`
+	ThumbnailSmall *string `json:"thumbnail_small,omitempty"`
+	Title *string `json:"title,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewSupportTicketAttachment instantiates a new SupportTicketAttachment object
@@ -337,7 +337,7 @@ func (o *SupportTicketAttachment) SetUrl(v string) {
 }
 
 func (o SupportTicketAttachment) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -411,3 +411,5 @@ func (v *NullableSupportTicketAttachment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

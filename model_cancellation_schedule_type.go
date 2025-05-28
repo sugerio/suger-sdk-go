@@ -21,8 +21,8 @@ type CancellationScheduleType string
 
 // List of CancellationScheduleType
 const (
-	CancellationScheduleType_EndOfTerm    CancellationScheduleType = "EndOfTerm"
-	CancellationScheduleType_Immediate    CancellationScheduleType = "Immediate"
+	CancellationScheduleType_EndOfTerm CancellationScheduleType = "EndOfTerm"
+	CancellationScheduleType_Immediate CancellationScheduleType = "Immediate"
 	CancellationScheduleType_SpecificDate CancellationScheduleType = "SpecificDate"
 )
 
@@ -111,3 +111,4 @@ func (v *NullableCancellationScheduleType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

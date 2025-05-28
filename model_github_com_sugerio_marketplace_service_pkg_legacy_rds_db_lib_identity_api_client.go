@@ -20,16 +20,16 @@ var _ MappedNullable = &GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdent
 
 // GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient struct for GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient
 type GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient struct {
-	ApiKeyHash     *string `json:"apiKeyHash,omitempty"`
-	CreationTime   *string `json:"creationTime,omitempty"`
-	Id             *string `json:"id,omitempty"`
-	Info           []int32 `json:"info,omitempty"`
+	ApiKeyHash *string `json:"apiKeyHash,omitempty"`
+	CreationTime *string `json:"creationTime,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Info []int32 `json:"info,omitempty"`
 	LastUpdateTime *string `json:"lastUpdateTime,omitempty"`
 	OrganizationID *string `json:"organizationID,omitempty"`
-	Provider       *string `json:"provider,omitempty"`
-	Role           *string `json:"role,omitempty"`
-	Secret         *string `json:"secret,omitempty"`
-	Type           *string `json:"type,omitempty"`
+	Provider *string `json:"provider,omitempty"`
+	Role *string `json:"role,omitempty"`
+	Secret *string `json:"secret,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient instantiates a new GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient object
@@ -370,7 +370,7 @@ func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient) S
 }
 
 func (o GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -447,3 +447,5 @@ func (v *NullableGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiC
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

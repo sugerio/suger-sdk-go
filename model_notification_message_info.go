@@ -21,16 +21,16 @@ var _ MappedNullable = &NotificationMessageInfo{}
 // NotificationMessageInfo struct for NotificationMessageInfo
 type NotificationMessageInfo struct {
 	// The action of this notification message.
-	Action       *NotificationEventAction `json:"action,omitempty"`
-	CcRecipients []string                 `json:"ccRecipients,omitempty"`
+	Action *NotificationEventAction `json:"action,omitempty"`
+	CcRecipients []string `json:"ccRecipients,omitempty"`
 	// All other fields
 	CustomFields map[string]interface{} `json:"customFields,omitempty"`
 	// The HTML content of the email.
-	HtmlContent   *string  `json:"htmlContent,omitempty"`
+	HtmlContent *string `json:"htmlContent,omitempty"`
 	RccRecipients []string `json:"rccRecipients,omitempty"`
 	// The standard fields to render the email content.
 	StandardFields map[string]interface{} `json:"standardFields,omitempty"`
-	Subject        *string                `json:"subject,omitempty"`
+	Subject *string `json:"subject,omitempty"`
 	// The text content of the email in case the recipient's email client does not support HTML.
 	TextContent *string `json:"textContent,omitempty"`
 }
@@ -309,7 +309,7 @@ func (o *NotificationMessageInfo) SetTextContent(v string) {
 }
 
 func (o NotificationMessageInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -380,3 +380,5 @@ func (v *NullableNotificationMessageInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

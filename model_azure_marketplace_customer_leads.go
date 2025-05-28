@@ -20,19 +20,19 @@ var _ MappedNullable = &AzureMarketplaceCustomerLeads{}
 
 // AzureMarketplaceCustomerLeads struct for AzureMarketplaceCustomerLeads
 type AzureMarketplaceCustomerLeads struct {
-	Schema                         *string                      `json:"$schema,omitempty"`
-	BlobLeadConfiguration          map[string]interface{}       `json:"blobLeadConfiguration,omitempty"`
-	DynamicsLeadConfiguration      map[string]interface{}       `json:"dynamicsLeadConfiguration,omitempty"`
-	EmailLeadConfiguration         map[string]interface{}       `json:"emailLeadConfiguration,omitempty"`
-	HttpsEndpointLeadConfiguration map[string]interface{}       `json:"httpsEndpointLeadConfiguration,omitempty"`
-	Id                             *string                      `json:"id,omitempty"`
-	LeadDestination                *string                      `json:"leadDestination,omitempty"`
-	MarketoLeadConfiguration       map[string]interface{}       `json:"marketoLeadConfiguration,omitempty"`
-	Product                        *string                      `json:"product,omitempty"`
-	ResourceName                   *string                      `json:"resourceName,omitempty"`
-	SalesforceLeadConfiguration    map[string]interface{}       `json:"salesforceLeadConfiguration,omitempty"`
-	TableLeadConfiguration         map[string]interface{}       `json:"tableLeadConfiguration,omitempty"`
-	Validations                    []AzureMarketplaceValidation `json:"validations,omitempty"`
+	Schema *string `json:"$schema,omitempty"`
+	BlobLeadConfiguration map[string]interface{} `json:"blobLeadConfiguration,omitempty"`
+	DynamicsLeadConfiguration map[string]interface{} `json:"dynamicsLeadConfiguration,omitempty"`
+	EmailLeadConfiguration map[string]interface{} `json:"emailLeadConfiguration,omitempty"`
+	HttpsEndpointLeadConfiguration map[string]interface{} `json:"httpsEndpointLeadConfiguration,omitempty"`
+	Id *string `json:"id,omitempty"`
+	LeadDestination *string `json:"leadDestination,omitempty"`
+	MarketoLeadConfiguration map[string]interface{} `json:"marketoLeadConfiguration,omitempty"`
+	Product *string `json:"product,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty"`
+	SalesforceLeadConfiguration map[string]interface{} `json:"salesforceLeadConfiguration,omitempty"`
+	TableLeadConfiguration map[string]interface{} `json:"tableLeadConfiguration,omitempty"`
+	Validations []AzureMarketplaceValidation `json:"validations,omitempty"`
 }
 
 // NewAzureMarketplaceCustomerLeads instantiates a new AzureMarketplaceCustomerLeads object
@@ -469,7 +469,7 @@ func (o *AzureMarketplaceCustomerLeads) SetValidations(v []AzureMarketplaceValid
 }
 
 func (o AzureMarketplaceCustomerLeads) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -555,3 +555,5 @@ func (v *NullableAzureMarketplaceCustomerLeads) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

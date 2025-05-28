@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BuyerID** | Pointer to **string** | Optional, if available, return the report for the Buyer. | [optional] 
 **EntitlementID** | Pointer to **string** | Optional, if available, return the report for the Entitlement. | [optional] 
+**GroupBy** | Pointer to [**GroupByInterval**](GroupByInterval.md) | default:\&quot;day\&quot; | [optional] 
 **OrganizationID** | **string** | Required. If the productID &amp; entitlementID are emtpy, return the report for the entire Organization. | 
 **Partner** | **string** |  | 
 **ProductID** | Pointer to **string** | Optional, if available, return the report for the Product. | [optional] 
@@ -80,6 +81,31 @@ SetEntitlementID sets EntitlementID field to given value.
 `func (o *GetRevenueReportParams) HasEntitlementID() bool`
 
 HasEntitlementID returns a boolean if a field has been set.
+
+### GetGroupBy
+
+`func (o *GetRevenueReportParams) GetGroupBy() GroupByInterval`
+
+GetGroupBy returns the GroupBy field if non-nil, zero value otherwise.
+
+### GetGroupByOk
+
+`func (o *GetRevenueReportParams) GetGroupByOk() (*GroupByInterval, bool)`
+
+GetGroupByOk returns a tuple with the GroupBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupBy
+
+`func (o *GetRevenueReportParams) SetGroupBy(v GroupByInterval)`
+
+SetGroupBy sets GroupBy field to given value.
+
+### HasGroupBy
+
+`func (o *GetRevenueReportParams) HasGroupBy() bool`
+
+HasGroupBy returns a boolean if a field has been set.
 
 ### GetOrganizationID
 

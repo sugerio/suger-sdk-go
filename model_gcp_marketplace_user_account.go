@@ -23,22 +23,24 @@ var _ MappedNullable = &GcpMarketplaceUserAccount{}
 type GcpMarketplaceUserAccount struct {
 	// The approvals for this account, that are permitted or have been completed.
 	Approvals []GcpMarketplaceUserAccountApproval `json:"approvals,omitempty"`
-	// The buyer's GCP billing account ID.
+	// The buyer's GCP billing account ID if it's a company account.
 	BillingAccountId *string `json:"billingAccountId,omitempty"`
 	// RFC3339 UTC timestamp
 	CreateTime *time.Time `json:"createTime,omitempty"`
 	// GCP Marketplace User Account ID.
-	Id              *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	InputProperties []int32 `json:"inputProperties,omitempty"`
-	// The resource name of the account. Account names have the form providers/{provider_id}/accounts/{account_id}.
+	// The resource name of the account, in format of providers/{provider_id}/accounts/{account_id}.
 	Name *string `json:"name,omitempty"`
+	// The parent account ID of the BillingAccountId if the buyer is from a reseller in GCP Marketplace. It is the GCP billing account ID of the reseller in GCP Marketplace.
+	ParentBillingAccountId *string `json:"parentBillingAccountId,omitempty"`
 	// The identifier of the service provider (SaaS Seller) that this account was created against.
 	Provider *string `json:"provider,omitempty"`
 	// The state of the account. An account might not be able to make a purchase if the billing account is suspended.
 	State *GcpMarketplaceUserAccountState `json:"state,omitempty"`
 	// RFC3339 UTC timestamp
-	UpdateTime *time.Time   `json:"updateTime,omitempty"`
-	UserInfo   *GcpUserInfo `json:"userInfo,omitempty"`
+	UpdateTime *time.Time `json:"updateTime,omitempty"`
+	UserInfo *GcpUserInfo `json:"userInfo,omitempty"`
 }
 
 // NewGcpMarketplaceUserAccount instantiates a new GcpMarketplaceUserAccount object
@@ -250,6 +252,38 @@ func (o *GcpMarketplaceUserAccount) SetName(v string) {
 	o.Name = &v
 }
 
+// GetParentBillingAccountId returns the ParentBillingAccountId field value if set, zero value otherwise.
+func (o *GcpMarketplaceUserAccount) GetParentBillingAccountId() string {
+	if o == nil || IsNil(o.ParentBillingAccountId) {
+		var ret string
+		return ret
+	}
+	return *o.ParentBillingAccountId
+}
+
+// GetParentBillingAccountIdOk returns a tuple with the ParentBillingAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GcpMarketplaceUserAccount) GetParentBillingAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ParentBillingAccountId) {
+		return nil, false
+	}
+	return o.ParentBillingAccountId, true
+}
+
+// HasParentBillingAccountId returns a boolean if a field has been set.
+func (o *GcpMarketplaceUserAccount) HasParentBillingAccountId() bool {
+	if o != nil && !IsNil(o.ParentBillingAccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetParentBillingAccountId gets a reference to the given string and assigns it to the ParentBillingAccountId field.
+func (o *GcpMarketplaceUserAccount) SetParentBillingAccountId(v string) {
+	o.ParentBillingAccountId = &v
+}
+
 // GetProvider returns the Provider field value if set, zero value otherwise.
 func (o *GcpMarketplaceUserAccount) GetProvider() string {
 	if o == nil || IsNil(o.Provider) {
@@ -379,7 +413,7 @@ func (o *GcpMarketplaceUserAccount) SetUserInfo(v GcpUserInfo) {
 }
 
 func (o GcpMarketplaceUserAccount) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -405,6 +439,9 @@ func (o GcpMarketplaceUserAccount) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.ParentBillingAccountId) {
+		toSerialize["parentBillingAccountId"] = o.ParentBillingAccountId
 	}
 	if !IsNil(o.Provider) {
 		toSerialize["provider"] = o.Provider
@@ -456,3 +493,5 @@ func (v *NullableGcpMarketplaceUserAccount) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

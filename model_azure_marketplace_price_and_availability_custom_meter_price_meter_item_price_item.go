@@ -20,8 +20,8 @@ var _ MappedNullable = &AzureMarketplacePriceAndAvailabilityCustomMeterPriceMete
 
 // AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem struct for AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem
 type AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem struct {
-	PricePerPaymentInUsd *float32                `json:"pricePerPaymentInUsd,omitempty"`
-	Prices               []AzureMarketplacePrice `json:"prices,omitempty"`
+	PricePerPaymentInUsd *float32 `json:"pricePerPaymentInUsd,omitempty"`
+	Prices []AzureMarketplacePrice `json:"prices,omitempty"`
 }
 
 // NewAzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem instantiates a new AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem object
@@ -106,7 +106,7 @@ func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem)
 }
 
 func (o AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPr
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

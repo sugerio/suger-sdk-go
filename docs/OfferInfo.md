@@ -2,62 +2,69 @@
 
 ## Properties
 
- Name                              | Type                                                                                                                           | Description                                                                                                                                                                                                                                                                                                                         | Notes      
------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------
- **AdditionalEulaUrls**            | Pointer to **[]string**                                                                                                        | The URL of the additional EULA files. Only applicable when EulaType &#x3D; CUSTOM. The additional EULA files will be attached to the EULA file in the EulaUrl, and form a single EULA file.                                                                                                                                         | [optional] 
- **AdditionalResellerEulaUrls**    | Pointer to **[]string**                                                                                                        | The URL of the additional reseller EULA files. Only applicable when ResellerEulaType &#x3D; CUSTOM.                                                                                                                                                                                                                                 | [optional] 
- **AttachEulaType**                | Pointer to [**EulaType**](EulaType.md)                                                                                         | Attach the standard EULA file to the CUSTOM EULA file. Only applicable when EulaType &#x3D; CUSTOM                                                                                                                                                                                                                                  | [optional] 
- **AutoRenew**                     | Pointer to **bool**                                                                                                            | Is this offer Auto Renew enabled.                                                                                                                                                                                                                                                                                                   | [optional] 
- **AwsAgreementDuration**          | Pointer to **string**                                                                                                          | Aws private subscription offer Usage duration. ISO8601 format. P300D means the contract Usage start date At acceptance, and with duration 300 days.                                                                                                                                                                                 | [optional] 
- **AwsChannelPartner**             | Pointer to [**AwsChannelPartner**](AwsChannelPartner.md)                                                                       | The AWS channel partner (reseller), only applicable for AWS Marketplace CPPO_OUT or CPPO offers.                                                                                                                                                                                                                                    | [optional] 
- **AwsCppoEventDetail**            | Pointer to [**AwsMarketplaceEventBridgeEventDetail**](AwsMarketplaceEventBridgeEventDetail.md)                                 | AWS EventBridge Event, only applicable for AWS Marketplace CPPO offers.                                                                                                                                                                                                                                                             | [optional] 
- **AwsCppoOpportunity**            | Pointer to [**AwsMarketplaceCppoOpportunity**](AwsMarketplaceCppoOpportunity.md)                                               | AWS CPPO Opportunity, only applicable for AWS Marketplace CPPO_OUT or CPPO_IN offers.                                                                                                                                                                                                                                               | [optional] 
- **AwsMarkupPercentage**           | Pointer to **float32**                                                                                                         | AWS private reseller offer using markup percentage. 10.0 represent 10% partner margin.                                                                                                                                                                                                                                              | [optional] 
- **AwsResaleAuthorizationId**      | Pointer to **string**                                                                                                          | AWS ResaleAuthorizationId(CPPO_IN offer id) for CPPO offers of the reseller.                                                                                                                                                                                                                                                        | [optional] 
- **AzureOriginalPlan**             | Pointer to [**AzureMarketplacePriceAndAvailabilityPrivateOfferPlan**](AzureMarketplacePriceAndAvailabilityPrivateOfferPlan.md) | The origin pricing of Azure plan. Only applicable for Azure Marketplace plans.                                                                                                                                                                                                                                                      | [optional] 
- **AzurePrivateOffer**             | Pointer to [**AzureMarketplacePrivateOffer**](AzureMarketplacePrivateOffer.md)                                                 | The private offer for Azure Marketplace. Only applicable for Azure Marketplace private offers.                                                                                                                                                                                                                                      | [optional] 
- **AzureProductVariant**           | Pointer to [**AzureProductVariant**](AzureProductVariant.md)                                                                   | For Azure marketplace only.                                                                                                                                                                                                                                                                                                         | [optional] 
- **BillableDimensions**            | Pointer to [**[]BillableDimension**](BillableDimension.md)                                                                     | Usage based metering dimensions based on Billable Metrics, managed by Suger only.                                                                                                                                                                                                                                                   | [optional] 
- **BillingCycle**                  | Pointer to [**BillingCycle**](BillingCycle.md)                                                                                 | Billing Cycle for the offer.                                                                                                                                                                                                                                                                                                        | [optional] 
- **BillingIntervalInMonths**       | Pointer to **int32**                                                                                                           | Billing interval in months for the offer.                                                                                                                                                                                                                                                                                           | [optional] 
- **BuyerAwsAccountIds**            | Pointer to **[]string**                                                                                                        | The buyers&#39; AWS Account IDs of this offer.                                                                                                                                                                                                                                                                                      | [optional] 
- **BuyerAzureTenants**             | Pointer to [**[]AzureAudience**](AzureAudience.md)                                                                             | The buyers&#39; Azure tenants of this offer.                                                                                                                                                                                                                                                                                        | [optional] 
- **CommitAmount**                  | Pointer to **float32**                                                                                                         | The amount that the buyer has committed to pay, before discount if applicable. It can be monthly commitment or total commitment. For frontend display or analysis purposes, not used for billing.                                                                                                                                   | [optional] 
- **CommitBillingIntervalInMonths** | Pointer to **int32**                                                                                                           | Deprecated: Use BillingIntervalInMonths instead.                                                                                                                                                                                                                                                                                    | [optional] 
- **Commits**                       | Pointer to [**[]CommitDimension**](CommitDimension.md)                                                                         | Recurring flat fee for the offer, managed by cloud marketplaces or Suger.                                                                                                                                                                                                                                                           | [optional] 
- **Currency**                      | Pointer to **string**                                                                                                          | The currency code of the offer. ISO 4217 format.                                                                                                                                                                                                                                                                                    | [optional] 
- **Dimensions**                    | Pointer to [**[]MeteringDimension**](MeteringDimension.md)                                                                     | Usage based metering dimensions defined on cloud marketplaces, managed by Cloud marketplaces only.                                                                                                                                                                                                                                  | [optional] 
- **DiscountPercentage**            | Pointer to **float32**                                                                                                         | The discount percentage off the original price. For example, 20 means 20% off. 0 means no discount. It can be discount off the commitment amount or discount off the usage price.                                                                                                                                                   | [optional] 
- **EulaType**                      | Pointer to [**EulaType**](EulaType.md)                                                                                         |                                                                                                                                                                                                                                                                                                                                     | [optional] 
- **EulaUrl**                       | Pointer to **string**                                                                                                          |                                                                                                                                                                                                                                                                                                                                     | [optional] 
- **GcpCustomerInfo**               | Pointer to [**GcpMarketplacePrivateOfferCustomerInfo**](GcpMarketplacePrivateOfferCustomerInfo.md)                             | Only required when creating GCP Marketplace private offer.                                                                                                                                                                                                                                                                          | [optional] 
- **GcpDuration**                   | Pointer to **int32**                                                                                                           | The duration of the offer in months. Only required when creating GCP Marketplace private offer.                                                                                                                                                                                                                                     | [optional] 
- **GcpMetrics**                    | Pointer to [**[]GcpMarketplaceProductMeteringMetric**](GcpMarketplaceProductMeteringMetric.md)                                 | Only applicable for GCP Marketplace Offers (the default or private offer)                                                                                                                                                                                                                                                           | [optional] 
- **GcpPaymentSchedule**            | Pointer to [**PaymentScheduleType**](PaymentScheduleType.md)                                                                   | Only required when creating GCP Marketplace private offer, to specify the payment schedule for the private offer. TODO: It will be deprecated in the future and replaced by PaymentSchedule.                                                                                                                                        | [optional] 
- **GcpPlans**                      | Pointer to [**[]GcpMarketplaceProductPurchaseOptionSpec**](GcpMarketplaceProductPurchaseOptionSpec.md)                         | Only applicable for GCP Marketplace                                                                                                                                                                                                                                                                                                 | [optional] 
- **GcpPrivateOffer**               | Pointer to [**GcpMarketplacePrivateOffer**](GcpMarketplacePrivateOffer.md)                                                     | The private offer for GCP Marketplace. Only applicable for GCP Marketplace private offers.                                                                                                                                                                                                                                          | [optional] 
- **GcpProviderInfo**               | Pointer to [**GcpMarketplacePrivateOfferProviderInfo**](GcpMarketplacePrivateOfferProviderInfo.md)                             | Only required when creating GCP Marketplace private offer.                                                                                                                                                                                                                                                                          | [optional] 
- **GcpProviderInternalNote**       | Pointer to **string**                                                                                                          | Optional when creating GCP Marketplace private offer. The internal note for the seller/ISV. It is only visible to the seller/ISV.                                                                                                                                                                                                   | [optional] 
- **GcpProviderPublicNote**         | Pointer to **string**                                                                                                          | Optional when creating GCP Marketplace private offer. By default, it is the same as offer name. The public note for the buyer. It is visible to the buyer.                                                                                                                                                                          | [optional] 
- **GcpResellerPrivateOfferPlan**   | Pointer to [**GcpMarketplaceResellerPrivateOfferPlan**](GcpMarketplaceResellerPrivateOfferPlan.md)                             |                                                                                                                                                                                                                                                                                                                                     | [optional] 
- **GcpUsagePlanPriceModel**        | Pointer to [**GcpMarketplaceUsagePlanPriceModel**](GcpMarketplaceUsagePlanPriceModel.md)                                       | Only applicable for GCP Marketplace with Usage plan. Not appliable for Subscription plan.                                                                                                                                                                                                                                           | [optional] 
- **GracePeriodInDays**             | Pointer to **int32**                                                                                                           | The grace period in days for the offer. This is the number of days during which invoices remain in draft status, for reviewing. This filed can be overridden at the entitlement level.                                                                                                                                              | [optional] 
- **IsMeteringOverageCommit**       | Pointer to **bool**                                                                                                            | Whether the usage metering will only be charged for the amount that exceeds the committed amount. e.g. the buyer has committed $100, and the usage is $120, - if true, the buyer will be charged for the usage at $20, and the commit at $100. - if false, the buyer will be charged for the usage at $120, and the commit at $100. | [optional] 
- **NetTermsInDays**                | Pointer to **int32**                                                                                                           | The net terms in days for the offer. This is the number of days the buyer has to pay the invoice. This filed can be overridden at the entitlement level.                                                                                                                                                                            | [optional] 
- **PaymentInstallments**           | Pointer to [**[]PaymentInstallment**](PaymentInstallment.md)                                                                   | For flexible payment schedule, managed by cloud marketplaces or Suger.                                                                                                                                                                                                                                                              | [optional] 
- **PaymentSchedule**               | Pointer to [**PaymentScheduleType**](PaymentScheduleType.md)                                                                   | The payment schedule for the offer. PREPAY means the buyer pays before the service is provided. POSTPAY means the buyer pays after the service is provided.                                                                                                                                                                         | [optional] 
- **PrivateOfferUrl**               | Pointer to **string**                                                                                                          | The URL of the private offer sent to buyers to accept. Only applicable for private offer.                                                                                                                                                                                                                                           | [optional] 
- **ProratedBilling**               | Pointer to **bool**                                                                                                            | Prorated billing for the offer. If true, the billing is prorated based on the start date and end date. If false, the billing is not prorated. This filed can be overridden at the entitlement level.                                                                                                                                | [optional] 
- **RefundCancellationPolicy**      | Pointer to **string**                                                                                                          |                                                                                                                                                                                                                                                                                                                                     | [optional] 
- **ResellerAttachEulaType**        | Pointer to [**EulaType**](EulaType.md)                                                                                         | Attach the standard EULA file to the CUSTOM EULA file. Only applicable when EulaType &#x3D; CUSTOM                                                                                                                                                                                                                                  | [optional] 
- **ResellerEulaType**              | Pointer to [**EulaType**](EulaType.md)                                                                                         | The type of the reseller EULA. Only applicable for CPPO offers.                                                                                                                                                                                                                                                                     | [optional] 
- **ResellerEulaUrl**               | Pointer to **string**                                                                                                          |                                                                                                                                                                                                                                                                                                                                     | [optional] 
- **SellerNotes**                   | Pointer to **string**                                                                                                          |                                                                                                                                                                                                                                                                                                                                     | [optional] 
- **StartTime**                     | Pointer to **time.Time**                                                                                                       | Optional when creating AWS or GCP Marketplace private offer on the contract product. The future start time of the offer if it is not started on the acceptance.                                                                                                                                                                     | [optional] 
- **TaxIds**                        | Pointer to **[]string**                                                                                                        | Tax ids for the offer, used to calculate the tax amount for the offer. This field can be overridden at the entitlement level.                                                                                                                                                                                                       | [optional] 
- **TrialConfig**                   | Pointer to [**TrialConfig**](TrialConfig.md)                                                                                   | The offer for Direct. Only applicable for Direct offers. It is used in Stripe, Adyen, and other direct payment providers. The trial configuration for the offer.                                                                                                                                                                    | [optional] 
- **UsageBillingIntervalInMonths**  | Pointer to **int32**                                                                                                           | Deprecated: Use BillingIntervalInMonths instead.                                                                                                                                                                                                                                                                                    | [optional] 
- **Visibility**                    | Pointer to **string**                                                                                                          | The default visibility of offer is PRIVATE.                                                                                                                                                                                                                                                                                         | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AdditionalEulaUrls** | Pointer to **[]string** | The URL of the additional EULA files. Only applicable when EulaType &#x3D; CUSTOM. The additional EULA files will be attached to the EULA file in the EulaUrl, and form a single EULA file. | [optional] 
+**AdditionalResellerEulaUrls** | Pointer to **[]string** | The URL of the additional reseller EULA files. Only applicable when ResellerEulaType &#x3D; CUSTOM. | [optional] 
+**AttachEulaType** | Pointer to [**EulaType**](EulaType.md) | Attach the standard EULA file to the CUSTOM EULA file. Only applicable when EulaType &#x3D; CUSTOM | [optional] 
+**AutoRenew** | Pointer to **bool** | Is this offer Auto Renew enabled. | [optional] 
+**AwsAgreementDuration** | Pointer to **string** | Aws private subscription offer Usage duration. ISO8601 format. P300D means the contract Usage start date At acceptance, and with duration 300 days. | [optional] 
+**AwsChannelPartner** | Pointer to [**AwsChannelPartner**](AwsChannelPartner.md) | The AWS channel partner (reseller), only applicable for AWS Marketplace CPPO_OUT or CPPO offers. | [optional] 
+**AwsCppoEventDetail** | Pointer to [**AwsMarketplaceEventBridgeEventDetail**](AwsMarketplaceEventBridgeEventDetail.md) | AWS EventBridge Event, only applicable for AWS Marketplace CPPO offers. | [optional] 
+**AwsCppoOpportunity** | Pointer to [**AwsMarketplaceCppoOpportunity**](AwsMarketplaceCppoOpportunity.md) | AWS CPPO Opportunity, only applicable for AWS Marketplace CPPO_OUT or CPPO_IN offers. | [optional] 
+**AwsMachineLearningContractDuration** | Pointer to **int32** | For AWS machine learning contract private offer only. The contract duration of the offer in months. | [optional] 
+**AwsMarkupPercentage** | Pointer to **float32** | AWS private reseller offer using markup percentage. 10.0 represent 10% partner margin. | [optional] 
+**AwsResaleAuthorizationId** | Pointer to **string** | AWS ResaleAuthorizationId(CPPO_IN offer id) for CPPO offers of the reseller. | [optional] 
+**AzureOriginalPlan** | Pointer to [**AzureMarketplacePriceAndAvailabilityPrivateOfferPlan**](AzureMarketplacePriceAndAvailabilityPrivateOfferPlan.md) | The origin pricing of Azure plan. Only applicable for Azure Marketplace plans. | [optional] 
+**AzurePrivateOffer** | Pointer to [**AzureMarketplacePrivateOffer**](AzureMarketplacePrivateOffer.md) | The private offer for Azure Marketplace. Only applicable for Azure Marketplace private offers. | [optional] 
+**AzureProductVariant** | Pointer to [**AzureProductVariant**](AzureProductVariant.md) | For Azure marketplace only. | [optional] 
+**BillableDimensions** | Pointer to [**[]BillableDimension**](BillableDimension.md) | Usage based metering dimensions based on Billable Metrics, managed by Suger only. | [optional] 
+**BillingCycle** | Pointer to [**BillingCycle**](BillingCycle.md) | Billing Cycle for the offer. | [optional] 
+**BillingIntervalInMonths** | Pointer to **int32** | Billing interval in months for the offer. | [optional] 
+**BuyerAwsAccountIds** | Pointer to **[]string** | The buyers&#39; AWS Account IDs of this offer. | [optional] 
+**BuyerAzureTenants** | Pointer to [**[]AzureAudience**](AzureAudience.md) | The buyers&#39; Azure tenants of this offer. | [optional] 
+**CommitAmount** | Pointer to **float32** | The amount that the buyer has committed to pay, before discount if applicable. It can be monthly commitment or total commitment. For frontend display or analysis purposes, not used for billing. | [optional] 
+**CommitBillingIntervalInMonths** | Pointer to **int32** | Deprecated: Use BillingIntervalInMonths instead. | [optional] 
+**Commits** | Pointer to [**[]CommitDimension**](CommitDimension.md) | Recurring flat fee for the offer, managed by cloud marketplaces or Suger. | [optional] 
+**Currency** | Pointer to **string** | The currency code of the offer. ISO 4217 format. | [optional] 
+**Dimensions** | Pointer to [**[]MeteringDimension**](MeteringDimension.md) | Usage based metering dimensions defined on cloud marketplaces, managed by Cloud marketplaces only. | [optional] 
+**DiscountPercentage** | Pointer to **float32** | The discount percentage off the original price. For example, 20 means 20% off. 0 means no discount. It can be discount off the commitment amount or discount off the usage price. | [optional] 
+**DocusignEnvelopeIds** | Pointer to **map[string]string** | The Docusign envelope IDs generated for the offer. The key is the contact ID, the value is the Docusign envelope ID. | [optional] 
+**EulaMergeOrder** | Pointer to **[]int32** | The merge order of the EULA files. Only applicable when EulaType &#x3D; CUSTOM. Elements are the original index of the EULA files in the index they should be transferred to, where original indexes are: AttachEulaType is index 0, EulaUrl is index 1, additionalEulaUrls is index 2 onwards. | [optional] 
+**EulaType** | Pointer to [**EulaType**](EulaType.md) |  | [optional] 
+**EulaUrl** | Pointer to **string** |  | [optional] 
+**GcpCustomerInfo** | Pointer to [**GcpMarketplacePrivateOfferCustomerInfo**](GcpMarketplacePrivateOfferCustomerInfo.md) | Only required when creating GCP Marketplace private offer. | [optional] 
+**GcpDuration** | Pointer to **int32** | The duration of the offer in months. Only required when creating GCP Marketplace private offer. | [optional] 
+**GcpMetrics** | Pointer to [**[]GcpMarketplaceProductMeteringMetric**](GcpMarketplaceProductMeteringMetric.md) | Only applicable for GCP Marketplace Offers (the default or private offer) | [optional] 
+**GcpOfferDealType** | Pointer to [**GcpMarketplaceOfferDealType**](GcpMarketplaceOfferDealType.md) | Optional when creating GCP Marketplace private offer and replacement offer. | [optional] 
+**GcpPaymentSchedule** | Pointer to [**PaymentScheduleType**](PaymentScheduleType.md) | Only required when creating GCP Marketplace private offer, to specify the payment schedule for the private offer. TODO: It will be deprecated in the future and replaced by PaymentSchedule. | [optional] 
+**GcpPlans** | Pointer to [**[]GcpMarketplaceProductPurchaseOptionSpec**](GcpMarketplaceProductPurchaseOptionSpec.md) | Only applicable for GCP Marketplace | [optional] 
+**GcpPrivateOffer** | Pointer to [**GcpMarketplacePrivateOffer**](GcpMarketplacePrivateOffer.md) | The private offer for GCP Marketplace. Only applicable for GCP Marketplace private offers. | [optional] 
+**GcpProviderInfo** | Pointer to [**GcpMarketplacePrivateOfferProviderInfo**](GcpMarketplacePrivateOfferProviderInfo.md) | Only required when creating GCP Marketplace private offer. | [optional] 
+**GcpProviderInternalNote** | Pointer to **string** | Optional when creating GCP Marketplace private offer. The internal note for the seller/ISV. It is only visible to the seller/ISV. | [optional] 
+**GcpProviderPublicNote** | Pointer to **string** | Optional when creating GCP Marketplace private offer. By default, it is the same as offer name. The public note for the buyer. It is visible to the buyer. | [optional] 
+**GcpResellerPrivateOfferPlan** | Pointer to [**GcpMarketplaceResellerPrivateOfferPlan**](GcpMarketplaceResellerPrivateOfferPlan.md) |  | [optional] 
+**GcpSowAgreementDocument** | Pointer to [**GcpAgreementDocument**](GcpAgreementDocument.md) | Optional when creating GCP Marketplace private offer for professional services. | [optional] 
+**GcpUsagePlanPriceModel** | Pointer to [**GcpMarketplaceUsagePlanPriceModel**](GcpMarketplaceUsagePlanPriceModel.md) | Only applicable for GCP Marketplace with Usage plan. Not appliable for Subscription plan. | [optional] 
+**GracePeriodInDays** | Pointer to **int32** | The grace period in days for the offer. This is the number of days during which invoices remain in draft status, for reviewing. This filed can be overridden at the entitlement level. | [optional] 
+**IsMeteringOverageCommit** | Pointer to **bool** | Whether the usage metering will only be charged for the amount that exceeds the committed amount. e.g. the buyer has committed $100, and the usage is $120, - if true, the buyer will be charged for the usage at $20, and the commit at $100. - if false, the buyer will be charged for the usage at $120, and the commit at $100. | [optional] 
+**NetTermsInDays** | Pointer to **int32** | The net terms in days for the offer. This is the number of days the buyer has to pay the invoice. This filed can be overridden at the entitlement level. | [optional] 
+**PaymentInstallments** | Pointer to [**[]PaymentInstallment**](PaymentInstallment.md) | For flexible payment schedule, managed by cloud marketplaces or Suger. | [optional] 
+**PaymentSchedule** | Pointer to [**PaymentScheduleType**](PaymentScheduleType.md) | The payment schedule for the offer. PREPAY means the buyer pays before the service is provided. POSTPAY means the buyer pays after the service is provided. | [optional] 
+**PdfURL** | Pointer to **string** | Not needed when creating stripe offer This URL points to the PDF version of the offer. | [optional] 
+**PrivateOfferUrl** | Pointer to **string** | The URL of the private offer sent to buyers to accept. Only applicable for private offer. | [optional] 
+**ProratedBilling** | Pointer to **bool** | Prorated billing for the offer. If true, the billing is prorated based on the start date and end date. If false, the billing is not prorated. This filed can be overridden at the entitlement level. | [optional] 
+**RefundCancellationPolicy** | Pointer to **string** |  | [optional] 
+**ResellerAttachEulaType** | Pointer to [**EulaType**](EulaType.md) | Attach the standard EULA file to the CUSTOM EULA file. Only applicable when EulaType &#x3D; CUSTOM | [optional] 
+**ResellerEulaType** | Pointer to [**EulaType**](EulaType.md) | The type of the reseller EULA. Only applicable for CPPO offers. | [optional] 
+**ResellerEulaUrl** | Pointer to **string** |  | [optional] 
+**SellerNotes** | Pointer to **string** |  | [optional] 
+**SnowflakeOffer** | Pointer to [**SnowflakeMarketplaceOffer**](SnowflakeMarketplaceOffer.md) | The private offer for Snowflake marketplace. Only applicable for Snowflake Marketplace offers. | [optional] 
+**StartTime** | Pointer to **time.Time** | Optional when creating AWS or GCP Marketplace private offer on the contract product. The future start time of the offer if it is not started on the acceptance. | [optional] 
+**TaxIds** | Pointer to **[]string** | Tax ids for the offer, used to calculate the tax amount for the offer. This field can be overridden at the entitlement level. | [optional] 
+**TrialConfig** | Pointer to [**TrialConfig**](TrialConfig.md) | The offer for Direct. Only applicable for Direct offers. It is used in Stripe, Adyen, and other direct payment providers. The trial configuration for the offer. | [optional] 
+**UsageBillingIntervalInMonths** | Pointer to **int32** | Deprecated: Use BillingIntervalInMonths instead. | [optional] 
+**Visibility** | Pointer to **string** | The default visibility of offer is PRIVATE. | [optional] 
 
 ## Methods
 
@@ -278,6 +285,31 @@ SetAwsCppoOpportunity sets AwsCppoOpportunity field to given value.
 
 HasAwsCppoOpportunity returns a boolean if a field has been set.
 
+### GetAwsMachineLearningContractDuration
+
+`func (o *OfferInfo) GetAwsMachineLearningContractDuration() int32`
+
+GetAwsMachineLearningContractDuration returns the AwsMachineLearningContractDuration field if non-nil, zero value otherwise.
+
+### GetAwsMachineLearningContractDurationOk
+
+`func (o *OfferInfo) GetAwsMachineLearningContractDurationOk() (*int32, bool)`
+
+GetAwsMachineLearningContractDurationOk returns a tuple with the AwsMachineLearningContractDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsMachineLearningContractDuration
+
+`func (o *OfferInfo) SetAwsMachineLearningContractDuration(v int32)`
+
+SetAwsMachineLearningContractDuration sets AwsMachineLearningContractDuration field to given value.
+
+### HasAwsMachineLearningContractDuration
+
+`func (o *OfferInfo) HasAwsMachineLearningContractDuration() bool`
+
+HasAwsMachineLearningContractDuration returns a boolean if a field has been set.
+
 ### GetAwsMarkupPercentage
 
 `func (o *OfferInfo) GetAwsMarkupPercentage() float32`
@@ -463,8 +495,7 @@ GetBillingIntervalInMonths returns the BillingIntervalInMonths field if non-nil,
 
 `func (o *OfferInfo) GetBillingIntervalInMonthsOk() (*int32, bool)`
 
-GetBillingIntervalInMonthsOk returns a tuple with the BillingIntervalInMonths field if it's non-nil, zero value
-otherwise
+GetBillingIntervalInMonthsOk returns a tuple with the BillingIntervalInMonths field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBillingIntervalInMonths
@@ -679,6 +710,56 @@ SetDiscountPercentage sets DiscountPercentage field to given value.
 
 HasDiscountPercentage returns a boolean if a field has been set.
 
+### GetDocusignEnvelopeIds
+
+`func (o *OfferInfo) GetDocusignEnvelopeIds() map[string]string`
+
+GetDocusignEnvelopeIds returns the DocusignEnvelopeIds field if non-nil, zero value otherwise.
+
+### GetDocusignEnvelopeIdsOk
+
+`func (o *OfferInfo) GetDocusignEnvelopeIdsOk() (*map[string]string, bool)`
+
+GetDocusignEnvelopeIdsOk returns a tuple with the DocusignEnvelopeIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDocusignEnvelopeIds
+
+`func (o *OfferInfo) SetDocusignEnvelopeIds(v map[string]string)`
+
+SetDocusignEnvelopeIds sets DocusignEnvelopeIds field to given value.
+
+### HasDocusignEnvelopeIds
+
+`func (o *OfferInfo) HasDocusignEnvelopeIds() bool`
+
+HasDocusignEnvelopeIds returns a boolean if a field has been set.
+
+### GetEulaMergeOrder
+
+`func (o *OfferInfo) GetEulaMergeOrder() []int32`
+
+GetEulaMergeOrder returns the EulaMergeOrder field if non-nil, zero value otherwise.
+
+### GetEulaMergeOrderOk
+
+`func (o *OfferInfo) GetEulaMergeOrderOk() (*[]int32, bool)`
+
+GetEulaMergeOrderOk returns a tuple with the EulaMergeOrder field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEulaMergeOrder
+
+`func (o *OfferInfo) SetEulaMergeOrder(v []int32)`
+
+SetEulaMergeOrder sets EulaMergeOrder field to given value.
+
+### HasEulaMergeOrder
+
+`func (o *OfferInfo) HasEulaMergeOrder() bool`
+
+HasEulaMergeOrder returns a boolean if a field has been set.
+
 ### GetEulaType
 
 `func (o *OfferInfo) GetEulaType() EulaType`
@@ -803,6 +884,31 @@ SetGcpMetrics sets GcpMetrics field to given value.
 `func (o *OfferInfo) HasGcpMetrics() bool`
 
 HasGcpMetrics returns a boolean if a field has been set.
+
+### GetGcpOfferDealType
+
+`func (o *OfferInfo) GetGcpOfferDealType() GcpMarketplaceOfferDealType`
+
+GetGcpOfferDealType returns the GcpOfferDealType field if non-nil, zero value otherwise.
+
+### GetGcpOfferDealTypeOk
+
+`func (o *OfferInfo) GetGcpOfferDealTypeOk() (*GcpMarketplaceOfferDealType, bool)`
+
+GetGcpOfferDealTypeOk returns a tuple with the GcpOfferDealType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpOfferDealType
+
+`func (o *OfferInfo) SetGcpOfferDealType(v GcpMarketplaceOfferDealType)`
+
+SetGcpOfferDealType sets GcpOfferDealType field to given value.
+
+### HasGcpOfferDealType
+
+`func (o *OfferInfo) HasGcpOfferDealType() bool`
+
+HasGcpOfferDealType returns a boolean if a field has been set.
 
 ### GetGcpPaymentSchedule
 
@@ -979,6 +1085,31 @@ SetGcpResellerPrivateOfferPlan sets GcpResellerPrivateOfferPlan field to given v
 
 HasGcpResellerPrivateOfferPlan returns a boolean if a field has been set.
 
+### GetGcpSowAgreementDocument
+
+`func (o *OfferInfo) GetGcpSowAgreementDocument() GcpAgreementDocument`
+
+GetGcpSowAgreementDocument returns the GcpSowAgreementDocument field if non-nil, zero value otherwise.
+
+### GetGcpSowAgreementDocumentOk
+
+`func (o *OfferInfo) GetGcpSowAgreementDocumentOk() (*GcpAgreementDocument, bool)`
+
+GetGcpSowAgreementDocumentOk returns a tuple with the GcpSowAgreementDocument field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpSowAgreementDocument
+
+`func (o *OfferInfo) SetGcpSowAgreementDocument(v GcpAgreementDocument)`
+
+SetGcpSowAgreementDocument sets GcpSowAgreementDocument field to given value.
+
+### HasGcpSowAgreementDocument
+
+`func (o *OfferInfo) HasGcpSowAgreementDocument() bool`
+
+HasGcpSowAgreementDocument returns a boolean if a field has been set.
+
 ### GetGcpUsagePlanPriceModel
 
 `func (o *OfferInfo) GetGcpUsagePlanPriceModel() GcpMarketplaceUsagePlanPriceModel`
@@ -1039,8 +1170,7 @@ GetIsMeteringOverageCommit returns the IsMeteringOverageCommit field if non-nil,
 
 `func (o *OfferInfo) GetIsMeteringOverageCommitOk() (*bool, bool)`
 
-GetIsMeteringOverageCommitOk returns a tuple with the IsMeteringOverageCommit field if it's non-nil, zero value
-otherwise
+GetIsMeteringOverageCommitOk returns a tuple with the IsMeteringOverageCommit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIsMeteringOverageCommit
@@ -1129,6 +1259,31 @@ SetPaymentSchedule sets PaymentSchedule field to given value.
 `func (o *OfferInfo) HasPaymentSchedule() bool`
 
 HasPaymentSchedule returns a boolean if a field has been set.
+
+### GetPdfURL
+
+`func (o *OfferInfo) GetPdfURL() string`
+
+GetPdfURL returns the PdfURL field if non-nil, zero value otherwise.
+
+### GetPdfURLOk
+
+`func (o *OfferInfo) GetPdfURLOk() (*string, bool)`
+
+GetPdfURLOk returns a tuple with the PdfURL field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPdfURL
+
+`func (o *OfferInfo) SetPdfURL(v string)`
+
+SetPdfURL sets PdfURL field to given value.
+
+### HasPdfURL
+
+`func (o *OfferInfo) HasPdfURL() bool`
+
+HasPdfURL returns a boolean if a field has been set.
 
 ### GetPrivateOfferUrl
 
@@ -1304,6 +1459,31 @@ SetSellerNotes sets SellerNotes field to given value.
 `func (o *OfferInfo) HasSellerNotes() bool`
 
 HasSellerNotes returns a boolean if a field has been set.
+
+### GetSnowflakeOffer
+
+`func (o *OfferInfo) GetSnowflakeOffer() SnowflakeMarketplaceOffer`
+
+GetSnowflakeOffer returns the SnowflakeOffer field if non-nil, zero value otherwise.
+
+### GetSnowflakeOfferOk
+
+`func (o *OfferInfo) GetSnowflakeOfferOk() (*SnowflakeMarketplaceOffer, bool)`
+
+GetSnowflakeOfferOk returns a tuple with the SnowflakeOffer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSnowflakeOffer
+
+`func (o *OfferInfo) SetSnowflakeOffer(v SnowflakeMarketplaceOffer)`
+
+SetSnowflakeOffer sets SnowflakeOffer field to given value.
+
+### HasSnowflakeOffer
+
+`func (o *OfferInfo) HasSnowflakeOffer() bool`
+
+HasSnowflakeOffer returns a boolean if a field has been set.
 
 ### GetStartTime
 

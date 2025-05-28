@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BuyerAccounts** | Pointer to [**[]AwsMarketplaceBuyerAccount**](AwsMarketplaceBuyerAccount.md) | List of AWS account IDs that are allowed to subscribe to the offer. | [optional] 
-**CountryCodes** | Pointer to **[]string** | List as option for allowing targeting based on country. If the intention isn’t to target the offer to a country, this field should be omitted. If it’s present, the list must contain at least one country code. Each element in this list should be a valid 2-letter country code, using this format: ISO 3166-1 alpha-2. | [optional] 
+**CountryCodes** | Pointer to **[]string** | List as option for allowing targeting based on country. If the intention isn&#39;t to target the offer to a country, this field should be omitted. If it&#39;s present, the list must contain at least one country code. Each element in this list should be a valid 2-letter country code, using this format: ISO 3166-1 alpha-2. | [optional] 
 
 ## Methods
 

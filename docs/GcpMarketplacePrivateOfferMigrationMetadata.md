@@ -2,13 +2,13 @@
 
 ## Properties
 
- Name                            | Type                  | Description                                                                                                                                      | Notes      
----------------------------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|------------
- **InventoryFlavorExternalName** | Pointer to **string** | Plan name maybe with term suffix, such as \&quot;plan-name-P1Y\&quot;                                                                            | [optional] 
- **ProductExternalName**         | Pointer to **string** | in format of \&quot;product-service-id.endpoints.gcp-project-id.cloud.goog\&quot;                                                                | [optional] 
- **ProjectId**                   | Pointer to **string** | The GCP project ID of the GCP marketplace integration.                                                                                           | [optional] 
- **ProjectNumber**               | Pointer to **string** | The GCP project number of the provider.                                                                                                          | [optional] 
- **ProviderId**                  | Pointer to **string** | The GCP provider ID / partner ID of the GCP marketplace integration. In most cases, it is the same as the project ID. But it could be different. | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**InventoryFlavorExternalName** | Pointer to **string** | Plan name maybe with term suffix, such as \&quot;plan-name-P1Y\&quot; | [optional] 
+**ProductExternalName** | Pointer to **string** | in format of \&quot;product-service-id.endpoints.gcp-project-id.cloud.goog\&quot; | [optional] 
+**ProjectId** | Pointer to **string** | The GCP project ID of the GCP marketplace integration. | [optional] 
+**ProjectNumber** | Pointer to **string** | The GCP project number of the provider. | [optional] 
+**ProviderId** | Pointer to **string** | The GCP provider ID / partner ID of the GCP marketplace integration. In most cases, it is the same as the project ID. But it could be different. | [optional] 
 
 ## Methods
 

@@ -21,8 +21,8 @@ var _ MappedNullable = &GcpMarketplaceResellerPrivateOfferPlanStateTransition{}
 
 // GcpMarketplaceResellerPrivateOfferPlanStateTransition struct for GcpMarketplaceResellerPrivateOfferPlanStateTransition
 type GcpMarketplaceResellerPrivateOfferPlanStateTransition struct {
-	NewState       *GcpMarketplaceResellerPrivateOfferPlanNewState `json:"newState,omitempty"`
-	TransitionTime *time.Time                                      `json:"transitionTime,omitempty"`
+	NewState *GcpMarketplaceResellerPrivateOfferPlanNewState `json:"newState,omitempty"`
+	TransitionTime *time.Time `json:"transitionTime,omitempty"`
 }
 
 // NewGcpMarketplaceResellerPrivateOfferPlanStateTransition instantiates a new GcpMarketplaceResellerPrivateOfferPlanStateTransition object
@@ -107,7 +107,7 @@ func (o *GcpMarketplaceResellerPrivateOfferPlanStateTransition) SetTransitionTim
 }
 
 func (o GcpMarketplaceResellerPrivateOfferPlanStateTransition) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableGcpMarketplaceResellerPrivateOfferPlanStateTransition) Unmarsha
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

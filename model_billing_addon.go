@@ -23,14 +23,14 @@ var _ MappedNullable = &BillingAddon{}
 type BillingAddon struct {
 	CreationTime *time.Time `json:"creationTime,omitempty"`
 	// Description of the addon
-	Description    *string           `json:"description,omitempty"`
-	Id             *string           `json:"id,omitempty"`
-	Info           *BillingAddonInfo `json:"info,omitempty"`
-	LastUpdateTime *time.Time        `json:"lastUpdateTime,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Info *BillingAddonInfo `json:"info,omitempty"`
+	LastUpdateTime *time.Time `json:"lastUpdateTime,omitempty"`
 	// Name of the addon, e.g. \"Support Plan\"
-	Name           *string             `json:"name,omitempty"`
-	OrganizationID *string             `json:"organizationID,omitempty"`
-	Status         *BillingAddonStatus `json:"status,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
+	Status *BillingAddonStatus `json:"status,omitempty"`
 }
 
 // NewBillingAddon instantiates a new BillingAddon object
@@ -307,7 +307,7 @@ func (o *BillingAddon) SetStatus(v BillingAddonStatus) {
 }
 
 func (o BillingAddon) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -378,3 +378,5 @@ func (v *NullableBillingAddon) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

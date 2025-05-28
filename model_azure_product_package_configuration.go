@@ -21,11 +21,11 @@ var _ MappedNullable = &AzureProductPackageConfiguration{}
 // AzureProductPackageConfiguration struct for AzureProductPackageConfiguration
 type AzureProductPackageConfiguration struct {
 	AzureActiveDirectoryApplicationID *string `json:"azureActiveDirectoryApplicationID,omitempty"`
-	AzureActiveDirectoryTenantID      *string `json:"azureActiveDirectoryTenantID,omitempty"`
-	ConnectionWebhook                 *string `json:"connectionWebhook,omitempty"`
-	Id                                *string `json:"id,omitempty"`
-	LandingPageUri                    *string `json:"landingPageUri,omitempty"`
-	ResourceType                      *string `json:"resourceType,omitempty"`
+	AzureActiveDirectoryTenantID *string `json:"azureActiveDirectoryTenantID,omitempty"`
+	ConnectionWebhook *string `json:"connectionWebhook,omitempty"`
+	Id *string `json:"id,omitempty"`
+	LandingPageUri *string `json:"landingPageUri,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty"`
 }
 
 // NewAzureProductPackageConfiguration instantiates a new AzureProductPackageConfiguration object
@@ -238,7 +238,7 @@ func (o *AzureProductPackageConfiguration) SetResourceType(v string) {
 }
 
 func (o AzureProductPackageConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,3 +303,5 @@ func (v *NullableAzureProductPackageConfiguration) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

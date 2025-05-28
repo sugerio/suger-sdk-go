@@ -210,7 +210,7 @@ func (o *GcpMarketplacePrivateOfferCustomerInfo) SetUnverifiedBillingAccount(v s
 }
 
 func (o GcpMarketplacePrivateOfferCustomerInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -272,3 +272,5 @@ func (v *NullableGcpMarketplacePrivateOfferCustomerInfo) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

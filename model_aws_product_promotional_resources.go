@@ -21,8 +21,8 @@ var _ MappedNullable = &AwsProductPromotionalResources{}
 // AwsProductPromotionalResources struct for AwsProductPromotionalResources
 type AwsProductPromotionalResources struct {
 	AdditionalResources []AwsProductAdditionalResource `json:"AdditionalResources,omitempty"`
-	LogoUrl             *string                        `json:"LogoUrl,omitempty"`
-	Videos              []AwsProductVideo              `json:"Videos,omitempty"`
+	LogoUrl *string `json:"LogoUrl,omitempty"`
+	Videos []AwsProductVideo `json:"Videos,omitempty"`
 }
 
 // NewAwsProductPromotionalResources instantiates a new AwsProductPromotionalResources object
@@ -139,7 +139,7 @@ func (o *AwsProductPromotionalResources) SetVideos(v []AwsProductVideo) {
 }
 
 func (o AwsProductPromotionalResources) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableAwsProductPromotionalResources) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

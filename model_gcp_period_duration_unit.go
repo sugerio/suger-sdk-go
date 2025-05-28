@@ -22,7 +22,7 @@ type GcpPeriodDurationUnit string
 // List of GcpPeriodDurationUnit
 const (
 	GcpPeriodDurationUnit_MONTHLY_PERIOD GcpPeriodDurationUnit = "MONTHLY_PERIOD"
-	GcpPeriodDurationUnit_YEARLY_PERIOD  GcpPeriodDurationUnit = "YEARLY_PERIOD"
+	GcpPeriodDurationUnit_YEARLY_PERIOD GcpPeriodDurationUnit = "YEARLY_PERIOD"
 )
 
 // All allowed values of GcpPeriodDurationUnit enum
@@ -109,3 +109,4 @@ func (v *NullableGcpPeriodDurationUnit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

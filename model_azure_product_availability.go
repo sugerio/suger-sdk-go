@@ -20,12 +20,12 @@ var _ MappedNullable = &AzureProductAvailability{}
 
 // AzureProductAvailability struct for AzureProductAvailability
 type AzureProductAvailability struct {
-	EmailAudiences        []AzureAudience `json:"emailAudiences,omitempty"`
-	EnterpriseLicensing   *string         `json:"enterpriseLicensing,omitempty"`
-	Id                    *string         `json:"id,omitempty"`
-	ResourceType          *string         `json:"resourceType,omitempty"`
+	EmailAudiences []AzureAudience `json:"emailAudiences,omitempty"`
+	EnterpriseLicensing *string `json:"enterpriseLicensing,omitempty"`
+	Id *string `json:"id,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty"`
 	SubscriptionAudiences []AzureAudience `json:"subscriptionAudiences,omitempty"`
-	Visibility            *string         `json:"visibility,omitempty"`
+	Visibility *string `json:"visibility,omitempty"`
 }
 
 // NewAzureProductAvailability instantiates a new AzureProductAvailability object
@@ -238,7 +238,7 @@ func (o *AzureProductAvailability) SetVisibility(v string) {
 }
 
 func (o AzureProductAvailability) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,3 +303,5 @@ func (v *NullableAzureProductAvailability) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

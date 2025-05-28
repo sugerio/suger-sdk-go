@@ -21,8 +21,8 @@ var _ MappedNullable = &UsageMeteringDailyRecord{}
 
 // UsageMeteringDailyRecord struct for UsageMeteringDailyRecord
 type UsageMeteringDailyRecord struct {
-	Amount *float32   `json:"amount,omitempty"`
-	Date   *time.Time `json:"date,omitempty"`
+	Amount *float32 `json:"amount,omitempty"`
+	Date *time.Time `json:"date,omitempty"`
 	// The Entitlement ID of the usage metering daily record.
 	EntitlementID *string `json:"entitlementID,omitempty"`
 	// The group bys expression of the usage metering. When the same usage metering key may have multiple expressions of group bys to aggregate the usage.
@@ -30,7 +30,7 @@ type UsageMeteringDailyRecord struct {
 	// The dimension key of the usage metering.
 	Key *string `json:"key,omitempty"`
 	// The partner where this usage metering daily record is from. Such as AWS, AZURE or GCP.
-	Partner  *Partner `json:"partner,omitempty"`
+	Partner *Partner `json:"partner,omitempty"`
 	Quantity *float32 `json:"quantity,omitempty"`
 }
 
@@ -276,7 +276,7 @@ func (o *UsageMeteringDailyRecord) SetQuantity(v float32) {
 }
 
 func (o UsageMeteringDailyRecord) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -344,3 +344,5 @@ func (v *NullableUsageMeteringDailyRecord) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

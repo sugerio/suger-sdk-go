@@ -2,36 +2,36 @@
 
 ## Properties
 
- Name                           | Type                                                         | Description | Notes      
---------------------------------|--------------------------------------------------------------|-------------|------------
- **Action**                     | Pointer to **string**                                        |             | [optional] 
- **AgreementID**                | Pointer to **string**                                        |             | [optional] 
- **Amount**                     | Pointer to **float32**                                       |             | [optional] 
- **BalanceImpacting**           | Pointer to **int32**                                         |             | [optional] 
- **BankTraceID**                | Pointer to **string**                                        |             | [optional] 
- **BillingAddressID**           | Pointer to **string**                                        |             | [optional] 
- **BrokerID**                   | Pointer to **string**                                        |             | [optional] 
- **BuyerID**                    | Pointer to **string**                                        |             | [optional] 
- **Currency**                   | Pointer to **string**                                        |             | [optional] 
- **DataFeedProductID**          | Pointer to **string**                                        |             | [optional] 
- **DisbursementBillingEventID** | Pointer to **string**                                        |             | [optional] 
- **EndUserAccountID**           | Pointer to **string**                                        |             | [optional] 
- **EntitlementID**              | Pointer to **string**                                        |             | [optional] 
- **FromAccountID**              | Pointer to **string**                                        |             | [optional] 
- **Id**                         | Pointer to **string**                                        |             | [optional] 
- **InsertDate**                 | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |             | [optional] 
- **InvoiceDate**                | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |             | [optional] 
- **InvoiceID**                  | Pointer to **string**                                        |             | [optional] 
- **OfferID**                    | Pointer to **string**                                        |             | [optional] 
- **OrganizationID**             | Pointer to **string**                                        |             | [optional] 
- **ParentBillingEventID**       | Pointer to **string**                                        |             | [optional] 
- **PaymentDueDate**             | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |             | [optional] 
- **ProductID**                  | Pointer to **string**                                        |             | [optional] 
- **ToAccountID**                | Pointer to **string**                                        |             | [optional] 
- **TransactionReferenceID**     | Pointer to **string**                                        |             | [optional] 
- **TransactionType**            | Pointer to **string**                                        |             | [optional] 
- **UsagePeriodEndDate**         | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |             | [optional] 
- **UsagePeriodStartDate**       | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |             | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Action** | Pointer to **string** |  | [optional] 
+**AgreementID** | Pointer to **string** |  | [optional] 
+**Amount** | Pointer to **float32** |  | [optional] 
+**BalanceImpacting** | Pointer to **int32** |  | [optional] 
+**BankTraceID** | Pointer to **string** |  | [optional] 
+**BillingAddressID** | Pointer to **string** |  | [optional] 
+**BrokerID** | Pointer to **string** |  | [optional] 
+**BuyerID** | Pointer to **string** |  | [optional] 
+**Currency** | Pointer to **string** |  | [optional] 
+**DataFeedProductID** | Pointer to **string** |  | [optional] 
+**DisbursementBillingEventID** | Pointer to **string** |  | [optional] 
+**EndUserAccountID** | Pointer to **string** |  | [optional] 
+**EntitlementID** | Pointer to **string** |  | [optional] 
+**FromAccountID** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
+**InsertDate** | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |  | [optional] 
+**InvoiceDate** | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |  | [optional] 
+**InvoiceID** | Pointer to **string** |  | [optional] 
+**OfferID** | Pointer to **string** |  | [optional] 
+**OrganizationID** | Pointer to **string** |  | [optional] 
+**ParentBillingEventID** | Pointer to **string** |  | [optional] 
+**PaymentDueDate** | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |  | [optional] 
+**ProductID** | Pointer to **string** |  | [optional] 
+**ToAccountID** | Pointer to **string** |  | [optional] 
+**TransactionReferenceID** | Pointer to **string** |  | [optional] 
+**TransactionType** | Pointer to **string** |  | [optional] 
+**UsagePeriodEndDate** | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |  | [optional] 
+**UsagePeriodStartDate** | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |  | [optional] 
 
 ## Methods
 
@@ -39,8 +39,7 @@
 
 `func NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent() *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent`
 
-NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent instantiates a new
-GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent object
+NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent instantiates a new GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
@@ -49,8 +48,7 @@ will change when the set of required properties is changed
 
 `func NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEventWithDefaults() *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent`
 
-NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEventWithDefaults instantiates a new
-GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent object
+NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEventWithDefaults instantiates a new GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
@@ -314,8 +312,7 @@ GetDisbursementBillingEventID returns the DisbursementBillingEventID field if no
 
 `func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) GetDisbursementBillingEventIDOk() (*string, bool)`
 
-GetDisbursementBillingEventIDOk returns a tuple with the DisbursementBillingEventID field if it's non-nil, zero value
-otherwise
+GetDisbursementBillingEventIDOk returns a tuple with the DisbursementBillingEventID field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDisbursementBillingEventID
@@ -754,6 +751,7 @@ SetUsagePeriodStartDate sets UsagePeriodStartDate field to given value.
 `func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) HasUsagePeriodStartDate() bool`
 
 HasUsagePeriodStartDate returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

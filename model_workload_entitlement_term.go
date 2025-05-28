@@ -21,25 +21,27 @@ var _ MappedNullable = &WorkloadEntitlementTerm{}
 
 // WorkloadEntitlementTerm struct for WorkloadEntitlementTerm
 type WorkloadEntitlementTerm struct {
-	BuyerID      *string  `json:"buyerID,omitempty"`
+	BuyerID *string `json:"buyerID,omitempty"`
 	CommitAmount *float32 `json:"commitAmount,omitempty"`
+	CreationTime *string `json:"creationTime,omitempty"`
 	CreditAmount *float32 `json:"creditAmount,omitempty"`
 	// nullable
-	EndTime               *time.Time           `json:"endTime,omitempty"`
-	EntitlementID         *string              `json:"entitlementID,omitempty"`
-	EntitlementInfo       *EntitlementInfo     `json:"entitlementInfo,omitempty"`
-	ExternalEntitlementID *string              `json:"externalEntitlementID,omitempty"`
-	Id                    *string              `json:"id,omitempty"`
-	Info                  *EntitlementTermInfo `json:"info,omitempty"`
-	OfferID               *string              `json:"offerID,omitempty"`
-	OrganizationID        *string              `json:"organizationID,omitempty"`
-	Partner               *Partner             `json:"partner,omitempty"`
-	ProductID             *string              `json:"productID,omitempty"`
-	ReportedAmount        *float32             `json:"reportedAmount,omitempty"`
-	Service               *PartnerService      `json:"service,omitempty"`
-	StartTime             *time.Time           `json:"startTime,omitempty"`
-	UsedCommitAmount      *float32             `json:"usedCommitAmount,omitempty"`
-	UsedCreditAmount      *float32             `json:"usedCreditAmount,omitempty"`
+	EndTime *time.Time `json:"endTime,omitempty"`
+	EntitlementID *string `json:"entitlementID,omitempty"`
+	EntitlementInfo *EntitlementInfo `json:"entitlementInfo,omitempty"`
+	ExternalEntitlementID *string `json:"externalEntitlementID,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Info *EntitlementTermInfo `json:"info,omitempty"`
+	LastUpdateTime *string `json:"lastUpdateTime,omitempty"`
+	OfferID *string `json:"offerID,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
+	Partner *Partner `json:"partner,omitempty"`
+	ProductID *string `json:"productID,omitempty"`
+	ReportedAmount *float32 `json:"reportedAmount,omitempty"`
+	Service *PartnerService `json:"service,omitempty"`
+	StartTime *time.Time `json:"startTime,omitempty"`
+	UsedCommitAmount *float32 `json:"usedCommitAmount,omitempty"`
+	UsedCreditAmount *float32 `json:"usedCreditAmount,omitempty"`
 }
 
 // NewWorkloadEntitlementTerm instantiates a new WorkloadEntitlementTerm object
@@ -121,6 +123,38 @@ func (o *WorkloadEntitlementTerm) HasCommitAmount() bool {
 // SetCommitAmount gets a reference to the given float32 and assigns it to the CommitAmount field.
 func (o *WorkloadEntitlementTerm) SetCommitAmount(v float32) {
 	o.CommitAmount = &v
+}
+
+// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
+func (o *WorkloadEntitlementTerm) GetCreationTime() string {
+	if o == nil || IsNil(o.CreationTime) {
+		var ret string
+		return ret
+	}
+	return *o.CreationTime
+}
+
+// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadEntitlementTerm) GetCreationTimeOk() (*string, bool) {
+	if o == nil || IsNil(o.CreationTime) {
+		return nil, false
+	}
+	return o.CreationTime, true
+}
+
+// HasCreationTime returns a boolean if a field has been set.
+func (o *WorkloadEntitlementTerm) HasCreationTime() bool {
+	if o != nil && !IsNil(o.CreationTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreationTime gets a reference to the given string and assigns it to the CreationTime field.
+func (o *WorkloadEntitlementTerm) SetCreationTime(v string) {
+	o.CreationTime = &v
 }
 
 // GetCreditAmount returns the CreditAmount field value if set, zero value otherwise.
@@ -345,6 +379,38 @@ func (o *WorkloadEntitlementTerm) HasInfo() bool {
 // SetInfo gets a reference to the given EntitlementTermInfo and assigns it to the Info field.
 func (o *WorkloadEntitlementTerm) SetInfo(v EntitlementTermInfo) {
 	o.Info = &v
+}
+
+// GetLastUpdateTime returns the LastUpdateTime field value if set, zero value otherwise.
+func (o *WorkloadEntitlementTerm) GetLastUpdateTime() string {
+	if o == nil || IsNil(o.LastUpdateTime) {
+		var ret string
+		return ret
+	}
+	return *o.LastUpdateTime
+}
+
+// GetLastUpdateTimeOk returns a tuple with the LastUpdateTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadEntitlementTerm) GetLastUpdateTimeOk() (*string, bool) {
+	if o == nil || IsNil(o.LastUpdateTime) {
+		return nil, false
+	}
+	return o.LastUpdateTime, true
+}
+
+// HasLastUpdateTime returns a boolean if a field has been set.
+func (o *WorkloadEntitlementTerm) HasLastUpdateTime() bool {
+	if o != nil && !IsNil(o.LastUpdateTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdateTime gets a reference to the given string and assigns it to the LastUpdateTime field.
+func (o *WorkloadEntitlementTerm) SetLastUpdateTime(v string) {
+	o.LastUpdateTime = &v
 }
 
 // GetOfferID returns the OfferID field value if set, zero value otherwise.
@@ -636,7 +702,7 @@ func (o *WorkloadEntitlementTerm) SetUsedCreditAmount(v float32) {
 }
 
 func (o WorkloadEntitlementTerm) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -650,6 +716,9 @@ func (o WorkloadEntitlementTerm) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CommitAmount) {
 		toSerialize["commitAmount"] = o.CommitAmount
+	}
+	if !IsNil(o.CreationTime) {
+		toSerialize["creationTime"] = o.CreationTime
 	}
 	if !IsNil(o.CreditAmount) {
 		toSerialize["creditAmount"] = o.CreditAmount
@@ -671,6 +740,9 @@ func (o WorkloadEntitlementTerm) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Info) {
 		toSerialize["info"] = o.Info
+	}
+	if !IsNil(o.LastUpdateTime) {
+		toSerialize["lastUpdateTime"] = o.LastUpdateTime
 	}
 	if !IsNil(o.OfferID) {
 		toSerialize["offerID"] = o.OfferID
@@ -737,3 +809,5 @@ func (v *NullableWorkloadEntitlementTerm) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

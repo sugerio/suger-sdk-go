@@ -21,28 +21,28 @@ var _ MappedNullable = &WorkloadOffer{}
 
 // WorkloadOffer struct for WorkloadOffer
 type WorkloadOffer struct {
-	BuyerID      *string    `json:"buyerID,omitempty"`
-	ContactIds   []string   `json:"contactIds,omitempty"`
-	CreatedBy    *string    `json:"createdBy,omitempty"`
+	BuyerID *string `json:"buyerID,omitempty"`
+	ContactIds []string `json:"contactIds,omitempty"`
+	CreatedBy *string `json:"createdBy,omitempty"`
 	CreationTime *time.Time `json:"creationTime,omitempty"`
 	// nullable
 	EndTime *time.Time `json:"endTime,omitempty"`
 	// nullable
-	ExpireTime     *time.Time        `json:"expireTime,omitempty"`
-	ExternalID     *string           `json:"externalID,omitempty"`
-	Id             *string           `json:"id,omitempty"`
-	Info           *OfferInfo        `json:"info,omitempty"`
-	LastUpdateTime *time.Time        `json:"lastUpdateTime,omitempty"`
-	LastUpdatedBy  *string           `json:"lastUpdatedBy,omitempty"`
-	MetaInfo       *WorkloadMetaInfo `json:"metaInfo,omitempty"`
-	Name           *string           `json:"name,omitempty"`
-	OfferType      *OfferType        `json:"offerType,omitempty"`
-	OrganizationID *string           `json:"organizationID,omitempty"`
-	Partner        *Partner          `json:"partner,omitempty"`
-	PartnerID      *string           `json:"partnerID,omitempty"`
-	ProductID      *string           `json:"productID,omitempty"`
-	Service        *PartnerService   `json:"service,omitempty"`
-	Status         *OfferStatus      `json:"status,omitempty"`
+	ExpireTime *time.Time `json:"expireTime,omitempty"`
+	ExternalID *string `json:"externalID,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Info *OfferInfo `json:"info,omitempty"`
+	LastUpdateTime *time.Time `json:"lastUpdateTime,omitempty"`
+	LastUpdatedBy *string `json:"lastUpdatedBy,omitempty"`
+	MetaInfo *WorkloadMetaInfo `json:"metaInfo,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OfferType *OfferType `json:"offerType,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
+	Partner *Partner `json:"partner,omitempty"`
+	PartnerID *string `json:"partnerID,omitempty"`
+	ProductID *string `json:"productID,omitempty"`
+	Service *PartnerService `json:"service,omitempty"`
+	Status *OfferStatus `json:"status,omitempty"`
 }
 
 // NewWorkloadOffer instantiates a new WorkloadOffer object
@@ -703,7 +703,7 @@ func (o *WorkloadOffer) SetStatus(v OfferStatus) {
 }
 
 func (o WorkloadOffer) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -810,3 +810,5 @@ func (v *NullableWorkloadOffer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -42,15 +42,15 @@ type MeteringUsageRecordGroupMetaInfo struct {
 	// The original records reported by the customer before convertion. If no dimension mapping is applied, this field is the same as the records field.
 	OriginRecords *map[string]float32 `json:"originRecords,omitempty"`
 	// The source of the usage record group. Can be from Suger API or other third party services, such as Metronome.
-	Source          *UsageRecordGroupSource `json:"source,omitempty"`
-	StripeInvoiceID *string                 `json:"stripeInvoiceID,omitempty"`
+	Source *UsageRecordGroupSource `json:"source,omitempty"`
+	StripeInvoiceID *string `json:"stripeInvoiceID,omitempty"`
 	// The stripe period end time of the summary or invoice. UTC time in format \"YYYY-MM-DDTHH:MM:SSZ\".
 	StripePeriodEndTime *time.Time `json:"stripePeriodEndTime,omitempty"`
 	// The stripe period start time of the summary or invoice. UTC time in format \"YYYY-MM-DDTHH:MM:SSZ\".
-	StripePeriodStartTime              *time.Time `json:"stripePeriodStartTime,omitempty"`
-	StripeSubscriptionItemID           *string    `json:"stripeSubscriptionItemID,omitempty"`
-	StripeUsageRecordSummaryID         *string    `json:"stripeUsageRecordSummaryID,omitempty"`
-	StripeUsageRecordSummaryTotalUsage *int32     `json:"stripeUsageRecordSummaryTotalUsage,omitempty"`
+	StripePeriodStartTime *time.Time `json:"stripePeriodStartTime,omitempty"`
+	StripeSubscriptionItemID *string `json:"stripeSubscriptionItemID,omitempty"`
+	StripeUsageRecordSummaryID *string `json:"stripeUsageRecordSummaryID,omitempty"`
+	StripeUsageRecordSummaryTotalUsage *int32 `json:"stripeUsageRecordSummaryTotalUsage,omitempty"`
 	// The timestamp (UTC)) of when the usage records were generated. Optional, if not provided, the current report timestamp will be used.
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 }
@@ -649,7 +649,7 @@ func (o *MeteringUsageRecordGroupMetaInfo) SetTimestamp(v time.Time) {
 }
 
 func (o MeteringUsageRecordGroupMetaInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -750,3 +750,5 @@ func (v *NullableMeteringUsageRecordGroupMetaInfo) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

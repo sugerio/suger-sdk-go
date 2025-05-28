@@ -2,12 +2,12 @@
 
 ## Properties
 
- Name               | Type                                                         | Description                          | Notes      
---------------------|--------------------------------------------------------------|--------------------------------------|------------
- **DiscountAmount** | Pointer to **float32**                                       |                                      | [optional] 
- **DiscountType**   | Pointer to [**BillingDiscountType**](BillingDiscountType.md) | The overall discount of the invoice. | [optional] 
- **DueDate**        | Pointer to **string**                                        |                                      | [optional] 
- **Memo**           | Pointer to **string**                                        |                                      | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**DiscountAmount** | Pointer to **float32** |  | [optional] 
+**DiscountType** | Pointer to [**BillingDiscountType**](BillingDiscountType.md) | The overall discount of the invoice. | [optional] 
+**DueDate** | Pointer to **string** |  | [optional] 
+**Memo** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +127,7 @@ SetMemo sets Memo field to given value.
 `func (o *UpdateInvoiceInfoRequest) HasMemo() bool`
 
 HasMemo returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -21,11 +21,11 @@ type BillingWalletStatus string
 
 // List of BillingWalletStatus
 const (
-	BillingWalletStatus_ACTIVE         BillingWalletStatus = "ACTIVE"
-	BillingWalletStatus_DELETED        BillingWalletStatus = "DELETED"
+	BillingWalletStatus_ACTIVE BillingWalletStatus = "ACTIVE"
+	BillingWalletStatus_DELETED BillingWalletStatus = "DELETED"
 	BillingWalletStatus_PENDING_VERIFY BillingWalletStatus = "PENDING_VERIFY"
-	BillingWalletStatus_EXPIRED        BillingWalletStatus = "EXPIRED"
-	BillingWalletStatus_CLOSED         BillingWalletStatus = "CLOSED"
+	BillingWalletStatus_EXPIRED BillingWalletStatus = "EXPIRED"
+	BillingWalletStatus_CLOSED BillingWalletStatus = "CLOSED"
 )
 
 // All allowed values of BillingWalletStatus enum
@@ -115,3 +115,4 @@ func (v *NullableBillingWalletStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

@@ -21,7 +21,7 @@ var _ MappedNullable = &AwsMarketplaceCppoOpportunityUpfrontPriceGrant{}
 // AwsMarketplaceCppoOpportunityUpfrontPriceGrant struct for AwsMarketplaceCppoOpportunityUpfrontPriceGrant
 type AwsMarketplaceCppoOpportunityUpfrontPriceGrant struct {
 	DimensionKey *string `json:"DimensionKey,omitempty"`
-	MaxQuantity  *int32  `json:"MaxQuantity,omitempty"`
+	MaxQuantity *int32 `json:"MaxQuantity,omitempty"`
 }
 
 // NewAwsMarketplaceCppoOpportunityUpfrontPriceGrant instantiates a new AwsMarketplaceCppoOpportunityUpfrontPriceGrant object
@@ -106,7 +106,7 @@ func (o *AwsMarketplaceCppoOpportunityUpfrontPriceGrant) SetMaxQuantity(v int32)
 }
 
 func (o AwsMarketplaceCppoOpportunityUpfrontPriceGrant) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAwsMarketplaceCppoOpportunityUpfrontPriceGrant) UnmarshalJSON(s
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

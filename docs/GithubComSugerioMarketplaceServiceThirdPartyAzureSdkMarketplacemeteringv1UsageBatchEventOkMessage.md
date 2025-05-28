@@ -2,18 +2,18 @@
 
 ## Properties
 
- Name                   | Type                                                                                                                                                                                                                         | Description                                                           | Notes      
-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|------------
- **Dimension**          | Pointer to **string**                                                                                                                                                                                                        | Dimension identifier                                                  | [optional] 
- **EffectiveStartTime** | Pointer to **string**                                                                                                                                                                                                        | Time in UTC when the usage event occurred                             | [optional] 
- **Error**              | Pointer to [**GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventConflictResponse**](GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventConflictResponse.md) |                                                                       | [optional] 
- **MessageTime**        | Pointer to **string**                                                                                                                                                                                                        | Time this message was created in UTC                                  | [optional] 
- **PlanId**             | Pointer to **string**                                                                                                                                                                                                        | Plan associated with the purchased offer                              | [optional] 
- **Quantity**           | Pointer to **float32**                                                                                                                                                                                                       | Number of units consumed                                              | [optional] 
- **ResourceId**         | Pointer to **string**                                                                                                                                                                                                        | Identifier of the resource against which usage is emitted             | [optional] 
- **ResourceUri**        | Pointer to **string**                                                                                                                                                                                                        | Identifier of the managed app resource against which usage is emitted | [optional] 
- **Status**             | Pointer to [**GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum**](GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum.md)             | Status of the operation.                                              | [optional] 
- **UsageEventId**       | Pointer to **string**                                                                                                                                                                                                        | Unique identifier associated with the usage event                     | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Dimension** | Pointer to **string** | Dimension identifier | [optional] 
+**EffectiveStartTime** | Pointer to **string** | Time in UTC when the usage event occurred | [optional] 
+**Error** | Pointer to [**GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventConflictResponse**](GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventConflictResponse.md) |  | [optional] 
+**MessageTime** | Pointer to **string** | Time this message was created in UTC | [optional] 
+**PlanId** | Pointer to **string** | Plan associated with the purchased offer | [optional] 
+**Quantity** | Pointer to **float32** | Number of units consumed | [optional] 
+**ResourceId** | Pointer to **string** | Identifier of the resource against which usage is emitted | [optional] 
+**ResourceUri** | Pointer to **string** | Identifier of the managed app resource against which usage is emitted | [optional] 
+**Status** | Pointer to [**GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum**](GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum.md) | Status of the operation. | [optional] 
+**UsageEventId** | Pointer to **string** | Unique identifier associated with the usage event | [optional] 
 
 ## Methods
 
@@ -21,8 +21,7 @@
 
 `func NewGithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessage() *GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessage`
 
-NewGithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessage instantiates a new
-GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessage object
+NewGithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessage instantiates a new GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessage object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
@@ -31,9 +30,7 @@ will change when the set of required properties is changed
 
 `func NewGithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessageWithDefaults() *GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessage`
 
-NewGithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessageWithDefaults
-instantiates a new GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessage
-object
+NewGithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessageWithDefaults instantiates a new GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessage object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
@@ -286,6 +283,7 @@ SetUsageEventId sets UsageEventId field to given value.
 `func (o *GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessage) HasUsageEventId() bool`
 
 HasUsageEventId returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

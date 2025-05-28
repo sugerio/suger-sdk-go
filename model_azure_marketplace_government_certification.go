@@ -107,7 +107,7 @@ func (o *AzureMarketplaceGovernmentCertification) SetName(v string) {
 }
 
 func (o AzureMarketplaceGovernmentCertification) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableAzureMarketplaceGovernmentCertification) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

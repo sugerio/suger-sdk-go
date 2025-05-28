@@ -20,12 +20,12 @@ var _ MappedNullable = &AzureMarketplacePriceAndAvailabilityCustomMeter{}
 
 // AzureMarketplacePriceAndAvailabilityCustomMeter struct for AzureMarketplacePriceAndAvailabilityCustomMeter
 type AzureMarketplacePriceAndAvailabilityCustomMeter struct {
-	Schema       *string                                                         `json:"$schema,omitempty"`
+	Schema *string `json:"$schema,omitempty"`
 	CustomMeters *map[string]AzureMarketplacePriceAndAvailabilityCustomMeterItem `json:"customMeters,omitempty"`
-	Id           *string                                                         `json:"id,omitempty"`
-	Product      *string                                                         `json:"product,omitempty"`
-	ResourceName *string                                                         `json:"resourceName,omitempty"`
-	Validations  []AzureMarketplaceValidation                                    `json:"validations,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Product *string `json:"product,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty"`
+	Validations []AzureMarketplaceValidation `json:"validations,omitempty"`
 }
 
 // NewAzureMarketplacePriceAndAvailabilityCustomMeter instantiates a new AzureMarketplacePriceAndAvailabilityCustomMeter object
@@ -238,7 +238,7 @@ func (o *AzureMarketplacePriceAndAvailabilityCustomMeter) SetValidations(v []Azu
 }
 
 func (o AzureMarketplacePriceAndAvailabilityCustomMeter) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,3 +303,5 @@ func (v *NullableAzureMarketplacePriceAndAvailabilityCustomMeter) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

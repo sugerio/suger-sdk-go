@@ -21,20 +21,20 @@ var _ MappedNullable = &BillingInvoice{}
 
 // BillingInvoice struct for BillingInvoice
 type BillingInvoice struct {
-	BuyerID       *string             `json:"buyerID,omitempty"`
-	CreationTime  *time.Time          `json:"creationTime,omitempty"`
-	EndDate       *time.Time          `json:"endDate,omitempty"`
-	EntitlementID *string             `json:"entitlementID,omitempty"`
-	Id            *string             `json:"id,omitempty"`
-	Info          *BillingInvoiceInfo `json:"info,omitempty"`
+	BuyerID *string `json:"buyerID,omitempty"`
+	CreationTime *time.Time `json:"creationTime,omitempty"`
+	EndDate *time.Time `json:"endDate,omitempty"`
+	EntitlementID *string `json:"entitlementID,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Info *BillingInvoiceInfo `json:"info,omitempty"`
 	// The invoice file URL, provided as AWS S3 presigned URL with expiration time. Output only.
-	InvoiceURL     *string               `json:"invoiceURL,omitempty"`
-	LastUpdateTime *time.Time            `json:"lastUpdateTime,omitempty"`
-	OrganizationID *string               `json:"organizationID,omitempty"`
-	PaymentStatus  *BillingPaymentStatus `json:"paymentStatus,omitempty"`
-	StartDate      *time.Time            `json:"startDate,omitempty"`
-	Status         *BillingInvoiceStatus `json:"status,omitempty"`
-	Type           *BillingInvoiceType   `json:"type,omitempty"`
+	InvoiceURL *string `json:"invoiceURL,omitempty"`
+	LastUpdateTime *time.Time `json:"lastUpdateTime,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
+	PaymentStatus *BillingPaymentStatus `json:"paymentStatus,omitempty"`
+	StartDate *time.Time `json:"startDate,omitempty"`
+	Status *BillingInvoiceStatus `json:"status,omitempty"`
+	Type *BillingInvoiceType `json:"type,omitempty"`
 }
 
 // NewBillingInvoice instantiates a new BillingInvoice object
@@ -471,7 +471,7 @@ func (o *BillingInvoice) SetType(v BillingInvoiceType) {
 }
 
 func (o BillingInvoice) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -557,3 +557,5 @@ func (v *NullableBillingInvoice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,13 +20,14 @@ import (
 	"strings"
 )
 
+
 // NotificationAPIService NotificationAPI service
 type NotificationAPIService service
 
 type ApiGetNotificationMessageRequest struct {
-	ctx                   context.Context
-	ApiService            *NotificationAPIService
-	orgId                 string
+	ctx context.Context
+	ApiService *NotificationAPIService
+	orgId string
 	notificationMessageId string
 }
 
@@ -39,29 +40,28 @@ GetNotificationMessage get notification message
 
 Get the notification message of the organization & notification message ID.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param notificationMessageId Notification Message ID
-	@return ApiGetNotificationMessageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param notificationMessageId Notification Message ID
+ @return ApiGetNotificationMessageRequest
 */
 func (a *NotificationAPIService) GetNotificationMessage(ctx context.Context, orgId string, notificationMessageId string) ApiGetNotificationMessageRequest {
 	return ApiGetNotificationMessageRequest{
-		ApiService:            a,
-		ctx:                   ctx,
-		orgId:                 orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		notificationMessageId: notificationMessageId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return NotificationMessage
+//  @return NotificationMessage
 func (a *NotificationAPIService) GetNotificationMessageExecute(r ApiGetNotificationMessageRequest) (*NotificationMessage, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *NotificationMessage
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *NotificationMessage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.GetNotificationMessage")
@@ -137,8 +137,8 @@ func (a *NotificationAPIService) GetNotificationMessageExecute(r ApiGetNotificat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -148,8 +148,8 @@ func (a *NotificationAPIService) GetNotificationMessageExecute(r ApiGetNotificat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -167,13 +167,13 @@ func (a *NotificationAPIService) GetNotificationMessageExecute(r ApiGetNotificat
 }
 
 type ApiListNotificationEventsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *NotificationAPIService
-	orgId      string
-	startDate  *string
-	endDate    *string
-	limit      *int32
-	offset     *int32
+	orgId string
+	startDate *string
+	endDate *string
+	limit *int32
+	offset *int32
 	priorities *string
 }
 
@@ -201,7 +201,7 @@ func (r ApiListNotificationEventsRequest) Offset(offset int32) ApiListNotificati
 	return r
 }
 
-// Filter by priorities, empty means all priorities. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma.
+// Filter by priorities, empty means HIGH and CRITICAL only. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma.
 func (r ApiListNotificationEventsRequest) Priorities(priorities string) ApiListNotificationEventsRequest {
 	r.priorities = &priorities
 	return r
@@ -216,27 +216,26 @@ ListNotificationEvents list notification events
 
 List the notification events of the given organization with pagination and optional filters.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListNotificationEventsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListNotificationEventsRequest
 */
 func (a *NotificationAPIService) ListNotificationEvents(ctx context.Context, orgId string) ApiListNotificationEventsRequest {
 	return ApiListNotificationEventsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListNotificationEventsResponse
+//  @return ListNotificationEventsResponse
 func (a *NotificationAPIService) ListNotificationEventsExecute(r ApiListNotificationEventsRequest) (*ListNotificationEventsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListNotificationEventsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListNotificationEventsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.ListNotificationEvents")
@@ -326,8 +325,8 @@ func (a *NotificationAPIService) ListNotificationEventsExecute(r ApiListNotifica
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -337,8 +336,8 @@ func (a *NotificationAPIService) ListNotificationEventsExecute(r ApiListNotifica
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -356,13 +355,13 @@ func (a *NotificationAPIService) ListNotificationEventsExecute(r ApiListNotifica
 }
 
 type ApiListNotificationEventsByEntityRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *NotificationAPIService
-	orgId      string
+	orgId string
 	entityType string
-	entityId   string
-	limit      *int32
-	offset     *int32
+	entityId string
+	limit *int32
+	offset *int32
 }
 
 // List pagination size, default 1000, max value is 1000
@@ -386,31 +385,30 @@ ListNotificationEventsByEntity list notification events by entity
 
 List the notification events of the given organization and entity with pagination.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entityType Entity type, valid values are: PRODUCT, OFFER, ENTITLEMENT, INTEGRATION etc.
-	@param entityId Entity ID
-	@return ApiListNotificationEventsByEntityRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entityType Entity type, valid values are: PRODUCT, OFFER, ENTITLEMENT, INTEGRATION etc.
+ @param entityId Entity ID
+ @return ApiListNotificationEventsByEntityRequest
 */
 func (a *NotificationAPIService) ListNotificationEventsByEntity(ctx context.Context, orgId string, entityType string, entityId string) ApiListNotificationEventsByEntityRequest {
 	return ApiListNotificationEventsByEntityRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 		entityType: entityType,
-		entityId:   entityId,
+		entityId: entityId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListNotificationEventsResponse
+//  @return ListNotificationEventsResponse
 func (a *NotificationAPIService) ListNotificationEventsByEntityExecute(r ApiListNotificationEventsByEntityRequest) (*ListNotificationEventsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListNotificationEventsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListNotificationEventsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.ListNotificationEventsByEntity")
@@ -493,8 +491,8 @@ func (a *NotificationAPIService) ListNotificationEventsByEntityExecute(r ApiList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -504,8 +502,8 @@ func (a *NotificationAPIService) ListNotificationEventsByEntityExecute(r ApiList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -523,11 +521,11 @@ func (a *NotificationAPIService) ListNotificationEventsByEntityExecute(r ApiList
 }
 
 type ApiListNotificationMessagesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *NotificationAPIService
-	orgId      string
-	limit      *int32
-	offset     *int32
+	orgId string
+	limit *int32
+	offset *int32
 }
 
 // List pagination size, default 1000, max value is 1000
@@ -551,27 +549,26 @@ ListNotificationMessages list notification messages
 
 List the notification messages of the given organization with pagination.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListNotificationMessagesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListNotificationMessagesRequest
 */
 func (a *NotificationAPIService) ListNotificationMessages(ctx context.Context, orgId string) ApiListNotificationMessagesRequest {
 	return ApiListNotificationMessagesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListNotificationMessagesResponse
+//  @return ListNotificationMessagesResponse
 func (a *NotificationAPIService) ListNotificationMessagesExecute(r ApiListNotificationMessagesRequest) (*ListNotificationMessagesResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListNotificationMessagesResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListNotificationMessagesResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.ListNotificationMessages")
@@ -652,8 +649,8 @@ func (a *NotificationAPIService) ListNotificationMessagesExecute(r ApiListNotifi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -663,8 +660,8 @@ func (a *NotificationAPIService) ListNotificationMessagesExecute(r ApiListNotifi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

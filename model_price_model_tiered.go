@@ -73,7 +73,7 @@ func (o *PriceModelTiered) SetTiers(v []PriceModelTieredConfig) {
 }
 
 func (o PriceModelTiered) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,3 +123,5 @@ func (v *NullablePriceModelTiered) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

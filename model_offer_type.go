@@ -21,27 +21,28 @@ type OfferType string
 
 // List of OfferType
 const (
-	OfferType_UNKNOWN                OfferType = "UNKNOWN"
-	OfferType_AMI                    OfferType = "AMI"
-	OfferType_APPLICATION            OfferType = "APPLICATION"
-	OfferType_CONTAINER              OfferType = "CONTAINER"
-	OfferType_CONTRACT               OfferType = "CONTRACT"
-	OfferType_CPPO_OUT               OfferType = "CPPO_OUT"
-	OfferType_CPPO_IN                OfferType = "CPPO_IN"
-	OfferType_CPPO                   OfferType = "CPPO"
-	OfferType_CUD                    OfferType = "CUD"
-	OfferType_DATA                   OfferType = "DATA"
-	OfferType_DEFAULT                OfferType = "DEFAULT"
-	OfferType_FIXED_FEE              OfferType = "FIXED_FEE"
+	OfferType_UNKNOWN OfferType = "UNKNOWN"
+	OfferType_AMI OfferType = "AMI"
+	OfferType_APPLICATION OfferType = "APPLICATION"
+	OfferType_CONTAINER OfferType = "CONTAINER"
+	OfferType_CONTRACT OfferType = "CONTRACT"
+	OfferType_CPPO_OUT OfferType = "CPPO_OUT"
+	OfferType_CPPO_IN OfferType = "CPPO_IN"
+	OfferType_CPPO OfferType = "CPPO"
+	OfferType_CUD OfferType = "CUD"
+	OfferType_DATA OfferType = "DATA"
+	OfferType_DEFAULT OfferType = "DEFAULT"
+	OfferType_FIXED_FEE OfferType = "FIXED_FEE"
 	OfferType_FIXED_FEE_WITH_OVERAGE OfferType = "FIXED_FEE_WITH_OVERAGE"
-	OfferType_FLAT_RATE              OfferType = "FLAT_RATE"
-	OfferType_FREE_TRIAL             OfferType = "FREE_TRIAL"
-	OfferType_PAYG                   OfferType = "PAYG"
-	OfferType_PAYG_WITH_CUD          OfferType = "PAYG_WITH_CUD"
-	OfferType_PER_USER               OfferType = "PER_USER"
-	OfferType_PRIVATE                OfferType = "PRIVATE"
-	OfferType_PROFESSIONAL_SERVICES  OfferType = "PROFESSIONAL_SERVICES"
-	OfferType_SUBSCRIPTION           OfferType = "SUBSCRIPTION"
+	OfferType_FLAT_RATE OfferType = "FLAT_RATE"
+	OfferType_FREE_TRIAL OfferType = "FREE_TRIAL"
+	OfferType_PAYG OfferType = "PAYG"
+	OfferType_PAYG_WITH_CUD OfferType = "PAYG_WITH_CUD"
+	OfferType_PER_USER OfferType = "PER_USER"
+	OfferType_PRIVATE OfferType = "PRIVATE"
+	OfferType_PROFESSIONAL_SERVICES OfferType = "PROFESSIONAL_SERVICES"
+	OfferType_SUBSCRIPTION OfferType = "SUBSCRIPTION"
+	OfferType_MACHINE_LEARNING OfferType = "MACHINE_LEARNING"
 )
 
 // All allowed values of OfferType enum
@@ -67,6 +68,7 @@ var AllowedOfferTypeEnumValues = []OfferType{
 	"PRIVATE",
 	"PROFESSIONAL_SERVICES",
 	"SUBSCRIPTION",
+	"MACHINE_LEARNING",
 }
 
 func (v *OfferType) UnmarshalJSON(src []byte) error {
@@ -147,3 +149,4 @@ func (v *NullableOfferType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

@@ -20,6 +20,8 @@ var _ MappedNullable = &GcpUserInfo{}
 
 // GcpUserInfo struct for GcpUserInfo
 type GcpUserInfo struct {
+	// a list of unique order IDs for each entitlement ID that indicates the different offers on the same product. This field is available only if multiple orders of the same product is enabled
+	Orders []string `json:"orders,omitempty"`
 	// An array of strings representing the user's roles. Right now, it can be either: ** account_admin, which indicates that the user is a Billing Account Administrator of the billing account that purchased the product, or ** project_editor, which indicates that the user is a Project Editor, but not a Billing Administrator, of the project under that billing account.
 	Roles []string `json:"roles,omitempty"`
 	// The user's obfuscated GAIA ID, which can be used to initiate Open ID Connect.
@@ -41,6 +43,38 @@ func NewGcpUserInfo() *GcpUserInfo {
 func NewGcpUserInfoWithDefaults() *GcpUserInfo {
 	this := GcpUserInfo{}
 	return &this
+}
+
+// GetOrders returns the Orders field value if set, zero value otherwise.
+func (o *GcpUserInfo) GetOrders() []string {
+	if o == nil || IsNil(o.Orders) {
+		var ret []string
+		return ret
+	}
+	return o.Orders
+}
+
+// GetOrdersOk returns a tuple with the Orders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GcpUserInfo) GetOrdersOk() ([]string, bool) {
+	if o == nil || IsNil(o.Orders) {
+		return nil, false
+	}
+	return o.Orders, true
+}
+
+// HasOrders returns a boolean if a field has been set.
+func (o *GcpUserInfo) HasOrders() bool {
+	if o != nil && !IsNil(o.Orders) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrders gets a reference to the given []string and assigns it to the Orders field.
+func (o *GcpUserInfo) SetOrders(v []string) {
+	o.Orders = v
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
@@ -108,7 +142,7 @@ func (o *GcpUserInfo) SetUserIdentity(v string) {
 }
 
 func (o GcpUserInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -117,6 +151,9 @@ func (o GcpUserInfo) MarshalJSON() ([]byte, error) {
 
 func (o GcpUserInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Orders) {
+		toSerialize["orders"] = o.Orders
+	}
 	if !IsNil(o.Roles) {
 		toSerialize["roles"] = o.Roles
 	}
@@ -161,3 +198,5 @@ func (v *NullableGcpUserInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

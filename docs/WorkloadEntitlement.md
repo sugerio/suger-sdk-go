@@ -2,29 +2,29 @@
 
 ## Properties
 
- Name                  | Type                                                     | Description | Notes      
------------------------|----------------------------------------------------------|-------------|------------
- **BuyerID**           | Pointer to **string**                                    |             | [optional] 
- **CreationTime**      | Pointer to **time.Time**                                 |             | [optional] 
- **EndTime**           | Pointer to **time.Time**                                 | nullable    | [optional] 
- **EntitlementTermID** | Pointer to **string**                                    |             | [optional] 
- **ExternalBuyerID**   | Pointer to **string**                                    |             | [optional] 
- **ExternalID**        | Pointer to **string**                                    |             | [optional] 
- **ExternalProductID** | Pointer to **string**                                    |             | [optional] 
- **Id**                | Pointer to **string**                                    |             | [optional] 
- **Info**              | Pointer to [**EntitlementInfo**](EntitlementInfo.md)     |             | [optional] 
- **LastUpdateTime**    | Pointer to **time.Time**                                 |             | [optional] 
- **MetaInfo**          | Pointer to [**WorkloadMetaInfo**](WorkloadMetaInfo.md)   |             | [optional] 
- **Name**              | Pointer to **string**                                    |             | [optional] 
- **OfferID**           | Pointer to **string**                                    |             | [optional] 
- **OrganizationID**    | Pointer to **string**                                    |             | [optional] 
- **Partner**           | Pointer to [**Partner**](Partner.md)                     |             | [optional] 
- **PartnerID**         | Pointer to **string**                                    |             | [optional] 
- **ProductID**         | Pointer to **string**                                    |             | [optional] 
- **Service**           | Pointer to [**PartnerService**](PartnerService.md)       |             | [optional] 
- **StartTime**         | Pointer to **time.Time**                                 |             | [optional] 
- **Status**            | Pointer to [**EntitlementStatus**](EntitlementStatus.md) |             | [optional] 
- **Type**              | Pointer to **string**                                    |             | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**BuyerID** | Pointer to **string** |  | [optional] 
+**CreationTime** | Pointer to **time.Time** |  | [optional] 
+**EndTime** | Pointer to **time.Time** | nullable | [optional] 
+**EntitlementTermID** | Pointer to **string** |  | [optional] 
+**ExternalBuyerID** | Pointer to **string** |  | [optional] 
+**ExternalID** | Pointer to **string** |  | [optional] 
+**ExternalProductID** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
+**Info** | Pointer to [**EntitlementInfo**](EntitlementInfo.md) |  | [optional] 
+**LastUpdateTime** | Pointer to **time.Time** |  | [optional] 
+**MetaInfo** | Pointer to [**WorkloadMetaInfo**](WorkloadMetaInfo.md) |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
+**OfferID** | Pointer to **string** |  | [optional] 
+**OrganizationID** | Pointer to **string** |  | [optional] 
+**Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
+**PartnerID** | Pointer to **string** |  | [optional] 
+**ProductID** | Pointer to **string** |  | [optional] 
+**Service** | Pointer to [**PartnerService**](PartnerService.md) |  | [optional] 
+**StartTime** | Pointer to **time.Time** |  | [optional] 
+**Status** | Pointer to [**EntitlementStatus**](EntitlementStatus.md) |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
 

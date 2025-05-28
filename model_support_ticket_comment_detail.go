@@ -21,10 +21,10 @@ var _ MappedNullable = &SupportTicketCommentDetail{}
 // SupportTicketCommentDetail struct for SupportTicketCommentDetail
 type SupportTicketCommentDetail struct {
 	Attachment *SupportTicketAttachment `json:"attachment,omitempty"`
-	Frame      *SupportTicketFrame      `json:"frame,omitempty"`
-	Image      *SupportTicketImage      `json:"image,omitempty"`
-	Text       *string                  `json:"text,omitempty"`
-	Type       *string                  `json:"type,omitempty"`
+	Frame *SupportTicketFrame `json:"frame,omitempty"`
+	Image *SupportTicketImage `json:"image,omitempty"`
+	Text *string `json:"text,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewSupportTicketCommentDetail instantiates a new SupportTicketCommentDetail object
@@ -205,7 +205,7 @@ func (o *SupportTicketCommentDetail) SetType(v string) {
 }
 
 func (o SupportTicketCommentDetail) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -267,3 +267,5 @@ func (v *NullableSupportTicketCommentDetail) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

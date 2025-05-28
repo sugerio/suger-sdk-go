@@ -20,15 +20,16 @@ import (
 	"strings"
 )
 
+
 // EntitlementAPIService EntitlementAPI service
 type EntitlementAPIService service
 
 type ApiAddEntitlementCreditRequest struct {
-	ctx           context.Context
-	ApiService    *EntitlementAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
 	entitlementId string
-	data          *AddEntitlementCreditParams
+	data *AddEntitlementCreditParams
 }
 
 // RequestBody
@@ -46,29 +47,28 @@ AddEntitlementCredit add entitlement credit
 
 Add the credit amount to the given Entitlement. The credit amount is accumulated & saved in the current Entitlement Term of the gvien Entitlement.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@return ApiAddEntitlementCreditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiAddEntitlementCreditRequest
 */
 func (a *EntitlementAPIService) AddEntitlementCredit(ctx context.Context, orgId string, entitlementId string) ApiAddEntitlementCreditRequest {
 	return ApiAddEntitlementCreditRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		orgId:         orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		entitlementId: entitlementId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AddEntitlementCreditResponse
+//  @return AddEntitlementCreditResponse
 func (a *EntitlementAPIService) AddEntitlementCreditExecute(r ApiAddEntitlementCreditRequest) (*AddEntitlementCreditResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AddEntitlementCreditResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AddEntitlementCreditResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.AddEntitlementCredit")
@@ -149,8 +149,8 @@ func (a *EntitlementAPIService) AddEntitlementCreditExecute(r ApiAddEntitlementC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -160,8 +160,8 @@ func (a *EntitlementAPIService) AddEntitlementCreditExecute(r ApiAddEntitlementC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -179,11 +179,11 @@ func (a *EntitlementAPIService) AddEntitlementCreditExecute(r ApiAddEntitlementC
 }
 
 type ApiApplyAddonToEntitlementRequest struct {
-	ctx           context.Context
-	ApiService    *EntitlementAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
 	entitlementId string
-	data          *BillingAddonRecord
+	data *BillingAddonRecord
 }
 
 // RequestBody
@@ -201,29 +201,28 @@ ApplyAddonToEntitlement apply addon to entitlement
 
 Apply one billing addon to the given Entitlement. The entitlement status must be ACTIVE.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@return ApiApplyAddonToEntitlementRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiApplyAddonToEntitlementRequest
 */
 func (a *EntitlementAPIService) ApplyAddonToEntitlement(ctx context.Context, orgId string, entitlementId string) ApiApplyAddonToEntitlementRequest {
 	return ApiApplyAddonToEntitlementRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		orgId:         orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		entitlementId: entitlementId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadEntitlement
+//  @return WorkloadEntitlement
 func (a *EntitlementAPIService) ApplyAddonToEntitlementExecute(r ApiApplyAddonToEntitlementRequest) (*WorkloadEntitlement, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadEntitlement
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadEntitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.ApplyAddonToEntitlement")
@@ -304,8 +303,8 @@ func (a *EntitlementAPIService) ApplyAddonToEntitlementExecute(r ApiApplyAddonTo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -315,8 +314,8 @@ func (a *EntitlementAPIService) ApplyAddonToEntitlementExecute(r ApiApplyAddonTo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -334,9 +333,9 @@ func (a *EntitlementAPIService) ApplyAddonToEntitlementExecute(r ApiApplyAddonTo
 }
 
 type ApiApproveEntitlementRequest struct {
-	ctx           context.Context
-	ApiService    *EntitlementAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
 	entitlementId string
 }
 
@@ -349,29 +348,28 @@ ApproveEntitlement approve entitlement
 
 Approve the given Entitlement. Only applicable to the Azure or GCP Entitlements with the status of "PENDING_START". Return 200 if the entitlement is already active.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@return ApiApproveEntitlementRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiApproveEntitlementRequest
 */
 func (a *EntitlementAPIService) ApproveEntitlement(ctx context.Context, orgId string, entitlementId string) ApiApproveEntitlementRequest {
 	return ApiApproveEntitlementRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		orgId:         orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		entitlementId: entitlementId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadEntitlement
+//  @return WorkloadEntitlement
 func (a *EntitlementAPIService) ApproveEntitlementExecute(r ApiApproveEntitlementRequest) (*WorkloadEntitlement, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadEntitlement
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadEntitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.ApproveEntitlement")
@@ -447,8 +445,8 @@ func (a *EntitlementAPIService) ApproveEntitlementExecute(r ApiApproveEntitlemen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -458,8 +456,8 @@ func (a *EntitlementAPIService) ApproveEntitlementExecute(r ApiApproveEntitlemen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -469,8 +467,8 @@ func (a *EntitlementAPIService) ApproveEntitlementExecute(r ApiApproveEntitlemen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -488,9 +486,9 @@ func (a *EntitlementAPIService) ApproveEntitlementExecute(r ApiApproveEntitlemen
 }
 
 type ApiCancelEntitlementRequest struct {
-	ctx           context.Context
-	ApiService    *EntitlementAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
 	entitlementId string
 }
 
@@ -503,29 +501,28 @@ CancelEntitlement cancel entitlement
 
 Cancel the active subscription in Azure Marketplace.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@return ApiCancelEntitlementRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiCancelEntitlementRequest
 */
 func (a *EntitlementAPIService) CancelEntitlement(ctx context.Context, orgId string, entitlementId string) ApiCancelEntitlementRequest {
 	return ApiCancelEntitlementRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		orgId:         orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		entitlementId: entitlementId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadEntitlement
+//  @return WorkloadEntitlement
 func (a *EntitlementAPIService) CancelEntitlementExecute(r ApiCancelEntitlementRequest) (*WorkloadEntitlement, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadEntitlement
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadEntitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.CancelEntitlement")
@@ -601,8 +598,8 @@ func (a *EntitlementAPIService) CancelEntitlementExecute(r ApiCancelEntitlementR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -612,8 +609,8 @@ func (a *EntitlementAPIService) CancelEntitlementExecute(r ApiCancelEntitlementR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -623,8 +620,8 @@ func (a *EntitlementAPIService) CancelEntitlementExecute(r ApiCancelEntitlementR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -642,10 +639,10 @@ func (a *EntitlementAPIService) CancelEntitlementExecute(r ApiCancelEntitlementR
 }
 
 type ApiCreateEntitlementRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *EntitlementAPIService
-	orgId      string
-	data       *CreateEntitlementParams
+	orgId string
+	data *CreateEntitlementParams
 }
 
 // RequestBody
@@ -663,27 +660,26 @@ CreateEntitlement create entitlement
 
 Create an new entitlement for the given buyer & offer. Only applicable to non cloud billing partners.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiCreateEntitlementRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiCreateEntitlementRequest
 */
 func (a *EntitlementAPIService) CreateEntitlement(ctx context.Context, orgId string) ApiCreateEntitlementRequest {
 	return ApiCreateEntitlementRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadEntitlement
+//  @return WorkloadEntitlement
 func (a *EntitlementAPIService) CreateEntitlementExecute(r ApiCreateEntitlementRequest) (*WorkloadEntitlement, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadEntitlement
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadEntitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.CreateEntitlement")
@@ -763,8 +759,8 @@ func (a *EntitlementAPIService) CreateEntitlementExecute(r ApiCreateEntitlementR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -774,8 +770,8 @@ func (a *EntitlementAPIService) CreateEntitlementExecute(r ApiCreateEntitlementR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -793,10 +789,10 @@ func (a *EntitlementAPIService) CreateEntitlementExecute(r ApiCreateEntitlementR
 }
 
 type ApiDeleteEntitlementTermRequest struct {
-	ctx               context.Context
-	ApiService        *EntitlementAPIService
-	orgId             string
-	entitlementId     string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
+	entitlementId string
 	entitlementTermId string
 }
 
@@ -809,31 +805,30 @@ DeleteEntitlementTerm delete entitlement term
 
 Delete the entitlement term by the given entitlement ID and entitlement term ID. Only allow to delete the divided entitlement term.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@param entitlementTermId Entitlement Term ID
-	@return ApiDeleteEntitlementTermRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @param entitlementTermId Entitlement Term ID
+ @return ApiDeleteEntitlementTermRequest
 */
 func (a *EntitlementAPIService) DeleteEntitlementTerm(ctx context.Context, orgId string, entitlementId string, entitlementTermId string) ApiDeleteEntitlementTermRequest {
 	return ApiDeleteEntitlementTermRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		orgId:             orgId,
-		entitlementId:     entitlementId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		entitlementId: entitlementId,
 		entitlementTermId: entitlementTermId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *EntitlementAPIService) DeleteEntitlementTermExecute(r ApiDeleteEntitlementTermRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.DeleteEntitlementTerm")
@@ -910,8 +905,8 @@ func (a *EntitlementAPIService) DeleteEntitlementTermExecute(r ApiDeleteEntitlem
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -921,8 +916,8 @@ func (a *EntitlementAPIService) DeleteEntitlementTermExecute(r ApiDeleteEntitlem
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -940,11 +935,11 @@ func (a *EntitlementAPIService) DeleteEntitlementTermExecute(r ApiDeleteEntitlem
 }
 
 type ApiDivideEntitlementCommitRequest struct {
-	ctx           context.Context
-	ApiService    *EntitlementAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
 	entitlementId string
-	data          *DivideEntitlementCommitParams
+	data *DivideEntitlementCommitParams
 }
 
 // RequestBody
@@ -962,29 +957,28 @@ DivideEntitlementCommit divide entitlement commit
 
 Divide the commit equally from the given entitlement into sub entitlement terms based on the given time periods.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@return ApiDivideEntitlementCommitRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiDivideEntitlementCommitRequest
 */
 func (a *EntitlementAPIService) DivideEntitlementCommit(ctx context.Context, orgId string, entitlementId string) ApiDivideEntitlementCommitRequest {
 	return ApiDivideEntitlementCommitRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		orgId:         orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		entitlementId: entitlementId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *EntitlementAPIService) DivideEntitlementCommitExecute(r ApiDivideEntitlementCommitRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.DivideEntitlementCommit")
@@ -1065,8 +1059,8 @@ func (a *EntitlementAPIService) DivideEntitlementCommitExecute(r ApiDivideEntitl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1076,8 +1070,8 @@ func (a *EntitlementAPIService) DivideEntitlementCommitExecute(r ApiDivideEntitl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1095,9 +1089,9 @@ func (a *EntitlementAPIService) DivideEntitlementCommitExecute(r ApiDivideEntitl
 }
 
 type ApiGetEntitlementRequest struct {
-	ctx           context.Context
-	ApiService    *EntitlementAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
 	entitlementId string
 }
 
@@ -1110,29 +1104,28 @@ GetEntitlement get entitlement
 
 Get the entitlement by ID.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@return ApiGetEntitlementRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiGetEntitlementRequest
 */
 func (a *EntitlementAPIService) GetEntitlement(ctx context.Context, orgId string, entitlementId string) ApiGetEntitlementRequest {
 	return ApiGetEntitlementRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		orgId:         orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		entitlementId: entitlementId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadEntitlement
+//  @return WorkloadEntitlement
 func (a *EntitlementAPIService) GetEntitlementExecute(r ApiGetEntitlementRequest) (*WorkloadEntitlement, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadEntitlement
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadEntitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.GetEntitlement")
@@ -1208,8 +1201,8 @@ func (a *EntitlementAPIService) GetEntitlementExecute(r ApiGetEntitlementRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1219,8 +1212,8 @@ func (a *EntitlementAPIService) GetEntitlementExecute(r ApiGetEntitlementRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1230,8 +1223,8 @@ func (a *EntitlementAPIService) GetEntitlementExecute(r ApiGetEntitlementRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1249,10 +1242,10 @@ func (a *EntitlementAPIService) GetEntitlementExecute(r ApiGetEntitlementRequest
 }
 
 type ApiGetEntitlementTermRequest struct {
-	ctx               context.Context
-	ApiService        *EntitlementAPIService
-	orgId             string
-	entitlementId     string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
+	entitlementId string
 	entitlementTermId string
 }
 
@@ -1265,31 +1258,30 @@ GetEntitlementTerm get entitlement term
 
 Get the entitlement term by ID.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@param entitlementTermId Entitlement Term ID
-	@return ApiGetEntitlementTermRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @param entitlementTermId Entitlement Term ID
+ @return ApiGetEntitlementTermRequest
 */
 func (a *EntitlementAPIService) GetEntitlementTerm(ctx context.Context, orgId string, entitlementId string, entitlementTermId string) ApiGetEntitlementTermRequest {
 	return ApiGetEntitlementTermRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		orgId:             orgId,
-		entitlementId:     entitlementId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		entitlementId: entitlementId,
 		entitlementTermId: entitlementTermId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadEntitlementTerm
+//  @return WorkloadEntitlementTerm
 func (a *EntitlementAPIService) GetEntitlementTermExecute(r ApiGetEntitlementTermRequest) (*WorkloadEntitlementTerm, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadEntitlementTerm
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadEntitlementTerm
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.GetEntitlementTerm")
@@ -1366,8 +1358,8 @@ func (a *EntitlementAPIService) GetEntitlementTermExecute(r ApiGetEntitlementTer
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1377,8 +1369,8 @@ func (a *EntitlementAPIService) GetEntitlementTermExecute(r ApiGetEntitlementTer
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1396,9 +1388,9 @@ func (a *EntitlementAPIService) GetEntitlementTermExecute(r ApiGetEntitlementTer
 }
 
 type ApiListEntitlementTermsRequest struct {
-	ctx           context.Context
-	ApiService    *EntitlementAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
 	entitlementId string
 }
 
@@ -1411,29 +1403,28 @@ ListEntitlementTerms list entitlement terms
 
 List all Entitlement Terms of the given Entitlement.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@return ApiListEntitlementTermsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiListEntitlementTermsRequest
 */
 func (a *EntitlementAPIService) ListEntitlementTerms(ctx context.Context, orgId string, entitlementId string) ApiListEntitlementTermsRequest {
 	return ApiListEntitlementTermsRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		orgId:         orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		entitlementId: entitlementId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []WorkloadEntitlementTerm
+//  @return []WorkloadEntitlementTerm
 func (a *EntitlementAPIService) ListEntitlementTermsExecute(r ApiListEntitlementTermsRequest) ([]WorkloadEntitlementTerm, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []WorkloadEntitlementTerm
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []WorkloadEntitlementTerm
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.ListEntitlementTerms")
@@ -1509,8 +1500,8 @@ func (a *EntitlementAPIService) ListEntitlementTermsExecute(r ApiListEntitlement
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1520,8 +1511,8 @@ func (a *EntitlementAPIService) ListEntitlementTermsExecute(r ApiListEntitlement
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1539,17 +1530,17 @@ func (a *EntitlementAPIService) ListEntitlementTermsExecute(r ApiListEntitlement
 }
 
 type ApiListEntitlementsRequest struct {
-	ctx            context.Context
-	ApiService     *EntitlementAPIService
-	orgId          string
-	partner        *string
-	productId      *string
-	offerId        *string
-	buyerId        *string
-	externalId     *string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
+	partner *string
+	productId *string
+	offerId *string
+	buyerId *string
+	externalId *string
 	buyerAccountId *string
-	limit          *int32
-	offset         *int32
+	limit *int32
+	offset *int32
 }
 
 // filter by partner
@@ -1609,27 +1600,26 @@ ListEntitlements list entitlements
 
 List entitlements under the given organization with pagination and optional filters.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListEntitlementsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListEntitlementsRequest
 */
 func (a *EntitlementAPIService) ListEntitlements(ctx context.Context, orgId string) ApiListEntitlementsRequest {
 	return ApiListEntitlementsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []WorkloadEntitlement
+//  @return []WorkloadEntitlement
 func (a *EntitlementAPIService) ListEntitlementsExecute(r ApiListEntitlementsRequest) ([]WorkloadEntitlement, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []WorkloadEntitlement
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []WorkloadEntitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.ListEntitlements")
@@ -1728,8 +1718,8 @@ func (a *EntitlementAPIService) ListEntitlementsExecute(r ApiListEntitlementsReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1739,8 +1729,8 @@ func (a *EntitlementAPIService) ListEntitlementsExecute(r ApiListEntitlementsReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1758,11 +1748,11 @@ func (a *EntitlementAPIService) ListEntitlementsExecute(r ApiListEntitlementsReq
 }
 
 type ApiScheduleEntitlementCancellationRequest struct {
-	ctx           context.Context
-	ApiService    *EntitlementAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
 	entitlementId string
-	data          *CancellationSchedule
+	data *CancellationSchedule
 }
 
 // RequestBody
@@ -1780,29 +1770,28 @@ ScheduleEntitlementCancellation schedule entitlement cancellation
 
 Schedule the cancellation of the given Entitlement.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@return ApiScheduleEntitlementCancellationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiScheduleEntitlementCancellationRequest
 */
 func (a *EntitlementAPIService) ScheduleEntitlementCancellation(ctx context.Context, orgId string, entitlementId string) ApiScheduleEntitlementCancellationRequest {
 	return ApiScheduleEntitlementCancellationRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		orgId:         orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		entitlementId: entitlementId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadEntitlement
+//  @return WorkloadEntitlement
 func (a *EntitlementAPIService) ScheduleEntitlementCancellationExecute(r ApiScheduleEntitlementCancellationRequest) (*WorkloadEntitlement, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadEntitlement
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadEntitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.ScheduleEntitlementCancellation")
@@ -1883,8 +1872,8 @@ func (a *EntitlementAPIService) ScheduleEntitlementCancellationExecute(r ApiSche
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1894,8 +1883,8 @@ func (a *EntitlementAPIService) ScheduleEntitlementCancellationExecute(r ApiSche
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1913,9 +1902,9 @@ func (a *EntitlementAPIService) ScheduleEntitlementCancellationExecute(r ApiSche
 }
 
 type ApiUnscheduleEntitlementCancellationRequest struct {
-	ctx           context.Context
-	ApiService    *EntitlementAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
 	entitlementId string
 }
 
@@ -1928,29 +1917,28 @@ UnscheduleEntitlementCancellation unschedule entitlement cancellation
 
 Unschedule the cancellation of the given Entitlement.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@return ApiUnscheduleEntitlementCancellationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiUnscheduleEntitlementCancellationRequest
 */
 func (a *EntitlementAPIService) UnscheduleEntitlementCancellation(ctx context.Context, orgId string, entitlementId string) ApiUnscheduleEntitlementCancellationRequest {
 	return ApiUnscheduleEntitlementCancellationRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		orgId:         orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		entitlementId: entitlementId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadEntitlement
+//  @return WorkloadEntitlement
 func (a *EntitlementAPIService) UnscheduleEntitlementCancellationExecute(r ApiUnscheduleEntitlementCancellationRequest) (*WorkloadEntitlement, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadEntitlement
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadEntitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.UnscheduleEntitlementCancellation")
@@ -2026,8 +2014,8 @@ func (a *EntitlementAPIService) UnscheduleEntitlementCancellationExecute(r ApiUn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2037,8 +2025,8 @@ func (a *EntitlementAPIService) UnscheduleEntitlementCancellationExecute(r ApiUn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2056,11 +2044,11 @@ func (a *EntitlementAPIService) UnscheduleEntitlementCancellationExecute(r ApiUn
 }
 
 type ApiUpdateEntitlementMetaInfoRequest struct {
-	ctx           context.Context
-	ApiService    *EntitlementAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
 	entitlementId string
-	data          *WorkloadMetaInfo
+	data *WorkloadMetaInfo
 }
 
 // Entitlement meta info to update
@@ -2078,29 +2066,28 @@ UpdateEntitlementMetaInfo update entitlement meta info
 
 Update the meta info of the given entitlement.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@return ApiUpdateEntitlementMetaInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiUpdateEntitlementMetaInfoRequest
 */
 func (a *EntitlementAPIService) UpdateEntitlementMetaInfo(ctx context.Context, orgId string, entitlementId string) ApiUpdateEntitlementMetaInfoRequest {
 	return ApiUpdateEntitlementMetaInfoRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		orgId:         orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		entitlementId: entitlementId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadMetaInfo
+//  @return WorkloadMetaInfo
 func (a *EntitlementAPIService) UpdateEntitlementMetaInfoExecute(r ApiUpdateEntitlementMetaInfoRequest) (*WorkloadMetaInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadMetaInfo
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadMetaInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.UpdateEntitlementMetaInfo")
@@ -2181,8 +2168,8 @@ func (a *EntitlementAPIService) UpdateEntitlementMetaInfoExecute(r ApiUpdateEnti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2192,8 +2179,8 @@ func (a *EntitlementAPIService) UpdateEntitlementMetaInfoExecute(r ApiUpdateEnti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2211,11 +2198,11 @@ func (a *EntitlementAPIService) UpdateEntitlementMetaInfoExecute(r ApiUpdateEnti
 }
 
 type ApiUpdateEntitlementNameRequest struct {
-	ctx           context.Context
-	ApiService    *EntitlementAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
 	entitlementId string
-	data          *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibUpdateEntitlementNameParams
+	data *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibUpdateEntitlementNameParams
 }
 
 // UpdateEntitlementNameParams
@@ -2233,29 +2220,28 @@ UpdateEntitlementName update entitlement name
 
 Update the name of the given Entitlement.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@return ApiUpdateEntitlementNameRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiUpdateEntitlementNameRequest
 */
 func (a *EntitlementAPIService) UpdateEntitlementName(ctx context.Context, orgId string, entitlementId string) ApiUpdateEntitlementNameRequest {
 	return ApiUpdateEntitlementNameRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		orgId:         orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		entitlementId: entitlementId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadEntitlement
+//  @return WorkloadEntitlement
 func (a *EntitlementAPIService) UpdateEntitlementNameExecute(r ApiUpdateEntitlementNameRequest) (*WorkloadEntitlement, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadEntitlement
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadEntitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.UpdateEntitlementName")
@@ -2336,8 +2322,8 @@ func (a *EntitlementAPIService) UpdateEntitlementNameExecute(r ApiUpdateEntitlem
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2347,8 +2333,162 @@ func (a *EntitlementAPIService) UpdateEntitlementNameExecute(r ApiUpdateEntitlem
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateEntitlementPriceModelRequest struct {
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
+	entitlementId string
+	data *UpdateEntitlementPriceModelParams
+}
+
+// Entitlement price model update params
+func (r ApiUpdateEntitlementPriceModelRequest) Data(data UpdateEntitlementPriceModelParams) ApiUpdateEntitlementPriceModelRequest {
+	r.data = &data
+	return r
+}
+
+func (r ApiUpdateEntitlementPriceModelRequest) Execute() (*WorkloadEntitlement, *http.Response, error) {
+	return r.ApiService.UpdateEntitlementPriceModelExecute(r)
+}
+
+/*
+UpdateEntitlementPriceModel update entitlement price model
+
+Update the price model of the given entitlement, such as recurring commits, billable dimensions. Only applicable to non cloud billing partners.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiUpdateEntitlementPriceModelRequest
+*/
+func (a *EntitlementAPIService) UpdateEntitlementPriceModel(ctx context.Context, orgId string, entitlementId string) ApiUpdateEntitlementPriceModelRequest {
+	return ApiUpdateEntitlementPriceModelRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		entitlementId: entitlementId,
+	}
+}
+
+// Execute executes the request
+//  @return WorkloadEntitlement
+func (a *EntitlementAPIService) UpdateEntitlementPriceModelExecute(r ApiUpdateEntitlementPriceModelRequest) (*WorkloadEntitlement, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadEntitlement
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.UpdateEntitlementPriceModel")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/entitlement/{entitlementId}/priceModel"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"entitlementId"+"}", url.PathEscape(parameterValueToString(r.entitlementId, "entitlementId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.data == nil {
+		return localVarReturnValue, nil, reportError("data is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.data
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2366,11 +2506,11 @@ func (a *EntitlementAPIService) UpdateEntitlementNameExecute(r ApiUpdateEntitlem
 }
 
 type ApiUpdateEntitlementSeatRequest struct {
-	ctx           context.Context
-	ApiService    *EntitlementAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
 	entitlementId string
-	newSeat       *int32
+	newSeat *int32
 }
 
 // New seat number
@@ -2388,29 +2528,28 @@ UpdateEntitlementSeat update seat for the active AZURE subscription
 
 Update the seat number for the active AZURE subscription.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@return ApiUpdateEntitlementSeatRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiUpdateEntitlementSeatRequest
 */
 func (a *EntitlementAPIService) UpdateEntitlementSeat(ctx context.Context, orgId string, entitlementId string) ApiUpdateEntitlementSeatRequest {
 	return ApiUpdateEntitlementSeatRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		orgId:         orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		entitlementId: entitlementId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WorkloadEntitlement
+//  @return WorkloadEntitlement
 func (a *EntitlementAPIService) UpdateEntitlementSeatExecute(r ApiUpdateEntitlementSeatRequest) (*WorkloadEntitlement, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WorkloadEntitlement
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WorkloadEntitlement
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.UpdateEntitlementSeat")
@@ -2490,8 +2629,8 @@ func (a *EntitlementAPIService) UpdateEntitlementSeatExecute(r ApiUpdateEntitlem
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2501,8 +2640,8 @@ func (a *EntitlementAPIService) UpdateEntitlementSeatExecute(r ApiUpdateEntitlem
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

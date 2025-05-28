@@ -21,10 +21,10 @@ type AuditingEventPriority string
 
 // List of AuditingEventPriority
 const (
-	AuditingEventPriority_UNKNOWN  AuditingEventPriority = ""
-	AuditingEventPriority_LOW      AuditingEventPriority = "LOW"
-	AuditingEventPriority_MEDIUM   AuditingEventPriority = "MEDIUM"
-	AuditingEventPriority_HIGH     AuditingEventPriority = "HIGH"
+	AuditingEventPriority_UNKNOWN AuditingEventPriority = ""
+	AuditingEventPriority_LOW AuditingEventPriority = "LOW"
+	AuditingEventPriority_MEDIUM AuditingEventPriority = "MEDIUM"
+	AuditingEventPriority_HIGH AuditingEventPriority = "HIGH"
 	AuditingEventPriority_CRITICAL AuditingEventPriority = "CRITICAL"
 )
 
@@ -115,3 +115,4 @@ func (v *NullableAuditingEventPriority) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

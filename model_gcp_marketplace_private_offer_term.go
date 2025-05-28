@@ -21,11 +21,11 @@ var _ MappedNullable = &GcpMarketplacePrivateOfferTerm{}
 
 // GcpMarketplacePrivateOfferTerm struct for GcpMarketplacePrivateOfferTerm
 type GcpMarketplacePrivateOfferTerm struct {
-	EnableScheduledStartTimes *bool                           `json:"enableScheduledStartTimes,omitempty"`
-	EndTime                   *time.Time                      `json:"endTime,omitempty"`
-	StartPolicy               *GcpMarketplaceOfferStartPolicy `json:"startPolicy,omitempty"`
-	StartTime                 *time.Time                      `json:"startTime,omitempty"`
-	TermDuration              *GcpPeriodDuration              `json:"termDuration,omitempty"`
+	EnableScheduledStartTimes *bool `json:"enableScheduledStartTimes,omitempty"`
+	EndTime *time.Time `json:"endTime,omitempty"`
+	StartPolicy *GcpMarketplaceOfferStartPolicy `json:"startPolicy,omitempty"`
+	StartTime *time.Time `json:"startTime,omitempty"`
+	TermDuration *GcpPeriodDuration `json:"termDuration,omitempty"`
 }
 
 // NewGcpMarketplacePrivateOfferTerm instantiates a new GcpMarketplacePrivateOfferTerm object
@@ -206,7 +206,7 @@ func (o *GcpMarketplacePrivateOfferTerm) SetTermDuration(v GcpPeriodDuration) {
 }
 
 func (o GcpMarketplacePrivateOfferTerm) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -268,3 +268,5 @@ func (v *NullableGcpMarketplacePrivateOfferTerm) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

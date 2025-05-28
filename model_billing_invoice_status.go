@@ -21,11 +21,11 @@ type BillingInvoiceStatus string
 
 // List of BillingInvoiceStatus
 const (
-	BillingInvoiceStatus_DRAFT     BillingInvoiceStatus = "DRAFT"
+	BillingInvoiceStatus_DRAFT BillingInvoiceStatus = "DRAFT"
 	BillingInvoiceStatus_FINALIZED BillingInvoiceStatus = "FINALIZED"
-	BillingInvoiceStatus_CANCELED  BillingInvoiceStatus = "CANCELED"
-	BillingInvoiceStatus_DELETED   BillingInvoiceStatus = "DELETED"
-	BillingInvoiceStatus_UNKNOWN   BillingInvoiceStatus = ""
+	BillingInvoiceStatus_CANCELED BillingInvoiceStatus = "CANCELED"
+	BillingInvoiceStatus_DELETED BillingInvoiceStatus = "DELETED"
+	BillingInvoiceStatus_UNKNOWN BillingInvoiceStatus = ""
 )
 
 // All allowed values of BillingInvoiceStatus enum
@@ -115,3 +115,4 @@ func (v *NullableBillingInvoiceStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

@@ -20,7 +20,7 @@ var _ MappedNullable = &AzureMarketplacePrivateOfferPromotionReference{}
 
 // AzureMarketplacePrivateOfferPromotionReference struct for AzureMarketplacePrivateOfferPromotionReference
 type AzureMarketplacePrivateOfferPromotionReference struct {
-	Id   *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *AzureMarketplacePrivateOfferPromotionReference) SetName(v string) {
 }
 
 func (o AzureMarketplacePrivateOfferPromotionReference) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAzureMarketplacePrivateOfferPromotionReference) UnmarshalJSON(s
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

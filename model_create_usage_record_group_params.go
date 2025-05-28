@@ -12,10 +12,10 @@ Contact: support@suger.io
 package suger
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CreateUsageRecordGroupParams type satisfies the MappedNullable interface at compile time
@@ -25,12 +25,12 @@ var _ MappedNullable = &CreateUsageRecordGroupParams{}
 type CreateUsageRecordGroupParams struct {
 	// for usage metering API v2, don't use it together with the records v1.
 	BillableRecords []MeteringUsageRecord `json:"billableRecords,omitempty"`
-	EntitlementID   string                `json:"entitlementID"`
+	EntitlementID string `json:"entitlementID"`
 	// The uuid of the UsageRecordGroup (the size is up to 36 characters). Optional, if not provided, suger will generate one.
 	Id *string `json:"id,omitempty"`
 	// read-only, don't set it up when reporting the usage record group.
-	MetaInfo       *MeteringUsageRecordGroupMetaInfo `json:"metaInfo,omitempty"`
-	OrganizationID string                            `json:"organizationID"`
+	MetaInfo *MeteringUsageRecordGroupMetaInfo `json:"metaInfo,omitempty"`
+	OrganizationID string `json:"organizationID"`
 	// for usage metering API v1, don't use it together with the billableRecords v2.
 	Records map[string]float32 `json:"records"`
 	// The timestamp of when the usage records were generated. Optional, if not provided, the current report timestamp will be used. This is not the timestamp of when the usage records were reported to Suger.
@@ -260,7 +260,7 @@ func (o *CreateUsageRecordGroupParams) SetTimestamp(v time.Time) {
 }
 
 func (o CreateUsageRecordGroupParams) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -302,10 +302,10 @@ func (o *CreateUsageRecordGroupParams) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -361,3 +361,5 @@ func (v *NullableCreateUsageRecordGroupParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

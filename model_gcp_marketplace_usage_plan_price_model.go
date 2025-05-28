@@ -21,10 +21,10 @@ type GcpMarketplaceUsagePlanPriceModel string
 
 // List of GcpMarketplaceUsagePlanPriceModel
 const (
-	GcpMarketplaceUsagePlanPriceModel_UNKNOWN                  GcpMarketplaceUsagePlanPriceModel = ""
-	GcpMarketplaceUsagePlanPriceModel_CUD_LIST_PRICE           GcpMarketplaceUsagePlanPriceModel = "CUD_LIST_PRICE"
+	GcpMarketplaceUsagePlanPriceModel_UNKNOWN GcpMarketplaceUsagePlanPriceModel = ""
+	GcpMarketplaceUsagePlanPriceModel_CUD_LIST_PRICE GcpMarketplaceUsagePlanPriceModel = "CUD_LIST_PRICE"
 	GcpMarketplaceUsagePlanPriceModel_CUD_ALL_USAGE_DISCOUNTED GcpMarketplaceUsagePlanPriceModel = "CUD_ALL_USAGE_DISCOUNTED"
-	GcpMarketplaceUsagePlanPriceModel_USAGE_DISCOUNT_ONLY      GcpMarketplaceUsagePlanPriceModel = "USAGE_DISCOUNT_ONLY"
+	GcpMarketplaceUsagePlanPriceModel_USAGE_DISCOUNT_ONLY GcpMarketplaceUsagePlanPriceModel = "USAGE_DISCOUNT_ONLY"
 )
 
 // All allowed values of GcpMarketplaceUsagePlanPriceModel enum
@@ -113,3 +113,4 @@ func (v *NullableGcpMarketplaceUsagePlanPriceModel) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

@@ -20,7 +20,7 @@ var _ MappedNullable = &AzureMarketplaceDeprecationScheduleAlternative{}
 
 // AzureMarketplaceDeprecationScheduleAlternative struct for AzureMarketplaceDeprecationScheduleAlternative
 type AzureMarketplaceDeprecationScheduleAlternative struct {
-	Plan    map[string]interface{} `json:"plan,omitempty"`
+	Plan map[string]interface{} `json:"plan,omitempty"`
 	Product map[string]interface{} `json:"product,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *AzureMarketplaceDeprecationScheduleAlternative) SetProduct(v map[string
 }
 
 func (o AzureMarketplaceDeprecationScheduleAlternative) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAzureMarketplaceDeprecationScheduleAlternative) UnmarshalJSON(s
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

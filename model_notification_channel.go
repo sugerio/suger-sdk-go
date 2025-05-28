@@ -21,13 +21,13 @@ type NotificationChannel string
 
 // List of NotificationChannel
 const (
-	NotificationChannel_EMAIL           NotificationChannel = "EMAIL"
-	NotificationChannel_SLACK           NotificationChannel = "SLACK"
-	NotificationChannel_SMS             NotificationChannel = "SMS"
-	NotificationChannel_SNS             NotificationChannel = "SNS"
-	NotificationChannel_SALESFORCE      NotificationChannel = "SALESFORCE"
-	NotificationChannel_WEBHOOK         NotificationChannel = "WEBHOOK"
-	NotificationChannel_SUGER_SUPPORT   NotificationChannel = "SUGER_SUPPORT"
+	NotificationChannel_EMAIL NotificationChannel = "EMAIL"
+	NotificationChannel_SLACK NotificationChannel = "SLACK"
+	NotificationChannel_SMS NotificationChannel = "SMS"
+	NotificationChannel_SNS NotificationChannel = "SNS"
+	NotificationChannel_SALESFORCE NotificationChannel = "SALESFORCE"
+	NotificationChannel_WEBHOOK NotificationChannel = "WEBHOOK"
+	NotificationChannel_SUGER_SUPPORT NotificationChannel = "SUGER_SUPPORT"
 	NotificationChannel_MICROSOFT_TEAMS NotificationChannel = "MICROSOFT_TEAMS"
 )
 
@@ -121,3 +121,4 @@ func (v *NullableNotificationChannel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

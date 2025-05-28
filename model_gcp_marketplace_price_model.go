@@ -21,9 +21,9 @@ type GcpMarketplacePriceModel string
 
 // List of GcpMarketplacePriceModel
 const (
-	GcpMarketplacePriceModel_FREE                    GcpMarketplacePriceModel = "FREE"
-	GcpMarketplacePriceModel_SUBSCRIPTION            GcpMarketplacePriceModel = "SUBSCRIPTION"
-	GcpMarketplacePriceModel_USAGE                   GcpMarketplacePriceModel = "USAGE"
+	GcpMarketplacePriceModel_FREE GcpMarketplacePriceModel = "FREE"
+	GcpMarketplacePriceModel_SUBSCRIPTION GcpMarketplacePriceModel = "SUBSCRIPTION"
+	GcpMarketplacePriceModel_USAGE GcpMarketplacePriceModel = "USAGE"
 	GcpMarketplacePriceModel_SUBSCRIPTION_PLUS_USAGE GcpMarketplacePriceModel = "SUBSCRIPTION_PLUS_USAGE"
 )
 
@@ -113,3 +113,4 @@ func (v *NullableGcpMarketplacePriceModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

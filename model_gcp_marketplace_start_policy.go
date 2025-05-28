@@ -21,9 +21,9 @@ type GcpMarketplaceStartPolicy string
 
 // List of GcpMarketplaceStartPolicy
 const (
-	GcpMarketplaceStartPolicy_UNKNOWN       GcpMarketplaceStartPolicy = ""
+	GcpMarketplaceStartPolicy_UNKNOWN GcpMarketplaceStartPolicy = ""
 	GcpMarketplaceStartPolicy_ON_ACCEPTANCE GcpMarketplaceStartPolicy = "START_POLICY_ON_ACCEPTANCE"
-	GcpMarketplaceStartPolicy_SCHEDULED     GcpMarketplaceStartPolicy = "START_POLICY_SCHEDULED"
+	GcpMarketplaceStartPolicy_SCHEDULED GcpMarketplaceStartPolicy = "START_POLICY_SCHEDULED"
 )
 
 // All allowed values of GcpMarketplaceStartPolicy enum
@@ -111,3 +111,4 @@ func (v *NullableGcpMarketplaceStartPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

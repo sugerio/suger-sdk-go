@@ -73,7 +73,7 @@ func (o *AlibabaMarketplaceProductShopInfoWangWangs) SetWangWang(v []AlibabaMark
 }
 
 func (o AlibabaMarketplaceProductShopInfoWangWangs) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,3 +123,5 @@ func (v *NullableAlibabaMarketplaceProductShopInfoWangWangs) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

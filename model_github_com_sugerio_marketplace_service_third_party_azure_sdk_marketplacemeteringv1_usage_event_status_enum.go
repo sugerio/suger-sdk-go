@@ -21,15 +21,15 @@ type GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1Us
 
 // List of github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventStatusEnum
 const (
-	UsageEventStatusEnumAccepted              GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "Accepted"
-	UsageEventStatusEnumExpired               GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "Expired"
-	UsageEventStatusEnumDuplicate             GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "Duplicate"
-	UsageEventStatusEnumError                 GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "Error"
-	UsageEventStatusEnumResourceNotFound      GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "ResourceNotFound"
+	UsageEventStatusEnumAccepted GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "Accepted"
+	UsageEventStatusEnumExpired GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "Expired"
+	UsageEventStatusEnumDuplicate GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "Duplicate"
+	UsageEventStatusEnumError GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "Error"
+	UsageEventStatusEnumResourceNotFound GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "ResourceNotFound"
 	UsageEventStatusEnumResourceNotAuthorized GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "ResourceNotAuthorized"
-	UsageEventStatusEnumInvalidDimension      GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "InvalidDimension"
-	UsageEventStatusEnumInvalidQuantity       GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "InvalidQuantity"
-	UsageEventStatusEnumBadArgument           GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "BadArgument"
+	UsageEventStatusEnumInvalidDimension GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "InvalidDimension"
+	UsageEventStatusEnumInvalidQuantity GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "InvalidQuantity"
+	UsageEventStatusEnumBadArgument GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum = "BadArgument"
 )
 
 // All allowed values of GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum enum
@@ -123,3 +123,4 @@ func (v *NullableGithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplace
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

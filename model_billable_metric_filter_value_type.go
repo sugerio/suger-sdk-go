@@ -22,7 +22,7 @@ type BillableMetricFilterValueType string
 // List of BillableMetricFilterValueType
 const (
 	BillableMetricFilterValueType_STRING BillableMetricFilterValueType = "STRING"
-	BillableMetricFilterValueType_FLOAT  BillableMetricFilterValueType = "FLOAT"
+	BillableMetricFilterValueType_FLOAT BillableMetricFilterValueType = "FLOAT"
 )
 
 // All allowed values of BillableMetricFilterValueType enum
@@ -109,3 +109,4 @@ func (v *NullableBillableMetricFilterValueType) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

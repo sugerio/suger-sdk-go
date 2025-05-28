@@ -22,7 +22,7 @@ var _ MappedNullable = &StripeRefundDestinationDetails{}
 type StripeRefundDestinationDetails struct {
 	Card *StripeRefundDestinationDetailsCard `json:"card,omitempty"`
 	// The type of transaction-specific details of the payment method used in the refund (e.g., `card`). An additional hash is included on `destination_details` with a name matching this value. It contains information specific to the refund transaction.
-	Type           *string                                       `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 	UsBankTransfer *StripeRefundDestinationDetailsUSBankTransfer `json:"us_bank_transfer,omitempty"`
 }
 
@@ -140,7 +140,7 @@ func (o *StripeRefundDestinationDetails) SetUsBankTransfer(v StripeRefundDestina
 }
 
 func (o StripeRefundDestinationDetails) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -196,3 +196,5 @@ func (v *NullableStripeRefundDestinationDetails) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

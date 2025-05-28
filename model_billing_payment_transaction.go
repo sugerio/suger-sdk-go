@@ -21,22 +21,22 @@ var _ MappedNullable = &BillingPaymentTransaction{}
 
 // BillingPaymentTransaction struct for BillingPaymentTransaction
 type BillingPaymentTransaction struct {
-	Amount         *float32                       `json:"amount,omitempty"`
-	BuyerID        *string                        `json:"buyerID,omitempty"`
-	CreationTime   *time.Time                     `json:"creationTime,omitempty"`
-	Currency       *string                        `json:"currency,omitempty"`
-	EntitlementID  *string                        `json:"entitlementID,omitempty"`
-	Id             *string                        `json:"id,omitempty"`
-	Info           *BillingPaymentTransactionInfo `json:"info,omitempty"`
-	InvoiceID      *string                        `json:"invoiceID,omitempty"`
-	LastUpdateTime *time.Time                     `json:"lastUpdateTime,omitempty"`
-	OrganizationID *string                        `json:"organizationID,omitempty"`
-	ParentID       *string                        `json:"parentID,omitempty"`
-	Partner        *Partner                       `json:"partner,omitempty"`
-	Status         *BillingPaymentStatus          `json:"status,omitempty"`
-	Type           *BillingPaymentTransactionType `json:"type,omitempty"`
-	WalletID       *string                        `json:"walletID,omitempty"`
-	WalletType     *BillingWalletType             `json:"walletType,omitempty"`
+	Amount *float32 `json:"amount,omitempty"`
+	BuyerID *string `json:"buyerID,omitempty"`
+	CreationTime *time.Time `json:"creationTime,omitempty"`
+	Currency *string `json:"currency,omitempty"`
+	EntitlementID *string `json:"entitlementID,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Info *BillingPaymentTransactionInfo `json:"info,omitempty"`
+	InvoiceID *string `json:"invoiceID,omitempty"`
+	LastUpdateTime *time.Time `json:"lastUpdateTime,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
+	ParentID *string `json:"parentID,omitempty"`
+	Partner *Partner `json:"partner,omitempty"`
+	Status *BillingPaymentStatus `json:"status,omitempty"`
+	Type *BillingPaymentTransactionType `json:"type,omitempty"`
+	WalletID *string `json:"walletID,omitempty"`
+	WalletType *BillingWalletType `json:"walletType,omitempty"`
 }
 
 // NewBillingPaymentTransaction instantiates a new BillingPaymentTransaction object
@@ -569,7 +569,7 @@ func (o *BillingPaymentTransaction) SetWalletType(v BillingWalletType) {
 }
 
 func (o BillingPaymentTransaction) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -664,3 +664,5 @@ func (v *NullableBillingPaymentTransaction) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

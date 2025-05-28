@@ -21,12 +21,12 @@ var _ MappedNullable = &GcpMarketplaceProductInfo{}
 // GcpMarketplaceProductInfo struct for GcpMarketplaceProductInfo
 type GcpMarketplaceProductInfo struct {
 	// The service level (price plan) with time duration suffix, such as \"basic-plan-P1Y\"
-	FlavorExternalName  *string `json:"flavorExternalName,omitempty"`
+	FlavorExternalName *string `json:"flavorExternalName,omitempty"`
 	ProductExternalName *string `json:"productExternalName,omitempty"`
-	ProviderId          *string `json:"providerId,omitempty"`
+	ProviderId *string `json:"providerId,omitempty"`
 	// The price plan, such as \"basic-plan\"
 	ServiceLevel *string `json:"serviceLevel,omitempty"`
-	ServiceName  *string `json:"serviceName,omitempty"`
+	ServiceName *string `json:"serviceName,omitempty"`
 }
 
 // NewGcpMarketplaceProductInfo instantiates a new GcpMarketplaceProductInfo object
@@ -207,7 +207,7 @@ func (o *GcpMarketplaceProductInfo) SetServiceName(v string) {
 }
 
 func (o GcpMarketplaceProductInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,3 +269,5 @@ func (v *NullableGcpMarketplaceProductInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,8 +21,8 @@ type AwsSnsSubscriptionStatus string
 
 // List of AwsSnsSubscriptionStatus
 const (
-	AwsSnsSubscriptionStatus_UNKNOWN              AwsSnsSubscriptionStatus = "UNKNOWN"
-	AwsSnsSubscriptionStatus_CONFIRMED            AwsSnsSubscriptionStatus = "CONFIRMED"
+	AwsSnsSubscriptionStatus_UNKNOWN AwsSnsSubscriptionStatus = "UNKNOWN"
+	AwsSnsSubscriptionStatus_CONFIRMED AwsSnsSubscriptionStatus = "CONFIRMED"
 	AwsSnsSubscriptionStatus_PENDING_CONFIRMATION AwsSnsSubscriptionStatus = "PENDING_CONFIRMATION"
 )
 
@@ -111,3 +111,4 @@ func (v *NullableAwsSnsSubscriptionStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

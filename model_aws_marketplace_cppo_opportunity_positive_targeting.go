@@ -22,7 +22,7 @@ var _ MappedNullable = &AwsMarketplaceCppoOpportunityPositiveTargeting{}
 type AwsMarketplaceCppoOpportunityPositiveTargeting struct {
 	// List of AWS account IDs that are allowed to subscribe to the offer.
 	BuyerAccounts []AwsMarketplaceBuyerAccount `json:"BuyerAccounts,omitempty"`
-	// List as option for allowing targeting based on country. If the intention isn’t to target the offer to a country, this field should be omitted. If it’s present, the list must contain at least one country code. Each element in this list should be a valid 2-letter country code, using this format: ISO 3166-1 alpha-2.
+	// List as option for allowing targeting based on country. If the intention isn't to target the offer to a country, this field should be omitted. If it's present, the list must contain at least one country code. Each element in this list should be a valid 2-letter country code, using this format: ISO 3166-1 alpha-2.
 	CountryCodes []string `json:"CountryCodes,omitempty"`
 }
 
@@ -108,7 +108,7 @@ func (o *AwsMarketplaceCppoOpportunityPositiveTargeting) SetCountryCodes(v []str
 }
 
 func (o AwsMarketplaceCppoOpportunityPositiveTargeting) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -161,3 +161,5 @@ func (v *NullableAwsMarketplaceCppoOpportunityPositiveTargeting) UnmarshalJSON(s
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

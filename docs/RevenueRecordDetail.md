@@ -2,11 +2,11 @@
 
 ## Properties
 
- Name                         | Type                                                                                                                                                                     | Description           | Notes      
-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|------------
- **AwsRevenueRecordDetail**   | Pointer to [**GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent.md) | For AWS Marketplace   | [optional] 
- **AzureRevenueRecordDetail** | Pointer to [**GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue.md) | For Azure Marketplace | [optional] 
- **GcpRevenueRecordDetail**   | Pointer to [**GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage.md)   | For GCP Marketplace   | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AwsRevenueRecordDetail** | Pointer to [**GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent.md) | For AWS Marketplace | [optional] 
+**AzureRevenueRecordDetail** | Pointer to [**GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue.md) | For Azure Marketplace | [optional] 
+**GcpRevenueRecordDetail** | Pointer to [**GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage.md) | For GCP Marketplace | [optional] 
 
 ## Methods
 

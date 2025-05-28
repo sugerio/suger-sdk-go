@@ -21,16 +21,16 @@ var _ MappedNullable = &IdentityBuyer{}
 
 // IdentityBuyer struct for IdentityBuyer
 type IdentityBuyer struct {
-	ContactIds     []string   `json:"contactIds,omitempty"`
-	CreationTime   *time.Time `json:"creationTime,omitempty"`
-	Description    *string    `json:"description,omitempty"`
-	ExternalID     *string    `json:"externalID,omitempty"`
-	Id             *string    `json:"id,omitempty"`
-	Info           *BuyerInfo `json:"info,omitempty"`
+	ContactIds []string `json:"contactIds,omitempty"`
+	CreationTime *time.Time `json:"creationTime,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ExternalID *string `json:"externalID,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Info *BuyerInfo `json:"info,omitempty"`
 	LastUpdateTime *time.Time `json:"lastUpdateTime,omitempty"`
-	Name           *string    `json:"name,omitempty"`
-	OrganizationID *string    `json:"organizationID,omitempty"`
-	Partner        *Partner   `json:"partner,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
+	Partner *Partner `json:"partner,omitempty"`
 }
 
 // NewIdentityBuyer instantiates a new IdentityBuyer object
@@ -371,7 +371,7 @@ func (o *IdentityBuyer) SetPartner(v Partner) {
 }
 
 func (o IdentityBuyer) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -448,3 +448,5 @@ func (v *NullableIdentityBuyer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

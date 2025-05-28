@@ -22,7 +22,7 @@ var _ MappedNullable = &GcpMarketplaceResellerPrivateOfferPlanInstallmentTemplat
 // GcpMarketplaceResellerPrivateOfferPlanInstallmentTemplate struct for GcpMarketplaceResellerPrivateOfferPlanInstallmentTemplate
 type GcpMarketplaceResellerPrivateOfferPlanInstallmentTemplate struct {
 	PriceModelTemplate *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate `json:"priceModelTemplate,omitempty"`
-	StartTime          *time.Time                                                `json:"startTime,omitempty"`
+	StartTime *time.Time `json:"startTime,omitempty"`
 }
 
 // NewGcpMarketplaceResellerPrivateOfferPlanInstallmentTemplate instantiates a new GcpMarketplaceResellerPrivateOfferPlanInstallmentTemplate object
@@ -107,7 +107,7 @@ func (o *GcpMarketplaceResellerPrivateOfferPlanInstallmentTemplate) SetStartTime
 }
 
 func (o GcpMarketplaceResellerPrivateOfferPlanInstallmentTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableGcpMarketplaceResellerPrivateOfferPlanInstallmentTemplate) Unma
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

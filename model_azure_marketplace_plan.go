@@ -20,23 +20,23 @@ var _ MappedNullable = &AzureMarketplacePlan{}
 
 // AzureMarketplacePlan struct for AzureMarketplacePlan
 type AzureMarketplacePlan struct {
-	Schema                        *string                                   `json:"$schema,omitempty"`
-	Alias                         *string                                   `json:"alias,omitempty"`
+	Schema *string `json:"$schema,omitempty"`
+	Alias *string `json:"alias,omitempty"`
 	AzureGovernmentCertifications []AzureMarketplaceGovernmentCertification `json:"azureGovernmentCertifications,omitempty"`
 	// enums:[azureGlobal,azureGovernment,azureGermany,azureChina]
-	AzureRegions        []string                             `json:"azureRegions,omitempty"`
+	AzureRegions []string `json:"azureRegions,omitempty"`
 	DeprecationSchedule *AzureMarketplaceDeprecationSchedule `json:"deprecationSchedule,omitempty"`
 	// default 2147483647
 	DisplayRank *int32 `json:"displayRank,omitempty"`
 	// in format of \"plan/product-durable-id/plan-durable-id\"
-	Id             *string                                 `json:"id,omitempty"`
-	Identity       *AzureMarketplaceIdentity               `json:"identity,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Identity *AzureMarketplaceIdentity `json:"identity,omitempty"`
 	LifecycleState *AzureMarketplaceResourceLifecycleState `json:"lifecycleState,omitempty"`
 	// in format of \"product/product-durable-id\"
-	Product      *string `json:"product,omitempty"`
+	Product *string `json:"product,omitempty"`
 	ResourceName *string `json:"resourceName,omitempty"`
 	// Specifies the plan type (AzureApplication-type products only) see: https://go.microsoft.com/fwlink/?linkid=2106322
-	Subtype     *string                      `json:"subtype,omitempty"`
+	Subtype *string `json:"subtype,omitempty"`
 	Validations []AzureMarketplaceValidation `json:"validations,omitempty"`
 }
 
@@ -474,7 +474,7 @@ func (o *AzureMarketplacePlan) SetValidations(v []AzureMarketplaceValidation) {
 }
 
 func (o AzureMarketplacePlan) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -560,3 +560,5 @@ func (v *NullableAzureMarketplacePlan) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

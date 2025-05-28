@@ -5,11 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Approvals** | Pointer to [**[]GcpMarketplaceUserAccountApproval**](GcpMarketplaceUserAccountApproval.md) | The approvals for this account, that are permitted or have been completed. | [optional] 
-**BillingAccountId** | Pointer to **string** | The buyer&#39;s GCP billing account ID. | [optional] 
+**BillingAccountId** | Pointer to **string** | The buyer&#39;s GCP billing account ID if it&#39;s a company account. | [optional] 
 **CreateTime** | Pointer to **time.Time** | RFC3339 UTC timestamp | [optional] 
 **Id** | Pointer to **string** | GCP Marketplace User Account ID. | [optional] 
 **InputProperties** | Pointer to **[]int32** |  | [optional] 
-**Name** | Pointer to **string** | The resource name of the account. Account names have the form providers/{provider_id}/accounts/{account_id}. | [optional] 
+**Name** | Pointer to **string** | The resource name of the account, in format of providers/{provider_id}/accounts/{account_id}. | [optional] 
+**ParentBillingAccountId** | Pointer to **string** | The parent account ID of the BillingAccountId if the buyer is from a reseller in GCP Marketplace. It is the GCP billing account ID of the reseller in GCP Marketplace. | [optional] 
 **Provider** | Pointer to **string** | The identifier of the service provider (SaaS Seller) that this account was created against. | [optional] 
 **State** | Pointer to [**GcpMarketplaceUserAccountState**](GcpMarketplaceUserAccountState.md) | The state of the account. An account might not be able to make a purchase if the billing account is suspended. | [optional] 
 **UpdateTime** | Pointer to **time.Time** | RFC3339 UTC timestamp | [optional] 
@@ -183,6 +184,31 @@ SetName sets Name field to given value.
 `func (o *GcpMarketplaceUserAccount) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetParentBillingAccountId
+
+`func (o *GcpMarketplaceUserAccount) GetParentBillingAccountId() string`
+
+GetParentBillingAccountId returns the ParentBillingAccountId field if non-nil, zero value otherwise.
+
+### GetParentBillingAccountIdOk
+
+`func (o *GcpMarketplaceUserAccount) GetParentBillingAccountIdOk() (*string, bool)`
+
+GetParentBillingAccountIdOk returns a tuple with the ParentBillingAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentBillingAccountId
+
+`func (o *GcpMarketplaceUserAccount) SetParentBillingAccountId(v string)`
+
+SetParentBillingAccountId sets ParentBillingAccountId field to given value.
+
+### HasParentBillingAccountId
+
+`func (o *GcpMarketplaceUserAccount) HasParentBillingAccountId() bool`
+
+HasParentBillingAccountId returns a boolean if a field has been set.
 
 ### GetProvider
 

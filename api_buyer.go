@@ -20,15 +20,16 @@ import (
 	"strings"
 )
 
+
 // BuyerAPIService BuyerAPI service
 type BuyerAPIService service
 
 type ApiCloseCreditWalletRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BuyerAPIService
-	orgId      string
-	buyerId    string
-	walletId   string
+	orgId string
+	buyerId string
+	walletId string
 }
 
 func (r ApiCloseCreditWalletRequest) Execute() (*BillingWallet, *http.Response, error) {
@@ -40,31 +41,30 @@ CloseCreditWallet close credit wallet
 
 Close the given credit wallet, if it's a payment method, sync to payment provider too. Once closed, it can't be used for payment.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param buyerId Buyer ID
-	@param walletId Wallet ID
-	@return ApiCloseCreditWalletRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param buyerId Buyer ID
+ @param walletId Wallet ID
+ @return ApiCloseCreditWalletRequest
 */
 func (a *BuyerAPIService) CloseCreditWallet(ctx context.Context, orgId string, buyerId string, walletId string) ApiCloseCreditWalletRequest {
 	return ApiCloseCreditWalletRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		buyerId:    buyerId,
-		walletId:   walletId,
+		ctx: ctx,
+		orgId: orgId,
+		buyerId: buyerId,
+		walletId: walletId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillingWallet
+//  @return BillingWallet
 func (a *BuyerAPIService) CloseCreditWalletExecute(r ApiCloseCreditWalletRequest) (*BillingWallet, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillingWallet
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingWallet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.CloseCreditWallet")
@@ -141,8 +141,8 @@ func (a *BuyerAPIService) CloseCreditWalletExecute(r ApiCloseCreditWalletRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -152,8 +152,8 @@ func (a *BuyerAPIService) CloseCreditWalletExecute(r ApiCloseCreditWalletRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -171,10 +171,10 @@ func (a *BuyerAPIService) CloseCreditWalletExecute(r ApiCloseCreditWalletRequest
 }
 
 type ApiCreateBuyerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BuyerAPIService
-	orgId      string
-	data       *CreateBuyerParams
+	orgId string
+	data *CreateBuyerParams
 }
 
 // CreateBuyerParams
@@ -192,27 +192,26 @@ CreateBuyer create buyer
 
 create a new buyer for Stripe or Adyen under the given organization.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiCreateBuyerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiCreateBuyerRequest
 */
 func (a *BuyerAPIService) CreateBuyer(ctx context.Context, orgId string) ApiCreateBuyerRequest {
 	return ApiCreateBuyerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IdentityBuyer
+//  @return IdentityBuyer
 func (a *BuyerAPIService) CreateBuyerExecute(r ApiCreateBuyerRequest) (*IdentityBuyer, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *IdentityBuyer
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentityBuyer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.CreateBuyer")
@@ -292,8 +291,8 @@ func (a *BuyerAPIService) CreateBuyerExecute(r ApiCreateBuyerRequest) (*Identity
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -303,8 +302,8 @@ func (a *BuyerAPIService) CreateBuyerExecute(r ApiCreateBuyerRequest) (*Identity
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -322,10 +321,10 @@ func (a *BuyerAPIService) CreateBuyerExecute(r ApiCreateBuyerRequest) (*Identity
 }
 
 type ApiCreateCreditWalletRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BuyerAPIService
-	orgId      string
-	buyerId    string
+	orgId string
+	buyerId string
 }
 
 func (r ApiCreateCreditWalletRequest) Execute() (*BillingWallet, *http.Response, error) {
@@ -337,29 +336,28 @@ CreateCreditWallet create credit wallet
 
 create a new credit wallet for the buyer.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param buyerId Buyer ID
-	@return ApiCreateCreditWalletRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param buyerId Buyer ID
+ @return ApiCreateCreditWalletRequest
 */
 func (a *BuyerAPIService) CreateCreditWallet(ctx context.Context, orgId string, buyerId string) ApiCreateCreditWalletRequest {
 	return ApiCreateCreditWalletRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		buyerId:    buyerId,
+		ctx: ctx,
+		orgId: orgId,
+		buyerId: buyerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillingWallet
+//  @return BillingWallet
 func (a *BuyerAPIService) CreateCreditWalletExecute(r ApiCreateCreditWalletRequest) (*BillingWallet, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillingWallet
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingWallet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.CreateCreditWallet")
@@ -435,8 +433,8 @@ func (a *BuyerAPIService) CreateCreditWalletExecute(r ApiCreateCreditWalletReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -446,8 +444,8 @@ func (a *BuyerAPIService) CreateCreditWalletExecute(r ApiCreateCreditWalletReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -465,11 +463,11 @@ func (a *BuyerAPIService) CreateCreditWalletExecute(r ApiCreateCreditWalletReque
 }
 
 type ApiDeleteBuyerWalletRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BuyerAPIService
-	orgId      string
-	buyerId    string
-	walletId   string
+	orgId string
+	buyerId string
+	walletId string
 }
 
 func (r ApiDeleteBuyerWalletRequest) Execute() (string, *http.Response, error) {
@@ -481,31 +479,30 @@ DeleteBuyerWallet delete buyer wallet
 
 delete a wallet of the buyer, if it's a payment method, sync to payment provider too.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param buyerId Buyer ID
-	@param walletId Wallet ID
-	@return ApiDeleteBuyerWalletRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param buyerId Buyer ID
+ @param walletId Wallet ID
+ @return ApiDeleteBuyerWalletRequest
 */
 func (a *BuyerAPIService) DeleteBuyerWallet(ctx context.Context, orgId string, buyerId string, walletId string) ApiDeleteBuyerWalletRequest {
 	return ApiDeleteBuyerWalletRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		buyerId:    buyerId,
-		walletId:   walletId,
+		ctx: ctx,
+		orgId: orgId,
+		buyerId: buyerId,
+		walletId: walletId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *BuyerAPIService) DeleteBuyerWalletExecute(r ApiDeleteBuyerWalletRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.DeleteBuyerWallet")
@@ -582,8 +579,8 @@ func (a *BuyerAPIService) DeleteBuyerWalletExecute(r ApiDeleteBuyerWalletRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -593,8 +590,8 @@ func (a *BuyerAPIService) DeleteBuyerWalletExecute(r ApiDeleteBuyerWalletRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -612,10 +609,10 @@ func (a *BuyerAPIService) DeleteBuyerWalletExecute(r ApiDeleteBuyerWalletRequest
 }
 
 type ApiGetBuyerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BuyerAPIService
-	orgId      string
-	buyerId    string
+	orgId string
+	buyerId string
 }
 
 func (r ApiGetBuyerRequest) Execute() (*IdentityBuyer, *http.Response, error) {
@@ -627,29 +624,28 @@ GetBuyer get buyer
 
 get buyer by the given organization and buyer id.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param buyerId Buyer ID
-	@return ApiGetBuyerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param buyerId Buyer ID
+ @return ApiGetBuyerRequest
 */
 func (a *BuyerAPIService) GetBuyer(ctx context.Context, orgId string, buyerId string) ApiGetBuyerRequest {
 	return ApiGetBuyerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		buyerId:    buyerId,
+		ctx: ctx,
+		orgId: orgId,
+		buyerId: buyerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IdentityBuyer
+//  @return IdentityBuyer
 func (a *BuyerAPIService) GetBuyerExecute(r ApiGetBuyerRequest) (*IdentityBuyer, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *IdentityBuyer
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentityBuyer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.GetBuyer")
@@ -725,8 +721,8 @@ func (a *BuyerAPIService) GetBuyerExecute(r ApiGetBuyerRequest) (*IdentityBuyer,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -736,8 +732,8 @@ func (a *BuyerAPIService) GetBuyerExecute(r ApiGetBuyerRequest) (*IdentityBuyer,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -747,8 +743,8 @@ func (a *BuyerAPIService) GetBuyerExecute(r ApiGetBuyerRequest) (*IdentityBuyer,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -766,10 +762,10 @@ func (a *BuyerAPIService) GetBuyerExecute(r ApiGetBuyerRequest) (*IdentityBuyer,
 }
 
 type ApiListBuyerWalletsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BuyerAPIService
-	orgId      string
-	buyerId    string
+	orgId string
+	buyerId string
 }
 
 func (r ApiListBuyerWalletsRequest) Execute() ([]BillingWallet, *http.Response, error) {
@@ -781,29 +777,28 @@ ListBuyerWallets list buyer's wallets
 
 list all wallets of a buyer.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param buyerId Buyer ID
-	@return ApiListBuyerWalletsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param buyerId Buyer ID
+ @return ApiListBuyerWalletsRequest
 */
 func (a *BuyerAPIService) ListBuyerWallets(ctx context.Context, orgId string, buyerId string) ApiListBuyerWalletsRequest {
 	return ApiListBuyerWalletsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		buyerId:    buyerId,
+		ctx: ctx,
+		orgId: orgId,
+		buyerId: buyerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []BillingWallet
+//  @return []BillingWallet
 func (a *BuyerAPIService) ListBuyerWalletsExecute(r ApiListBuyerWalletsRequest) ([]BillingWallet, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []BillingWallet
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []BillingWallet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.ListBuyerWallets")
@@ -879,8 +874,8 @@ func (a *BuyerAPIService) ListBuyerWalletsExecute(r ApiListBuyerWalletsRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -890,8 +885,8 @@ func (a *BuyerAPIService) ListBuyerWalletsExecute(r ApiListBuyerWalletsRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -909,14 +904,14 @@ func (a *BuyerAPIService) ListBuyerWalletsExecute(r ApiListBuyerWalletsRequest) 
 }
 
 type ApiListBuyersRequest struct {
-	ctx          context.Context
-	ApiService   *BuyerAPIService
-	orgId        string
-	partner      *string
-	contactId    *string
+	ctx context.Context
+	ApiService *BuyerAPIService
+	orgId string
+	partner *string
+	contactId *string
 	awsAccountId *string
-	limit        *int32
-	offset       *int32
+	limit *int32
+	offset *int32
 }
 
 // filter by partner
@@ -958,27 +953,26 @@ ListBuyers list buyers
 
 list buyers by the given organization with pagination and optional filters.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListBuyersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListBuyersRequest
 */
 func (a *BuyerAPIService) ListBuyers(ctx context.Context, orgId string) ApiListBuyersRequest {
 	return ApiListBuyersRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []IdentityBuyer
+//  @return []IdentityBuyer
 func (a *BuyerAPIService) ListBuyersExecute(r ApiListBuyersRequest) ([]IdentityBuyer, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []IdentityBuyer
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []IdentityBuyer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.ListBuyers")
@@ -1077,11 +1071,11 @@ func (a *BuyerAPIService) ListBuyersExecute(r ApiListBuyersRequest) ([]IdentityB
 }
 
 type ApiSetBuyerDefaultWalletRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BuyerAPIService
-	orgId      string
-	buyerId    string
-	walletId   string
+	orgId string
+	buyerId string
+	walletId string
 }
 
 func (r ApiSetBuyerDefaultWalletRequest) Execute() (*IdentityBuyer, *http.Response, error) {
@@ -1093,31 +1087,30 @@ SetBuyerDefaultWallet set buyer default wallet
 
 set a payment method wallet as buyer's default wallet.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param buyerId Buyer ID
-	@param walletId Wallet ID
-	@return ApiSetBuyerDefaultWalletRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param buyerId Buyer ID
+ @param walletId Wallet ID
+ @return ApiSetBuyerDefaultWalletRequest
 */
 func (a *BuyerAPIService) SetBuyerDefaultWallet(ctx context.Context, orgId string, buyerId string, walletId string) ApiSetBuyerDefaultWalletRequest {
 	return ApiSetBuyerDefaultWalletRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		buyerId:    buyerId,
-		walletId:   walletId,
+		ctx: ctx,
+		orgId: orgId,
+		buyerId: buyerId,
+		walletId: walletId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IdentityBuyer
+//  @return IdentityBuyer
 func (a *BuyerAPIService) SetBuyerDefaultWalletExecute(r ApiSetBuyerDefaultWalletRequest) (*IdentityBuyer, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *IdentityBuyer
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentityBuyer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.SetBuyerDefaultWallet")
@@ -1194,8 +1187,8 @@ func (a *BuyerAPIService) SetBuyerDefaultWalletExecute(r ApiSetBuyerDefaultWalle
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1205,8 +1198,8 @@ func (a *BuyerAPIService) SetBuyerDefaultWalletExecute(r ApiSetBuyerDefaultWalle
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1224,11 +1217,11 @@ func (a *BuyerAPIService) SetBuyerDefaultWalletExecute(r ApiSetBuyerDefaultWalle
 }
 
 type ApiUpdateBuyerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BuyerAPIService
-	orgId      string
-	buyerId    string
-	data       *UpdateBuyerParams
+	orgId string
+	buyerId string
+	data *UpdateBuyerParams
 }
 
 // UpdateBuyerParams
@@ -1246,29 +1239,28 @@ UpdateBuyer update buyer
 
 update buyer by the given organization and buyer id.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param buyerId Buyer ID
-	@return ApiUpdateBuyerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param buyerId Buyer ID
+ @return ApiUpdateBuyerRequest
 */
 func (a *BuyerAPIService) UpdateBuyer(ctx context.Context, orgId string, buyerId string) ApiUpdateBuyerRequest {
 	return ApiUpdateBuyerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		buyerId:    buyerId,
+		ctx: ctx,
+		orgId: orgId,
+		buyerId: buyerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IdentityBuyer
+//  @return IdentityBuyer
 func (a *BuyerAPIService) UpdateBuyerExecute(r ApiUpdateBuyerRequest) (*IdentityBuyer, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *IdentityBuyer
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentityBuyer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.UpdateBuyer")
@@ -1349,8 +1341,8 @@ func (a *BuyerAPIService) UpdateBuyerExecute(r ApiUpdateBuyerRequest) (*Identity
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1368,11 +1360,11 @@ func (a *BuyerAPIService) UpdateBuyerExecute(r ApiUpdateBuyerRequest) (*Identity
 }
 
 type ApiUpdateCreditWalletRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BuyerAPIService
-	orgId      string
-	buyerId    string
-	walletId   string
+	orgId string
+	buyerId string
+	walletId string
 }
 
 func (r ApiUpdateCreditWalletRequest) Execute() (*BillingWallet, *http.Response, error) {
@@ -1384,31 +1376,30 @@ UpdateCreditWallet update credit wallet
 
 update startTime or expireTime of the wallet.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param buyerId Buyer ID
-	@param walletId Wallet ID
-	@return ApiUpdateCreditWalletRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param buyerId Buyer ID
+ @param walletId Wallet ID
+ @return ApiUpdateCreditWalletRequest
 */
 func (a *BuyerAPIService) UpdateCreditWallet(ctx context.Context, orgId string, buyerId string, walletId string) ApiUpdateCreditWalletRequest {
 	return ApiUpdateCreditWalletRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		buyerId:    buyerId,
-		walletId:   walletId,
+		ctx: ctx,
+		orgId: orgId,
+		buyerId: buyerId,
+		walletId: walletId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillingWallet
+//  @return BillingWallet
 func (a *BuyerAPIService) UpdateCreditWalletExecute(r ApiUpdateCreditWalletRequest) (*BillingWallet, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillingWallet
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillingWallet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuyerAPIService.UpdateCreditWallet")
@@ -1485,8 +1476,8 @@ func (a *BuyerAPIService) UpdateCreditWalletExecute(r ApiUpdateCreditWalletReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1496,8 +1487,8 @@ func (a *BuyerAPIService) UpdateCreditWalletExecute(r ApiUpdateCreditWalletReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

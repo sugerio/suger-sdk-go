@@ -21,13 +21,13 @@ type PriceModelCategory string
 
 // List of PriceModelCategory
 const (
-	PriceModelCategory_Basic            PriceModelCategory = "basic"
-	PriceModelCategory_Tiered           PriceModelCategory = "tiered"
-	PriceModelCategory_Bulk             PriceModelCategory = "bulk"
-	PriceModelCategory_Volume           PriceModelCategory = "volume"
-	PriceModelCategory_Percentage       PriceModelCategory = "percentage"
+	PriceModelCategory_Basic PriceModelCategory = "basic"
+	PriceModelCategory_Tiered PriceModelCategory = "tiered"
+	PriceModelCategory_Bulk PriceModelCategory = "bulk"
+	PriceModelCategory_Volume PriceModelCategory = "volume"
+	PriceModelCategory_Percentage PriceModelCategory = "percentage"
 	PriceModelCategory_TieredPercentage PriceModelCategory = "tiered-percentage"
-	PriceModelCategory_Matrix           PriceModelCategory = "matrix"
+	PriceModelCategory_Matrix PriceModelCategory = "matrix"
 )
 
 // All allowed values of PriceModelCategory enum
@@ -119,3 +119,4 @@ func (v *NullablePriceModelCategory) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

@@ -23,33 +23,33 @@ var _ MappedNullable = &GcpMarketplaceResellerPrivateOfferPlan{}
 type GcpMarketplaceResellerPrivateOfferPlan struct {
 	AcceptanceDeadlineTime *time.Time `json:"acceptanceDeadlineTime,omitempty"`
 	// The resource name of agreement(entitlement) In format of \"projects/{projectNumber}/agreements/{agreementId}\"
-	Agreement                   *string                                                            `json:"agreement,omitempty"`
-	AgreementDocuments          *GcpMarketplaceResellerPrivateOfferPlanAgreementDocuments          `json:"agreementDocuments,omitempty"`
-	AmendmentContext            map[string]interface{}                                             `json:"amendmentContext,omitempty"`
-	DisplayName                 *string                                                            `json:"displayName,omitempty"`
-	DurationConfig              *GcpMarketplaceResellerPrivateOfferPlanDurationConfig              `json:"durationConfig,omitempty"`
-	Features                    []GcpMarketplaceProductFeatureValue                                `json:"features,omitempty"`
+	Agreement *string `json:"agreement,omitempty"`
+	AgreementDocuments *GcpMarketplaceResellerPrivateOfferPlanAgreementDocuments `json:"agreementDocuments,omitempty"`
+	AmendmentContext map[string]interface{} `json:"amendmentContext,omitempty"`
+	DisplayName *string `json:"displayName,omitempty"`
+	DurationConfig *GcpMarketplaceResellerPrivateOfferPlanDurationConfig `json:"durationConfig,omitempty"`
+	Features []GcpMarketplaceProductFeatureValue `json:"features,omitempty"`
 	InstallmentTimelineTemplate *GcpMarketplaceResellerPrivateOfferPlanInstallmentTimelineTemplate `json:"installmentTimelineTemplate,omitempty"`
-	IsvInfo                     *GcpMarketplaceIsvInfo                                             `json:"isvInfo,omitempty"`
-	Margin                      *GcpMarketplaceResellerPrivateOfferPlanMargin                      `json:"margin,omitempty"`
-	MetaInfo                    *GcpMarketplaceResellerPrivateOfferPlanMetainfo                    `json:"metaInfo,omitempty"`
+	IsvInfo *GcpMarketplaceIsvInfo `json:"isvInfo,omitempty"`
+	Margin *GcpMarketplaceResellerPrivateOfferPlanMargin `json:"margin,omitempty"`
+	MetaInfo *GcpMarketplaceResellerPrivateOfferPlanMetainfo `json:"metaInfo,omitempty"`
 	// In format of \"projects/{projectNumber}/partnerAccounts/{partnerAccountId}/resellerPrivateOfferPlans/{resellerPrivateOfferPlanId}\"
-	Name                  *string                                 `json:"name,omitempty"`
-	OfferTemplatePolicies *GcpMarketplaceOfferTemplatePolicies    `json:"offerTemplatePolicies,omitempty"`
-	OfferTermTemplate     *GcpMarketplacePrivateOfferTermTemplate `json:"offerTermTemplate,omitempty"`
-	PaymentSchedule       *PaymentScheduleType                    `json:"paymentSchedule,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OfferTemplatePolicies *GcpMarketplaceOfferTemplatePolicies `json:"offerTemplatePolicies,omitempty"`
+	OfferTermTemplate *GcpMarketplacePrivateOfferTermTemplate `json:"offerTermTemplate,omitempty"`
+	PaymentSchedule *PaymentScheduleType `json:"paymentSchedule,omitempty"`
 	// Nill if this reseller private offer plan has installmentTimelineTemplate (payment installments).
-	PriceModelTemplate  *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate `json:"priceModelTemplate,omitempty"`
-	ProductInfo         *GcpMarketplaceProductInfo                                `json:"productInfo,omitempty"`
-	ReplacementMetadata map[string]interface{}                                    `json:"replacementMetadata,omitempty"`
+	PriceModelTemplate *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate `json:"priceModelTemplate,omitempty"`
+	ProductInfo *GcpMarketplaceProductInfo `json:"productInfo,omitempty"`
+	ReplacementMetadata map[string]interface{} `json:"replacementMetadata,omitempty"`
 	// in format of \"resellOfferTemplates/{resellOfferTemplateId}\"
-	ResellOfferTemplate *string                                                 `json:"resellOfferTemplate,omitempty"`
-	ResellerInfo        *GcpMarketplaceResellerInfo                             `json:"resellerInfo,omitempty"`
-	ReusePolicy         *GcpMarketplaceResellerPrivateOfferPlanReusePolicy      `json:"reusePolicy,omitempty"`
-	StartPolicy         *GcpMarketplaceStartPolicy                              `json:"startPolicy,omitempty"`
-	State               *GcpMarketplaceResellerPrivateOfferPlanState            `json:"state,omitempty"`
-	StateTransitions    []GcpMarketplaceResellerPrivateOfferPlanStateTransition `json:"stateTransitions,omitempty"`
-	UpdateTime          *time.Time                                              `json:"updateTime,omitempty"`
+	ResellOfferTemplate *string `json:"resellOfferTemplate,omitempty"`
+	ResellerInfo *GcpMarketplaceResellerInfo `json:"resellerInfo,omitempty"`
+	ReusePolicy *GcpMarketplaceResellerPrivateOfferPlanReusePolicy `json:"reusePolicy,omitempty"`
+	StartPolicy *GcpMarketplaceStartPolicy `json:"startPolicy,omitempty"`
+	State *GcpMarketplaceResellerPrivateOfferPlanState `json:"state,omitempty"`
+	StateTransitions []GcpMarketplaceResellerPrivateOfferPlanStateTransition `json:"stateTransitions,omitempty"`
+	UpdateTime *time.Time `json:"updateTime,omitempty"`
 }
 
 // NewGcpMarketplaceResellerPrivateOfferPlan instantiates a new GcpMarketplaceResellerPrivateOfferPlan object
@@ -870,7 +870,7 @@ func (o *GcpMarketplaceResellerPrivateOfferPlan) SetUpdateTime(v time.Time) {
 }
 
 func (o GcpMarketplaceResellerPrivateOfferPlan) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -992,3 +992,5 @@ func (v *NullableGcpMarketplaceResellerPrivateOfferPlan) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

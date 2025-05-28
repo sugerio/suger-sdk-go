@@ -2,44 +2,45 @@
 
 ## Properties
 
- Name                                 | Type                                                                                                             | Description                                                                                                                                                         | Notes      
---------------------------------------|------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------
- **ActiveEntitlement**                | Pointer to [**GcpMarketplaceEntitlement**](GcpMarketplaceEntitlement.md)                                         |                                                                                                                                                                     | [optional] 
- **AgencyEnabled**                    | Pointer to **bool**                                                                                              |                                                                                                                                                                     | [optional] 
- **Agreement**                        | Pointer to **string**                                                                                            | The resource name of agreement(entitlement) In format of \&quot;projects/{projectNumber}/agreements/{agreementId}\&quot;                                            | [optional] 
- **AgreementDocuments**               | Pointer to [**GcpMarketplaceAgreementDocument**](GcpMarketplaceAgreementDocument.md)                             |                                                                                                                                                                     | [optional] 
- **CancelTime**                       | Pointer to **time.Time**                                                                                         |                                                                                                                                                                     | [optional] 
- **CustomerInfo**                     | Pointer to [**GcpMarketplacePrivateOfferCustomerInfo**](GcpMarketplacePrivateOfferCustomerInfo.md)               |                                                                                                                                                                     | [optional] 
- **ExistingOfferData**                | Pointer to [**GcpMarketplaceExistingOfferData**](GcpMarketplaceExistingOfferData.md)                             |                                                                                                                                                                     | [optional] 
- **ExpireTime**                       | Pointer to **time.Time**                                                                                         |                                                                                                                                                                     | [optional] 
- **Features**                         | Pointer to [**[]GcpMarketplaceProductFeatureValue**](GcpMarketplaceProductFeatureValue.md)                       |                                                                                                                                                                     | [optional] 
- **InstallmentTimeline**              | Pointer to [**GcpMarketplacePrivateOfferInstallmentTimeline**](GcpMarketplacePrivateOfferInstallmentTimeline.md) |                                                                                                                                                                     | [optional] 
- **LifecycleState**                   | Pointer to **string**                                                                                            | such as \&quot;PUBLISHED\&quot;                                                                                                                                     | [optional] 
- **MetricInformation**                | Pointer to [**GcpMarketplacePrivateOfferMetricInformation**](GcpMarketplacePrivateOfferMetricInformation.md)     |                                                                                                                                                                     | [optional] 
- **MigrationMetadata**                | Pointer to [**GcpMarketplacePrivateOfferMigrationMetadata**](GcpMarketplacePrivateOfferMigrationMetadata.md)     |                                                                                                                                                                     | [optional] 
- **Name**                             | Pointer to **string**                                                                                            | In format of \&quot;projects/{projectNumber}/services/{serviceName, such as service-name.endpoints.gcp-project-id.cloud.goog}/privateOffers/{privateOfferId}\&quot; | [optional] 
- **OfferId**                          | Pointer to **string**                                                                                            | GCP private offer ID                                                                                                                                                | [optional] 
- **OfferSource**                      | Pointer to **string**                                                                                            | such as \&quot;OFFER\&quot; or \&quot;RESOLD\&quot; (resold via channel partner)                                                                                    | [optional] 
- **OfferState**                       | Pointer to [**GcpMarketplacePrivateOfferState**](GcpMarketplacePrivateOfferState.md)                             |                                                                                                                                                                     | [optional] 
- **OfferTerm**                        | Pointer to [**GcpMarketplacePrivateOfferTerm**](GcpMarketplacePrivateOfferTerm.md)                               |                                                                                                                                                                     | [optional] 
- **OfferTitle**                       | Pointer to **string**                                                                                            | The offer title in the GCP Marketplace.                                                                                                                             | [optional] 
- **OfferTitleAutoGenerated**          | Pointer to **bool**                                                                                              |                                                                                                                                                                     | [optional] 
- **PaymentSchedule**                  | Pointer to [**PaymentScheduleType**](PaymentScheduleType.md)                                                     | such as \&quot;PREPAY\&quot; or \&quot;POSTPAY\&quot;                                                                                                               | [optional] 
- **Policies**                         | Pointer to **map[string]string**                                                                                 |                                                                                                                                                                     | [optional] 
- **PriceModel**                       | Pointer to [**GcpMarketplacePrivateOfferPriceModel**](GcpMarketplacePrivateOfferPriceModel.md)                   | Nill if the offer has payment installments.                                                                                                                         | [optional] 
- **PriceModelType**                   | Pointer to [**GcpMarketplacePrivateOfferPriceModelType**](GcpMarketplacePrivateOfferPriceModelType.md)           |                                                                                                                                                                     | [optional] 
- **ProviderCancellationInternalNote** | Pointer to **string**                                                                                            |                                                                                                                                                                     | [optional] 
- **ProviderInfo**                     | Pointer to [**GcpMarketplacePrivateOfferProviderInfo**](GcpMarketplacePrivateOfferProviderInfo.md)               |                                                                                                                                                                     | [optional] 
- **ProviderInternalNote**             | Pointer to **string**                                                                                            |                                                                                                                                                                     | [optional] 
- **ProviderPublicNote**               | Pointer to **string**                                                                                            |                                                                                                                                                                     | [optional] 
- **PurchaseChannel**                  | Pointer to [**GcpMarketplacePurchaseChannel**](GcpMarketplacePurchaseChannel.md)                                 |                                                                                                                                                                     | [optional] 
- **PurchaseTime**                     | Pointer to **time.Time**                                                                                         |                                                                                                                                                                     | [optional] 
- **ReplacementMetadata**              | Pointer to [**GcpMarketplacePrivateOfferReplacementMetadata**](GcpMarketplacePrivateOfferReplacementMetadata.md) |                                                                                                                                                                     | [optional] 
- **ResellerInfo**                     | Pointer to [**GcpMarketplaceResellerInfo**](GcpMarketplaceResellerInfo.md)                                       | The info of the reseller who resold the offer and when OfferSource is \&quot;RESOLD\&quot;.                                                                         | [optional] 
- **ServiceLevel**                     | Pointer to **string**                                                                                            | The Plan of the offer.                                                                                                                                              | [optional] 
- **UpdateTime**                       | Pointer to **time.Time**                                                                                         |                                                                                                                                                                     | [optional] 
- **UseLegacyPartnerEula**             | Pointer to **bool**                                                                                              |                                                                                                                                                                     | [optional] 
- **UserLabels**                       | Pointer to **[]string**                                                                                          |                                                                                                                                                                     | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ActiveEntitlement** | Pointer to [**GcpMarketplaceEntitlement**](GcpMarketplaceEntitlement.md) |  | [optional] 
+**AgencyEnabled** | Pointer to **bool** |  | [optional] 
+**Agreement** | Pointer to **string** | The resource name of agreement(entitlement) In format of \&quot;projects/{projectNumber}/agreements/{agreementId}\&quot; | [optional] 
+**AgreementDocuments** | Pointer to [**GcpMarketplaceAgreementDocument**](GcpMarketplaceAgreementDocument.md) |  | [optional] 
+**CancelTime** | Pointer to **time.Time** |  | [optional] 
+**CustomerInfo** | Pointer to [**GcpMarketplacePrivateOfferCustomerInfo**](GcpMarketplacePrivateOfferCustomerInfo.md) |  | [optional] 
+**ExistingOfferData** | Pointer to [**GcpMarketplaceExistingOfferData**](GcpMarketplaceExistingOfferData.md) |  | [optional] 
+**ExpireTime** | Pointer to **time.Time** |  | [optional] 
+**Features** | Pointer to [**[]GcpMarketplaceProductFeatureValue**](GcpMarketplaceProductFeatureValue.md) |  | [optional] 
+**InstallmentTimeline** | Pointer to [**GcpMarketplacePrivateOfferInstallmentTimeline**](GcpMarketplacePrivateOfferInstallmentTimeline.md) |  | [optional] 
+**LifecycleState** | Pointer to **string** | such as \&quot;PUBLISHED\&quot; | [optional] 
+**MetricInformation** | Pointer to [**GcpMarketplacePrivateOfferMetricInformation**](GcpMarketplacePrivateOfferMetricInformation.md) |  | [optional] 
+**MigrationMetadata** | Pointer to [**GcpMarketplacePrivateOfferMigrationMetadata**](GcpMarketplacePrivateOfferMigrationMetadata.md) |  | [optional] 
+**Name** | Pointer to **string** | In format of \&quot;projects/{projectNumber}/services/{serviceName, such as service-name.endpoints.gcp-project-id.cloud.goog}/privateOffers/{privateOfferId}\&quot; | [optional] 
+**OfferId** | Pointer to **string** | GCP private offer ID | [optional] 
+**OfferSource** | Pointer to **string** | such as \&quot;OFFER\&quot; or \&quot;RESOLD\&quot; (resold via channel partner) | [optional] 
+**OfferState** | Pointer to [**GcpMarketplacePrivateOfferState**](GcpMarketplacePrivateOfferState.md) |  | [optional] 
+**OfferTerm** | Pointer to [**GcpMarketplacePrivateOfferTerm**](GcpMarketplacePrivateOfferTerm.md) |  | [optional] 
+**OfferTitle** | Pointer to **string** | The offer title in the GCP Marketplace. | [optional] 
+**OfferTitleAutoGenerated** | Pointer to **bool** |  | [optional] 
+**PaymentSchedule** | Pointer to [**PaymentScheduleType**](PaymentScheduleType.md) | such as \&quot;PREPAY\&quot; or \&quot;POSTPAY\&quot; | [optional] 
+**Policies** | Pointer to [**GcpMarketplacePrivateOfferPolicies**](GcpMarketplacePrivateOfferPolicies.md) | The policies of the offer. | [optional] 
+**PriceModel** | Pointer to [**GcpMarketplacePrivateOfferPriceModel**](GcpMarketplacePrivateOfferPriceModel.md) | Nill if the offer has payment installments. | [optional] 
+**PriceModelType** | Pointer to [**GcpMarketplacePrivateOfferPriceModelType**](GcpMarketplacePrivateOfferPriceModelType.md) |  | [optional] 
+**PrivateOfferRevenueShare** | Pointer to [**GcpMarketplacePrivateOfferRevenueShare**](GcpMarketplacePrivateOfferRevenueShare.md) | Revenue share information for this private offer | [optional] 
+**ProviderCancellationInternalNote** | Pointer to **string** |  | [optional] 
+**ProviderInfo** | Pointer to [**GcpMarketplacePrivateOfferProviderInfo**](GcpMarketplacePrivateOfferProviderInfo.md) |  | [optional] 
+**ProviderInternalNote** | Pointer to **string** |  | [optional] 
+**ProviderPublicNote** | Pointer to **string** |  | [optional] 
+**PurchaseChannel** | Pointer to [**GcpMarketplacePurchaseChannel**](GcpMarketplacePurchaseChannel.md) |  | [optional] 
+**PurchaseTime** | Pointer to **time.Time** |  | [optional] 
+**ReplacementMetadata** | Pointer to [**GcpMarketplacePrivateOfferReplacementMetadata**](GcpMarketplacePrivateOfferReplacementMetadata.md) |  | [optional] 
+**ResellerInfo** | Pointer to [**GcpMarketplaceResellerInfo**](GcpMarketplaceResellerInfo.md) | The info of the reseller who resold the offer and when OfferSource is \&quot;RESOLD\&quot;. | [optional] 
+**ServiceLevel** | Pointer to **string** | The Plan of the offer. | [optional] 
+**UpdateTime** | Pointer to **time.Time** |  | [optional] 
+**UseLegacyPartnerEula** | Pointer to **bool** |  | [optional] 
+**UserLabels** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -587,20 +588,20 @@ HasPaymentSchedule returns a boolean if a field has been set.
 
 ### GetPolicies
 
-`func (o *GcpMarketplacePrivateOffer) GetPolicies() map[string]string`
+`func (o *GcpMarketplacePrivateOffer) GetPolicies() GcpMarketplacePrivateOfferPolicies`
 
 GetPolicies returns the Policies field if non-nil, zero value otherwise.
 
 ### GetPoliciesOk
 
-`func (o *GcpMarketplacePrivateOffer) GetPoliciesOk() (*map[string]string, bool)`
+`func (o *GcpMarketplacePrivateOffer) GetPoliciesOk() (*GcpMarketplacePrivateOfferPolicies, bool)`
 
 GetPoliciesOk returns a tuple with the Policies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPolicies
 
-`func (o *GcpMarketplacePrivateOffer) SetPolicies(v map[string]string)`
+`func (o *GcpMarketplacePrivateOffer) SetPolicies(v GcpMarketplacePrivateOfferPolicies)`
 
 SetPolicies sets Policies field to given value.
 
@@ -659,6 +660,31 @@ SetPriceModelType sets PriceModelType field to given value.
 `func (o *GcpMarketplacePrivateOffer) HasPriceModelType() bool`
 
 HasPriceModelType returns a boolean if a field has been set.
+
+### GetPrivateOfferRevenueShare
+
+`func (o *GcpMarketplacePrivateOffer) GetPrivateOfferRevenueShare() GcpMarketplacePrivateOfferRevenueShare`
+
+GetPrivateOfferRevenueShare returns the PrivateOfferRevenueShare field if non-nil, zero value otherwise.
+
+### GetPrivateOfferRevenueShareOk
+
+`func (o *GcpMarketplacePrivateOffer) GetPrivateOfferRevenueShareOk() (*GcpMarketplacePrivateOfferRevenueShare, bool)`
+
+GetPrivateOfferRevenueShareOk returns a tuple with the PrivateOfferRevenueShare field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateOfferRevenueShare
+
+`func (o *GcpMarketplacePrivateOffer) SetPrivateOfferRevenueShare(v GcpMarketplacePrivateOfferRevenueShare)`
+
+SetPrivateOfferRevenueShare sets PrivateOfferRevenueShare field to given value.
+
+### HasPrivateOfferRevenueShare
+
+`func (o *GcpMarketplacePrivateOffer) HasPrivateOfferRevenueShare() bool`
+
+HasPrivateOfferRevenueShare returns a boolean if a field has been set.
 
 ### GetProviderCancellationInternalNote
 

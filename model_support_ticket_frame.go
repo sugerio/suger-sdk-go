@@ -20,7 +20,7 @@ var _ MappedNullable = &SupportTicketFrame{}
 
 // SupportTicketFrame struct for SupportTicketFrame
 type SupportTicketFrame struct {
-	Id  *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *SupportTicketFrame) SetUrl(v string) {
 }
 
 func (o SupportTicketFrame) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableSupportTicketFrame) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

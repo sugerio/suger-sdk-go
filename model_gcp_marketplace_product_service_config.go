@@ -21,7 +21,7 @@ var _ MappedNullable = &GcpMarketplaceProductServiceConfig{}
 // GcpMarketplaceProductServiceConfig struct for GcpMarketplaceProductServiceConfig
 type GcpMarketplaceProductServiceConfig struct {
 	Billing *GcpMarketplaceProductServiceConfigBilling `json:"billing,omitempty"`
-	Metrics []GcpMarketplaceProductMeteringMetric      `json:"metrics,omitempty"`
+	Metrics []GcpMarketplaceProductMeteringMetric `json:"metrics,omitempty"`
 	// in format of \"product-name.endpoints.gcp-project-id.cloud.goog\"
 	Name *string `json:"name,omitempty"`
 	// The GCP project ID of the producer.
@@ -208,7 +208,7 @@ func (o *GcpMarketplaceProductServiceConfig) SetTitle(v string) {
 }
 
 func (o GcpMarketplaceProductServiceConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -270,3 +270,5 @@ func (v *NullableGcpMarketplaceProductServiceConfig) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -24,7 +24,7 @@ type AzureMarketplacePriceAndAvailabilitySoftwareReservation struct {
 	PercentageSave *float32 `json:"percentageSave,omitempty"`
 	// default 0
 	Term *float32 `json:"term,omitempty"`
-	Type *string  `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewAzureMarketplacePriceAndAvailabilitySoftwareReservation instantiates a new AzureMarketplacePriceAndAvailabilitySoftwareReservation object
@@ -141,7 +141,7 @@ func (o *AzureMarketplacePriceAndAvailabilitySoftwareReservation) SetType(v stri
 }
 
 func (o AzureMarketplacePriceAndAvailabilitySoftwareReservation) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -197,3 +197,5 @@ func (v *NullableAzureMarketplacePriceAndAvailabilitySoftwareReservation) Unmars
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

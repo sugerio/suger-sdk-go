@@ -21,7 +21,7 @@ var _ MappedNullable = &InvoiceAdjustOverallMinimumSpend{}
 // InvoiceAdjustOverallMinimumSpend struct for InvoiceAdjustOverallMinimumSpend
 type InvoiceAdjustOverallMinimumSpend struct {
 	MinimumSpend *float32 `json:"minimumSpend,omitempty"`
-	Reason       *string  `json:"reason,omitempty"`
+	Reason *string `json:"reason,omitempty"`
 }
 
 // NewInvoiceAdjustOverallMinimumSpend instantiates a new InvoiceAdjustOverallMinimumSpend object
@@ -106,7 +106,7 @@ func (o *InvoiceAdjustOverallMinimumSpend) SetReason(v string) {
 }
 
 func (o InvoiceAdjustOverallMinimumSpend) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableInvoiceAdjustOverallMinimumSpend) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

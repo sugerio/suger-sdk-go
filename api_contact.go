@@ -20,15 +20,16 @@ import (
 	"strings"
 )
 
+
 // ContactAPIService ContactAPI service
 type ContactAPIService service
 
 type ApiAddContactToBuyerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ContactAPIService
-	orgId      string
-	buyerId    string
-	contactId  string
+	orgId string
+	buyerId string
+	contactId string
 }
 
 func (r ApiAddContactToBuyerRequest) Execute() (*IdentityBuyer, *http.Response, error) {
@@ -40,31 +41,30 @@ AddContactToBuyer add contact to buyer
 
 add contact to buyer by the given organization, buyer id and contact id.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param buyerId Buyer ID
-	@param contactId Contact ID
-	@return ApiAddContactToBuyerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param buyerId Buyer ID
+ @param contactId Contact ID
+ @return ApiAddContactToBuyerRequest
 */
 func (a *ContactAPIService) AddContactToBuyer(ctx context.Context, orgId string, buyerId string, contactId string) ApiAddContactToBuyerRequest {
 	return ApiAddContactToBuyerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		buyerId:    buyerId,
-		contactId:  contactId,
+		ctx: ctx,
+		orgId: orgId,
+		buyerId: buyerId,
+		contactId: contactId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IdentityBuyer
+//  @return IdentityBuyer
 func (a *ContactAPIService) AddContactToBuyerExecute(r ApiAddContactToBuyerRequest) (*IdentityBuyer, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *IdentityBuyer
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentityBuyer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContactAPIService.AddContactToBuyer")
@@ -141,8 +141,8 @@ func (a *ContactAPIService) AddContactToBuyerExecute(r ApiAddContactToBuyerReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -152,8 +152,8 @@ func (a *ContactAPIService) AddContactToBuyerExecute(r ApiAddContactToBuyerReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -171,11 +171,11 @@ func (a *ContactAPIService) AddContactToBuyerExecute(r ApiAddContactToBuyerReque
 }
 
 type ApiAddContactToOfferRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ContactAPIService
-	orgId      string
-	contactId  string
-	offerId    string
+	orgId string
+	contactId string
+	offerId string
 }
 
 func (r ApiAddContactToOfferRequest) Execute() (string, *http.Response, error) {
@@ -187,31 +187,30 @@ AddContactToOffer add contact to offer
 
 add contact to offer by the given organization, offer id and contact id.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param contactId Contact ID
-	@param offerId Offer ID
-	@return ApiAddContactToOfferRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param contactId Contact ID
+ @param offerId Offer ID
+ @return ApiAddContactToOfferRequest
 */
 func (a *ContactAPIService) AddContactToOffer(ctx context.Context, orgId string, contactId string, offerId string) ApiAddContactToOfferRequest {
 	return ApiAddContactToOfferRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		contactId:  contactId,
-		offerId:    offerId,
+		ctx: ctx,
+		orgId: orgId,
+		contactId: contactId,
+		offerId: offerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *ContactAPIService) AddContactToOfferExecute(r ApiAddContactToOfferRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContactAPIService.AddContactToOffer")
@@ -288,8 +287,8 @@ func (a *ContactAPIService) AddContactToOfferExecute(r ApiAddContactToOfferReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -299,8 +298,8 @@ func (a *ContactAPIService) AddContactToOfferExecute(r ApiAddContactToOfferReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -318,10 +317,10 @@ func (a *ContactAPIService) AddContactToOfferExecute(r ApiAddContactToOfferReque
 }
 
 type ApiBatchCreateContactsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ContactAPIService
-	orgId      string
-	data       *[]IdentityContact
+	orgId string
+	data *[]IdentityContact
 }
 
 // RequestBody
@@ -339,27 +338,26 @@ BatchCreateContacts batch create contacts
 
 Create multiple contacts under the given organization. If an email address already exists, return the existing contact.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiBatchCreateContactsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiBatchCreateContactsRequest
 */
 func (a *ContactAPIService) BatchCreateContacts(ctx context.Context, orgId string) ApiBatchCreateContactsRequest {
 	return ApiBatchCreateContactsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return [][]IdentityContact
+//  @return [][]IdentityContact
 func (a *ContactAPIService) BatchCreateContactsExecute(r ApiBatchCreateContactsRequest) ([][]IdentityContact, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue [][]IdentityContact
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  [][]IdentityContact
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContactAPIService.BatchCreateContacts")
@@ -439,8 +437,8 @@ func (a *ContactAPIService) BatchCreateContactsExecute(r ApiBatchCreateContactsR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -450,8 +448,8 @@ func (a *ContactAPIService) BatchCreateContactsExecute(r ApiBatchCreateContactsR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -469,10 +467,10 @@ func (a *ContactAPIService) BatchCreateContactsExecute(r ApiBatchCreateContactsR
 }
 
 type ApiCreateContactRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ContactAPIService
-	orgId      string
-	data       *IdentityContact
+	orgId string
+	data *IdentityContact
 }
 
 // RequestBody
@@ -490,27 +488,26 @@ CreateContact create contact
 
 Create a contact under the given organization. If the email address already exists, return the existing contact.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiCreateContactRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiCreateContactRequest
 */
 func (a *ContactAPIService) CreateContact(ctx context.Context, orgId string) ApiCreateContactRequest {
 	return ApiCreateContactRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IdentityContact
+//  @return IdentityContact
 func (a *ContactAPIService) CreateContactExecute(r ApiCreateContactRequest) (*IdentityContact, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *IdentityContact
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentityContact
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContactAPIService.CreateContact")
@@ -590,8 +587,8 @@ func (a *ContactAPIService) CreateContactExecute(r ApiCreateContactRequest) (*Id
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -601,8 +598,8 @@ func (a *ContactAPIService) CreateContactExecute(r ApiCreateContactRequest) (*Id
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -620,10 +617,10 @@ func (a *ContactAPIService) CreateContactExecute(r ApiCreateContactRequest) (*Id
 }
 
 type ApiGetContactRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ContactAPIService
-	orgId      string
-	contactId  string
+	orgId string
+	contactId string
 }
 
 func (r ApiGetContactRequest) Execute() (*IdentityContact, *http.Response, error) {
@@ -635,29 +632,28 @@ GetContact get contact
 
 Get the Contact by the given contact ID.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param contactId Contact ID
-	@return ApiGetContactRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param contactId Contact ID
+ @return ApiGetContactRequest
 */
 func (a *ContactAPIService) GetContact(ctx context.Context, orgId string, contactId string) ApiGetContactRequest {
 	return ApiGetContactRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		contactId:  contactId,
+		ctx: ctx,
+		orgId: orgId,
+		contactId: contactId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IdentityContact
+//  @return IdentityContact
 func (a *ContactAPIService) GetContactExecute(r ApiGetContactRequest) (*IdentityContact, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *IdentityContact
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentityContact
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContactAPIService.GetContact")
@@ -733,8 +729,8 @@ func (a *ContactAPIService) GetContactExecute(r ApiGetContactRequest) (*Identity
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -744,8 +740,8 @@ func (a *ContactAPIService) GetContactExecute(r ApiGetContactRequest) (*Identity
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -763,11 +759,11 @@ func (a *ContactAPIService) GetContactExecute(r ApiGetContactRequest) (*Identity
 }
 
 type ApiListContactsByOrganizationRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ContactAPIService
-	orgId      string
-	limit      *int32
-	offset     *int32
+	orgId string
+	limit *int32
+	offset *int32
 }
 
 // List pagination size, default 1000, max value is 1000
@@ -791,27 +787,26 @@ ListContactsByOrganization list contacts by organization
 
 List all contacts under the given organization.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListContactsByOrganizationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListContactsByOrganizationRequest
 */
 func (a *ContactAPIService) ListContactsByOrganization(ctx context.Context, orgId string) ApiListContactsByOrganizationRequest {
 	return ApiListContactsByOrganizationRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []IdentityContact
+//  @return []IdentityContact
 func (a *ContactAPIService) ListContactsByOrganizationExecute(r ApiListContactsByOrganizationRequest) ([]IdentityContact, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []IdentityContact
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []IdentityContact
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContactAPIService.ListContactsByOrganization")
@@ -892,8 +887,8 @@ func (a *ContactAPIService) ListContactsByOrganizationExecute(r ApiListContactsB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -903,8 +898,8 @@ func (a *ContactAPIService) ListContactsByOrganizationExecute(r ApiListContactsB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -922,11 +917,11 @@ func (a *ContactAPIService) ListContactsByOrganizationExecute(r ApiListContactsB
 }
 
 type ApiRemoveContactFromBuyerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ContactAPIService
-	orgId      string
-	buyerId    string
-	contactId  string
+	orgId string
+	buyerId string
+	contactId string
 }
 
 func (r ApiRemoveContactFromBuyerRequest) Execute() (string, *http.Response, error) {
@@ -938,31 +933,30 @@ RemoveContactFromBuyer remove contact from buyer
 
 remove contact from buyer by the given organization, buyer id and contact id.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param buyerId Buyer ID
-	@param contactId Contact ID
-	@return ApiRemoveContactFromBuyerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param buyerId Buyer ID
+ @param contactId Contact ID
+ @return ApiRemoveContactFromBuyerRequest
 */
 func (a *ContactAPIService) RemoveContactFromBuyer(ctx context.Context, orgId string, buyerId string, contactId string) ApiRemoveContactFromBuyerRequest {
 	return ApiRemoveContactFromBuyerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		buyerId:    buyerId,
-		contactId:  contactId,
+		ctx: ctx,
+		orgId: orgId,
+		buyerId: buyerId,
+		contactId: contactId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *ContactAPIService) RemoveContactFromBuyerExecute(r ApiRemoveContactFromBuyerRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContactAPIService.RemoveContactFromBuyer")
@@ -1039,8 +1033,8 @@ func (a *ContactAPIService) RemoveContactFromBuyerExecute(r ApiRemoveContactFrom
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1050,8 +1044,8 @@ func (a *ContactAPIService) RemoveContactFromBuyerExecute(r ApiRemoveContactFrom
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1069,11 +1063,11 @@ func (a *ContactAPIService) RemoveContactFromBuyerExecute(r ApiRemoveContactFrom
 }
 
 type ApiRemoveContactFromOfferRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ContactAPIService
-	orgId      string
-	contactId  string
-	offerId    string
+	orgId string
+	contactId string
+	offerId string
 }
 
 func (r ApiRemoveContactFromOfferRequest) Execute() (string, *http.Response, error) {
@@ -1085,31 +1079,30 @@ RemoveContactFromOffer remove contact from offer
 
 remove contact from offer by given organization, offer id and contact id.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param contactId Contact ID
-	@param offerId Offer ID
-	@return ApiRemoveContactFromOfferRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param contactId Contact ID
+ @param offerId Offer ID
+ @return ApiRemoveContactFromOfferRequest
 */
 func (a *ContactAPIService) RemoveContactFromOffer(ctx context.Context, orgId string, contactId string, offerId string) ApiRemoveContactFromOfferRequest {
 	return ApiRemoveContactFromOfferRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		contactId:  contactId,
-		offerId:    offerId,
+		ctx: ctx,
+		orgId: orgId,
+		contactId: contactId,
+		offerId: offerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *ContactAPIService) RemoveContactFromOfferExecute(r ApiRemoveContactFromOfferRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContactAPIService.RemoveContactFromOffer")
@@ -1186,8 +1179,8 @@ func (a *ContactAPIService) RemoveContactFromOfferExecute(r ApiRemoveContactFrom
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1197,8 +1190,8 @@ func (a *ContactAPIService) RemoveContactFromOfferExecute(r ApiRemoveContactFrom
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1216,11 +1209,11 @@ func (a *ContactAPIService) RemoveContactFromOfferExecute(r ApiRemoveContactFrom
 }
 
 type ApiUpdateContactRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ContactAPIService
-	orgId      string
-	contactId  string
-	data       *IdentityContact
+	orgId string
+	contactId string
+	data *IdentityContact
 }
 
 // Request Body
@@ -1238,29 +1231,28 @@ UpdateContact update contact
 
 update contact by the given organization and buyer id. The given name and information should be complete. Please note that this function does not support partial updates.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param contactId Contact ID
-	@return ApiUpdateContactRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param contactId Contact ID
+ @return ApiUpdateContactRequest
 */
 func (a *ContactAPIService) UpdateContact(ctx context.Context, orgId string, contactId string) ApiUpdateContactRequest {
 	return ApiUpdateContactRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		contactId:  contactId,
+		ctx: ctx,
+		orgId: orgId,
+		contactId: contactId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IdentityContact
+//  @return IdentityContact
 func (a *ContactAPIService) UpdateContactExecute(r ApiUpdateContactRequest) (*IdentityContact, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *IdentityContact
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentityContact
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContactAPIService.UpdateContact")
@@ -1341,8 +1333,8 @@ func (a *ContactAPIService) UpdateContactExecute(r ApiUpdateContactRequest) (*Id
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1352,8 +1344,8 @@ func (a *ContactAPIService) UpdateContactExecute(r ApiUpdateContactRequest) (*Id
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

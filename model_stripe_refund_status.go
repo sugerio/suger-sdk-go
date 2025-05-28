@@ -21,11 +21,11 @@ type StripeRefundStatus string
 
 // List of StripeRefundStatus
 const (
-	StripeRefundStatus_Pending        StripeRefundStatus = "pending"
+	StripeRefundStatus_Pending StripeRefundStatus = "pending"
 	StripeRefundStatus_RequiresAction StripeRefundStatus = "requires_action"
-	StripeRefundStatus_Succeeded      StripeRefundStatus = "succeeded"
-	StripeRefundStatus_Failed         StripeRefundStatus = "failed"
-	StripeRefundStatus_Canceled       StripeRefundStatus = "canceled"
+	StripeRefundStatus_Succeeded StripeRefundStatus = "succeeded"
+	StripeRefundStatus_Failed StripeRefundStatus = "failed"
+	StripeRefundStatus_Canceled StripeRefundStatus = "canceled"
 )
 
 // All allowed values of StripeRefundStatus enum
@@ -115,3 +115,4 @@ func (v *NullableStripeRefundStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

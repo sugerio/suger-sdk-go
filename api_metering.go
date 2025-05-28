@@ -20,13 +20,14 @@ import (
 	"strings"
 )
 
+
 // MeteringAPIService MeteringAPI service
 type MeteringAPIService service
 
 type ApiBatchReportUsageRecordGroupsRequest struct {
-	ctx               context.Context
-	ApiService        *MeteringAPIService
-	orgId             string
+	ctx context.Context
+	ApiService *MeteringAPIService
+	orgId string
 	usageRecordGroups *[]NewUsageRecordGroup
 }
 
@@ -45,27 +46,26 @@ BatchReportUsageRecordGroups batch report usageRecordGroups
 
 Batch report new usage record groups.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiBatchReportUsageRecordGroupsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiBatchReportUsageRecordGroupsRequest
 */
 func (a *MeteringAPIService) BatchReportUsageRecordGroups(ctx context.Context, orgId string) ApiBatchReportUsageRecordGroupsRequest {
 	return ApiBatchReportUsageRecordGroupsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []MeteringUsageRecordGroup
+//  @return []MeteringUsageRecordGroup
 func (a *MeteringAPIService) BatchReportUsageRecordGroupsExecute(r ApiBatchReportUsageRecordGroupsRequest) ([]MeteringUsageRecordGroup, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []MeteringUsageRecordGroup
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []MeteringUsageRecordGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.BatchReportUsageRecordGroups")
@@ -145,8 +145,8 @@ func (a *MeteringAPIService) BatchReportUsageRecordGroupsExecute(r ApiBatchRepor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -156,8 +156,8 @@ func (a *MeteringAPIService) BatchReportUsageRecordGroupsExecute(r ApiBatchRepor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -175,10 +175,10 @@ func (a *MeteringAPIService) BatchReportUsageRecordGroupsExecute(r ApiBatchRepor
 }
 
 type ApiBatchValidateUsageRecordGroupsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MeteringAPIService
-	orgId      string
-	data       *[]NewUsageRecordGroup
+	orgId string
+	data *[]NewUsageRecordGroup
 }
 
 // Array of usage record groups to be validated
@@ -196,27 +196,26 @@ BatchValidateUsageRecordGroups batch validate usageRecordGroups
 
 Provide a batch of usage record groups and validate each individual usage record group one by one.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiBatchValidateUsageRecordGroupsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiBatchValidateUsageRecordGroupsRequest
 */
 func (a *MeteringAPIService) BatchValidateUsageRecordGroups(ctx context.Context, orgId string) ApiBatchValidateUsageRecordGroupsRequest {
 	return ApiBatchValidateUsageRecordGroupsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *MeteringAPIService) BatchValidateUsageRecordGroupsExecute(r ApiBatchValidateUsageRecordGroupsRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.BatchValidateUsageRecordGroups")
@@ -296,8 +295,8 @@ func (a *MeteringAPIService) BatchValidateUsageRecordGroupsExecute(r ApiBatchVal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -307,8 +306,8 @@ func (a *MeteringAPIService) BatchValidateUsageRecordGroupsExecute(r ApiBatchVal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -326,10 +325,10 @@ func (a *MeteringAPIService) BatchValidateUsageRecordGroupsExecute(r ApiBatchVal
 }
 
 type ApiCreateBillableMetricRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MeteringAPIService
-	orgId      string
-	data       *BillableMetric
+	orgId string
+	data *BillableMetric
 }
 
 // RequestBody
@@ -347,27 +346,26 @@ CreateBillableMetric create billable metric
 
 Create a new billable metric for the given organization.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiCreateBillableMetricRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiCreateBillableMetricRequest
 */
 func (a *MeteringAPIService) CreateBillableMetric(ctx context.Context, orgId string) ApiCreateBillableMetricRequest {
 	return ApiCreateBillableMetricRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillableMetric
+//  @return BillableMetric
 func (a *MeteringAPIService) CreateBillableMetricExecute(r ApiCreateBillableMetricRequest) (*BillableMetric, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillableMetric
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillableMetric
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.CreateBillableMetric")
@@ -447,8 +445,8 @@ func (a *MeteringAPIService) CreateBillableMetricExecute(r ApiCreateBillableMetr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -458,8 +456,8 @@ func (a *MeteringAPIService) CreateBillableMetricExecute(r ApiCreateBillableMetr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -477,11 +475,11 @@ func (a *MeteringAPIService) CreateBillableMetricExecute(r ApiCreateBillableMetr
 }
 
 type ApiDeleteUsageRecordGroupRequest struct {
-	ctx                context.Context
-	ApiService         *MeteringAPIService
-	orgId              string
+	ctx context.Context
+	ApiService *MeteringAPIService
+	orgId string
 	usageRecordGroupId string
-	creationDate       *string
+	creationDate *string
 }
 
 // UsageRecordGroup&#39;s creation date (UTC) in YYYY-MM-DD format
@@ -499,29 +497,28 @@ DeleteUsageRecordGroup delete usageRecordGroup
 
 delete the UsageRecordGroup for the given organization and usageRecordGroup ID. Only usageRecordGroup with status "CREATED" or "INVALID" can be deleted.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param usageRecordGroupId UsageRecordGroup ID
-	@return ApiDeleteUsageRecordGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param usageRecordGroupId UsageRecordGroup ID
+ @return ApiDeleteUsageRecordGroupRequest
 */
 func (a *MeteringAPIService) DeleteUsageRecordGroup(ctx context.Context, orgId string, usageRecordGroupId string) ApiDeleteUsageRecordGroupRequest {
 	return ApiDeleteUsageRecordGroupRequest{
-		ApiService:         a,
-		ctx:                ctx,
-		orgId:              orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		usageRecordGroupId: usageRecordGroupId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return MeteringUsageRecordGroup
+//  @return MeteringUsageRecordGroup
 func (a *MeteringAPIService) DeleteUsageRecordGroupExecute(r ApiDeleteUsageRecordGroupRequest) (*MeteringUsageRecordGroup, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *MeteringUsageRecordGroup
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MeteringUsageRecordGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.DeleteUsageRecordGroup")
@@ -600,8 +597,8 @@ func (a *MeteringAPIService) DeleteUsageRecordGroupExecute(r ApiDeleteUsageRecor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -611,8 +608,8 @@ func (a *MeteringAPIService) DeleteUsageRecordGroupExecute(r ApiDeleteUsageRecor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -622,8 +619,8 @@ func (a *MeteringAPIService) DeleteUsageRecordGroupExecute(r ApiDeleteUsageRecor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -641,9 +638,9 @@ func (a *MeteringAPIService) DeleteUsageRecordGroupExecute(r ApiDeleteUsageRecor
 }
 
 type ApiGetBillableMetricRequest struct {
-	ctx              context.Context
-	ApiService       *MeteringAPIService
-	orgId            string
+	ctx context.Context
+	ApiService *MeteringAPIService
+	orgId string
 	billableMetricId string
 }
 
@@ -656,29 +653,28 @@ GetBillableMetric get billable metric
 
 Get the billable metric for the given organization and billable metric ID.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param billableMetricId Billable Metric ID
-	@return ApiGetBillableMetricRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param billableMetricId Billable Metric ID
+ @return ApiGetBillableMetricRequest
 */
 func (a *MeteringAPIService) GetBillableMetric(ctx context.Context, orgId string, billableMetricId string) ApiGetBillableMetricRequest {
 	return ApiGetBillableMetricRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		orgId:            orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		billableMetricId: billableMetricId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillableMetric
+//  @return BillableMetric
 func (a *MeteringAPIService) GetBillableMetricExecute(r ApiGetBillableMetricRequest) (*BillableMetric, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillableMetric
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillableMetric
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.GetBillableMetric")
@@ -754,8 +750,8 @@ func (a *MeteringAPIService) GetBillableMetricExecute(r ApiGetBillableMetricRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -765,8 +761,8 @@ func (a *MeteringAPIService) GetBillableMetricExecute(r ApiGetBillableMetricRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -776,8 +772,8 @@ func (a *MeteringAPIService) GetBillableMetricExecute(r ApiGetBillableMetricRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -795,9 +791,9 @@ func (a *MeteringAPIService) GetBillableMetricExecute(r ApiGetBillableMetricRequ
 }
 
 type ApiGetUsageMeteringConfigInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MeteringAPIService
-	orgId      string
+	orgId string
 }
 
 func (r ApiGetUsageMeteringConfigInfoRequest) Execute() (*UsageMeteringConfigInfo, *http.Response, error) {
@@ -809,27 +805,26 @@ GetUsageMeteringConfigInfo get usage metering config info
 
 Get the usage metering config info of the given organization.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiGetUsageMeteringConfigInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiGetUsageMeteringConfigInfoRequest
 */
 func (a *MeteringAPIService) GetUsageMeteringConfigInfo(ctx context.Context, orgId string) ApiGetUsageMeteringConfigInfoRequest {
 	return ApiGetUsageMeteringConfigInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UsageMeteringConfigInfo
+//  @return UsageMeteringConfigInfo
 func (a *MeteringAPIService) GetUsageMeteringConfigInfoExecute(r ApiGetUsageMeteringConfigInfoRequest) (*UsageMeteringConfigInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UsageMeteringConfigInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UsageMeteringConfigInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.GetUsageMeteringConfigInfo")
@@ -904,8 +899,8 @@ func (a *MeteringAPIService) GetUsageMeteringConfigInfoExecute(r ApiGetUsageMete
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -915,8 +910,8 @@ func (a *MeteringAPIService) GetUsageMeteringConfigInfoExecute(r ApiGetUsageMete
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -934,10 +929,10 @@ func (a *MeteringAPIService) GetUsageMeteringConfigInfoExecute(r ApiGetUsageMete
 }
 
 type ApiListBillableMetricsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MeteringAPIService
-	orgId      string
-	status     *string
+	orgId string
+	status *string
 }
 
 // Status of the billable metric
@@ -955,27 +950,26 @@ ListBillableMetrics list billable metrics
 
 list billable metrics for the given organization.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListBillableMetricsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListBillableMetricsRequest
 */
 func (a *MeteringAPIService) ListBillableMetrics(ctx context.Context, orgId string) ApiListBillableMetricsRequest {
 	return ApiListBillableMetricsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []BillableMetric
+//  @return []BillableMetric
 func (a *MeteringAPIService) ListBillableMetricsExecute(r ApiListBillableMetricsRequest) ([]BillableMetric, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []BillableMetric
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []BillableMetric
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.ListBillableMetrics")
@@ -1053,8 +1047,8 @@ func (a *MeteringAPIService) ListBillableMetricsExecute(r ApiListBillableMetrics
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1064,8 +1058,8 @@ func (a *MeteringAPIService) ListBillableMetricsExecute(r ApiListBillableMetrics
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1083,19 +1077,19 @@ func (a *MeteringAPIService) ListBillableMetricsExecute(r ApiListBillableMetrics
 }
 
 type ApiListUsageRecordGroupsRequest struct {
-	ctx           context.Context
-	ApiService    *MeteringAPIService
-	orgId         string
-	partner       *string
-	buyerId       *string
+	ctx context.Context
+	ApiService *MeteringAPIService
+	orgId string
+	partner *string
+	buyerId *string
 	entitlementId *string
-	status        *string
-	source        *string
-	metaInfo      *string
-	startDate     *string
-	endDate       *string
-	limit         *int32
-	offset        *int32
+	status *string
+	source *string
+	metaInfo *string
+	startDate *string
+	endDate *string
+	limit *int32
+	offset *int32
 }
 
 // Cloud Partner
@@ -1167,27 +1161,26 @@ ListUsageRecordGroups list usageRecordGroups
 
 List UsageRecordGroups by the given organization, partner, product, entitlement or buyer. Only provide one or none of the optional query parameters: partner, productId, entitlementId & buyerId .
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListUsageRecordGroupsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListUsageRecordGroupsRequest
 */
 func (a *MeteringAPIService) ListUsageRecordGroups(ctx context.Context, orgId string) ApiListUsageRecordGroupsRequest {
 	return ApiListUsageRecordGroupsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListUsageRecordGroupsResponse
+//  @return ListUsageRecordGroupsResponse
 func (a *MeteringAPIService) ListUsageRecordGroupsExecute(r ApiListUsageRecordGroupsRequest) (*ListUsageRecordGroupsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListUsageRecordGroupsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListUsageRecordGroupsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.ListUsageRecordGroups")
@@ -1292,8 +1285,8 @@ func (a *MeteringAPIService) ListUsageRecordGroupsExecute(r ApiListUsageRecordGr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1303,8 +1296,8 @@ func (a *MeteringAPIService) ListUsageRecordGroupsExecute(r ApiListUsageRecordGr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1322,16 +1315,16 @@ func (a *MeteringAPIService) ListUsageRecordGroupsExecute(r ApiListUsageRecordGr
 }
 
 type ApiListUsageRecordReportsRequest struct {
-	ctx           context.Context
-	ApiService    *MeteringAPIService
-	orgId         string
-	partner       *string
-	buyerId       *string
+	ctx context.Context
+	ApiService *MeteringAPIService
+	orgId string
+	partner *string
+	buyerId *string
 	entitlementId *string
-	startDate     *string
-	endDate       *string
-	limit         *int32
-	offset        *int32
+	startDate *string
+	endDate *string
+	limit *int32
+	offset *int32
 }
 
 // Cloud Partner
@@ -1385,27 +1378,26 @@ ListUsageRecordReports list usageRecordReports
 
 List usageRecordReports under the given organization, partner, entitlement or buyer, within the given time range and pagination.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListUsageRecordReportsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListUsageRecordReportsRequest
 */
 func (a *MeteringAPIService) ListUsageRecordReports(ctx context.Context, orgId string) ApiListUsageRecordReportsRequest {
 	return ApiListUsageRecordReportsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListUsageRecordReportsResponse
+//  @return ListUsageRecordReportsResponse
 func (a *MeteringAPIService) ListUsageRecordReportsExecute(r ApiListUsageRecordReportsRequest) (*ListUsageRecordReportsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListUsageRecordReportsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListUsageRecordReportsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.ListUsageRecordReports")
@@ -1501,8 +1493,8 @@ func (a *MeteringAPIService) ListUsageRecordReportsExecute(r ApiListUsageRecordR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1512,8 +1504,8 @@ func (a *MeteringAPIService) ListUsageRecordReportsExecute(r ApiListUsageRecordR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1531,11 +1523,11 @@ func (a *MeteringAPIService) ListUsageRecordReportsExecute(r ApiListUsageRecordR
 }
 
 type ApiReportUsageRecordGroupRequest struct {
-	ctx           context.Context
-	ApiService    *MeteringAPIService
-	orgId         string
+	ctx context.Context
+	ApiService *MeteringAPIService
+	orgId string
 	entitlementId string
-	data          *CreateUsageRecordGroupParams
+	data *CreateUsageRecordGroupParams
 }
 
 // RequestBody
@@ -1553,29 +1545,28 @@ ReportUsageRecordGroup report usageRecordGroup
 
 It is recommended to provide the ID in the request body CreateUsageRecordGroupParams, so the report can be deduplicated. All duplicate report will return error code 409.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param entitlementId Entitlement ID
-	@return ApiReportUsageRecordGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param entitlementId Entitlement ID
+ @return ApiReportUsageRecordGroupRequest
 */
 func (a *MeteringAPIService) ReportUsageRecordGroup(ctx context.Context, orgId string, entitlementId string) ApiReportUsageRecordGroupRequest {
 	return ApiReportUsageRecordGroupRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		orgId:         orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		entitlementId: entitlementId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return MeteringUsageRecordGroup
+//  @return MeteringUsageRecordGroup
 func (a *MeteringAPIService) ReportUsageRecordGroupExecute(r ApiReportUsageRecordGroupRequest) (*MeteringUsageRecordGroup, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *MeteringUsageRecordGroup
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MeteringUsageRecordGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.ReportUsageRecordGroup")
@@ -1656,8 +1647,8 @@ func (a *MeteringAPIService) ReportUsageRecordGroupExecute(r ApiReportUsageRecor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1667,8 +1658,8 @@ func (a *MeteringAPIService) ReportUsageRecordGroupExecute(r ApiReportUsageRecor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1686,11 +1677,11 @@ func (a *MeteringAPIService) ReportUsageRecordGroupExecute(r ApiReportUsageRecor
 }
 
 type ApiRetryUsageRecordGroupRequest struct {
-	ctx                context.Context
-	ApiService         *MeteringAPIService
-	orgId              string
+	ctx context.Context
+	ApiService *MeteringAPIService
+	orgId string
 	usageRecordGroupId string
-	creationDate       *string
+	creationDate *string
 }
 
 // UsageRecordGroup&#39;s creation date (UTC) in YYYY-MM-DD format
@@ -1708,29 +1699,28 @@ RetryUsageRecordGroup retry usageRecordGroup
 
 Retry the given UsageRecordGroup by setting from status "REPORT_FAILED" to "CREATED", and it will be ready for the next hourly report. Only usageRecordGroup with status "REPORT_FAILED" can be retried.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param usageRecordGroupId UsageRecordGroup ID
-	@return ApiRetryUsageRecordGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param usageRecordGroupId UsageRecordGroup ID
+ @return ApiRetryUsageRecordGroupRequest
 */
 func (a *MeteringAPIService) RetryUsageRecordGroup(ctx context.Context, orgId string, usageRecordGroupId string) ApiRetryUsageRecordGroupRequest {
 	return ApiRetryUsageRecordGroupRequest{
-		ApiService:         a,
-		ctx:                ctx,
-		orgId:              orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		usageRecordGroupId: usageRecordGroupId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return MeteringUsageRecordGroup
+//  @return MeteringUsageRecordGroup
 func (a *MeteringAPIService) RetryUsageRecordGroupExecute(r ApiRetryUsageRecordGroupRequest) (*MeteringUsageRecordGroup, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *MeteringUsageRecordGroup
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MeteringUsageRecordGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.RetryUsageRecordGroup")
@@ -1809,8 +1799,8 @@ func (a *MeteringAPIService) RetryUsageRecordGroupExecute(r ApiRetryUsageRecordG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1820,8 +1810,8 @@ func (a *MeteringAPIService) RetryUsageRecordGroupExecute(r ApiRetryUsageRecordG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1831,8 +1821,8 @@ func (a *MeteringAPIService) RetryUsageRecordGroupExecute(r ApiRetryUsageRecordG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1850,11 +1840,11 @@ func (a *MeteringAPIService) RetryUsageRecordGroupExecute(r ApiRetryUsageRecordG
 }
 
 type ApiUpdateBillableMetricRequest struct {
-	ctx              context.Context
-	ApiService       *MeteringAPIService
-	orgId            string
+	ctx context.Context
+	ApiService *MeteringAPIService
+	orgId string
 	billableMetricId string
-	data             *UpdateBillableMetricParams
+	data *UpdateBillableMetricParams
 }
 
 // RequestBody
@@ -1872,29 +1862,28 @@ UpdateBillableMetric update billable metric
 
 Update the name, description and status of the billable metric for the given organization.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param billableMetricId Billable Metric ID
-	@return ApiUpdateBillableMetricRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param billableMetricId Billable Metric ID
+ @return ApiUpdateBillableMetricRequest
 */
 func (a *MeteringAPIService) UpdateBillableMetric(ctx context.Context, orgId string, billableMetricId string) ApiUpdateBillableMetricRequest {
 	return ApiUpdateBillableMetricRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		orgId:            orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		billableMetricId: billableMetricId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BillableMetric
+//  @return BillableMetric
 func (a *MeteringAPIService) UpdateBillableMetricExecute(r ApiUpdateBillableMetricRequest) (*BillableMetric, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BillableMetric
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BillableMetric
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.UpdateBillableMetric")
@@ -1975,8 +1964,8 @@ func (a *MeteringAPIService) UpdateBillableMetricExecute(r ApiUpdateBillableMetr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1986,8 +1975,8 @@ func (a *MeteringAPIService) UpdateBillableMetricExecute(r ApiUpdateBillableMetr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1997,8 +1986,8 @@ func (a *MeteringAPIService) UpdateBillableMetricExecute(r ApiUpdateBillableMetr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2016,10 +2005,10 @@ func (a *MeteringAPIService) UpdateBillableMetricExecute(r ApiUpdateBillableMetr
 }
 
 type ApiUpdateUsageMeteringConfigInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MeteringAPIService
-	orgId      string
-	data       *UsageMeteringConfigInfo
+	orgId string
+	data *UsageMeteringConfigInfo
 }
 
 // The usage metering config info to be updated
@@ -2037,27 +2026,26 @@ UpdateUsageMeteringConfigInfo update usage metering config info
 
 Update the usage metering config info of the given organization.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiUpdateUsageMeteringConfigInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiUpdateUsageMeteringConfigInfoRequest
 */
 func (a *MeteringAPIService) UpdateUsageMeteringConfigInfo(ctx context.Context, orgId string) ApiUpdateUsageMeteringConfigInfoRequest {
 	return ApiUpdateUsageMeteringConfigInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UsageMeteringConfigInfo
+//  @return UsageMeteringConfigInfo
 func (a *MeteringAPIService) UpdateUsageMeteringConfigInfoExecute(r ApiUpdateUsageMeteringConfigInfoRequest) (*UsageMeteringConfigInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UsageMeteringConfigInfo
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UsageMeteringConfigInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.UpdateUsageMeteringConfigInfo")
@@ -2137,8 +2125,8 @@ func (a *MeteringAPIService) UpdateUsageMeteringConfigInfoExecute(r ApiUpdateUsa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2148,8 +2136,8 @@ func (a *MeteringAPIService) UpdateUsageMeteringConfigInfoExecute(r ApiUpdateUsa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

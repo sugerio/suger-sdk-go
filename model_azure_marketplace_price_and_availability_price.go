@@ -20,10 +20,10 @@ var _ MappedNullable = &AzureMarketplacePriceAndAvailabilityPrice{}
 
 // AzureMarketplacePriceAndAvailabilityPrice struct for AzureMarketplacePriceAndAvailabilityPrice
 type AzureMarketplacePriceAndAvailabilityPrice struct {
-	CorePricing        *AzureMarketplacePriceAndAvailabilityCorePrice        `json:"corePricing,omitempty"`
-	CustomMeters       *AzureMarketplacePriceAndAvailabilityCustomMeterPrice `json:"customMeters,omitempty"`
-	LicenseModel       *string                                               `json:"licenseModel,omitempty"`
-	RecurrentPrice     *AzureMarketplacePriceAndAvailabilityRecurrentPrice   `json:"recurrentPrice,omitempty"`
+	CorePricing *AzureMarketplacePriceAndAvailabilityCorePrice `json:"corePricing,omitempty"`
+	CustomMeters *AzureMarketplacePriceAndAvailabilityCustomMeterPrice `json:"customMeters,omitempty"`
+	LicenseModel *string `json:"licenseModel,omitempty"`
+	RecurrentPrice *AzureMarketplacePriceAndAvailabilityRecurrentPrice `json:"recurrentPrice,omitempty"`
 	SystemMeterPricing *AzureMarketplacePriceAndAvailabilitySystemMeterPrice `json:"systemMeterPricing,omitempty"`
 }
 
@@ -205,7 +205,7 @@ func (o *AzureMarketplacePriceAndAvailabilityPrice) SetSystemMeterPricing(v Azur
 }
 
 func (o AzureMarketplacePriceAndAvailabilityPrice) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -267,3 +267,5 @@ func (v *NullableAzureMarketplacePriceAndAvailabilityPrice) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

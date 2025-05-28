@@ -21,14 +21,14 @@ type AzureMarketplaceResourceLifecycleState string
 
 // List of AzureMarketplaceResourceLifecycleState
 const (
-	AzureMarketplaceResourceLifecycleState_NotAvailable       AzureMarketplaceResourceLifecycleState = "notAvailable"
-	AzureMarketplaceResourceLifecycleState_NeverUsed          AzureMarketplaceResourceLifecycleState = "neverUsed"
-	AzureMarketplaceResourceLifecycleState_Test               AzureMarketplaceResourceLifecycleState = "test"
-	AzureMarketplaceResourceLifecycleState_Preview            AzureMarketplaceResourceLifecycleState = "preview"
+	AzureMarketplaceResourceLifecycleState_NotAvailable AzureMarketplaceResourceLifecycleState = "notAvailable"
+	AzureMarketplaceResourceLifecycleState_NeverUsed AzureMarketplaceResourceLifecycleState = "neverUsed"
+	AzureMarketplaceResourceLifecycleState_Test AzureMarketplaceResourceLifecycleState = "test"
+	AzureMarketplaceResourceLifecycleState_Preview AzureMarketplaceResourceLifecycleState = "preview"
 	AzureMarketplaceResourceLifecycleState_GenerallyAvailable AzureMarketplaceResourceLifecycleState = "generallyAvailable"
-	AzureMarketplaceResourceLifecycleState_Deprecated         AzureMarketplaceResourceLifecycleState = "deprecated"
-	AzureMarketplaceResourceLifecycleState_Decommissioned     AzureMarketplaceResourceLifecycleState = "decommissioned"
-	AzureMarketplaceResourceLifecycleState_Deleted            AzureMarketplaceResourceLifecycleState = "deleted"
+	AzureMarketplaceResourceLifecycleState_Deprecated AzureMarketplaceResourceLifecycleState = "deprecated"
+	AzureMarketplaceResourceLifecycleState_Decommissioned AzureMarketplaceResourceLifecycleState = "decommissioned"
+	AzureMarketplaceResourceLifecycleState_Deleted AzureMarketplaceResourceLifecycleState = "deleted"
 )
 
 // All allowed values of AzureMarketplaceResourceLifecycleState enum
@@ -121,3 +121,4 @@ func (v *NullableAzureMarketplaceResourceLifecycleState) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

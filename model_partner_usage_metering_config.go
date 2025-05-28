@@ -23,8 +23,8 @@ type PartnerUsageMeteringConfig struct {
 	// Deprecated: Use DimensionMappingV2 instead. The mapping of the source dimension key to the destination dimension key of the usage metering.
 	DimensionMapping *map[string]UsageMeteringDimensionMappingValue `json:"dimensionMapping,omitempty"`
 	// The mapping of the source dimension key to the destination dimension keys of the usage metering. The destination dimension keys are the list of the destination dimension keys. So the source dimension key can be mapped to multiple destination dimension keys.
-	DimensionMappingV2      *map[string][]UsageMeteringDimensionMappingValue `json:"dimensionMappingV2,omitempty"`
-	EnableBillableDimension *bool                                            `json:"enableBillableDimension,omitempty"`
+	DimensionMappingV2 *map[string][]UsageMeteringDimensionMappingValue `json:"dimensionMappingV2,omitempty"`
+	EnableBillableDimension *bool `json:"enableBillableDimension,omitempty"`
 	// Enable the commit (discount) with additional usage metering at list price. Only applicable if EnableCommitWithAdditionalUsageMetering is true. The default is false, which means the commit with additional usage metering at the discounted price in the private offer. If set to true, the additional usage is metered at the list price (the price in public product listing) instead of the discounted price.
 	EnableCommitWithAdditionalUsageAtListPrice *bool `json:"enableCommitWithAdditionalUsageAtListPrice,omitempty"`
 	// Enable the commit with additional usage metering. The default is false, which means all usage records are reported to partner no matter how much is the commit. If set to true, the usage records will be reported to partner only if the current commit has been exhausted.
@@ -277,7 +277,7 @@ func (o *PartnerUsageMeteringConfig) SetPartner(v Partner) {
 }
 
 func (o PartnerUsageMeteringConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -345,3 +345,5 @@ func (v *NullablePartnerUsageMeteringConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

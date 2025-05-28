@@ -20,8 +20,8 @@ var _ MappedNullable = &AzureMarketplacePriceAndAvailabilityPrivateOfferPrice{}
 
 // AzureMarketplacePriceAndAvailabilityPrivateOfferPrice struct for AzureMarketplacePriceAndAvailabilityPrivateOfferPrice
 type AzureMarketplacePriceAndAvailabilityPrivateOfferPrice struct {
-	CustomMeters   *AzureMarketplacePriceAndAvailabilityPrivateOfferCustomMeters `json:"customMeters,omitempty"`
-	RecurrentPrice *AzureMarketplacePriceAndAvailabilityRecurrentPrice           `json:"recurrentPrice,omitempty"`
+	CustomMeters *AzureMarketplacePriceAndAvailabilityPrivateOfferCustomMeters `json:"customMeters,omitempty"`
+	RecurrentPrice *AzureMarketplacePriceAndAvailabilityRecurrentPrice `json:"recurrentPrice,omitempty"`
 }
 
 // NewAzureMarketplacePriceAndAvailabilityPrivateOfferPrice instantiates a new AzureMarketplacePriceAndAvailabilityPrivateOfferPrice object
@@ -106,7 +106,7 @@ func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPrice) SetRecurrentPric
 }
 
 func (o AzureMarketplacePriceAndAvailabilityPrivateOfferPrice) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAzureMarketplacePriceAndAvailabilityPrivateOfferPrice) Unmarsha
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

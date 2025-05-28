@@ -20,9 +20,9 @@ var _ MappedNullable = &UpdateBillableMetricParams{}
 
 // UpdateBillableMetricParams struct for UpdateBillableMetricParams
 type UpdateBillableMetricParams struct {
-	Description *string               `json:"description,omitempty"`
-	Name        *string               `json:"name,omitempty"`
-	Status      *BillableMetricStatus `json:"status,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Status *BillableMetricStatus `json:"status,omitempty"`
 }
 
 // NewUpdateBillableMetricParams instantiates a new UpdateBillableMetricParams object
@@ -139,7 +139,7 @@ func (o *UpdateBillableMetricParams) SetStatus(v BillableMetricStatus) {
 }
 
 func (o UpdateBillableMetricParams) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableUpdateBillableMetricParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

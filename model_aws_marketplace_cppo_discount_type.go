@@ -21,8 +21,8 @@ type AwsMarketplaceCppoDiscountType string
 
 // List of AwsMarketplaceCppoDiscountType
 const (
-	AwsMarketplaceCppoDiscountType_DISCOUNT_PERCENT          AwsMarketplaceCppoDiscountType = "DISCOUNT_PERCENT"
-	AwsMarketplaceCppoDiscountType_CUSTOM_PRICE              AwsMarketplaceCppoDiscountType = "CUSTOM_PRICE"
+	AwsMarketplaceCppoDiscountType_DISCOUNT_PERCENT AwsMarketplaceCppoDiscountType = "DISCOUNT_PERCENT"
+	AwsMarketplaceCppoDiscountType_CUSTOM_PRICE AwsMarketplaceCppoDiscountType = "CUSTOM_PRICE"
 	AwsMarketplaceCppoDiscountType_FLEXIBLE_PAYMENT_SCHEDULE AwsMarketplaceCppoDiscountType = "CUSTOM_PRICE_WITH_FPS"
 )
 
@@ -111,3 +111,4 @@ func (v *NullableAwsMarketplaceCppoDiscountType) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

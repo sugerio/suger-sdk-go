@@ -23,7 +23,7 @@ var _ MappedNullable = &BillingInvoiceInfo{}
 type BillingInvoiceInfo struct {
 	// Adjust charge fields The fixed fees to be added to the invoice.
 	AddFixedFees []InvoiceAddFixedFee `json:"addFixedFees,omitempty"`
-	AddonDetail  *BillingAddonRecord  `json:"addonDetail,omitempty"`
+	AddonDetail *BillingAddonRecord `json:"addonDetail,omitempty"`
 	// add or adjust discount for a specific dimension
 	AdjustDiscountByDimensions []InvoiceAdjustDiscountByDimension `json:"adjustDiscountByDimensions,omitempty"`
 	// add or adjust minimum spend for a specific dimension
@@ -31,18 +31,18 @@ type BillingInvoiceInfo struct {
 	// add or adjust overall discount calculate each dimension's discount first, then apply the overall discount
 	AdjustOverallDiscount *InvoiceAdjustOverallDiscount `json:"adjustOverallDiscount,omitempty"`
 	// add or adjust overall minimum spend calculate each dimension's minimum spend first, then apply the overall minimum spend
-	AdjustOverallMinimumSpend *InvoiceAdjustOverallMinimumSpend   `json:"adjustOverallMinimumSpend,omitempty"`
-	BillableDimensionDetails  []BillableDimensionPriceModelDetail `json:"billableDimensionDetails,omitempty"`
+	AdjustOverallMinimumSpend *InvoiceAdjustOverallMinimumSpend `json:"adjustOverallMinimumSpend,omitempty"`
+	BillableDimensionDetails []BillableDimensionPriceModelDetail `json:"billableDimensionDetails,omitempty"`
 	// Recurring flat fee for the invoice. There should be only one type fee for each invoice, commits, or usage.
 	CommitsRevenueDetails []CommitRevenueDetail `json:"commitsRevenueDetails,omitempty"`
 	// The creation date of the invoice when the status of the invoice may be draft or issued. It may be different from the issue date.
 	CreationDate *time.Time `json:"creationDate,omitempty"`
-	Currency     *string    `json:"currency,omitempty"`
+	Currency *string `json:"currency,omitempty"`
 	// The amount of the committed amount that has been deducted from the usage. It works only when IsMeteringOverageCommit is true.
-	DeductedCommitAmount *int32 `json:"deductedCommitAmount,omitempty"`
+	DeductedCommitAmount *float32 `json:"deductedCommitAmount,omitempty"`
 	// The ID of the commit invoice that has been deducted from the usage. It works only when IsMeteringOverageCommit is true.
 	DeductedCommitInvoiceID *string `json:"deductedCommitInvoiceID,omitempty"`
-	Description             *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Due amount = SubtotalAmount + TaxAmount - AdjustOverallDiscount
 	DueAmount *float32 `json:"dueAmount,omitempty"`
 	// DueDate = IssueDate + NetTerm
@@ -53,17 +53,19 @@ type BillingInvoiceInfo struct {
 	IsMeteringOverageCommit *bool `json:"isMeteringOverageCommit,omitempty"`
 	// IssueDate, issue invoice automatically when CreationDate + GracePeriod, or issue invoice manually IssueDate >= CreationDate && IssueDate <= CreationDate + GracePeriod
 	IssueDate *time.Time `json:"issueDate,omitempty"`
-	Memo      *string    `json:"memo,omitempty"`
+	Memo *string `json:"memo,omitempty"`
 	// Net Terms period in number of days
-	NetTermsInDays            *int32                           `json:"netTermsInDays,omitempty"`
+	NetTermsInDays *int32 `json:"netTermsInDays,omitempty"`
 	PaymentInstallmentsDetail *BillingPaymentInstallmentDetail `json:"paymentInstallmentsDetail,omitempty"`
+	// PeriodTotalDays is the total number of days among the whole periods. e.g. 61 days for a 2-month invoice.
+	PeriodTotalDays *int32 `json:"periodTotalDays,omitempty"`
 	// Invoice receipt url, it only exists when there are transactions.
 	ReceiptUrl *string `json:"receiptUrl,omitempty"`
 	// SPA url with JWT.
 	SpaUrl *string `json:"spaUrl,omitempty"`
 	// Subtotal amount calculated from the user usage.
 	SubtotalAmount *float32 `json:"subtotalAmount,omitempty"`
-	TaxAmount      *float32 `json:"taxAmount,omitempty"`
+	TaxAmount *float32 `json:"taxAmount,omitempty"`
 	// Trial period in number of days
 	TrialPeriodInDays *int32 `json:"trialPeriodInDays,omitempty"`
 	// Billable dimension fees for the invoice.
@@ -408,9 +410,9 @@ func (o *BillingInvoiceInfo) SetCurrency(v string) {
 }
 
 // GetDeductedCommitAmount returns the DeductedCommitAmount field value if set, zero value otherwise.
-func (o *BillingInvoiceInfo) GetDeductedCommitAmount() int32 {
+func (o *BillingInvoiceInfo) GetDeductedCommitAmount() float32 {
 	if o == nil || IsNil(o.DeductedCommitAmount) {
-		var ret int32
+		var ret float32
 		return ret
 	}
 	return *o.DeductedCommitAmount
@@ -418,7 +420,7 @@ func (o *BillingInvoiceInfo) GetDeductedCommitAmount() int32 {
 
 // GetDeductedCommitAmountOk returns a tuple with the DeductedCommitAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoiceInfo) GetDeductedCommitAmountOk() (*int32, bool) {
+func (o *BillingInvoiceInfo) GetDeductedCommitAmountOk() (*float32, bool) {
 	if o == nil || IsNil(o.DeductedCommitAmount) {
 		return nil, false
 	}
@@ -434,8 +436,8 @@ func (o *BillingInvoiceInfo) HasDeductedCommitAmount() bool {
 	return false
 }
 
-// SetDeductedCommitAmount gets a reference to the given int32 and assigns it to the DeductedCommitAmount field.
-func (o *BillingInvoiceInfo) SetDeductedCommitAmount(v int32) {
+// SetDeductedCommitAmount gets a reference to the given float32 and assigns it to the DeductedCommitAmount field.
+func (o *BillingInvoiceInfo) SetDeductedCommitAmount(v float32) {
 	o.DeductedCommitAmount = &v
 }
 
@@ -759,6 +761,38 @@ func (o *BillingInvoiceInfo) SetPaymentInstallmentsDetail(v BillingPaymentInstal
 	o.PaymentInstallmentsDetail = &v
 }
 
+// GetPeriodTotalDays returns the PeriodTotalDays field value if set, zero value otherwise.
+func (o *BillingInvoiceInfo) GetPeriodTotalDays() int32 {
+	if o == nil || IsNil(o.PeriodTotalDays) {
+		var ret int32
+		return ret
+	}
+	return *o.PeriodTotalDays
+}
+
+// GetPeriodTotalDaysOk returns a tuple with the PeriodTotalDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInvoiceInfo) GetPeriodTotalDaysOk() (*int32, bool) {
+	if o == nil || IsNil(o.PeriodTotalDays) {
+		return nil, false
+	}
+	return o.PeriodTotalDays, true
+}
+
+// HasPeriodTotalDays returns a boolean if a field has been set.
+func (o *BillingInvoiceInfo) HasPeriodTotalDays() bool {
+	if o != nil && !IsNil(o.PeriodTotalDays) {
+		return true
+	}
+
+	return false
+}
+
+// SetPeriodTotalDays gets a reference to the given int32 and assigns it to the PeriodTotalDays field.
+func (o *BillingInvoiceInfo) SetPeriodTotalDays(v int32) {
+	o.PeriodTotalDays = &v
+}
+
 // GetReceiptUrl returns the ReceiptUrl field value if set, zero value otherwise.
 func (o *BillingInvoiceInfo) GetReceiptUrl() string {
 	if o == nil || IsNil(o.ReceiptUrl) {
@@ -952,7 +986,7 @@ func (o *BillingInvoiceInfo) SetUsageDailyRevenues(v []BillableDimensionUsageDai
 }
 
 func (o BillingInvoiceInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1024,6 +1058,9 @@ func (o BillingInvoiceInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PaymentInstallmentsDetail) {
 		toSerialize["paymentInstallmentsDetail"] = o.PaymentInstallmentsDetail
 	}
+	if !IsNil(o.PeriodTotalDays) {
+		toSerialize["periodTotalDays"] = o.PeriodTotalDays
+	}
 	if !IsNil(o.ReceiptUrl) {
 		toSerialize["receiptUrl"] = o.ReceiptUrl
 	}
@@ -1080,3 +1117,5 @@ func (v *NullableBillingInvoiceInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

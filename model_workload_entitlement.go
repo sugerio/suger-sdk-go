@@ -21,28 +21,28 @@ var _ MappedNullable = &WorkloadEntitlement{}
 
 // WorkloadEntitlement struct for WorkloadEntitlement
 type WorkloadEntitlement struct {
-	BuyerID      *string    `json:"buyerID,omitempty"`
+	BuyerID *string `json:"buyerID,omitempty"`
 	CreationTime *time.Time `json:"creationTime,omitempty"`
 	// nullable
-	EndTime           *time.Time         `json:"endTime,omitempty"`
-	EntitlementTermID *string            `json:"entitlementTermID,omitempty"`
-	ExternalBuyerID   *string            `json:"externalBuyerID,omitempty"`
-	ExternalID        *string            `json:"externalID,omitempty"`
-	ExternalProductID *string            `json:"externalProductID,omitempty"`
-	Id                *string            `json:"id,omitempty"`
-	Info              *EntitlementInfo   `json:"info,omitempty"`
-	LastUpdateTime    *time.Time         `json:"lastUpdateTime,omitempty"`
-	MetaInfo          *WorkloadMetaInfo  `json:"metaInfo,omitempty"`
-	Name              *string            `json:"name,omitempty"`
-	OfferID           *string            `json:"offerID,omitempty"`
-	OrganizationID    *string            `json:"organizationID,omitempty"`
-	Partner           *Partner           `json:"partner,omitempty"`
-	PartnerID         *string            `json:"partnerID,omitempty"`
-	ProductID         *string            `json:"productID,omitempty"`
-	Service           *PartnerService    `json:"service,omitempty"`
-	StartTime         *time.Time         `json:"startTime,omitempty"`
-	Status            *EntitlementStatus `json:"status,omitempty"`
-	Type              *string            `json:"type,omitempty"`
+	EndTime *time.Time `json:"endTime,omitempty"`
+	EntitlementTermID *string `json:"entitlementTermID,omitempty"`
+	ExternalBuyerID *string `json:"externalBuyerID,omitempty"`
+	ExternalID *string `json:"externalID,omitempty"`
+	ExternalProductID *string `json:"externalProductID,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Info *EntitlementInfo `json:"info,omitempty"`
+	LastUpdateTime *time.Time `json:"lastUpdateTime,omitempty"`
+	MetaInfo *WorkloadMetaInfo `json:"metaInfo,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OfferID *string `json:"offerID,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
+	Partner *Partner `json:"partner,omitempty"`
+	PartnerID *string `json:"partnerID,omitempty"`
+	ProductID *string `json:"productID,omitempty"`
+	Service *PartnerService `json:"service,omitempty"`
+	StartTime *time.Time `json:"startTime,omitempty"`
+	Status *EntitlementStatus `json:"status,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewWorkloadEntitlement instantiates a new WorkloadEntitlement object
@@ -735,7 +735,7 @@ func (o *WorkloadEntitlement) SetType(v string) {
 }
 
 func (o WorkloadEntitlement) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -845,3 +845,5 @@ func (v *NullableWorkloadEntitlement) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

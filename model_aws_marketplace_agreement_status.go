@@ -21,15 +21,15 @@ type AwsMarketplaceAgreementStatus string
 
 // List of AwsMarketplaceAgreementStatus
 const (
-	AwsMarketplaceAgreementStatus_ACTIVE      AwsMarketplaceAgreementStatus = "ACTIVE"
-	AwsMarketplaceAgreementStatus_ARCHIVED    AwsMarketplaceAgreementStatus = "ARCHIVED"
-	AwsMarketplaceAgreementStatus_CANCELLED   AwsMarketplaceAgreementStatus = "CANCELLED"
-	AwsMarketplaceAgreementStatus_EXPIRED     AwsMarketplaceAgreementStatus = "EXPIRED"
-	AwsMarketplaceAgreementStatus_RENEWED     AwsMarketplaceAgreementStatus = "RENEWED"
-	AwsMarketplaceAgreementStatus_REPLACED    AwsMarketplaceAgreementStatus = "REPLACED"
+	AwsMarketplaceAgreementStatus_ACTIVE AwsMarketplaceAgreementStatus = "ACTIVE"
+	AwsMarketplaceAgreementStatus_ARCHIVED AwsMarketplaceAgreementStatus = "ARCHIVED"
+	AwsMarketplaceAgreementStatus_CANCELLED AwsMarketplaceAgreementStatus = "CANCELLED"
+	AwsMarketplaceAgreementStatus_EXPIRED AwsMarketplaceAgreementStatus = "EXPIRED"
+	AwsMarketplaceAgreementStatus_RENEWED AwsMarketplaceAgreementStatus = "RENEWED"
+	AwsMarketplaceAgreementStatus_REPLACED AwsMarketplaceAgreementStatus = "REPLACED"
 	AwsMarketplaceAgreementStatus_ROLLED_BACK AwsMarketplaceAgreementStatus = "ROLLED_BACK"
-	AwsMarketplaceAgreementStatus_SUPERSEDED  AwsMarketplaceAgreementStatus = "SUPERSEDED"
-	AwsMarketplaceAgreementStatus_TERMINATED  AwsMarketplaceAgreementStatus = "TERMINATED"
+	AwsMarketplaceAgreementStatus_SUPERSEDED AwsMarketplaceAgreementStatus = "SUPERSEDED"
+	AwsMarketplaceAgreementStatus_TERMINATED AwsMarketplaceAgreementStatus = "TERMINATED"
 )
 
 // All allowed values of AwsMarketplaceAgreementStatus enum
@@ -123,3 +123,4 @@ func (v *NullableAwsMarketplaceAgreementStatus) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

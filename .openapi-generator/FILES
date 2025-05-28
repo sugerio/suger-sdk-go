@@ -138,6 +138,9 @@ docs/AzureMarketplacePriceAndAvailabilityRecurrentPriceItem.md
 docs/AzureMarketplacePriceAndAvailabilityRecurrentPriceUserLimit.md
 docs/AzureMarketplacePriceAndAvailabilitySoftwareReservation.md
 docs/AzureMarketplacePriceAndAvailabilitySystemMeterPrice.md
+docs/AzureMarketplacePriceBillingSchedule.md
+docs/AzureMarketplacePriceFlexibleSchedule.md
+docs/AzureMarketplacePriceInitialCharge.md
 docs/AzureMarketplacePrivateOffer.md
 docs/AzureMarketplacePrivateOfferAcceptanceLink.md
 docs/AzureMarketplacePrivateOfferBeneficiary.md
@@ -249,8 +252,6 @@ docs/CreateAndUpdateAddonParams.md
 docs/CreateBuyerParams.md
 docs/CreateEntitlementParams.md
 docs/CreateUsageRecordGroupParams.md
-docs/DatabaseSqlNullBool.md
-docs/DatabaseSqlNullString.md
 docs/DatabaseSqlNullTime.md
 docs/DivideEntitlementCommitParams.md
 docs/EntitlementAPI.md
@@ -260,6 +261,7 @@ docs/EntitlementTermInfo.md
 docs/EntitlementTermType.md
 docs/EntityType.md
 docs/EulaType.md
+docs/GcpAgreementDocument.md
 docs/GcpAmountConstraint.md
 docs/GcpAmountUnit.md
 docs/GcpCommitmentAmountPerPeriodTemplate.md
@@ -276,6 +278,7 @@ docs/GcpMarketplaceMeteringMetricValue.md
 docs/GcpMarketplaceMeteringMetricValueSet.md
 docs/GcpMarketplaceMeteringMoney.md
 docs/GcpMarketplaceMeteringOperation.md
+docs/GcpMarketplaceOfferDealType.md
 docs/GcpMarketplaceOfferProration.md
 docs/GcpMarketplaceOfferStartPolicy.md
 docs/GcpMarketplaceOfferTemplatePolicies.md
@@ -287,6 +290,7 @@ docs/GcpMarketplacePrivateOfferInstallmentTimeline.md
 docs/GcpMarketplacePrivateOfferMetricDetail.md
 docs/GcpMarketplacePrivateOfferMetricInformation.md
 docs/GcpMarketplacePrivateOfferMigrationMetadata.md
+docs/GcpMarketplacePrivateOfferPolicies.md
 docs/GcpMarketplacePrivateOfferPriceModel.md
 docs/GcpMarketplacePrivateOfferPriceModelCommitment.md
 docs/GcpMarketplacePrivateOfferPriceModelDiscount.md
@@ -296,6 +300,7 @@ docs/GcpMarketplacePrivateOfferPriceModelPayg.md
 docs/GcpMarketplacePrivateOfferPriceModelType.md
 docs/GcpMarketplacePrivateOfferProviderInfo.md
 docs/GcpMarketplacePrivateOfferReplacementMetadata.md
+docs/GcpMarketplacePrivateOfferRevenueShare.md
 docs/GcpMarketplacePrivateOfferState.md
 docs/GcpMarketplacePrivateOfferTerm.md
 docs/GcpMarketplacePrivateOfferTermDurationConstraint.md
@@ -343,6 +348,9 @@ docs/GcpMarketplaceResellerPrivateOfferPlanReusePolicy.md
 docs/GcpMarketplaceResellerPrivateOfferPlanState.md
 docs/GcpMarketplaceResellerPrivateOfferPlanStateTransition.md
 docs/GcpMarketplaceResellerPrivateOfferPlanStateType.md
+docs/GcpMarketplaceRevenueShareChange.md
+docs/GcpMarketplaceRevenueShareType.md
+docs/GcpMarketplaceRevenueShareValue.md
 docs/GcpMarketplaceStartPolicy.md
 docs/GcpMarketplaceUnstructuredDocument.md
 docs/GcpMarketplaceUsagePlanPriceModel.md
@@ -369,6 +377,7 @@ docs/GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1Us
 docs/GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventConflictResponseAdditionalInfo.md
 docs/GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventOkResponse.md
 docs/GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventStatusEnum.md
+docs/GroupByInterval.md
 docs/IdentityBuyer.md
 docs/IdentityConctactInfo.md
 docs/IdentityContact.md
@@ -430,6 +439,7 @@ docs/PrivateOfferDiscountType.md
 docs/ProductAPI.md
 docs/ProductInfo.md
 docs/ReportAPI.md
+docs/RevenueChannel.md
 docs/RevenueRecord.md
 docs/RevenueRecordDetail.md
 docs/RevenueRecordInfo.md
@@ -438,7 +448,19 @@ docs/RevenueReportType.md
 docs/ServicecontrolReportError.md
 docs/ServicecontrolReportResponse.md
 docs/ServicecontrolStatus.md
+docs/SnowflakeMarketplaceBuyer.md
+docs/SnowflakeMarketplaceOffer.md
+docs/SnowflakeMarketplaceOfferPaymentTerms.md
+docs/SnowflakeMarketplaceOfferTermsOfService.md
+docs/SnowflakeMarketplacePlanInstallment.md
+docs/SnowflakeMarketplacePlanInstallmentSchedule.md
+docs/SnowflakeMarketplacePricingPlanUsageDetails.md
 docs/SnowflakeMarketplaceProduct.md
+docs/SnowflakeMarketplaceProductDefaultPricingPlan.md
+docs/SnowflakeMarketplaceProductDetailedTargetAccount.md
+docs/SnowflakeMarketplaceProductMetadata.md
+docs/SnowflakeMarketplaceProductPricingPlan.md
+docs/SnowflakeMarketplaceTrialDetails.md
 docs/StripeBalanceTransaction.md
 docs/StripeBalanceTransactionFeeDetail.md
 docs/StripeCustomer.md
@@ -483,6 +505,7 @@ docs/TypesUsageRecordResultStatus.md
 docs/UniqueCountAggregationResult.md
 docs/UpdateBillableMetricParams.md
 docs/UpdateBuyerParams.md
+docs/UpdateEntitlementPriceModelParams.md
 docs/UpdateInvoiceInfoRequest.md
 docs/UpdateProductParams.md
 docs/UpdateSupportTicketRequest.md
@@ -624,6 +647,9 @@ model_azure_marketplace_price_and_availability_recurrent_price_item.go
 model_azure_marketplace_price_and_availability_recurrent_price_user_limit.go
 model_azure_marketplace_price_and_availability_software_reservation.go
 model_azure_marketplace_price_and_availability_system_meter_price.go
+model_azure_marketplace_price_billing_schedule.go
+model_azure_marketplace_price_flexible_schedule.go
+model_azure_marketplace_price_initial_charge.go
 model_azure_marketplace_private_offer.go
 model_azure_marketplace_private_offer_acceptance_link.go
 model_azure_marketplace_private_offer_beneficiary.go
@@ -732,8 +758,6 @@ model_create_and_update_addon_params.go
 model_create_buyer_params.go
 model_create_entitlement_params.go
 model_create_usage_record_group_params.go
-model_database_sql_null_bool.go
-model_database_sql_null_string.go
 model_database_sql_null_time.go
 model_divide_entitlement_commit_params.go
 model_entitlement_info.go
@@ -742,6 +766,7 @@ model_entitlement_term_info.go
 model_entitlement_term_type.go
 model_entity_type.go
 model_eula_type.go
+model_gcp_agreement_document.go
 model_gcp_amount_constraint.go
 model_gcp_amount_unit.go
 model_gcp_commitment_amount_per_period_template.go
@@ -758,6 +783,7 @@ model_gcp_marketplace_metering_metric_value.go
 model_gcp_marketplace_metering_metric_value_set.go
 model_gcp_marketplace_metering_money.go
 model_gcp_marketplace_metering_operation.go
+model_gcp_marketplace_offer_deal_type.go
 model_gcp_marketplace_offer_proration.go
 model_gcp_marketplace_offer_start_policy.go
 model_gcp_marketplace_offer_template_policies.go
@@ -769,6 +795,7 @@ model_gcp_marketplace_private_offer_installment_timeline.go
 model_gcp_marketplace_private_offer_metric_detail.go
 model_gcp_marketplace_private_offer_metric_information.go
 model_gcp_marketplace_private_offer_migration_metadata.go
+model_gcp_marketplace_private_offer_policies.go
 model_gcp_marketplace_private_offer_price_model.go
 model_gcp_marketplace_private_offer_price_model_commitment.go
 model_gcp_marketplace_private_offer_price_model_discount.go
@@ -778,6 +805,7 @@ model_gcp_marketplace_private_offer_price_model_payg.go
 model_gcp_marketplace_private_offer_price_model_type.go
 model_gcp_marketplace_private_offer_provider_info.go
 model_gcp_marketplace_private_offer_replacement_metadata.go
+model_gcp_marketplace_private_offer_revenue_share.go
 model_gcp_marketplace_private_offer_state.go
 model_gcp_marketplace_private_offer_term.go
 model_gcp_marketplace_private_offer_term_duration_constraint.go
@@ -825,6 +853,9 @@ model_gcp_marketplace_reseller_private_offer_plan_reuse_policy.go
 model_gcp_marketplace_reseller_private_offer_plan_state.go
 model_gcp_marketplace_reseller_private_offer_plan_state_transition.go
 model_gcp_marketplace_reseller_private_offer_plan_state_type.go
+model_gcp_marketplace_revenue_share_change.go
+model_gcp_marketplace_revenue_share_type.go
+model_gcp_marketplace_revenue_share_value.go
 model_gcp_marketplace_start_policy.go
 model_gcp_marketplace_unstructured_document.go
 model_gcp_marketplace_usage_plan_price_model.go
@@ -851,6 +882,7 @@ model_github_com_sugerio_marketplace_service_third_party_azure_sdk_marketplaceme
 model_github_com_sugerio_marketplace_service_third_party_azure_sdk_marketplacemeteringv1_usage_event_conflict_response_additional_info.go
 model_github_com_sugerio_marketplace_service_third_party_azure_sdk_marketplacemeteringv1_usage_event_ok_response.go
 model_github_com_sugerio_marketplace_service_third_party_azure_sdk_marketplacemeteringv1_usage_event_status_enum.go
+model_group_by_interval.go
 model_identity_buyer.go
 model_identity_conctact_info.go
 model_identity_contact.go
@@ -907,6 +939,7 @@ model_price_model_volume.go
 model_price_model_volume_config.go
 model_private_offer_discount_type.go
 model_product_info.go
+model_revenue_channel.go
 model_revenue_record.go
 model_revenue_record_detail.go
 model_revenue_record_info.go
@@ -915,7 +948,19 @@ model_revenue_report_type.go
 model_servicecontrol_report_error.go
 model_servicecontrol_report_response.go
 model_servicecontrol_status.go
+model_snowflake_marketplace_buyer.go
+model_snowflake_marketplace_offer.go
+model_snowflake_marketplace_offer_payment_terms.go
+model_snowflake_marketplace_offer_terms_of_service.go
+model_snowflake_marketplace_plan_installment.go
+model_snowflake_marketplace_plan_installment_schedule.go
+model_snowflake_marketplace_pricing_plan_usage_details.go
 model_snowflake_marketplace_product.go
+model_snowflake_marketplace_product_default_pricing_plan.go
+model_snowflake_marketplace_product_detailed_target_account.go
+model_snowflake_marketplace_product_metadata.go
+model_snowflake_marketplace_product_pricing_plan.go
+model_snowflake_marketplace_trial_details.go
 model_stripe_balance_transaction.go
 model_stripe_balance_transaction_fee_detail.go
 model_stripe_customer.go
@@ -959,6 +1004,7 @@ model_types_usage_record_result_status.go
 model_unique_count_aggregation_result.go
 model_update_billable_metric_params.go
 model_update_buyer_params.go
+model_update_entitlement_price_model_params.go
 model_update_invoice_info_request.go
 model_update_product_params.go
 model_update_support_ticket_request.go
@@ -976,14 +1022,4 @@ model_workload_meta_info.go
 model_workload_offer.go
 model_workload_product.go
 response.go
-test/api_billing_test.go
-test/api_buyer_test.go
-test/api_contact_test.go
-test/api_entitlement_test.go
-test/api_metering_test.go
-test/api_notification_test.go
-test/api_offer_test.go
-test/api_product_test.go
-test/api_report_test.go
-test/api_support_test.go
 utils.go

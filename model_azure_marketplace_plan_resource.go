@@ -20,8 +20,8 @@ var _ MappedNullable = &AzureMarketplacePlanResource{}
 
 // AzureMarketplacePlanResource struct for AzureMarketplacePlanResource
 type AzureMarketplacePlanResource struct {
-	Plan                     *AzureMarketplacePlan                     `json:"plan,omitempty"`
-	PlanListing              *AzureMarketplacePlanListing              `json:"planListing,omitempty"`
+	Plan *AzureMarketplacePlan `json:"plan,omitempty"`
+	PlanListing *AzureMarketplacePlanListing `json:"planListing,omitempty"`
 	PriceAndAvailabilityPlan *AzureMarketplacePriceAndAvailabilityPlan `json:"priceAndAvailabilityPlan,omitempty"`
 }
 
@@ -139,7 +139,7 @@ func (o *AzureMarketplacePlanResource) SetPriceAndAvailabilityPlan(v AzureMarket
 }
 
 func (o AzureMarketplacePlanResource) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableAzureMarketplacePlanResource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
