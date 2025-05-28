@@ -20,11 +20,11 @@ var _ MappedNullable = &ClientDescribeInstanceResponseBodyModulesModulePropertie
 
 // ClientDescribeInstanceResponseBodyModulesModulePropertiesProperty struct for ClientDescribeInstanceResponseBodyModulesModulePropertiesProperty
 type ClientDescribeInstanceResponseBodyModulesModulePropertiesProperty struct {
-	DisplayUnit    *string                                                                          `json:"DisplayUnit,omitempty"`
-	Key            *string                                                                          `json:"Key,omitempty"`
-	Name           *string                                                                          `json:"Name,omitempty"`
+	DisplayUnit *string `json:"DisplayUnit,omitempty"`
+	Key *string `json:"Key,omitempty"`
+	Name *string `json:"Name,omitempty"`
 	PropertyValues *ClientDescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValues `json:"PropertyValues,omitempty"`
-	ShowType       *string                                                                          `json:"ShowType,omitempty"`
+	ShowType *string `json:"ShowType,omitempty"`
 }
 
 // NewClientDescribeInstanceResponseBodyModulesModulePropertiesProperty instantiates a new ClientDescribeInstanceResponseBodyModulesModulePropertiesProperty object
@@ -205,7 +205,7 @@ func (o *ClientDescribeInstanceResponseBodyModulesModulePropertiesProperty) SetS
 }
 
 func (o ClientDescribeInstanceResponseBodyModulesModulePropertiesProperty) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -267,3 +267,5 @@ func (v *NullableClientDescribeInstanceResponseBodyModulesModulePropertiesProper
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

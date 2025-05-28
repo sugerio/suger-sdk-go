@@ -24,9 +24,9 @@ import (
 type APIAPIService service
 
 type ApiGetApiClientRequest struct {
-	ctx         context.Context
-	ApiService  *APIAPIService
-	orgId       string
+	ctx context.Context
+	ApiService *APIAPIService
+	orgId string
 	apiClientId string
 }
 
@@ -39,29 +39,28 @@ GetApiClient get api client
 
 Get the API client by ID.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param apiClientId API client ID
-	@return ApiGetApiClientRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param apiClientId API client ID
+ @return ApiGetApiClientRequest
 */
 func (a *APIAPIService) GetApiClient(ctx context.Context, orgId string, apiClientId string) ApiGetApiClientRequest {
 	return ApiGetApiClientRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		orgId:       orgId,
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
 		apiClientId: apiClientId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient
+//  @return GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient
 func (a *APIAPIService) GetApiClientExecute(r ApiGetApiClientRequest) (*GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIAPIService.GetApiClient")
@@ -137,8 +136,8 @@ func (a *APIAPIService) GetApiClientExecute(r ApiGetApiClientRequest) (*GithubCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -148,8 +147,8 @@ func (a *APIAPIService) GetApiClientExecute(r ApiGetApiClientRequest) (*GithubCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -167,9 +166,9 @@ func (a *APIAPIService) GetApiClientExecute(r ApiGetApiClientRequest) (*GithubCo
 }
 
 type ApiListApiClientsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *APIAPIService
-	orgId      string
+	orgId string
 }
 
 func (r ApiListApiClientsRequest) Execute() ([]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient, *http.Response, error) {
@@ -181,27 +180,26 @@ ListApiClients list api clients
 
 List all API clients in the given organization.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListApiClientsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListApiClientsRequest
 */
 func (a *APIAPIService) ListApiClients(ctx context.Context, orgId string) ApiListApiClientsRequest {
 	return ApiListApiClientsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient
+//  @return []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient
 func (a *APIAPIService) ListApiClientsExecute(r ApiListApiClientsRequest) ([]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIAPIService.ListApiClients")
@@ -276,8 +274,8 @@ func (a *APIAPIService) ListApiClientsExecute(r ApiListApiClientsRequest) ([]Git
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -287,8 +285,8 @@ func (a *APIAPIService) ListApiClientsExecute(r ApiListApiClientsRequest) ([]Git
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

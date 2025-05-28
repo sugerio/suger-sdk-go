@@ -22,11 +22,11 @@ type EulaType string
 // List of EulaType
 const (
 	EulaType_UNKNOWN EulaType = ""
-	EulaType_SCMP    EulaType = "SCMP"
-	EulaType_ECMP    EulaType = "ECMP"
-	EulaType_RCMP    EulaType = "RCMP"
-	EulaType_CUSTOM  EulaType = "CUSTOM"
-	EulaType_ISV     EulaType = "ISV"
+	EulaType_SCMP EulaType = "SCMP"
+	EulaType_ECMP EulaType = "ECMP"
+	EulaType_RCMP EulaType = "RCMP"
+	EulaType_CUSTOM EulaType = "CUSTOM"
+	EulaType_ISV EulaType = "ISV"
 	EulaType_CURRENT EulaType = "CURRENT"
 )
 
@@ -119,3 +119,4 @@ func (v *NullableEulaType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

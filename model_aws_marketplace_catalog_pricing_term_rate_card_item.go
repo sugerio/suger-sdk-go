@@ -20,13 +20,13 @@ var _ MappedNullable = &AwsMarketplaceCatalogPricingTermRateCardItem{}
 
 // AwsMarketplaceCatalogPricingTermRateCardItem struct for AwsMarketplaceCatalogPricingTermRateCardItem
 type AwsMarketplaceCatalogPricingTermRateCardItem struct {
-	Description  *string `json:"Description,omitempty"`
+	Description *string `json:"Description,omitempty"`
 	DimensionKey *string `json:"DimensionKey,omitempty"`
 	// These fields are used for aws discovery API result.
 	DisplayName *string `json:"DisplayName,omitempty"`
-	Price       *string `json:"Price,omitempty"`
-	Quantity    *string `json:"Quantity,omitempty"`
-	Unit        *string `json:"Unit,omitempty"`
+	Price *string `json:"Price,omitempty"`
+	Quantity *string `json:"Quantity,omitempty"`
+	Unit *string `json:"Unit,omitempty"`
 }
 
 // NewAwsMarketplaceCatalogPricingTermRateCardItem instantiates a new AwsMarketplaceCatalogPricingTermRateCardItem object
@@ -239,7 +239,7 @@ func (o *AwsMarketplaceCatalogPricingTermRateCardItem) SetUnit(v string) {
 }
 
 func (o AwsMarketplaceCatalogPricingTermRateCardItem) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -304,3 +304,5 @@ func (v *NullableAwsMarketplaceCatalogPricingTermRateCardItem) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

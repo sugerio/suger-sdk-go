@@ -20,13 +20,13 @@ var _ MappedNullable = &AzureProductSetup{}
 
 // AzureProductSetup struct for AzureProductSetup
 type AzureProductSetup struct {
-	CallToAction    *string          `json:"callToAction,omitempty"`
-	ChannelStates   []AzureTypeValue `json:"channelStates,omitempty"`
-	EnableTestDrive *bool            `json:"enableTestDrive,omitempty"`
-	ResourceType    *string          `json:"resourceType,omitempty"`
-	SellingOption   *string          `json:"sellingOption,omitempty"`
-	TestDriveType   *string          `json:"testDriveType,omitempty"`
-	TrialUri        *string          `json:"trialUri,omitempty"`
+	CallToAction *string `json:"callToAction,omitempty"`
+	ChannelStates []AzureTypeValue `json:"channelStates,omitempty"`
+	EnableTestDrive *bool `json:"enableTestDrive,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty"`
+	SellingOption *string `json:"sellingOption,omitempty"`
+	TestDriveType *string `json:"testDriveType,omitempty"`
+	TrialUri *string `json:"trialUri,omitempty"`
 }
 
 // NewAzureProductSetup instantiates a new AzureProductSetup object
@@ -271,7 +271,7 @@ func (o *AzureProductSetup) SetTrialUri(v string) {
 }
 
 func (o AzureProductSetup) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -339,3 +339,5 @@ func (v *NullableAzureProductSetup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

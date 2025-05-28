@@ -21,12 +21,12 @@ var _ MappedNullable = &NotificationMessage{}
 
 // NotificationMessage struct for NotificationMessage
 type NotificationMessage struct {
-	CreationTime   *time.Time               `json:"creationTime,omitempty"`
-	Id             *string                  `json:"id,omitempty"`
-	Info           *NotificationMessageInfo `json:"info,omitempty"`
-	OrganizationID *string                  `json:"organizationID,omitempty"`
-	Recipient      *string                  `json:"recipient,omitempty"`
-	Type           *NotificationChannel     `json:"type,omitempty"`
+	CreationTime *time.Time `json:"creationTime,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Info *NotificationMessageInfo `json:"info,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
+	Recipient *string `json:"recipient,omitempty"`
+	Type *NotificationChannel `json:"type,omitempty"`
 }
 
 // NewNotificationMessage instantiates a new NotificationMessage object
@@ -239,7 +239,7 @@ func (o *NotificationMessage) SetType(v NotificationChannel) {
 }
 
 func (o NotificationMessage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -304,3 +304,5 @@ func (v *NullableNotificationMessage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

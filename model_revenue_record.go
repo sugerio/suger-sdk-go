@@ -22,31 +22,31 @@ var _ MappedNullable = &RevenueRecord{}
 // RevenueRecord struct for RevenueRecord
 type RevenueRecord struct {
 	// The revenue amount for the revenue report
-	Amount  *float32 `json:"amount,omitempty"`
-	BuyerID *string  `json:"buyerID,omitempty"`
+	Amount *float32 `json:"amount,omitempty"`
+	BuyerID *string `json:"buyerID,omitempty"`
 	// The revenue amount that the seller/ISV can collect.
 	CollectableAmount *float32 `json:"collectableAmount,omitempty"`
 	// The currency of the revenue in ISO 4217 format, such as \"USD\".
 	Currency *string `json:"currency,omitempty"`
 	// The date for the revenue report
-	Date           *time.Time         `json:"date,omitempty"`
-	DisburseAmount *float32           `json:"disburseAmount,omitempty"`
-	DisburseDate   *time.Time         `json:"disburseDate,omitempty"`
-	EntitlementID  *string            `json:"entitlementID,omitempty"`
-	Id             *string            `json:"id,omitempty"`
-	Info           *RevenueRecordInfo `json:"info,omitempty"`
-	InvoiceAmount  *float32           `json:"invoiceAmount,omitempty"`
-	InvoiceDate    *time.Time         `json:"invoiceDate,omitempty"`
-	OrganizationID *string            `json:"organizationID,omitempty"`
+	Date *time.Time `json:"date,omitempty"`
+	DisburseAmount *float32 `json:"disburseAmount,omitempty"`
+	DisburseDate *time.Time `json:"disburseDate,omitempty"`
+	EntitlementID *string `json:"entitlementID,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Info *RevenueRecordInfo `json:"info,omitempty"`
+	InvoiceAmount *float32 `json:"invoiceAmount,omitempty"`
+	InvoiceDate *time.Time `json:"invoiceDate,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
 	// The value is from type Partner string
-	Partner              *string    `json:"partner,omitempty"`
-	PaymentDueDate       *time.Time `json:"paymentDueDate,omitempty"`
-	ProductID            *string    `json:"productID,omitempty"`
-	RefundDisburseAmount *float32   `json:"refundDisburseAmount,omitempty"`
-	RefundDisburseDate   *time.Time `json:"refundDisburseDate,omitempty"`
-	RefundInvoiceAmount  *float32   `json:"refundInvoiceAmount,omitempty"`
-	RefundInvoiceDate    *time.Time `json:"refundInvoiceDate,omitempty"`
-	TaxAmount            *float32   `json:"taxAmount,omitempty"`
+	Partner *string `json:"partner,omitempty"`
+	PaymentDueDate *time.Time `json:"paymentDueDate,omitempty"`
+	ProductID *string `json:"productID,omitempty"`
+	RefundDisburseAmount *float32 `json:"refundDisburseAmount,omitempty"`
+	RefundDisburseDate *time.Time `json:"refundDisburseDate,omitempty"`
+	RefundInvoiceAmount *float32 `json:"refundInvoiceAmount,omitempty"`
+	RefundInvoiceDate *time.Time `json:"refundInvoiceDate,omitempty"`
+	TaxAmount *float32 `json:"taxAmount,omitempty"`
 }
 
 // NewRevenueRecord instantiates a new RevenueRecord object
@@ -739,7 +739,7 @@ func (o *RevenueRecord) SetTaxAmount(v float32) {
 }
 
 func (o RevenueRecord) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -849,3 +849,5 @@ func (v *NullableRevenueRecord) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

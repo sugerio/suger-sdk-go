@@ -22,10 +22,10 @@ type AwsMarketplaceCatalogPricingModel string
 // List of AwsMarketplaceCatalogPricingModel
 const (
 	AwsMarketplaceCatalogPricingModel_Contract AwsMarketplaceCatalogPricingModel = "Contract"
-	AwsMarketplaceCatalogPricingModel_Usage    AwsMarketplaceCatalogPricingModel = "Usage"
-	AwsMarketplaceCatalogPricingModel_Byol     AwsMarketplaceCatalogPricingModel = "Byol"
-	AwsMarketplaceCatalogPricingModel_Free     AwsMarketplaceCatalogPricingModel = "Free"
-	AwsMarketplaceCatalogPricingModel_Unknown  AwsMarketplaceCatalogPricingModel = "Unknown"
+	AwsMarketplaceCatalogPricingModel_Usage AwsMarketplaceCatalogPricingModel = "Usage"
+	AwsMarketplaceCatalogPricingModel_Byol AwsMarketplaceCatalogPricingModel = "Byol"
+	AwsMarketplaceCatalogPricingModel_Free AwsMarketplaceCatalogPricingModel = "Free"
+	AwsMarketplaceCatalogPricingModel_Unknown AwsMarketplaceCatalogPricingModel = "Unknown"
 )
 
 // All allowed values of AwsMarketplaceCatalogPricingModel enum
@@ -115,3 +115,4 @@ func (v *NullableAwsMarketplaceCatalogPricingModel) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

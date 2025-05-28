@@ -21,12 +21,12 @@ type UsageRecordReportStatus string
 
 // List of UsageRecordReportStatus
 const (
-	UsageRecordReportStatus_UNKNOWN  UsageRecordReportStatus = ""
-	UsageRecordReportStatus_SUCCESS  UsageRecordReportStatus = "SUCCESS"
-	UsageRecordReportStatus_FAILED   UsageRecordReportStatus = "FAILED"
-	UsageRecordReportStatus_CREATED  UsageRecordReportStatus = "CREATED"
+	UsageRecordReportStatus_UNKNOWN UsageRecordReportStatus = ""
+	UsageRecordReportStatus_SUCCESS UsageRecordReportStatus = "SUCCESS"
+	UsageRecordReportStatus_FAILED UsageRecordReportStatus = "FAILED"
+	UsageRecordReportStatus_CREATED UsageRecordReportStatus = "CREATED"
 	UsageRecordReportStatus_INVOICED UsageRecordReportStatus = "INVOICED"
-	UsageRecordReportStatus_DELETED  UsageRecordReportStatus = "DELETED"
+	UsageRecordReportStatus_DELETED UsageRecordReportStatus = "DELETED"
 	UsageRecordReportStatus_CANCELED UsageRecordReportStatus = "CANCELED"
 )
 
@@ -119,3 +119,4 @@ func (v *NullableUsageRecordReportStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

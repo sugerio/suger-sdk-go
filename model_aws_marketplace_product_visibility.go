@@ -21,11 +21,11 @@ type AwsMarketplaceProductVisibility string
 
 // List of AwsMarketplaceProductVisibility
 const (
-	AwsMarketplaceProductVisibility_Limited     AwsMarketplaceProductVisibility = "Limited"
-	AwsMarketplaceProductVisibility_Public      AwsMarketplaceProductVisibility = "Public"
-	AwsMarketplaceProductVisibility_Restricted  AwsMarketplaceProductVisibility = "Restricted"
+	AwsMarketplaceProductVisibility_Limited AwsMarketplaceProductVisibility = "Limited"
+	AwsMarketplaceProductVisibility_Public AwsMarketplaceProductVisibility = "Public"
+	AwsMarketplaceProductVisibility_Restricted AwsMarketplaceProductVisibility = "Restricted"
 	AwsMarketplaceProductVisibility_Unavailable AwsMarketplaceProductVisibility = "Unavailable"
-	AwsMarketplaceProductVisibility_Draft       AwsMarketplaceProductVisibility = "Draft"
+	AwsMarketplaceProductVisibility_Draft AwsMarketplaceProductVisibility = "Draft"
 )
 
 // All allowed values of AwsMarketplaceProductVisibility enum
@@ -115,3 +115,4 @@ func (v *NullableAwsMarketplaceProductVisibility) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

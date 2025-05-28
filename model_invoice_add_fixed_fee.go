@@ -21,10 +21,10 @@ var _ MappedNullable = &InvoiceAddFixedFee{}
 
 // InvoiceAddFixedFee struct for InvoiceAddFixedFee
 type InvoiceAddFixedFee struct {
-	EndDate   *time.Time `json:"endDate,omitempty"`
-	Quantity  *int32     `json:"quantity,omitempty"`
-	Rate      *float32   `json:"rate,omitempty"`
-	Reason    *string    `json:"reason,omitempty"`
+	EndDate *time.Time `json:"endDate,omitempty"`
+	Quantity *int32 `json:"quantity,omitempty"`
+	Rate *float32 `json:"rate,omitempty"`
+	Reason *string `json:"reason,omitempty"`
 	StartDate *time.Time `json:"startDate,omitempty"`
 }
 
@@ -206,7 +206,7 @@ func (o *InvoiceAddFixedFee) SetStartDate(v time.Time) {
 }
 
 func (o InvoiceAddFixedFee) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -268,3 +268,5 @@ func (v *NullableInvoiceAddFixedFee) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

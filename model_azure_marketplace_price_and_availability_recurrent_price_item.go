@@ -20,10 +20,16 @@ var _ MappedNullable = &AzureMarketplacePriceAndAvailabilityRecurrentPriceItem{}
 
 // AzureMarketplacePriceAndAvailabilityRecurrentPriceItem struct for AzureMarketplacePriceAndAvailabilityRecurrentPriceItem
 type AzureMarketplacePriceAndAvailabilityRecurrentPriceItem struct {
-	BillingTerm          *AzureMarketplaceTerm   `json:"billingTerm,omitempty"`
-	PaymentOption        *AzureMarketplaceTerm   `json:"paymentOption,omitempty"`
-	PricePerPaymentInUsd *float32                `json:"pricePerPaymentInUsd,omitempty"`
-	Prices               []AzureMarketplacePrice `json:"prices,omitempty"`
+	// billingFrequency defines the frequency of the billing for recurring price.
+	BillingFrequency *AzureMarketplaceTerm `json:"billingFrequency,omitempty"`
+	BillingTerm *AzureMarketplaceTerm `json:"billingTerm,omitempty"`
+	// contractDuration defines the duration of the contract, should always be “year” with value 1 or 2 or 3
+	ContractDuration *AzureMarketplaceTerm `json:"contractDuration,omitempty"`
+	// flexibleSchedule defines the payment installments for flexible billing.
+	FlexibleSchedule *AzureMarketplacePriceFlexibleSchedule `json:"flexibleSchedule,omitempty"`
+	PaymentOption *AzureMarketplaceTerm `json:"paymentOption,omitempty"`
+	PricePerPaymentInUsd *float32 `json:"pricePerPaymentInUsd,omitempty"`
+	Prices []AzureMarketplacePrice `json:"prices,omitempty"`
 }
 
 // NewAzureMarketplacePriceAndAvailabilityRecurrentPriceItem instantiates a new AzureMarketplacePriceAndAvailabilityRecurrentPriceItem object
@@ -41,6 +47,38 @@ func NewAzureMarketplacePriceAndAvailabilityRecurrentPriceItem() *AzureMarketpla
 func NewAzureMarketplacePriceAndAvailabilityRecurrentPriceItemWithDefaults() *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem {
 	this := AzureMarketplacePriceAndAvailabilityRecurrentPriceItem{}
 	return &this
+}
+
+// GetBillingFrequency returns the BillingFrequency field value if set, zero value otherwise.
+func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) GetBillingFrequency() AzureMarketplaceTerm {
+	if o == nil || IsNil(o.BillingFrequency) {
+		var ret AzureMarketplaceTerm
+		return ret
+	}
+	return *o.BillingFrequency
+}
+
+// GetBillingFrequencyOk returns a tuple with the BillingFrequency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) GetBillingFrequencyOk() (*AzureMarketplaceTerm, bool) {
+	if o == nil || IsNil(o.BillingFrequency) {
+		return nil, false
+	}
+	return o.BillingFrequency, true
+}
+
+// HasBillingFrequency returns a boolean if a field has been set.
+func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) HasBillingFrequency() bool {
+	if o != nil && !IsNil(o.BillingFrequency) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingFrequency gets a reference to the given AzureMarketplaceTerm and assigns it to the BillingFrequency field.
+func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) SetBillingFrequency(v AzureMarketplaceTerm) {
+	o.BillingFrequency = &v
 }
 
 // GetBillingTerm returns the BillingTerm field value if set, zero value otherwise.
@@ -73,6 +111,70 @@ func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) HasBillingTerm(
 // SetBillingTerm gets a reference to the given AzureMarketplaceTerm and assigns it to the BillingTerm field.
 func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) SetBillingTerm(v AzureMarketplaceTerm) {
 	o.BillingTerm = &v
+}
+
+// GetContractDuration returns the ContractDuration field value if set, zero value otherwise.
+func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) GetContractDuration() AzureMarketplaceTerm {
+	if o == nil || IsNil(o.ContractDuration) {
+		var ret AzureMarketplaceTerm
+		return ret
+	}
+	return *o.ContractDuration
+}
+
+// GetContractDurationOk returns a tuple with the ContractDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) GetContractDurationOk() (*AzureMarketplaceTerm, bool) {
+	if o == nil || IsNil(o.ContractDuration) {
+		return nil, false
+	}
+	return o.ContractDuration, true
+}
+
+// HasContractDuration returns a boolean if a field has been set.
+func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) HasContractDuration() bool {
+	if o != nil && !IsNil(o.ContractDuration) {
+		return true
+	}
+
+	return false
+}
+
+// SetContractDuration gets a reference to the given AzureMarketplaceTerm and assigns it to the ContractDuration field.
+func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) SetContractDuration(v AzureMarketplaceTerm) {
+	o.ContractDuration = &v
+}
+
+// GetFlexibleSchedule returns the FlexibleSchedule field value if set, zero value otherwise.
+func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) GetFlexibleSchedule() AzureMarketplacePriceFlexibleSchedule {
+	if o == nil || IsNil(o.FlexibleSchedule) {
+		var ret AzureMarketplacePriceFlexibleSchedule
+		return ret
+	}
+	return *o.FlexibleSchedule
+}
+
+// GetFlexibleScheduleOk returns a tuple with the FlexibleSchedule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) GetFlexibleScheduleOk() (*AzureMarketplacePriceFlexibleSchedule, bool) {
+	if o == nil || IsNil(o.FlexibleSchedule) {
+		return nil, false
+	}
+	return o.FlexibleSchedule, true
+}
+
+// HasFlexibleSchedule returns a boolean if a field has been set.
+func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) HasFlexibleSchedule() bool {
+	if o != nil && !IsNil(o.FlexibleSchedule) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlexibleSchedule gets a reference to the given AzureMarketplacePriceFlexibleSchedule and assigns it to the FlexibleSchedule field.
+func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) SetFlexibleSchedule(v AzureMarketplacePriceFlexibleSchedule) {
+	o.FlexibleSchedule = &v
 }
 
 // GetPaymentOption returns the PaymentOption field value if set, zero value otherwise.
@@ -172,7 +274,7 @@ func (o *AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) SetPrices(v []A
 }
 
 func (o AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,8 +283,17 @@ func (o AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) MarshalJSON() ([
 
 func (o AzureMarketplacePriceAndAvailabilityRecurrentPriceItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BillingFrequency) {
+		toSerialize["billingFrequency"] = o.BillingFrequency
+	}
 	if !IsNil(o.BillingTerm) {
 		toSerialize["billingTerm"] = o.BillingTerm
+	}
+	if !IsNil(o.ContractDuration) {
+		toSerialize["contractDuration"] = o.ContractDuration
+	}
+	if !IsNil(o.FlexibleSchedule) {
+		toSerialize["flexibleSchedule"] = o.FlexibleSchedule
 	}
 	if !IsNil(o.PaymentOption) {
 		toSerialize["paymentOption"] = o.PaymentOption
@@ -231,3 +342,5 @@ func (v *NullableAzureMarketplacePriceAndAvailabilityRecurrentPriceItem) Unmarsh
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

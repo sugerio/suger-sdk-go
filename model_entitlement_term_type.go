@@ -21,13 +21,13 @@ type EntitlementTermType string
 
 // List of EntitlementTermType
 const (
-	EntitlementTermTypeUnknown        EntitlementTermType = ""
-	EntitlementTermTypeAutoRenew      EntitlementTermType = "AutoRenew"
-	EntitlementTermTypeManualRenew    EntitlementTermType = "ManualRenew"
-	EntitlementTermTypePlanChange     EntitlementTermType = "PlanChange"
+	EntitlementTermTypeUnknown EntitlementTermType = ""
+	EntitlementTermTypeAutoRenew EntitlementTermType = "AutoRenew"
+	EntitlementTermTypeManualRenew EntitlementTermType = "ManualRenew"
+	EntitlementTermTypePlanChange EntitlementTermType = "PlanChange"
 	EntitlementTermTypeQuantityChange EntitlementTermType = "QuantityChange"
-	EntitlementTermTypeSignup         EntitlementTermType = "Signup"
-	EntitlementTermTypeDivideCommit   EntitlementTermType = "DivideCommit"
+	EntitlementTermTypeSignup EntitlementTermType = "Signup"
+	EntitlementTermTypeDivideCommit EntitlementTermType = "DivideCommit"
 )
 
 // All allowed values of EntitlementTermType enum
@@ -119,3 +119,4 @@ func (v *NullableEntitlementTermType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

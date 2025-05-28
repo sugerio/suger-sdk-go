@@ -25,8 +25,8 @@ type SupportTicketComment struct {
 	CommentText *string `json:"comment_text,omitempty"`
 	// who created the comment
 	Creator *SupportTicketUser `json:"creator,omitempty"`
-	Date    *string            `json:"date,omitempty"`
-	Id      *string            `json:"id,omitempty"`
+	Date *string `json:"date,omitempty"`
+	Id *string `json:"id,omitempty"`
 }
 
 // NewSupportTicketComment instantiates a new SupportTicketComment object
@@ -207,7 +207,7 @@ func (o *SupportTicketComment) SetId(v string) {
 }
 
 func (o SupportTicketComment) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,3 +269,5 @@ func (v *NullableSupportTicketComment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

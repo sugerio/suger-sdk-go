@@ -108,7 +108,7 @@ func (o *MeteringUsageRecordGroupByKey) SetId(v string) {
 }
 
 func (o MeteringUsageRecordGroupByKey) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -161,3 +161,5 @@ func (v *NullableMeteringUsageRecordGroupByKey) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

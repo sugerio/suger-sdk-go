@@ -20,7 +20,7 @@ var _ MappedNullable = &AlibabaMarketplaceProductSkuOrderPeriod{}
 
 // AlibabaMarketplaceProductSkuOrderPeriod struct for AlibabaMarketplaceProductSkuOrderPeriod
 type AlibabaMarketplaceProductSkuOrderPeriod struct {
-	Name       *string `json:"Name,omitempty"`
+	Name *string `json:"Name,omitempty"`
 	PeriodType *string `json:"PeriodType,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *AlibabaMarketplaceProductSkuOrderPeriod) SetPeriodType(v string) {
 }
 
 func (o AlibabaMarketplaceProductSkuOrderPeriod) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAlibabaMarketplaceProductSkuOrderPeriod) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

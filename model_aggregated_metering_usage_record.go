@@ -21,9 +21,9 @@ var _ MappedNullable = &AggregatedMeteringUsageRecord{}
 // AggregatedMeteringUsageRecord struct for AggregatedMeteringUsageRecord
 type AggregatedMeteringUsageRecord struct {
 	// Amount calculated by billable dimension's price model, this is only used for report billable usage records to marketplace.
-	Amount                        *float32                       `json:"amount,omitempty"`
+	Amount *float32 `json:"amount,omitempty"`
 	BillableMetricAggregationType *BillableMetricAggregationType `json:"billableMetricAggregationType,omitempty"`
-	BillableMetricInfo            *BillableMetricInfo            `json:"billableMetricInfo,omitempty"`
+	BillableMetricInfo *BillableMetricInfo `json:"billableMetricInfo,omitempty"`
 	// GroupBysExpression is the string expression of array of group bys.
 	GroupBysExpression *string `json:"groupBysExpression,omitempty"`
 	// Key is the unique identifier of a billable metric.
@@ -310,7 +310,7 @@ func (o *AggregatedMeteringUsageRecord) SetUniqueCountAggregationResult(v Unique
 }
 
 func (o AggregatedMeteringUsageRecord) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -381,3 +381,5 @@ func (v *NullableAggregatedMeteringUsageRecord) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

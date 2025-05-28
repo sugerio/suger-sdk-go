@@ -21,8 +21,8 @@ var _ MappedNullable = &AzureMarketplacePrivateOfferTermsDoc{}
 // AzureMarketplacePrivateOfferTermsDoc struct for AzureMarketplacePrivateOfferTermsDoc
 type AzureMarketplacePrivateOfferTermsDoc struct {
 	CustomerFacingDocumentName *string `json:"customerFacingDocumentName,omitempty"`
-	FileName                   *string `json:"fileName,omitempty"`
-	SasUrl                     *string `json:"sasUrl,omitempty"`
+	FileName *string `json:"fileName,omitempty"`
+	SasUrl *string `json:"sasUrl,omitempty"`
 }
 
 // NewAzureMarketplacePrivateOfferTermsDoc instantiates a new AzureMarketplacePrivateOfferTermsDoc object
@@ -139,7 +139,7 @@ func (o *AzureMarketplacePrivateOfferTermsDoc) SetSasUrl(v string) {
 }
 
 func (o AzureMarketplacePrivateOfferTermsDoc) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableAzureMarketplacePrivateOfferTermsDoc) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

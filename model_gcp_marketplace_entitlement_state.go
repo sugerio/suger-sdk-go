@@ -21,14 +21,14 @@ type GcpMarketplaceEntitlementState string
 
 // List of GcpMarketplaceEntitlementState
 const (
-	GcpMarketplaceEntitlementState_ENTITLEMENT_STATE_UNSPECIFIED            GcpMarketplaceEntitlementState = "ENTITLEMENT_STATE_UNSPECIFIED"
-	GcpMarketplaceEntitlementState_ENTITLEMENT_ACTIVATION_REQUESTED         GcpMarketplaceEntitlementState = "ENTITLEMENT_ACTIVATION_REQUESTED"
-	GcpMarketplaceEntitlementState_ENTITLEMENT_ACTIVE                       GcpMarketplaceEntitlementState = "ENTITLEMENT_ACTIVE"
-	GcpMarketplaceEntitlementState_ENTITLEMENT_PENDING_CANCELLATION         GcpMarketplaceEntitlementState = "ENTITLEMENT_PENDING_CANCELLATION"
-	GcpMarketplaceEntitlementState_ENTITLEMENT_CANCELLED                    GcpMarketplaceEntitlementState = "ENTITLEMENT_CANCELLED"
-	GcpMarketplaceEntitlementState_ENTITLEMENT_PENDING_PLAN_CHANGE          GcpMarketplaceEntitlementState = "ENTITLEMENT_PENDING_PLAN_CHANGE"
+	GcpMarketplaceEntitlementState_ENTITLEMENT_STATE_UNSPECIFIED GcpMarketplaceEntitlementState = "ENTITLEMENT_STATE_UNSPECIFIED"
+	GcpMarketplaceEntitlementState_ENTITLEMENT_ACTIVATION_REQUESTED GcpMarketplaceEntitlementState = "ENTITLEMENT_ACTIVATION_REQUESTED"
+	GcpMarketplaceEntitlementState_ENTITLEMENT_ACTIVE GcpMarketplaceEntitlementState = "ENTITLEMENT_ACTIVE"
+	GcpMarketplaceEntitlementState_ENTITLEMENT_PENDING_CANCELLATION GcpMarketplaceEntitlementState = "ENTITLEMENT_PENDING_CANCELLATION"
+	GcpMarketplaceEntitlementState_ENTITLEMENT_CANCELLED GcpMarketplaceEntitlementState = "ENTITLEMENT_CANCELLED"
+	GcpMarketplaceEntitlementState_ENTITLEMENT_PENDING_PLAN_CHANGE GcpMarketplaceEntitlementState = "ENTITLEMENT_PENDING_PLAN_CHANGE"
 	GcpMarketplaceEntitlementState_ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL GcpMarketplaceEntitlementState = "ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL"
-	GcpMarketplaceEntitlementState_ENTITLEMENT_SUSPENDED                    GcpMarketplaceEntitlementState = "ENTITLEMENT_SUSPENDED"
+	GcpMarketplaceEntitlementState_ENTITLEMENT_SUSPENDED GcpMarketplaceEntitlementState = "ENTITLEMENT_SUSPENDED"
 )
 
 // All allowed values of GcpMarketplaceEntitlementState enum
@@ -121,3 +121,4 @@ func (v *NullableGcpMarketplaceEntitlementState) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

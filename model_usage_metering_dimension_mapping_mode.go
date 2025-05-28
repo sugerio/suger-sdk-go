@@ -21,9 +21,9 @@ type UsageMeteringDimensionMappingMode string
 
 // List of UsageMeteringDimensionMappingMode
 const (
-	UsageMeteringDimensionMappingMode_UNKNOWN  UsageMeteringDimensionMappingMode = ""
+	UsageMeteringDimensionMappingMode_UNKNOWN UsageMeteringDimensionMappingMode = ""
 	UsageMeteringDimensionMappingMode_QUANTITY UsageMeteringDimensionMappingMode = "QUANTITY"
-	UsageMeteringDimensionMappingMode_AMOUNT   UsageMeteringDimensionMappingMode = "AMOUNT"
+	UsageMeteringDimensionMappingMode_AMOUNT UsageMeteringDimensionMappingMode = "AMOUNT"
 )
 
 // All allowed values of UsageMeteringDimensionMappingMode enum
@@ -111,3 +111,4 @@ func (v *NullableUsageMeteringDimensionMappingMode) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

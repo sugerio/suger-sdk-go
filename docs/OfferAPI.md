@@ -768,7 +768,7 @@ Name | Type | Description  | Notes
 
 ## SendOfferNotifications
 
-> NotificationEvent SendOfferNotifications(ctx, orgId, offerId).ContactIds(contactIds).Execute()
+> NotificationEvent SendOfferNotifications(ctx, orgId, offerId).ContactIDs(contactIDs).Execute()
 
 notify offer contacts
 
@@ -789,11 +789,11 @@ import (
 func main() {
 	orgId := "orgId_example" // string | Organization ID
 	offerId := "offerId_example" // string | Offer ID
-	contactIds := []string{"Property_example"} // []string | List of Contact IDs, if emoty or nil, send notifications to all contacts of the offer (optional)
+	contactIDs := []string{"Property_example"} // []string | List of Contact IDs, if emoty or nil, send notifications to all contacts of the offer (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OfferAPI.SendOfferNotifications(context.Background(), orgId, offerId).ContactIds(contactIds).Execute()
+	resp, r, err := apiClient.OfferAPI.SendOfferNotifications(context.Background(), orgId, offerId).ContactIDs(contactIDs).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.SendOfferNotifications``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -821,7 +821,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contactIds** | **[]string** | List of Contact IDs, if emoty or nil, send notifications to all contacts of the offer | 
+ **contactIDs** | **[]string** | List of Contact IDs, if emoty or nil, send notifications to all contacts of the offer | 
 
 ### Return type
 

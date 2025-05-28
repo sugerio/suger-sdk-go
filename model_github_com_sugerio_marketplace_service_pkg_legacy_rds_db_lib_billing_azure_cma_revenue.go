@@ -20,25 +20,39 @@ var _ MappedNullable = &GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBilli
 
 // GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue struct for GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue
 type GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue struct {
-	AzureAssetID          *string              `json:"azureAssetID,omitempty"`
-	AzureBillingAccountID *string              `json:"azureBillingAccountID,omitempty"`
-	AzureCustomerID       *string              `json:"azureCustomerID,omitempty"`
-	AzureOfferID          *string              `json:"azureOfferID,omitempty"`
-	AzurePlanID           *string              `json:"azurePlanID,omitempty"`
-	BillingModel          *string              `json:"billingModel,omitempty"`
-	BuyerID               *string              `json:"buyerID,omitempty"`
-	EarningUsd            *float32             `json:"earningUsd,omitempty"`
-	EntitlementID         *string              `json:"entitlementID,omitempty"`
-	EstimatedPayoutMonth  *DatabaseSqlNullTime `json:"estimatedPayoutMonth,omitempty"`
-	OfferID               *string              `json:"offerID,omitempty"`
-	OrganizationID        *string              `json:"organizationID,omitempty"`
-	PaymentSentDate       *DatabaseSqlNullTime `json:"paymentSentDate,omitempty"`
-	PayoutStatus          *string              `json:"payoutStatus,omitempty"`
-	ProductID             *string              `json:"productID,omitempty"`
-	PurchaseRecordID      *string              `json:"purchaseRecordID,omitempty"`
-	RevenueUsd            *float32             `json:"revenueUsd,omitempty"`
-	TermEndDate           *string              `json:"termEndDate,omitempty"`
-	TermStartDate         *string              `json:"termStartDate,omitempty"`
+	AzureAssetID *string `json:"azureAssetID,omitempty"`
+	AzureBillingAccountID *string `json:"azureBillingAccountID,omitempty"`
+	AzureCustomerID *string `json:"azureCustomerID,omitempty"`
+	AzureOfferID *string `json:"azureOfferID,omitempty"`
+	AzurePlanID *string `json:"azurePlanID,omitempty"`
+	BillingModel *string `json:"billingModel,omitempty"`
+	BuyerID *string `json:"buyerID,omitempty"`
+	EarningID *string `json:"earningID,omitempty"`
+	EarningUsd *float32 `json:"earningUsd,omitempty"`
+	EntitlementID *string `json:"entitlementID,omitempty"`
+	EstimatedPayoutMonth *DatabaseSqlNullTime `json:"estimatedPayoutMonth,omitempty"`
+	InvoiceDate *DatabaseSqlNullTime `json:"invoiceDate,omitempty"`
+	InvoiceDueDate *DatabaseSqlNullTime `json:"invoiceDueDate,omitempty"`
+	InvoiceID *string `json:"invoiceID,omitempty"`
+	OfferID *string `json:"offerID,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
+	PaymentID *string `json:"paymentID,omitempty"`
+	PaymentSentDate *DatabaseSqlNullTime `json:"paymentSentDate,omitempty"`
+	PaymentStatus *string `json:"paymentStatus,omitempty"`
+	PayoutStatus *string `json:"payoutStatus,omitempty"`
+	ProductID *string `json:"productID,omitempty"`
+	ProgramName *string `json:"programName,omitempty"`
+	PurchaseRecordID *string `json:"purchaseRecordID,omitempty"`
+	ResellerCity *string `json:"resellerCity,omitempty"`
+	ResellerCompany *string `json:"resellerCompany,omitempty"`
+	ResellerCountry *string `json:"resellerCountry,omitempty"`
+	ResellerEmail *string `json:"resellerEmail,omitempty"`
+	ResellerID *string `json:"resellerID,omitempty"`
+	ResellerState *string `json:"resellerState,omitempty"`
+	RevenueUsd *float32 `json:"revenueUsd,omitempty"`
+	TermEndDate *string `json:"termEndDate,omitempty"`
+	TermStartDate *string `json:"termStartDate,omitempty"`
+	TransactionDate *DatabaseSqlNullTime `json:"transactionDate,omitempty"`
 }
 
 // NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue instantiates a new GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue object
@@ -282,6 +296,38 @@ func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaReven
 	o.BuyerID = &v
 }
 
+// GetEarningID returns the EarningID field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetEarningID() string {
+	if o == nil || IsNil(o.EarningID) {
+		var ret string
+		return ret
+	}
+	return *o.EarningID
+}
+
+// GetEarningIDOk returns a tuple with the EarningID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetEarningIDOk() (*string, bool) {
+	if o == nil || IsNil(o.EarningID) {
+		return nil, false
+	}
+	return o.EarningID, true
+}
+
+// HasEarningID returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasEarningID() bool {
+	if o != nil && !IsNil(o.EarningID) {
+		return true
+	}
+
+	return false
+}
+
+// SetEarningID gets a reference to the given string and assigns it to the EarningID field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetEarningID(v string) {
+	o.EarningID = &v
+}
+
 // GetEarningUsd returns the EarningUsd field value if set, zero value otherwise.
 func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetEarningUsd() float32 {
 	if o == nil || IsNil(o.EarningUsd) {
@@ -378,6 +424,102 @@ func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaReven
 	o.EstimatedPayoutMonth = &v
 }
 
+// GetInvoiceDate returns the InvoiceDate field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetInvoiceDate() DatabaseSqlNullTime {
+	if o == nil || IsNil(o.InvoiceDate) {
+		var ret DatabaseSqlNullTime
+		return ret
+	}
+	return *o.InvoiceDate
+}
+
+// GetInvoiceDateOk returns a tuple with the InvoiceDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetInvoiceDateOk() (*DatabaseSqlNullTime, bool) {
+	if o == nil || IsNil(o.InvoiceDate) {
+		return nil, false
+	}
+	return o.InvoiceDate, true
+}
+
+// HasInvoiceDate returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasInvoiceDate() bool {
+	if o != nil && !IsNil(o.InvoiceDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetInvoiceDate gets a reference to the given DatabaseSqlNullTime and assigns it to the InvoiceDate field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetInvoiceDate(v DatabaseSqlNullTime) {
+	o.InvoiceDate = &v
+}
+
+// GetInvoiceDueDate returns the InvoiceDueDate field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetInvoiceDueDate() DatabaseSqlNullTime {
+	if o == nil || IsNil(o.InvoiceDueDate) {
+		var ret DatabaseSqlNullTime
+		return ret
+	}
+	return *o.InvoiceDueDate
+}
+
+// GetInvoiceDueDateOk returns a tuple with the InvoiceDueDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetInvoiceDueDateOk() (*DatabaseSqlNullTime, bool) {
+	if o == nil || IsNil(o.InvoiceDueDate) {
+		return nil, false
+	}
+	return o.InvoiceDueDate, true
+}
+
+// HasInvoiceDueDate returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasInvoiceDueDate() bool {
+	if o != nil && !IsNil(o.InvoiceDueDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetInvoiceDueDate gets a reference to the given DatabaseSqlNullTime and assigns it to the InvoiceDueDate field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetInvoiceDueDate(v DatabaseSqlNullTime) {
+	o.InvoiceDueDate = &v
+}
+
+// GetInvoiceID returns the InvoiceID field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetInvoiceID() string {
+	if o == nil || IsNil(o.InvoiceID) {
+		var ret string
+		return ret
+	}
+	return *o.InvoiceID
+}
+
+// GetInvoiceIDOk returns a tuple with the InvoiceID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetInvoiceIDOk() (*string, bool) {
+	if o == nil || IsNil(o.InvoiceID) {
+		return nil, false
+	}
+	return o.InvoiceID, true
+}
+
+// HasInvoiceID returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasInvoiceID() bool {
+	if o != nil && !IsNil(o.InvoiceID) {
+		return true
+	}
+
+	return false
+}
+
+// SetInvoiceID gets a reference to the given string and assigns it to the InvoiceID field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetInvoiceID(v string) {
+	o.InvoiceID = &v
+}
+
 // GetOfferID returns the OfferID field value if set, zero value otherwise.
 func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetOfferID() string {
 	if o == nil || IsNil(o.OfferID) {
@@ -442,6 +584,38 @@ func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaReven
 	o.OrganizationID = &v
 }
 
+// GetPaymentID returns the PaymentID field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetPaymentID() string {
+	if o == nil || IsNil(o.PaymentID) {
+		var ret string
+		return ret
+	}
+	return *o.PaymentID
+}
+
+// GetPaymentIDOk returns a tuple with the PaymentID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetPaymentIDOk() (*string, bool) {
+	if o == nil || IsNil(o.PaymentID) {
+		return nil, false
+	}
+	return o.PaymentID, true
+}
+
+// HasPaymentID returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasPaymentID() bool {
+	if o != nil && !IsNil(o.PaymentID) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentID gets a reference to the given string and assigns it to the PaymentID field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetPaymentID(v string) {
+	o.PaymentID = &v
+}
+
 // GetPaymentSentDate returns the PaymentSentDate field value if set, zero value otherwise.
 func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetPaymentSentDate() DatabaseSqlNullTime {
 	if o == nil || IsNil(o.PaymentSentDate) {
@@ -472,6 +646,38 @@ func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaReven
 // SetPaymentSentDate gets a reference to the given DatabaseSqlNullTime and assigns it to the PaymentSentDate field.
 func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetPaymentSentDate(v DatabaseSqlNullTime) {
 	o.PaymentSentDate = &v
+}
+
+// GetPaymentStatus returns the PaymentStatus field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetPaymentStatus() string {
+	if o == nil || IsNil(o.PaymentStatus) {
+		var ret string
+		return ret
+	}
+	return *o.PaymentStatus
+}
+
+// GetPaymentStatusOk returns a tuple with the PaymentStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetPaymentStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.PaymentStatus) {
+		return nil, false
+	}
+	return o.PaymentStatus, true
+}
+
+// HasPaymentStatus returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasPaymentStatus() bool {
+	if o != nil && !IsNil(o.PaymentStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentStatus gets a reference to the given string and assigns it to the PaymentStatus field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetPaymentStatus(v string) {
+	o.PaymentStatus = &v
 }
 
 // GetPayoutStatus returns the PayoutStatus field value if set, zero value otherwise.
@@ -538,6 +744,38 @@ func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaReven
 	o.ProductID = &v
 }
 
+// GetProgramName returns the ProgramName field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetProgramName() string {
+	if o == nil || IsNil(o.ProgramName) {
+		var ret string
+		return ret
+	}
+	return *o.ProgramName
+}
+
+// GetProgramNameOk returns a tuple with the ProgramName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetProgramNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ProgramName) {
+		return nil, false
+	}
+	return o.ProgramName, true
+}
+
+// HasProgramName returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasProgramName() bool {
+	if o != nil && !IsNil(o.ProgramName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProgramName gets a reference to the given string and assigns it to the ProgramName field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetProgramName(v string) {
+	o.ProgramName = &v
+}
+
 // GetPurchaseRecordID returns the PurchaseRecordID field value if set, zero value otherwise.
 func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetPurchaseRecordID() string {
 	if o == nil || IsNil(o.PurchaseRecordID) {
@@ -568,6 +806,198 @@ func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaReven
 // SetPurchaseRecordID gets a reference to the given string and assigns it to the PurchaseRecordID field.
 func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetPurchaseRecordID(v string) {
 	o.PurchaseRecordID = &v
+}
+
+// GetResellerCity returns the ResellerCity field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetResellerCity() string {
+	if o == nil || IsNil(o.ResellerCity) {
+		var ret string
+		return ret
+	}
+	return *o.ResellerCity
+}
+
+// GetResellerCityOk returns a tuple with the ResellerCity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetResellerCityOk() (*string, bool) {
+	if o == nil || IsNil(o.ResellerCity) {
+		return nil, false
+	}
+	return o.ResellerCity, true
+}
+
+// HasResellerCity returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasResellerCity() bool {
+	if o != nil && !IsNil(o.ResellerCity) {
+		return true
+	}
+
+	return false
+}
+
+// SetResellerCity gets a reference to the given string and assigns it to the ResellerCity field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetResellerCity(v string) {
+	o.ResellerCity = &v
+}
+
+// GetResellerCompany returns the ResellerCompany field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetResellerCompany() string {
+	if o == nil || IsNil(o.ResellerCompany) {
+		var ret string
+		return ret
+	}
+	return *o.ResellerCompany
+}
+
+// GetResellerCompanyOk returns a tuple with the ResellerCompany field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetResellerCompanyOk() (*string, bool) {
+	if o == nil || IsNil(o.ResellerCompany) {
+		return nil, false
+	}
+	return o.ResellerCompany, true
+}
+
+// HasResellerCompany returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasResellerCompany() bool {
+	if o != nil && !IsNil(o.ResellerCompany) {
+		return true
+	}
+
+	return false
+}
+
+// SetResellerCompany gets a reference to the given string and assigns it to the ResellerCompany field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetResellerCompany(v string) {
+	o.ResellerCompany = &v
+}
+
+// GetResellerCountry returns the ResellerCountry field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetResellerCountry() string {
+	if o == nil || IsNil(o.ResellerCountry) {
+		var ret string
+		return ret
+	}
+	return *o.ResellerCountry
+}
+
+// GetResellerCountryOk returns a tuple with the ResellerCountry field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetResellerCountryOk() (*string, bool) {
+	if o == nil || IsNil(o.ResellerCountry) {
+		return nil, false
+	}
+	return o.ResellerCountry, true
+}
+
+// HasResellerCountry returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasResellerCountry() bool {
+	if o != nil && !IsNil(o.ResellerCountry) {
+		return true
+	}
+
+	return false
+}
+
+// SetResellerCountry gets a reference to the given string and assigns it to the ResellerCountry field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetResellerCountry(v string) {
+	o.ResellerCountry = &v
+}
+
+// GetResellerEmail returns the ResellerEmail field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetResellerEmail() string {
+	if o == nil || IsNil(o.ResellerEmail) {
+		var ret string
+		return ret
+	}
+	return *o.ResellerEmail
+}
+
+// GetResellerEmailOk returns a tuple with the ResellerEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetResellerEmailOk() (*string, bool) {
+	if o == nil || IsNil(o.ResellerEmail) {
+		return nil, false
+	}
+	return o.ResellerEmail, true
+}
+
+// HasResellerEmail returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasResellerEmail() bool {
+	if o != nil && !IsNil(o.ResellerEmail) {
+		return true
+	}
+
+	return false
+}
+
+// SetResellerEmail gets a reference to the given string and assigns it to the ResellerEmail field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetResellerEmail(v string) {
+	o.ResellerEmail = &v
+}
+
+// GetResellerID returns the ResellerID field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetResellerID() string {
+	if o == nil || IsNil(o.ResellerID) {
+		var ret string
+		return ret
+	}
+	return *o.ResellerID
+}
+
+// GetResellerIDOk returns a tuple with the ResellerID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetResellerIDOk() (*string, bool) {
+	if o == nil || IsNil(o.ResellerID) {
+		return nil, false
+	}
+	return o.ResellerID, true
+}
+
+// HasResellerID returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasResellerID() bool {
+	if o != nil && !IsNil(o.ResellerID) {
+		return true
+	}
+
+	return false
+}
+
+// SetResellerID gets a reference to the given string and assigns it to the ResellerID field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetResellerID(v string) {
+	o.ResellerID = &v
+}
+
+// GetResellerState returns the ResellerState field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetResellerState() string {
+	if o == nil || IsNil(o.ResellerState) {
+		var ret string
+		return ret
+	}
+	return *o.ResellerState
+}
+
+// GetResellerStateOk returns a tuple with the ResellerState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetResellerStateOk() (*string, bool) {
+	if o == nil || IsNil(o.ResellerState) {
+		return nil, false
+	}
+	return o.ResellerState, true
+}
+
+// HasResellerState returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasResellerState() bool {
+	if o != nil && !IsNil(o.ResellerState) {
+		return true
+	}
+
+	return false
+}
+
+// SetResellerState gets a reference to the given string and assigns it to the ResellerState field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetResellerState(v string) {
+	o.ResellerState = &v
 }
 
 // GetRevenueUsd returns the RevenueUsd field value if set, zero value otherwise.
@@ -666,8 +1096,40 @@ func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaReven
 	o.TermStartDate = &v
 }
 
+// GetTransactionDate returns the TransactionDate field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetTransactionDate() DatabaseSqlNullTime {
+	if o == nil || IsNil(o.TransactionDate) {
+		var ret DatabaseSqlNullTime
+		return ret
+	}
+	return *o.TransactionDate
+}
+
+// GetTransactionDateOk returns a tuple with the TransactionDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) GetTransactionDateOk() (*DatabaseSqlNullTime, bool) {
+	if o == nil || IsNil(o.TransactionDate) {
+		return nil, false
+	}
+	return o.TransactionDate, true
+}
+
+// HasTransactionDate returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) HasTransactionDate() bool {
+	if o != nil && !IsNil(o.TransactionDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetTransactionDate gets a reference to the given DatabaseSqlNullTime and assigns it to the TransactionDate field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) SetTransactionDate(v DatabaseSqlNullTime) {
+	o.TransactionDate = &v
+}
+
 func (o GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -697,6 +1159,9 @@ func (o GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenu
 	if !IsNil(o.BuyerID) {
 		toSerialize["buyerID"] = o.BuyerID
 	}
+	if !IsNil(o.EarningID) {
+		toSerialize["earningID"] = o.EarningID
+	}
 	if !IsNil(o.EarningUsd) {
 		toSerialize["earningUsd"] = o.EarningUsd
 	}
@@ -706,14 +1171,29 @@ func (o GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenu
 	if !IsNil(o.EstimatedPayoutMonth) {
 		toSerialize["estimatedPayoutMonth"] = o.EstimatedPayoutMonth
 	}
+	if !IsNil(o.InvoiceDate) {
+		toSerialize["invoiceDate"] = o.InvoiceDate
+	}
+	if !IsNil(o.InvoiceDueDate) {
+		toSerialize["invoiceDueDate"] = o.InvoiceDueDate
+	}
+	if !IsNil(o.InvoiceID) {
+		toSerialize["invoiceID"] = o.InvoiceID
+	}
 	if !IsNil(o.OfferID) {
 		toSerialize["offerID"] = o.OfferID
 	}
 	if !IsNil(o.OrganizationID) {
 		toSerialize["organizationID"] = o.OrganizationID
 	}
+	if !IsNil(o.PaymentID) {
+		toSerialize["paymentID"] = o.PaymentID
+	}
 	if !IsNil(o.PaymentSentDate) {
 		toSerialize["paymentSentDate"] = o.PaymentSentDate
+	}
+	if !IsNil(o.PaymentStatus) {
+		toSerialize["paymentStatus"] = o.PaymentStatus
 	}
 	if !IsNil(o.PayoutStatus) {
 		toSerialize["payoutStatus"] = o.PayoutStatus
@@ -721,8 +1201,29 @@ func (o GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenu
 	if !IsNil(o.ProductID) {
 		toSerialize["productID"] = o.ProductID
 	}
+	if !IsNil(o.ProgramName) {
+		toSerialize["programName"] = o.ProgramName
+	}
 	if !IsNil(o.PurchaseRecordID) {
 		toSerialize["purchaseRecordID"] = o.PurchaseRecordID
+	}
+	if !IsNil(o.ResellerCity) {
+		toSerialize["resellerCity"] = o.ResellerCity
+	}
+	if !IsNil(o.ResellerCompany) {
+		toSerialize["resellerCompany"] = o.ResellerCompany
+	}
+	if !IsNil(o.ResellerCountry) {
+		toSerialize["resellerCountry"] = o.ResellerCountry
+	}
+	if !IsNil(o.ResellerEmail) {
+		toSerialize["resellerEmail"] = o.ResellerEmail
+	}
+	if !IsNil(o.ResellerID) {
+		toSerialize["resellerID"] = o.ResellerID
+	}
+	if !IsNil(o.ResellerState) {
+		toSerialize["resellerState"] = o.ResellerState
 	}
 	if !IsNil(o.RevenueUsd) {
 		toSerialize["revenueUsd"] = o.RevenueUsd
@@ -732,6 +1233,9 @@ func (o GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenu
 	}
 	if !IsNil(o.TermStartDate) {
 		toSerialize["termStartDate"] = o.TermStartDate
+	}
+	if !IsNil(o.TransactionDate) {
+		toSerialize["transactionDate"] = o.TransactionDate
 	}
 	return toSerialize, nil
 }
@@ -771,3 +1275,5 @@ func (v *NullableGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzure
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

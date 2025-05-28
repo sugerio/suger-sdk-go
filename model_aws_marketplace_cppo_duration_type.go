@@ -22,8 +22,8 @@ type AwsMarketplaceCppoDurationType string
 // List of AwsMarketplaceCppoDurationType
 const (
 	AwsMarketplaceCppoDurationType_SPECIFIC_DATES AwsMarketplaceCppoDurationType = "SPECIFIC_DATES"
-	AwsMarketplaceCppoDurationType_ONE_TIME       AwsMarketplaceCppoDurationType = "ONE_TIME"
-	AwsMarketplaceCppoDurationType_NO_SET_TIME    AwsMarketplaceCppoDurationType = "NO_SET_TIME"
+	AwsMarketplaceCppoDurationType_ONE_TIME AwsMarketplaceCppoDurationType = "ONE_TIME"
+	AwsMarketplaceCppoDurationType_NO_SET_TIME AwsMarketplaceCppoDurationType = "NO_SET_TIME"
 )
 
 // All allowed values of AwsMarketplaceCppoDurationType enum
@@ -111,3 +111,4 @@ func (v *NullableAwsMarketplaceCppoDurationType) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

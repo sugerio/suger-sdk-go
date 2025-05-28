@@ -20,14 +20,15 @@ import (
 	"strings"
 )
 
+
 // ReportAPIService ReportAPI service
 type ReportAPIService service
 
 type ApiGetRevenueReportRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ReportAPIService
-	orgId      string
-	data       *GetRevenueReportParams
+	orgId string
+	data *GetRevenueReportParams
 }
 
 // Get Revenue Report Params
@@ -45,27 +46,26 @@ GetRevenueReport get revenue report
 
 Get the revenue report of the given organization, product, entitlement, or buyer.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiGetRevenueReportRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiGetRevenueReportRequest
 */
 func (a *ReportAPIService) GetRevenueReport(ctx context.Context, orgId string) ApiGetRevenueReportRequest {
 	return ApiGetRevenueReportRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RevenueReport
+//  @return RevenueReport
 func (a *ReportAPIService) GetRevenueReportExecute(r ApiGetRevenueReportRequest) (*RevenueReport, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RevenueReport
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RevenueReport
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportAPIService.GetRevenueReport")
@@ -145,8 +145,8 @@ func (a *ReportAPIService) GetRevenueReportExecute(r ApiGetRevenueReportRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -156,8 +156,8 @@ func (a *ReportAPIService) GetRevenueReportExecute(r ApiGetRevenueReportRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -175,15 +175,15 @@ func (a *ReportAPIService) GetRevenueReportExecute(r ApiGetRevenueReportRequest)
 }
 
 type ApiListDailyRevenueRecordsRequest struct {
-	ctx           context.Context
-	ApiService    *ReportAPIService
-	orgId         string
-	partner       *string
-	productId     *string
-	buyerId       *string
+	ctx context.Context
+	ApiService *ReportAPIService
+	orgId string
+	partner *string
+	productId *string
+	buyerId *string
 	entitlementId *string
-	startDate     *string
-	endDate       *string
+	startDate *string
+	endDate *string
 }
 
 // Cloud Partner
@@ -231,27 +231,26 @@ ListDailyRevenueRecords list daily revenue records
 
 list daily revenue records for the given organization, partner, entitlement, or buyer, within the given date range.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@return ApiListDailyRevenueRecordsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiListDailyRevenueRecordsRequest
 */
 func (a *ReportAPIService) ListDailyRevenueRecords(ctx context.Context, orgId string) ApiListDailyRevenueRecordsRequest {
 	return ApiListDailyRevenueRecordsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
+		ctx: ctx,
+		orgId: orgId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []RevenueRecord
+//  @return []RevenueRecord
 func (a *ReportAPIService) ListDailyRevenueRecordsExecute(r ApiListDailyRevenueRecordsRequest) ([]RevenueRecord, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []RevenueRecord
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []RevenueRecord
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportAPIService.ListDailyRevenueRecords")
@@ -344,8 +343,8 @@ func (a *ReportAPIService) ListDailyRevenueRecordsExecute(r ApiListDailyRevenueR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -355,8 +354,8 @@ func (a *ReportAPIService) ListDailyRevenueRecordsExecute(r ApiListDailyRevenueR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -374,17 +373,17 @@ func (a *ReportAPIService) ListDailyRevenueRecordsExecute(r ApiListDailyRevenueR
 }
 
 type ApiListRevenueRecordDetailsRequest struct {
-	ctx           context.Context
-	ApiService    *ReportAPIService
-	orgId         string
-	partner       string
-	productId     *string
-	buyerId       *string
+	ctx context.Context
+	ApiService *ReportAPIService
+	orgId string
+	partner string
+	productId *string
+	buyerId *string
 	entitlementId *string
-	startDate     *string
-	endDate       *string
-	limit         *int32
-	offset        *int32
+	startDate *string
+	endDate *string
+	limit *int32
+	offset *int32
 }
 
 // Filter revenue record details by the given product ID
@@ -438,29 +437,28 @@ ListRevenueRecordDetails list revenue record details
 
 list the raw revenue record details for the given organization, partner, product, entitlement, or buyer.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param partner Cloud Partner
-	@return ApiListRevenueRecordDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param partner Cloud Partner
+ @return ApiListRevenueRecordDetailsRequest
 */
 func (a *ReportAPIService) ListRevenueRecordDetails(ctx context.Context, orgId string, partner string) ApiListRevenueRecordDetailsRequest {
 	return ApiListRevenueRecordDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		partner:    partner,
+		ctx: ctx,
+		orgId: orgId,
+		partner: partner,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListRevenueRecordDetailsResponse
+//  @return ListRevenueRecordDetailsResponse
 func (a *ReportAPIService) ListRevenueRecordDetailsExecute(r ApiListRevenueRecordDetailsRequest) (*ListRevenueRecordDetailsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListRevenueRecordDetailsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListRevenueRecordDetailsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportAPIService.ListRevenueRecordDetails")
@@ -557,8 +555,8 @@ func (a *ReportAPIService) ListRevenueRecordDetailsExecute(r ApiListRevenueRecor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -568,8 +566,8 @@ func (a *ReportAPIService) ListRevenueRecordDetailsExecute(r ApiListRevenueRecor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -587,17 +585,17 @@ func (a *ReportAPIService) ListRevenueRecordDetailsExecute(r ApiListRevenueRecor
 }
 
 type ApiListRevenueRecordsRequest struct {
-	ctx           context.Context
-	ApiService    *ReportAPIService
-	orgId         string
-	partner       string
-	productId     *string
+	ctx context.Context
+	ApiService *ReportAPIService
+	orgId string
+	partner string
+	productId *string
 	entitlementId *string
-	buyerId       *string
-	startDate     *string
-	endDate       *string
-	limit         *int32
-	offset        *int32
+	buyerId *string
+	startDate *string
+	endDate *string
+	limit *int32
+	offset *int32
 }
 
 // Filter revenue records by the given product ID
@@ -651,29 +649,28 @@ ListRevenueRecords list revenue records
 
 list the revenue records for the given organization, product, entitlement, or buyer.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param partner Cloud Partner
-	@return ApiListRevenueRecordsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param partner Cloud Partner
+ @return ApiListRevenueRecordsRequest
 */
 func (a *ReportAPIService) ListRevenueRecords(ctx context.Context, orgId string, partner string) ApiListRevenueRecordsRequest {
 	return ApiListRevenueRecordsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		partner:    partner,
+		ctx: ctx,
+		orgId: orgId,
+		partner: partner,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListRevenueRecordsResponse
+//  @return ListRevenueRecordsResponse
 func (a *ReportAPIService) ListRevenueRecordsExecute(r ApiListRevenueRecordsRequest) (*ListRevenueRecordsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListRevenueRecordsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListRevenueRecordsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportAPIService.ListRevenueRecords")
@@ -770,8 +767,8 @@ func (a *ReportAPIService) ListRevenueRecordsExecute(r ApiListRevenueRecordsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -781,8 +778,8 @@ func (a *ReportAPIService) ListRevenueRecordsExecute(r ApiListRevenueRecordsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -800,16 +797,16 @@ func (a *ReportAPIService) ListRevenueRecordsExecute(r ApiListRevenueRecordsRequ
 }
 
 type ApiListUsageMeteringDailyRecordsRequest struct {
-	ctx           context.Context
-	ApiService    *ReportAPIService
-	orgId         string
-	partner       string
-	buyerId       *string
+	ctx context.Context
+	ApiService *ReportAPIService
+	orgId string
+	partner string
+	buyerId *string
 	entitlementId *string
-	startDate     *string
-	endDate       *string
-	limit         *int32
-	offset        *int32
+	startDate *string
+	endDate *string
+	limit *int32
+	offset *int32
 }
 
 // Filter usage metering daily records by the given buyer ID
@@ -857,29 +854,28 @@ ListUsageMeteringDailyRecords list usage metering daily records
 
 list the daily records of the usage metering from the cloud marketplace for the given organization, entitlement, or buyer.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Organization ID
-	@param partner Filter by the Cloud Partner
-	@return ApiListUsageMeteringDailyRecordsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param partner Filter by the Cloud Partner
+ @return ApiListUsageMeteringDailyRecordsRequest
 */
 func (a *ReportAPIService) ListUsageMeteringDailyRecords(ctx context.Context, orgId string, partner string) ApiListUsageMeteringDailyRecordsRequest {
 	return ApiListUsageMeteringDailyRecordsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		partner:    partner,
+		ctx: ctx,
+		orgId: orgId,
+		partner: partner,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListUsageMeteringDailyRecordsResponse
+//  @return ListUsageMeteringDailyRecordsResponse
 func (a *ReportAPIService) ListUsageMeteringDailyRecordsExecute(r ApiListUsageMeteringDailyRecordsRequest) (*ListUsageMeteringDailyRecordsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListUsageMeteringDailyRecordsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListUsageMeteringDailyRecordsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportAPIService.ListUsageMeteringDailyRecords")
@@ -973,8 +969,8 @@ func (a *ReportAPIService) ListUsageMeteringDailyRecordsExecute(r ApiListUsageMe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -984,8 +980,8 @@ func (a *ReportAPIService) ListUsageMeteringDailyRecordsExecute(r ApiListUsageMe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

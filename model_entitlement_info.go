@@ -44,6 +44,8 @@ type EntitlementInfo struct {
 	BillingCycle *BillingCycle `json:"billingCycle,omitempty"`
 	// The billing interval from the offer.
 	BillingIntervalInMonths *int32 `json:"billingIntervalInMonths,omitempty"`
+	// The buyer's management URL in the cloud marketplace. For different cloud marketplaces, the buyer management URL maybe different.
+	BuyerManagementURL *string `json:"buyerManagementURL,omitempty"`
 	// The amount that the seller can collect. It excludes the marketplace commision fee.
 	CollectableAmount *float32 `json:"collectableAmount,omitempty"`
 	// The amount that the buyer has committed to pay. It can be the sum of payment installments if applicable.
@@ -57,9 +59,9 @@ type EntitlementInfo struct {
 	// Whether the upper metering dimensions are oversized (exceed the max size 50).
 	DimensionsOversized *bool `json:"dimensionsOversized,omitempty"`
 	// The amount that has been disbursed to the seller account.
-	DisbursedAmount *float32  `json:"disbursedAmount,omitempty"`
-	EulaType        *EulaType `json:"eulaType,omitempty"`
-	EulaUrl         *string   `json:"eulaUrl,omitempty"`
+	DisbursedAmount *float32 `json:"disbursedAmount,omitempty"`
+	EulaType *EulaType `json:"eulaType,omitempty"`
+	EulaUrl *string `json:"eulaUrl,omitempty"`
 	// Nullable. GCP Entitlements from GCP Marketplace.
 	GcpEntitlements []GcpMarketplaceEntitlement `json:"gcpEntitlements,omitempty"`
 	// Only applicable for GCP Marketplace Entitlements.
@@ -77,9 +79,11 @@ type EntitlementInfo struct {
 	// For flexible payment schedules
 	PaymentInstallments []PaymentInstallment `json:"paymentInstallments,omitempty"`
 	// The payment schedule for the entitlement. PREPAY means the buyer pays before the service is provided. POSTPAY means the buyer pays after the service is provided.
-	PaymentSchedule          *PaymentScheduleType `json:"paymentSchedule,omitempty"`
-	RefundCancellationPolicy *string              `json:"refundCancellationPolicy,omitempty"`
-	SellerNotes              *string              `json:"sellerNotes,omitempty"`
+	PaymentSchedule *PaymentScheduleType `json:"paymentSchedule,omitempty"`
+	RefundCancellationPolicy *string `json:"refundCancellationPolicy,omitempty"`
+	SellerNotes *string `json:"sellerNotes,omitempty"`
+	// Snowfalke offer info
+	SnowflakeOffer *SnowflakeMarketplaceOffer `json:"snowflakeOffer,omitempty"`
 	// The URL with JWT as auth method for the entitlement SPA. It can be shared with the buyer to access the SPA without login.
 	SpaUrl *string `json:"spaUrl,omitempty"`
 	// The trial configuration for the offer. It is same as the TrialConfig in DirectOfferInfo. But can be overridden at the entitlement level.
@@ -485,6 +489,38 @@ func (o *EntitlementInfo) HasBillingIntervalInMonths() bool {
 // SetBillingIntervalInMonths gets a reference to the given int32 and assigns it to the BillingIntervalInMonths field.
 func (o *EntitlementInfo) SetBillingIntervalInMonths(v int32) {
 	o.BillingIntervalInMonths = &v
+}
+
+// GetBuyerManagementURL returns the BuyerManagementURL field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetBuyerManagementURL() string {
+	if o == nil || IsNil(o.BuyerManagementURL) {
+		var ret string
+		return ret
+	}
+	return *o.BuyerManagementURL
+}
+
+// GetBuyerManagementURLOk returns a tuple with the BuyerManagementURL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetBuyerManagementURLOk() (*string, bool) {
+	if o == nil || IsNil(o.BuyerManagementURL) {
+		return nil, false
+	}
+	return o.BuyerManagementURL, true
+}
+
+// HasBuyerManagementURL returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasBuyerManagementURL() bool {
+	if o != nil && !IsNil(o.BuyerManagementURL) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuyerManagementURL gets a reference to the given string and assigns it to the BuyerManagementURL field.
+func (o *EntitlementInfo) SetBuyerManagementURL(v string) {
+	o.BuyerManagementURL = &v
 }
 
 // GetCollectableAmount returns the CollectableAmount field value if set, zero value otherwise.
@@ -1127,6 +1163,38 @@ func (o *EntitlementInfo) SetSellerNotes(v string) {
 	o.SellerNotes = &v
 }
 
+// GetSnowflakeOffer returns the SnowflakeOffer field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetSnowflakeOffer() SnowflakeMarketplaceOffer {
+	if o == nil || IsNil(o.SnowflakeOffer) {
+		var ret SnowflakeMarketplaceOffer
+		return ret
+	}
+	return *o.SnowflakeOffer
+}
+
+// GetSnowflakeOfferOk returns a tuple with the SnowflakeOffer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetSnowflakeOfferOk() (*SnowflakeMarketplaceOffer, bool) {
+	if o == nil || IsNil(o.SnowflakeOffer) {
+		return nil, false
+	}
+	return o.SnowflakeOffer, true
+}
+
+// HasSnowflakeOffer returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasSnowflakeOffer() bool {
+	if o != nil && !IsNil(o.SnowflakeOffer) {
+		return true
+	}
+
+	return false
+}
+
+// SetSnowflakeOffer gets a reference to the given SnowflakeMarketplaceOffer and assigns it to the SnowflakeOffer field.
+func (o *EntitlementInfo) SetSnowflakeOffer(v SnowflakeMarketplaceOffer) {
+	o.SnowflakeOffer = &v
+}
+
 // GetSpaUrl returns the SpaUrl field value if set, zero value otherwise.
 func (o *EntitlementInfo) GetSpaUrl() string {
 	if o == nil || IsNil(o.SpaUrl) {
@@ -1192,7 +1260,7 @@ func (o *EntitlementInfo) SetTrialConfig(v TrialConfig) {
 }
 
 func (o EntitlementInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1236,6 +1304,9 @@ func (o EntitlementInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BillingIntervalInMonths) {
 		toSerialize["billingIntervalInMonths"] = o.BillingIntervalInMonths
+	}
+	if !IsNil(o.BuyerManagementURL) {
+		toSerialize["buyerManagementURL"] = o.BuyerManagementURL
 	}
 	if !IsNil(o.CollectableAmount) {
 		toSerialize["collectableAmount"] = o.CollectableAmount
@@ -1297,6 +1368,9 @@ func (o EntitlementInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SellerNotes) {
 		toSerialize["sellerNotes"] = o.SellerNotes
 	}
+	if !IsNil(o.SnowflakeOffer) {
+		toSerialize["snowflakeOffer"] = o.SnowflakeOffer
+	}
 	if !IsNil(o.SpaUrl) {
 		toSerialize["spaUrl"] = o.SpaUrl
 	}
@@ -1341,3 +1415,5 @@ func (v *NullableEntitlementInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

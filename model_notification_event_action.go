@@ -21,45 +21,49 @@ type NotificationEventAction string
 
 // List of NotificationEventAction
 const (
-	NotificationEventAction_UNKNOWN                     NotificationEventAction = ""
-	NotificationEventAction_ABNORMAL_ALERT              NotificationEventAction = "ABNORMAL_ALERT"
-	NotificationEventAction_ACCEPT                      NotificationEventAction = "ACCEPT"
-	NotificationEventAction_ADD                         NotificationEventAction = "ADD"
-	NotificationEventAction_APPROVE                     NotificationEventAction = "APPROVE"
-	NotificationEventAction_CANCEL                      NotificationEventAction = "CANCEL"
-	NotificationEventAction_CLOSE                       NotificationEventAction = "CLOSE"
-	NotificationEventAction_CREATE                      NotificationEventAction = "CREATE"
-	NotificationEventAction_DELETE                      NotificationEventAction = "DELETE"
-	NotificationEventAction_DISBURSE                    NotificationEventAction = "DISBURSE"
-	NotificationEventAction_END_SOON                    NotificationEventAction = "END_SOON"
-	NotificationEventAction_EXPIRE                      NotificationEventAction = "EXPIRE"
-	NotificationEventAction_EXPIRE_SOON                 NotificationEventAction = "EXPIRE_SOON"
-	NotificationEventAction_MERGE                       NotificationEventAction = "MERGE"
-	NotificationEventAction_METER                       NotificationEventAction = "METER"
-	NotificationEventAction_NEW_CLIENT_SIGNUP           NotificationEventAction = "NEW_CLIENT_SIGNUP"
-	NotificationEventAction_NOTIFY                      NotificationEventAction = "NOTIFY"
-	NotificationEventAction_NOTIFY_CONTACTS             NotificationEventAction = "NOTIFY_CONTACTS"
-	NotificationEventAction_OPEN_EMAIL                  NotificationEventAction = "OPEN_EMAIL"
-	NotificationEventAction_PENDING_CANCEL              NotificationEventAction = "PENDING_CANCEL"
-	NotificationEventAction_PENDING_ACCEPTANCE          NotificationEventAction = "PENDING_ACCEPTANCE"
-	NotificationEventAction_REINSTATE                   NotificationEventAction = "REINSTATE"
-	NotificationEventAction_REJECT                      NotificationEventAction = "REJECT"
-	NotificationEventAction_REOPEN                      NotificationEventAction = "REOPEN"
-	NotificationEventAction_CHARGE                      NotificationEventAction = "CHARGE"
-	NotificationEventAction_REFUND                      NotificationEventAction = "REFUND"
-	NotificationEventAction_ISSUE                       NotificationEventAction = "ISSUE"
-	NotificationEventAction_ROTATE_SECRET               NotificationEventAction = "ROTATE_SECRET"
-	NotificationEventAction_SUSPEND                     NotificationEventAction = "SUSPEND"
-	NotificationEventAction_TEST                        NotificationEventAction = "TEST"
-	NotificationEventAction_UPDATE                      NotificationEventAction = "UPDATE"
+	NotificationEventAction_UNKNOWN NotificationEventAction = ""
+	NotificationEventAction_ABNORMAL_ALERT NotificationEventAction = "ABNORMAL_ALERT"
+	NotificationEventAction_ACCEPT NotificationEventAction = "ACCEPT"
+	NotificationEventAction_ADD NotificationEventAction = "ADD"
+	NotificationEventAction_APPROVE NotificationEventAction = "APPROVE"
+	NotificationEventAction_CANCEL NotificationEventAction = "CANCEL"
+	NotificationEventAction_CLOSE NotificationEventAction = "CLOSE"
+	NotificationEventAction_CREATE NotificationEventAction = "CREATE"
+	NotificationEventAction_DELETE NotificationEventAction = "DELETE"
+	NotificationEventAction_ARCHIVE NotificationEventAction = "ARCHIVE"
+	NotificationEventAction_DISBURSE NotificationEventAction = "DISBURSE"
+	NotificationEventAction_END_SOON NotificationEventAction = "END_SOON"
+	NotificationEventAction_EXPIRE NotificationEventAction = "EXPIRE"
+	NotificationEventAction_EXPIRE_SOON NotificationEventAction = "EXPIRE_SOON"
+	NotificationEventAction_MERGE NotificationEventAction = "MERGE"
+	NotificationEventAction_METER NotificationEventAction = "METER"
+	NotificationEventAction_NEW_CLIENT_SIGNUP NotificationEventAction = "NEW_CLIENT_SIGNUP"
+	NotificationEventAction_NOTIFY NotificationEventAction = "NOTIFY"
+	NotificationEventAction_NOTIFY_CONTACTS NotificationEventAction = "NOTIFY_CONTACTS"
+	NotificationEventAction_OPEN_EMAIL NotificationEventAction = "OPEN_EMAIL"
+	NotificationEventAction_PENDING_CANCEL NotificationEventAction = "PENDING_CANCEL"
+	NotificationEventAction_PENDING_ACCEPTANCE NotificationEventAction = "PENDING_ACCEPTANCE"
+	NotificationEventAction_REINSTATE NotificationEventAction = "REINSTATE"
+	NotificationEventAction_REJECT NotificationEventAction = "REJECT"
+	NotificationEventAction_REOPEN NotificationEventAction = "REOPEN"
+	NotificationEventAction_CHARGE NotificationEventAction = "CHARGE"
+	NotificationEventAction_REFUND NotificationEventAction = "REFUND"
+	NotificationEventAction_ISSUE NotificationEventAction = "ISSUE"
+	NotificationEventAction_SIGN NotificationEventAction = "SIGN"
+	NotificationEventAction_ROTATE_SECRET NotificationEventAction = "ROTATE_SECRET"
+	NotificationEventAction_SUSPEND NotificationEventAction = "SUSPEND"
+	NotificationEventAction_TEST NotificationEventAction = "TEST"
+	NotificationEventAction_UPDATE NotificationEventAction = "UPDATE"
 	NotificationEventAction_ACE_ENGAGEMENT_SCORE_UPDATE NotificationEventAction = "ACE_ENGAGEMENT_SCORE_UPDATE"
-	NotificationEventAction_ACE_SALES_REP_UPDATE        NotificationEventAction = "ACE_SALES_REP_UPDATE"
-	NotificationEventAction_ACE_CUSTOMER_EMAIL_UPDATE   NotificationEventAction = "ACE_CUSTOMER_EMAIL_UPDATE"
-	NotificationEventAction_SUBMIT_APPROVAL_REQUEST     NotificationEventAction = "SUBMIT_APPROVAL_REQUEST"
-	NotificationEventAction_REVIEW_APPROVAL_REQUEST     NotificationEventAction = "REVIEW_APPROVAL_REQUEST"
-	NotificationEventAction_COMPLETE                    NotificationEventAction = "COMPLETE"
-	NotificationEventAction_FAIL                        NotificationEventAction = "FAIL"
-	NotificationEventAction_WEBHOOK                     NotificationEventAction = "WEBHOOK"
+	NotificationEventAction_ACE_SALES_REP_UPDATE NotificationEventAction = "ACE_SALES_REP_UPDATE"
+	NotificationEventAction_ACE_CUSTOMER_EMAIL_UPDATE NotificationEventAction = "ACE_CUSTOMER_EMAIL_UPDATE"
+	NotificationEventAction_AZURE_STATUS_UPDATE NotificationEventAction = "AZURE_STATUS_UPDATE"
+	NotificationEventAction_SUBMIT_APPROVAL_REQUEST NotificationEventAction = "SUBMIT_APPROVAL_REQUEST"
+	NotificationEventAction_REVIEW_APPROVAL_REQUEST NotificationEventAction = "REVIEW_APPROVAL_REQUEST"
+	NotificationEventAction_COMPLETE NotificationEventAction = "COMPLETE"
+	NotificationEventAction_FAIL NotificationEventAction = "FAIL"
+	NotificationEventAction_WEBHOOK NotificationEventAction = "WEBHOOK"
+	NotificationEventAction_MARKETPLACE_CONTACT_EMAIL_UPDATE NotificationEventAction = "MARKETPLACE_CONTACT_EMAIL_UPDATE"
 )
 
 // All allowed values of NotificationEventAction enum
@@ -73,6 +77,7 @@ var AllowedNotificationEventActionEnumValues = []NotificationEventAction{
 	"CLOSE",
 	"CREATE",
 	"DELETE",
+	"ARCHIVE",
 	"DISBURSE",
 	"END_SOON",
 	"EXPIRE",
@@ -91,6 +96,7 @@ var AllowedNotificationEventActionEnumValues = []NotificationEventAction{
 	"CHARGE",
 	"REFUND",
 	"ISSUE",
+	"SIGN",
 	"ROTATE_SECRET",
 	"SUSPEND",
 	"TEST",
@@ -98,11 +104,13 @@ var AllowedNotificationEventActionEnumValues = []NotificationEventAction{
 	"ACE_ENGAGEMENT_SCORE_UPDATE",
 	"ACE_SALES_REP_UPDATE",
 	"ACE_CUSTOMER_EMAIL_UPDATE",
+	"AZURE_STATUS_UPDATE",
 	"SUBMIT_APPROVAL_REQUEST",
 	"REVIEW_APPROVAL_REQUEST",
 	"COMPLETE",
 	"FAIL",
 	"WEBHOOK",
+	"MARKETPLACE_CONTACT_EMAIL_UPDATE",
 }
 
 func (v *NotificationEventAction) UnmarshalJSON(src []byte) error {
@@ -183,3 +191,4 @@ func (v *NullableNotificationEventAction) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

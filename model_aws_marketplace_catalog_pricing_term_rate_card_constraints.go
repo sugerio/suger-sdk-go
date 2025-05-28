@@ -108,7 +108,7 @@ func (o *AwsMarketplaceCatalogPricingTermRateCardConstraints) SetQuantityConfigu
 }
 
 func (o AwsMarketplaceCatalogPricingTermRateCardConstraints) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -161,3 +161,5 @@ func (v *NullableAwsMarketplaceCatalogPricingTermRateCardConstraints) UnmarshalJ
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,13 +20,13 @@ var _ MappedNullable = &AwsProduct{}
 
 // AwsProduct struct for AwsProduct
 type AwsProduct struct {
-	Description               *AwsProductDescription               `json:"Description,omitempty"`
-	Dimensions                []AwsProductDimension                `json:"Dimensions,omitempty"`
-	PromotionalResources      *AwsProductPromotionalResources      `json:"PromotionalResources,omitempty"`
-	Repositories              []AwsProductRepository               `json:"Repositories,omitempty"`
+	Description *AwsProductDescription `json:"Description,omitempty"`
+	Dimensions []AwsProductDimension `json:"Dimensions,omitempty"`
+	PromotionalResources *AwsProductPromotionalResources `json:"PromotionalResources,omitempty"`
+	Repositories []AwsProductRepository `json:"Repositories,omitempty"`
 	SignatureVerificationKeys []AwsProductSignatureVerificationKey `json:"SignatureVerificationKeys,omitempty"`
-	SupportInformation        *AwsProductSupportInformation        `json:"SupportInformation,omitempty"`
-	Versions                  []AwsProductVersion                  `json:"Versions,omitempty"`
+	SupportInformation *AwsProductSupportInformation `json:"SupportInformation,omitempty"`
+	Versions []AwsProductVersion `json:"Versions,omitempty"`
 	// The product Id in AWS Marketplace Data Feed Service.
 	DataFeedProductId *string `json:"dataFeedProductId,omitempty"`
 	// AWS Product ID
@@ -339,7 +339,7 @@ func (o *AwsProduct) SetProductId(v string) {
 }
 
 func (o AwsProduct) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -413,3 +413,5 @@ func (v *NullableAwsProduct) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

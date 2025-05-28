@@ -22,9 +22,9 @@ var _ MappedNullable = &GcpMarketplaceProductPurchaseOptionSpec{}
 type GcpMarketplaceProductPurchaseOptionSpec struct {
 	FeatureValues []GcpMarketplaceProductFeatureValue `json:"featureValues,omitempty"`
 	// The plan ID, such as \"starter\", without the duration suffix, such as \"P1Y\".
-	Name         *string                         `json:"name,omitempty"`
-	PriceInfo    *GcpMarketplaceProductPriceInfo `json:"priceInfo,omitempty"`
-	PurchaseMode *string                         `json:"purchaseMode,omitempty"`
+	Name *string `json:"name,omitempty"`
+	PriceInfo *GcpMarketplaceProductPriceInfo `json:"priceInfo,omitempty"`
+	PurchaseMode *string `json:"purchaseMode,omitempty"`
 	// such as \"Starter\"
 	Title *string `json:"title,omitempty"`
 }
@@ -207,7 +207,7 @@ func (o *GcpMarketplaceProductPurchaseOptionSpec) SetTitle(v string) {
 }
 
 func (o GcpMarketplaceProductPurchaseOptionSpec) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,3 +269,5 @@ func (v *NullableGcpMarketplaceProductPurchaseOptionSpec) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

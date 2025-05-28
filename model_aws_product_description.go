@@ -20,20 +20,20 @@ var _ MappedNullable = &AwsProductDescription{}
 
 // AwsProductDescription struct for AwsProductDescription
 type AwsProductDescription struct {
-	AssociatedProducts map[string]interface{}           `json:"AssociatedProducts,omitempty"`
-	Categories         []string                         `json:"Categories,omitempty"`
-	EuW8Submitted      *bool                            `json:"EuW8Submitted,omitempty"`
-	Highlights         []string                         `json:"Highlights,omitempty"`
-	LongDescription    *string                          `json:"LongDescription,omitempty"`
-	Manufacturer       *string                          `json:"Manufacturer,omitempty"`
-	ProductCode        *string                          `json:"ProductCode,omitempty"`
-	ProductTitle       *string                          `json:"ProductTitle,omitempty"`
-	Registered         *bool                            `json:"Registered,omitempty"`
-	SearchKeywords     []string                         `json:"SearchKeywords,omitempty"`
-	ShortDescription   *string                          `json:"ShortDescription,omitempty"`
-	Sku                *string                          `json:"Sku,omitempty"`
-	UsW9Submitted      *bool                            `json:"UsW9Submitted,omitempty"`
-	Visibility         *AwsMarketplaceProductVisibility `json:"Visibility,omitempty"`
+	AssociatedProducts map[string]interface{} `json:"AssociatedProducts,omitempty"`
+	Categories []string `json:"Categories,omitempty"`
+	EuW8Submitted *bool `json:"EuW8Submitted,omitempty"`
+	Highlights []string `json:"Highlights,omitempty"`
+	LongDescription *string `json:"LongDescription,omitempty"`
+	Manufacturer *string `json:"Manufacturer,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty"`
+	ProductTitle *string `json:"ProductTitle,omitempty"`
+	Registered *bool `json:"Registered,omitempty"`
+	SearchKeywords []string `json:"SearchKeywords,omitempty"`
+	ShortDescription *string `json:"ShortDescription,omitempty"`
+	Sku *string `json:"Sku,omitempty"`
+	UsW9Submitted *bool `json:"UsW9Submitted,omitempty"`
+	Visibility *AwsMarketplaceProductVisibility `json:"Visibility,omitempty"`
 }
 
 // NewAwsProductDescription instantiates a new AwsProductDescription object
@@ -502,7 +502,7 @@ func (o *AwsProductDescription) SetVisibility(v AwsMarketplaceProductVisibility)
 }
 
 func (o AwsProductDescription) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -591,3 +591,5 @@ func (v *NullableAwsProductDescription) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

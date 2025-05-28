@@ -22,12 +22,12 @@ type StripePaymentIntentStatus string
 // List of StripePaymentIntentStatus
 const (
 	StripePaymentIntentStatus_RequiresPaymentMethod StripePaymentIntentStatus = "requires_payment_method"
-	StripePaymentIntentStatus_RequiresConfirmation  StripePaymentIntentStatus = "requires_confirmation"
-	StripePaymentIntentStatus_RequiresAction        StripePaymentIntentStatus = "requires_action"
-	StripePaymentIntentStatus_Processing            StripePaymentIntentStatus = "processing"
-	StripePaymentIntentStatus_RequiresCapture       StripePaymentIntentStatus = "requires_capture"
-	StripePaymentIntentStatus_Canceled              StripePaymentIntentStatus = "canceled"
-	StripePaymentIntentStatus_Succeeded             StripePaymentIntentStatus = "succeeded"
+	StripePaymentIntentStatus_RequiresConfirmation StripePaymentIntentStatus = "requires_confirmation"
+	StripePaymentIntentStatus_RequiresAction StripePaymentIntentStatus = "requires_action"
+	StripePaymentIntentStatus_Processing StripePaymentIntentStatus = "processing"
+	StripePaymentIntentStatus_RequiresCapture StripePaymentIntentStatus = "requires_capture"
+	StripePaymentIntentStatus_Canceled StripePaymentIntentStatus = "canceled"
+	StripePaymentIntentStatus_Succeeded StripePaymentIntentStatus = "succeeded"
 )
 
 // All allowed values of StripePaymentIntentStatus enum
@@ -119,3 +119,4 @@ func (v *NullableStripePaymentIntentStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

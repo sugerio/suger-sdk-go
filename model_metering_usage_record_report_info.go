@@ -57,7 +57,7 @@ type MeteringUsageRecordReportInfo struct {
 	GcpMeteringResponse *ServicecontrolReportResponse `json:"gcpMeteringResponse,omitempty"`
 	// The included usage records in the map of <DimensionKey, Count> for usage metering API v1.
 	IncludedRecords *map[string]float32 `json:"includedRecords,omitempty"`
-	Message         *string             `json:"message,omitempty"`
+	Message *string `json:"message,omitempty"`
 	// The decimal parts of the usage dimension quantity in the map of <DimensionKey, DecimalPart>, after this usage record report.
 	NewDecimalParts *map[string]float32 `json:"newDecimalParts,omitempty"`
 	// The partner where this usage record report is sent to. Such as AWS, AZURE or GCP.
@@ -67,8 +67,8 @@ type MeteringUsageRecordReportInfo struct {
 	// The reported usage records in the map of <DimensionKey, Count> for usage metering API v1.
 	ReportedRecords *map[string]float32 `json:"reportedRecords,omitempty"`
 	// time in UTC when the UsageRecordReport starts
-	StartTime *time.Time               `json:"startTime,omitempty"`
-	Status    *UsageRecordReportStatus `json:"status,omitempty"`
+	StartTime *time.Time `json:"startTime,omitempty"`
+	Status *UsageRecordReportStatus `json:"status,omitempty"`
 	// The IDs of UsageRecordGroups aggregated in this UsageRecordReport.
 	UsageRecordGroupIds []string `json:"usageRecordGroupIds,omitempty"`
 	// The amount of the used commit before this usage record report if applicable.
@@ -1059,7 +1059,7 @@ func (o *MeteringUsageRecordReportInfo) SetUsedCreditAmountIncrement(v float32) 
 }
 
 func (o MeteringUsageRecordReportInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1196,3 +1196,5 @@ func (v *NullableMeteringUsageRecordReportInfo) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

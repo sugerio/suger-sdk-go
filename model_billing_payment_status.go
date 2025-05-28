@@ -21,10 +21,10 @@ type BillingPaymentStatus string
 
 // List of BillingPaymentStatus
 const (
-	BillingPaymentStatus_PENDING    BillingPaymentStatus = "PENDING"
+	BillingPaymentStatus_PENDING BillingPaymentStatus = "PENDING"
 	BillingPaymentStatus_PROCESSING BillingPaymentStatus = "PROCESSING"
-	BillingPaymentStatus_SUCCESS    BillingPaymentStatus = "SUCCESS"
-	BillingPaymentStatus_FAILED     BillingPaymentStatus = "FAILED"
+	BillingPaymentStatus_SUCCESS BillingPaymentStatus = "SUCCESS"
+	BillingPaymentStatus_FAILED BillingPaymentStatus = "FAILED"
 )
 
 // All allowed values of BillingPaymentStatus enum
@@ -113,3 +113,4 @@ func (v *NullableBillingPaymentStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

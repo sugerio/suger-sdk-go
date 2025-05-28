@@ -20,7 +20,7 @@ var _ MappedNullable = &AzureMarketplaceResourceTarget{}
 
 // AzureMarketplaceResourceTarget struct for AzureMarketplaceResourceTarget
 type AzureMarketplaceResourceTarget struct {
-	TargetId   *string `json:"targetId,omitempty"`
+	TargetId *string `json:"targetId,omitempty"`
 	TargetType *string `json:"targetType,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *AzureMarketplaceResourceTarget) SetTargetType(v string) {
 }
 
 func (o AzureMarketplaceResourceTarget) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAzureMarketplaceResourceTarget) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

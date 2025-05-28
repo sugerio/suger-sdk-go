@@ -21,8 +21,8 @@ var _ MappedNullable = &AzureMarketplacePrivateOfferPricingNewPlanDetails{}
 // AzureMarketplacePrivateOfferPricingNewPlanDetails struct for AzureMarketplacePrivateOfferPricingNewPlanDetails
 type AzureMarketplacePrivateOfferPricingNewPlanDetails struct {
 	Description *string `json:"description,omitempty"`
-	Id          *string `json:"id,omitempty"`
-	Name        *string `json:"name,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewAzureMarketplacePrivateOfferPricingNewPlanDetails instantiates a new AzureMarketplacePrivateOfferPricingNewPlanDetails object
@@ -139,7 +139,7 @@ func (o *AzureMarketplacePrivateOfferPricingNewPlanDetails) SetName(v string) {
 }
 
 func (o AzureMarketplacePrivateOfferPricingNewPlanDetails) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableAzureMarketplacePrivateOfferPricingNewPlanDetails) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

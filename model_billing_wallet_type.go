@@ -21,10 +21,10 @@ type BillingWalletType string
 
 // List of BillingWalletType
 const (
-	BillingWalletType_ACH_DEBIT  BillingWalletType = "ach_debit"
+	BillingWalletType_ACH_DEBIT BillingWalletType = "ach_debit"
 	BillingWalletType_BACS_DEBIT BillingWalletType = "bacs_debit"
-	BillingWalletType_CARD       BillingWalletType = "card"
-	BillingWalletType_CREDIT     BillingWalletType = "credit"
+	BillingWalletType_CARD BillingWalletType = "card"
+	BillingWalletType_CREDIT BillingWalletType = "credit"
 	BillingWalletType_SEPA_DEBIT BillingWalletType = "sepa_debit"
 )
 
@@ -115,3 +115,4 @@ func (v *NullableBillingWalletType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

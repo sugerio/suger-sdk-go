@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Orders** | Pointer to **[]string** | a list of unique order IDs for each entitlement ID that indicates the different offers on the same product. This field is available only if multiple orders of the same product is enabled | [optional] 
 **Roles** | Pointer to **[]string** | An array of strings representing the user&#39;s roles. Right now, it can be either: ** account_admin, which indicates that the user is a Billing Account Administrator of the billing account that purchased the product, or ** project_editor, which indicates that the user is a Project Editor, but not a Billing Administrator, of the project under that billing account. | [optional] 
 **UserIdentity** | Pointer to **string** | The user&#39;s obfuscated GAIA ID, which can be used to initiate Open ID Connect. | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewGcpUserInfoWithDefaults instantiates a new GcpUserInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetOrders
+
+`func (o *GcpUserInfo) GetOrders() []string`
+
+GetOrders returns the Orders field if non-nil, zero value otherwise.
+
+### GetOrdersOk
+
+`func (o *GcpUserInfo) GetOrdersOk() (*[]string, bool)`
+
+GetOrdersOk returns a tuple with the Orders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrders
+
+`func (o *GcpUserInfo) SetOrders(v []string)`
+
+SetOrders sets Orders field to given value.
+
+### HasOrders
+
+`func (o *GcpUserInfo) HasOrders() bool`
+
+HasOrders returns a boolean if a field has been set.
 
 ### GetRoles
 

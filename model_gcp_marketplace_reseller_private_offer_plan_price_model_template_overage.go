@@ -20,9 +20,9 @@ var _ MappedNullable = &GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate
 
 // GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateOverage struct for GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateOverage
 type GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateOverage struct {
-	DiscountTemplate     *GcpPriceModelDiscountTemplate                                     `json:"discountTemplate,omitempty"`
-	SkuDiscountTemplates []map[string]interface{}                                           `json:"skuDiscountTemplates,omitempty"`
-	SkuRepresentation    *GcpMarketplaceResellerPrivateOfferPlanPriceModelSkuRepresentation `json:"skuRepresentation,omitempty"`
+	DiscountTemplate *GcpPriceModelDiscountTemplate `json:"discountTemplate,omitempty"`
+	SkuDiscountTemplates []map[string]interface{} `json:"skuDiscountTemplates,omitempty"`
+	SkuRepresentation *GcpMarketplaceResellerPrivateOfferPlanPriceModelSkuRepresentation `json:"skuRepresentation,omitempty"`
 }
 
 // NewGcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateOverage instantiates a new GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateOverage object
@@ -139,7 +139,7 @@ func (o *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateOverage) SetSku
 }
 
 func (o GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateOverage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableGcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateOverage
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

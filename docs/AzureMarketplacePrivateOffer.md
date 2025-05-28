@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AcceptBy** | Pointer to **time.Time** | in format YYYY-MM-DD | [optional] 
 **AcceptanceLinks** | Pointer to [**[]AzureMarketplacePrivateOfferAcceptanceLink**](AzureMarketplacePrivateOfferAcceptanceLink.md) |  | [optional] 
 **Beneficiaries** | Pointer to [**[]AzureMarketplacePrivateOfferBeneficiary**](AzureMarketplacePrivateOfferBeneficiary.md) |  | [optional] 
+**CustomerContractRenewal** | Pointer to **bool** | If true, it is a renewal offer for an existing customer. | [optional] 
 **ETag** | Pointer to **string** |  | [optional] 
 **End** | Pointer to **time.Time** | in format YYYY-MM-DD | [optional] 
 **Id** | Pointer to **string** | in format of \&quot;private-offer/private-offer-durable-id\&quot; | [optional] 
@@ -147,6 +148,31 @@ SetBeneficiaries sets Beneficiaries field to given value.
 `func (o *AzureMarketplacePrivateOffer) HasBeneficiaries() bool`
 
 HasBeneficiaries returns a boolean if a field has been set.
+
+### GetCustomerContractRenewal
+
+`func (o *AzureMarketplacePrivateOffer) GetCustomerContractRenewal() bool`
+
+GetCustomerContractRenewal returns the CustomerContractRenewal field if non-nil, zero value otherwise.
+
+### GetCustomerContractRenewalOk
+
+`func (o *AzureMarketplacePrivateOffer) GetCustomerContractRenewalOk() (*bool, bool)`
+
+GetCustomerContractRenewalOk returns a tuple with the CustomerContractRenewal field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerContractRenewal
+
+`func (o *AzureMarketplacePrivateOffer) SetCustomerContractRenewal(v bool)`
+
+SetCustomerContractRenewal sets CustomerContractRenewal field to given value.
+
+### HasCustomerContractRenewal
+
+`func (o *AzureMarketplacePrivateOffer) HasCustomerContractRenewal() bool`
+
+HasCustomerContractRenewal returns a boolean if a field has been set.
 
 ### GetETag
 

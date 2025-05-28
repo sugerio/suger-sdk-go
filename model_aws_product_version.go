@@ -21,11 +21,11 @@ var _ MappedNullable = &AwsProductVersion{}
 
 // AwsProductVersion struct for AwsProductVersion
 type AwsProductVersion struct {
-	CreationDate    *time.Time                 `json:"CreationDate,omitempty"`
+	CreationDate *time.Time `json:"CreationDate,omitempty"`
 	DeliveryOptions []AwsProductDeliveryOption `json:"DeliveryOptions,omitempty"`
-	Id              *string                    `json:"Id,omitempty"`
-	ReleaseNotes    *string                    `json:"ReleaseNotes,omitempty"`
-	VersionTitle    *string                    `json:"VersionTitle,omitempty"`
+	Id *string `json:"Id,omitempty"`
+	ReleaseNotes *string `json:"ReleaseNotes,omitempty"`
+	VersionTitle *string `json:"VersionTitle,omitempty"`
 }
 
 // NewAwsProductVersion instantiates a new AwsProductVersion object
@@ -206,7 +206,7 @@ func (o *AwsProductVersion) SetVersionTitle(v string) {
 }
 
 func (o AwsProductVersion) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -268,3 +268,5 @@ func (v *NullableAwsProductVersion) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

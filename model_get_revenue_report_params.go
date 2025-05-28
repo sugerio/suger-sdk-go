@@ -12,8 +12,8 @@ Contact: support@suger.io
 package suger
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -26,13 +26,15 @@ type GetRevenueReportParams struct {
 	BuyerID *string `json:"buyerID,omitempty"`
 	// Optional, if available, return the report for the Entitlement.
 	EntitlementID *string `json:"entitlementID,omitempty"`
+	// default:\"day\"
+	GroupBy *GroupByInterval `json:"groupBy,omitempty"`
 	// Required. If the productID & entitlementID are emtpy, return the report for the entire Organization.
 	OrganizationID string `json:"organizationID"`
-	Partner        string `json:"partner"`
+	Partner string `json:"partner"`
 	// Optional, if available, return the report for the Product.
-	ProductID  *string           `json:"productID,omitempty"`
+	ProductID *string `json:"productID,omitempty"`
 	ReportType RevenueReportType `json:"reportType"`
-	Service    string            `json:"service"`
+	Service string `json:"service"`
 }
 
 type _GetRevenueReportParams GetRevenueReportParams
@@ -120,6 +122,38 @@ func (o *GetRevenueReportParams) HasEntitlementID() bool {
 // SetEntitlementID gets a reference to the given string and assigns it to the EntitlementID field.
 func (o *GetRevenueReportParams) SetEntitlementID(v string) {
 	o.EntitlementID = &v
+}
+
+// GetGroupBy returns the GroupBy field value if set, zero value otherwise.
+func (o *GetRevenueReportParams) GetGroupBy() GroupByInterval {
+	if o == nil || IsNil(o.GroupBy) {
+		var ret GroupByInterval
+		return ret
+	}
+	return *o.GroupBy
+}
+
+// GetGroupByOk returns a tuple with the GroupBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetRevenueReportParams) GetGroupByOk() (*GroupByInterval, bool) {
+	if o == nil || IsNil(o.GroupBy) {
+		return nil, false
+	}
+	return o.GroupBy, true
+}
+
+// HasGroupBy returns a boolean if a field has been set.
+func (o *GetRevenueReportParams) HasGroupBy() bool {
+	if o != nil && !IsNil(o.GroupBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupBy gets a reference to the given GroupByInterval and assigns it to the GroupBy field.
+func (o *GetRevenueReportParams) SetGroupBy(v GroupByInterval) {
+	o.GroupBy = &v
 }
 
 // GetOrganizationID returns the OrganizationID field value
@@ -251,7 +285,7 @@ func (o *GetRevenueReportParams) SetService(v string) {
 }
 
 func (o GetRevenueReportParams) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -265,6 +299,9 @@ func (o GetRevenueReportParams) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EntitlementID) {
 		toSerialize["entitlementID"] = o.EntitlementID
+	}
+	if !IsNil(o.GroupBy) {
+		toSerialize["groupBy"] = o.GroupBy
 	}
 	toSerialize["organizationID"] = o.OrganizationID
 	toSerialize["partner"] = o.Partner
@@ -292,10 +329,10 @@ func (o *GetRevenueReportParams) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -351,3 +388,5 @@ func (v *NullableGetRevenueReportParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

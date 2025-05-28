@@ -21,7 +21,7 @@ type BillingCycle string
 
 // List of BillingCycle
 const (
-	BillingCycle_MonthFirstDay        BillingCycle = "MONTH_FIRST_DAY"
+	BillingCycle_MonthFirstDay BillingCycle = "MONTH_FIRST_DAY"
 	BillingCycle_EntitlementStartDate BillingCycle = "ENTITLEMENT_START_DATE"
 )
 
@@ -109,3 +109,4 @@ func (v *NullableBillingCycle) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

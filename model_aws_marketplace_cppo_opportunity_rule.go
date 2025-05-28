@@ -25,13 +25,13 @@ type AwsMarketplaceCppoOpportunityRule struct {
 	Id *string `json:"Id,omitempty"`
 	// Negative targeting defines the criteria which any customer's profile should fulfill to be restricted to access the offer.
 	NegativeTargeting *AwsMarketplaceCppoOpportunityNegativeTargeting `json:"NegativeTargeting,omitempty"`
-	OffersMaxQuantity *int32                                          `json:"OffersMaxQuantity,omitempty"`
+	OffersMaxQuantity *int32 `json:"OffersMaxQuantity,omitempty"`
 	// Positive targeting defines the criteria which any buyer's profile should fulfill in order to be allowed to access the offer.
 	PositiveTargeting *AwsMarketplaceCppoOpportunityPositiveTargeting `json:"PositiveTargeting,omitempty"`
-	ResellerAccountId *string                                         `json:"ResellerAccountId,omitempty"`
-	ResellerLegalName *string                                         `json:"ResellerLegalName,omitempty"`
-	Type              *AwsMarketplaceCppoOpportunityRuleType          `json:"Type,omitempty"`
-	Usage             *string                                         `json:"Usage,omitempty"`
+	ResellerAccountId *string `json:"ResellerAccountId,omitempty"`
+	ResellerLegalName *string `json:"ResellerLegalName,omitempty"`
+	Type *AwsMarketplaceCppoOpportunityRuleType `json:"Type,omitempty"`
+	Usage *string `json:"Usage,omitempty"`
 }
 
 // NewAwsMarketplaceCppoOpportunityRule instantiates a new AwsMarketplaceCppoOpportunityRule object
@@ -340,7 +340,7 @@ func (o *AwsMarketplaceCppoOpportunityRule) SetUsage(v string) {
 }
 
 func (o AwsMarketplaceCppoOpportunityRule) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -414,3 +414,5 @@ func (v *NullableAwsMarketplaceCppoOpportunityRule) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

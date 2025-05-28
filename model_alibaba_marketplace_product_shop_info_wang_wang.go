@@ -20,7 +20,7 @@ var _ MappedNullable = &AlibabaMarketplaceProductShopInfoWangWang{}
 
 // AlibabaMarketplaceProductShopInfoWangWang struct for AlibabaMarketplaceProductShopInfoWangWang
 type AlibabaMarketplaceProductShopInfoWangWang struct {
-	Remark   *string `json:"Remark,omitempty"`
+	Remark *string `json:"Remark,omitempty"`
 	UserName *string `json:"UserName,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *AlibabaMarketplaceProductShopInfoWangWang) SetUserName(v string) {
 }
 
 func (o AlibabaMarketplaceProductShopInfoWangWang) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAlibabaMarketplaceProductShopInfoWangWang) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

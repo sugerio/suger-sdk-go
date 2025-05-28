@@ -21,8 +21,8 @@ type AwsRenewalOfferType string
 
 // List of AwsRenewalOfferType
 const (
-	AwsRenewalOfferType_Unknown        AwsRenewalOfferType = ""
-	AwsRenewalOfferType_External       AwsRenewalOfferType = "External"
+	AwsRenewalOfferType_Unknown AwsRenewalOfferType = ""
+	AwsRenewalOfferType_External AwsRenewalOfferType = "External"
 	AwsRenewalOfferType_AwsMarketplace AwsRenewalOfferType = "AwsMarketplace"
 )
 
@@ -111,3 +111,4 @@ func (v *NullableAwsRenewalOfferType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

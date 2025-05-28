@@ -23,20 +23,20 @@ var _ MappedNullable = &AwsMarketplaceAgreementV2{}
 type AwsMarketplaceAgreementV2 struct {
 	AcceptanceTime *time.Time `json:"acceptanceTime,omitempty"`
 	// AWS Marketplace Agreement Id
-	AgreementId   *string `json:"agreementId,omitempty"`
+	AgreementId *string `json:"agreementId,omitempty"`
 	AgreementType *string `json:"agreementType,omitempty"`
 	// The AWS Account Id of the buyer in AWS Marketplace
-	BuyerAccountId *string    `json:"buyerAccountId,omitempty"`
-	EndTime        *time.Time `json:"endTime,omitempty"`
+	BuyerAccountId *string `json:"buyerAccountId,omitempty"`
+	EndTime *time.Time `json:"endTime,omitempty"`
 	// AWS Marketplace Offer Id
 	OfferId *string `json:"offerId,omitempty"`
 	// AWS Marketplace Product Id
-	ProductId   *string `json:"productId,omitempty"`
+	ProductId *string `json:"productId,omitempty"`
 	ProductType *string `json:"productType,omitempty"`
 	// The AWS Account Id of the seller in AWS Marketplace
-	SellerAccountId *string                        `json:"sellerAccountId,omitempty"`
-	StartTime       *time.Time                     `json:"startTime,omitempty"`
-	Status          *AwsMarketplaceAgreementStatus `json:"status,omitempty"`
+	SellerAccountId *string `json:"sellerAccountId,omitempty"`
+	StartTime *time.Time `json:"startTime,omitempty"`
+	Status *AwsMarketplaceAgreementStatus `json:"status,omitempty"`
 }
 
 // NewAwsMarketplaceAgreementV2 instantiates a new AwsMarketplaceAgreementV2 object
@@ -409,7 +409,7 @@ func (o *AwsMarketplaceAgreementV2) SetStatus(v AwsMarketplaceAgreementStatus) {
 }
 
 func (o AwsMarketplaceAgreementV2) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -489,3 +489,5 @@ func (v *NullableAwsMarketplaceAgreementV2) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

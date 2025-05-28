@@ -20,22 +20,22 @@ var _ MappedNullable = &AzureMarketplaceProperty{}
 
 // AzureMarketplaceProperty struct for AzureMarketplaceProperty
 type AzureMarketplaceProperty struct {
-	Schema                    *string                                 `json:"$schema,omitempty"`
-	AppVersion                *string                                 `json:"appVersion,omitempty"`
-	Categories                *map[string][]string                    `json:"categories,omitempty"`
-	CloudIndustries           *map[string][]string                    `json:"cloudIndustries,omitempty"`
-	CustomAmendments          []AzureMarketplaceCustomAmendment       `json:"customAmendments,omitempty"`
-	Id                        *string                                 `json:"id,omitempty"`
-	Industries                *map[string][]string                    `json:"industries,omitempty"`
-	Kind                      *string                                 `json:"kind,omitempty"`
-	LifecycleState            *AzureMarketplaceResourceLifecycleState `json:"lifecycleState,omitempty"`
-	Product                   *string                                 `json:"product,omitempty"`
-	ResourceName              *string                                 `json:"resourceName,omitempty"`
-	StandardContractAmendment *string                                 `json:"standardContractAmendment,omitempty"`
-	TermsConditions           *string                                 `json:"termsConditions,omitempty"`
-	TermsOfUse                *string                                 `json:"termsOfUse,omitempty"`
-	TermsOfUseUrl             *string                                 `json:"termsOfUseUrl,omitempty"`
-	Validations               []AzureMarketplaceValidation            `json:"validations,omitempty"`
+	Schema *string `json:"$schema,omitempty"`
+	AppVersion *string `json:"appVersion,omitempty"`
+	Categories *map[string][]string `json:"categories,omitempty"`
+	CloudIndustries *map[string][]string `json:"cloudIndustries,omitempty"`
+	CustomAmendments []AzureMarketplaceCustomAmendment `json:"customAmendments,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Industries *map[string][]string `json:"industries,omitempty"`
+	Kind *string `json:"kind,omitempty"`
+	LifecycleState *AzureMarketplaceResourceLifecycleState `json:"lifecycleState,omitempty"`
+	Product *string `json:"product,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty"`
+	StandardContractAmendment *string `json:"standardContractAmendment,omitempty"`
+	TermsConditions *string `json:"termsConditions,omitempty"`
+	TermsOfUse *string `json:"termsOfUse,omitempty"`
+	TermsOfUseUrl *string `json:"termsOfUseUrl,omitempty"`
+	Validations []AzureMarketplaceValidation `json:"validations,omitempty"`
 }
 
 // NewAzureMarketplaceProperty instantiates a new AzureMarketplaceProperty object
@@ -568,7 +568,7 @@ func (o *AzureMarketplaceProperty) SetValidations(v []AzureMarketplaceValidation
 }
 
 func (o AzureMarketplaceProperty) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -663,3 +663,5 @@ func (v *NullableAzureMarketplaceProperty) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

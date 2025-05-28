@@ -21,8 +21,8 @@ var _ MappedNullable = &AzureMarketplacePreviewAudience{}
 // AzureMarketplacePreviewAudience struct for AzureMarketplacePreviewAudience
 type AzureMarketplacePreviewAudience struct {
 	Description *string `json:"description,omitempty"`
-	ResourceId  *string `json:"resourceId,omitempty"`
-	Type        *string `json:"type,omitempty"`
+	ResourceId *string `json:"resourceId,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewAzureMarketplacePreviewAudience instantiates a new AzureMarketplacePreviewAudience object
@@ -139,7 +139,7 @@ func (o *AzureMarketplacePreviewAudience) SetType(v string) {
 }
 
 func (o AzureMarketplacePreviewAudience) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableAzureMarketplacePreviewAudience) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

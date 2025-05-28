@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BuyerID** | Pointer to **string** |  | [optional] 
 **EntitlementID** | Pointer to **string** |  | [optional] 
+**GroupBy** | Pointer to [**GroupByInterval**](GroupByInterval.md) | The group by of the revenue report. | [optional] 
 **OrganizationID** | Pointer to **string** |  | [optional] 
 **Partner** | Pointer to **string** |  | [optional] 
 **ProductID** | Pointer to **string** |  | [optional] 
@@ -82,6 +83,31 @@ SetEntitlementID sets EntitlementID field to given value.
 `func (o *RevenueReport) HasEntitlementID() bool`
 
 HasEntitlementID returns a boolean if a field has been set.
+
+### GetGroupBy
+
+`func (o *RevenueReport) GetGroupBy() GroupByInterval`
+
+GetGroupBy returns the GroupBy field if non-nil, zero value otherwise.
+
+### GetGroupByOk
+
+`func (o *RevenueReport) GetGroupByOk() (*GroupByInterval, bool)`
+
+GetGroupByOk returns a tuple with the GroupBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupBy
+
+`func (o *RevenueReport) SetGroupBy(v GroupByInterval)`
+
+SetGroupBy sets GroupBy field to given value.
+
+### HasGroupBy
+
+`func (o *RevenueReport) HasGroupBy() bool`
+
+HasGroupBy returns a boolean if a field has been set.
 
 ### GetOrganizationID
 

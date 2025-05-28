@@ -20,7 +20,7 @@ var _ MappedNullable = &AzureMarketplacePrivateOfferBeneficiaryRecipient{}
 
 // AzureMarketplacePrivateOfferBeneficiaryRecipient struct for AzureMarketplacePrivateOfferBeneficiaryRecipient
 type AzureMarketplacePrivateOfferBeneficiaryRecipient struct {
-	Id            *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	RecipientType *string `json:"recipientType,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *AzureMarketplacePrivateOfferBeneficiaryRecipient) SetRecipientType(v st
 }
 
 func (o AzureMarketplacePrivateOfferBeneficiaryRecipient) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAzureMarketplacePrivateOfferBeneficiaryRecipient) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

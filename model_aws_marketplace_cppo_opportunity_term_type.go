@@ -21,15 +21,15 @@ type AwsMarketplaceCppoOpportunityTermType string
 
 // List of AwsMarketplaceCppoOpportunityTermType
 const (
-	AwsMarketplaceCppoOpportunityTermType_BuyerTargetingTerm                   AwsMarketplaceCppoOpportunityTermType = "BuyerTargetingTerm"
-	AwsMarketplaceCppoOpportunityTermType_UpdateAvailability                   AwsMarketplaceCppoOpportunityTermType = "UpdateAvailability"
-	AwsMarketplaceCppoOpportunityTermType_BuyerValidityTerm                    AwsMarketplaceCppoOpportunityTermType = "BuyerValidityTerm"
-	AwsMarketplaceCppoOpportunityTermType_BuyerLegalTerm                       AwsMarketplaceCppoOpportunityTermType = "BuyerLegalTerm"
-	AwsMarketplaceCppoOpportunityTermType_ResaleLegalTerm                      AwsMarketplaceCppoOpportunityTermType = "ResaleLegalTerm"
-	AwsMarketplaceCppoOpportunityTermType_ResaleUsageBasedPricingTerm          AwsMarketplaceCppoOpportunityTermType = "ResaleUsageBasedPricingTerm"
+	AwsMarketplaceCppoOpportunityTermType_BuyerTargetingTerm AwsMarketplaceCppoOpportunityTermType = "BuyerTargetingTerm"
+	AwsMarketplaceCppoOpportunityTermType_UpdateAvailability AwsMarketplaceCppoOpportunityTermType = "UpdateAvailability"
+	AwsMarketplaceCppoOpportunityTermType_BuyerValidityTerm AwsMarketplaceCppoOpportunityTermType = "BuyerValidityTerm"
+	AwsMarketplaceCppoOpportunityTermType_BuyerLegalTerm AwsMarketplaceCppoOpportunityTermType = "BuyerLegalTerm"
+	AwsMarketplaceCppoOpportunityTermType_ResaleLegalTerm AwsMarketplaceCppoOpportunityTermType = "ResaleLegalTerm"
+	AwsMarketplaceCppoOpportunityTermType_ResaleUsageBasedPricingTerm AwsMarketplaceCppoOpportunityTermType = "ResaleUsageBasedPricingTerm"
 	AwsMarketplaceCppoOpportunityTermType_ResaleConfigurableUpfrontPricingTerm AwsMarketplaceCppoOpportunityTermType = "ResaleConfigurableUpfrontPricingTerm"
-	AwsMarketplaceCppoOpportunityTermType_ResaleFixedUpfrontPricingTerm        AwsMarketplaceCppoOpportunityTermType = "ResaleFixedUpfrontPricingTerm"
-	AwsMarketplaceCppoOpportunityTermType_ResalePaymentScheduleTerm            AwsMarketplaceCppoOpportunityTermType = "ResalePaymentScheduleTerm"
+	AwsMarketplaceCppoOpportunityTermType_ResaleFixedUpfrontPricingTerm AwsMarketplaceCppoOpportunityTermType = "ResaleFixedUpfrontPricingTerm"
+	AwsMarketplaceCppoOpportunityTermType_ResalePaymentScheduleTerm AwsMarketplaceCppoOpportunityTermType = "ResalePaymentScheduleTerm"
 )
 
 // All allowed values of AwsMarketplaceCppoOpportunityTermType enum
@@ -123,3 +123,4 @@ func (v *NullableAwsMarketplaceCppoOpportunityTermType) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

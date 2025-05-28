@@ -20,34 +20,34 @@ var _ MappedNullable = &GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBilli
 
 // GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent struct for GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent
 type GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent struct {
-	Action                     *string              `json:"action,omitempty"`
-	AgreementID                *string              `json:"agreementID,omitempty"`
-	Amount                     *float32             `json:"amount,omitempty"`
-	BalanceImpacting           *int32               `json:"balanceImpacting,omitempty"`
-	BankTraceID                *string              `json:"bankTraceID,omitempty"`
-	BillingAddressID           *string              `json:"billingAddressID,omitempty"`
-	BrokerID                   *string              `json:"brokerID,omitempty"`
-	BuyerID                    *string              `json:"buyerID,omitempty"`
-	Currency                   *string              `json:"currency,omitempty"`
-	DataFeedProductID          *string              `json:"dataFeedProductID,omitempty"`
-	DisbursementBillingEventID *string              `json:"disbursementBillingEventID,omitempty"`
-	EndUserAccountID           *string              `json:"endUserAccountID,omitempty"`
-	EntitlementID              *string              `json:"entitlementID,omitempty"`
-	FromAccountID              *string              `json:"fromAccountID,omitempty"`
-	Id                         *string              `json:"id,omitempty"`
-	InsertDate                 *DatabaseSqlNullTime `json:"insertDate,omitempty"`
-	InvoiceDate                *DatabaseSqlNullTime `json:"invoiceDate,omitempty"`
-	InvoiceID                  *string              `json:"invoiceID,omitempty"`
-	OfferID                    *string              `json:"offerID,omitempty"`
-	OrganizationID             *string              `json:"organizationID,omitempty"`
-	ParentBillingEventID       *string              `json:"parentBillingEventID,omitempty"`
-	PaymentDueDate             *DatabaseSqlNullTime `json:"paymentDueDate,omitempty"`
-	ProductID                  *string              `json:"productID,omitempty"`
-	ToAccountID                *string              `json:"toAccountID,omitempty"`
-	TransactionReferenceID     *string              `json:"transactionReferenceID,omitempty"`
-	TransactionType            *string              `json:"transactionType,omitempty"`
-	UsagePeriodEndDate         *DatabaseSqlNullTime `json:"usagePeriodEndDate,omitempty"`
-	UsagePeriodStartDate       *DatabaseSqlNullTime `json:"usagePeriodStartDate,omitempty"`
+	Action *string `json:"action,omitempty"`
+	AgreementID *string `json:"agreementID,omitempty"`
+	Amount *float32 `json:"amount,omitempty"`
+	BalanceImpacting *int32 `json:"balanceImpacting,omitempty"`
+	BankTraceID *string `json:"bankTraceID,omitempty"`
+	BillingAddressID *string `json:"billingAddressID,omitempty"`
+	BrokerID *string `json:"brokerID,omitempty"`
+	BuyerID *string `json:"buyerID,omitempty"`
+	Currency *string `json:"currency,omitempty"`
+	DataFeedProductID *string `json:"dataFeedProductID,omitempty"`
+	DisbursementBillingEventID *string `json:"disbursementBillingEventID,omitempty"`
+	EndUserAccountID *string `json:"endUserAccountID,omitempty"`
+	EntitlementID *string `json:"entitlementID,omitempty"`
+	FromAccountID *string `json:"fromAccountID,omitempty"`
+	Id *string `json:"id,omitempty"`
+	InsertDate *DatabaseSqlNullTime `json:"insertDate,omitempty"`
+	InvoiceDate *DatabaseSqlNullTime `json:"invoiceDate,omitempty"`
+	InvoiceID *string `json:"invoiceID,omitempty"`
+	OfferID *string `json:"offerID,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
+	ParentBillingEventID *string `json:"parentBillingEventID,omitempty"`
+	PaymentDueDate *DatabaseSqlNullTime `json:"paymentDueDate,omitempty"`
+	ProductID *string `json:"productID,omitempty"`
+	ToAccountID *string `json:"toAccountID,omitempty"`
+	TransactionReferenceID *string `json:"transactionReferenceID,omitempty"`
+	TransactionType *string `json:"transactionType,omitempty"`
+	UsagePeriodEndDate *DatabaseSqlNullTime `json:"usagePeriodEndDate,omitempty"`
+	UsagePeriodStartDate *DatabaseSqlNullTime `json:"usagePeriodStartDate,omitempty"`
 }
 
 // NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent instantiates a new GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent object
@@ -964,7 +964,7 @@ func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEve
 }
 
 func (o GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1095,3 +1095,5 @@ func (v *NullableGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBi
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

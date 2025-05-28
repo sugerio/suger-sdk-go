@@ -210,7 +210,7 @@ func (o *GcpMarketplacePrivateOfferMigrationMetadata) SetProviderId(v string) {
 }
 
 func (o GcpMarketplacePrivateOfferMigrationMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -272,3 +272,5 @@ func (v *NullableGcpMarketplacePrivateOfferMigrationMetadata) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

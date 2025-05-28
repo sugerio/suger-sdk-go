@@ -2,9 +2,10 @@
 
 ## Properties
 
- Name                      | Type                                                               | Description | Notes      
----------------------------|--------------------------------------------------------------------|-------------|------------
- **EulaAgreementDocument** | Pointer to [**GcpMarketplaceDocument**](GcpMarketplaceDocument.md) |             | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**EulaAgreementDocument** | Pointer to [**GcpMarketplaceDocument**](GcpMarketplaceDocument.md) |  | [optional] 
+**SowAgreementDocument** | Pointer to [**GcpMarketplaceDocument**](GcpMarketplaceDocument.md) |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,32 @@ SetEulaAgreementDocument sets EulaAgreementDocument field to given value.
 `func (o *GcpMarketplaceAgreementDocument) HasEulaAgreementDocument() bool`
 
 HasEulaAgreementDocument returns a boolean if a field has been set.
+
+### GetSowAgreementDocument
+
+`func (o *GcpMarketplaceAgreementDocument) GetSowAgreementDocument() GcpMarketplaceDocument`
+
+GetSowAgreementDocument returns the SowAgreementDocument field if non-nil, zero value otherwise.
+
+### GetSowAgreementDocumentOk
+
+`func (o *GcpMarketplaceAgreementDocument) GetSowAgreementDocumentOk() (*GcpMarketplaceDocument, bool)`
+
+GetSowAgreementDocumentOk returns a tuple with the SowAgreementDocument field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSowAgreementDocument
+
+`func (o *GcpMarketplaceAgreementDocument) SetSowAgreementDocument(v GcpMarketplaceDocument)`
+
+SetSowAgreementDocument sets SowAgreementDocument field to given value.
+
+### HasSowAgreementDocument
+
+`func (o *GcpMarketplaceAgreementDocument) HasSowAgreementDocument() bool`
+
+HasSowAgreementDocument returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

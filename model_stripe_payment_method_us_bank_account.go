@@ -244,7 +244,7 @@ func (o *StripePaymentMethodUSBankAccount) SetRoutingNumber(v string) {
 }
 
 func (o StripePaymentMethodUSBankAccount) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -309,3 +309,5 @@ func (v *NullableStripePaymentMethodUSBankAccount) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

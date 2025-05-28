@@ -20,8 +20,8 @@ var _ MappedNullable = &AzureValidationResult{}
 
 // AzureValidationResult struct for AzureValidationResult
 type AzureValidationResult struct {
-	ErrorMessage *string  `json:"errorMessage,omitempty"`
-	MemberNames  []string `json:"memberNames,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty"`
+	MemberNames []string `json:"memberNames,omitempty"`
 }
 
 // NewAzureValidationResult instantiates a new AzureValidationResult object
@@ -106,7 +106,7 @@ func (o *AzureValidationResult) SetMemberNames(v []string) {
 }
 
 func (o AzureValidationResult) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAzureValidationResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

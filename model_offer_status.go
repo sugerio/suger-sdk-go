@@ -21,31 +21,31 @@ type OfferStatus string
 
 // List of OfferStatus
 const (
-	OfferStatus_UNKNOWN            OfferStatus = ""
-	OfferStatus_INVALID            OfferStatus = "INVALID"
-	OfferStatus_ACCEPTED           OfferStatus = "ACCEPTED"
-	OfferStatus_ACTIVE             OfferStatus = "ACTIVE"
-	OfferStatus_CANCEL_FAILED      OfferStatus = "CANCEL_FAILED"
-	OfferStatus_CANCEL_SUCCESS     OfferStatus = "CANCEL_SUCCESS"
-	OfferStatus_CANCELLED          OfferStatus = "CANCELLED"
-	OfferStatus_CREATE_FAILED      OfferStatus = "CREATE_FAILED"
-	OfferStatus_CREATE_SUCCESS     OfferStatus = "CREATE_SUCCESS"
-	OfferStatus_DELETED            OfferStatus = "DELETED"
-	OfferStatus_DEPRECATED         OfferStatus = "DEPRECATED"
-	OfferStatus_DRAFT              OfferStatus = "DRAFT"
-	OfferStatus_EXPIRED            OfferStatus = "EXPIRED"
+	OfferStatus_UNKNOWN OfferStatus = ""
+	OfferStatus_INVALID OfferStatus = "INVALID"
+	OfferStatus_ACCEPTED OfferStatus = "ACCEPTED"
+	OfferStatus_ACTIVE OfferStatus = "ACTIVE"
+	OfferStatus_CANCEL_FAILED OfferStatus = "CANCEL_FAILED"
+	OfferStatus_CANCEL_SUCCESS OfferStatus = "CANCEL_SUCCESS"
+	OfferStatus_CANCELLED OfferStatus = "CANCELLED"
+	OfferStatus_CREATE_FAILED OfferStatus = "CREATE_FAILED"
+	OfferStatus_CREATE_SUCCESS OfferStatus = "CREATE_SUCCESS"
+	OfferStatus_DELETED OfferStatus = "DELETED"
+	OfferStatus_DEPRECATED OfferStatus = "DEPRECATED"
+	OfferStatus_DRAFT OfferStatus = "DRAFT"
+	OfferStatus_EXPIRED OfferStatus = "EXPIRED"
 	OfferStatus_PENDING_ACCEPTANCE OfferStatus = "PENDING_ACCEPTANCE"
-	OfferStatus_PENDING_CANCEL     OfferStatus = "PENDING_CANCEL"
-	OfferStatus_PENDING_CREATE     OfferStatus = "PENDING_CREATE"
-	OfferStatus_PENDING_UPDATE     OfferStatus = "PENDING_UPDATE"
-	OfferStatus_PREVIEW            OfferStatus = "PREVIEW"
-	OfferStatus_READY_TO_USE       OfferStatus = "READY_TO_USE"
-	OfferStatus_REJECTED           OfferStatus = "REJECTED"
-	OfferStatus_RESTRICTED         OfferStatus = "RESTRICTED"
-	OfferStatus_TEST               OfferStatus = "TEST"
-	OfferStatus_UPDATE_FAILED      OfferStatus = "UPDATE_FAILED"
-	OfferStatus_UPDATE_SUCCESS     OfferStatus = "UPDATE_SUCCESS"
-	OfferStatus_USED               OfferStatus = "USED"
+	OfferStatus_PENDING_CANCEL OfferStatus = "PENDING_CANCEL"
+	OfferStatus_PENDING_CREATE OfferStatus = "PENDING_CREATE"
+	OfferStatus_PENDING_UPDATE OfferStatus = "PENDING_UPDATE"
+	OfferStatus_PREVIEW OfferStatus = "PREVIEW"
+	OfferStatus_READY_TO_USE OfferStatus = "READY_TO_USE"
+	OfferStatus_REJECTED OfferStatus = "REJECTED"
+	OfferStatus_RESTRICTED OfferStatus = "RESTRICTED"
+	OfferStatus_TEST OfferStatus = "TEST"
+	OfferStatus_UPDATE_FAILED OfferStatus = "UPDATE_FAILED"
+	OfferStatus_UPDATE_SUCCESS OfferStatus = "UPDATE_SUCCESS"
+	OfferStatus_USED OfferStatus = "USED"
 )
 
 // All allowed values of OfferStatus enum
@@ -155,3 +155,4 @@ func (v *NullableOfferStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

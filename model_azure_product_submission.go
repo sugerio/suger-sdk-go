@@ -21,18 +21,18 @@ var _ MappedNullable = &AzureProductSubmission{}
 
 // AzureProductSubmission struct for AzureProductSubmission
 type AzureProductSubmission struct {
-	AreResourcesReady  *bool                   `json:"areResourcesReady,omitempty"`
-	FriendlyName       *string                 `json:"friendlyName,omitempty"`
-	Id                 *string                 `json:"id,omitempty"`
-	PendingUpdateInfo  *AzurePendingUpdateInfo `json:"pendingUpdateInfo,omitempty"`
-	PublishedTimeInUtc *time.Time              `json:"publishedTimeInUtc,omitempty"`
-	ReleaseNumber      *int32                  `json:"releaseNumber,omitempty"`
-	ResourceType       *string                 `json:"resourceType,omitempty"`
-	Resources          []AzureTypeValue        `json:"resources,omitempty"`
-	State              *string                 `json:"state,omitempty"`
-	SubState           *string                 `json:"subState,omitempty"`
-	Targets            []AzureTypeValue        `json:"targets,omitempty"`
-	VariantResources   []AzureVariantResource  `json:"variantResources,omitempty"`
+	AreResourcesReady *bool `json:"areResourcesReady,omitempty"`
+	FriendlyName *string `json:"friendlyName,omitempty"`
+	Id *string `json:"id,omitempty"`
+	PendingUpdateInfo *AzurePendingUpdateInfo `json:"pendingUpdateInfo,omitempty"`
+	PublishedTimeInUtc *time.Time `json:"publishedTimeInUtc,omitempty"`
+	ReleaseNumber *int32 `json:"releaseNumber,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty"`
+	Resources []AzureTypeValue `json:"resources,omitempty"`
+	State *string `json:"state,omitempty"`
+	SubState *string `json:"subState,omitempty"`
+	Targets []AzureTypeValue `json:"targets,omitempty"`
+	VariantResources []AzureVariantResource `json:"variantResources,omitempty"`
 }
 
 // NewAzureProductSubmission instantiates a new AzureProductSubmission object
@@ -437,7 +437,7 @@ func (o *AzureProductSubmission) SetVariantResources(v []AzureVariantResource) {
 }
 
 func (o AzureProductSubmission) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -520,3 +520,5 @@ func (v *NullableAzureProductSubmission) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

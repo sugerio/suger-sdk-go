@@ -45,6 +45,8 @@
 
 * `OfferType_SUBSCRIPTION` (value: `"SUBSCRIPTION"`)
 
+* `OfferType_MACHINE_LEARNING` (value: `"MACHINE_LEARNING"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

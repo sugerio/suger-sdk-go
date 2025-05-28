@@ -2,15 +2,23 @@
 
 ## Properties
 
- Name                             | Type                                                                                                                                                                       | Description                                                               | Notes      
-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|------------
- **AwsRevenueRecords**            | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent.md) | For raw revenue records in AWS Marketplace                                | [optional] 
- **AzureRevenueRecords**          | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue.md) | For raw revenue records in Azure Marketplace                              | [optional] 
- **CreditAmount**                 | Pointer to **float32**                                                                                                                                                     | The credit amount used in the revenue record.                             | [optional] 
- **DisbursementNotificationSent** | Pointer to **bool**                                                                                                                                                        | Whether the disbursement notification has been sent to the seller/ISV.    | [optional] 
- **GcpRevenueRecords**            | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage.md)   | For raw revenue records in GCP Marketplace                                | [optional] 
- **IdSource**                     | Pointer to **string**                                                                                                                                                      | Source of the revenue record ID.                                          | [optional] 
- **Resource**                     | Pointer to **string**                                                                                                                                                      | Resource name for the revenue record. Applicable only to GCP Marketplace. | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AwsRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent.md) | For raw revenue records in AWS Marketplace | [optional] 
+**AzureRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue.md) | For raw revenue records in Azure Marketplace | [optional] 
+**BankTraceId** | Pointer to **string** | The bank trace ID of the revenue record if applicable | [optional] 
+**BillingModel** | Pointer to **string** | The billing model of the revenue record if applicable The value is one of the following: - SubscriptionBased: The revenue record is from a subscription or recurring commitment. - UsageBased: The revenue record is from a usage-based metering. | [optional] 
+**Channel** | Pointer to [**RevenueChannel**](RevenueChannel.md) | The channel of revenue record. | [optional] 
+**CreditAmount** | Pointer to **float32** | The credit amount used in the revenue record. | [optional] 
+**DisbursementBillingEventId** | Pointer to **string** | The disbursement ID of the revenue record if applicable | [optional] 
+**DisbursementNotificationSent** | Pointer to **bool** | Whether the disbursement notification has been sent to the seller/ISV. | [optional] 
+**EarningId** | Pointer to **string** | The earning ID of the revenue record if applicable | [optional] 
+**GcpRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage.md) | For raw revenue records in GCP Marketplace | [optional] 
+**IdSource** | Pointer to **string** | Source of the revenue record ID. | [optional] 
+**PaymentId** | Pointer to **string** | The payment  ID of the revenue record if applicable | [optional] 
+**ResellerId** | Pointer to **string** | The reseller ID of the revenue record if applicable | [optional] 
+**ResellerName** | Pointer to **string** | The reseller name of the revenue record if application | [optional] 
+**Resource** | Pointer to **string** | Resource name for the revenue record. Applicable only to GCP Marketplace. | [optional] 
 
 ## Methods
 
@@ -81,6 +89,81 @@ SetAzureRevenueRecords sets AzureRevenueRecords field to given value.
 
 HasAzureRevenueRecords returns a boolean if a field has been set.
 
+### GetBankTraceId
+
+`func (o *RevenueRecordInfo) GetBankTraceId() string`
+
+GetBankTraceId returns the BankTraceId field if non-nil, zero value otherwise.
+
+### GetBankTraceIdOk
+
+`func (o *RevenueRecordInfo) GetBankTraceIdOk() (*string, bool)`
+
+GetBankTraceIdOk returns a tuple with the BankTraceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBankTraceId
+
+`func (o *RevenueRecordInfo) SetBankTraceId(v string)`
+
+SetBankTraceId sets BankTraceId field to given value.
+
+### HasBankTraceId
+
+`func (o *RevenueRecordInfo) HasBankTraceId() bool`
+
+HasBankTraceId returns a boolean if a field has been set.
+
+### GetBillingModel
+
+`func (o *RevenueRecordInfo) GetBillingModel() string`
+
+GetBillingModel returns the BillingModel field if non-nil, zero value otherwise.
+
+### GetBillingModelOk
+
+`func (o *RevenueRecordInfo) GetBillingModelOk() (*string, bool)`
+
+GetBillingModelOk returns a tuple with the BillingModel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillingModel
+
+`func (o *RevenueRecordInfo) SetBillingModel(v string)`
+
+SetBillingModel sets BillingModel field to given value.
+
+### HasBillingModel
+
+`func (o *RevenueRecordInfo) HasBillingModel() bool`
+
+HasBillingModel returns a boolean if a field has been set.
+
+### GetChannel
+
+`func (o *RevenueRecordInfo) GetChannel() RevenueChannel`
+
+GetChannel returns the Channel field if non-nil, zero value otherwise.
+
+### GetChannelOk
+
+`func (o *RevenueRecordInfo) GetChannelOk() (*RevenueChannel, bool)`
+
+GetChannelOk returns a tuple with the Channel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChannel
+
+`func (o *RevenueRecordInfo) SetChannel(v RevenueChannel)`
+
+SetChannel sets Channel field to given value.
+
+### HasChannel
+
+`func (o *RevenueRecordInfo) HasChannel() bool`
+
+HasChannel returns a boolean if a field has been set.
+
 ### GetCreditAmount
 
 `func (o *RevenueRecordInfo) GetCreditAmount() float32`
@@ -106,6 +189,31 @@ SetCreditAmount sets CreditAmount field to given value.
 
 HasCreditAmount returns a boolean if a field has been set.
 
+### GetDisbursementBillingEventId
+
+`func (o *RevenueRecordInfo) GetDisbursementBillingEventId() string`
+
+GetDisbursementBillingEventId returns the DisbursementBillingEventId field if non-nil, zero value otherwise.
+
+### GetDisbursementBillingEventIdOk
+
+`func (o *RevenueRecordInfo) GetDisbursementBillingEventIdOk() (*string, bool)`
+
+GetDisbursementBillingEventIdOk returns a tuple with the DisbursementBillingEventId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisbursementBillingEventId
+
+`func (o *RevenueRecordInfo) SetDisbursementBillingEventId(v string)`
+
+SetDisbursementBillingEventId sets DisbursementBillingEventId field to given value.
+
+### HasDisbursementBillingEventId
+
+`func (o *RevenueRecordInfo) HasDisbursementBillingEventId() bool`
+
+HasDisbursementBillingEventId returns a boolean if a field has been set.
+
 ### GetDisbursementNotificationSent
 
 `func (o *RevenueRecordInfo) GetDisbursementNotificationSent() bool`
@@ -130,6 +238,31 @@ SetDisbursementNotificationSent sets DisbursementNotificationSent field to given
 `func (o *RevenueRecordInfo) HasDisbursementNotificationSent() bool`
 
 HasDisbursementNotificationSent returns a boolean if a field has been set.
+
+### GetEarningId
+
+`func (o *RevenueRecordInfo) GetEarningId() string`
+
+GetEarningId returns the EarningId field if non-nil, zero value otherwise.
+
+### GetEarningIdOk
+
+`func (o *RevenueRecordInfo) GetEarningIdOk() (*string, bool)`
+
+GetEarningIdOk returns a tuple with the EarningId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEarningId
+
+`func (o *RevenueRecordInfo) SetEarningId(v string)`
+
+SetEarningId sets EarningId field to given value.
+
+### HasEarningId
+
+`func (o *RevenueRecordInfo) HasEarningId() bool`
+
+HasEarningId returns a boolean if a field has been set.
 
 ### GetGcpRevenueRecords
 
@@ -180,6 +313,81 @@ SetIdSource sets IdSource field to given value.
 `func (o *RevenueRecordInfo) HasIdSource() bool`
 
 HasIdSource returns a boolean if a field has been set.
+
+### GetPaymentId
+
+`func (o *RevenueRecordInfo) GetPaymentId() string`
+
+GetPaymentId returns the PaymentId field if non-nil, zero value otherwise.
+
+### GetPaymentIdOk
+
+`func (o *RevenueRecordInfo) GetPaymentIdOk() (*string, bool)`
+
+GetPaymentIdOk returns a tuple with the PaymentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaymentId
+
+`func (o *RevenueRecordInfo) SetPaymentId(v string)`
+
+SetPaymentId sets PaymentId field to given value.
+
+### HasPaymentId
+
+`func (o *RevenueRecordInfo) HasPaymentId() bool`
+
+HasPaymentId returns a boolean if a field has been set.
+
+### GetResellerId
+
+`func (o *RevenueRecordInfo) GetResellerId() string`
+
+GetResellerId returns the ResellerId field if non-nil, zero value otherwise.
+
+### GetResellerIdOk
+
+`func (o *RevenueRecordInfo) GetResellerIdOk() (*string, bool)`
+
+GetResellerIdOk returns a tuple with the ResellerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResellerId
+
+`func (o *RevenueRecordInfo) SetResellerId(v string)`
+
+SetResellerId sets ResellerId field to given value.
+
+### HasResellerId
+
+`func (o *RevenueRecordInfo) HasResellerId() bool`
+
+HasResellerId returns a boolean if a field has been set.
+
+### GetResellerName
+
+`func (o *RevenueRecordInfo) GetResellerName() string`
+
+GetResellerName returns the ResellerName field if non-nil, zero value otherwise.
+
+### GetResellerNameOk
+
+`func (o *RevenueRecordInfo) GetResellerNameOk() (*string, bool)`
+
+GetResellerNameOk returns a tuple with the ResellerName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResellerName
+
+`func (o *RevenueRecordInfo) SetResellerName(v string)`
+
+SetResellerName sets ResellerName field to given value.
+
+### HasResellerName
+
+`func (o *RevenueRecordInfo) HasResellerName() bool`
+
+HasResellerName returns a boolean if a field has been set.
 
 ### GetResource
 

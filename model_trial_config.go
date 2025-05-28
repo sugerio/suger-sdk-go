@@ -20,7 +20,7 @@ var _ MappedNullable = &TrialConfig{}
 
 // TrialConfig struct for TrialConfig
 type TrialConfig struct {
-	TrialPeriod     *int32    `json:"trialPeriod,omitempty"`
+	TrialPeriod *int32 `json:"trialPeriod,omitempty"`
 	TrialPeriodUnit *TimeUnit `json:"trialPeriodUnit,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *TrialConfig) SetTrialPeriodUnit(v TimeUnit) {
 }
 
 func (o TrialConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableTrialConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

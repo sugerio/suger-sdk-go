@@ -22,16 +22,16 @@ var _ MappedNullable = &AzureMarketplaceSubmission{}
 type AzureMarketplaceSubmission struct {
 	Schema *string `json:"$schema,omitempty"`
 	// Date-time string
-	Created             *string                                 `json:"created,omitempty"`
-	DeprecationSchedule *AzureMarketplaceDeprecationSchedule    `json:"deprecationSchedule,omitempty"`
-	Id                  *string                                 `json:"id,omitempty"`
-	LifecycleState      *AzureMarketplaceResourceLifecycleState `json:"lifecycleState,omitempty"`
-	Product             *string                                 `json:"product,omitempty"`
-	ResourceName        *string                                 `json:"resourceName,omitempty"`
-	Result              *string                                 `json:"result,omitempty"`
-	Status              *string                                 `json:"status,omitempty"`
-	Target              *AzureMarketplaceResourceTarget         `json:"target,omitempty"`
-	Validations         []AzureMarketplaceValidation            `json:"validations,omitempty"`
+	Created *string `json:"created,omitempty"`
+	DeprecationSchedule *AzureMarketplaceDeprecationSchedule `json:"deprecationSchedule,omitempty"`
+	Id *string `json:"id,omitempty"`
+	LifecycleState *AzureMarketplaceResourceLifecycleState `json:"lifecycleState,omitempty"`
+	Product *string `json:"product,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty"`
+	Result *string `json:"result,omitempty"`
+	Status *string `json:"status,omitempty"`
+	Target *AzureMarketplaceResourceTarget `json:"target,omitempty"`
+	Validations []AzureMarketplaceValidation `json:"validations,omitempty"`
 }
 
 // NewAzureMarketplaceSubmission instantiates a new AzureMarketplaceSubmission object
@@ -404,7 +404,7 @@ func (o *AzureMarketplaceSubmission) SetValidations(v []AzureMarketplaceValidati
 }
 
 func (o AzureMarketplaceSubmission) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -484,3 +484,5 @@ func (v *NullableAzureMarketplaceSubmission) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

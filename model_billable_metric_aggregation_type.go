@@ -21,11 +21,11 @@ type BillableMetricAggregationType string
 
 // List of BillableMetricAggregationType
 const (
-	BillableMetricAggregationType_COUNT        BillableMetricAggregationType = "COUNT"
+	BillableMetricAggregationType_COUNT BillableMetricAggregationType = "COUNT"
 	BillableMetricAggregationType_UNIQUE_COUNT BillableMetricAggregationType = "UNIQUE_COUNT"
-	BillableMetricAggregationType_SUM          BillableMetricAggregationType = "SUM"
-	BillableMetricAggregationType_MAX          BillableMetricAggregationType = "MAX"
-	BillableMetricAggregationType_LAST         BillableMetricAggregationType = "LAST"
+	BillableMetricAggregationType_SUM BillableMetricAggregationType = "SUM"
+	BillableMetricAggregationType_MAX BillableMetricAggregationType = "MAX"
+	BillableMetricAggregationType_LAST BillableMetricAggregationType = "LAST"
 )
 
 // All allowed values of BillableMetricAggregationType enum
@@ -115,3 +115,4 @@ func (v *NullableBillableMetricAggregationType) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

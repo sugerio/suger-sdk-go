@@ -20,10 +20,10 @@ var _ MappedNullable = &GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate
 
 // GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplatePayg struct for GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplatePayg
 type GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplatePayg struct {
-	DiscountTemplate     *GcpPriceModelDiscountTemplate                                     `json:"discountTemplate,omitempty"`
-	Period               *GcpPeriodDuration                                                 `json:"period,omitempty"`
-	SkuDiscountTemplates []map[string]interface{}                                           `json:"skuDiscountTemplates,omitempty"`
-	SkuRepresentation    *GcpMarketplaceResellerPrivateOfferPlanPriceModelSkuRepresentation `json:"skuRepresentation,omitempty"`
+	DiscountTemplate *GcpPriceModelDiscountTemplate `json:"discountTemplate,omitempty"`
+	Period *GcpPeriodDuration `json:"period,omitempty"`
+	SkuDiscountTemplates []map[string]interface{} `json:"skuDiscountTemplates,omitempty"`
+	SkuRepresentation *GcpMarketplaceResellerPrivateOfferPlanPriceModelSkuRepresentation `json:"skuRepresentation,omitempty"`
 }
 
 // NewGcpMarketplaceResellerPrivateOfferPlanPriceModelTemplatePayg instantiates a new GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplatePayg object
@@ -172,7 +172,7 @@ func (o *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplatePayg) SetSkuRep
 }
 
 func (o GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplatePayg) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,3 +231,5 @@ func (v *NullableGcpMarketplaceResellerPrivateOfferPlanPriceModelTemplatePayg) U
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

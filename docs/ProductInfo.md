@@ -2,27 +2,28 @@
 
 ## Properties
 
- Name                               | Type                                                                                 | Description                       | Notes      
-------------------------------------|--------------------------------------------------------------------------------------|-----------------------------------|------------
- **AlibabaProduct**                 | Pointer to [**AlibabaMarketplaceProduct**](AlibabaMarketplaceProduct.md)             |                                   | [optional] 
- **Attributes**                     | Pointer to **map[string]string**                                                     |                                   | [optional] 
- **AwsAmiProduct**                  | Pointer to [**AwsProduct**](AwsProduct.md)                                           |                                   | [optional] 
- **AwsContainerProduct**            | Pointer to [**AwsProduct**](AwsProduct.md)                                           |                                   | [optional] 
- **AwsProfessionalServicesProduct** | Pointer to [**AwsProduct**](AwsProduct.md)                                           |                                   | [optional] 
- **AwsSaasProduct**                 | Pointer to [**AwsProduct**](AwsProduct.md)                                           |                                   | [optional] 
- **AwsSnsSubscriptions**            | Pointer to [**[]AwsSnsSubscription**](AwsSnsSubscription.md)                         |                                   | [optional] 
- **AzureProduct**                   | Pointer to [**AzureProduct**](AzureProduct.md)                                       |                                   | [optional] 
- **AzureProductResource**           | Pointer to [**AzureMarketplaceProductResource**](AzureMarketplaceProductResource.md) |                                   | [optional] 
- **Commits**                        | Pointer to [**[]CommitDimension**](CommitDimension.md)                               |                                   | [optional] 
- **Currency**                       | Pointer to **string**                                                                |                                   | [optional] 
- **Dimensions**                     | Pointer to [**[]MeteringDimension**](MeteringDimension.md)                           |                                   | [optional] 
- **EulaType**                       | Pointer to [**EulaType**](EulaType.md)                                               | The public offer&#39;s EULA type. | [optional] 
- **EulaUrl**                        | Pointer to **string**                                                                | The public offer&#39;s EULA URL.  | [optional] 
- **GcpProduct**                     | Pointer to [**GcpMarketplaceProduct**](GcpMarketplaceProduct.md)                     |                                   | [optional] 
- **RefundCancellationPolicy**       | Pointer to **string**                                                                |                                   | [optional] 
- **SellerNotes**                    | Pointer to **string**                                                                |                                   | [optional] 
- **SnowflakeProduct**               | Pointer to [**SnowflakeMarketplaceProduct**](SnowflakeMarketplaceProduct.md)         |                                   | [optional] 
- **StripeProduct**                  | Pointer to [**StripeProduct**](StripeProduct.md)                                     |                                   | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AlibabaProduct** | Pointer to [**AlibabaMarketplaceProduct**](AlibabaMarketplaceProduct.md) |  | [optional] 
+**Attributes** | Pointer to **map[string]string** |  | [optional] 
+**AwsAmiProduct** | Pointer to [**AwsProduct**](AwsProduct.md) |  | [optional] 
+**AwsContainerProduct** | Pointer to [**AwsProduct**](AwsProduct.md) |  | [optional] 
+**AwsMachineLearningProduct** | Pointer to [**AwsProduct**](AwsProduct.md) |  | [optional] 
+**AwsProfessionalServicesProduct** | Pointer to [**AwsProduct**](AwsProduct.md) |  | [optional] 
+**AwsSaasProduct** | Pointer to [**AwsProduct**](AwsProduct.md) |  | [optional] 
+**AwsSnsSubscriptions** | Pointer to [**[]AwsSnsSubscription**](AwsSnsSubscription.md) |  | [optional] 
+**AzureProduct** | Pointer to [**AzureProduct**](AzureProduct.md) |  | [optional] 
+**AzureProductResource** | Pointer to [**AzureMarketplaceProductResource**](AzureMarketplaceProductResource.md) |  | [optional] 
+**Commits** | Pointer to [**[]CommitDimension**](CommitDimension.md) |  | [optional] 
+**Currency** | Pointer to **string** |  | [optional] 
+**Dimensions** | Pointer to [**[]MeteringDimension**](MeteringDimension.md) |  | [optional] 
+**EulaType** | Pointer to [**EulaType**](EulaType.md) | The public offer&#39;s EULA type. | [optional] 
+**EulaUrl** | Pointer to **string** | The public offer&#39;s EULA URL. | [optional] 
+**GcpProduct** | Pointer to [**GcpMarketplaceProduct**](GcpMarketplaceProduct.md) |  | [optional] 
+**RefundCancellationPolicy** | Pointer to **string** |  | [optional] 
+**SellerNotes** | Pointer to **string** |  | [optional] 
+**SnowflakeProduct** | Pointer to [**SnowflakeMarketplaceProduct**](SnowflakeMarketplaceProduct.md) |  | [optional] 
+**StripeProduct** | Pointer to [**StripeProduct**](StripeProduct.md) |  | [optional] 
 
 ## Methods
 
@@ -142,6 +143,31 @@ SetAwsContainerProduct sets AwsContainerProduct field to given value.
 `func (o *ProductInfo) HasAwsContainerProduct() bool`
 
 HasAwsContainerProduct returns a boolean if a field has been set.
+
+### GetAwsMachineLearningProduct
+
+`func (o *ProductInfo) GetAwsMachineLearningProduct() AwsProduct`
+
+GetAwsMachineLearningProduct returns the AwsMachineLearningProduct field if non-nil, zero value otherwise.
+
+### GetAwsMachineLearningProductOk
+
+`func (o *ProductInfo) GetAwsMachineLearningProductOk() (*AwsProduct, bool)`
+
+GetAwsMachineLearningProductOk returns a tuple with the AwsMachineLearningProduct field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsMachineLearningProduct
+
+`func (o *ProductInfo) SetAwsMachineLearningProduct(v AwsProduct)`
+
+SetAwsMachineLearningProduct sets AwsMachineLearningProduct field to given value.
+
+### HasAwsMachineLearningProduct
+
+`func (o *ProductInfo) HasAwsMachineLearningProduct() bool`
+
+HasAwsMachineLearningProduct returns a boolean if a field has been set.
 
 ### GetAwsProfessionalServicesProduct
 

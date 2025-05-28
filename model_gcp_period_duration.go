@@ -21,8 +21,8 @@ var _ MappedNullable = &GcpPeriodDuration{}
 // GcpPeriodDuration struct for GcpPeriodDuration
 type GcpPeriodDuration struct {
 	// such as 1, 6, 12
-	Count *int32                 `json:"count,omitempty"`
-	Unit  *GcpPeriodDurationUnit `json:"unit,omitempty"`
+	Count *int32 `json:"count,omitempty"`
+	Unit *GcpPeriodDurationUnit `json:"unit,omitempty"`
 }
 
 // NewGcpPeriodDuration instantiates a new GcpPeriodDuration object
@@ -107,7 +107,7 @@ func (o *GcpPeriodDuration) SetUnit(v GcpPeriodDurationUnit) {
 }
 
 func (o GcpPeriodDuration) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableGcpPeriodDuration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

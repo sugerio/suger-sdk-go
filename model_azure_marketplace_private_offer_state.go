@@ -21,9 +21,9 @@ type AzureMarketplacePrivateOfferState string
 
 // List of AzureMarketplacePrivateOfferState
 const (
-	AzureMarketplacePrivateOfferState_draft     AzureMarketplacePrivateOfferState = "draft"
-	AzureMarketplacePrivateOfferState_live      AzureMarketplacePrivateOfferState = "live"
-	AzureMarketplacePrivateOfferState_deleted   AzureMarketplacePrivateOfferState = "deleted"
+	AzureMarketplacePrivateOfferState_draft AzureMarketplacePrivateOfferState = "draft"
+	AzureMarketplacePrivateOfferState_live AzureMarketplacePrivateOfferState = "live"
+	AzureMarketplacePrivateOfferState_deleted AzureMarketplacePrivateOfferState = "deleted"
 	AzureMarketplacePrivateOfferState_withdrawn AzureMarketplacePrivateOfferState = "withdrawn"
 )
 
@@ -113,3 +113,4 @@ func (v *NullableAzureMarketplacePrivateOfferState) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

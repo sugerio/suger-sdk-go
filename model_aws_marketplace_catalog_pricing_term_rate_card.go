@@ -22,7 +22,7 @@ var _ MappedNullable = &AwsMarketplaceCatalogPricingTermRateCard{}
 type AwsMarketplaceCatalogPricingTermRateCard struct {
 	// Defines constraints on how the term can be configured by acceptors. Applicable only to ConfigurableUpfrontPricingTerm.
 	Constraints *AwsMarketplaceCatalogPricingTermRateCardConstraints `json:"Constraints,omitempty"`
-	RateCard    []AwsMarketplaceCatalogPricingTermRateCardItem       `json:"RateCard,omitempty"`
+	RateCard []AwsMarketplaceCatalogPricingTermRateCardItem `json:"RateCard,omitempty"`
 	// Selector is used to differentiate between the mutually exclusive rate cards in the same pricing term, to be selected by the buyer. Applicable only to ConfigurableUpfrontPricingTerm.
 	Selector *AwsMarketplaceCatalogPricingTermRateCardSelector `json:"Selector,omitempty"`
 }
@@ -141,7 +141,7 @@ func (o *AwsMarketplaceCatalogPricingTermRateCard) SetSelector(v AwsMarketplaceC
 }
 
 func (o AwsMarketplaceCatalogPricingTermRateCard) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -197,3 +197,5 @@ func (v *NullableAwsMarketplaceCatalogPricingTermRateCard) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

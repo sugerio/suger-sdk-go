@@ -23,8 +23,8 @@ type GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1Us
 	// Dimension identifier
 	Dimension *string `json:"dimension,omitempty"`
 	// Time in UTC when the usage event occurred
-	EffectiveStartTime *string                                                                                              `json:"effectiveStartTime,omitempty"`
-	Error              *GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventConflictResponse `json:"error,omitempty"`
+	EffectiveStartTime *string `json:"effectiveStartTime,omitempty"`
+	Error *GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageEventConflictResponse `json:"error,omitempty"`
 	// Time this message was created in UTC
 	MessageTime *string `json:"messageTime,omitempty"`
 	// Plan associated with the purchased offer
@@ -379,7 +379,7 @@ func (o *GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemetering
 }
 
 func (o GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1UsageBatchEventOkMessage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -456,3 +456,5 @@ func (v *NullableGithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplace
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

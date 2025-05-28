@@ -20,10 +20,10 @@ var _ MappedNullable = &GcpPriceModelDiscountTemplate{}
 
 // GcpPriceModelDiscountTemplate struct for GcpPriceModelDiscountTemplate
 type GcpPriceModelDiscountTemplate struct {
-	DiscountEconomics      *string              `json:"discountEconomics,omitempty"`
-	DiscountPercentage     *GcpAmountConstraint `json:"discountPercentage,omitempty"`
-	DiscountedPrice        *GcpPriceValue       `json:"discountedPrice,omitempty"`
-	HideDiscountPercentage *bool                `json:"hideDiscountPercentage,omitempty"`
+	DiscountEconomics *string `json:"discountEconomics,omitempty"`
+	DiscountPercentage *GcpAmountConstraint `json:"discountPercentage,omitempty"`
+	DiscountedPrice *GcpPriceValue `json:"discountedPrice,omitempty"`
+	HideDiscountPercentage *bool `json:"hideDiscountPercentage,omitempty"`
 }
 
 // NewGcpPriceModelDiscountTemplate instantiates a new GcpPriceModelDiscountTemplate object
@@ -172,7 +172,7 @@ func (o *GcpPriceModelDiscountTemplate) SetHideDiscountPercentage(v bool) {
 }
 
 func (o GcpPriceModelDiscountTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,3 +231,5 @@ func (v *NullableGcpPriceModelDiscountTemplate) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

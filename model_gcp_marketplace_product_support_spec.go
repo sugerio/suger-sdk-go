@@ -21,8 +21,8 @@ var _ MappedNullable = &GcpMarketplaceProductSupportSpec{}
 // GcpMarketplaceProductSupportSpec struct for GcpMarketplaceProductSupportSpec
 type GcpMarketplaceProductSupportSpec struct {
 	Description *string `json:"description,omitempty"`
-	Email       *string `json:"email,omitempty"`
-	Uri         *string `json:"uri,omitempty"`
+	Email *string `json:"email,omitempty"`
+	Uri *string `json:"uri,omitempty"`
 }
 
 // NewGcpMarketplaceProductSupportSpec instantiates a new GcpMarketplaceProductSupportSpec object
@@ -139,7 +139,7 @@ func (o *GcpMarketplaceProductSupportSpec) SetUri(v string) {
 }
 
 func (o GcpMarketplaceProductSupportSpec) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableGcpMarketplaceProductSupportSpec) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

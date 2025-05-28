@@ -21,7 +21,7 @@ type BillableMetricStatus string
 
 // List of BillableMetricStatus
 const (
-	BillableMetricStatus_ACTIVE  BillableMetricStatus = "ACTIVE"
+	BillableMetricStatus_ACTIVE BillableMetricStatus = "ACTIVE"
 	BillableMetricStatus_DELETED BillableMetricStatus = "DELETED"
 )
 
@@ -109,3 +109,4 @@ func (v *NullableBillableMetricStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

@@ -21,7 +21,7 @@ var _ MappedNullable = &AzureMarketplaceContact{}
 // AzureMarketplaceContact struct for AzureMarketplaceContact
 type AzureMarketplaceContact struct {
 	Email *string `json:"email,omitempty"`
-	Name  *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Phone *string `json:"phone,omitempty"`
 	// in patern of \"^(http|https)://\"
 	Url *string `json:"url,omitempty"`
@@ -173,7 +173,7 @@ func (o *AzureMarketplaceContact) SetUrl(v string) {
 }
 
 func (o AzureMarketplaceContact) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -232,3 +232,5 @@ func (v *NullableAzureMarketplaceContact) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

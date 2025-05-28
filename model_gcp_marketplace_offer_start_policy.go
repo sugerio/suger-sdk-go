@@ -21,7 +21,7 @@ type GcpMarketplaceOfferStartPolicy string
 
 // List of GcpMarketplaceOfferStartPolicy
 const (
-	GcpMarketplaceOfferStartPolicy_UNKNOWN   GcpMarketplaceOfferStartPolicy = ""
+	GcpMarketplaceOfferStartPolicy_UNKNOWN GcpMarketplaceOfferStartPolicy = ""
 	GcpMarketplaceOfferStartPolicy_IMMEDIATE GcpMarketplaceOfferStartPolicy = "OFFER_START_POLICY_IMMEDIATE"
 	GcpMarketplaceOfferStartPolicy_SCHEDULED GcpMarketplaceOfferStartPolicy = "OFFER_START_POLICY_SCHEDULED"
 )
@@ -111,3 +111,4 @@ func (v *NullableGcpMarketplaceOfferStartPolicy) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

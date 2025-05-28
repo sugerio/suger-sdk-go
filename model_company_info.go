@@ -22,12 +22,12 @@ var _ MappedNullable = &CompanyInfo{}
 type CompanyInfo struct {
 	AddressLine1 *string `json:"addressLine1,omitempty"`
 	AddressLine2 *string `json:"addressLine2,omitempty"`
-	City         *string `json:"city,omitempty"`
-	Country      *string `json:"country,omitempty"`
-	EmailDomain  *string `json:"emailDomain,omitempty"`
-	Name         *string `json:"name,omitempty"`
-	PostalCode   *string `json:"postalCode,omitempty"`
-	State        *string `json:"state,omitempty"`
+	City *string `json:"city,omitempty"`
+	Country *string `json:"country,omitempty"`
+	EmailDomain *string `json:"emailDomain,omitempty"`
+	Name *string `json:"name,omitempty"`
+	PostalCode *string `json:"postalCode,omitempty"`
+	State *string `json:"state,omitempty"`
 	// When the company info becomes valid. in format \"2006-01-02T15:04:05Z\"
 	ValidFrom *string `json:"validFrom,omitempty"`
 }
@@ -338,7 +338,7 @@ func (o *CompanyInfo) SetValidFrom(v string) {
 }
 
 func (o CompanyInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -412,3 +412,5 @@ func (v *NullableCompanyInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

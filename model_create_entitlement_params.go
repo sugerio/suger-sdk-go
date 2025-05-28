@@ -22,8 +22,8 @@ var _ MappedNullable = &CreateEntitlementParams{}
 type CreateEntitlementParams struct {
 	BuyerId *string `json:"buyerId,omitempty"`
 	// The end date of the entitlement. If it is null, the entitlement will ends based on the offer. If it is in the past, the entitlement will be created as CANCELLED status.
-	EndDate        *string `json:"endDate,omitempty"`
-	OfferId        *string `json:"offerId,omitempty"`
+	EndDate *string `json:"endDate,omitempty"`
+	OfferId *string `json:"offerId,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty"`
 	// The start date of the entitlement. If it is null, the entitlement starts immediately. It can be in the future or in the past.
 	StartDate *string `json:"startDate,omitempty"`
@@ -207,7 +207,7 @@ func (o *CreateEntitlementParams) SetStartDate(v string) {
 }
 
 func (o CreateEntitlementParams) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,3 +269,5 @@ func (v *NullableCreateEntitlementParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,8 +21,8 @@ type AzureMarketplacePrivateOfferSubState string
 
 // List of AzureMarketplacePrivateOfferSubState
 const (
-	AzureMarketplacePrivateOfferSubState_pendingAcceptance    AzureMarketplacePrivateOfferSubState = "pendingAcceptance"
-	AzureMarketplacePrivateOfferSubState_accepted             AzureMarketplacePrivateOfferSubState = "accepted"
+	AzureMarketplacePrivateOfferSubState_pendingAcceptance AzureMarketplacePrivateOfferSubState = "pendingAcceptance"
+	AzureMarketplacePrivateOfferSubState_accepted AzureMarketplacePrivateOfferSubState = "accepted"
 	AzureMarketplacePrivateOfferSubState_pendingPartnerAction AzureMarketplacePrivateOfferSubState = "pendingPartnerAction"
 )
 
@@ -111,3 +111,4 @@ func (v *NullableAzureMarketplacePrivateOfferSubState) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

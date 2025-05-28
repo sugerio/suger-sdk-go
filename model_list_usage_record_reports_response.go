@@ -20,7 +20,7 @@ var _ MappedNullable = &ListUsageRecordReportsResponse{}
 
 // ListUsageRecordReportsResponse struct for ListUsageRecordReportsResponse
 type ListUsageRecordReportsResponse struct {
-	NextOffset         *int32                      `json:"nextOffset,omitempty"`
+	NextOffset *int32 `json:"nextOffset,omitempty"`
 	UsageRecordReports []MeteringUsageRecordReport `json:"usageRecordReports,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *ListUsageRecordReportsResponse) SetUsageRecordReports(v []MeteringUsage
 }
 
 func (o ListUsageRecordReportsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableListUsageRecordReportsResponse) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

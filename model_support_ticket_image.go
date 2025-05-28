@@ -20,15 +20,15 @@ var _ MappedNullable = &SupportTicketImage{}
 
 // SupportTicketImage struct for SupportTicketImage
 type SupportTicketImage struct {
-	Extension       *string `json:"extension,omitempty"`
-	Id              *string `json:"id,omitempty"`
-	Name            *string `json:"name,omitempty"`
-	ThumbnailLarge  *string `json:"thumbnail_large,omitempty"`
+	Extension *string `json:"extension,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	ThumbnailLarge *string `json:"thumbnail_large,omitempty"`
 	ThumbnailMedium *string `json:"thumbnail_medium,omitempty"`
-	ThumbnailSmall  *string `json:"thumbnail_small,omitempty"`
-	Title           *string `json:"title,omitempty"`
-	Type            *string `json:"type,omitempty"`
-	Url             *string `json:"url,omitempty"`
+	ThumbnailSmall *string `json:"thumbnail_small,omitempty"`
+	Title *string `json:"title,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewSupportTicketImage instantiates a new SupportTicketImage object
@@ -337,7 +337,7 @@ func (o *SupportTicketImage) SetUrl(v string) {
 }
 
 func (o SupportTicketImage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -411,3 +411,5 @@ func (v *NullableSupportTicketImage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

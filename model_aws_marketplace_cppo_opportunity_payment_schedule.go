@@ -21,8 +21,8 @@ var _ MappedNullable = &AwsMarketplaceCppoOpportunityPaymentSchedule{}
 
 // AwsMarketplaceCppoOpportunityPaymentSchedule struct for AwsMarketplaceCppoOpportunityPaymentSchedule
 type AwsMarketplaceCppoOpportunityPaymentSchedule struct {
-	ChargeAmount *string    `json:"ChargeAmount,omitempty"`
-	ChargeDate   *time.Time `json:"ChargeDate,omitempty"`
+	ChargeAmount *string `json:"ChargeAmount,omitempty"`
+	ChargeDate *time.Time `json:"ChargeDate,omitempty"`
 }
 
 // NewAwsMarketplaceCppoOpportunityPaymentSchedule instantiates a new AwsMarketplaceCppoOpportunityPaymentSchedule object
@@ -107,7 +107,7 @@ func (o *AwsMarketplaceCppoOpportunityPaymentSchedule) SetChargeDate(v time.Time
 }
 
 func (o AwsMarketplaceCppoOpportunityPaymentSchedule) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableAwsMarketplaceCppoOpportunityPaymentSchedule) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,10 +21,10 @@ type RevenueReportType string
 
 // List of RevenueReportType
 const (
-	RevenueReportType_GrossAmount       RevenueReportType = "GrossAmount"
-	RevenueReportType_InvoicedAmount    RevenueReportType = "InvoicedAmount"
+	RevenueReportType_GrossAmount RevenueReportType = "GrossAmount"
+	RevenueReportType_InvoicedAmount RevenueReportType = "InvoicedAmount"
 	RevenueReportType_CollectableAmount RevenueReportType = "CollectableAmount"
-	RevenueReportType_DisbursedAmount   RevenueReportType = "DisbursedAmount"
+	RevenueReportType_DisbursedAmount RevenueReportType = "DisbursedAmount"
 )
 
 // All allowed values of RevenueReportType enum
@@ -113,3 +113,4 @@ func (v *NullableRevenueReportType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

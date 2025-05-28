@@ -22,7 +22,7 @@ type CommitDimensionType string
 // List of CommitDimensionType
 const (
 	CommitDimensionType_FLAT_RATE CommitDimensionType = "FLAT_RATE"
-	CommitDimensionType_PER_USER  CommitDimensionType = "PER_USER"
+	CommitDimensionType_PER_USER CommitDimensionType = "PER_USER"
 )
 
 // All allowed values of CommitDimensionType enum
@@ -109,3 +109,4 @@ func (v *NullableCommitDimensionType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

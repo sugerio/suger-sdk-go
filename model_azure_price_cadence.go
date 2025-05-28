@@ -20,8 +20,8 @@ var _ MappedNullable = &AzurePriceCadence{}
 
 // AzurePriceCadence struct for AzurePriceCadence
 type AzurePriceCadence struct {
-	Type  *string `json:"type,omitempty"`
-	Value *int32  `json:"value,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Value *int32 `json:"value,omitempty"`
 }
 
 // NewAzurePriceCadence instantiates a new AzurePriceCadence object
@@ -106,7 +106,7 @@ func (o *AzurePriceCadence) SetValue(v int32) {
 }
 
 func (o AzurePriceCadence) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAzurePriceCadence) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

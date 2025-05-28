@@ -21,16 +21,16 @@ var _ MappedNullable = &GcpMarketplaceDocument{}
 
 // GcpMarketplaceDocument struct for GcpMarketplaceDocument
 type GcpMarketplaceDocument struct {
-	Description  *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	DocumentBody *string `json:"documentBody,omitempty"`
 	// such as \"PARTNER_EULA\"
 	DocumentType *string `json:"documentType,omitempty"`
 	// The external link to Standard EULA such as https://cloud.google.com/terms/marketplace/eula-standard-v2-01272021.
 	ExternalGoogleLink *GcpMarketplaceExternalGoogleLink `json:"externalGoogleLink,omitempty"`
 	// in format of \"projects/{projectNumber}/agreements/{agreementId}/documents/{documentId}\"
-	Name                 *string                             `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	UnstructuredDocument *GcpMarketplaceUnstructuredDocument `json:"unstructuredDocument,omitempty"`
-	UpdateTime           *time.Time                          `json:"updateTime,omitempty"`
+	UpdateTime *time.Time `json:"updateTime,omitempty"`
 }
 
 // NewGcpMarketplaceDocument instantiates a new GcpMarketplaceDocument object
@@ -275,7 +275,7 @@ func (o *GcpMarketplaceDocument) SetUpdateTime(v time.Time) {
 }
 
 func (o GcpMarketplaceDocument) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -343,3 +343,5 @@ func (v *NullableGcpMarketplaceDocument) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

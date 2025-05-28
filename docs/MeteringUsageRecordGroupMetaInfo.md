@@ -2,26 +2,26 @@
 
 ## Properties
 
- Name                                      | Type                                                               | Description                                                                                                                                                                                              | Notes      
--------------------------------------------|--------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------
- **SkipValidation**                        | Pointer to **bool**                                                | If it is true, the validation of the usage record group is skipped.                                                                                                                                      | [optional] 
- **BillableRecords**                       | Pointer to [**[]MeteringUsageRecord**](MeteringUsageRecord.md)     | for usage metering API v2                                                                                                                                                                                | [optional] 
- **LagoAmount**                            | Pointer to **float32**                                             | The lago amount (in dollars) of the customer. This field keeps the largest of the monthly amount. So it can only be updated when the invoice month increases.                                            | [optional] 
- **LagoSubscriptionID**                    | Pointer to **string**                                              | The lago subscription ID of the customer.                                                                                                                                                                | [optional] 
- **LagoUsageStartTime**                    | Pointer to **time.Time**                                           | The lago usage start time of the customer usage.                                                                                                                                                         | [optional] 
- **MetronomeDailyCostAmount**              | Pointer to **float32**                                             | The metronome daily cost amount (in dollars) of the customer.                                                                                                                                            | [optional] 
- **MetronomeInvoiceID**                    | Pointer to **string**                                              | The metronome invoice ID of the customer.                                                                                                                                                                | [optional] 
- **MetronomeMonthlyInvoiceAmount**         | Pointer to **float32**                                             | The metronome monthly invoice amount (in dollars) of the customer. This field keeps the largest amount of the invoice month. So it can only be updated when the invoice month increases.                 | [optional] 
- **MetronomeMonthlyInvoiceAmountAdjusted** | Pointer to **float32**                                             | The metronome monthly invoice amount (in dollars) of the customer, which is adjusted by the seller. This field is populated only when the invoice amount is decreased by the seller via credit granting. | [optional] 
- **OriginRecords**                         | Pointer to **map[string]float32**                                  | The original records reported by the customer before convertion. If no dimension mapping is applied, this field is the same as the records field.                                                        | [optional] 
- **Source**                                | Pointer to [**UsageRecordGroupSource**](UsageRecordGroupSource.md) | The source of the usage record group. Can be from Suger API or other third party services, such as Metronome.                                                                                            | [optional] 
- **StripeInvoiceID**                       | Pointer to **string**                                              |                                                                                                                                                                                                          | [optional] 
- **StripePeriodEndTime**                   | Pointer to **time.Time**                                           | The stripe period end time of the summary or invoice. UTC time in format \&quot;YYYY-MM-DDTHH:MM:SSZ\&quot;.                                                                                             | [optional] 
- **StripePeriodStartTime**                 | Pointer to **time.Time**                                           | The stripe period start time of the summary or invoice. UTC time in format \&quot;YYYY-MM-DDTHH:MM:SSZ\&quot;.                                                                                           | [optional] 
- **StripeSubscriptionItemID**              | Pointer to **string**                                              |                                                                                                                                                                                                          | [optional] 
- **StripeUsageRecordSummaryID**            | Pointer to **string**                                              |                                                                                                                                                                                                          | [optional] 
- **StripeUsageRecordSummaryTotalUsage**    | Pointer to **int32**                                               |                                                                                                                                                                                                          | [optional] 
- **Timestamp**                             | Pointer to **time.Time**                                           | The timestamp (UTC)) of when the usage records were generated. Optional, if not provided, the current report timestamp will be used.                                                                     | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**SkipValidation** | Pointer to **bool** | If it is true, the validation of the usage record group is skipped. | [optional] 
+**BillableRecords** | Pointer to [**[]MeteringUsageRecord**](MeteringUsageRecord.md) | for usage metering API v2 | [optional] 
+**LagoAmount** | Pointer to **float32** | The lago amount (in dollars) of the customer. This field keeps the largest of the monthly amount. So it can only be updated when the invoice month increases. | [optional] 
+**LagoSubscriptionID** | Pointer to **string** | The lago subscription ID of the customer. | [optional] 
+**LagoUsageStartTime** | Pointer to **time.Time** | The lago usage start time of the customer usage. | [optional] 
+**MetronomeDailyCostAmount** | Pointer to **float32** | The metronome daily cost amount (in dollars) of the customer. | [optional] 
+**MetronomeInvoiceID** | Pointer to **string** | The metronome invoice ID of the customer. | [optional] 
+**MetronomeMonthlyInvoiceAmount** | Pointer to **float32** | The metronome monthly invoice amount (in dollars) of the customer. This field keeps the largest amount of the invoice month. So it can only be updated when the invoice month increases. | [optional] 
+**MetronomeMonthlyInvoiceAmountAdjusted** | Pointer to **float32** | The metronome monthly invoice amount (in dollars) of the customer, which is adjusted by the seller. This field is populated only when the invoice amount is decreased by the seller via credit granting. | [optional] 
+**OriginRecords** | Pointer to **map[string]float32** | The original records reported by the customer before convertion. If no dimension mapping is applied, this field is the same as the records field. | [optional] 
+**Source** | Pointer to [**UsageRecordGroupSource**](UsageRecordGroupSource.md) | The source of the usage record group. Can be from Suger API or other third party services, such as Metronome. | [optional] 
+**StripeInvoiceID** | Pointer to **string** |  | [optional] 
+**StripePeriodEndTime** | Pointer to **time.Time** | The stripe period end time of the summary or invoice. UTC time in format \&quot;YYYY-MM-DDTHH:MM:SSZ\&quot;. | [optional] 
+**StripePeriodStartTime** | Pointer to **time.Time** | The stripe period start time of the summary or invoice. UTC time in format \&quot;YYYY-MM-DDTHH:MM:SSZ\&quot;. | [optional] 
+**StripeSubscriptionItemID** | Pointer to **string** |  | [optional] 
+**StripeUsageRecordSummaryID** | Pointer to **string** |  | [optional] 
+**StripeUsageRecordSummaryTotalUsage** | Pointer to **int32** |  | [optional] 
+**Timestamp** | Pointer to **time.Time** | The timestamp (UTC)) of when the usage records were generated. Optional, if not provided, the current report timestamp will be used. | [optional] 
 
 ## Methods
 
@@ -402,8 +402,7 @@ GetStripeSubscriptionItemID returns the StripeSubscriptionItemID field if non-ni
 
 `func (o *MeteringUsageRecordGroupMetaInfo) GetStripeSubscriptionItemIDOk() (*string, bool)`
 
-GetStripeSubscriptionItemIDOk returns a tuple with the StripeSubscriptionItemID field if it's non-nil, zero value
-otherwise
+GetStripeSubscriptionItemIDOk returns a tuple with the StripeSubscriptionItemID field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStripeSubscriptionItemID
@@ -428,8 +427,7 @@ GetStripeUsageRecordSummaryID returns the StripeUsageRecordSummaryID field if no
 
 `func (o *MeteringUsageRecordGroupMetaInfo) GetStripeUsageRecordSummaryIDOk() (*string, bool)`
 
-GetStripeUsageRecordSummaryIDOk returns a tuple with the StripeUsageRecordSummaryID field if it's non-nil, zero value
-otherwise
+GetStripeUsageRecordSummaryIDOk returns a tuple with the StripeUsageRecordSummaryID field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStripeUsageRecordSummaryID
@@ -448,15 +446,13 @@ HasStripeUsageRecordSummaryID returns a boolean if a field has been set.
 
 `func (o *MeteringUsageRecordGroupMetaInfo) GetStripeUsageRecordSummaryTotalUsage() int32`
 
-GetStripeUsageRecordSummaryTotalUsage returns the StripeUsageRecordSummaryTotalUsage field if non-nil, zero value
-otherwise.
+GetStripeUsageRecordSummaryTotalUsage returns the StripeUsageRecordSummaryTotalUsage field if non-nil, zero value otherwise.
 
 ### GetStripeUsageRecordSummaryTotalUsageOk
 
 `func (o *MeteringUsageRecordGroupMetaInfo) GetStripeUsageRecordSummaryTotalUsageOk() (*int32, bool)`
 
-GetStripeUsageRecordSummaryTotalUsageOk returns a tuple with the StripeUsageRecordSummaryTotalUsage field if it's
-non-nil, zero value otherwise
+GetStripeUsageRecordSummaryTotalUsageOk returns a tuple with the StripeUsageRecordSummaryTotalUsage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStripeUsageRecordSummaryTotalUsage

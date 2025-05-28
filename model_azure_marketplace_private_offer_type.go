@@ -21,11 +21,11 @@ type AzureMarketplacePrivateOfferType string
 
 // List of AzureMarketplacePrivateOfferType
 const (
-	AzureMarketplacePrivateOfferType_unknown                           AzureMarketplacePrivateOfferType = ""
-	AzureMarketplacePrivateOfferType_customerPromotion                 AzureMarketplacePrivateOfferType = "customerPromotion"
-	AzureMarketplacePrivateOfferType_cspPromotion                      AzureMarketplacePrivateOfferType = "cspPromotion"
+	AzureMarketplacePrivateOfferType_unknown AzureMarketplacePrivateOfferType = ""
+	AzureMarketplacePrivateOfferType_customerPromotion AzureMarketplacePrivateOfferType = "customerPromotion"
+	AzureMarketplacePrivateOfferType_cspPromotion AzureMarketplacePrivateOfferType = "cspPromotion"
 	AzureMarketplacePrivateOfferType_multipartyPromotionChannelPartner AzureMarketplacePrivateOfferType = "multipartyPromotionChannelPartner"
-	AzureMarketplacePrivateOfferType_multipartyPromotionOriginator     AzureMarketplacePrivateOfferType = "multipartyPromotionOriginator"
+	AzureMarketplacePrivateOfferType_multipartyPromotionOriginator AzureMarketplacePrivateOfferType = "multipartyPromotionOriginator"
 )
 
 // All allowed values of AzureMarketplacePrivateOfferType enum
@@ -115,3 +115,4 @@ func (v *NullableAzureMarketplacePrivateOfferType) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

@@ -20,7 +20,7 @@ var _ MappedNullable = &AzureMarketplaceVmPricePropertyItem{}
 
 // AzureMarketplaceVmPricePropertyItem struct for AzureMarketplaceVmPricePropertyItem
 type AzureMarketplaceVmPricePropertyItem struct {
-	Quantity                       *float32 `json:"quantity,omitempty"`
+	Quantity *float32 `json:"quantity,omitempty"`
 	UnitPricePerPaymentPeriodInUsd *float32 `json:"unitPricePerPaymentPeriodInUsd,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *AzureMarketplaceVmPricePropertyItem) SetUnitPricePerPaymentPeriodInUsd(
 }
 
 func (o AzureMarketplaceVmPricePropertyItem) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAzureMarketplaceVmPricePropertyItem) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

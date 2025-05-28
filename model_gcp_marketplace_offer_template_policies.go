@@ -20,11 +20,12 @@ var _ MappedNullable = &GcpMarketplaceOfferTemplatePolicies{}
 
 // GcpMarketplaceOfferTemplatePolicies struct for GcpMarketplaceOfferTemplatePolicies
 type GcpMarketplaceOfferTemplatePolicies struct {
-	AllowAutoRenewal        *bool `json:"allowAutoRenewal,omitempty"`
+	AllowAutoRenewal *bool `json:"allowAutoRenewal,omitempty"`
 	AllowScheduledStartDate *bool `json:"allowScheduledStartDate,omitempty"`
 	// such as \"3\"
-	MaxRenewalTimes *string                       `json:"maxRenewalTimes,omitempty"`
-	Proration       *GcpMarketplaceOfferProration `json:"proration,omitempty"`
+	MaxRenewalTimes *string `json:"maxRenewalTimes,omitempty"`
+	OfferDealType *GcpMarketplaceOfferDealType `json:"offerDealType,omitempty"`
+	Proration *GcpMarketplaceOfferProration `json:"proration,omitempty"`
 }
 
 // NewGcpMarketplaceOfferTemplatePolicies instantiates a new GcpMarketplaceOfferTemplatePolicies object
@@ -140,6 +141,38 @@ func (o *GcpMarketplaceOfferTemplatePolicies) SetMaxRenewalTimes(v string) {
 	o.MaxRenewalTimes = &v
 }
 
+// GetOfferDealType returns the OfferDealType field value if set, zero value otherwise.
+func (o *GcpMarketplaceOfferTemplatePolicies) GetOfferDealType() GcpMarketplaceOfferDealType {
+	if o == nil || IsNil(o.OfferDealType) {
+		var ret GcpMarketplaceOfferDealType
+		return ret
+	}
+	return *o.OfferDealType
+}
+
+// GetOfferDealTypeOk returns a tuple with the OfferDealType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GcpMarketplaceOfferTemplatePolicies) GetOfferDealTypeOk() (*GcpMarketplaceOfferDealType, bool) {
+	if o == nil || IsNil(o.OfferDealType) {
+		return nil, false
+	}
+	return o.OfferDealType, true
+}
+
+// HasOfferDealType returns a boolean if a field has been set.
+func (o *GcpMarketplaceOfferTemplatePolicies) HasOfferDealType() bool {
+	if o != nil && !IsNil(o.OfferDealType) {
+		return true
+	}
+
+	return false
+}
+
+// SetOfferDealType gets a reference to the given GcpMarketplaceOfferDealType and assigns it to the OfferDealType field.
+func (o *GcpMarketplaceOfferTemplatePolicies) SetOfferDealType(v GcpMarketplaceOfferDealType) {
+	o.OfferDealType = &v
+}
+
 // GetProration returns the Proration field value if set, zero value otherwise.
 func (o *GcpMarketplaceOfferTemplatePolicies) GetProration() GcpMarketplaceOfferProration {
 	if o == nil || IsNil(o.Proration) {
@@ -173,7 +206,7 @@ func (o *GcpMarketplaceOfferTemplatePolicies) SetProration(v GcpMarketplaceOffer
 }
 
 func (o GcpMarketplaceOfferTemplatePolicies) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -190,6 +223,9 @@ func (o GcpMarketplaceOfferTemplatePolicies) ToMap() (map[string]interface{}, er
 	}
 	if !IsNil(o.MaxRenewalTimes) {
 		toSerialize["maxRenewalTimes"] = o.MaxRenewalTimes
+	}
+	if !IsNil(o.OfferDealType) {
+		toSerialize["offerDealType"] = o.OfferDealType
 	}
 	if !IsNil(o.Proration) {
 		toSerialize["proration"] = o.Proration
@@ -232,3 +268,5 @@ func (v *NullableGcpMarketplaceOfferTemplatePolicies) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

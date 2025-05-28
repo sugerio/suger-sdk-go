@@ -21,13 +21,13 @@ type AzureMarketplaceListingAssetType string
 
 // List of AzureMarketplaceListingAssetType
 const (
-	AzureMarketplaceListingAssetType_AzureLogoSmall      AzureMarketplaceListingAssetType = "azureLogoSmall"
-	AzureMarketplaceListingAssetType_AzureLogoMedium     AzureMarketplaceListingAssetType = "azureLogoMedium"
-	AzureMarketplaceListingAssetType_AzureLogoLarge      AzureMarketplaceListingAssetType = "azureLogoLarge"
-	AzureMarketplaceListingAssetType_AzureLogoWide       AzureMarketplaceListingAssetType = "azureLogoWide"
+	AzureMarketplaceListingAssetType_AzureLogoSmall AzureMarketplaceListingAssetType = "azureLogoSmall"
+	AzureMarketplaceListingAssetType_AzureLogoMedium AzureMarketplaceListingAssetType = "azureLogoMedium"
+	AzureMarketplaceListingAssetType_AzureLogoLarge AzureMarketplaceListingAssetType = "azureLogoLarge"
+	AzureMarketplaceListingAssetType_AzureLogoWide AzureMarketplaceListingAssetType = "azureLogoWide"
 	AzureMarketplaceListingAssetType_AzureLogoScreenshot AzureMarketplaceListingAssetType = "azureLogoScreenshot"
-	AzureMarketplaceListingAssetType_AzureLogoHero       AzureMarketplaceListingAssetType = "azureLogoHero"
-	AzureMarketplaceListingAssetType_PdfDocument         AzureMarketplaceListingAssetType = "pdfDocument"
+	AzureMarketplaceListingAssetType_AzureLogoHero AzureMarketplaceListingAssetType = "azureLogoHero"
+	AzureMarketplaceListingAssetType_PdfDocument AzureMarketplaceListingAssetType = "pdfDocument"
 )
 
 // All allowed values of AzureMarketplaceListingAssetType enum
@@ -119,3 +119,4 @@ func (v *NullableAzureMarketplaceListingAssetType) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

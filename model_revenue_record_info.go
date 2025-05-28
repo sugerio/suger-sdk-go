@@ -24,14 +24,30 @@ type RevenueRecordInfo struct {
 	AwsRevenueRecords []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent `json:"awsRevenueRecords,omitempty"`
 	// For raw revenue records in Azure Marketplace
 	AzureRevenueRecords []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue `json:"azureRevenueRecords,omitempty"`
+	// The bank trace ID of the revenue record if applicable
+	BankTraceId *string `json:"bankTraceId,omitempty"`
+	// The billing model of the revenue record if applicable The value is one of the following: - SubscriptionBased: The revenue record is from a subscription or recurring commitment. - UsageBased: The revenue record is from a usage-based metering.
+	BillingModel *string `json:"billingModel,omitempty"`
+	// The channel of revenue record.
+	Channel *RevenueChannel `json:"channel,omitempty"`
 	// The credit amount used in the revenue record.
 	CreditAmount *float32 `json:"creditAmount,omitempty"`
+	// The disbursement ID of the revenue record if applicable
+	DisbursementBillingEventId *string `json:"disbursementBillingEventId,omitempty"`
 	// Whether the disbursement notification has been sent to the seller/ISV.
 	DisbursementNotificationSent *bool `json:"disbursementNotificationSent,omitempty"`
+	// The earning ID of the revenue record if applicable
+	EarningId *string `json:"earningId,omitempty"`
 	// For raw revenue records in GCP Marketplace
 	GcpRevenueRecords []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage `json:"gcpRevenueRecords,omitempty"`
 	// Source of the revenue record ID.
 	IdSource *string `json:"idSource,omitempty"`
+	// The payment  ID of the revenue record if applicable
+	PaymentId *string `json:"paymentId,omitempty"`
+	// The reseller ID of the revenue record if applicable
+	ResellerId *string `json:"resellerId,omitempty"`
+	// The reseller name of the revenue record if application
+	ResellerName *string `json:"resellerName,omitempty"`
 	// Resource name for the revenue record. Applicable only to GCP Marketplace.
 	Resource *string `json:"resource,omitempty"`
 }
@@ -117,6 +133,102 @@ func (o *RevenueRecordInfo) SetAzureRevenueRecords(v []GithubComSugerioMarketpla
 	o.AzureRevenueRecords = v
 }
 
+// GetBankTraceId returns the BankTraceId field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetBankTraceId() string {
+	if o == nil || IsNil(o.BankTraceId) {
+		var ret string
+		return ret
+	}
+	return *o.BankTraceId
+}
+
+// GetBankTraceIdOk returns a tuple with the BankTraceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetBankTraceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.BankTraceId) {
+		return nil, false
+	}
+	return o.BankTraceId, true
+}
+
+// HasBankTraceId returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasBankTraceId() bool {
+	if o != nil && !IsNil(o.BankTraceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetBankTraceId gets a reference to the given string and assigns it to the BankTraceId field.
+func (o *RevenueRecordInfo) SetBankTraceId(v string) {
+	o.BankTraceId = &v
+}
+
+// GetBillingModel returns the BillingModel field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetBillingModel() string {
+	if o == nil || IsNil(o.BillingModel) {
+		var ret string
+		return ret
+	}
+	return *o.BillingModel
+}
+
+// GetBillingModelOk returns a tuple with the BillingModel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetBillingModelOk() (*string, bool) {
+	if o == nil || IsNil(o.BillingModel) {
+		return nil, false
+	}
+	return o.BillingModel, true
+}
+
+// HasBillingModel returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasBillingModel() bool {
+	if o != nil && !IsNil(o.BillingModel) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingModel gets a reference to the given string and assigns it to the BillingModel field.
+func (o *RevenueRecordInfo) SetBillingModel(v string) {
+	o.BillingModel = &v
+}
+
+// GetChannel returns the Channel field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetChannel() RevenueChannel {
+	if o == nil || IsNil(o.Channel) {
+		var ret RevenueChannel
+		return ret
+	}
+	return *o.Channel
+}
+
+// GetChannelOk returns a tuple with the Channel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetChannelOk() (*RevenueChannel, bool) {
+	if o == nil || IsNil(o.Channel) {
+		return nil, false
+	}
+	return o.Channel, true
+}
+
+// HasChannel returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasChannel() bool {
+	if o != nil && !IsNil(o.Channel) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannel gets a reference to the given RevenueChannel and assigns it to the Channel field.
+func (o *RevenueRecordInfo) SetChannel(v RevenueChannel) {
+	o.Channel = &v
+}
+
 // GetCreditAmount returns the CreditAmount field value if set, zero value otherwise.
 func (o *RevenueRecordInfo) GetCreditAmount() float32 {
 	if o == nil || IsNil(o.CreditAmount) {
@@ -149,6 +261,38 @@ func (o *RevenueRecordInfo) SetCreditAmount(v float32) {
 	o.CreditAmount = &v
 }
 
+// GetDisbursementBillingEventId returns the DisbursementBillingEventId field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetDisbursementBillingEventId() string {
+	if o == nil || IsNil(o.DisbursementBillingEventId) {
+		var ret string
+		return ret
+	}
+	return *o.DisbursementBillingEventId
+}
+
+// GetDisbursementBillingEventIdOk returns a tuple with the DisbursementBillingEventId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetDisbursementBillingEventIdOk() (*string, bool) {
+	if o == nil || IsNil(o.DisbursementBillingEventId) {
+		return nil, false
+	}
+	return o.DisbursementBillingEventId, true
+}
+
+// HasDisbursementBillingEventId returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasDisbursementBillingEventId() bool {
+	if o != nil && !IsNil(o.DisbursementBillingEventId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisbursementBillingEventId gets a reference to the given string and assigns it to the DisbursementBillingEventId field.
+func (o *RevenueRecordInfo) SetDisbursementBillingEventId(v string) {
+	o.DisbursementBillingEventId = &v
+}
+
 // GetDisbursementNotificationSent returns the DisbursementNotificationSent field value if set, zero value otherwise.
 func (o *RevenueRecordInfo) GetDisbursementNotificationSent() bool {
 	if o == nil || IsNil(o.DisbursementNotificationSent) {
@@ -179,6 +323,38 @@ func (o *RevenueRecordInfo) HasDisbursementNotificationSent() bool {
 // SetDisbursementNotificationSent gets a reference to the given bool and assigns it to the DisbursementNotificationSent field.
 func (o *RevenueRecordInfo) SetDisbursementNotificationSent(v bool) {
 	o.DisbursementNotificationSent = &v
+}
+
+// GetEarningId returns the EarningId field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetEarningId() string {
+	if o == nil || IsNil(o.EarningId) {
+		var ret string
+		return ret
+	}
+	return *o.EarningId
+}
+
+// GetEarningIdOk returns a tuple with the EarningId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetEarningIdOk() (*string, bool) {
+	if o == nil || IsNil(o.EarningId) {
+		return nil, false
+	}
+	return o.EarningId, true
+}
+
+// HasEarningId returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasEarningId() bool {
+	if o != nil && !IsNil(o.EarningId) {
+		return true
+	}
+
+	return false
+}
+
+// SetEarningId gets a reference to the given string and assigns it to the EarningId field.
+func (o *RevenueRecordInfo) SetEarningId(v string) {
+	o.EarningId = &v
 }
 
 // GetGcpRevenueRecords returns the GcpRevenueRecords field value if set, zero value otherwise.
@@ -245,6 +421,102 @@ func (o *RevenueRecordInfo) SetIdSource(v string) {
 	o.IdSource = &v
 }
 
+// GetPaymentId returns the PaymentId field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetPaymentId() string {
+	if o == nil || IsNil(o.PaymentId) {
+		var ret string
+		return ret
+	}
+	return *o.PaymentId
+}
+
+// GetPaymentIdOk returns a tuple with the PaymentId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetPaymentIdOk() (*string, bool) {
+	if o == nil || IsNil(o.PaymentId) {
+		return nil, false
+	}
+	return o.PaymentId, true
+}
+
+// HasPaymentId returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasPaymentId() bool {
+	if o != nil && !IsNil(o.PaymentId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentId gets a reference to the given string and assigns it to the PaymentId field.
+func (o *RevenueRecordInfo) SetPaymentId(v string) {
+	o.PaymentId = &v
+}
+
+// GetResellerId returns the ResellerId field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetResellerId() string {
+	if o == nil || IsNil(o.ResellerId) {
+		var ret string
+		return ret
+	}
+	return *o.ResellerId
+}
+
+// GetResellerIdOk returns a tuple with the ResellerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetResellerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ResellerId) {
+		return nil, false
+	}
+	return o.ResellerId, true
+}
+
+// HasResellerId returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasResellerId() bool {
+	if o != nil && !IsNil(o.ResellerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetResellerId gets a reference to the given string and assigns it to the ResellerId field.
+func (o *RevenueRecordInfo) SetResellerId(v string) {
+	o.ResellerId = &v
+}
+
+// GetResellerName returns the ResellerName field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetResellerName() string {
+	if o == nil || IsNil(o.ResellerName) {
+		var ret string
+		return ret
+	}
+	return *o.ResellerName
+}
+
+// GetResellerNameOk returns a tuple with the ResellerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetResellerNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ResellerName) {
+		return nil, false
+	}
+	return o.ResellerName, true
+}
+
+// HasResellerName returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasResellerName() bool {
+	if o != nil && !IsNil(o.ResellerName) {
+		return true
+	}
+
+	return false
+}
+
+// SetResellerName gets a reference to the given string and assigns it to the ResellerName field.
+func (o *RevenueRecordInfo) SetResellerName(v string) {
+	o.ResellerName = &v
+}
+
 // GetResource returns the Resource field value if set, zero value otherwise.
 func (o *RevenueRecordInfo) GetResource() string {
 	if o == nil || IsNil(o.Resource) {
@@ -278,7 +550,7 @@ func (o *RevenueRecordInfo) SetResource(v string) {
 }
 
 func (o RevenueRecordInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -293,17 +565,41 @@ func (o RevenueRecordInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AzureRevenueRecords) {
 		toSerialize["azureRevenueRecords"] = o.AzureRevenueRecords
 	}
+	if !IsNil(o.BankTraceId) {
+		toSerialize["bankTraceId"] = o.BankTraceId
+	}
+	if !IsNil(o.BillingModel) {
+		toSerialize["billingModel"] = o.BillingModel
+	}
+	if !IsNil(o.Channel) {
+		toSerialize["channel"] = o.Channel
+	}
 	if !IsNil(o.CreditAmount) {
 		toSerialize["creditAmount"] = o.CreditAmount
 	}
+	if !IsNil(o.DisbursementBillingEventId) {
+		toSerialize["disbursementBillingEventId"] = o.DisbursementBillingEventId
+	}
 	if !IsNil(o.DisbursementNotificationSent) {
 		toSerialize["disbursementNotificationSent"] = o.DisbursementNotificationSent
+	}
+	if !IsNil(o.EarningId) {
+		toSerialize["earningId"] = o.EarningId
 	}
 	if !IsNil(o.GcpRevenueRecords) {
 		toSerialize["gcpRevenueRecords"] = o.GcpRevenueRecords
 	}
 	if !IsNil(o.IdSource) {
 		toSerialize["idSource"] = o.IdSource
+	}
+	if !IsNil(o.PaymentId) {
+		toSerialize["paymentId"] = o.PaymentId
+	}
+	if !IsNil(o.ResellerId) {
+		toSerialize["resellerId"] = o.ResellerId
+	}
+	if !IsNil(o.ResellerName) {
+		toSerialize["resellerName"] = o.ResellerName
 	}
 	if !IsNil(o.Resource) {
 		toSerialize["resource"] = o.Resource
@@ -346,3 +642,5 @@ func (v *NullableRevenueRecordInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,9 +20,9 @@ var _ MappedNullable = &AzureMarketplacePriceAndAvailabilityAudience{}
 
 // AzureMarketplacePriceAndAvailabilityAudience struct for AzureMarketplacePriceAndAvailabilityAudience
 type AzureMarketplacePriceAndAvailabilityAudience struct {
-	Id    *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Label *string `json:"label,omitempty"`
-	Type  *string `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewAzureMarketplacePriceAndAvailabilityAudience instantiates a new AzureMarketplacePriceAndAvailabilityAudience object
@@ -139,7 +139,7 @@ func (o *AzureMarketplacePriceAndAvailabilityAudience) SetType(v string) {
 }
 
 func (o AzureMarketplacePriceAndAvailabilityAudience) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableAzureMarketplacePriceAndAvailabilityAudience) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

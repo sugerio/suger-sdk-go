@@ -20,24 +20,24 @@ var _ MappedNullable = &AwsMarketplaceCppoOpportunity{}
 
 // AwsMarketplaceCppoOpportunity struct for AwsMarketplaceCppoOpportunity
 type AwsMarketplaceCppoOpportunity struct {
-	CreatedDate               *string                                    `json:"CreatedDate,omitempty"`
-	Description               *string                                    `json:"Description,omitempty"`
-	Dimensions                []AwsProductDimension                      `json:"Dimensions,omitempty"`
-	ManufacturerAccountId     *string                                    `json:"ManufacturerAccountId,omitempty"`
-	ManufacturerLegalName     *string                                    `json:"ManufacturerLegalName,omitempty"`
-	Name                      *string                                    `json:"Name,omitempty"`
-	OfferDetails              *AwsMarketplaceCppoOpportunityOfferDetails `json:"OfferDetails,omitempty"`
-	PreExistingBuyerAgreement *AwsMarketplacePreExistingAgreement        `json:"PreExistingBuyerAgreement,omitempty"`
-	ProductId                 *string                                    `json:"ProductId,omitempty"`
-	ProductName               *string                                    `json:"ProductName,omitempty"`
-	Rules                     []AwsMarketplaceCppoOpportunityRule        `json:"Rules,omitempty"`
-	Status                    *string                                    `json:"Status,omitempty"`
-	Terms                     []AwsMarketplaceCppoOpportunityTerm        `json:"Terms,omitempty"`
+	CreatedDate *string `json:"CreatedDate,omitempty"`
+	Description *string `json:"Description,omitempty"`
+	Dimensions []AwsProductDimension `json:"Dimensions,omitempty"`
+	ManufacturerAccountId *string `json:"ManufacturerAccountId,omitempty"`
+	ManufacturerLegalName *string `json:"ManufacturerLegalName,omitempty"`
+	Name *string `json:"Name,omitempty"`
+	OfferDetails *AwsMarketplaceCppoOpportunityOfferDetails `json:"OfferDetails,omitempty"`
+	PreExistingBuyerAgreement *AwsMarketplacePreExistingAgreement `json:"PreExistingBuyerAgreement,omitempty"`
+	ProductId *string `json:"ProductId,omitempty"`
+	ProductName *string `json:"ProductName,omitempty"`
+	Rules []AwsMarketplaceCppoOpportunityRule `json:"Rules,omitempty"`
+	Status *string `json:"Status,omitempty"`
+	Terms []AwsMarketplaceCppoOpportunityTerm `json:"Terms,omitempty"`
 	// The following fields are not from aws catalog API, only used for cppo_out offer create. They shouldn't be read in other places because they will absent when fetch opportunity from aws catalog API.
-	DiscountType            *AwsMarketplaceCppoDiscountType `json:"discountType,omitempty"`
+	DiscountType *AwsMarketplaceCppoDiscountType `json:"discountType,omitempty"`
 	OpportunityDurationType *AwsMarketplaceCppoDurationType `json:"opportunityDurationType,omitempty"`
-	OpportunityId           *string                         `json:"opportunityId,omitempty"`
-	PartnerId               *string                         `json:"partnerId,omitempty"`
+	OpportunityId *string `json:"opportunityId,omitempty"`
+	PartnerId *string `json:"partnerId,omitempty"`
 }
 
 // NewAwsMarketplaceCppoOpportunity instantiates a new AwsMarketplaceCppoOpportunity object
@@ -602,7 +602,7 @@ func (o *AwsMarketplaceCppoOpportunity) SetPartnerId(v string) {
 }
 
 func (o AwsMarketplaceCppoOpportunity) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -700,3 +700,5 @@ func (v *NullableAwsMarketplaceCppoOpportunity) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

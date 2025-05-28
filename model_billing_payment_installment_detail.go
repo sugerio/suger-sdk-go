@@ -21,9 +21,9 @@ var _ MappedNullable = &BillingPaymentInstallmentDetail{}
 
 // BillingPaymentInstallmentDetail struct for BillingPaymentInstallmentDetail
 type BillingPaymentInstallmentDetail struct {
-	Amount      *float32   `json:"amount,omitempty"`
-	ChargeOn    *time.Time `json:"chargeOn,omitempty"`
-	Description *string    `json:"description,omitempty"`
+	Amount *float32 `json:"amount,omitempty"`
+	ChargeOn *time.Time `json:"chargeOn,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // NewBillingPaymentInstallmentDetail instantiates a new BillingPaymentInstallmentDetail object
@@ -140,7 +140,7 @@ func (o *BillingPaymentInstallmentDetail) SetDescription(v string) {
 }
 
 func (o BillingPaymentInstallmentDetail) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -196,3 +196,5 @@ func (v *NullableBillingPaymentInstallmentDetail) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

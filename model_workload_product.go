@@ -21,22 +21,22 @@ var _ MappedNullable = &WorkloadProduct{}
 
 // WorkloadProduct struct for WorkloadProduct
 type WorkloadProduct struct {
-	CreatedBy      *string           `json:"createdBy,omitempty"`
-	CreationTime   *time.Time        `json:"creationTime,omitempty"`
-	ExternalID     *string           `json:"externalID,omitempty"`
-	FulfillmentUrl *string           `json:"fulfillmentUrl,omitempty"`
-	Id             *string           `json:"id,omitempty"`
-	Info           *ProductInfo      `json:"info,omitempty"`
-	LastUpdateTime *time.Time        `json:"lastUpdateTime,omitempty"`
-	LastUpdatedBy  *string           `json:"lastUpdatedBy,omitempty"`
-	MetaInfo       *WorkloadMetaInfo `json:"metaInfo,omitempty"`
-	Name           *string           `json:"name,omitempty"`
-	OrganizationID *string           `json:"organizationID,omitempty"`
-	Partner        *Partner          `json:"partner,omitempty"`
-	PartnerID      *string           `json:"partnerID,omitempty"`
-	ProductType    *string           `json:"productType,omitempty"`
-	Service        *PartnerService   `json:"service,omitempty"`
-	Status         *string           `json:"status,omitempty"`
+	CreatedBy *string `json:"createdBy,omitempty"`
+	CreationTime *time.Time `json:"creationTime,omitempty"`
+	ExternalID *string `json:"externalID,omitempty"`
+	FulfillmentUrl *string `json:"fulfillmentUrl,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Info *ProductInfo `json:"info,omitempty"`
+	LastUpdateTime *time.Time `json:"lastUpdateTime,omitempty"`
+	LastUpdatedBy *string `json:"lastUpdatedBy,omitempty"`
+	MetaInfo *WorkloadMetaInfo `json:"metaInfo,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OrganizationID *string `json:"organizationID,omitempty"`
+	Partner *Partner `json:"partner,omitempty"`
+	PartnerID *string `json:"partnerID,omitempty"`
+	ProductType *string `json:"productType,omitempty"`
+	Service *PartnerService `json:"service,omitempty"`
+	Status *string `json:"status,omitempty"`
 }
 
 // NewWorkloadProduct instantiates a new WorkloadProduct object
@@ -569,7 +569,7 @@ func (o *WorkloadProduct) SetStatus(v string) {
 }
 
 func (o WorkloadProduct) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -664,3 +664,5 @@ func (v *NullableWorkloadProduct) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

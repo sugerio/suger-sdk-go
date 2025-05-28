@@ -2,18 +2,18 @@
 
 ## Properties
 
- Name               | Type                   | Description | Notes      
---------------------|------------------------|-------------|------------
- **ApiKeyHash**     | Pointer to **string**  |             | [optional] 
- **CreationTime**   | Pointer to **string**  |             | [optional] 
- **Id**             | Pointer to **string**  |             | [optional] 
- **Info**           | Pointer to **[]int32** |             | [optional] 
- **LastUpdateTime** | Pointer to **string**  |             | [optional] 
- **OrganizationID** | Pointer to **string**  |             | [optional] 
- **Provider**       | Pointer to **string**  |             | [optional] 
- **Role**           | Pointer to **string**  |             | [optional] 
- **Secret**         | Pointer to **string**  |             | [optional] 
- **Type**           | Pointer to **string**  |             | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ApiKeyHash** | Pointer to **string** |  | [optional] 
+**CreationTime** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
+**Info** | Pointer to **[]int32** |  | [optional] 
+**LastUpdateTime** | Pointer to **string** |  | [optional] 
+**OrganizationID** | Pointer to **string** |  | [optional] 
+**Provider** | Pointer to **string** |  | [optional] 
+**Role** | Pointer to **string** |  | [optional] 
+**Secret** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -21,8 +21,7 @@
 
 `func NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient() *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient`
 
-NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient instantiates a new
-GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient object
+NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient instantiates a new GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
@@ -31,8 +30,7 @@ will change when the set of required properties is changed
 
 `func NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClientWithDefaults() *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient`
 
-NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClientWithDefaults instantiates a new
-GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient object
+NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClientWithDefaults instantiates a new GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
@@ -285,6 +283,7 @@ SetType sets Type field to given value.
 `func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibIdentityApiClient) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

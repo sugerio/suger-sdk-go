@@ -2,11 +2,11 @@
 
 ## Properties
 
- Name      | Type                  | Description | Notes      
------------|-----------------------|-------------|------------
- **Title** | Pointer to **string** |             | [optional] 
- **Type**  | Pointer to **string** |             | [optional] 
- **Url**   | Pointer to **string** |             | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Title** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
+**Url** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +101,7 @@ SetUrl sets Url field to given value.
 `func (o *AwsProductVideo) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

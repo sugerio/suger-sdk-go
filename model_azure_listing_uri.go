@@ -21,9 +21,9 @@ var _ MappedNullable = &AzureListingUri{}
 // AzureListingUri struct for AzureListingUri
 type AzureListingUri struct {
 	DisplayText *string `json:"displayText,omitempty"`
-	Subtype     *string `json:"subtype,omitempty"`
-	Type        *string `json:"type,omitempty"`
-	Uri         *string `json:"uri,omitempty"`
+	Subtype *string `json:"subtype,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Uri *string `json:"uri,omitempty"`
 }
 
 // NewAzureListingUri instantiates a new AzureListingUri object
@@ -172,7 +172,7 @@ func (o *AzureListingUri) SetUri(v string) {
 }
 
 func (o AzureListingUri) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,3 +231,5 @@ func (v *NullableAzureListingUri) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

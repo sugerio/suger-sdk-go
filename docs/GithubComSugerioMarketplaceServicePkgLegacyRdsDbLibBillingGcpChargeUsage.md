@@ -2,36 +2,36 @@
 
 ## Properties
 
- Name                               | Type                   | Description | Notes      
-------------------------------------|------------------------|-------------|------------
- **Abandoned**                      | Pointer to **float32** |             | [optional] 
- **AccountID**                      | Pointer to **string**  |             | [optional] 
- **BuyerID**                        | Pointer to **string**  |             | [optional] 
- **Charges**                        | Pointer to **float32** |             | [optional] 
- **Currency**                       | Pointer to **string**  |             | [optional] 
- **DueVendor**                      | Pointer to **float32** |             | [optional] 
- **EntitlementID**                  | Pointer to **string**  |             | [optional] 
- **GoogleEntity**                   | Pointer to **string**  |             | [optional] 
- **InsightAccountID**               | Pointer to **string**  |             | [optional] 
- **OfferID**                        | Pointer to **string**  |             | [optional] 
- **Ordinal**                        | Pointer to **int32**   |             | [optional] 
- **OrganizationID**                 | Pointer to **string**  |             | [optional] 
- **PaymentSchedule**                | Pointer to **string**  |             | [optional] 
- **PaymentType**                    | Pointer to **string**  |             | [optional] 
- **PrepayCredits**                  | Pointer to **float32** |             | [optional] 
- **ProductID**                      | Pointer to **string**  |             | [optional] 
- **RefundBalanceDeductedThisMonth** | Pointer to **float32** |             | [optional] 
- **RefundBalanceOutstanding**       | Pointer to **float32** |             | [optional] 
- **RefundReason**                   | Pointer to **string**  |             | [optional] 
- **Released**                       | Pointer to **float32** |             | [optional] 
- **ReportDate**                     | Pointer to **string**  |             | [optional] 
- **Resource**                       | Pointer to **string**  |             | [optional] 
- **Sku**                            | Pointer to **string**  |             | [optional] 
- **TrialUse**                       | Pointer to **float32** |             | [optional] 
- **Unit**                           | Pointer to **string**  |             | [optional] 
- **Usage**                          | Pointer to **float32** |             | [optional] 
- **UsedBy**                         | Pointer to **string**  |             | [optional] 
- **Withheld**                       | Pointer to **float32** |             | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Abandoned** | Pointer to **float32** |  | [optional] 
+**AccountID** | Pointer to **string** |  | [optional] 
+**BuyerID** | Pointer to **string** |  | [optional] 
+**Charges** | Pointer to **float32** |  | [optional] 
+**Currency** | Pointer to **string** |  | [optional] 
+**DueVendor** | Pointer to **float32** |  | [optional] 
+**EntitlementID** | Pointer to **string** |  | [optional] 
+**GoogleEntity** | Pointer to **string** |  | [optional] 
+**InsightAccountID** | Pointer to **string** |  | [optional] 
+**OfferID** | Pointer to **string** |  | [optional] 
+**Ordinal** | Pointer to **int32** |  | [optional] 
+**OrganizationID** | Pointer to **string** |  | [optional] 
+**PaymentSchedule** | Pointer to **string** |  | [optional] 
+**PaymentType** | Pointer to **string** |  | [optional] 
+**PrepayCredits** | Pointer to **float32** |  | [optional] 
+**ProductID** | Pointer to **string** |  | [optional] 
+**RefundBalanceDeductedThisMonth** | Pointer to **float32** |  | [optional] 
+**RefundBalanceOutstanding** | Pointer to **float32** |  | [optional] 
+**RefundReason** | Pointer to **string** |  | [optional] 
+**Released** | Pointer to **float32** |  | [optional] 
+**ReportDate** | Pointer to **string** |  | [optional] 
+**Resource** | Pointer to **string** |  | [optional] 
+**Sku** | Pointer to **string** |  | [optional] 
+**TrialUse** | Pointer to **float32** |  | [optional] 
+**Unit** | Pointer to **string** |  | [optional] 
+**Usage** | Pointer to **float32** |  | [optional] 
+**UsedBy** | Pointer to **string** |  | [optional] 
+**Withheld** | Pointer to **float32** |  | [optional] 
 
 ## Methods
 
@@ -39,8 +39,7 @@
 
 `func NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage() *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage`
 
-NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage instantiates a new
-GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage object
+NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage instantiates a new GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
@@ -49,8 +48,7 @@ will change when the set of required properties is changed
 
 `func NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsageWithDefaults() *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage`
 
-NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsageWithDefaults instantiates a new
-GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage object
+NewGithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsageWithDefaults instantiates a new GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
@@ -464,8 +462,7 @@ GetRefundBalanceDeductedThisMonth returns the RefundBalanceDeductedThisMonth fie
 
 `func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage) GetRefundBalanceDeductedThisMonthOk() (*float32, bool)`
 
-GetRefundBalanceDeductedThisMonthOk returns a tuple with the RefundBalanceDeductedThisMonth field if it's non-nil, zero
-value otherwise
+GetRefundBalanceDeductedThisMonthOk returns a tuple with the RefundBalanceDeductedThisMonth field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefundBalanceDeductedThisMonth
@@ -490,8 +487,7 @@ GetRefundBalanceOutstanding returns the RefundBalanceOutstanding field if non-ni
 
 `func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage) GetRefundBalanceOutstandingOk() (*float32, bool)`
 
-GetRefundBalanceOutstandingOk returns a tuple with the RefundBalanceOutstanding field if it's non-nil, zero value
-otherwise
+GetRefundBalanceOutstandingOk returns a tuple with the RefundBalanceOutstanding field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefundBalanceOutstanding
@@ -755,6 +751,7 @@ SetWithheld sets Withheld field to given value.
 `func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage) HasWithheld() bool`
 
 HasWithheld returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,14 +23,14 @@ type AwsProductDeliveryOption struct {
 	// Exclusive Fields For AWS AMI Product
 	AmiAlias *string `json:"AmiAlias,omitempty"`
 	// Exclusive Fields For AWS SaaS Product
-	FulfillmentUrl   *string                `json:"FulfillmentUrl,omitempty"`
-	Id               *string                `json:"Id,omitempty"`
-	Recommendations  map[string]interface{} `json:"Recommendations,omitempty"`
-	ShortDescription *string                `json:"ShortDescription,omitempty"`
-	SourceId         *string                `json:"SourceId,omitempty"`
+	FulfillmentUrl *string `json:"FulfillmentUrl,omitempty"`
+	Id *string `json:"Id,omitempty"`
+	Recommendations map[string]interface{} `json:"Recommendations,omitempty"`
+	ShortDescription *string `json:"ShortDescription,omitempty"`
+	SourceId *string `json:"SourceId,omitempty"`
 	// Exclusive Fields For AWS Container Product
-	Title      *string `json:"Title,omitempty"`
-	Type       *string `json:"Type,omitempty"`
+	Title *string `json:"Title,omitempty"`
+	Type *string `json:"Type,omitempty"`
 	Visibility *string `json:"Visibility,omitempty"`
 }
 
@@ -340,7 +340,7 @@ func (o *AwsProductDeliveryOption) SetVisibility(v string) {
 }
 
 func (o AwsProductDeliveryOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -414,3 +414,5 @@ func (v *NullableAwsProductDeliveryOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

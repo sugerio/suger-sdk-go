@@ -21,13 +21,13 @@ type UsageRecordGroupSource string
 
 // List of UsageRecordGroupSource
 const (
-	UsageRecordGroupSourceUNKNOWN   UsageRecordGroupSource = ""
-	UsageRecordGroupSourceAPI       UsageRecordGroupSource = "API"
-	UsageRecordGroupSourceINTERNAL  UsageRecordGroupSource = "INTERNAL"
-	UsageRecordGroupSourceLAGO      UsageRecordGroupSource = "LAGO"
+	UsageRecordGroupSourceUNKNOWN UsageRecordGroupSource = ""
+	UsageRecordGroupSourceAPI UsageRecordGroupSource = "API"
+	UsageRecordGroupSourceINTERNAL UsageRecordGroupSource = "INTERNAL"
+	UsageRecordGroupSourceLAGO UsageRecordGroupSource = "LAGO"
 	UsageRecordGroupSourceMETRONOME UsageRecordGroupSource = "METRONOME"
-	UsageRecordGroupSourceORB       UsageRecordGroupSource = "ORB"
-	UsageRecordGroupSourceSTRIPE    UsageRecordGroupSource = "STRIPE"
+	UsageRecordGroupSourceORB UsageRecordGroupSource = "ORB"
+	UsageRecordGroupSourceSTRIPE UsageRecordGroupSource = "STRIPE"
 )
 
 // All allowed values of UsageRecordGroupSource enum
@@ -119,3 +119,4 @@ func (v *NullableUsageRecordGroupSource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

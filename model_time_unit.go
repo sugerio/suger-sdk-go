@@ -21,9 +21,9 @@ type TimeUnit string
 
 // List of TimeUnit
 const (
-	TimeUnit_DAY   TimeUnit = "DAY"
+	TimeUnit_DAY TimeUnit = "DAY"
 	TimeUnit_MONTH TimeUnit = "MONTH"
-	TimeUnit_YEAR  TimeUnit = "YEAR"
+	TimeUnit_YEAR TimeUnit = "YEAR"
 )
 
 // All allowed values of TimeUnit enum
@@ -111,3 +111,4 @@ func (v *NullableTimeUnit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

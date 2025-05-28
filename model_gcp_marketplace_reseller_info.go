@@ -20,17 +20,17 @@ var _ MappedNullable = &GcpMarketplaceResellerInfo{}
 
 // GcpMarketplaceResellerInfo struct for GcpMarketplaceResellerInfo
 type GcpMarketplaceResellerInfo struct {
-	BillingAccountId             *string `json:"billingAccountId,omitempty"`
-	BillingAccountNickname       *string `json:"billingAccountNickname,omitempty"`
+	BillingAccountId *string `json:"billingAccountId,omitempty"`
+	BillingAccountNickname *string `json:"billingAccountNickname,omitempty"`
 	BillingAccountOrgDisplayName *string `json:"billingAccountOrgDisplayName,omitempty"`
-	BillingAccountType           *string `json:"billingAccountType,omitempty"`
-	NotesToReseller              *string `json:"notesToReseller,omitempty"`
+	BillingAccountType *string `json:"billingAccountType,omitempty"`
+	NotesToReseller *string `json:"notesToReseller,omitempty"`
 	// In the format of \"\"organizations/{GcpOrganizationID}/partnerAccounts/{partnerAccountID}\"
-	PartnerAccountName            *string `json:"partnerAccountName,omitempty"`
-	ResellOfferTemplateId         *string `json:"resellOfferTemplateId,omitempty"`
-	ResellerContactEmail          *string `json:"resellerContactEmail,omitempty"`
-	ResellerContactName           *string `json:"resellerContactName,omitempty"`
-	ResellerPrivateOfferPlanId    *string `json:"resellerPrivateOfferPlanId,omitempty"`
+	PartnerAccountName *string `json:"partnerAccountName,omitempty"`
+	ResellOfferTemplateId *string `json:"resellOfferTemplateId,omitempty"`
+	ResellerContactEmail *string `json:"resellerContactEmail,omitempty"`
+	ResellerContactName *string `json:"resellerContactName,omitempty"`
+	ResellerPrivateOfferPlanId *string `json:"resellerPrivateOfferPlanId,omitempty"`
 	ResellerPrivateOfferPlanScope *string `json:"resellerPrivateOfferPlanScope,omitempty"`
 	// In the format of \"billingAccounts/...\"
 	SubBillingAccount *string `json:"subBillingAccount,omitempty"`
@@ -438,7 +438,7 @@ func (o *GcpMarketplaceResellerInfo) SetSubBillingAccount(v string) {
 }
 
 func (o GcpMarketplaceResellerInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -521,3 +521,5 @@ func (v *NullableGcpMarketplaceResellerInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

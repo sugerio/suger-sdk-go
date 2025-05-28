@@ -22,9 +22,9 @@ var _ MappedNullable = &PriceModelTieredPercentageConfig{}
 type PriceModelTieredPercentageConfig struct {
 	// Inclusive tier starting value
 	FirstUnit *float32 `json:"firstUnit,omitempty"`
-	FlatFee   *float32 `json:"flatFee,omitempty"`
+	FlatFee *float32 `json:"flatFee,omitempty"`
 	// Exclusive tier ending value. If null, this is treated as the last tier
-	LastUnit       *float32 `json:"lastUnit,omitempty"`
+	LastUnit *float32 `json:"lastUnit,omitempty"`
 	PercentageRate *float32 `json:"percentageRate,omitempty"`
 }
 
@@ -174,7 +174,7 @@ func (o *PriceModelTieredPercentageConfig) SetPercentageRate(v float32) {
 }
 
 func (o PriceModelTieredPercentageConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,3 +233,5 @@ func (v *NullablePriceModelTieredPercentageConfig) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

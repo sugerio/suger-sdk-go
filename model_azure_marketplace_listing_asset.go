@@ -20,25 +20,25 @@ var _ MappedNullable = &AzureMarketplaceListingAsset{}
 
 // AzureMarketplaceListingAsset struct for AzureMarketplaceListingAsset
 type AzureMarketplaceListingAsset struct {
-	Schema      *string `json:"$schema,omitempty"`
+	Schema *string `json:"$schema,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// minimum: 0
-	DisplayOrder *int32  `json:"displayOrder,omitempty"`
-	FileName     *string `json:"fileName,omitempty"`
+	DisplayOrder *int32 `json:"displayOrder,omitempty"`
+	FileName *string `json:"fileName,omitempty"`
 	FriendlyName *string `json:"friendlyName,omitempty"`
-	Id           *string `json:"id,omitempty"`
-	Kind         *string `json:"kind,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Kind *string `json:"kind,omitempty"`
 	// Max string length is 10.
 	LanguageId *string `json:"languageId,omitempty"`
 	// Default value is \"generallyAvailable\".
 	LifecycleState *AzureMarketplaceResourceLifecycleState `json:"lifecycleState,omitempty"`
-	Listing        *string                                 `json:"listing,omitempty"`
+	Listing *string `json:"listing,omitempty"`
 	// Product resource name, in format of \"product/product-durable-id\"
-	Product      *string                           `json:"product,omitempty"`
-	ResourceName *string                           `json:"resourceName,omitempty"`
-	Type         *AzureMarketplaceListingAssetType `json:"type,omitempty"`
+	Product *string `json:"product,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty"`
+	Type *AzureMarketplaceListingAssetType `json:"type,omitempty"`
 	// pattern: \"^https?://\"
-	Url         *string                      `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 	Validations []AzureMarketplaceValidation `json:"validations,omitempty"`
 }
 
@@ -540,7 +540,7 @@ func (o *AzureMarketplaceListingAsset) SetValidations(v []AzureMarketplaceValida
 }
 
 func (o AzureMarketplaceListingAsset) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -632,3 +632,5 @@ func (v *NullableAzureMarketplaceListingAsset) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

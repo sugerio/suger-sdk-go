@@ -23,7 +23,7 @@ type GcpMarketplaceProductUsageFee struct {
 	// such as 1
 	DisplayQuantity *int32 `json:"displayQuantity,omitempty"`
 	// such as \"Starter_storage\"
-	MetricId   *string        `json:"metricId,omitempty"`
+	MetricId *string `json:"metricId,omitempty"`
 	PriceTiers []GcpPriceTier `json:"priceTiers,omitempty"`
 }
 
@@ -141,7 +141,7 @@ func (o *GcpMarketplaceProductUsageFee) SetPriceTiers(v []GcpPriceTier) {
 }
 
 func (o GcpMarketplaceProductUsageFee) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -197,3 +197,5 @@ func (v *NullableGcpMarketplaceProductUsageFee) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

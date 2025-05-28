@@ -20,30 +20,30 @@ var _ MappedNullable = &AzureMarketplaceListing{}
 
 // AzureMarketplaceListing struct for AzureMarketplaceListing
 type AzureMarketplaceListing struct {
-	Schema                                  *string                       `json:"$schema,omitempty"`
-	CloudSolutionProviderContact            *AzureMarketplaceContact      `json:"cloudSolutionProviderContact,omitempty"`
-	CloudSolutionProviderMarketingMaterials *string                       `json:"cloudSolutionProviderMarketingMaterials,omitempty"`
-	Description                             *string                       `json:"description,omitempty"`
-	EngineeringContact                      *AzureMarketplaceContact      `json:"engineeringContact,omitempty"`
-	GeneralLinks                            []AzureMarketplaceGeneralLink `json:"generalLinks,omitempty"`
-	GettingStartedInstructions              *string                       `json:"gettingStartedInstructions,omitempty"`
-	GloabalSupportWebsite                   *string                       `json:"gloabalSupportWebsite,omitempty"`
-	GovernmentSupportWebsite                *string                       `json:"governmentSupportWebsite,omitempty"`
-	Id                                      *string                       `json:"id,omitempty"`
-	Kind                                    *string                       `json:"kind,omitempty"`
-	LanguageId                              *string                       `json:"languageId,omitempty"`
+	Schema *string `json:"$schema,omitempty"`
+	CloudSolutionProviderContact *AzureMarketplaceContact `json:"cloudSolutionProviderContact,omitempty"`
+	CloudSolutionProviderMarketingMaterials *string `json:"cloudSolutionProviderMarketingMaterials,omitempty"`
+	Description *string `json:"description,omitempty"`
+	EngineeringContact *AzureMarketplaceContact `json:"engineeringContact,omitempty"`
+	GeneralLinks []AzureMarketplaceGeneralLink `json:"generalLinks,omitempty"`
+	GettingStartedInstructions *string `json:"gettingStartedInstructions,omitempty"`
+	GloabalSupportWebsite *string `json:"gloabalSupportWebsite,omitempty"`
+	GovernmentSupportWebsite *string `json:"governmentSupportWebsite,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Kind *string `json:"kind,omitempty"`
+	LanguageId *string `json:"languageId,omitempty"`
 	// Default value is \"generallyAvailable\".
-	LifecycleState    *AzureMarketplaceResourceLifecycleState `json:"lifecycleState,omitempty"`
-	PrivacyPolicyLink *string                                 `json:"privacyPolicyLink,omitempty"`
+	LifecycleState *AzureMarketplaceResourceLifecycleState `json:"lifecycleState,omitempty"`
+	PrivacyPolicyLink *string `json:"privacyPolicyLink,omitempty"`
 	// Product resource name, in format of \"product/product-durable-id\"
-	Product             *string                  `json:"product,omitempty"`
-	ResourceName        *string                  `json:"resourceName,omitempty"`
-	SearchKeywords      []string                 `json:"searchKeywords,omitempty"`
-	SearchResultSummary *string                  `json:"searchResultSummary,omitempty"`
-	ShortDescription    *string                  `json:"shortDescription,omitempty"`
-	SupportContact      *AzureMarketplaceContact `json:"supportContact,omitempty"`
+	Product *string `json:"product,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty"`
+	SearchKeywords []string `json:"searchKeywords,omitempty"`
+	SearchResultSummary *string `json:"searchResultSummary,omitempty"`
+	ShortDescription *string `json:"shortDescription,omitempty"`
+	SupportContact *AzureMarketplaceContact `json:"supportContact,omitempty"`
 	// Max string length is 200.
-	Title       *string                      `json:"title,omitempty"`
+	Title *string `json:"title,omitempty"`
 	Validations []AzureMarketplaceValidation `json:"validations,omitempty"`
 }
 
@@ -769,7 +769,7 @@ func (o *AzureMarketplaceListing) SetValidations(v []AzureMarketplaceValidation)
 }
 
 func (o AzureMarketplaceListing) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -882,3 +882,5 @@ func (v *NullableAzureMarketplaceListing) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

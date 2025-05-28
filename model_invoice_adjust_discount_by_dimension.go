@@ -20,9 +20,9 @@ var _ MappedNullable = &InvoiceAdjustDiscountByDimension{}
 
 // InvoiceAdjustDiscountByDimension struct for InvoiceAdjustDiscountByDimension
 type InvoiceAdjustDiscountByDimension struct {
-	DimensionKey *string          `json:"dimensionKey,omitempty"`
-	Discount     *BillingDiscount `json:"discount,omitempty"`
-	Reason       *string          `json:"reason,omitempty"`
+	DimensionKey *string `json:"dimensionKey,omitempty"`
+	Discount *BillingDiscount `json:"discount,omitempty"`
+	Reason *string `json:"reason,omitempty"`
 }
 
 // NewInvoiceAdjustDiscountByDimension instantiates a new InvoiceAdjustDiscountByDimension object
@@ -139,7 +139,7 @@ func (o *InvoiceAdjustDiscountByDimension) SetReason(v string) {
 }
 
 func (o InvoiceAdjustDiscountByDimension) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableInvoiceAdjustDiscountByDimension) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

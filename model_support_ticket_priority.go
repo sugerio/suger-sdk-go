@@ -21,9 +21,9 @@ type SupportTicketPriority string
 
 // List of SupportTicketPriority
 const (
-	SupportTicketPriority_LOW    SupportTicketPriority = "LOW"
+	SupportTicketPriority_LOW SupportTicketPriority = "LOW"
 	SupportTicketPriority_NORMAL SupportTicketPriority = "NORMAL"
-	SupportTicketPriority_HIGH   SupportTicketPriority = "HIGH"
+	SupportTicketPriority_HIGH SupportTicketPriority = "HIGH"
 	SupportTicketPriority_URGENT SupportTicketPriority = "URGENT"
 )
 
@@ -113,3 +113,4 @@ func (v *NullableSupportTicketPriority) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

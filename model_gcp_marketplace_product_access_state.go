@@ -21,9 +21,9 @@ type GcpMarketplaceProductAccessState string
 
 // List of GcpMarketplaceProductAccessState
 const (
-	GcpMarketplaceProductAccessState_ALLUSERS_ACCESSIBLE     GcpMarketplaceProductAccessState = "ALLUSERS_ACCESSIBLE"
+	GcpMarketplaceProductAccessState_ALLUSERS_ACCESSIBLE GcpMarketplaceProductAccessState = "ALLUSERS_ACCESSIBLE"
 	GcpMarketplaceProductAccessState_NOT_ALLUSERS_ACCESSIBLE GcpMarketplaceProductAccessState = "NOT_ALLUSERS_ACCESSIBLE"
-	GcpMarketplaceProductAccessState_NOT_PUBLISHED           GcpMarketplaceProductAccessState = "NOT_PUBLISHED"
+	GcpMarketplaceProductAccessState_NOT_PUBLISHED GcpMarketplaceProductAccessState = "NOT_PUBLISHED"
 )
 
 // All allowed values of GcpMarketplaceProductAccessState enum
@@ -111,3 +111,4 @@ func (v *NullableGcpMarketplaceProductAccessState) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

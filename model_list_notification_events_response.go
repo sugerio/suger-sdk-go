@@ -21,7 +21,7 @@ var _ MappedNullable = &ListNotificationEventsResponse{}
 // ListNotificationEventsResponse struct for ListNotificationEventsResponse
 type ListNotificationEventsResponse struct {
 	// If it is nil, it means there is no more records.
-	NextOffset         *int32              `json:"nextOffset,omitempty"`
+	NextOffset *int32 `json:"nextOffset,omitempty"`
 	NotificationEvents []NotificationEvent `json:"notificationEvents,omitempty"`
 	// Only available when the request is made with offset=0.
 	TotalCount *int32 `json:"totalCount,omitempty"`
@@ -141,7 +141,7 @@ func (o *ListNotificationEventsResponse) SetTotalCount(v int32) {
 }
 
 func (o ListNotificationEventsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -197,3 +197,5 @@ func (v *NullableListNotificationEventsResponse) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

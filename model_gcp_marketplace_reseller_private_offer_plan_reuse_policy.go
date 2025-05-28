@@ -21,9 +21,9 @@ type GcpMarketplaceResellerPrivateOfferPlanReusePolicy string
 
 // List of GcpMarketplaceResellerPrivateOfferPlanReusePolicy
 const (
-	GcpMarketplaceResellerPrivateOfferPlanReusePolicy_UNKNOWN    GcpMarketplaceResellerPrivateOfferPlanReusePolicy = ""
+	GcpMarketplaceResellerPrivateOfferPlanReusePolicy_UNKNOWN GcpMarketplaceResellerPrivateOfferPlanReusePolicy = ""
 	GcpMarketplaceResellerPrivateOfferPlanReusePolicy_SINGLE_USE GcpMarketplaceResellerPrivateOfferPlanReusePolicy = "REUSE_POLICY_SINGLE_USE"
-	GcpMarketplaceResellerPrivateOfferPlanReusePolicy_MULTI_USE  GcpMarketplaceResellerPrivateOfferPlanReusePolicy = "REUSE_POLICY_MULTI_USE"
+	GcpMarketplaceResellerPrivateOfferPlanReusePolicy_MULTI_USE GcpMarketplaceResellerPrivateOfferPlanReusePolicy = "REUSE_POLICY_MULTI_USE"
 )
 
 // All allowed values of GcpMarketplaceResellerPrivateOfferPlanReusePolicy enum
@@ -111,3 +111,4 @@ func (v *NullableGcpMarketplaceResellerPrivateOfferPlanReusePolicy) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

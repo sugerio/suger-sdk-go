@@ -21,11 +21,11 @@ var _ MappedNullable = &CommitRevenueDetail{}
 // CommitRevenueDetail struct for CommitRevenueDetail
 type CommitRevenueDetail struct {
 	// The total amount of the commit revenue.
-	Amount      *float32 `json:"amount,omitempty"`
-	Description *string  `json:"description,omitempty"`
-	Expression  *string  `json:"expression,omitempty"`
-	Key         *string  `json:"key,omitempty"`
-	Name        *string  `json:"name,omitempty"`
+	Amount *float32 `json:"amount,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Expression *string `json:"expression,omitempty"`
+	Key *string `json:"key,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// The quantity of the commit dimension. Default is 1.
 	Quantity *int32 `json:"quantity,omitempty"`
 	// The unit price of the commit dimension.
@@ -274,7 +274,7 @@ func (o *CommitRevenueDetail) SetRate(v float32) {
 }
 
 func (o CommitRevenueDetail) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -342,3 +342,5 @@ func (v *NullableCommitRevenueDetail) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

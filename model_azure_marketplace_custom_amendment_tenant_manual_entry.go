@@ -21,7 +21,7 @@ var _ MappedNullable = &AzureMarketplaceCustomAmendmentTenantManualEntry{}
 // AzureMarketplaceCustomAmendmentTenantManualEntry struct for AzureMarketplaceCustomAmendmentTenantManualEntry
 type AzureMarketplaceCustomAmendmentTenantManualEntry struct {
 	Description *string `json:"description,omitempty"`
-	Id          *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 }
 
 // NewAzureMarketplaceCustomAmendmentTenantManualEntry instantiates a new AzureMarketplaceCustomAmendmentTenantManualEntry object
@@ -106,7 +106,7 @@ func (o *AzureMarketplaceCustomAmendmentTenantManualEntry) SetId(v string) {
 }
 
 func (o AzureMarketplaceCustomAmendmentTenantManualEntry) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableAzureMarketplaceCustomAmendmentTenantManualEntry) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

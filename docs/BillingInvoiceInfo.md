@@ -2,35 +2,36 @@
 
 ## Properties
 
- Name                               | Type                                                                                             | Description                                                                                                                                                                                    | Notes      
-------------------------------------|--------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------
- **AddFixedFees**                   | Pointer to [**[]InvoiceAddFixedFee**](InvoiceAddFixedFee.md)                                     | Adjust charge fields The fixed fees to be added to the invoice.                                                                                                                                | [optional] 
- **AddonDetail**                    | Pointer to [**BillingAddonRecord**](BillingAddonRecord.md)                                       |                                                                                                                                                                                                | [optional] 
- **AdjustDiscountByDimensions**     | Pointer to [**[]InvoiceAdjustDiscountByDimension**](InvoiceAdjustDiscountByDimension.md)         | add or adjust discount for a specific dimension                                                                                                                                                | [optional] 
- **AdjustMinimumSpendByDimensions** | Pointer to [**[]InvoiceAdjustMinimumSpendByDimension**](InvoiceAdjustMinimumSpendByDimension.md) | add or adjust minimum spend for a specific dimension                                                                                                                                           | [optional] 
- **AdjustOverallDiscount**          | Pointer to [**InvoiceAdjustOverallDiscount**](InvoiceAdjustOverallDiscount.md)                   | add or adjust overall discount calculate each dimension&#39;s discount first, then apply the overall discount                                                                                  | [optional] 
- **AdjustOverallMinimumSpend**      | Pointer to [**InvoiceAdjustOverallMinimumSpend**](InvoiceAdjustOverallMinimumSpend.md)           | add or adjust overall minimum spend calculate each dimension&#39;s minimum spend first, then apply the overall minimum spend                                                                   | [optional] 
- **BillableDimensionDetails**       | Pointer to [**[]BillableDimensionPriceModelDetail**](BillableDimensionPriceModelDetail.md)       |                                                                                                                                                                                                | [optional] 
- **CommitsRevenueDetails**          | Pointer to [**[]CommitRevenueDetail**](CommitRevenueDetail.md)                                   | Recurring flat fee for the invoice. There should be only one type fee for each invoice, commits, or usage.                                                                                     | [optional] 
- **CreationDate**                   | Pointer to **time.Time**                                                                         | The creation date of the invoice when the status of the invoice may be draft or issued. It may be different from the issue date.                                                               | [optional] 
- **Currency**                       | Pointer to **string**                                                                            |                                                                                                                                                                                                | [optional] 
- **DeductedCommitAmount**           | Pointer to **int32**                                                                             | The amount of the committed amount that has been deducted from the usage. It works only when IsMeteringOverageCommit is true.                                                                  | [optional] 
- **DeductedCommitInvoiceID**        | Pointer to **string**                                                                            | The ID of the commit invoice that has been deducted from the usage. It works only when IsMeteringOverageCommit is true.                                                                        | [optional] 
- **Description**                    | Pointer to **string**                                                                            |                                                                                                                                                                                                | [optional] 
- **DueAmount**                      | Pointer to **float32**                                                                           | Due amount &#x3D; SubtotalAmount + TaxAmount - AdjustOverallDiscount                                                                                                                           | [optional] 
- **DueDate**                        | Pointer to **time.Time**                                                                         | DueDate &#x3D; IssueDate + NetTerm                                                                                                                                                             | [optional] 
- **GracePeriodInDays**              | Pointer to **int32**                                                                             | Grace Period in number of days                                                                                                                                                                 | [optional] 
- **IsMeteringOverageCommit**        | Pointer to **bool**                                                                              | Whether the usage metering is charged for the amount that exceeds the committed amount from the entitlement.                                                                                   | [optional] 
- **IssueDate**                      | Pointer to **time.Time**                                                                         | IssueDate, issue invoice automatically when CreationDate + GracePeriod, or issue invoice manually IssueDate &gt;&#x3D; CreationDate &amp;&amp; IssueDate &lt;&#x3D; CreationDate + GracePeriod | [optional] 
- **Memo**                           | Pointer to **string**                                                                            |                                                                                                                                                                                                | [optional] 
- **NetTermsInDays**                 | Pointer to **int32**                                                                             | Net Terms period in number of days                                                                                                                                                             | [optional] 
- **PaymentInstallmentsDetail**      | Pointer to [**BillingPaymentInstallmentDetail**](BillingPaymentInstallmentDetail.md)             |                                                                                                                                                                                                | [optional] 
- **ReceiptUrl**                     | Pointer to **string**                                                                            | Invoice receipt url, it only exists when there are transactions.                                                                                                                               | [optional] 
- **SpaUrl**                         | Pointer to **string**                                                                            | SPA url with JWT.                                                                                                                                                                              | [optional] 
- **SubtotalAmount**                 | Pointer to **float32**                                                                           | Subtotal amount calculated from the user usage.                                                                                                                                                | [optional] 
- **TaxAmount**                      | Pointer to **float32**                                                                           |                                                                                                                                                                                                | [optional] 
- **TrialPeriodInDays**              | Pointer to **int32**                                                                             | Trial period in number of days                                                                                                                                                                 | [optional] 
- **UsageDailyRevenues**             | Pointer to [**[]BillableDimensionUsageDailyRevenue**](BillableDimensionUsageDailyRevenue.md)     | Billable dimension fees for the invoice.                                                                                                                                                       | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AddFixedFees** | Pointer to [**[]InvoiceAddFixedFee**](InvoiceAddFixedFee.md) | Adjust charge fields The fixed fees to be added to the invoice. | [optional] 
+**AddonDetail** | Pointer to [**BillingAddonRecord**](BillingAddonRecord.md) |  | [optional] 
+**AdjustDiscountByDimensions** | Pointer to [**[]InvoiceAdjustDiscountByDimension**](InvoiceAdjustDiscountByDimension.md) | add or adjust discount for a specific dimension | [optional] 
+**AdjustMinimumSpendByDimensions** | Pointer to [**[]InvoiceAdjustMinimumSpendByDimension**](InvoiceAdjustMinimumSpendByDimension.md) | add or adjust minimum spend for a specific dimension | [optional] 
+**AdjustOverallDiscount** | Pointer to [**InvoiceAdjustOverallDiscount**](InvoiceAdjustOverallDiscount.md) | add or adjust overall discount calculate each dimension&#39;s discount first, then apply the overall discount | [optional] 
+**AdjustOverallMinimumSpend** | Pointer to [**InvoiceAdjustOverallMinimumSpend**](InvoiceAdjustOverallMinimumSpend.md) | add or adjust overall minimum spend calculate each dimension&#39;s minimum spend first, then apply the overall minimum spend | [optional] 
+**BillableDimensionDetails** | Pointer to [**[]BillableDimensionPriceModelDetail**](BillableDimensionPriceModelDetail.md) |  | [optional] 
+**CommitsRevenueDetails** | Pointer to [**[]CommitRevenueDetail**](CommitRevenueDetail.md) | Recurring flat fee for the invoice. There should be only one type fee for each invoice, commits, or usage. | [optional] 
+**CreationDate** | Pointer to **time.Time** | The creation date of the invoice when the status of the invoice may be draft or issued. It may be different from the issue date. | [optional] 
+**Currency** | Pointer to **string** |  | [optional] 
+**DeductedCommitAmount** | Pointer to **float32** | The amount of the committed amount that has been deducted from the usage. It works only when IsMeteringOverageCommit is true. | [optional] 
+**DeductedCommitInvoiceID** | Pointer to **string** | The ID of the commit invoice that has been deducted from the usage. It works only when IsMeteringOverageCommit is true. | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
+**DueAmount** | Pointer to **float32** | Due amount &#x3D; SubtotalAmount + TaxAmount - AdjustOverallDiscount | [optional] 
+**DueDate** | Pointer to **time.Time** | DueDate &#x3D; IssueDate + NetTerm | [optional] 
+**GracePeriodInDays** | Pointer to **int32** | Grace Period in number of days | [optional] 
+**IsMeteringOverageCommit** | Pointer to **bool** | Whether the usage metering is charged for the amount that exceeds the committed amount from the entitlement. | [optional] 
+**IssueDate** | Pointer to **time.Time** | IssueDate, issue invoice automatically when CreationDate + GracePeriod, or issue invoice manually IssueDate &gt;&#x3D; CreationDate &amp;&amp; IssueDate &lt;&#x3D; CreationDate + GracePeriod | [optional] 
+**Memo** | Pointer to **string** |  | [optional] 
+**NetTermsInDays** | Pointer to **int32** | Net Terms period in number of days | [optional] 
+**PaymentInstallmentsDetail** | Pointer to [**BillingPaymentInstallmentDetail**](BillingPaymentInstallmentDetail.md) |  | [optional] 
+**PeriodTotalDays** | Pointer to **int32** | PeriodTotalDays is the total number of days among the whole periods. e.g. 61 days for a 2-month invoice. | [optional] 
+**ReceiptUrl** | Pointer to **string** | Invoice receipt url, it only exists when there are transactions. | [optional] 
+**SpaUrl** | Pointer to **string** | SPA url with JWT. | [optional] 
+**SubtotalAmount** | Pointer to **float32** | Subtotal amount calculated from the user usage. | [optional] 
+**TaxAmount** | Pointer to **float32** |  | [optional] 
+**TrialPeriodInDays** | Pointer to **int32** | Trial period in number of days | [optional] 
+**UsageDailyRevenues** | Pointer to [**[]BillableDimensionUsageDailyRevenue**](BillableDimensionUsageDailyRevenue.md) | Billable dimension fees for the invoice. | [optional] 
 
 ## Methods
 
@@ -303,20 +304,20 @@ HasCurrency returns a boolean if a field has been set.
 
 ### GetDeductedCommitAmount
 
-`func (o *BillingInvoiceInfo) GetDeductedCommitAmount() int32`
+`func (o *BillingInvoiceInfo) GetDeductedCommitAmount() float32`
 
 GetDeductedCommitAmount returns the DeductedCommitAmount field if non-nil, zero value otherwise.
 
 ### GetDeductedCommitAmountOk
 
-`func (o *BillingInvoiceInfo) GetDeductedCommitAmountOk() (*int32, bool)`
+`func (o *BillingInvoiceInfo) GetDeductedCommitAmountOk() (*float32, bool)`
 
 GetDeductedCommitAmountOk returns a tuple with the DeductedCommitAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeductedCommitAmount
 
-`func (o *BillingInvoiceInfo) SetDeductedCommitAmount(v int32)`
+`func (o *BillingInvoiceInfo) SetDeductedCommitAmount(v float32)`
 
 SetDeductedCommitAmount sets DeductedCommitAmount field to given value.
 
@@ -336,8 +337,7 @@ GetDeductedCommitInvoiceID returns the DeductedCommitInvoiceID field if non-nil,
 
 `func (o *BillingInvoiceInfo) GetDeductedCommitInvoiceIDOk() (*string, bool)`
 
-GetDeductedCommitInvoiceIDOk returns a tuple with the DeductedCommitInvoiceID field if it's non-nil, zero value
-otherwise
+GetDeductedCommitInvoiceIDOk returns a tuple with the DeductedCommitInvoiceID field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeductedCommitInvoiceID
@@ -462,8 +462,7 @@ GetIsMeteringOverageCommit returns the IsMeteringOverageCommit field if non-nil,
 
 `func (o *BillingInvoiceInfo) GetIsMeteringOverageCommitOk() (*bool, bool)`
 
-GetIsMeteringOverageCommitOk returns a tuple with the IsMeteringOverageCommit field if it's non-nil, zero value
-otherwise
+GetIsMeteringOverageCommitOk returns a tuple with the IsMeteringOverageCommit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIsMeteringOverageCommit
@@ -577,6 +576,31 @@ SetPaymentInstallmentsDetail sets PaymentInstallmentsDetail field to given value
 `func (o *BillingInvoiceInfo) HasPaymentInstallmentsDetail() bool`
 
 HasPaymentInstallmentsDetail returns a boolean if a field has been set.
+
+### GetPeriodTotalDays
+
+`func (o *BillingInvoiceInfo) GetPeriodTotalDays() int32`
+
+GetPeriodTotalDays returns the PeriodTotalDays field if non-nil, zero value otherwise.
+
+### GetPeriodTotalDaysOk
+
+`func (o *BillingInvoiceInfo) GetPeriodTotalDaysOk() (*int32, bool)`
+
+GetPeriodTotalDaysOk returns a tuple with the PeriodTotalDays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPeriodTotalDays
+
+`func (o *BillingInvoiceInfo) SetPeriodTotalDays(v int32)`
+
+SetPeriodTotalDays sets PeriodTotalDays field to given value.
+
+### HasPeriodTotalDays
+
+`func (o *BillingInvoiceInfo) HasPeriodTotalDays() bool`
+
+HasPeriodTotalDays returns a boolean if a field has been set.
 
 ### GetReceiptUrl
 

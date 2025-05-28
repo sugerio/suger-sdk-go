@@ -21,13 +21,13 @@ type SupportTicketStatus string
 
 // List of SupportTicketStatus
 const (
-	SupportTicketStatus_OPEN        SupportTicketStatus = "OPEN"
+	SupportTicketStatus_OPEN SupportTicketStatus = "OPEN"
 	SupportTicketStatus_IN_PROGRESS SupportTicketStatus = "IN PROGRESS"
-	SupportTicketStatus_IN_REVIEW   SupportTicketStatus = "IN REVIEW"
-	SupportTicketStatus_BLOCKED     SupportTicketStatus = "BLOCKED"
-	SupportTicketStatus_CLOSED      SupportTicketStatus = "CLOSED"
-	SupportTicketStatus_ARCHIVED    SupportTicketStatus = "ARCHIVED"
-	SupportTicketStatus_DELETED     SupportTicketStatus = "DELETED"
+	SupportTicketStatus_IN_REVIEW SupportTicketStatus = "IN REVIEW"
+	SupportTicketStatus_BLOCKED SupportTicketStatus = "BLOCKED"
+	SupportTicketStatus_CLOSED SupportTicketStatus = "CLOSED"
+	SupportTicketStatus_ARCHIVED SupportTicketStatus = "ARCHIVED"
+	SupportTicketStatus_DELETED SupportTicketStatus = "DELETED"
 )
 
 // All allowed values of SupportTicketStatus enum
@@ -119,3 +119,4 @@ func (v *NullableSupportTicketStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

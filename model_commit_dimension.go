@@ -20,7 +20,7 @@ var _ MappedNullable = &CommitDimension{}
 
 // CommitDimension The commit dimension. There may be one or more commit dimensions defined in single product, offer or entitlement.
 type CommitDimension struct {
-	Category    *string `json:"category,omitempty"`
+	Category *string `json:"category,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// Whether this commit dimension is newly created by user, when creating AWS Marketplace Contract private offer.
 	IsUserCreated *bool `json:"isUserCreated,omitempty"`
@@ -548,7 +548,7 @@ func (o *CommitDimension) SetTypes(v []string) {
 }
 
 func (o CommitDimension) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -640,3 +640,5 @@ func (v *NullableCommitDimension) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

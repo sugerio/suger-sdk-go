@@ -21,10 +21,11 @@ type AzureMarketplaceOfferPricingType string
 
 // List of AzureMarketplaceOfferPricingType
 const (
-	AzureMarketplaceOfferPricingType_Unknown                      AzureMarketplaceOfferPricingType = ""
+	AzureMarketplaceOfferPricingType_Unknown AzureMarketplaceOfferPricingType = ""
 	AzureMarketplaceOfferPricingType_EditExistingOfferPricingOnly AzureMarketplaceOfferPricingType = "editExistingOfferPricingOnly"
-	AzureMarketplaceOfferPricingType_SaasNewCustomizedPlans       AzureMarketplaceOfferPricingType = "saasNewCustomizedPlans"
-	AzureMarketplaceOfferPricingType_VmSoftwareReservations       AzureMarketplaceOfferPricingType = "vmSoftwareReservations"
+	AzureMarketplaceOfferPricingType_SaasNewCustomizedPlans AzureMarketplaceOfferPricingType = "saasNewCustomizedPlans"
+	AzureMarketplaceOfferPricingType_VmSoftwareReservations AzureMarketplaceOfferPricingType = "vmSoftwareReservations"
+	AzureMarketplaceOfferPricingType_NewCustomizedPlans AzureMarketplaceOfferPricingType = "newCustomizedPlans"
 )
 
 // All allowed values of AzureMarketplaceOfferPricingType enum
@@ -33,6 +34,7 @@ var AllowedAzureMarketplaceOfferPricingTypeEnumValues = []AzureMarketplaceOfferP
 	"editExistingOfferPricingOnly",
 	"saasNewCustomizedPlans",
 	"vmSoftwareReservations",
+	"newCustomizedPlans",
 }
 
 func (v *AzureMarketplaceOfferPricingType) UnmarshalJSON(src []byte) error {
@@ -113,3 +115,4 @@ func (v *NullableAzureMarketplaceOfferPricingType) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

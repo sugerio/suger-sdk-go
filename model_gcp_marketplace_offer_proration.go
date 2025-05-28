@@ -22,8 +22,8 @@ type GcpMarketplaceOfferProration string
 // List of GcpMarketplaceOfferProration
 const (
 	GcpMarketplaceOfferProration_UNSPECIFIED GcpMarketplaceOfferProration = "PRORATION_UNSPECIFIED"
-	GcpMarketplaceOfferProration_NO          GcpMarketplaceOfferProration = "NOT_PRORATED_ANNIVERSARY_DATES"
-	GcpMarketplaceOfferProration_YES         GcpMarketplaceOfferProration = "PRORATED"
+	GcpMarketplaceOfferProration_NO GcpMarketplaceOfferProration = "NOT_PRORATED_ANNIVERSARY_DATES"
+	GcpMarketplaceOfferProration_YES GcpMarketplaceOfferProration = "PRORATED"
 )
 
 // All allowed values of GcpMarketplaceOfferProration enum
@@ -111,3 +111,4 @@ func (v *NullableGcpMarketplaceOfferProration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

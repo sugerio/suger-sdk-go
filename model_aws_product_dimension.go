@@ -21,15 +21,15 @@ var _ MappedNullable = &AwsProductDimension{}
 // AwsProductDimension struct for AwsProductDimension
 type AwsProductDimension struct {
 	Description *string `json:"Description,omitempty"`
-	Key         *string `json:"Key,omitempty"`
+	Key *string `json:"Key,omitempty"`
 	// The term length for the commit amount, such as 6 months, or 1 year. The length is used together with timeUnit. Length and TimeUnit are only used for commit dimension.
-	Length *int32  `json:"Length,omitempty"`
-	Name   *string `json:"Name,omitempty"`
+	Length *int32 `json:"Length,omitempty"`
+	Name *string `json:"Name,omitempty"`
 	// Below three fields are only used for pass data when create or update product's public offer pricing. Rate is only used for update public offer, becasue rate will be set as 0.01 when create new product.
-	Rate     *float32  `json:"Rate,omitempty"`
+	Rate *float32 `json:"Rate,omitempty"`
 	TimeUnit *TimeUnit `json:"TimeUnit,omitempty"`
-	Types    []string  `json:"Types,omitempty"`
-	Unit     *string   `json:"Unit,omitempty"`
+	Types []string `json:"Types,omitempty"`
+	Unit *string `json:"Unit,omitempty"`
 }
 
 // NewAwsProductDimension instantiates a new AwsProductDimension object
@@ -306,7 +306,7 @@ func (o *AwsProductDimension) SetUnit(v string) {
 }
 
 func (o AwsProductDimension) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -377,3 +377,5 @@ func (v *NullableAwsProductDimension) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

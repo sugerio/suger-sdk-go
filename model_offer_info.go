@@ -37,6 +37,8 @@ type OfferInfo struct {
 	AwsCppoEventDetail *AwsMarketplaceEventBridgeEventDetail `json:"awsCppoEventDetail,omitempty"`
 	// AWS CPPO Opportunity, only applicable for AWS Marketplace CPPO_OUT or CPPO_IN offers.
 	AwsCppoOpportunity *AwsMarketplaceCppoOpportunity `json:"awsCppoOpportunity,omitempty"`
+	// For AWS machine learning contract private offer only. The contract duration of the offer in months.
+	AwsMachineLearningContractDuration *int32 `json:"awsMachineLearningContractDuration,omitempty"`
 	// AWS private reseller offer using markup percentage. 10.0 represent 10% partner margin.
 	AwsMarkupPercentage *float32 `json:"awsMarkupPercentage,omitempty"`
 	// AWS ResaleAuthorizationId(CPPO_IN offer id) for CPPO offers of the reseller.
@@ -68,15 +70,21 @@ type OfferInfo struct {
 	// Usage based metering dimensions defined on cloud marketplaces, managed by Cloud marketplaces only.
 	Dimensions []MeteringDimension `json:"dimensions,omitempty"`
 	// The discount percentage off the original price. For example, 20 means 20% off. 0 means no discount. It can be discount off the commitment amount or discount off the usage price.
-	DiscountPercentage *float32  `json:"discountPercentage,omitempty"`
-	EulaType           *EulaType `json:"eulaType,omitempty"`
-	EulaUrl            *string   `json:"eulaUrl,omitempty"`
+	DiscountPercentage *float32 `json:"discountPercentage,omitempty"`
+	// The Docusign envelope IDs generated for the offer. The key is the contact ID, the value is the Docusign envelope ID.
+	DocusignEnvelopeIds *map[string]string `json:"docusignEnvelopeIds,omitempty"`
+	// The merge order of the EULA files. Only applicable when EulaType = CUSTOM. Elements are the original index of the EULA files in the index they should be transferred to, where original indexes are: AttachEulaType is index 0, EulaUrl is index 1, additionalEulaUrls is index 2 onwards.
+	EulaMergeOrder []int32 `json:"eulaMergeOrder,omitempty"`
+	EulaType *EulaType `json:"eulaType,omitempty"`
+	EulaUrl *string `json:"eulaUrl,omitempty"`
 	// Only required when creating GCP Marketplace private offer.
 	GcpCustomerInfo *GcpMarketplacePrivateOfferCustomerInfo `json:"gcpCustomerInfo,omitempty"`
 	// The duration of the offer in months. Only required when creating GCP Marketplace private offer.
 	GcpDuration *int32 `json:"gcpDuration,omitempty"`
 	// Only applicable for GCP Marketplace Offers (the default or private offer)
 	GcpMetrics []GcpMarketplaceProductMeteringMetric `json:"gcpMetrics,omitempty"`
+	// Optional when creating GCP Marketplace private offer and replacement offer.
+	GcpOfferDealType *GcpMarketplaceOfferDealType `json:"gcpOfferDealType,omitempty"`
 	// Only required when creating GCP Marketplace private offer, to specify the payment schedule for the private offer. TODO: It will be deprecated in the future and replaced by PaymentSchedule.
 	GcpPaymentSchedule *PaymentScheduleType `json:"gcpPaymentSchedule,omitempty"`
 	// Only applicable for GCP Marketplace
@@ -88,8 +96,10 @@ type OfferInfo struct {
 	// Optional when creating GCP Marketplace private offer. The internal note for the seller/ISV. It is only visible to the seller/ISV.
 	GcpProviderInternalNote *string `json:"gcpProviderInternalNote,omitempty"`
 	// Optional when creating GCP Marketplace private offer. By default, it is the same as offer name. The public note for the buyer. It is visible to the buyer.
-	GcpProviderPublicNote       *string                                 `json:"gcpProviderPublicNote,omitempty"`
+	GcpProviderPublicNote *string `json:"gcpProviderPublicNote,omitempty"`
 	GcpResellerPrivateOfferPlan *GcpMarketplaceResellerPrivateOfferPlan `json:"gcpResellerPrivateOfferPlan,omitempty"`
+	// Optional when creating GCP Marketplace private offer for professional services.
+	GcpSowAgreementDocument *GcpAgreementDocument `json:"gcpSowAgreementDocument,omitempty"`
 	// Only applicable for GCP Marketplace with Usage plan. Not appliable for Subscription plan.
 	GcpUsagePlanPriceModel *GcpMarketplaceUsagePlanPriceModel `json:"gcpUsagePlanPriceModel,omitempty"`
 	// The grace period in days for the offer. This is the number of days during which invoices remain in draft status, for reviewing. This filed can be overridden at the entitlement level.
@@ -102,17 +112,21 @@ type OfferInfo struct {
 	PaymentInstallments []PaymentInstallment `json:"paymentInstallments,omitempty"`
 	// The payment schedule for the offer. PREPAY means the buyer pays before the service is provided. POSTPAY means the buyer pays after the service is provided.
 	PaymentSchedule *PaymentScheduleType `json:"paymentSchedule,omitempty"`
+	// Not needed when creating stripe offer This URL points to the PDF version of the offer.
+	PdfURL *string `json:"pdfURL,omitempty"`
 	// The URL of the private offer sent to buyers to accept. Only applicable for private offer.
 	PrivateOfferUrl *string `json:"privateOfferUrl,omitempty"`
 	// Prorated billing for the offer. If true, the billing is prorated based on the start date and end date. If false, the billing is not prorated. This filed can be overridden at the entitlement level.
-	ProratedBilling          *bool   `json:"proratedBilling,omitempty"`
+	ProratedBilling *bool `json:"proratedBilling,omitempty"`
 	RefundCancellationPolicy *string `json:"refundCancellationPolicy,omitempty"`
 	// Attach the standard EULA file to the CUSTOM EULA file. Only applicable when EulaType = CUSTOM
 	ResellerAttachEulaType *EulaType `json:"resellerAttachEulaType,omitempty"`
 	// The type of the reseller EULA. Only applicable for CPPO offers.
 	ResellerEulaType *EulaType `json:"resellerEulaType,omitempty"`
-	ResellerEulaUrl  *string   `json:"resellerEulaUrl,omitempty"`
-	SellerNotes      *string   `json:"sellerNotes,omitempty"`
+	ResellerEulaUrl *string `json:"resellerEulaUrl,omitempty"`
+	SellerNotes *string `json:"sellerNotes,omitempty"`
+	// The private offer for Snowflake marketplace. Only applicable for Snowflake Marketplace offers.
+	SnowflakeOffer *SnowflakeMarketplaceOffer `json:"snowflakeOffer,omitempty"`
 	// Optional when creating AWS or GCP Marketplace private offer on the contract product. The future start time of the offer if it is not started on the acceptance.
 	StartTime *time.Time `json:"startTime,omitempty"`
 	// Tax ids for the offer, used to calculate the tax amount for the offer. This field can be overridden at the entitlement level.
@@ -396,6 +410,38 @@ func (o *OfferInfo) HasAwsCppoOpportunity() bool {
 // SetAwsCppoOpportunity gets a reference to the given AwsMarketplaceCppoOpportunity and assigns it to the AwsCppoOpportunity field.
 func (o *OfferInfo) SetAwsCppoOpportunity(v AwsMarketplaceCppoOpportunity) {
 	o.AwsCppoOpportunity = &v
+}
+
+// GetAwsMachineLearningContractDuration returns the AwsMachineLearningContractDuration field value if set, zero value otherwise.
+func (o *OfferInfo) GetAwsMachineLearningContractDuration() int32 {
+	if o == nil || IsNil(o.AwsMachineLearningContractDuration) {
+		var ret int32
+		return ret
+	}
+	return *o.AwsMachineLearningContractDuration
+}
+
+// GetAwsMachineLearningContractDurationOk returns a tuple with the AwsMachineLearningContractDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OfferInfo) GetAwsMachineLearningContractDurationOk() (*int32, bool) {
+	if o == nil || IsNil(o.AwsMachineLearningContractDuration) {
+		return nil, false
+	}
+	return o.AwsMachineLearningContractDuration, true
+}
+
+// HasAwsMachineLearningContractDuration returns a boolean if a field has been set.
+func (o *OfferInfo) HasAwsMachineLearningContractDuration() bool {
+	if o != nil && !IsNil(o.AwsMachineLearningContractDuration) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsMachineLearningContractDuration gets a reference to the given int32 and assigns it to the AwsMachineLearningContractDuration field.
+func (o *OfferInfo) SetAwsMachineLearningContractDuration(v int32) {
+	o.AwsMachineLearningContractDuration = &v
 }
 
 // GetAwsMarkupPercentage returns the AwsMarkupPercentage field value if set, zero value otherwise.
@@ -910,6 +956,70 @@ func (o *OfferInfo) SetDiscountPercentage(v float32) {
 	o.DiscountPercentage = &v
 }
 
+// GetDocusignEnvelopeIds returns the DocusignEnvelopeIds field value if set, zero value otherwise.
+func (o *OfferInfo) GetDocusignEnvelopeIds() map[string]string {
+	if o == nil || IsNil(o.DocusignEnvelopeIds) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.DocusignEnvelopeIds
+}
+
+// GetDocusignEnvelopeIdsOk returns a tuple with the DocusignEnvelopeIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OfferInfo) GetDocusignEnvelopeIdsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.DocusignEnvelopeIds) {
+		return nil, false
+	}
+	return o.DocusignEnvelopeIds, true
+}
+
+// HasDocusignEnvelopeIds returns a boolean if a field has been set.
+func (o *OfferInfo) HasDocusignEnvelopeIds() bool {
+	if o != nil && !IsNil(o.DocusignEnvelopeIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetDocusignEnvelopeIds gets a reference to the given map[string]string and assigns it to the DocusignEnvelopeIds field.
+func (o *OfferInfo) SetDocusignEnvelopeIds(v map[string]string) {
+	o.DocusignEnvelopeIds = &v
+}
+
+// GetEulaMergeOrder returns the EulaMergeOrder field value if set, zero value otherwise.
+func (o *OfferInfo) GetEulaMergeOrder() []int32 {
+	if o == nil || IsNil(o.EulaMergeOrder) {
+		var ret []int32
+		return ret
+	}
+	return o.EulaMergeOrder
+}
+
+// GetEulaMergeOrderOk returns a tuple with the EulaMergeOrder field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OfferInfo) GetEulaMergeOrderOk() ([]int32, bool) {
+	if o == nil || IsNil(o.EulaMergeOrder) {
+		return nil, false
+	}
+	return o.EulaMergeOrder, true
+}
+
+// HasEulaMergeOrder returns a boolean if a field has been set.
+func (o *OfferInfo) HasEulaMergeOrder() bool {
+	if o != nil && !IsNil(o.EulaMergeOrder) {
+		return true
+	}
+
+	return false
+}
+
+// SetEulaMergeOrder gets a reference to the given []int32 and assigns it to the EulaMergeOrder field.
+func (o *OfferInfo) SetEulaMergeOrder(v []int32) {
+	o.EulaMergeOrder = v
+}
+
 // GetEulaType returns the EulaType field value if set, zero value otherwise.
 func (o *OfferInfo) GetEulaType() EulaType {
 	if o == nil || IsNil(o.EulaType) {
@@ -1068,6 +1178,38 @@ func (o *OfferInfo) HasGcpMetrics() bool {
 // SetGcpMetrics gets a reference to the given []GcpMarketplaceProductMeteringMetric and assigns it to the GcpMetrics field.
 func (o *OfferInfo) SetGcpMetrics(v []GcpMarketplaceProductMeteringMetric) {
 	o.GcpMetrics = v
+}
+
+// GetGcpOfferDealType returns the GcpOfferDealType field value if set, zero value otherwise.
+func (o *OfferInfo) GetGcpOfferDealType() GcpMarketplaceOfferDealType {
+	if o == nil || IsNil(o.GcpOfferDealType) {
+		var ret GcpMarketplaceOfferDealType
+		return ret
+	}
+	return *o.GcpOfferDealType
+}
+
+// GetGcpOfferDealTypeOk returns a tuple with the GcpOfferDealType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OfferInfo) GetGcpOfferDealTypeOk() (*GcpMarketplaceOfferDealType, bool) {
+	if o == nil || IsNil(o.GcpOfferDealType) {
+		return nil, false
+	}
+	return o.GcpOfferDealType, true
+}
+
+// HasGcpOfferDealType returns a boolean if a field has been set.
+func (o *OfferInfo) HasGcpOfferDealType() bool {
+	if o != nil && !IsNil(o.GcpOfferDealType) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpOfferDealType gets a reference to the given GcpMarketplaceOfferDealType and assigns it to the GcpOfferDealType field.
+func (o *OfferInfo) SetGcpOfferDealType(v GcpMarketplaceOfferDealType) {
+	o.GcpOfferDealType = &v
 }
 
 // GetGcpPaymentSchedule returns the GcpPaymentSchedule field value if set, zero value otherwise.
@@ -1294,6 +1436,38 @@ func (o *OfferInfo) SetGcpResellerPrivateOfferPlan(v GcpMarketplaceResellerPriva
 	o.GcpResellerPrivateOfferPlan = &v
 }
 
+// GetGcpSowAgreementDocument returns the GcpSowAgreementDocument field value if set, zero value otherwise.
+func (o *OfferInfo) GetGcpSowAgreementDocument() GcpAgreementDocument {
+	if o == nil || IsNil(o.GcpSowAgreementDocument) {
+		var ret GcpAgreementDocument
+		return ret
+	}
+	return *o.GcpSowAgreementDocument
+}
+
+// GetGcpSowAgreementDocumentOk returns a tuple with the GcpSowAgreementDocument field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OfferInfo) GetGcpSowAgreementDocumentOk() (*GcpAgreementDocument, bool) {
+	if o == nil || IsNil(o.GcpSowAgreementDocument) {
+		return nil, false
+	}
+	return o.GcpSowAgreementDocument, true
+}
+
+// HasGcpSowAgreementDocument returns a boolean if a field has been set.
+func (o *OfferInfo) HasGcpSowAgreementDocument() bool {
+	if o != nil && !IsNil(o.GcpSowAgreementDocument) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpSowAgreementDocument gets a reference to the given GcpAgreementDocument and assigns it to the GcpSowAgreementDocument field.
+func (o *OfferInfo) SetGcpSowAgreementDocument(v GcpAgreementDocument) {
+	o.GcpSowAgreementDocument = &v
+}
+
 // GetGcpUsagePlanPriceModel returns the GcpUsagePlanPriceModel field value if set, zero value otherwise.
 func (o *OfferInfo) GetGcpUsagePlanPriceModel() GcpMarketplaceUsagePlanPriceModel {
 	if o == nil || IsNil(o.GcpUsagePlanPriceModel) {
@@ -1484,6 +1658,38 @@ func (o *OfferInfo) HasPaymentSchedule() bool {
 // SetPaymentSchedule gets a reference to the given PaymentScheduleType and assigns it to the PaymentSchedule field.
 func (o *OfferInfo) SetPaymentSchedule(v PaymentScheduleType) {
 	o.PaymentSchedule = &v
+}
+
+// GetPdfURL returns the PdfURL field value if set, zero value otherwise.
+func (o *OfferInfo) GetPdfURL() string {
+	if o == nil || IsNil(o.PdfURL) {
+		var ret string
+		return ret
+	}
+	return *o.PdfURL
+}
+
+// GetPdfURLOk returns a tuple with the PdfURL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OfferInfo) GetPdfURLOk() (*string, bool) {
+	if o == nil || IsNil(o.PdfURL) {
+		return nil, false
+	}
+	return o.PdfURL, true
+}
+
+// HasPdfURL returns a boolean if a field has been set.
+func (o *OfferInfo) HasPdfURL() bool {
+	if o != nil && !IsNil(o.PdfURL) {
+		return true
+	}
+
+	return false
+}
+
+// SetPdfURL gets a reference to the given string and assigns it to the PdfURL field.
+func (o *OfferInfo) SetPdfURL(v string) {
+	o.PdfURL = &v
 }
 
 // GetPrivateOfferUrl returns the PrivateOfferUrl field value if set, zero value otherwise.
@@ -1710,6 +1916,38 @@ func (o *OfferInfo) SetSellerNotes(v string) {
 	o.SellerNotes = &v
 }
 
+// GetSnowflakeOffer returns the SnowflakeOffer field value if set, zero value otherwise.
+func (o *OfferInfo) GetSnowflakeOffer() SnowflakeMarketplaceOffer {
+	if o == nil || IsNil(o.SnowflakeOffer) {
+		var ret SnowflakeMarketplaceOffer
+		return ret
+	}
+	return *o.SnowflakeOffer
+}
+
+// GetSnowflakeOfferOk returns a tuple with the SnowflakeOffer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OfferInfo) GetSnowflakeOfferOk() (*SnowflakeMarketplaceOffer, bool) {
+	if o == nil || IsNil(o.SnowflakeOffer) {
+		return nil, false
+	}
+	return o.SnowflakeOffer, true
+}
+
+// HasSnowflakeOffer returns a boolean if a field has been set.
+func (o *OfferInfo) HasSnowflakeOffer() bool {
+	if o != nil && !IsNil(o.SnowflakeOffer) {
+		return true
+	}
+
+	return false
+}
+
+// SetSnowflakeOffer gets a reference to the given SnowflakeMarketplaceOffer and assigns it to the SnowflakeOffer field.
+func (o *OfferInfo) SetSnowflakeOffer(v SnowflakeMarketplaceOffer) {
+	o.SnowflakeOffer = &v
+}
+
 // GetStartTime returns the StartTime field value if set, zero value otherwise.
 func (o *OfferInfo) GetStartTime() time.Time {
 	if o == nil || IsNil(o.StartTime) {
@@ -1871,7 +2109,7 @@ func (o *OfferInfo) SetVisibility(v string) {
 }
 
 func (o OfferInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1903,6 +2141,9 @@ func (o OfferInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AwsCppoOpportunity) {
 		toSerialize["awsCppoOpportunity"] = o.AwsCppoOpportunity
+	}
+	if !IsNil(o.AwsMachineLearningContractDuration) {
+		toSerialize["awsMachineLearningContractDuration"] = o.AwsMachineLearningContractDuration
 	}
 	if !IsNil(o.AwsMarkupPercentage) {
 		toSerialize["awsMarkupPercentage"] = o.AwsMarkupPercentage
@@ -1952,6 +2193,12 @@ func (o OfferInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiscountPercentage) {
 		toSerialize["discountPercentage"] = o.DiscountPercentage
 	}
+	if !IsNil(o.DocusignEnvelopeIds) {
+		toSerialize["docusignEnvelopeIds"] = o.DocusignEnvelopeIds
+	}
+	if !IsNil(o.EulaMergeOrder) {
+		toSerialize["eulaMergeOrder"] = o.EulaMergeOrder
+	}
 	if !IsNil(o.EulaType) {
 		toSerialize["eulaType"] = o.EulaType
 	}
@@ -1966,6 +2213,9 @@ func (o OfferInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GcpMetrics) {
 		toSerialize["gcpMetrics"] = o.GcpMetrics
+	}
+	if !IsNil(o.GcpOfferDealType) {
+		toSerialize["gcpOfferDealType"] = o.GcpOfferDealType
 	}
 	if !IsNil(o.GcpPaymentSchedule) {
 		toSerialize["gcpPaymentSchedule"] = o.GcpPaymentSchedule
@@ -1988,6 +2238,9 @@ func (o OfferInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GcpResellerPrivateOfferPlan) {
 		toSerialize["gcpResellerPrivateOfferPlan"] = o.GcpResellerPrivateOfferPlan
 	}
+	if !IsNil(o.GcpSowAgreementDocument) {
+		toSerialize["gcpSowAgreementDocument"] = o.GcpSowAgreementDocument
+	}
 	if !IsNil(o.GcpUsagePlanPriceModel) {
 		toSerialize["gcpUsagePlanPriceModel"] = o.GcpUsagePlanPriceModel
 	}
@@ -2005,6 +2258,9 @@ func (o OfferInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PaymentSchedule) {
 		toSerialize["paymentSchedule"] = o.PaymentSchedule
+	}
+	if !IsNil(o.PdfURL) {
+		toSerialize["pdfURL"] = o.PdfURL
 	}
 	if !IsNil(o.PrivateOfferUrl) {
 		toSerialize["privateOfferUrl"] = o.PrivateOfferUrl
@@ -2026,6 +2282,9 @@ func (o OfferInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SellerNotes) {
 		toSerialize["sellerNotes"] = o.SellerNotes
+	}
+	if !IsNil(o.SnowflakeOffer) {
+		toSerialize["snowflakeOffer"] = o.SnowflakeOffer
 	}
 	if !IsNil(o.StartTime) {
 		toSerialize["startTime"] = o.StartTime
@@ -2080,3 +2339,5 @@ func (v *NullableOfferInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

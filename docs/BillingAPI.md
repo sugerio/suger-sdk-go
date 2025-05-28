@@ -2,23 +2,23 @@
 
 All URIs are relative to *http://https://api.suger.cloud*
 
- Method                                                                             | HTTP request                                                                           | Description               
-------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|---------------------------
- [**CreateAddon**](BillingAPI.md#CreateAddon)                                       | **Post** /org/{orgId}/addon                                                            | create addon              
- [**CreateRefund**](BillingAPI.md#CreateRefund)                                     | **Post** /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund | create refund.            
- [**DeleteAddon**](BillingAPI.md#DeleteAddon)                                       | **Delete** /org/{orgId}/addon/{addonId}                                                | delete addon              
- [**GetAddon**](BillingAPI.md#GetAddon)                                             | **Get** /org/{orgId}/addon/{addonId}                                                   | get addon                 
- [**GetInvoiceV2**](BillingAPI.md#GetInvoiceV2)                                     | **Get** /org/{orgId}/invoice/{invoiceId}                                               | get invoice               
- [**IssueInvoiceV2**](BillingAPI.md#IssueInvoiceV2)                                 | **Patch** /org/{orgId}/invoice/{invoiceId}/issue                                       | issue invoice             
- [**ListAddons**](BillingAPI.md#ListAddons)                                         | **Get** /org/{orgId}/addon                                                             | list addons               
- [**ListInvoices**](BillingAPI.md#ListInvoices)                                     | **Get** /org/{orgId}/invoice                                                           | list invoices             
- [**ListPaymentTransactions**](BillingAPI.md#ListPaymentTransactions)               | **Get** /org/{orgId}/paymentTransaction                                                | list payment transactions 
- [**ListRefundOfPaymentTransaction**](BillingAPI.md#ListRefundOfPaymentTransaction) | **Get** /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund  | list refunds.             
- [**PayInvoiceV2**](BillingAPI.md#PayInvoiceV2)                                     | **Patch** /org/{orgId}/invoice/{invoiceId}/pay                                         | pay invoice               
- [**PreviewInvoiceEmail**](BillingAPI.md#PreviewInvoiceEmail)                       | **Get** /org/{orgId}/invoice/{invoiceId}/preview                                       | preview invoice email     
- [**UpdateAddon**](BillingAPI.md#UpdateAddon)                                       | **Patch** /org/{orgId}/addon/{addonId}                                                 | update addon              
- [**UpdateInvoiceInfoV2**](BillingAPI.md#UpdateInvoiceInfoV2)                       | **Patch** /org/{orgId}/invoice/{invoiceId}/info                                        | update invoice info       
- [**VoidInvoiceV2**](BillingAPI.md#VoidInvoiceV2)                                   | **Patch** /org/{orgId}/invoice/{invoiceId}/void                                        | void invoice              
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**CreateAddon**](BillingAPI.md#CreateAddon) | **Post** /org/{orgId}/addon | create addon
+[**CreateRefund**](BillingAPI.md#CreateRefund) | **Post** /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund | create refund.
+[**DeleteAddon**](BillingAPI.md#DeleteAddon) | **Delete** /org/{orgId}/addon/{addonId} | delete addon
+[**GetAddon**](BillingAPI.md#GetAddon) | **Get** /org/{orgId}/addon/{addonId} | get addon
+[**GetInvoice**](BillingAPI.md#GetInvoice) | **Get** /org/{orgId}/invoice/{invoiceId} | get invoice
+[**IssueInvoice**](BillingAPI.md#IssueInvoice) | **Patch** /org/{orgId}/invoice/{invoiceId}/issue | issue invoice
+[**ListAddons**](BillingAPI.md#ListAddons) | **Get** /org/{orgId}/addon | list addons
+[**ListInvoices**](BillingAPI.md#ListInvoices) | **Get** /org/{orgId}/invoice | list invoices
+[**ListPaymentTransactions**](BillingAPI.md#ListPaymentTransactions) | **Get** /org/{orgId}/paymentTransaction | list payment transactions
+[**ListRefundOfPaymentTransaction**](BillingAPI.md#ListRefundOfPaymentTransaction) | **Get** /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund | list refunds.
+[**PayInvoice**](BillingAPI.md#PayInvoice) | **Patch** /org/{orgId}/invoice/{invoiceId}/pay | pay invoice
+[**PreviewInvoiceEmail**](BillingAPI.md#PreviewInvoiceEmail) | **Get** /org/{orgId}/invoice/{invoiceId}/preview | preview invoice email
+[**UpdateAddon**](BillingAPI.md#UpdateAddon) | **Patch** /org/{orgId}/addon/{addonId} | update addon
+[**UpdateInvoiceInfo**](BillingAPI.md#UpdateInvoiceInfo) | **Patch** /org/{orgId}/invoice/{invoiceId}/info | update invoice info
+[**VoidInvoice**](BillingAPI.md#VoidInvoice) | **Patch** /org/{orgId}/invoice/{invoiceId}/void | void invoice
 
 
 
@@ -318,11 +318,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetInvoiceV2
+## GetInvoice
 
-> BillingInvoice GetInvoiceV2(ctx, orgId, invoiceId).Execute()
+> BillingInvoice GetInvoice(ctx, orgId, invoiceId).Execute()
 
 get invoice
+
+
 
 ### Example
 
@@ -342,32 +344,34 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.GetInvoiceV2(context.Background(), orgId, invoiceId).Execute()
+	resp, r, err := apiClient.BillingAPI.GetInvoice(context.Background(), orgId, invoiceId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetInvoiceV2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetInvoice``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetInvoiceV2`: BillingInvoice
-	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetInvoiceV2`: %v\n", resp)
+	// response from `GetInvoice`: BillingInvoice
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetInvoice`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
- Name          | Type                | Description                                                                 | Notes 
----------------|---------------------|-----------------------------------------------------------------------------|-------
- **ctx**       | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **orgId**     | **string**          | Organization ID                                                             |
- **invoiceId** | **string**          | Invoice ID                                                                  |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+**invoiceId** | **string** | Invoice ID | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetInvoiceV2Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetInvoiceRequest struct via the builder pattern
 
 
- Name | Type | Description | Notes 
-------|------|-------------|-------
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
 
 ### Return type
 
@@ -387,11 +391,13 @@ Other parameters are passed through a pointer to a apiGetInvoiceV2Request struct
 [[Back to README]](../README.md)
 
 
-## IssueInvoiceV2
+## IssueInvoice
 
-> BillingInvoice IssueInvoiceV2(ctx, orgId, invoiceId).ContactIds(contactIds).Execute()
+> BillingInvoice IssueInvoice(ctx, orgId, invoiceId).ContactIds(contactIds).Execute()
 
 issue invoice
+
+
 
 ### Example
 
@@ -412,33 +418,35 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.IssueInvoiceV2(context.Background(), orgId, invoiceId).ContactIds(contactIds).Execute()
+	resp, r, err := apiClient.BillingAPI.IssueInvoice(context.Background(), orgId, invoiceId).ContactIds(contactIds).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.IssueInvoiceV2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.IssueInvoice``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IssueInvoiceV2`: BillingInvoice
-	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.IssueInvoiceV2`: %v\n", resp)
+	// response from `IssueInvoice`: BillingInvoice
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.IssueInvoice`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Organization ID |
-**invoiceId** | **string** | Invoice ID |
+**orgId** | **string** | Organization ID | 
+**invoiceId** | **string** | Invoice ID | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIssueInvoiceV2Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiIssueInvoiceRequest struct via the builder pattern
 
 
- Name | Type | Description | Notes 
-------|------|-------------|-------
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
-**contactIds** | **[]string** | List of Contact IDs |
+
+ **contactIds** | **[]string** | List of Contact IDs | 
 
 ### Return type
 
@@ -772,9 +780,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PayInvoiceV2
+## PayInvoice
 
-> BillingInvoice PayInvoiceV2(ctx, orgId, invoiceId).Execute()
+> BillingInvoice PayInvoice(ctx, orgId, invoiceId).Execute()
 
 pay invoice
 
@@ -798,13 +806,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.PayInvoiceV2(context.Background(), orgId, invoiceId).Execute()
+	resp, r, err := apiClient.BillingAPI.PayInvoice(context.Background(), orgId, invoiceId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.PayInvoiceV2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.PayInvoice``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PayInvoiceV2`: BillingInvoice
-	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.PayInvoiceV2`: %v\n", resp)
+	// response from `PayInvoice`: BillingInvoice
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.PayInvoice`: %v\n", resp)
 }
 ```
 
@@ -819,7 +827,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPayInvoiceV2Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiPayInvoiceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -850,6 +858,8 @@ Name | Type | Description  | Notes
 > string PreviewInvoiceEmail(ctx, orgId, invoiceId).Execute()
 
 preview invoice email
+
+
 
 ### Example
 
@@ -882,18 +892,21 @@ func main() {
 ### Path Parameters
 
 
- Name          | Type                | Description                                                                 | Notes 
----------------|---------------------|-----------------------------------------------------------------------------|-------
- **ctx**       | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **orgId**     | **string**          | Organization ID                                                             |
- **invoiceId** | **string**          | Invoice ID                                                                  |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+**invoiceId** | **string** | Invoice ID | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPreviewInvoiceEmailRequest struct via the builder pattern
 
- Name | Type | Description | Notes 
-------|------|-------------|-------
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
 
 ### Return type
 
@@ -988,11 +1001,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateInvoiceInfoV2
+## UpdateInvoiceInfo
 
-> BillingInvoiceInfo UpdateInvoiceInfoV2(ctx, orgId, invoiceId).Data(data).Execute()
+> BillingInvoiceInfo UpdateInvoiceInfo(ctx, orgId, invoiceId).Data(data).Execute()
 
 update invoice info
+
+
 
 ### Example
 
@@ -1013,32 +1028,35 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.UpdateInvoiceInfoV2(context.Background(), orgId, invoiceId).Data(data).Execute()
+	resp, r, err := apiClient.BillingAPI.UpdateInvoiceInfo(context.Background(), orgId, invoiceId).Data(data).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.UpdateInvoiceInfoV2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.UpdateInvoiceInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateInvoiceInfoV2`: BillingInvoiceInfo
-	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.UpdateInvoiceInfoV2`: %v\n", resp)
+	// response from `UpdateInvoiceInfo`: BillingInvoiceInfo
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.UpdateInvoiceInfo`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
- Name          | Type                | Description                                                                 | Notes 
----------------|---------------------|-----------------------------------------------------------------------------|-------
- **ctx**       | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **orgId**     | **string**          | Organization ID                                                             |
- **invoiceId** | **string**          | Invoice ID                                                                  |
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+**invoiceId** | **string** | Invoice ID | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateInvoiceInfoV2Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateInvoiceInfoRequest struct via the builder pattern
 
- Name | Type | Description | Notes 
-------|------|-------------|-------
 
-**data** | [**UpdateInvoiceInfoRequest**](UpdateInvoiceInfoRequest.md) | Update Invoice Info Request Params |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **data** | [**UpdateInvoiceInfoRequest**](UpdateInvoiceInfoRequest.md) | Update Invoice Info Request Params | 
 
 ### Return type
 
@@ -1058,11 +1076,13 @@ Other parameters are passed through a pointer to a apiUpdateInvoiceInfoV2Request
 [[Back to README]](../README.md)
 
 
-## VoidInvoiceV2
+## VoidInvoice
 
-> BillingInvoice VoidInvoiceV2(ctx, orgId, invoiceId).Execute()
+> BillingInvoice VoidInvoice(ctx, orgId, invoiceId).Execute()
 
 void invoice
+
+
 
 ### Example
 
@@ -1082,30 +1102,34 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.VoidInvoiceV2(context.Background(), orgId, invoiceId).Execute()
+	resp, r, err := apiClient.BillingAPI.VoidInvoice(context.Background(), orgId, invoiceId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.VoidInvoiceV2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.VoidInvoice``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `VoidInvoiceV2`: BillingInvoice
-	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.VoidInvoiceV2`: %v\n", resp)
+	// response from `VoidInvoice`: BillingInvoice
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.VoidInvoice`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Organization ID |
-**invoiceId** | **string** | Invoice ID |
+**orgId** | **string** | Organization ID | 
+**invoiceId** | **string** | Invoice ID | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiVoidInvoiceV2Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiVoidInvoiceRequest struct via the builder pattern
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+
 
 ### Return type
 

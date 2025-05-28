@@ -2,28 +2,29 @@
 
 ## Properties
 
- Name                    | Type                                                                     | Description                                                                           | Notes      
--------------------------|--------------------------------------------------------------------------|---------------------------------------------------------------------------------------|------------
- **AdyenBuyer**          | Pointer to [**AdyenBuyer**](AdyenBuyer.md)                               | Buyer on Adyen                                                                        | [optional] 
- **AwsBuyer**            | Pointer to [**AwsAccountIdentifier**](AwsAccountIdentifier.md)           | Buyer from AWS Marketplace                                                            | [optional] 
- **AzureBuyer**          | Pointer to [**AzureADIdentifier**](AzureADIdentifier.md)                 | Buyer from Azure Marketplace                                                          | [optional] 
- **CollectableAmount**   | Pointer to **float32**                                                   | The amount that the seller can collect. It excludes the marketplace commision fee.    | [optional] 
- **CompanyInfo**         | Pointer to [**CompanyInfo**](CompanyInfo.md)                             |                                                                                       | [optional] 
- **CustomerId**          | Pointer to **string**                                                    | customerID of buyer on seller&#39;s side                                              | [optional] 
- **DisbursedAmount**     | Pointer to **float32**                                                   | The amount that has been disbursed to the seller account.                             | [optional] 
- **EmailAddress**        | Pointer to **string**                                                    | The email address of the buyer. This was copied from the new client signup form.      | [optional] 
- **Fields**              | Pointer to **map[string]interface{}**                                    | Fields to store key-value pairs of buyer information.                                 | [optional] 
- **GcpBuyer**            | Pointer to [**GcpMarketplaceUserAccount**](GcpMarketplaceUserAccount.md) | Buyer from GCP Marketplace                                                            | [optional] 
- **GrossAmount**         | Pointer to **float32**                                                   | The gross amount that the buyer has committed to pay, including usage metered amount. | [optional] 
- **InvoicedAmount**      | Pointer to **float32**                                                   | The amount that the buyer has got invoiced.                                           | [optional] 
- **LagoCustomerId**      | Pointer to **string**                                                    | The lgo customer ID for the buyer if it is connected to a lago customer.              | [optional] 
- **LastModifiedBy**      | Pointer to **string**                                                    | Last modifier user ID.                                                                | [optional] 
- **MetronomeCustomerId** | Pointer to **string**                                                    | The metronome customer ID for the buyer if it is connected to a metronome customer.   | [optional] 
- **OrbCustomerId**       | Pointer to **string**                                                    | The orb customer ID for the buyer if it is connected to a orb customer.               | [optional] 
- **PaymentConfig**       | Pointer to [**PaymentConfig**](PaymentConfig.md)                         | Payment Config for billing.                                                           | [optional] 
- **SpaUrl**              | Pointer to **string**                                                    | Buyer SPA url, public page visited with jwt.                                          | [optional] 
- **StripeBuyer**         | Pointer to [**StripeCustomer**](StripeCustomer.md)                       | Buyer as Customer on Stripe                                                           | [optional] 
- **StripeCustomerId**    | Pointer to **string**                                                    | The stripe customer ID for the buyer if it is connected to a stripe customer.         | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AdyenBuyer** | Pointer to [**AdyenBuyer**](AdyenBuyer.md) | Buyer on Adyen | [optional] 
+**AwsBuyer** | Pointer to [**AwsAccountIdentifier**](AwsAccountIdentifier.md) | Buyer from AWS Marketplace | [optional] 
+**AzureBuyer** | Pointer to [**AzureADIdentifier**](AzureADIdentifier.md) | Buyer from Azure Marketplace | [optional] 
+**CollectableAmount** | Pointer to **float32** | The amount that the seller can collect. It excludes the marketplace commision fee. | [optional] 
+**CompanyInfo** | Pointer to [**CompanyInfo**](CompanyInfo.md) |  | [optional] 
+**CustomerId** | Pointer to **string** | customerID of buyer on seller&#39;s side | [optional] 
+**DisbursedAmount** | Pointer to **float32** | The amount that has been disbursed to the seller account. | [optional] 
+**EmailAddress** | Pointer to **string** | The email address of the buyer. This was copied from the new client signup form. | [optional] 
+**Fields** | Pointer to **map[string]interface{}** | Fields to store key-value pairs of buyer information. | [optional] 
+**GcpBuyer** | Pointer to [**GcpMarketplaceUserAccount**](GcpMarketplaceUserAccount.md) | Buyer from GCP Marketplace | [optional] 
+**GrossAmount** | Pointer to **float32** | The gross amount that the buyer has committed to pay, including usage metered amount. | [optional] 
+**InvoicedAmount** | Pointer to **float32** | The amount that the buyer has got invoiced. | [optional] 
+**LagoCustomerId** | Pointer to **string** | The lgo customer ID for the buyer if it is connected to a lago customer. | [optional] 
+**LastModifiedBy** | Pointer to **string** | Last modifier user ID. | [optional] 
+**MetronomeCustomerId** | Pointer to **string** | The metronome customer ID for the buyer if it is connected to a metronome customer. | [optional] 
+**OrbCustomerId** | Pointer to **string** | The orb customer ID for the buyer if it is connected to a orb customer. | [optional] 
+**PaymentConfig** | Pointer to [**PaymentConfig**](PaymentConfig.md) | Payment Config for billing. | [optional] 
+**SnowflakeBuyer** | Pointer to [**SnowflakeMarketplaceBuyer**](SnowflakeMarketplaceBuyer.md) | Buyer on Snowflake | [optional] 
+**SpaUrl** | Pointer to **string** | Buyer SPA url, public page visited with jwt. | [optional] 
+**StripeBuyer** | Pointer to [**StripeCustomer**](StripeCustomer.md) | Buyer as Customer on Stripe | [optional] 
+**StripeCustomerId** | Pointer to **string** | The stripe customer ID for the buyer if it is connected to a stripe customer. | [optional] 
 
 ## Methods
 
@@ -469,6 +470,31 @@ SetPaymentConfig sets PaymentConfig field to given value.
 
 HasPaymentConfig returns a boolean if a field has been set.
 
+### GetSnowflakeBuyer
+
+`func (o *BuyerInfo) GetSnowflakeBuyer() SnowflakeMarketplaceBuyer`
+
+GetSnowflakeBuyer returns the SnowflakeBuyer field if non-nil, zero value otherwise.
+
+### GetSnowflakeBuyerOk
+
+`func (o *BuyerInfo) GetSnowflakeBuyerOk() (*SnowflakeMarketplaceBuyer, bool)`
+
+GetSnowflakeBuyerOk returns a tuple with the SnowflakeBuyer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSnowflakeBuyer
+
+`func (o *BuyerInfo) SetSnowflakeBuyer(v SnowflakeMarketplaceBuyer)`
+
+SetSnowflakeBuyer sets SnowflakeBuyer field to given value.
+
+### HasSnowflakeBuyer
+
+`func (o *BuyerInfo) HasSnowflakeBuyer() bool`
+
+HasSnowflakeBuyer returns a boolean if a field has been set.
+
 ### GetSpaUrl
 
 `func (o *BuyerInfo) GetSpaUrl() string`
@@ -543,6 +569,7 @@ SetStripeCustomerId sets StripeCustomerId field to given value.
 `func (o *BuyerInfo) HasStripeCustomerId() bool`
 
 HasStripeCustomerId returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

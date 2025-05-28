@@ -23,8 +23,8 @@ type AzureMarketplacePrivateOfferPricing struct {
 	// required for SaasNewCustomizedPlans
 	BasePlan *string `json:"basePlan,omitempty"`
 	// between 0.01 to 100
-	DiscountPercentage *float32                  `json:"discountPercentage,omitempty"`
-	DiscountType       *PrivateOfferDiscountType `json:"discountType,omitempty"`
+	DiscountPercentage *float32 `json:"discountPercentage,omitempty"`
+	DiscountType *PrivateOfferDiscountType `json:"discountType,omitempty"`
 	// between 0.00000001 to 100
 	MarkupPercentage *float32 `json:"markupPercentage,omitempty"`
 	// required for SaasNewCustomizedPlans
@@ -32,17 +32,17 @@ type AzureMarketplacePrivateOfferPricing struct {
 	// the pricing plan of the original plan.
 	OriginalPlan *AzureMarketplacePriceAndAvailabilityPrivateOfferPlan `json:"originalPlan,omitempty"`
 	// The base/original/default plan of the private offer, in format of \"plan/product-durable-id/plan-durable-id\"
-	Plan     *string `json:"plan,omitempty"`
-	PlanId   *string `json:"planId,omitempty"`
+	Plan *string `json:"plan,omitempty"`
+	PlanId *string `json:"planId,omitempty"`
 	PlanName *string `json:"planName,omitempty"`
 	// The type of the plan, FLAT_RATE or PER_USER.
-	PlanType     *string                `json:"planType,omitempty"`
+	PlanType *string `json:"planType,omitempty"`
 	PriceDetails map[string]interface{} `json:"priceDetails,omitempty"`
 	// the pricing plan of the private offer
 	PrivateOfferPlan *AzureMarketplacePriceAndAvailabilityPrivateOfferPlan `json:"privateOfferPlan,omitempty"`
 	// in format of \"product/product-durable-id\"
-	Product      *string `json:"product,omitempty"`
-	ProductName  *string `json:"productName,omitempty"`
+	Product *string `json:"product,omitempty"`
+	ProductName *string `json:"productName,omitempty"`
 	SugerOfferId *string `json:"sugerOfferId,omitempty"`
 }
 
@@ -544,7 +544,7 @@ func (o *AzureMarketplacePrivateOfferPricing) SetSugerOfferId(v string) {
 }
 
 func (o AzureMarketplacePrivateOfferPricing) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -636,3 +636,5 @@ func (v *NullableAzureMarketplacePrivateOfferPricing) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

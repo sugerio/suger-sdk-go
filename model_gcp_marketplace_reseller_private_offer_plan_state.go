@@ -20,10 +20,10 @@ var _ MappedNullable = &GcpMarketplaceResellerPrivateOfferPlanState{}
 
 // GcpMarketplaceResellerPrivateOfferPlanState struct for GcpMarketplaceResellerPrivateOfferPlanState
 type GcpMarketplaceResellerPrivateOfferPlanState struct {
-	CancellationReason map[string]interface{}                           `json:"cancellationReason,omitempty"`
-	Comment            *string                                          `json:"comment,omitempty"`
-	RejectionReason    map[string]interface{}                           `json:"rejectionReason,omitempty"`
-	StateType          *GcpMarketplaceResellerPrivateOfferPlanStateType `json:"stateType,omitempty"`
+	CancellationReason map[string]interface{} `json:"cancellationReason,omitempty"`
+	Comment *string `json:"comment,omitempty"`
+	RejectionReason map[string]interface{} `json:"rejectionReason,omitempty"`
+	StateType *GcpMarketplaceResellerPrivateOfferPlanStateType `json:"stateType,omitempty"`
 }
 
 // NewGcpMarketplaceResellerPrivateOfferPlanState instantiates a new GcpMarketplaceResellerPrivateOfferPlanState object
@@ -172,7 +172,7 @@ func (o *GcpMarketplaceResellerPrivateOfferPlanState) SetStateType(v GcpMarketpl
 }
 
 func (o GcpMarketplaceResellerPrivateOfferPlanState) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,3 +231,5 @@ func (v *NullableGcpMarketplaceResellerPrivateOfferPlanState) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

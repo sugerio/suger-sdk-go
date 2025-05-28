@@ -20,15 +20,15 @@ var _ MappedNullable = &StripeCustomer{}
 
 // StripeCustomer struct for StripeCustomer
 type StripeCustomer struct {
-	Address     *StripeCustomerAddress `json:"address,omitempty"`
-	Description *string                `json:"description,omitempty"`
-	Email       *string                `json:"email,omitempty"`
+	Address *StripeCustomerAddress `json:"address,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Email *string `json:"email,omitempty"`
 	// The customer ID on the stripe platform.
 	Id *string `json:"id,omitempty"`
 	// Set of key-value pairs that you can attach to store additional information about customer.
 	Metadata *map[string]string `json:"metadata,omitempty"`
-	Name     *string            `json:"name,omitempty"`
-	Phone    *string            `json:"phone,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Phone *string `json:"phone,omitempty"`
 }
 
 // NewStripeCustomer instantiates a new StripeCustomer object
@@ -273,7 +273,7 @@ func (o *StripeCustomer) SetPhone(v string) {
 }
 
 func (o StripeCustomer) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -341,3 +341,5 @@ func (v *NullableStripeCustomer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

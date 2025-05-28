@@ -21,7 +21,7 @@ var _ MappedNullable = &GcpMarketplaceResellerPrivateOfferPlanDurationConfig{}
 
 // GcpMarketplaceResellerPrivateOfferPlanDurationConfig struct for GcpMarketplaceResellerPrivateOfferPlanDurationConfig
 type GcpMarketplaceResellerPrivateOfferPlanDurationConfig struct {
-	EndTime   *time.Time `json:"endTime,omitempty"`
+	EndTime *time.Time `json:"endTime,omitempty"`
 	StartTime *time.Time `json:"startTime,omitempty"`
 }
 
@@ -107,7 +107,7 @@ func (o *GcpMarketplaceResellerPrivateOfferPlanDurationConfig) SetStartTime(v ti
 }
 
 func (o GcpMarketplaceResellerPrivateOfferPlanDurationConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableGcpMarketplaceResellerPrivateOfferPlanDurationConfig) Unmarshal
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

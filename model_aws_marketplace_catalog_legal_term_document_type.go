@@ -21,12 +21,12 @@ type AwsMarketplaceCatalogLegalTermDocumentType string
 
 // List of AwsMarketplaceCatalogLegalTermDocumentType
 const (
-	AwsMarketplaceCatalogLegalTermDocumentType_CustomEula               AwsMarketplaceCatalogLegalTermDocumentType = "CustomEula"
-	AwsMarketplaceCatalogLegalTermDocumentType_CustomDsa                AwsMarketplaceCatalogLegalTermDocumentType = "CustomDsa"
-	AwsMarketplaceCatalogLegalTermDocumentType_StandardEula             AwsMarketplaceCatalogLegalTermDocumentType = "StandardEula"
-	AwsMarketplaceCatalogLegalTermDocumentType_StandardDsa              AwsMarketplaceCatalogLegalTermDocumentType = "StandardDsa"
+	AwsMarketplaceCatalogLegalTermDocumentType_CustomEula AwsMarketplaceCatalogLegalTermDocumentType = "CustomEula"
+	AwsMarketplaceCatalogLegalTermDocumentType_CustomDsa AwsMarketplaceCatalogLegalTermDocumentType = "CustomDsa"
+	AwsMarketplaceCatalogLegalTermDocumentType_StandardEula AwsMarketplaceCatalogLegalTermDocumentType = "StandardEula"
+	AwsMarketplaceCatalogLegalTermDocumentType_StandardDsa AwsMarketplaceCatalogLegalTermDocumentType = "StandardDsa"
 	AwsMarketplaceCatalogLegalTermDocumentType_StandardResellerContract AwsMarketplaceCatalogLegalTermDocumentType = "StandardResellerContract"
-	AwsMarketplaceCatalogLegalTermDocumentType_CustomResellerContract   AwsMarketplaceCatalogLegalTermDocumentType = "CustomResellerContract"
+	AwsMarketplaceCatalogLegalTermDocumentType_CustomResellerContract AwsMarketplaceCatalogLegalTermDocumentType = "CustomResellerContract"
 )
 
 // All allowed values of AwsMarketplaceCatalogLegalTermDocumentType enum
@@ -117,3 +117,4 @@ func (v *NullableAwsMarketplaceCatalogLegalTermDocumentType) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

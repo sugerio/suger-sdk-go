@@ -21,22 +21,22 @@ type AzureMarketplaceProductType string
 
 // List of AzureMarketplaceProductType
 const (
-	AzureMarketplaceProductType_azureApplication                 AzureMarketplaceProductType = "azureApplication"
-	AzureMarketplaceProductType_azureContainer                   AzureMarketplaceProductType = "azureContainer"
-	AzureMarketplaceProductType_azureVirtualMachine              AzureMarketplaceProductType = "azureVirtualMachine"
-	AzureMarketplaceProductType_consultingService                AzureMarketplaceProductType = "consultingService"
-	AzureMarketplaceProductType_containerApp                     AzureMarketplaceProductType = "containerApp"
-	AzureMarketplaceProductType_coreVirtualMachine               AzureMarketplaceProductType = "coreVirtualMachine"
-	AzureMarketplaceProductType_cosellOnly                       AzureMarketplaceProductType = "cosellOnly"
-	AzureMarketplaceProductType_dynamics365BusinessCentral       AzureMarketplaceProductType = "dynamics365BusinessCentral"
+	AzureMarketplaceProductType_azureApplication AzureMarketplaceProductType = "azureApplication"
+	AzureMarketplaceProductType_azureContainer AzureMarketplaceProductType = "azureContainer"
+	AzureMarketplaceProductType_azureVirtualMachine AzureMarketplaceProductType = "azureVirtualMachine"
+	AzureMarketplaceProductType_consultingService AzureMarketplaceProductType = "consultingService"
+	AzureMarketplaceProductType_containerApp AzureMarketplaceProductType = "containerApp"
+	AzureMarketplaceProductType_coreVirtualMachine AzureMarketplaceProductType = "coreVirtualMachine"
+	AzureMarketplaceProductType_cosellOnly AzureMarketplaceProductType = "cosellOnly"
+	AzureMarketplaceProductType_dynamics365BusinessCentral AzureMarketplaceProductType = "dynamics365BusinessCentral"
 	AzureMarketplaceProductType_dynamics365ForCustomerEngagement AzureMarketplaceProductType = "dynamics365ForCustomerEngagement"
-	AzureMarketplaceProductType_dynamics365ForOperations         AzureMarketplaceProductType = "dynamics365ForOperations"
-	AzureMarketplaceProductType_iotEdgeModule                    AzureMarketplaceProductType = "iotEdgeModule"
-	AzureMarketplaceProductType_managedService                   AzureMarketplaceProductType = "managedService"
-	AzureMarketplaceProductType_powerBiApp                       AzureMarketplaceProductType = "powerBiApp"
-	AzureMarketplaceProductType_powerBiVisual                    AzureMarketplaceProductType = "powerBiVisual"
-	AzureMarketplaceProductType_softwareAsAService               AzureMarketplaceProductType = "softwareAsAService"
-	AzureMarketplaceProductType_xbox360NonBackcompat             AzureMarketplaceProductType = "xbox360NonBackcompat"
+	AzureMarketplaceProductType_dynamics365ForOperations AzureMarketplaceProductType = "dynamics365ForOperations"
+	AzureMarketplaceProductType_iotEdgeModule AzureMarketplaceProductType = "iotEdgeModule"
+	AzureMarketplaceProductType_managedService AzureMarketplaceProductType = "managedService"
+	AzureMarketplaceProductType_powerBiApp AzureMarketplaceProductType = "powerBiApp"
+	AzureMarketplaceProductType_powerBiVisual AzureMarketplaceProductType = "powerBiVisual"
+	AzureMarketplaceProductType_softwareAsAService AzureMarketplaceProductType = "softwareAsAService"
+	AzureMarketplaceProductType_xbox360NonBackcompat AzureMarketplaceProductType = "xbox360NonBackcompat"
 )
 
 // All allowed values of AzureMarketplaceProductType enum
@@ -137,3 +137,4 @@ func (v *NullableAzureMarketplaceProductType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

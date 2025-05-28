@@ -21,7 +21,7 @@ var _ MappedNullable = &StripePaymentMethod{}
 // StripePaymentMethod struct for StripePaymentMethod
 type StripePaymentMethod struct {
 	BacsDebit *StripePaymentMethodBACSDebit `json:"bacs_debit,omitempty"`
-	Card      *StripePaymentMethodCard      `json:"card,omitempty"`
+	Card *StripePaymentMethodCard `json:"card,omitempty"`
 	// Time at which the object was created. Measured in seconds since the Unix epoch.
 	Created *int32 `json:"created,omitempty"`
 	// Unique identifier for the payment method on stripe.
@@ -29,8 +29,8 @@ type StripePaymentMethod struct {
 	// Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
 	Livemode *bool `json:"livemode,omitempty"`
 	// String representing the object’s type. Always has the value `payment_method`.
-	Object        *string                           `json:"object,omitempty"`
-	SepaDebit     *StripePaymentMethodSEPADebit     `json:"sepa_debit,omitempty"`
+	Object *string `json:"object,omitempty"`
+	SepaDebit *StripePaymentMethodSEPADebit `json:"sepa_debit,omitempty"`
 	UsBankAccount *StripePaymentMethodUSBankAccount `json:"us_bank_account,omitempty"`
 }
 
@@ -308,7 +308,7 @@ func (o *StripePaymentMethod) SetUsBankAccount(v StripePaymentMethodUSBankAccoun
 }
 
 func (o StripePaymentMethod) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -379,3 +379,5 @@ func (v *NullableStripePaymentMethod) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

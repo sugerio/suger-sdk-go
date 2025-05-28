@@ -2,11 +2,11 @@
 
 ## Properties
 
- Name                    | Type                                                                             | Description | Notes      
--------------------------|----------------------------------------------------------------------------------|-------------|------------
- **AdditionalResources** | Pointer to [**[]AwsProductAdditionalResource**](AwsProductAdditionalResource.md) |             | [optional] 
- **LogoUrl**             | Pointer to **string**                                                            |             | [optional] 
- **Videos**              | Pointer to [**[]AwsProductVideo**](AwsProductVideo.md)                           |             | [optional] 
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AdditionalResources** | Pointer to [**[]AwsProductAdditionalResource**](AwsProductAdditionalResource.md) |  | [optional] 
+**LogoUrl** | Pointer to **string** |  | [optional] 
+**Videos** | Pointer to [**[]AwsProductVideo**](AwsProductVideo.md) |  | [optional] 
 
 ## Methods
 

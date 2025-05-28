@@ -20,9 +20,9 @@ var _ MappedNullable = &AwsProductSignatureVerificationKey{}
 
 // AwsProductSignatureVerificationKey struct for AwsProductSignatureVerificationKey
 type AwsProductSignatureVerificationKey struct {
-	PublicKey        *string `json:"PublicKey,omitempty"`
-	PublicKeyVersion *int32  `json:"PublicKeyVersion,omitempty"`
-	Status           *string `json:"Status,omitempty"`
+	PublicKey *string `json:"PublicKey,omitempty"`
+	PublicKeyVersion *int32 `json:"PublicKeyVersion,omitempty"`
+	Status *string `json:"Status,omitempty"`
 }
 
 // NewAwsProductSignatureVerificationKey instantiates a new AwsProductSignatureVerificationKey object
@@ -139,7 +139,7 @@ func (o *AwsProductSignatureVerificationKey) SetStatus(v string) {
 }
 
 func (o AwsProductSignatureVerificationKey) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableAwsProductSignatureVerificationKey) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -22,9 +22,9 @@ var _ MappedNullable = &BillingWalletInfo{}
 // BillingWalletInfo struct for BillingWalletInfo
 type BillingWalletInfo struct {
 	// The close date of the wallet if applicable.
-	CloseDate           *time.Time           `json:"closeDate,omitempty"`
+	CloseDate *time.Time `json:"closeDate,omitempty"`
 	StripePaymentMethod *StripePaymentMethod `json:"stripePaymentMethod,omitempty"`
-	StripeSetupIntentId *string              `json:"stripeSetupIntentId,omitempty"`
+	StripeSetupIntentId *string `json:"stripeSetupIntentId,omitempty"`
 }
 
 // NewBillingWalletInfo instantiates a new BillingWalletInfo object
@@ -141,7 +141,7 @@ func (o *BillingWalletInfo) SetStripeSetupIntentId(v string) {
 }
 
 func (o BillingWalletInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -197,3 +197,5 @@ func (v *NullableBillingWalletInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,9 +21,9 @@ type AwsMarketplaceCppoOpportunityRuleType string
 
 // List of AwsMarketplaceCppoOpportunityRuleType
 const (
-	AwsMarketplaceCppoOpportunityRuleType_AvailabilityRule     AwsMarketplaceCppoOpportunityRuleType = "AvailabilityRule"
+	AwsMarketplaceCppoOpportunityRuleType_AvailabilityRule AwsMarketplaceCppoOpportunityRuleType = "AvailabilityRule"
 	AwsMarketplaceCppoOpportunityRuleType_PartnerTargetingRule AwsMarketplaceCppoOpportunityRuleType = "PartnerTargetingRule"
-	AwsMarketplaceCppoOpportunityRuleType_TargetingRule        AwsMarketplaceCppoOpportunityRuleType = "TargetingRule"
+	AwsMarketplaceCppoOpportunityRuleType_TargetingRule AwsMarketplaceCppoOpportunityRuleType = "TargetingRule"
 	AwsMarketplaceCppoOpportunityRuleType_TaxConfigurationRule AwsMarketplaceCppoOpportunityRuleType = "TaxConfigurationRule"
 )
 
@@ -113,3 +113,4 @@ func (v *NullableAwsMarketplaceCppoOpportunityRuleType) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

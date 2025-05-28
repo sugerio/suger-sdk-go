@@ -107,7 +107,7 @@ func (o *GcpMarketplacePrivateOfferPriceModelPayg) SetSkuDiscounts(v []map[strin
 }
 
 func (o GcpMarketplacePrivateOfferPriceModelPayg) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableGcpMarketplacePrivateOfferPriceModelPayg) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

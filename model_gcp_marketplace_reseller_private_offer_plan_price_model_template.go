@@ -21,13 +21,13 @@ var _ MappedNullable = &GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate
 // GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate struct for GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate
 type GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate struct {
 	// in format of \"projects/{projectNumber}/services/service-name.endpoints.gcp-project-id.cloud.goog/standardOffers/base-offer-id\"
-	BaseOffer    *string                                                             `json:"baseOffer,omitempty"`
-	Commitment   *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateCommitment `json:"commitment,omitempty"`
-	Consumption  *string                                                             `json:"consumption,omitempty"`
-	FixedPrice   *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateFixedPrice `json:"fixedPrice,omitempty"`
-	Overage      *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateOverage    `json:"overage,omitempty"`
-	Payg         *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplatePayg       `json:"payg,omitempty"`
-	Subscription *string                                                             `json:"subscription,omitempty"`
+	BaseOffer *string `json:"baseOffer,omitempty"`
+	Commitment *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateCommitment `json:"commitment,omitempty"`
+	Consumption *string `json:"consumption,omitempty"`
+	FixedPrice *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateFixedPrice `json:"fixedPrice,omitempty"`
+	Overage *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplateOverage `json:"overage,omitempty"`
+	Payg *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplatePayg `json:"payg,omitempty"`
+	Subscription *string `json:"subscription,omitempty"`
 }
 
 // NewGcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate instantiates a new GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate object
@@ -272,7 +272,7 @@ func (o *GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate) SetSubscripti
 }
 
 func (o GcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -340,3 +340,5 @@ func (v *NullableGcpMarketplaceResellerPrivateOfferPlanPriceModelTemplate) Unmar
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

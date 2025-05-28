@@ -34,11 +34,11 @@ type NotificationEvent struct {
 	CreatedBy *LastModifiedBy `json:"createdBy,omitempty"`
 	// Custom fields of the notification event.
 	CustomFields map[string]interface{} `json:"customFields,omitempty"`
-	EntityID     *string                `json:"entityID,omitempty"`
+	EntityID *string `json:"entityID,omitempty"`
 	// The name of the entity.
-	EntityName   *string     `json:"entityName,omitempty"`
-	EntityStatus *string     `json:"entityStatus,omitempty"`
-	EntityType   *EntityType `json:"entityType,omitempty"`
+	EntityName *string `json:"entityName,omitempty"`
+	EntityStatus *string `json:"entityStatus,omitempty"`
+	EntityType *EntityType `json:"entityType,omitempty"`
 	// notification event id.
 	EventID *string `json:"eventID,omitempty"`
 	// notification event status.
@@ -853,7 +853,7 @@ func (o *NotificationEvent) SetTrackEvents(v []TrackEvent) {
 }
 
 func (o NotificationEvent) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -972,3 +972,5 @@ func (v *NullableNotificationEvent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

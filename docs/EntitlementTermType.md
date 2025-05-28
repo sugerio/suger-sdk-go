@@ -2,6 +2,7 @@
 
 ## Enum
 
+
 * `EntitlementTermTypeUnknown` (value: `""`)
 
 * `EntitlementTermTypeAutoRenew` (value: `"AutoRenew"`)

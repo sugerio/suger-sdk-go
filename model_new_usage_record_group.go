@@ -12,10 +12,10 @@ Contact: support@suger.io
 package suger
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the NewUsageRecordGroup type satisfies the MappedNullable interface at compile time
@@ -25,7 +25,7 @@ var _ MappedNullable = &NewUsageRecordGroup{}
 type NewUsageRecordGroup struct {
 	// for usage metering API v2, don't use it together with the records v1.
 	BillableRecords []MeteringUsageRecord `json:"billableRecords,omitempty"`
-	EntitlementID   string                `json:"entitlementID"`
+	EntitlementID string `json:"entitlementID"`
 	// read-only, don't set it when validating or reporting the usage record group.
 	MetaInfo *MeteringUsageRecordGroupMetaInfo `json:"metaInfo,omitempty"`
 	// for usage metering API v1, don't use it together with the billableRecords v2.
@@ -200,7 +200,7 @@ func (o *NewUsageRecordGroup) SetTimestamp(v time.Time) {
 }
 
 func (o NewUsageRecordGroup) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -237,10 +237,10 @@ func (o *NewUsageRecordGroup) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -296,3 +296,5 @@ func (v *NullableNewUsageRecordGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

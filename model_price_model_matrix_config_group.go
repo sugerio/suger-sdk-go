@@ -21,7 +21,7 @@ var _ MappedNullable = &PriceModelMatrixConfigGroup{}
 // PriceModelMatrixConfigGroup struct for PriceModelMatrixConfigGroup
 type PriceModelMatrixConfigGroup struct {
 	Properties []PriceModelMatrixProperty `json:"properties,omitempty"`
-	UnitAmount *float32                   `json:"unitAmount,omitempty"`
+	UnitAmount *float32 `json:"unitAmount,omitempty"`
 }
 
 // NewPriceModelMatrixConfigGroup instantiates a new PriceModelMatrixConfigGroup object
@@ -106,7 +106,7 @@ func (o *PriceModelMatrixConfigGroup) SetUnitAmount(v float32) {
 }
 
 func (o PriceModelMatrixConfigGroup) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullablePriceModelMatrixConfigGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

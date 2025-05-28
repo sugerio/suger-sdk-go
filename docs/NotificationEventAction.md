@@ -21,6 +21,8 @@
 
 * `NotificationEventAction_DELETE` (value: `"DELETE"`)
 
+* `NotificationEventAction_ARCHIVE` (value: `"ARCHIVE"`)
+
 * `NotificationEventAction_DISBURSE` (value: `"DISBURSE"`)
 
 * `NotificationEventAction_END_SOON` (value: `"END_SOON"`)
@@ -57,6 +59,8 @@
 
 * `NotificationEventAction_ISSUE` (value: `"ISSUE"`)
 
+* `NotificationEventAction_SIGN` (value: `"SIGN"`)
+
 * `NotificationEventAction_ROTATE_SECRET` (value: `"ROTATE_SECRET"`)
 
 * `NotificationEventAction_SUSPEND` (value: `"SUSPEND"`)
@@ -71,6 +75,8 @@
 
 * `NotificationEventAction_ACE_CUSTOMER_EMAIL_UPDATE` (value: `"ACE_CUSTOMER_EMAIL_UPDATE"`)
 
+* `NotificationEventAction_AZURE_STATUS_UPDATE` (value: `"AZURE_STATUS_UPDATE"`)
+
 * `NotificationEventAction_SUBMIT_APPROVAL_REQUEST` (value: `"SUBMIT_APPROVAL_REQUEST"`)
 
 * `NotificationEventAction_REVIEW_APPROVAL_REQUEST` (value: `"REVIEW_APPROVAL_REQUEST"`)
@@ -80,6 +86,9 @@
 * `NotificationEventAction_FAIL` (value: `"FAIL"`)
 
 * `NotificationEventAction_WEBHOOK` (value: `"WEBHOOK"`)
+
+* `NotificationEventAction_MARKETPLACE_CONTACT_EMAIL_UPDATE` (value: `"MARKETPLACE_CONTACT_EMAIL_UPDATE"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
