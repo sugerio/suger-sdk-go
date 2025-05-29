@@ -1713,7 +1713,7 @@ func (r ApiSendOfferNotificationsRequest) ContactIDs(contactIDs []string) ApiSen
 	return r
 }
 
-func (r ApiSendOfferNotificationsRequest) Execute() (*NotificationEvent, *http.Response, error) {
+func (r ApiSendOfferNotificationsRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.SendOfferNotificationsExecute(r)
 }
 
@@ -1737,13 +1737,13 @@ func (a *OfferAPIService) SendOfferNotifications(ctx context.Context, orgId stri
 }
 
 // Execute executes the request
-//  @return NotificationEvent
-func (a *OfferAPIService) SendOfferNotificationsExecute(r ApiSendOfferNotificationsRequest) (*NotificationEvent, *http.Response, error) {
+//  @return string
+func (a *OfferAPIService) SendOfferNotificationsExecute(r ApiSendOfferNotificationsRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *NotificationEvent
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OfferAPIService.SendOfferNotifications")

@@ -75,7 +75,7 @@ ctx = context.WithValue(context.Background(), suger.ContextOperationServerVariab
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://https://api.suger.cloud*
+All URIs are relative to *https://api.suger.cloud*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

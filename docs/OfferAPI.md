@@ -1,6 +1,6 @@
 # \OfferAPI
 
-All URIs are relative to *http://https://api.suger.cloud*
+All URIs are relative to *https://api.suger.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -768,7 +768,7 @@ Name | Type | Description  | Notes
 
 ## SendOfferNotifications
 
-> NotificationEvent SendOfferNotifications(ctx, orgId, offerId).ContactIDs(contactIDs).Execute()
+> string SendOfferNotifications(ctx, orgId, offerId).ContactIDs(contactIDs).Execute()
 
 notify offer contacts
 
@@ -798,7 +798,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.SendOfferNotifications``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SendOfferNotifications`: NotificationEvent
+	// response from `SendOfferNotifications`: string
 	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.SendOfferNotifications`: %v\n", resp)
 }
 ```
@@ -825,7 +825,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**NotificationEvent**](NotificationEvent.md)
+**string**
 
 ### Authorization
 

@@ -9,7 +9,7 @@ info:
   title: Suger API
   version: "1.0"
 servers:
-- url: //https://api.suger.cloud/
+- url: https://api.suger.cloud/
 tags:
 - description: Access to API client resources
   name: API
@@ -4103,8 +4103,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotificationEvent'
-          description: NotificationEvent object
+                type: string
+          description: empty string if success
         "400":
           content:
             application/json:
