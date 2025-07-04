@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **OrganizationID** | Pointer to **string** |  | [optional] 
 **Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
+**S3KeyLogo** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -283,6 +284,31 @@ SetPartner sets Partner field to given value.
 `func (o *IdentityBuyer) HasPartner() bool`
 
 HasPartner returns a boolean if a field has been set.
+
+### GetS3KeyLogo
+
+`func (o *IdentityBuyer) GetS3KeyLogo() string`
+
+GetS3KeyLogo returns the S3KeyLogo field if non-nil, zero value otherwise.
+
+### GetS3KeyLogoOk
+
+`func (o *IdentityBuyer) GetS3KeyLogoOk() (*string, bool)`
+
+GetS3KeyLogoOk returns a tuple with the S3KeyLogo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3KeyLogo
+
+`func (o *IdentityBuyer) SetS3KeyLogo(v string)`
+
+SetS3KeyLogo sets S3KeyLogo field to given value.
+
+### HasS3KeyLogo
+
+`func (o *IdentityBuyer) HasS3KeyLogo() bool`
+
+HasS3KeyLogo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

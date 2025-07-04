@@ -27,7 +27,7 @@ type RevenueRecordInfo struct {
 	// The bank trace ID of the revenue record if applicable
 	BankTraceId *string `json:"bankTraceId,omitempty"`
 	// The billing model of the revenue record if applicable The value is one of the following: - SubscriptionBased: The revenue record is from a subscription or recurring commitment. - UsageBased: The revenue record is from a usage-based metering.
-	BillingModel *string `json:"billingModel,omitempty"`
+	BillingModel *RevenueBillingModel `json:"billingModel,omitempty"`
 	// The channel of revenue record.
 	Channel *RevenueChannel `json:"channel,omitempty"`
 	// The credit amount used in the revenue record.
@@ -42,6 +42,8 @@ type RevenueRecordInfo struct {
 	GcpRevenueRecords []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage `json:"gcpRevenueRecords,omitempty"`
 	// Source of the revenue record ID.
 	IdSource *string `json:"idSource,omitempty"`
+	// The invoice ID of the revenue record if applicable
+	InvoiceId *string `json:"invoiceId,omitempty"`
 	// The payment  ID of the revenue record if applicable
 	PaymentId *string `json:"paymentId,omitempty"`
 	// The reseller ID of the revenue record if applicable
@@ -166,9 +168,9 @@ func (o *RevenueRecordInfo) SetBankTraceId(v string) {
 }
 
 // GetBillingModel returns the BillingModel field value if set, zero value otherwise.
-func (o *RevenueRecordInfo) GetBillingModel() string {
+func (o *RevenueRecordInfo) GetBillingModel() RevenueBillingModel {
 	if o == nil || IsNil(o.BillingModel) {
-		var ret string
+		var ret RevenueBillingModel
 		return ret
 	}
 	return *o.BillingModel
@@ -176,7 +178,7 @@ func (o *RevenueRecordInfo) GetBillingModel() string {
 
 // GetBillingModelOk returns a tuple with the BillingModel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RevenueRecordInfo) GetBillingModelOk() (*string, bool) {
+func (o *RevenueRecordInfo) GetBillingModelOk() (*RevenueBillingModel, bool) {
 	if o == nil || IsNil(o.BillingModel) {
 		return nil, false
 	}
@@ -192,8 +194,8 @@ func (o *RevenueRecordInfo) HasBillingModel() bool {
 	return false
 }
 
-// SetBillingModel gets a reference to the given string and assigns it to the BillingModel field.
-func (o *RevenueRecordInfo) SetBillingModel(v string) {
+// SetBillingModel gets a reference to the given RevenueBillingModel and assigns it to the BillingModel field.
+func (o *RevenueRecordInfo) SetBillingModel(v RevenueBillingModel) {
 	o.BillingModel = &v
 }
 
@@ -421,6 +423,38 @@ func (o *RevenueRecordInfo) SetIdSource(v string) {
 	o.IdSource = &v
 }
 
+// GetInvoiceId returns the InvoiceId field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetInvoiceId() string {
+	if o == nil || IsNil(o.InvoiceId) {
+		var ret string
+		return ret
+	}
+	return *o.InvoiceId
+}
+
+// GetInvoiceIdOk returns a tuple with the InvoiceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetInvoiceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.InvoiceId) {
+		return nil, false
+	}
+	return o.InvoiceId, true
+}
+
+// HasInvoiceId returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasInvoiceId() bool {
+	if o != nil && !IsNil(o.InvoiceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetInvoiceId gets a reference to the given string and assigns it to the InvoiceId field.
+func (o *RevenueRecordInfo) SetInvoiceId(v string) {
+	o.InvoiceId = &v
+}
+
 // GetPaymentId returns the PaymentId field value if set, zero value otherwise.
 func (o *RevenueRecordInfo) GetPaymentId() string {
 	if o == nil || IsNil(o.PaymentId) {
@@ -591,6 +625,9 @@ func (o RevenueRecordInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IdSource) {
 		toSerialize["idSource"] = o.IdSource
+	}
+	if !IsNil(o.InvoiceId) {
+		toSerialize["invoiceId"] = o.InvoiceId
 	}
 	if !IsNil(o.PaymentId) {
 		toSerialize["paymentId"] = o.PaymentId

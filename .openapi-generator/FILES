@@ -439,6 +439,7 @@ docs/PrivateOfferDiscountType.md
 docs/ProductAPI.md
 docs/ProductInfo.md
 docs/ReportAPI.md
+docs/RevenueBillingModel.md
 docs/RevenueChannel.md
 docs/RevenueRecord.md
 docs/RevenueRecordDetail.md
@@ -491,6 +492,7 @@ docs/SupportTicketFrame.md
 docs/SupportTicketImage.md
 docs/SupportTicketPriority.md
 docs/SupportTicketStatus.md
+docs/SupportTicketTaskType.md
 docs/SupportTicketUser.md
 docs/TimeUnit.md
 docs/TrackEvent.md
@@ -939,6 +941,7 @@ model_price_model_volume.go
 model_price_model_volume_config.go
 model_private_offer_discount_type.go
 model_product_info.go
+model_revenue_billing_model.go
 model_revenue_channel.go
 model_revenue_record.go
 model_revenue_record_detail.go
@@ -990,6 +993,7 @@ model_support_ticket_frame.go
 model_support_ticket_image.go
 model_support_ticket_priority.go
 model_support_ticket_status.go
+model_support_ticket_task_type.go
 model_support_ticket_user.go
 model_time_unit.go
 model_track_event.go

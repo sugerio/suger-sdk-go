@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AceApnCrmUniqueIdentifier** | Pointer to **string** | The linked ACE ApnCrmUniqueIdentifier of the private offer if available. | [optional] 
 **AwsSaasProductDimensions** | Pointer to [**[]AwsProductDimension**](AwsProductDimension.md) | The AWS SaaS product dimensions. Applicable for AWS SaaS products only. This is used to save price info when creating AWS SaaS product. | [optional] 
+**AzureOriginalOfferIDForUpgrade** | Pointer to **string** | Original offer ID for Azure Upgrade | [optional] 
 **BaseAgreementId** | Pointer to **string** | Applicable for AWS Marketplace only, when the IsAgreementBasedOffer is true. | [optional] 
 **BuyerIds** | Pointer to **[]string** | The Suger buyer IDs of the private offer if available. | [optional] 
 **Contacts** | Pointer to [**[]Contact**](Contact.md) | The contacts of the offer to notify if any updates. | [optional] 
@@ -19,6 +20,7 @@ Name | Type | Description | Notes
 **HubspotDealId** | Pointer to **string** | Hubsport deal ID of the private offer if available. | [optional] 
 **InternalNote** | Pointer to **string** | The Internal note of the private offer. It is only visible to the seller/ISV, not visible to the buyer. Up to 1000 characters. | [optional] 
 **IsAgreementBasedOffer** | Pointer to **bool** | Applicable for AWS Marketplace only, If this offer is agreement based offer. | [optional] 
+**IsAzureUpgradeOffer** | Pointer to **bool** | If this offer is an Azure upgrade offer. | [optional] 
 **IsGrossRevenueFullSync** | Pointer to **bool** | Whether the gross revenue is fully synced for the entitlement. | [optional] 
 **IsRenewalOffer** | Pointer to **bool** | Applicable for AWS Marketplace only. If this offer is renewal offer of existing agreement. The existing agreement can be within or outside AWS Marketplace. AWS may audit and verify your offer is a renewal. If AWS is unable to verify your offer, then AWS may revoke the offer and entitlements from your customer. | [optional] 
 **IsReplacementOffer** | Pointer to **bool** | If this offer is a GCP replacement offer. Applicable for GCP Marketplace replacement offer only. | [optional] 
@@ -102,6 +104,31 @@ SetAwsSaasProductDimensions sets AwsSaasProductDimensions field to given value.
 `func (o *WorkloadMetaInfo) HasAwsSaasProductDimensions() bool`
 
 HasAwsSaasProductDimensions returns a boolean if a field has been set.
+
+### GetAzureOriginalOfferIDForUpgrade
+
+`func (o *WorkloadMetaInfo) GetAzureOriginalOfferIDForUpgrade() string`
+
+GetAzureOriginalOfferIDForUpgrade returns the AzureOriginalOfferIDForUpgrade field if non-nil, zero value otherwise.
+
+### GetAzureOriginalOfferIDForUpgradeOk
+
+`func (o *WorkloadMetaInfo) GetAzureOriginalOfferIDForUpgradeOk() (*string, bool)`
+
+GetAzureOriginalOfferIDForUpgradeOk returns a tuple with the AzureOriginalOfferIDForUpgrade field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureOriginalOfferIDForUpgrade
+
+`func (o *WorkloadMetaInfo) SetAzureOriginalOfferIDForUpgrade(v string)`
+
+SetAzureOriginalOfferIDForUpgrade sets AzureOriginalOfferIDForUpgrade field to given value.
+
+### HasAzureOriginalOfferIDForUpgrade
+
+`func (o *WorkloadMetaInfo) HasAzureOriginalOfferIDForUpgrade() bool`
+
+HasAzureOriginalOfferIDForUpgrade returns a boolean if a field has been set.
 
 ### GetBaseAgreementId
 
@@ -427,6 +454,31 @@ SetIsAgreementBasedOffer sets IsAgreementBasedOffer field to given value.
 `func (o *WorkloadMetaInfo) HasIsAgreementBasedOffer() bool`
 
 HasIsAgreementBasedOffer returns a boolean if a field has been set.
+
+### GetIsAzureUpgradeOffer
+
+`func (o *WorkloadMetaInfo) GetIsAzureUpgradeOffer() bool`
+
+GetIsAzureUpgradeOffer returns the IsAzureUpgradeOffer field if non-nil, zero value otherwise.
+
+### GetIsAzureUpgradeOfferOk
+
+`func (o *WorkloadMetaInfo) GetIsAzureUpgradeOfferOk() (*bool, bool)`
+
+GetIsAzureUpgradeOfferOk returns a tuple with the IsAzureUpgradeOffer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsAzureUpgradeOffer
+
+`func (o *WorkloadMetaInfo) SetIsAzureUpgradeOffer(v bool)`
+
+SetIsAzureUpgradeOffer sets IsAzureUpgradeOffer field to given value.
+
+### HasIsAzureUpgradeOffer
+
+`func (o *WorkloadMetaInfo) HasIsAzureUpgradeOffer() bool`
+
+HasIsAzureUpgradeOffer returns a boolean if a field has been set.
 
 ### GetIsGrossRevenueFullSync
 

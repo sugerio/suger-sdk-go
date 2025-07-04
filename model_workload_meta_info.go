@@ -25,6 +25,8 @@ type WorkloadMetaInfo struct {
 	AceApnCrmUniqueIdentifier *string `json:"aceApnCrmUniqueIdentifier,omitempty"`
 	// The AWS SaaS product dimensions. Applicable for AWS SaaS products only. This is used to save price info when creating AWS SaaS product.
 	AwsSaasProductDimensions []AwsProductDimension `json:"awsSaasProductDimensions,omitempty"`
+	// Original offer ID for Azure Upgrade
+	AzureOriginalOfferIDForUpgrade *string `json:"azureOriginalOfferIDForUpgrade,omitempty"`
 	// Applicable for AWS Marketplace only, when the IsAgreementBasedOffer is true.
 	BaseAgreementId *string `json:"baseAgreementId,omitempty"`
 	// The Suger buyer IDs of the private offer if available.
@@ -51,6 +53,8 @@ type WorkloadMetaInfo struct {
 	InternalNote *string `json:"internalNote,omitempty"`
 	// Applicable for AWS Marketplace only, If this offer is agreement based offer.
 	IsAgreementBasedOffer *bool `json:"isAgreementBasedOffer,omitempty"`
+	// If this offer is an Azure upgrade offer.
+	IsAzureUpgradeOffer *bool `json:"isAzureUpgradeOffer,omitempty"`
 	// Whether the gross revenue is fully synced for the entitlement.
 	IsGrossRevenueFullSync *bool `json:"isGrossRevenueFullSync,omitempty"`
 	// Applicable for AWS Marketplace only. If this offer is renewal offer of existing agreement. The existing agreement can be within or outside AWS Marketplace. AWS may audit and verify your offer is a renewal. If AWS is unable to verify your offer, then AWS may revoke the offer and entitlements from your customer.
@@ -160,6 +164,38 @@ func (o *WorkloadMetaInfo) HasAwsSaasProductDimensions() bool {
 // SetAwsSaasProductDimensions gets a reference to the given []AwsProductDimension and assigns it to the AwsSaasProductDimensions field.
 func (o *WorkloadMetaInfo) SetAwsSaasProductDimensions(v []AwsProductDimension) {
 	o.AwsSaasProductDimensions = v
+}
+
+// GetAzureOriginalOfferIDForUpgrade returns the AzureOriginalOfferIDForUpgrade field value if set, zero value otherwise.
+func (o *WorkloadMetaInfo) GetAzureOriginalOfferIDForUpgrade() string {
+	if o == nil || IsNil(o.AzureOriginalOfferIDForUpgrade) {
+		var ret string
+		return ret
+	}
+	return *o.AzureOriginalOfferIDForUpgrade
+}
+
+// GetAzureOriginalOfferIDForUpgradeOk returns a tuple with the AzureOriginalOfferIDForUpgrade field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadMetaInfo) GetAzureOriginalOfferIDForUpgradeOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureOriginalOfferIDForUpgrade) {
+		return nil, false
+	}
+	return o.AzureOriginalOfferIDForUpgrade, true
+}
+
+// HasAzureOriginalOfferIDForUpgrade returns a boolean if a field has been set.
+func (o *WorkloadMetaInfo) HasAzureOriginalOfferIDForUpgrade() bool {
+	if o != nil && !IsNil(o.AzureOriginalOfferIDForUpgrade) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureOriginalOfferIDForUpgrade gets a reference to the given string and assigns it to the AzureOriginalOfferIDForUpgrade field.
+func (o *WorkloadMetaInfo) SetAzureOriginalOfferIDForUpgrade(v string) {
+	o.AzureOriginalOfferIDForUpgrade = &v
 }
 
 // GetBaseAgreementId returns the BaseAgreementId field value if set, zero value otherwise.
@@ -576,6 +612,38 @@ func (o *WorkloadMetaInfo) HasIsAgreementBasedOffer() bool {
 // SetIsAgreementBasedOffer gets a reference to the given bool and assigns it to the IsAgreementBasedOffer field.
 func (o *WorkloadMetaInfo) SetIsAgreementBasedOffer(v bool) {
 	o.IsAgreementBasedOffer = &v
+}
+
+// GetIsAzureUpgradeOffer returns the IsAzureUpgradeOffer field value if set, zero value otherwise.
+func (o *WorkloadMetaInfo) GetIsAzureUpgradeOffer() bool {
+	if o == nil || IsNil(o.IsAzureUpgradeOffer) {
+		var ret bool
+		return ret
+	}
+	return *o.IsAzureUpgradeOffer
+}
+
+// GetIsAzureUpgradeOfferOk returns a tuple with the IsAzureUpgradeOffer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadMetaInfo) GetIsAzureUpgradeOfferOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsAzureUpgradeOffer) {
+		return nil, false
+	}
+	return o.IsAzureUpgradeOffer, true
+}
+
+// HasIsAzureUpgradeOffer returns a boolean if a field has been set.
+func (o *WorkloadMetaInfo) HasIsAzureUpgradeOffer() bool {
+	if o != nil && !IsNil(o.IsAzureUpgradeOffer) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAzureUpgradeOffer gets a reference to the given bool and assigns it to the IsAzureUpgradeOffer field.
+func (o *WorkloadMetaInfo) SetIsAzureUpgradeOffer(v bool) {
+	o.IsAzureUpgradeOffer = &v
 }
 
 // GetIsGrossRevenueFullSync returns the IsGrossRevenueFullSync field value if set, zero value otherwise.
@@ -1042,6 +1110,9 @@ func (o WorkloadMetaInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AwsSaasProductDimensions) {
 		toSerialize["awsSaasProductDimensions"] = o.AwsSaasProductDimensions
 	}
+	if !IsNil(o.AzureOriginalOfferIDForUpgrade) {
+		toSerialize["azureOriginalOfferIDForUpgrade"] = o.AzureOriginalOfferIDForUpgrade
+	}
 	if !IsNil(o.BaseAgreementId) {
 		toSerialize["baseAgreementId"] = o.BaseAgreementId
 	}
@@ -1080,6 +1151,9 @@ func (o WorkloadMetaInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsAgreementBasedOffer) {
 		toSerialize["isAgreementBasedOffer"] = o.IsAgreementBasedOffer
+	}
+	if !IsNil(o.IsAzureUpgradeOffer) {
+		toSerialize["isAzureUpgradeOffer"] = o.IsAzureUpgradeOffer
 	}
 	if !IsNil(o.IsGrossRevenueFullSync) {
 		toSerialize["isGrossRevenueFullSync"] = o.IsGrossRevenueFullSync

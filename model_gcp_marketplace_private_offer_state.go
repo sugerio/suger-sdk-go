@@ -31,6 +31,7 @@ const (
 	GcpMarketplacePrivateOfferState_OFFER_CANCELLED GcpMarketplacePrivateOfferState = "OFFER_CANCELLED"
 	GcpMarketplacePrivateOfferState_OFFER_UNAVAILABLE GcpMarketplacePrivateOfferState = "OFFER_UNAVAILABLE"
 	GcpMarketplacePrivateOfferState_OFFER_DRAFT GcpMarketplacePrivateOfferState = "OFFER_DRAFT"
+	GcpMarketplacePrivateOfferState_OFFER_APPROVAL_FAILED GcpMarketplacePrivateOfferState = "OFFER_APPROVAL_FAILED"
 )
 
 // All allowed values of GcpMarketplacePrivateOfferState enum
@@ -45,6 +46,7 @@ var AllowedGcpMarketplacePrivateOfferStateEnumValues = []GcpMarketplacePrivateOf
 	"OFFER_CANCELLED",
 	"OFFER_UNAVAILABLE",
 	"OFFER_DRAFT",
+	"OFFER_APPROVAL_FAILED",
 }
 
 func (v *GcpMarketplacePrivateOfferState) UnmarshalJSON(src []byte) error {

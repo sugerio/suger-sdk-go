@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **CompanyLocation** | Pointer to **string** |  | [optional] 
 **CompanyName** | Pointer to **string** |  | [optional] 
 **LastModifiedBy** | Pointer to **string** |  | [optional] 
+**Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
 **PhoneNumber** | Pointer to **string** |  | [optional] 
 **Role** | Pointer to **string** |  | [optional] 
 
@@ -103,6 +104,31 @@ SetLastModifiedBy sets LastModifiedBy field to given value.
 `func (o *IdentityConctactInfo) HasLastModifiedBy() bool`
 
 HasLastModifiedBy returns a boolean if a field has been set.
+
+### GetPartner
+
+`func (o *IdentityConctactInfo) GetPartner() Partner`
+
+GetPartner returns the Partner field if non-nil, zero value otherwise.
+
+### GetPartnerOk
+
+`func (o *IdentityConctactInfo) GetPartnerOk() (*Partner, bool)`
+
+GetPartnerOk returns a tuple with the Partner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartner
+
+`func (o *IdentityConctactInfo) SetPartner(v Partner)`
+
+SetPartner sets Partner field to given value.
+
+### HasPartner
+
+`func (o *IdentityConctactInfo) HasPartner() bool`
+
+HasPartner returns a boolean if a field has been set.
 
 ### GetPhoneNumber
 

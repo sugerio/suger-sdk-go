@@ -23,6 +23,7 @@ type PartnerService string
 const (
 	PartnerService_DEFAULT PartnerService = "DEFAULT"
 	PartnerService_ACE PartnerService = "ACE"
+	PartnerService_ANTHROPIC PartnerService = "ANTHROPIC"
 	PartnerService_BIGQUERY PartnerService = "BIGQUERY"
 	PartnerService_BILLING PartnerService = "BILLING"
 	PartnerService_CHATBOT PartnerService = "CHATBOT"
@@ -32,6 +33,7 @@ const (
 	PartnerService_DATABASE PartnerService = "DATABASE"
 	PartnerService_DRIVE PartnerService = "DRIVE"
 	PartnerService_EMAIL PartnerService = "EMAIL"
+	PartnerService_GEMINI PartnerService = "GEMINI"
 	PartnerService_MARKETPLACE PartnerService = "MARKETPLACE"
 	PartnerService_NETSUITE PartnerService = "NETSUITE"
 	PartnerService_PAYMENT PartnerService = "PAYMENT"
@@ -44,6 +46,7 @@ const (
 var AllowedPartnerServiceEnumValues = []PartnerService{
 	"DEFAULT",
 	"ACE",
+	"ANTHROPIC",
 	"BIGQUERY",
 	"BILLING",
 	"CHATBOT",
@@ -53,6 +56,7 @@ var AllowedPartnerServiceEnumValues = []PartnerService{
 	"DATABASE",
 	"DRIVE",
 	"EMAIL",
+	"GEMINI",
 	"MARKETPLACE",
 	"NETSUITE",
 	"PAYMENT",

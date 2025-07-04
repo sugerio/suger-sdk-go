@@ -31,6 +31,7 @@ const (
 	GcpMarketplaceResellerPrivateOfferPlanStateType_EXPIRED_NEVER_ACCEPTED GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_EXPIRED_NEVER_ACCEPTED"
 	GcpMarketplaceResellerPrivateOfferPlanStateType_EXPIRED_ACCEPTED GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_EXPIRED_ACCEPTED"
 	GcpMarketplaceResellerPrivateOfferPlanStateType_COMPLETED GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_COMPLETED"
+	GcpMarketplaceResellerPrivateOfferPlanStateType_READY_TO_USE_IN_FUTURE GcpMarketplaceResellerPrivateOfferPlanStateType = "STATE_TYPE_READY_TO_USE_IN_FUTURE"
 )
 
 // All allowed values of GcpMarketplaceResellerPrivateOfferPlanStateType enum
@@ -45,6 +46,7 @@ var AllowedGcpMarketplaceResellerPrivateOfferPlanStateTypeEnumValues = []GcpMark
 	"STATE_TYPE_EXPIRED_NEVER_ACCEPTED",
 	"STATE_TYPE_EXPIRED_ACCEPTED",
 	"STATE_TYPE_COMPLETED",
+	"STATE_TYPE_READY_TO_USE_IN_FUTURE",
 }
 
 func (v *GcpMarketplaceResellerPrivateOfferPlanStateType) UnmarshalJSON(src []byte) error {

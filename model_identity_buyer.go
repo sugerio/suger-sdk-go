@@ -31,6 +31,7 @@ type IdentityBuyer struct {
 	Name *string `json:"name,omitempty"`
 	OrganizationID *string `json:"organizationID,omitempty"`
 	Partner *Partner `json:"partner,omitempty"`
+	S3KeyLogo *string `json:"s3KeyLogo,omitempty"`
 }
 
 // NewIdentityBuyer instantiates a new IdentityBuyer object
@@ -370,6 +371,38 @@ func (o *IdentityBuyer) SetPartner(v Partner) {
 	o.Partner = &v
 }
 
+// GetS3KeyLogo returns the S3KeyLogo field value if set, zero value otherwise.
+func (o *IdentityBuyer) GetS3KeyLogo() string {
+	if o == nil || IsNil(o.S3KeyLogo) {
+		var ret string
+		return ret
+	}
+	return *o.S3KeyLogo
+}
+
+// GetS3KeyLogoOk returns a tuple with the S3KeyLogo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityBuyer) GetS3KeyLogoOk() (*string, bool) {
+	if o == nil || IsNil(o.S3KeyLogo) {
+		return nil, false
+	}
+	return o.S3KeyLogo, true
+}
+
+// HasS3KeyLogo returns a boolean if a field has been set.
+func (o *IdentityBuyer) HasS3KeyLogo() bool {
+	if o != nil && !IsNil(o.S3KeyLogo) {
+		return true
+	}
+
+	return false
+}
+
+// SetS3KeyLogo gets a reference to the given string and assigns it to the S3KeyLogo field.
+func (o *IdentityBuyer) SetS3KeyLogo(v string) {
+	o.S3KeyLogo = &v
+}
+
 func (o IdentityBuyer) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -409,6 +442,9 @@ func (o IdentityBuyer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Partner) {
 		toSerialize["partner"] = o.Partner
+	}
+	if !IsNil(o.S3KeyLogo) {
+		toSerialize["s3KeyLogo"] = o.S3KeyLogo
 	}
 	return toSerialize, nil
 }

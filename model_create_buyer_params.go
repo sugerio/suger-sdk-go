@@ -40,6 +40,8 @@ type CreateBuyerParams struct {
 	Partner *Partner `json:"partner,omitempty"`
 	// Payment config for billing.
 	PaymentConfig *PaymentConfig `json:"paymentConfig,omitempty"`
+	// The Quickbooks Customer ID of the buyer. If not provided, the Quickbooks Customer ID will not be updated.
+	QuickbooksCustomerId *string `json:"quickbooksCustomerId,omitempty"`
 	// Stripe customerId of this buyer. If not provided but Partner is STRIPE, will create a new customer on stripe.
 	StripeCustomerId *string `json:"stripeCustomerId,omitempty"`
 }
@@ -381,6 +383,38 @@ func (o *CreateBuyerParams) SetPaymentConfig(v PaymentConfig) {
 	o.PaymentConfig = &v
 }
 
+// GetQuickbooksCustomerId returns the QuickbooksCustomerId field value if set, zero value otherwise.
+func (o *CreateBuyerParams) GetQuickbooksCustomerId() string {
+	if o == nil || IsNil(o.QuickbooksCustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.QuickbooksCustomerId
+}
+
+// GetQuickbooksCustomerIdOk returns a tuple with the QuickbooksCustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateBuyerParams) GetQuickbooksCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.QuickbooksCustomerId) {
+		return nil, false
+	}
+	return o.QuickbooksCustomerId, true
+}
+
+// HasQuickbooksCustomerId returns a boolean if a field has been set.
+func (o *CreateBuyerParams) HasQuickbooksCustomerId() bool {
+	if o != nil && !IsNil(o.QuickbooksCustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuickbooksCustomerId gets a reference to the given string and assigns it to the QuickbooksCustomerId field.
+func (o *CreateBuyerParams) SetQuickbooksCustomerId(v string) {
+	o.QuickbooksCustomerId = &v
+}
+
 // GetStripeCustomerId returns the StripeCustomerId field value if set, zero value otherwise.
 func (o *CreateBuyerParams) GetStripeCustomerId() string {
 	if o == nil || IsNil(o.StripeCustomerId) {
@@ -452,6 +486,9 @@ func (o CreateBuyerParams) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PaymentConfig) {
 		toSerialize["paymentConfig"] = o.PaymentConfig
+	}
+	if !IsNil(o.QuickbooksCustomerId) {
+		toSerialize["quickbooksCustomerId"] = o.QuickbooksCustomerId
 	}
 	if !IsNil(o.StripeCustomerId) {
 		toSerialize["stripeCustomerId"] = o.StripeCustomerId

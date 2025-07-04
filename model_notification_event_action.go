@@ -31,6 +31,7 @@ const (
 	NotificationEventAction_CREATE NotificationEventAction = "CREATE"
 	NotificationEventAction_DELETE NotificationEventAction = "DELETE"
 	NotificationEventAction_ARCHIVE NotificationEventAction = "ARCHIVE"
+	NotificationEventAction_VOID NotificationEventAction = "VOID"
 	NotificationEventAction_DISBURSE NotificationEventAction = "DISBURSE"
 	NotificationEventAction_END_SOON NotificationEventAction = "END_SOON"
 	NotificationEventAction_EXPIRE NotificationEventAction = "EXPIRE"
@@ -50,6 +51,7 @@ const (
 	NotificationEventAction_REFUND NotificationEventAction = "REFUND"
 	NotificationEventAction_ISSUE NotificationEventAction = "ISSUE"
 	NotificationEventAction_SIGN NotificationEventAction = "SIGN"
+	NotificationEventAction_PENDING_PARTNER_ACTION NotificationEventAction = "PENDING_PARTNER_ACTION"
 	NotificationEventAction_ROTATE_SECRET NotificationEventAction = "ROTATE_SECRET"
 	NotificationEventAction_SUSPEND NotificationEventAction = "SUSPEND"
 	NotificationEventAction_TEST NotificationEventAction = "TEST"
@@ -63,7 +65,6 @@ const (
 	NotificationEventAction_COMPLETE NotificationEventAction = "COMPLETE"
 	NotificationEventAction_FAIL NotificationEventAction = "FAIL"
 	NotificationEventAction_WEBHOOK NotificationEventAction = "WEBHOOK"
-	NotificationEventAction_MARKETPLACE_CONTACT_EMAIL_UPDATE NotificationEventAction = "MARKETPLACE_CONTACT_EMAIL_UPDATE"
 )
 
 // All allowed values of NotificationEventAction enum
@@ -78,6 +79,7 @@ var AllowedNotificationEventActionEnumValues = []NotificationEventAction{
 	"CREATE",
 	"DELETE",
 	"ARCHIVE",
+	"VOID",
 	"DISBURSE",
 	"END_SOON",
 	"EXPIRE",
@@ -97,6 +99,7 @@ var AllowedNotificationEventActionEnumValues = []NotificationEventAction{
 	"REFUND",
 	"ISSUE",
 	"SIGN",
+	"PENDING_PARTNER_ACTION",
 	"ROTATE_SECRET",
 	"SUSPEND",
 	"TEST",
@@ -110,7 +113,6 @@ var AllowedNotificationEventActionEnumValues = []NotificationEventAction{
 	"COMPLETE",
 	"FAIL",
 	"WEBHOOK",
-	"MARKETPLACE_CONTACT_EMAIL_UPDATE",
 }
 
 func (v *NotificationEventAction) UnmarshalJSON(src []byte) error {
