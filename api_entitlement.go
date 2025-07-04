@@ -1539,6 +1539,7 @@ type ApiListEntitlementsRequest struct {
 	buyerId *string
 	externalId *string
 	buyerAccountId *string
+	contactId *string
 	limit *int32
 	offset *int32
 }
@@ -1576,6 +1577,12 @@ func (r ApiListEntitlementsRequest) ExternalId(externalId string) ApiListEntitle
 // filter by buyerAccountId is currently supported only for AWS
 func (r ApiListEntitlementsRequest) BuyerAccountId(buyerAccountId string) ApiListEntitlementsRequest {
 	r.buyerAccountId = &buyerAccountId
+	return r
+}
+
+// filter by contactId
+func (r ApiListEntitlementsRequest) ContactId(contactId string) ApiListEntitlementsRequest {
+	r.contactId = &contactId
 	return r
 }
 
@@ -1651,6 +1658,9 @@ func (a *EntitlementAPIService) ListEntitlementsExecute(r ApiListEntitlementsReq
 	}
 	if r.buyerAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerAccountId", r.buyerAccountId, "form", "")
+	}
+	if r.contactId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "contactId", r.contactId, "form", "")
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")

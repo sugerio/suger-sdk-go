@@ -1,6 +1,6 @@
 # \EntitlementAPI
 
-All URIs are relative to *http://https://api.suger.cloud*
+All URIs are relative to *https://api.suger.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -767,7 +767,7 @@ Name | Type | Description  | Notes
 
 ## ListEntitlements
 
-> []WorkloadEntitlement ListEntitlements(ctx, orgId).Partner(partner).ProductId(productId).OfferId(offerId).BuyerId(buyerId).ExternalId(externalId).BuyerAccountId(buyerAccountId).Limit(limit).Offset(offset).Execute()
+> []WorkloadEntitlement ListEntitlements(ctx, orgId).Partner(partner).ProductId(productId).OfferId(offerId).BuyerId(buyerId).ExternalId(externalId).BuyerAccountId(buyerAccountId).ContactId(contactId).Limit(limit).Offset(offset).Execute()
 
 list entitlements
 
@@ -793,12 +793,13 @@ func main() {
 	buyerId := "buyerId_example" // string | filter by buyerId (optional)
 	externalId := "externalId_example" // string | filter by externalId (optional)
 	buyerAccountId := "buyerAccountId_example" // string | filter by buyerAccountId is currently supported only for AWS (optional)
+	contactId := "contactId_example" // string | filter by contactId (optional)
 	limit := int32(56) // int32 | List pagination size, default 1000, max value is 1000 (optional)
 	offset := int32(56) // int32 | List pagination offset, default 0 (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EntitlementAPI.ListEntitlements(context.Background(), orgId).Partner(partner).ProductId(productId).OfferId(offerId).BuyerId(buyerId).ExternalId(externalId).BuyerAccountId(buyerAccountId).Limit(limit).Offset(offset).Execute()
+	resp, r, err := apiClient.EntitlementAPI.ListEntitlements(context.Background(), orgId).Partner(partner).ProductId(productId).OfferId(offerId).BuyerId(buyerId).ExternalId(externalId).BuyerAccountId(buyerAccountId).ContactId(contactId).Limit(limit).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementAPI.ListEntitlements``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -830,6 +831,7 @@ Name | Type | Description  | Notes
  **buyerId** | **string** | filter by buyerId | 
  **externalId** | **string** | filter by externalId | 
  **buyerAccountId** | **string** | filter by buyerAccountId is currently supported only for AWS | 
+ **contactId** | **string** | filter by contactId | 
  **limit** | **int32** | List pagination size, default 1000, max value is 1000 | 
  **offset** | **int32** | List pagination offset, default 0 | 
 

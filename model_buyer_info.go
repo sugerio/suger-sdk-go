@@ -53,6 +53,8 @@ type BuyerInfo struct {
 	OrbCustomerId *string `json:"orbCustomerId,omitempty"`
 	// Payment Config for billing.
 	PaymentConfig *PaymentConfig `json:"paymentConfig,omitempty"`
+	// The quickbooks customer ID for the buyer if it is connected to a quickbooks customer.
+	QuickbooksCustomerId *string `json:"quickbooksCustomerId,omitempty"`
 	// Buyer on Snowflake
 	SnowflakeBuyer *SnowflakeMarketplaceBuyer `json:"snowflakeBuyer,omitempty"`
 	// Buyer SPA url, public page visited with jwt.
@@ -624,6 +626,38 @@ func (o *BuyerInfo) SetPaymentConfig(v PaymentConfig) {
 	o.PaymentConfig = &v
 }
 
+// GetQuickbooksCustomerId returns the QuickbooksCustomerId field value if set, zero value otherwise.
+func (o *BuyerInfo) GetQuickbooksCustomerId() string {
+	if o == nil || IsNil(o.QuickbooksCustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.QuickbooksCustomerId
+}
+
+// GetQuickbooksCustomerIdOk returns a tuple with the QuickbooksCustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetQuickbooksCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.QuickbooksCustomerId) {
+		return nil, false
+	}
+	return o.QuickbooksCustomerId, true
+}
+
+// HasQuickbooksCustomerId returns a boolean if a field has been set.
+func (o *BuyerInfo) HasQuickbooksCustomerId() bool {
+	if o != nil && !IsNil(o.QuickbooksCustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuickbooksCustomerId gets a reference to the given string and assigns it to the QuickbooksCustomerId field.
+func (o *BuyerInfo) SetQuickbooksCustomerId(v string) {
+	o.QuickbooksCustomerId = &v
+}
+
 // GetSnowflakeBuyer returns the SnowflakeBuyer field value if set, zero value otherwise.
 func (o *BuyerInfo) GetSnowflakeBuyer() SnowflakeMarketplaceBuyer {
 	if o == nil || IsNil(o.SnowflakeBuyer) {
@@ -812,6 +846,9 @@ func (o BuyerInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PaymentConfig) {
 		toSerialize["paymentConfig"] = o.PaymentConfig
+	}
+	if !IsNil(o.QuickbooksCustomerId) {
+		toSerialize["quickbooksCustomerId"] = o.QuickbooksCustomerId
 	}
 	if !IsNil(o.SnowflakeBuyer) {
 		toSerialize["snowflakeBuyer"] = o.SnowflakeBuyer

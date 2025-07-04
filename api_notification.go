@@ -175,6 +175,7 @@ type ApiListNotificationEventsRequest struct {
 	limit *int32
 	offset *int32
 	priorities *string
+	message *string
 }
 
 // start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
@@ -204,6 +205,12 @@ func (r ApiListNotificationEventsRequest) Offset(offset int32) ApiListNotificati
 // Filter by priorities, empty means HIGH and CRITICAL only. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma.
 func (r ApiListNotificationEventsRequest) Priorities(priorities string) ApiListNotificationEventsRequest {
 	r.priorities = &priorities
+	return r
+}
+
+// Filter by event message containing the specified string, case-insensitive.
+func (r ApiListNotificationEventsRequest) Message(message string) ApiListNotificationEventsRequest {
+	r.message = &message
 	return r
 }
 
@@ -264,6 +271,9 @@ func (a *NotificationAPIService) ListNotificationEventsExecute(r ApiListNotifica
 	}
 	if r.priorities != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "priorities", r.priorities, "form", "")
+	}
+	if r.message != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "message", r.message, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

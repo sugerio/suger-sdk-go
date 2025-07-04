@@ -1229,7 +1229,7 @@ func (r ApiUpdateContactRequest) Execute() (*IdentityContact, *http.Response, er
 /*
 UpdateContact update contact
 
-update contact by the given organization and buyer id. The given name and information should be complete. Please note that this function does not support partial updates.
+Update the contact for the given organization and contact ID. This endpoint supports partial updates. Only the fields provided in the request body will be updated. To clear a field, provide it with an empty value (e.g., "" for name, or {} for info).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId Organization ID

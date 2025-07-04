@@ -46,6 +46,8 @@ const (
 	OfferStatus_UPDATE_FAILED OfferStatus = "UPDATE_FAILED"
 	OfferStatus_UPDATE_SUCCESS OfferStatus = "UPDATE_SUCCESS"
 	OfferStatus_USED OfferStatus = "USED"
+	OfferStatus_PENDING_PARTNER_ACTION OfferStatus = "PENDING_PARTNER_ACTION"
+	OfferStatus_VOID OfferStatus = "VOID"
 )
 
 // All allowed values of OfferStatus enum
@@ -75,6 +77,8 @@ var AllowedOfferStatusEnumValues = []OfferStatus{
 	"UPDATE_FAILED",
 	"UPDATE_SUCCESS",
 	"USED",
+	"PENDING_PARTNER_ACTION",
+	"VOID",
 }
 
 func (v *OfferStatus) UnmarshalJSON(src []byte) error {

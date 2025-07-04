@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AwsRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent.md) | For raw revenue records in AWS Marketplace | [optional] 
 **AzureRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue.md) | For raw revenue records in Azure Marketplace | [optional] 
 **BankTraceId** | Pointer to **string** | The bank trace ID of the revenue record if applicable | [optional] 
-**BillingModel** | Pointer to **string** | The billing model of the revenue record if applicable The value is one of the following: - SubscriptionBased: The revenue record is from a subscription or recurring commitment. - UsageBased: The revenue record is from a usage-based metering. | [optional] 
+**BillingModel** | Pointer to [**RevenueBillingModel**](RevenueBillingModel.md) | The billing model of the revenue record if applicable The value is one of the following: - SubscriptionBased: The revenue record is from a subscription or recurring commitment. - UsageBased: The revenue record is from a usage-based metering. | [optional] 
 **Channel** | Pointer to [**RevenueChannel**](RevenueChannel.md) | The channel of revenue record. | [optional] 
 **CreditAmount** | Pointer to **float32** | The credit amount used in the revenue record. | [optional] 
 **DisbursementBillingEventId** | Pointer to **string** | The disbursement ID of the revenue record if applicable | [optional] 
@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **EarningId** | Pointer to **string** | The earning ID of the revenue record if applicable | [optional] 
 **GcpRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage.md) | For raw revenue records in GCP Marketplace | [optional] 
 **IdSource** | Pointer to **string** | Source of the revenue record ID. | [optional] 
+**InvoiceId** | Pointer to **string** | The invoice ID of the revenue record if applicable | [optional] 
 **PaymentId** | Pointer to **string** | The payment  ID of the revenue record if applicable | [optional] 
 **ResellerId** | Pointer to **string** | The reseller ID of the revenue record if applicable | [optional] 
 **ResellerName** | Pointer to **string** | The reseller name of the revenue record if application | [optional] 
@@ -116,20 +117,20 @@ HasBankTraceId returns a boolean if a field has been set.
 
 ### GetBillingModel
 
-`func (o *RevenueRecordInfo) GetBillingModel() string`
+`func (o *RevenueRecordInfo) GetBillingModel() RevenueBillingModel`
 
 GetBillingModel returns the BillingModel field if non-nil, zero value otherwise.
 
 ### GetBillingModelOk
 
-`func (o *RevenueRecordInfo) GetBillingModelOk() (*string, bool)`
+`func (o *RevenueRecordInfo) GetBillingModelOk() (*RevenueBillingModel, bool)`
 
 GetBillingModelOk returns a tuple with the BillingModel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBillingModel
 
-`func (o *RevenueRecordInfo) SetBillingModel(v string)`
+`func (o *RevenueRecordInfo) SetBillingModel(v RevenueBillingModel)`
 
 SetBillingModel sets BillingModel field to given value.
 
@@ -313,6 +314,31 @@ SetIdSource sets IdSource field to given value.
 `func (o *RevenueRecordInfo) HasIdSource() bool`
 
 HasIdSource returns a boolean if a field has been set.
+
+### GetInvoiceId
+
+`func (o *RevenueRecordInfo) GetInvoiceId() string`
+
+GetInvoiceId returns the InvoiceId field if non-nil, zero value otherwise.
+
+### GetInvoiceIdOk
+
+`func (o *RevenueRecordInfo) GetInvoiceIdOk() (*string, bool)`
+
+GetInvoiceIdOk returns a tuple with the InvoiceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvoiceId
+
+`func (o *RevenueRecordInfo) SetInvoiceId(v string)`
+
+SetInvoiceId sets InvoiceId field to given value.
+
+### HasInvoiceId
+
+`func (o *RevenueRecordInfo) HasInvoiceId() bool`
+
+HasInvoiceId returns a boolean if a field has been set.
 
 ### GetPaymentId
 

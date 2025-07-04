@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **OrganizationId** | Pointer to **string** |  | [optional] 
 **Priority** | Pointer to [**SupportTicketPriority**](SupportTicketPriority.md) |  | [optional] 
 **Status** | Pointer to [**SupportTicketStatus**](SupportTicketStatus.md) |  | [optional] 
+**TaskType** | Pointer to [**SupportTicketTaskType**](SupportTicketTaskType.md) |  | [optional] 
 **Watchers** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -336,6 +337,31 @@ SetStatus sets Status field to given value.
 `func (o *SupportTicket) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetTaskType
+
+`func (o *SupportTicket) GetTaskType() SupportTicketTaskType`
+
+GetTaskType returns the TaskType field if non-nil, zero value otherwise.
+
+### GetTaskTypeOk
+
+`func (o *SupportTicket) GetTaskTypeOk() (*SupportTicketTaskType, bool)`
+
+GetTaskTypeOk returns a tuple with the TaskType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTaskType
+
+`func (o *SupportTicket) SetTaskType(v SupportTicketTaskType)`
+
+SetTaskType sets TaskType field to given value.
+
+### HasTaskType
+
+`func (o *SupportTicket) HasTaskType() bool`
+
+HasTaskType returns a boolean if a field has been set.
 
 ### GetWatchers
 

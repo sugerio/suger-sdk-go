@@ -75,7 +75,7 @@ ctx = context.WithValue(context.Background(), suger.ContextOperationServerVariab
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://https://api.suger.cloud*
+All URIs are relative to *https://api.suger.cloud*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -603,6 +603,7 @@ Class | Method | HTTP request | Description
  - [PriceModelVolumeConfig](docs/PriceModelVolumeConfig.md)
  - [PrivateOfferDiscountType](docs/PrivateOfferDiscountType.md)
  - [ProductInfo](docs/ProductInfo.md)
+ - [RevenueBillingModel](docs/RevenueBillingModel.md)
  - [RevenueChannel](docs/RevenueChannel.md)
  - [RevenueRecord](docs/RevenueRecord.md)
  - [RevenueRecordDetail](docs/RevenueRecordDetail.md)
@@ -654,6 +655,7 @@ Class | Method | HTTP request | Description
  - [SupportTicketImage](docs/SupportTicketImage.md)
  - [SupportTicketPriority](docs/SupportTicketPriority.md)
  - [SupportTicketStatus](docs/SupportTicketStatus.md)
+ - [SupportTicketTaskType](docs/SupportTicketTaskType.md)
  - [SupportTicketUser](docs/SupportTicketUser.md)
  - [TimeUnit](docs/TimeUnit.md)
  - [TrackEvent](docs/TrackEvent.md)

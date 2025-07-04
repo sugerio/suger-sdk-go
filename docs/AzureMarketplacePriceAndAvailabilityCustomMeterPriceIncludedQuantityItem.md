@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BillingTerm** | Pointer to [**AzureMarketplaceTerm**](AzureMarketplaceTerm.md) |  | [optional] 
+**ContractDuration** | Pointer to [**AzureMarketplaceTerm**](AzureMarketplaceTerm.md) |  | [optional] 
 **IsInfinite** | Pointer to **bool** |  | [optional] 
 **Quantity** | Pointer to **float32** |  | [optional] 
 
@@ -51,6 +52,31 @@ SetBillingTerm sets BillingTerm field to given value.
 `func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem) HasBillingTerm() bool`
 
 HasBillingTerm returns a boolean if a field has been set.
+
+### GetContractDuration
+
+`func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem) GetContractDuration() AzureMarketplaceTerm`
+
+GetContractDuration returns the ContractDuration field if non-nil, zero value otherwise.
+
+### GetContractDurationOk
+
+`func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem) GetContractDurationOk() (*AzureMarketplaceTerm, bool)`
+
+GetContractDurationOk returns a tuple with the ContractDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContractDuration
+
+`func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem) SetContractDuration(v AzureMarketplaceTerm)`
+
+SetContractDuration sets ContractDuration field to given value.
+
+### HasContractDuration
+
+`func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem) HasContractDuration() bool`
+
+HasContractDuration returns a boolean if a field has been set.
 
 ### GetIsInfinite
 

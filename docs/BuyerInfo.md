@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **MetronomeCustomerId** | Pointer to **string** | The metronome customer ID for the buyer if it is connected to a metronome customer. | [optional] 
 **OrbCustomerId** | Pointer to **string** | The orb customer ID for the buyer if it is connected to a orb customer. | [optional] 
 **PaymentConfig** | Pointer to [**PaymentConfig**](PaymentConfig.md) | Payment Config for billing. | [optional] 
+**QuickbooksCustomerId** | Pointer to **string** | The quickbooks customer ID for the buyer if it is connected to a quickbooks customer. | [optional] 
 **SnowflakeBuyer** | Pointer to [**SnowflakeMarketplaceBuyer**](SnowflakeMarketplaceBuyer.md) | Buyer on Snowflake | [optional] 
 **SpaUrl** | Pointer to **string** | Buyer SPA url, public page visited with jwt. | [optional] 
 **StripeBuyer** | Pointer to [**StripeCustomer**](StripeCustomer.md) | Buyer as Customer on Stripe | [optional] 
@@ -469,6 +470,31 @@ SetPaymentConfig sets PaymentConfig field to given value.
 `func (o *BuyerInfo) HasPaymentConfig() bool`
 
 HasPaymentConfig returns a boolean if a field has been set.
+
+### GetQuickbooksCustomerId
+
+`func (o *BuyerInfo) GetQuickbooksCustomerId() string`
+
+GetQuickbooksCustomerId returns the QuickbooksCustomerId field if non-nil, zero value otherwise.
+
+### GetQuickbooksCustomerIdOk
+
+`func (o *BuyerInfo) GetQuickbooksCustomerIdOk() (*string, bool)`
+
+GetQuickbooksCustomerIdOk returns a tuple with the QuickbooksCustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQuickbooksCustomerId
+
+`func (o *BuyerInfo) SetQuickbooksCustomerId(v string)`
+
+SetQuickbooksCustomerId sets QuickbooksCustomerId field to given value.
+
+### HasQuickbooksCustomerId
+
+`func (o *BuyerInfo) HasQuickbooksCustomerId() bool`
+
+HasQuickbooksCustomerId returns a boolean if a field has been set.
 
 ### GetSnowflakeBuyer
 

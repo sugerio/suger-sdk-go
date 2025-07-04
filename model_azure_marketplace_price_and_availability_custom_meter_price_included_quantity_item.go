@@ -21,6 +21,7 @@ var _ MappedNullable = &AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncl
 // AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem struct for AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem
 type AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem struct {
 	BillingTerm *AzureMarketplaceTerm `json:"billingTerm,omitempty"`
+	ContractDuration *AzureMarketplaceTerm `json:"contractDuration,omitempty"`
 	IsInfinite *bool `json:"isInfinite,omitempty"`
 	Quantity *float32 `json:"quantity,omitempty"`
 }
@@ -72,6 +73,38 @@ func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityIte
 // SetBillingTerm gets a reference to the given AzureMarketplaceTerm and assigns it to the BillingTerm field.
 func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem) SetBillingTerm(v AzureMarketplaceTerm) {
 	o.BillingTerm = &v
+}
+
+// GetContractDuration returns the ContractDuration field value if set, zero value otherwise.
+func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem) GetContractDuration() AzureMarketplaceTerm {
+	if o == nil || IsNil(o.ContractDuration) {
+		var ret AzureMarketplaceTerm
+		return ret
+	}
+	return *o.ContractDuration
+}
+
+// GetContractDurationOk returns a tuple with the ContractDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem) GetContractDurationOk() (*AzureMarketplaceTerm, bool) {
+	if o == nil || IsNil(o.ContractDuration) {
+		return nil, false
+	}
+	return o.ContractDuration, true
+}
+
+// HasContractDuration returns a boolean if a field has been set.
+func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem) HasContractDuration() bool {
+	if o != nil && !IsNil(o.ContractDuration) {
+		return true
+	}
+
+	return false
+}
+
+// SetContractDuration gets a reference to the given AzureMarketplaceTerm and assigns it to the ContractDuration field.
+func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem) SetContractDuration(v AzureMarketplaceTerm) {
+	o.ContractDuration = &v
 }
 
 // GetIsInfinite returns the IsInfinite field value if set, zero value otherwise.
@@ -150,6 +183,9 @@ func (o AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.BillingTerm) {
 		toSerialize["billingTerm"] = o.BillingTerm
+	}
+	if !IsNil(o.ContractDuration) {
+		toSerialize["contractDuration"] = o.ContractDuration
 	}
 	if !IsNil(o.IsInfinite) {
 		toSerialize["isInfinite"] = o.IsInfinite

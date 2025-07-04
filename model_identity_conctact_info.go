@@ -23,6 +23,7 @@ type IdentityConctactInfo struct {
 	CompanyLocation *string `json:"companyLocation,omitempty"`
 	CompanyName *string `json:"companyName,omitempty"`
 	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
+	Partner *Partner `json:"partner,omitempty"`
 	PhoneNumber *string `json:"phoneNumber,omitempty"`
 	Role *string `json:"role,omitempty"`
 }
@@ -140,6 +141,38 @@ func (o *IdentityConctactInfo) SetLastModifiedBy(v string) {
 	o.LastModifiedBy = &v
 }
 
+// GetPartner returns the Partner field value if set, zero value otherwise.
+func (o *IdentityConctactInfo) GetPartner() Partner {
+	if o == nil || IsNil(o.Partner) {
+		var ret Partner
+		return ret
+	}
+	return *o.Partner
+}
+
+// GetPartnerOk returns a tuple with the Partner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityConctactInfo) GetPartnerOk() (*Partner, bool) {
+	if o == nil || IsNil(o.Partner) {
+		return nil, false
+	}
+	return o.Partner, true
+}
+
+// HasPartner returns a boolean if a field has been set.
+func (o *IdentityConctactInfo) HasPartner() bool {
+	if o != nil && !IsNil(o.Partner) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartner gets a reference to the given Partner and assigns it to the Partner field.
+func (o *IdentityConctactInfo) SetPartner(v Partner) {
+	o.Partner = &v
+}
+
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
 func (o *IdentityConctactInfo) GetPhoneNumber() string {
 	if o == nil || IsNil(o.PhoneNumber) {
@@ -222,6 +255,9 @@ func (o IdentityConctactInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LastModifiedBy) {
 		toSerialize["lastModifiedBy"] = o.LastModifiedBy
+	}
+	if !IsNil(o.Partner) {
+		toSerialize["partner"] = o.Partner
 	}
 	if !IsNil(o.PhoneNumber) {
 		toSerialize["phoneNumber"] = o.PhoneNumber
