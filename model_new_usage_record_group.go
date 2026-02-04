@@ -32,6 +32,8 @@ type NewUsageRecordGroup struct {
 	Records map[string]float32 `json:"records"`
 	// The timestamp of when the usage records were generated. Optional, if not provided, the current report timestamp will be used. This is not the timestamp of when the usage records were reported to Suger.
 	Timestamp *time.Time `json:"timestamp,omitempty"`
+	// usage allocation information, dimension key -> usageAllocation array. Only supported for AWS marketplace usage metering at this moment.
+	UsageAllocations *map[string][]UsageAllocation `json:"usageAllocations,omitempty"`
 }
 
 type _NewUsageRecordGroup NewUsageRecordGroup
@@ -199,6 +201,38 @@ func (o *NewUsageRecordGroup) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
 }
 
+// GetUsageAllocations returns the UsageAllocations field value if set, zero value otherwise.
+func (o *NewUsageRecordGroup) GetUsageAllocations() map[string][]UsageAllocation {
+	if o == nil || IsNil(o.UsageAllocations) {
+		var ret map[string][]UsageAllocation
+		return ret
+	}
+	return *o.UsageAllocations
+}
+
+// GetUsageAllocationsOk returns a tuple with the UsageAllocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NewUsageRecordGroup) GetUsageAllocationsOk() (*map[string][]UsageAllocation, bool) {
+	if o == nil || IsNil(o.UsageAllocations) {
+		return nil, false
+	}
+	return o.UsageAllocations, true
+}
+
+// HasUsageAllocations returns a boolean if a field has been set.
+func (o *NewUsageRecordGroup) HasUsageAllocations() bool {
+	if o != nil && !IsNil(o.UsageAllocations) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageAllocations gets a reference to the given map[string][]UsageAllocation and assigns it to the UsageAllocations field.
+func (o *NewUsageRecordGroup) SetUsageAllocations(v map[string][]UsageAllocation) {
+	o.UsageAllocations = &v
+}
+
 func (o NewUsageRecordGroup) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -219,6 +253,9 @@ func (o NewUsageRecordGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize["records"] = o.Records
 	if !IsNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
+	}
+	if !IsNil(o.UsageAllocations) {
+		toSerialize["usageAllocations"] = o.UsageAllocations
 	}
 	return toSerialize, nil
 }

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **NextOffset** | Pointer to **int32** | The next offset to use in the next request to get the next page of notification messages. If this field is null, there are no more notification messages to get. | [optional] 
-**NotificationMessages** | Pointer to [**[]NotificationMessage**](NotificationMessage.md) |  | [optional] 
+**NotificationMessages** | Pointer to [**[]GithubComSugerioMarketplaceServicePkgOrmNotificationMessage**](GithubComSugerioMarketplaceServicePkgOrmNotificationMessage.md) |  | [optional] 
 **TotalCount** | Pointer to **int32** | The total number of notification messages. Only available when the request is made with the first offset &#x3D; 0. | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasNextOffset returns a boolean if a field has been set.
 
 ### GetNotificationMessages
 
-`func (o *ListNotificationMessagesResponse) GetNotificationMessages() []NotificationMessage`
+`func (o *ListNotificationMessagesResponse) GetNotificationMessages() []GithubComSugerioMarketplaceServicePkgOrmNotificationMessage`
 
 GetNotificationMessages returns the NotificationMessages field if non-nil, zero value otherwise.
 
 ### GetNotificationMessagesOk
 
-`func (o *ListNotificationMessagesResponse) GetNotificationMessagesOk() (*[]NotificationMessage, bool)`
+`func (o *ListNotificationMessagesResponse) GetNotificationMessagesOk() (*[]GithubComSugerioMarketplaceServicePkgOrmNotificationMessage, bool)`
 
 GetNotificationMessagesOk returns a tuple with the NotificationMessages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotificationMessages
 
-`func (o *ListNotificationMessagesResponse) SetNotificationMessages(v []NotificationMessage)`
+`func (o *ListNotificationMessagesResponse) SetNotificationMessages(v []GithubComSugerioMarketplaceServicePkgOrmNotificationMessage)`
 
 SetNotificationMessages sets NotificationMessages field to given value.
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Arn** | Pointer to **string** |  | [optional] 
+**Code** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Title** | Pointer to **string** |  | [optional] 
 
@@ -51,6 +52,31 @@ SetArn sets Arn field to given value.
 `func (o *AwsMarketplaceEventBridgeEventProduct) HasArn() bool`
 
 HasArn returns a boolean if a field has been set.
+
+### GetCode
+
+`func (o *AwsMarketplaceEventBridgeEventProduct) GetCode() string`
+
+GetCode returns the Code field if non-nil, zero value otherwise.
+
+### GetCodeOk
+
+`func (o *AwsMarketplaceEventBridgeEventProduct) GetCodeOk() (*string, bool)`
+
+GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCode
+
+`func (o *AwsMarketplaceEventBridgeEventProduct) SetCode(v string)`
+
+SetCode sets Code field to given value.
+
+### HasCode
+
+`func (o *AwsMarketplaceEventBridgeEventProduct) HasCode() bool`
+
+HasCode returns a boolean if a field has been set.
 
 ### GetId
 

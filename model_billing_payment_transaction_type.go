@@ -23,12 +23,14 @@ type BillingPaymentTransactionType string
 const (
 	BillingPaymentTransactionType_CHARGE BillingPaymentTransactionType = "CHARGE"
 	BillingPaymentTransactionType_REFUND BillingPaymentTransactionType = "REFUND"
+	BillingPaymentTransactionType_CREDIT_MEMO BillingPaymentTransactionType = "CREDIT_MEMO"
 )
 
 // All allowed values of BillingPaymentTransactionType enum
 var AllowedBillingPaymentTransactionTypeEnumValues = []BillingPaymentTransactionType{
 	"CHARGE",
 	"REFUND",
+	"CREDIT_MEMO",
 }
 
 func (v *BillingPaymentTransactionType) UnmarshalJSON(src []byte) error {

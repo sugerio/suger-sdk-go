@@ -20,7 +20,10 @@ var _ MappedNullable = &AzureMarketplaceVmPricePropertyItem{}
 
 // AzureMarketplaceVmPricePropertyItem struct for AzureMarketplaceVmPricePropertyItem
 type AzureMarketplaceVmPricePropertyItem struct {
+	// For Azure schema 2025-05-01 flexible billing
+	FlexibleSchedule *AzureMarketplacePriceFlexibleSchedule `json:"flexibleSchedule,omitempty"`
 	Quantity *float32 `json:"quantity,omitempty"`
+	// For VM offer, could be 0
 	UnitPricePerPaymentPeriodInUsd *float32 `json:"unitPricePerPaymentPeriodInUsd,omitempty"`
 }
 
@@ -39,6 +42,38 @@ func NewAzureMarketplaceVmPricePropertyItem() *AzureMarketplaceVmPricePropertyIt
 func NewAzureMarketplaceVmPricePropertyItemWithDefaults() *AzureMarketplaceVmPricePropertyItem {
 	this := AzureMarketplaceVmPricePropertyItem{}
 	return &this
+}
+
+// GetFlexibleSchedule returns the FlexibleSchedule field value if set, zero value otherwise.
+func (o *AzureMarketplaceVmPricePropertyItem) GetFlexibleSchedule() AzureMarketplacePriceFlexibleSchedule {
+	if o == nil || IsNil(o.FlexibleSchedule) {
+		var ret AzureMarketplacePriceFlexibleSchedule
+		return ret
+	}
+	return *o.FlexibleSchedule
+}
+
+// GetFlexibleScheduleOk returns a tuple with the FlexibleSchedule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureMarketplaceVmPricePropertyItem) GetFlexibleScheduleOk() (*AzureMarketplacePriceFlexibleSchedule, bool) {
+	if o == nil || IsNil(o.FlexibleSchedule) {
+		return nil, false
+	}
+	return o.FlexibleSchedule, true
+}
+
+// HasFlexibleSchedule returns a boolean if a field has been set.
+func (o *AzureMarketplaceVmPricePropertyItem) HasFlexibleSchedule() bool {
+	if o != nil && !IsNil(o.FlexibleSchedule) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlexibleSchedule gets a reference to the given AzureMarketplacePriceFlexibleSchedule and assigns it to the FlexibleSchedule field.
+func (o *AzureMarketplaceVmPricePropertyItem) SetFlexibleSchedule(v AzureMarketplacePriceFlexibleSchedule) {
+	o.FlexibleSchedule = &v
 }
 
 // GetQuantity returns the Quantity field value if set, zero value otherwise.
@@ -115,6 +150,9 @@ func (o AzureMarketplaceVmPricePropertyItem) MarshalJSON() ([]byte, error) {
 
 func (o AzureMarketplaceVmPricePropertyItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FlexibleSchedule) {
+		toSerialize["flexibleSchedule"] = o.FlexibleSchedule
+	}
 	if !IsNil(o.Quantity) {
 		toSerialize["quantity"] = o.Quantity
 	}

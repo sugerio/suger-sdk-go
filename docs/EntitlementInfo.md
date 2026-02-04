@@ -11,7 +11,9 @@ Name | Type | Description | Notes
 **AutoRenew** | Pointer to **bool** | Is this Entitlement Auto Renew enabled. | [optional] 
 **AwsAgreement** | Pointer to [**AwsMarketplaceAgreementV2**](AwsMarketplaceAgreementV2.md) | Nullable. AWS agreement from AWS Marketplace. | [optional] 
 **AwsChannelPartner** | Pointer to [**AwsChannelPartner**](AwsChannelPartner.md) | The AWS channel partner (reseller), only applicable if this entitlement is based on AWS CPPO offer. | [optional] 
-**AwsEntitlements** | Pointer to [**[]TypesEntitlement**](TypesEntitlement.md) | Nullable. AWS Entitlements from AWS Marketplace. | [optional] 
+**AwsEntitlements** | Pointer to [**[]GithubComAwsAwsSdkGoV2ServiceMarketplaceentitlementserviceTypesEntitlement**](GithubComAwsAwsSdkGoV2ServiceMarketplaceentitlementserviceTypesEntitlement.md) | Nullable. AWS Entitlements from AWS Marketplace. | [optional] 
+**AwsLicenseArn** | Pointer to **string** | AwsLicenseArn for AWS concurrent agreement support | [optional] 
+**AwsOfferSetId** | Pointer to **string** | AwsOfferSetID is the AWS Marketplace OfferSet Id, available for agreements originated from an offer associated with an offerSet. | [optional] 
 **AzureSubscriptions** | Pointer to [**[]AzureMarketplaceSubscription**](AzureMarketplaceSubscription.md) | Nullable. Azure Subscriptions from Azure Marketplace. | [optional] 
 **BillableDimensions** | Pointer to [**[]BillableDimension**](BillableDimension.md) | The dimensions for billable metric usage-based metering. It&#39;s for Suger(Stripe, Ayden) metering. | [optional] 
 **BillingCycle** | Pointer to [**BillingCycle**](BillingCycle.md) | Billing Cycle | [optional] 
@@ -26,6 +28,7 @@ Name | Type | Description | Notes
 **DisbursedAmount** | Pointer to **float32** | The amount that has been disbursed to the seller account. | [optional] 
 **EulaType** | Pointer to [**EulaType**](EulaType.md) |  | [optional] 
 **EulaUrl** | Pointer to **string** |  | [optional] 
+**FallbackFromOffer** | Pointer to **bool** | A flag indicates that the current entitlement info is from offer (private or default/public), not awsAgreementTerms from AWS Marketplace. | [optional] 
 **GcpEntitlements** | Pointer to [**[]GcpMarketplaceEntitlement**](GcpMarketplaceEntitlement.md) | Nullable. GCP Entitlements from GCP Marketplace. | [optional] 
 **GcpPlans** | Pointer to [**[]GcpMarketplaceProductPurchaseOptionSpec**](GcpMarketplaceProductPurchaseOptionSpec.md) | Only applicable for GCP Marketplace Entitlements. | [optional] 
 **GracePeriodInDays** | Pointer to **int32** | The grace period for the offer. It is same as the TrialConfig in DirectOfferInfo. But can be overridden at the entitlement level. | [optional] 
@@ -237,20 +240,20 @@ HasAwsChannelPartner returns a boolean if a field has been set.
 
 ### GetAwsEntitlements
 
-`func (o *EntitlementInfo) GetAwsEntitlements() []TypesEntitlement`
+`func (o *EntitlementInfo) GetAwsEntitlements() []GithubComAwsAwsSdkGoV2ServiceMarketplaceentitlementserviceTypesEntitlement`
 
 GetAwsEntitlements returns the AwsEntitlements field if non-nil, zero value otherwise.
 
 ### GetAwsEntitlementsOk
 
-`func (o *EntitlementInfo) GetAwsEntitlementsOk() (*[]TypesEntitlement, bool)`
+`func (o *EntitlementInfo) GetAwsEntitlementsOk() (*[]GithubComAwsAwsSdkGoV2ServiceMarketplaceentitlementserviceTypesEntitlement, bool)`
 
 GetAwsEntitlementsOk returns a tuple with the AwsEntitlements field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAwsEntitlements
 
-`func (o *EntitlementInfo) SetAwsEntitlements(v []TypesEntitlement)`
+`func (o *EntitlementInfo) SetAwsEntitlements(v []GithubComAwsAwsSdkGoV2ServiceMarketplaceentitlementserviceTypesEntitlement)`
 
 SetAwsEntitlements sets AwsEntitlements field to given value.
 
@@ -259,6 +262,56 @@ SetAwsEntitlements sets AwsEntitlements field to given value.
 `func (o *EntitlementInfo) HasAwsEntitlements() bool`
 
 HasAwsEntitlements returns a boolean if a field has been set.
+
+### GetAwsLicenseArn
+
+`func (o *EntitlementInfo) GetAwsLicenseArn() string`
+
+GetAwsLicenseArn returns the AwsLicenseArn field if non-nil, zero value otherwise.
+
+### GetAwsLicenseArnOk
+
+`func (o *EntitlementInfo) GetAwsLicenseArnOk() (*string, bool)`
+
+GetAwsLicenseArnOk returns a tuple with the AwsLicenseArn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsLicenseArn
+
+`func (o *EntitlementInfo) SetAwsLicenseArn(v string)`
+
+SetAwsLicenseArn sets AwsLicenseArn field to given value.
+
+### HasAwsLicenseArn
+
+`func (o *EntitlementInfo) HasAwsLicenseArn() bool`
+
+HasAwsLicenseArn returns a boolean if a field has been set.
+
+### GetAwsOfferSetId
+
+`func (o *EntitlementInfo) GetAwsOfferSetId() string`
+
+GetAwsOfferSetId returns the AwsOfferSetId field if non-nil, zero value otherwise.
+
+### GetAwsOfferSetIdOk
+
+`func (o *EntitlementInfo) GetAwsOfferSetIdOk() (*string, bool)`
+
+GetAwsOfferSetIdOk returns a tuple with the AwsOfferSetId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsOfferSetId
+
+`func (o *EntitlementInfo) SetAwsOfferSetId(v string)`
+
+SetAwsOfferSetId sets AwsOfferSetId field to given value.
+
+### HasAwsOfferSetId
+
+`func (o *EntitlementInfo) HasAwsOfferSetId() bool`
+
+HasAwsOfferSetId returns a boolean if a field has been set.
 
 ### GetAzureSubscriptions
 
@@ -609,6 +662,31 @@ SetEulaUrl sets EulaUrl field to given value.
 `func (o *EntitlementInfo) HasEulaUrl() bool`
 
 HasEulaUrl returns a boolean if a field has been set.
+
+### GetFallbackFromOffer
+
+`func (o *EntitlementInfo) GetFallbackFromOffer() bool`
+
+GetFallbackFromOffer returns the FallbackFromOffer field if non-nil, zero value otherwise.
+
+### GetFallbackFromOfferOk
+
+`func (o *EntitlementInfo) GetFallbackFromOfferOk() (*bool, bool)`
+
+GetFallbackFromOfferOk returns a tuple with the FallbackFromOffer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFallbackFromOffer
+
+`func (o *EntitlementInfo) SetFallbackFromOffer(v bool)`
+
+SetFallbackFromOffer sets FallbackFromOffer field to given value.
+
+### HasFallbackFromOffer
+
+`func (o *EntitlementInfo) HasFallbackFromOffer() bool`
+
+HasFallbackFromOffer returns a boolean if a field has been set.
 
 ### GetGcpEntitlements
 

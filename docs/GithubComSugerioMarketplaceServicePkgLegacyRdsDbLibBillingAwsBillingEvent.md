@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **BillingAddressID** | Pointer to **string** |  | [optional] 
 **BrokerID** | Pointer to **string** |  | [optional] 
 **BuyerID** | Pointer to **string** |  | [optional] 
+**BuyerTransactionReferenceID** | Pointer to **string** |  | [optional] 
 **Currency** | Pointer to **string** |  | [optional] 
 **DataFeedProductID** | Pointer to **string** |  | [optional] 
 **DisbursementBillingEventID** | Pointer to **string** |  | [optional] 
@@ -27,6 +28,7 @@ Name | Type | Description | Notes
 **ParentBillingEventID** | Pointer to **string** |  | [optional] 
 **PaymentDueDate** | Pointer to [**DatabaseSqlNullTime**](DatabaseSqlNullTime.md) |  | [optional] 
 **ProductID** | Pointer to **string** |  | [optional] 
+**RefundedBuyerTransactionReferenceID** | Pointer to **string** |  | [optional] 
 **ToAccountID** | Pointer to **string** |  | [optional] 
 **TransactionReferenceID** | Pointer to **string** |  | [optional] 
 **TransactionType** | Pointer to **string** |  | [optional] 
@@ -251,6 +253,31 @@ SetBuyerID sets BuyerID field to given value.
 `func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) HasBuyerID() bool`
 
 HasBuyerID returns a boolean if a field has been set.
+
+### GetBuyerTransactionReferenceID
+
+`func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) GetBuyerTransactionReferenceID() string`
+
+GetBuyerTransactionReferenceID returns the BuyerTransactionReferenceID field if non-nil, zero value otherwise.
+
+### GetBuyerTransactionReferenceIDOk
+
+`func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) GetBuyerTransactionReferenceIDOk() (*string, bool)`
+
+GetBuyerTransactionReferenceIDOk returns a tuple with the BuyerTransactionReferenceID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuyerTransactionReferenceID
+
+`func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) SetBuyerTransactionReferenceID(v string)`
+
+SetBuyerTransactionReferenceID sets BuyerTransactionReferenceID field to given value.
+
+### HasBuyerTransactionReferenceID
+
+`func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) HasBuyerTransactionReferenceID() bool`
+
+HasBuyerTransactionReferenceID returns a boolean if a field has been set.
 
 ### GetCurrency
 
@@ -626,6 +653,31 @@ SetProductID sets ProductID field to given value.
 `func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) HasProductID() bool`
 
 HasProductID returns a boolean if a field has been set.
+
+### GetRefundedBuyerTransactionReferenceID
+
+`func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) GetRefundedBuyerTransactionReferenceID() string`
+
+GetRefundedBuyerTransactionReferenceID returns the RefundedBuyerTransactionReferenceID field if non-nil, zero value otherwise.
+
+### GetRefundedBuyerTransactionReferenceIDOk
+
+`func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) GetRefundedBuyerTransactionReferenceIDOk() (*string, bool)`
+
+GetRefundedBuyerTransactionReferenceIDOk returns a tuple with the RefundedBuyerTransactionReferenceID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefundedBuyerTransactionReferenceID
+
+`func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) SetRefundedBuyerTransactionReferenceID(v string)`
+
+SetRefundedBuyerTransactionReferenceID sets RefundedBuyerTransactionReferenceID field to given value.
+
+### HasRefundedBuyerTransactionReferenceID
+
+`func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) HasRefundedBuyerTransactionReferenceID() bool`
+
+HasRefundedBuyerTransactionReferenceID returns a boolean if a field has been set.
 
 ### GetToAccountID
 

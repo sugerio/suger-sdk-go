@@ -35,7 +35,11 @@ type EntitlementInfo struct {
 	// The AWS channel partner (reseller), only applicable if this entitlement is based on AWS CPPO offer.
 	AwsChannelPartner *AwsChannelPartner `json:"awsChannelPartner,omitempty"`
 	// Nullable. AWS Entitlements from AWS Marketplace.
-	AwsEntitlements []TypesEntitlement `json:"awsEntitlements,omitempty"`
+	AwsEntitlements []GithubComAwsAwsSdkGoV2ServiceMarketplaceentitlementserviceTypesEntitlement `json:"awsEntitlements,omitempty"`
+	// AwsLicenseArn for AWS concurrent agreement support
+	AwsLicenseArn *string `json:"awsLicenseArn,omitempty"`
+	// AwsOfferSetID is the AWS Marketplace OfferSet Id, available for agreements originated from an offer associated with an offerSet.
+	AwsOfferSetId *string `json:"awsOfferSetId,omitempty"`
 	// Nullable. Azure Subscriptions from Azure Marketplace.
 	AzureSubscriptions []AzureMarketplaceSubscription `json:"azureSubscriptions,omitempty"`
 	// The dimensions for billable metric usage-based metering. It's for Suger(Stripe, Ayden) metering.
@@ -62,6 +66,8 @@ type EntitlementInfo struct {
 	DisbursedAmount *float32 `json:"disbursedAmount,omitempty"`
 	EulaType *EulaType `json:"eulaType,omitempty"`
 	EulaUrl *string `json:"eulaUrl,omitempty"`
+	// A flag indicates that the current entitlement info is from offer (private or default/public), not awsAgreementTerms from AWS Marketplace.
+	FallbackFromOffer *bool `json:"fallbackFromOffer,omitempty"`
 	// Nullable. GCP Entitlements from GCP Marketplace.
 	GcpEntitlements []GcpMarketplaceEntitlement `json:"gcpEntitlements,omitempty"`
 	// Only applicable for GCP Marketplace Entitlements.
@@ -332,9 +338,9 @@ func (o *EntitlementInfo) SetAwsChannelPartner(v AwsChannelPartner) {
 }
 
 // GetAwsEntitlements returns the AwsEntitlements field value if set, zero value otherwise.
-func (o *EntitlementInfo) GetAwsEntitlements() []TypesEntitlement {
+func (o *EntitlementInfo) GetAwsEntitlements() []GithubComAwsAwsSdkGoV2ServiceMarketplaceentitlementserviceTypesEntitlement {
 	if o == nil || IsNil(o.AwsEntitlements) {
-		var ret []TypesEntitlement
+		var ret []GithubComAwsAwsSdkGoV2ServiceMarketplaceentitlementserviceTypesEntitlement
 		return ret
 	}
 	return o.AwsEntitlements
@@ -342,7 +348,7 @@ func (o *EntitlementInfo) GetAwsEntitlements() []TypesEntitlement {
 
 // GetAwsEntitlementsOk returns a tuple with the AwsEntitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementInfo) GetAwsEntitlementsOk() ([]TypesEntitlement, bool) {
+func (o *EntitlementInfo) GetAwsEntitlementsOk() ([]GithubComAwsAwsSdkGoV2ServiceMarketplaceentitlementserviceTypesEntitlement, bool) {
 	if o == nil || IsNil(o.AwsEntitlements) {
 		return nil, false
 	}
@@ -358,9 +364,73 @@ func (o *EntitlementInfo) HasAwsEntitlements() bool {
 	return false
 }
 
-// SetAwsEntitlements gets a reference to the given []TypesEntitlement and assigns it to the AwsEntitlements field.
-func (o *EntitlementInfo) SetAwsEntitlements(v []TypesEntitlement) {
+// SetAwsEntitlements gets a reference to the given []GithubComAwsAwsSdkGoV2ServiceMarketplaceentitlementserviceTypesEntitlement and assigns it to the AwsEntitlements field.
+func (o *EntitlementInfo) SetAwsEntitlements(v []GithubComAwsAwsSdkGoV2ServiceMarketplaceentitlementserviceTypesEntitlement) {
 	o.AwsEntitlements = v
+}
+
+// GetAwsLicenseArn returns the AwsLicenseArn field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetAwsLicenseArn() string {
+	if o == nil || IsNil(o.AwsLicenseArn) {
+		var ret string
+		return ret
+	}
+	return *o.AwsLicenseArn
+}
+
+// GetAwsLicenseArnOk returns a tuple with the AwsLicenseArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetAwsLicenseArnOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsLicenseArn) {
+		return nil, false
+	}
+	return o.AwsLicenseArn, true
+}
+
+// HasAwsLicenseArn returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasAwsLicenseArn() bool {
+	if o != nil && !IsNil(o.AwsLicenseArn) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsLicenseArn gets a reference to the given string and assigns it to the AwsLicenseArn field.
+func (o *EntitlementInfo) SetAwsLicenseArn(v string) {
+	o.AwsLicenseArn = &v
+}
+
+// GetAwsOfferSetId returns the AwsOfferSetId field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetAwsOfferSetId() string {
+	if o == nil || IsNil(o.AwsOfferSetId) {
+		var ret string
+		return ret
+	}
+	return *o.AwsOfferSetId
+}
+
+// GetAwsOfferSetIdOk returns a tuple with the AwsOfferSetId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetAwsOfferSetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsOfferSetId) {
+		return nil, false
+	}
+	return o.AwsOfferSetId, true
+}
+
+// HasAwsOfferSetId returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasAwsOfferSetId() bool {
+	if o != nil && !IsNil(o.AwsOfferSetId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsOfferSetId gets a reference to the given string and assigns it to the AwsOfferSetId field.
+func (o *EntitlementInfo) SetAwsOfferSetId(v string) {
+	o.AwsOfferSetId = &v
 }
 
 // GetAzureSubscriptions returns the AzureSubscriptions field value if set, zero value otherwise.
@@ -809,6 +879,38 @@ func (o *EntitlementInfo) HasEulaUrl() bool {
 // SetEulaUrl gets a reference to the given string and assigns it to the EulaUrl field.
 func (o *EntitlementInfo) SetEulaUrl(v string) {
 	o.EulaUrl = &v
+}
+
+// GetFallbackFromOffer returns the FallbackFromOffer field value if set, zero value otherwise.
+func (o *EntitlementInfo) GetFallbackFromOffer() bool {
+	if o == nil || IsNil(o.FallbackFromOffer) {
+		var ret bool
+		return ret
+	}
+	return *o.FallbackFromOffer
+}
+
+// GetFallbackFromOfferOk returns a tuple with the FallbackFromOffer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementInfo) GetFallbackFromOfferOk() (*bool, bool) {
+	if o == nil || IsNil(o.FallbackFromOffer) {
+		return nil, false
+	}
+	return o.FallbackFromOffer, true
+}
+
+// HasFallbackFromOffer returns a boolean if a field has been set.
+func (o *EntitlementInfo) HasFallbackFromOffer() bool {
+	if o != nil && !IsNil(o.FallbackFromOffer) {
+		return true
+	}
+
+	return false
+}
+
+// SetFallbackFromOffer gets a reference to the given bool and assigns it to the FallbackFromOffer field.
+func (o *EntitlementInfo) SetFallbackFromOffer(v bool) {
+	o.FallbackFromOffer = &v
 }
 
 // GetGcpEntitlements returns the GcpEntitlements field value if set, zero value otherwise.
@@ -1293,6 +1395,12 @@ func (o EntitlementInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AwsEntitlements) {
 		toSerialize["awsEntitlements"] = o.AwsEntitlements
 	}
+	if !IsNil(o.AwsLicenseArn) {
+		toSerialize["awsLicenseArn"] = o.AwsLicenseArn
+	}
+	if !IsNil(o.AwsOfferSetId) {
+		toSerialize["awsOfferSetId"] = o.AwsOfferSetId
+	}
 	if !IsNil(o.AzureSubscriptions) {
 		toSerialize["azureSubscriptions"] = o.AzureSubscriptions
 	}
@@ -1334,6 +1442,9 @@ func (o EntitlementInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EulaUrl) {
 		toSerialize["eulaUrl"] = o.EulaUrl
+	}
+	if !IsNil(o.FallbackFromOffer) {
+		toSerialize["fallbackFromOffer"] = o.FallbackFromOffer
 	}
 	if !IsNil(o.GcpEntitlements) {
 		toSerialize["gcpEntitlements"] = o.GcpEntitlements

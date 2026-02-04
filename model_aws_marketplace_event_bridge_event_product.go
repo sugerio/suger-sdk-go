@@ -21,6 +21,7 @@ var _ MappedNullable = &AwsMarketplaceEventBridgeEventProduct{}
 // AwsMarketplaceEventBridgeEventProduct struct for AwsMarketplaceEventBridgeEventProduct
 type AwsMarketplaceEventBridgeEventProduct struct {
 	Arn *string `json:"arn,omitempty"`
+	Code *string `json:"code,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Title *string `json:"title,omitempty"`
 }
@@ -72,6 +73,38 @@ func (o *AwsMarketplaceEventBridgeEventProduct) HasArn() bool {
 // SetArn gets a reference to the given string and assigns it to the Arn field.
 func (o *AwsMarketplaceEventBridgeEventProduct) SetArn(v string) {
 	o.Arn = &v
+}
+
+// GetCode returns the Code field value if set, zero value otherwise.
+func (o *AwsMarketplaceEventBridgeEventProduct) GetCode() string {
+	if o == nil || IsNil(o.Code) {
+		var ret string
+		return ret
+	}
+	return *o.Code
+}
+
+// GetCodeOk returns a tuple with the Code field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsMarketplaceEventBridgeEventProduct) GetCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.Code) {
+		return nil, false
+	}
+	return o.Code, true
+}
+
+// HasCode returns a boolean if a field has been set.
+func (o *AwsMarketplaceEventBridgeEventProduct) HasCode() bool {
+	if o != nil && !IsNil(o.Code) {
+		return true
+	}
+
+	return false
+}
+
+// SetCode gets a reference to the given string and assigns it to the Code field.
+func (o *AwsMarketplaceEventBridgeEventProduct) SetCode(v string) {
+	o.Code = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -150,6 +183,9 @@ func (o AwsMarketplaceEventBridgeEventProduct) ToMap() (map[string]interface{}, 
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Arn) {
 		toSerialize["arn"] = o.Arn
+	}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id

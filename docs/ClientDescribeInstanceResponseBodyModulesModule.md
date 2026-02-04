@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
+**Code** | Pointer to **string** | example:  package_config | [optional] 
+**Id** | Pointer to **string** | example:  101*********026 | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Properties** | Pointer to [**ClientDescribeInstanceResponseBodyModulesModuleProperties**](ClientDescribeInstanceResponseBodyModulesModuleProperties.md) |  | [optional] 
 

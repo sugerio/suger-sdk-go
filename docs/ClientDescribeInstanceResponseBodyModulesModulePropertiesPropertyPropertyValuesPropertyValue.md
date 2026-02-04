@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DisplayName** | Pointer to **string** |  | [optional] 
-**Max** | Pointer to **string** |  | [optional] 
-**Min** | Pointer to **string** |  | [optional] 
-**Remark** | Pointer to **string** |  | [optional] 
-**Step** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to **string** |  | [optional] 
+**DisplayName** | Pointer to **string** | example:  12 | [optional] 
+**Max** | Pointer to **string** | example:  12 | [optional] 
+**Min** | Pointer to **string** | example:  12 | [optional] 
+**Remark** | Pointer to **string** | example:  12 | [optional] 
+**Step** | Pointer to **string** | example:  12 | [optional] 
+**Type** | Pointer to **string** | example:  12 | [optional] 
+**Value** | Pointer to **string** | example:  12 | [optional] 
 
 ## Methods
 

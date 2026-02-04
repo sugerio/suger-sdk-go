@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **OrganizationID** | **string** |  | 
 **Records** | **map[string]float32** | for usage metering API v1, don&#39;t use it together with the billableRecords v2. | 
 **Timestamp** | Pointer to **time.Time** | The timestamp of when the usage records were generated. Optional, if not provided, the current report timestamp will be used. This is not the timestamp of when the usage records were reported to Suger. | [optional] 
+**UsageAllocations** | Pointer to [**map[string][]UsageAllocation**](array.md) | usage allocation information, dimension key -&gt; usageAllocation array. Only supported for AWS marketplace usage metering at this moment. | [optional] 
 
 ## Methods
 
@@ -190,6 +191,31 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *CreateUsageRecordGroupParams) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
+
+### GetUsageAllocations
+
+`func (o *CreateUsageRecordGroupParams) GetUsageAllocations() map[string][]UsageAllocation`
+
+GetUsageAllocations returns the UsageAllocations field if non-nil, zero value otherwise.
+
+### GetUsageAllocationsOk
+
+`func (o *CreateUsageRecordGroupParams) GetUsageAllocationsOk() (*map[string][]UsageAllocation, bool)`
+
+GetUsageAllocationsOk returns a tuple with the UsageAllocations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageAllocations
+
+`func (o *CreateUsageRecordGroupParams) SetUsageAllocations(v map[string][]UsageAllocation)`
+
+SetUsageAllocations sets UsageAllocations field to given value.
+
+### HasUsageAllocations
+
+`func (o *CreateUsageRecordGroupParams) HasUsageAllocations() bool`
+
+HasUsageAllocations returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

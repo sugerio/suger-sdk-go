@@ -1,9 +1,11 @@
 # \MeteringAPI
 
-All URIs are relative to *http://https://api.suger.cloud*
+All URIs are relative to *https://api.suger.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AggregateUsageRecordGroups**](MeteringAPI.md#AggregateUsageRecordGroups) | **Get** /org/{orgId}/usageRecordGroup/aggregate | aggregate usageRecordGroups
+[**AggregateUsageRecordReports**](MeteringAPI.md#AggregateUsageRecordReports) | **Get** /org/{orgId}/usageRecordReport/aggregate | aggregate usageRecordReports
 [**BatchReportUsageRecordGroups**](MeteringAPI.md#BatchReportUsageRecordGroups) | **Post** /org/{orgId}/batchCreateUsageRecordGroups | batch report usageRecordGroups
 [**BatchValidateUsageRecordGroups**](MeteringAPI.md#BatchValidateUsageRecordGroups) | **Post** /org/{orgId}/batchValidateUsageRecordGroups | batch validate usageRecordGroups
 [**CreateBillableMetric**](MeteringAPI.md#CreateBillableMetric) | **Post** /org/{orgId}/billableMetric | create billable metric
@@ -18,6 +20,162 @@ Method | HTTP request | Description
 [**UpdateBillableMetric**](MeteringAPI.md#UpdateBillableMetric) | **Patch** /org/{orgId}/billableMetric/{billableMetricId} | update billable metric
 [**UpdateUsageMeteringConfigInfo**](MeteringAPI.md#UpdateUsageMeteringConfigInfo) | **Patch** /org/{orgId}/usageMeteringConfigInfo | update usage metering config info
 
+
+
+## AggregateUsageRecordGroups
+
+> []UsageRecordAggregated AggregateUsageRecordGroups(ctx, orgId).Partner(partner).Granularity(granularity).StartDate(startDate).EndDate(endDate).Execute()
+
+aggregate usageRecordGroups
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	partner := "partner_example" // string | Cloud Partner
+	granularity := "granularity_example" // string | Granularity
+	startDate := "startDate_example" // string | Start date (UTC) in YYYY-MM-DD format
+	endDate := "endDate_example" // string | End date (UTC) in YYYY-MM-DD format
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MeteringAPI.AggregateUsageRecordGroups(context.Background(), orgId).Partner(partner).Granularity(granularity).StartDate(startDate).EndDate(endDate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MeteringAPI.AggregateUsageRecordGroups``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AggregateUsageRecordGroups`: []UsageRecordAggregated
+	fmt.Fprintf(os.Stdout, "Response from `MeteringAPI.AggregateUsageRecordGroups`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAggregateUsageRecordGroupsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **partner** | **string** | Cloud Partner | 
+ **granularity** | **string** | Granularity | 
+ **startDate** | **string** | Start date (UTC) in YYYY-MM-DD format | 
+ **endDate** | **string** | End date (UTC) in YYYY-MM-DD format | 
+
+### Return type
+
+[**[]UsageRecordAggregated**](UsageRecordAggregated.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AggregateUsageRecordReports
+
+> []UsageRecordAggregated AggregateUsageRecordReports(ctx, orgId).Partner(partner).Granularity(granularity).StartDate(startDate).EndDate(endDate).Execute()
+
+aggregate usageRecordReports
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	partner := "partner_example" // string | Cloud Partner
+	granularity := "granularity_example" // string | Granularity
+	startDate := "startDate_example" // string | Start date (UTC) in YYYY-MM-DD format
+	endDate := "endDate_example" // string | End date (UTC) in YYYY-MM-DD format
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MeteringAPI.AggregateUsageRecordReports(context.Background(), orgId).Partner(partner).Granularity(granularity).StartDate(startDate).EndDate(endDate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MeteringAPI.AggregateUsageRecordReports``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AggregateUsageRecordReports`: []UsageRecordAggregated
+	fmt.Fprintf(os.Stdout, "Response from `MeteringAPI.AggregateUsageRecordReports`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAggregateUsageRecordReportsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **partner** | **string** | Cloud Partner | 
+ **granularity** | **string** | Granularity | 
+ **startDate** | **string** | Start date (UTC) in YYYY-MM-DD format | 
+ **endDate** | **string** | End date (UTC) in YYYY-MM-DD format | 
+
+### Return type
+
+[**[]UsageRecordAggregated**](UsageRecordAggregated.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## BatchReportUsageRecordGroups

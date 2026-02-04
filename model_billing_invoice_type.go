@@ -25,6 +25,7 @@ const (
 	BillingInvoiceType_USAGE BillingInvoiceType = "USAGE"
 	BillingInvoiceType_ADDON BillingInvoiceType = "ADDON"
 	BillingInvoiceType_INSTALLMENT BillingInvoiceType = "INSTALLMENT"
+	BillingInvoiceType_UNKNOWN BillingInvoiceType = "UNKNOWN"
 )
 
 // All allowed values of BillingInvoiceType enum
@@ -33,6 +34,7 @@ var AllowedBillingInvoiceTypeEnumValues = []BillingInvoiceType{
 	"USAGE",
 	"ADDON",
 	"INSTALLMENT",
+	"UNKNOWN",
 }
 
 func (v *BillingInvoiceType) UnmarshalJSON(src []byte) error {

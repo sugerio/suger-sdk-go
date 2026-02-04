@@ -21,6 +21,8 @@ var _ MappedNullable = &BillingPaymentTransactionInfo{}
 
 // BillingPaymentTransactionInfo struct for BillingPaymentTransactionInfo
 type BillingPaymentTransactionInfo struct {
+	// The aws payment transaction.
+	AwsPaymentTransaction *AwsPaymentTransaction `json:"awsPaymentTransaction,omitempty"`
 	// The invoice issue date.
 	InvoiceDate *time.Time `json:"invoiceDate,omitempty"`
 	// Refund flag marks whether the transaction has any refund records.
@@ -52,6 +54,38 @@ func NewBillingPaymentTransactionInfo() *BillingPaymentTransactionInfo {
 func NewBillingPaymentTransactionInfoWithDefaults() *BillingPaymentTransactionInfo {
 	this := BillingPaymentTransactionInfo{}
 	return &this
+}
+
+// GetAwsPaymentTransaction returns the AwsPaymentTransaction field value if set, zero value otherwise.
+func (o *BillingPaymentTransactionInfo) GetAwsPaymentTransaction() AwsPaymentTransaction {
+	if o == nil || IsNil(o.AwsPaymentTransaction) {
+		var ret AwsPaymentTransaction
+		return ret
+	}
+	return *o.AwsPaymentTransaction
+}
+
+// GetAwsPaymentTransactionOk returns a tuple with the AwsPaymentTransaction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingPaymentTransactionInfo) GetAwsPaymentTransactionOk() (*AwsPaymentTransaction, bool) {
+	if o == nil || IsNil(o.AwsPaymentTransaction) {
+		return nil, false
+	}
+	return o.AwsPaymentTransaction, true
+}
+
+// HasAwsPaymentTransaction returns a boolean if a field has been set.
+func (o *BillingPaymentTransactionInfo) HasAwsPaymentTransaction() bool {
+	if o != nil && !IsNil(o.AwsPaymentTransaction) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsPaymentTransaction gets a reference to the given AwsPaymentTransaction and assigns it to the AwsPaymentTransaction field.
+func (o *BillingPaymentTransactionInfo) SetAwsPaymentTransaction(v AwsPaymentTransaction) {
+	o.AwsPaymentTransaction = &v
 }
 
 // GetInvoiceDate returns the InvoiceDate field value if set, zero value otherwise.
@@ -288,6 +322,9 @@ func (o BillingPaymentTransactionInfo) MarshalJSON() ([]byte, error) {
 
 func (o BillingPaymentTransactionInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AwsPaymentTransaction) {
+		toSerialize["awsPaymentTransaction"] = o.AwsPaymentTransaction
+	}
 	if !IsNil(o.InvoiceDate) {
 		toSerialize["invoiceDate"] = o.InvoiceDate
 	}

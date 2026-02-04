@@ -41,6 +41,7 @@ const (
 	EntityType_PRODUCT EntityType = "PRODUCT"
 	EntityType_REFERRAL EntityType = "REFERRAL"
 	EntityType_REVENUE_RECORD EntityType = "REVENUE_RECORD"
+	EntityType_SERVICE EntityType = "SERVICE"
 	EntityType_SUPPORT_TICKET EntityType = "SUPPORT_TICKET"
 	EntityType_UNPURCHASED_OFFERS EntityType = "UNPURCHASED_OFFERS"
 	EntityType_USAGE_RECORD_GROUP EntityType = "USAGE_RECORD_GROUP"
@@ -49,6 +50,7 @@ const (
 	EntityType_WORKFLOW EntityType = "WORKFLOW"
 	EntityType_WORKFLOW_EXECUTION EntityType = "WORKFLOW_EXECUTION"
 	EntityType_WORKFLOW_WEBHOOK EntityType = "WORKFLOW_WEBHOOK"
+	EntityType_ORGANIZATION_INFO EntityType = "ORGANIZATION_INFO"
 )
 
 // All allowed values of EntityType enum
@@ -73,6 +75,7 @@ var AllowedEntityTypeEnumValues = []EntityType{
 	"PRODUCT",
 	"REFERRAL",
 	"REVENUE_RECORD",
+	"SERVICE",
 	"SUPPORT_TICKET",
 	"UNPURCHASED_OFFERS",
 	"USAGE_RECORD_GROUP",
@@ -81,6 +84,7 @@ var AllowedEntityTypeEnumValues = []EntityType{
 	"WORKFLOW",
 	"WORKFLOW_EXECUTION",
 	"WORKFLOW_WEBHOOK",
+	"ORGANIZATION_INFO",
 }
 
 func (v *EntityType) UnmarshalJSON(src []byte) error {

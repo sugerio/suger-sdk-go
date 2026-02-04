@@ -35,6 +35,8 @@ type AwsMarketplaceCppoOpportunity struct {
 	Terms []AwsMarketplaceCppoOpportunityTerm `json:"Terms,omitempty"`
 	// The following fields are not from aws catalog API, only used for cppo_out offer create. They shouldn't be read in other places because they will absent when fetch opportunity from aws catalog API.
 	DiscountType *AwsMarketplaceCppoDiscountType `json:"discountType,omitempty"`
+	// Use this field to modify and control the product agreement duration.
+	MaximumAgreementStartDate *string `json:"maximumAgreementStartDate,omitempty"`
 	OpportunityDurationType *AwsMarketplaceCppoDurationType `json:"opportunityDurationType,omitempty"`
 	OpportunityId *string `json:"opportunityId,omitempty"`
 	PartnerId *string `json:"partnerId,omitempty"`
@@ -505,6 +507,38 @@ func (o *AwsMarketplaceCppoOpportunity) SetDiscountType(v AwsMarketplaceCppoDisc
 	o.DiscountType = &v
 }
 
+// GetMaximumAgreementStartDate returns the MaximumAgreementStartDate field value if set, zero value otherwise.
+func (o *AwsMarketplaceCppoOpportunity) GetMaximumAgreementStartDate() string {
+	if o == nil || IsNil(o.MaximumAgreementStartDate) {
+		var ret string
+		return ret
+	}
+	return *o.MaximumAgreementStartDate
+}
+
+// GetMaximumAgreementStartDateOk returns a tuple with the MaximumAgreementStartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsMarketplaceCppoOpportunity) GetMaximumAgreementStartDateOk() (*string, bool) {
+	if o == nil || IsNil(o.MaximumAgreementStartDate) {
+		return nil, false
+	}
+	return o.MaximumAgreementStartDate, true
+}
+
+// HasMaximumAgreementStartDate returns a boolean if a field has been set.
+func (o *AwsMarketplaceCppoOpportunity) HasMaximumAgreementStartDate() bool {
+	if o != nil && !IsNil(o.MaximumAgreementStartDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaximumAgreementStartDate gets a reference to the given string and assigns it to the MaximumAgreementStartDate field.
+func (o *AwsMarketplaceCppoOpportunity) SetMaximumAgreementStartDate(v string) {
+	o.MaximumAgreementStartDate = &v
+}
+
 // GetOpportunityDurationType returns the OpportunityDurationType field value if set, zero value otherwise.
 func (o *AwsMarketplaceCppoOpportunity) GetOpportunityDurationType() AwsMarketplaceCppoDurationType {
 	if o == nil || IsNil(o.OpportunityDurationType) {
@@ -652,6 +686,9 @@ func (o AwsMarketplaceCppoOpportunity) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DiscountType) {
 		toSerialize["discountType"] = o.DiscountType
+	}
+	if !IsNil(o.MaximumAgreementStartDate) {
+		toSerialize["maximumAgreementStartDate"] = o.MaximumAgreementStartDate
 	}
 	if !IsNil(o.OpportunityDurationType) {
 		toSerialize["opportunityDurationType"] = o.OpportunityDurationType

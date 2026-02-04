@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ChargebeeCustomerID** | Pointer to **string** | The Chargebee Customer ID of the buyer. If not provided, the Chargebee Customer ID will not be updated. | [optional] 
 **CompanyInfo** | Pointer to [**CompanyInfo**](CompanyInfo.md) | Optional. CompanyInfo of the buyer. | [optional] 
 **CustomerId** | Pointer to **string** | The customer ID to recognize the cloud marketplace buyer in your internal system. This may be used for uploading CSV files for Batch Metering Usage | [optional] 
 **Description** | Pointer to **string** | The description of the buyer. If not provided, the description will not be updated. | [optional] 
@@ -12,6 +13,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The name of the buyer. If not provided, the name will not be updated. | [optional] 
 **OrbCustomerId** | Pointer to **string** | The Orb Customer ID of the buyer. If not provided, the Orb Customer ID will not be updated. | [optional] 
 **PaymentConfig** | Pointer to [**PaymentConfig**](PaymentConfig.md) | Optional. PaymentConfig of the buyer. The currency can&#39;t be updated. | [optional] 
+**QuickbooksCustomerId** | Pointer to **string** | The Quickbooks Customer ID of the buyer. If not provided, the Quickbooks Customer ID will not be updated. | [optional] 
 **StripeCustomerId** | Pointer to **string** | The Stripe Customer ID of the buyer. If not provided, the Stripe Customer ID will not be updated. | [optional] 
 
 ## Methods
@@ -32,6 +34,31 @@ will change when the set of required properties is changed
 NewUpdateBuyerParamsWithDefaults instantiates a new UpdateBuyerParams object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetChargebeeCustomerID
+
+`func (o *UpdateBuyerParams) GetChargebeeCustomerID() string`
+
+GetChargebeeCustomerID returns the ChargebeeCustomerID field if non-nil, zero value otherwise.
+
+### GetChargebeeCustomerIDOk
+
+`func (o *UpdateBuyerParams) GetChargebeeCustomerIDOk() (*string, bool)`
+
+GetChargebeeCustomerIDOk returns a tuple with the ChargebeeCustomerID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChargebeeCustomerID
+
+`func (o *UpdateBuyerParams) SetChargebeeCustomerID(v string)`
+
+SetChargebeeCustomerID sets ChargebeeCustomerID field to given value.
+
+### HasChargebeeCustomerID
+
+`func (o *UpdateBuyerParams) HasChargebeeCustomerID() bool`
+
+HasChargebeeCustomerID returns a boolean if a field has been set.
 
 ### GetCompanyInfo
 
@@ -232,6 +259,31 @@ SetPaymentConfig sets PaymentConfig field to given value.
 `func (o *UpdateBuyerParams) HasPaymentConfig() bool`
 
 HasPaymentConfig returns a boolean if a field has been set.
+
+### GetQuickbooksCustomerId
+
+`func (o *UpdateBuyerParams) GetQuickbooksCustomerId() string`
+
+GetQuickbooksCustomerId returns the QuickbooksCustomerId field if non-nil, zero value otherwise.
+
+### GetQuickbooksCustomerIdOk
+
+`func (o *UpdateBuyerParams) GetQuickbooksCustomerIdOk() (*string, bool)`
+
+GetQuickbooksCustomerIdOk returns a tuple with the QuickbooksCustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQuickbooksCustomerId
+
+`func (o *UpdateBuyerParams) SetQuickbooksCustomerId(v string)`
+
+SetQuickbooksCustomerId sets QuickbooksCustomerId field to given value.
+
+### HasQuickbooksCustomerId
+
+`func (o *UpdateBuyerParams) HasQuickbooksCustomerId() bool`
+
+HasQuickbooksCustomerId returns a boolean if a field has been set.
 
 ### GetStripeCustomerId
 

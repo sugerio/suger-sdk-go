@@ -28,6 +28,7 @@ type GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent s
 	BillingAddressID *string `json:"billingAddressID,omitempty"`
 	BrokerID *string `json:"brokerID,omitempty"`
 	BuyerID *string `json:"buyerID,omitempty"`
+	BuyerTransactionReferenceID *string `json:"buyerTransactionReferenceID,omitempty"`
 	Currency *string `json:"currency,omitempty"`
 	DataFeedProductID *string `json:"dataFeedProductID,omitempty"`
 	DisbursementBillingEventID *string `json:"disbursementBillingEventID,omitempty"`
@@ -43,6 +44,7 @@ type GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent s
 	ParentBillingEventID *string `json:"parentBillingEventID,omitempty"`
 	PaymentDueDate *DatabaseSqlNullTime `json:"paymentDueDate,omitempty"`
 	ProductID *string `json:"productID,omitempty"`
+	RefundedBuyerTransactionReferenceID *string `json:"refundedBuyerTransactionReferenceID,omitempty"`
 	ToAccountID *string `json:"toAccountID,omitempty"`
 	TransactionReferenceID *string `json:"transactionReferenceID,omitempty"`
 	TransactionType *string `json:"transactionType,omitempty"`
@@ -321,6 +323,38 @@ func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEve
 // SetBuyerID gets a reference to the given string and assigns it to the BuyerID field.
 func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) SetBuyerID(v string) {
 	o.BuyerID = &v
+}
+
+// GetBuyerTransactionReferenceID returns the BuyerTransactionReferenceID field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) GetBuyerTransactionReferenceID() string {
+	if o == nil || IsNil(o.BuyerTransactionReferenceID) {
+		var ret string
+		return ret
+	}
+	return *o.BuyerTransactionReferenceID
+}
+
+// GetBuyerTransactionReferenceIDOk returns a tuple with the BuyerTransactionReferenceID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) GetBuyerTransactionReferenceIDOk() (*string, bool) {
+	if o == nil || IsNil(o.BuyerTransactionReferenceID) {
+		return nil, false
+	}
+	return o.BuyerTransactionReferenceID, true
+}
+
+// HasBuyerTransactionReferenceID returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) HasBuyerTransactionReferenceID() bool {
+	if o != nil && !IsNil(o.BuyerTransactionReferenceID) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuyerTransactionReferenceID gets a reference to the given string and assigns it to the BuyerTransactionReferenceID field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) SetBuyerTransactionReferenceID(v string) {
+	o.BuyerTransactionReferenceID = &v
 }
 
 // GetCurrency returns the Currency field value if set, zero value otherwise.
@@ -803,6 +837,38 @@ func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEve
 	o.ProductID = &v
 }
 
+// GetRefundedBuyerTransactionReferenceID returns the RefundedBuyerTransactionReferenceID field value if set, zero value otherwise.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) GetRefundedBuyerTransactionReferenceID() string {
+	if o == nil || IsNil(o.RefundedBuyerTransactionReferenceID) {
+		var ret string
+		return ret
+	}
+	return *o.RefundedBuyerTransactionReferenceID
+}
+
+// GetRefundedBuyerTransactionReferenceIDOk returns a tuple with the RefundedBuyerTransactionReferenceID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) GetRefundedBuyerTransactionReferenceIDOk() (*string, bool) {
+	if o == nil || IsNil(o.RefundedBuyerTransactionReferenceID) {
+		return nil, false
+	}
+	return o.RefundedBuyerTransactionReferenceID, true
+}
+
+// HasRefundedBuyerTransactionReferenceID returns a boolean if a field has been set.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) HasRefundedBuyerTransactionReferenceID() bool {
+	if o != nil && !IsNil(o.RefundedBuyerTransactionReferenceID) {
+		return true
+	}
+
+	return false
+}
+
+// SetRefundedBuyerTransactionReferenceID gets a reference to the given string and assigns it to the RefundedBuyerTransactionReferenceID field.
+func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) SetRefundedBuyerTransactionReferenceID(v string) {
+	o.RefundedBuyerTransactionReferenceID = &v
+}
+
 // GetToAccountID returns the ToAccountID field value if set, zero value otherwise.
 func (o *GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent) GetToAccountID() string {
 	if o == nil || IsNil(o.ToAccountID) {
@@ -997,6 +1063,9 @@ func (o GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEven
 	if !IsNil(o.BuyerID) {
 		toSerialize["buyerID"] = o.BuyerID
 	}
+	if !IsNil(o.BuyerTransactionReferenceID) {
+		toSerialize["buyerTransactionReferenceID"] = o.BuyerTransactionReferenceID
+	}
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
 	}
@@ -1041,6 +1110,9 @@ func (o GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEven
 	}
 	if !IsNil(o.ProductID) {
 		toSerialize["productID"] = o.ProductID
+	}
+	if !IsNil(o.RefundedBuyerTransactionReferenceID) {
+		toSerialize["refundedBuyerTransactionReferenceID"] = o.RefundedBuyerTransactionReferenceID
 	}
 	if !IsNil(o.ToAccountID) {
 		toSerialize["toAccountID"] = o.ToAccountID

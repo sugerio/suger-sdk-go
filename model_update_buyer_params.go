@@ -20,6 +20,8 @@ var _ MappedNullable = &UpdateBuyerParams{}
 
 // UpdateBuyerParams struct for UpdateBuyerParams
 type UpdateBuyerParams struct {
+	// The Chargebee Customer ID of the buyer. If not provided, the Chargebee Customer ID will not be updated.
+	ChargebeeCustomerID *string `json:"chargebeeCustomerID,omitempty"`
 	// Optional. CompanyInfo of the buyer.
 	CompanyInfo *CompanyInfo `json:"companyInfo,omitempty"`
 	// The customer ID to recognize the cloud marketplace buyer in your internal system. This may be used for uploading CSV files for Batch Metering Usage
@@ -36,6 +38,8 @@ type UpdateBuyerParams struct {
 	OrbCustomerId *string `json:"orbCustomerId,omitempty"`
 	// Optional. PaymentConfig of the buyer. The currency can't be updated.
 	PaymentConfig *PaymentConfig `json:"paymentConfig,omitempty"`
+	// The Quickbooks Customer ID of the buyer. If not provided, the Quickbooks Customer ID will not be updated.
+	QuickbooksCustomerId *string `json:"quickbooksCustomerId,omitempty"`
 	// The Stripe Customer ID of the buyer. If not provided, the Stripe Customer ID will not be updated.
 	StripeCustomerId *string `json:"stripeCustomerId,omitempty"`
 }
@@ -55,6 +59,38 @@ func NewUpdateBuyerParams() *UpdateBuyerParams {
 func NewUpdateBuyerParamsWithDefaults() *UpdateBuyerParams {
 	this := UpdateBuyerParams{}
 	return &this
+}
+
+// GetChargebeeCustomerID returns the ChargebeeCustomerID field value if set, zero value otherwise.
+func (o *UpdateBuyerParams) GetChargebeeCustomerID() string {
+	if o == nil || IsNil(o.ChargebeeCustomerID) {
+		var ret string
+		return ret
+	}
+	return *o.ChargebeeCustomerID
+}
+
+// GetChargebeeCustomerIDOk returns a tuple with the ChargebeeCustomerID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateBuyerParams) GetChargebeeCustomerIDOk() (*string, bool) {
+	if o == nil || IsNil(o.ChargebeeCustomerID) {
+		return nil, false
+	}
+	return o.ChargebeeCustomerID, true
+}
+
+// HasChargebeeCustomerID returns a boolean if a field has been set.
+func (o *UpdateBuyerParams) HasChargebeeCustomerID() bool {
+	if o != nil && !IsNil(o.ChargebeeCustomerID) {
+		return true
+	}
+
+	return false
+}
+
+// SetChargebeeCustomerID gets a reference to the given string and assigns it to the ChargebeeCustomerID field.
+func (o *UpdateBuyerParams) SetChargebeeCustomerID(v string) {
+	o.ChargebeeCustomerID = &v
 }
 
 // GetCompanyInfo returns the CompanyInfo field value if set, zero value otherwise.
@@ -313,6 +349,38 @@ func (o *UpdateBuyerParams) SetPaymentConfig(v PaymentConfig) {
 	o.PaymentConfig = &v
 }
 
+// GetQuickbooksCustomerId returns the QuickbooksCustomerId field value if set, zero value otherwise.
+func (o *UpdateBuyerParams) GetQuickbooksCustomerId() string {
+	if o == nil || IsNil(o.QuickbooksCustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.QuickbooksCustomerId
+}
+
+// GetQuickbooksCustomerIdOk returns a tuple with the QuickbooksCustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateBuyerParams) GetQuickbooksCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.QuickbooksCustomerId) {
+		return nil, false
+	}
+	return o.QuickbooksCustomerId, true
+}
+
+// HasQuickbooksCustomerId returns a boolean if a field has been set.
+func (o *UpdateBuyerParams) HasQuickbooksCustomerId() bool {
+	if o != nil && !IsNil(o.QuickbooksCustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuickbooksCustomerId gets a reference to the given string and assigns it to the QuickbooksCustomerId field.
+func (o *UpdateBuyerParams) SetQuickbooksCustomerId(v string) {
+	o.QuickbooksCustomerId = &v
+}
+
 // GetStripeCustomerId returns the StripeCustomerId field value if set, zero value otherwise.
 func (o *UpdateBuyerParams) GetStripeCustomerId() string {
 	if o == nil || IsNil(o.StripeCustomerId) {
@@ -355,6 +423,9 @@ func (o UpdateBuyerParams) MarshalJSON() ([]byte, error) {
 
 func (o UpdateBuyerParams) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ChargebeeCustomerID) {
+		toSerialize["chargebeeCustomerID"] = o.ChargebeeCustomerID
+	}
 	if !IsNil(o.CompanyInfo) {
 		toSerialize["companyInfo"] = o.CompanyInfo
 	}
@@ -378,6 +449,9 @@ func (o UpdateBuyerParams) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PaymentConfig) {
 		toSerialize["paymentConfig"] = o.PaymentConfig
+	}
+	if !IsNil(o.QuickbooksCustomerId) {
+		toSerialize["quickbooksCustomerId"] = o.QuickbooksCustomerId
 	}
 	if !IsNil(o.StripeCustomerId) {
 		toSerialize["stripeCustomerId"] = o.StripeCustomerId

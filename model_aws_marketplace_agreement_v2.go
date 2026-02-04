@@ -30,6 +30,8 @@ type AwsMarketplaceAgreementV2 struct {
 	EndTime *time.Time `json:"endTime,omitempty"`
 	// AWS Marketplace Offer Id
 	OfferId *string `json:"offerId,omitempty"`
+	// AWS Marketplace OfferSet Id, available for agreements originated from an offer associated with an offerSet.
+	OfferSetId *string `json:"offerSetId,omitempty"`
 	// AWS Marketplace Product Id
 	ProductId *string `json:"productId,omitempty"`
 	ProductType *string `json:"productType,omitempty"`
@@ -248,6 +250,38 @@ func (o *AwsMarketplaceAgreementV2) SetOfferId(v string) {
 	o.OfferId = &v
 }
 
+// GetOfferSetId returns the OfferSetId field value if set, zero value otherwise.
+func (o *AwsMarketplaceAgreementV2) GetOfferSetId() string {
+	if o == nil || IsNil(o.OfferSetId) {
+		var ret string
+		return ret
+	}
+	return *o.OfferSetId
+}
+
+// GetOfferSetIdOk returns a tuple with the OfferSetId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsMarketplaceAgreementV2) GetOfferSetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.OfferSetId) {
+		return nil, false
+	}
+	return o.OfferSetId, true
+}
+
+// HasOfferSetId returns a boolean if a field has been set.
+func (o *AwsMarketplaceAgreementV2) HasOfferSetId() bool {
+	if o != nil && !IsNil(o.OfferSetId) {
+		return true
+	}
+
+	return false
+}
+
+// SetOfferSetId gets a reference to the given string and assigns it to the OfferSetId field.
+func (o *AwsMarketplaceAgreementV2) SetOfferSetId(v string) {
+	o.OfferSetId = &v
+}
+
 // GetProductId returns the ProductId field value if set, zero value otherwise.
 func (o *AwsMarketplaceAgreementV2) GetProductId() string {
 	if o == nil || IsNil(o.ProductId) {
@@ -435,6 +469,9 @@ func (o AwsMarketplaceAgreementV2) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OfferId) {
 		toSerialize["offerId"] = o.OfferId
+	}
+	if !IsNil(o.OfferSetId) {
+		toSerialize["offerSetId"] = o.OfferSetId
 	}
 	if !IsNil(o.ProductId) {
 		toSerialize["productId"] = o.ProductId

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **BuyerAccountId** | Pointer to **string** | The AWS Account Id of the buyer in AWS Marketplace | [optional] 
 **EndTime** | Pointer to **time.Time** |  | [optional] 
 **OfferId** | Pointer to **string** | AWS Marketplace Offer Id | [optional] 
+**OfferSetId** | Pointer to **string** | AWS Marketplace OfferSet Id, available for agreements originated from an offer associated with an offerSet. | [optional] 
 **ProductId** | Pointer to **string** | AWS Marketplace Product Id | [optional] 
 **ProductType** | Pointer to **string** |  | [optional] 
 **SellerAccountId** | Pointer to **string** | The AWS Account Id of the seller in AWS Marketplace | [optional] 
@@ -184,6 +185,31 @@ SetOfferId sets OfferId field to given value.
 `func (o *AwsMarketplaceAgreementV2) HasOfferId() bool`
 
 HasOfferId returns a boolean if a field has been set.
+
+### GetOfferSetId
+
+`func (o *AwsMarketplaceAgreementV2) GetOfferSetId() string`
+
+GetOfferSetId returns the OfferSetId field if non-nil, zero value otherwise.
+
+### GetOfferSetIdOk
+
+`func (o *AwsMarketplaceAgreementV2) GetOfferSetIdOk() (*string, bool)`
+
+GetOfferSetIdOk returns a tuple with the OfferSetId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOfferSetId
+
+`func (o *AwsMarketplaceAgreementV2) SetOfferSetId(v string)`
+
+SetOfferSetId sets OfferSetId field to given value.
+
+### HasOfferSetId
+
+`func (o *AwsMarketplaceAgreementV2) HasOfferSetId() bool`
+
+HasOfferSetId returns a boolean if a field has been set.
 
 ### GetProductId
 

@@ -1,6 +1,6 @@
 # \ProductAPI
 
-All URIs are relative to *http://https://api.suger.cloud*
+All URIs are relative to *https://api.suger.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**ListProducts**](ProductAPI.md#ListProducts) | **Get** /org/{orgId}/product | list products
 [**ListProductsByPartner**](ProductAPI.md#ListProductsByPartner) | **Get** /org/{orgId}/partner/{partner}/product | list products by partner
 [**PublishProduct**](ProductAPI.md#PublishProduct) | **Patch** /org/{orgId}/product/{productId}/publish | publish product
+[**QueryProducts**](ProductAPI.md#QueryProducts) | **Get** /org/{orgId}/product/query | query products
 [**UpdateProduct**](ProductAPI.md#UpdateProduct) | **Patch** /org/{orgId}/product/{productId} | update product
 [**UpdateProductFulfillmentUrl**](ProductAPI.md#UpdateProductFulfillmentUrl) | **Patch** /org/{orgId}/product/{productId}/fulfillmentUrl | update product fulfillment url
 [**UpdateProductMetaInfo**](ProductAPI.md#UpdateProductMetaInfo) | **Patch** /org/{orgId}/product/{productId}/metaInfo | update product meta info
@@ -383,7 +384,7 @@ Name | Type | Description  | Notes
 
 ## ListProducts
 
-> []WorkloadProduct ListProducts(ctx, orgId).Partner(partner).Limit(limit).Offset(offset).Execute()
+> []WorkloadProduct ListProducts(ctx, orgId).Partner(partner).Limit(limit).Offset(offset).View(view).ForCreateOffer(forCreateOffer).SalesforceOpportunityId(salesforceOpportunityId).SalesforceQuoteId(salesforceQuoteId).HubspotDealId(hubspotDealId).Execute()
 
 list products
 
@@ -403,13 +404,18 @@ import (
 
 func main() {
 	orgId := "orgId_example" // string | Organization ID
-	partner := "partner_example" // string | filter by partner (optional)
+	partner := "partner_example" // string | Filter by partner (optional)
 	limit := int32(56) // int32 | List pagination size, default 100, max value is 1000 (optional)
 	offset := int32(56) // int32 | List pagination offset, default 0 (optional)
+	view := "view_example" // string | Response format: 'lite' or 'full' (default: full). 'lite' excludes info/metaInfo fields. (optional)
+	forCreateOffer := true // bool | Enable product filtering for create offer purpose (optional)
+	salesforceOpportunityId := "salesforceOpportunityId_example" // string | Salesforce Opportunity ID for product filtering (used with forCreateOffer=true) (optional)
+	salesforceQuoteId := "salesforceQuoteId_example" // string | Salesforce Quote ID for product filtering (used with forCreateOffer=true) (optional)
+	hubspotDealId := "hubspotDealId_example" // string | HubSpot Deal ID for product filtering (used with forCreateOffer=true) (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ListProducts(context.Background(), orgId).Partner(partner).Limit(limit).Offset(offset).Execute()
+	resp, r, err := apiClient.ProductAPI.ListProducts(context.Background(), orgId).Partner(partner).Limit(limit).Offset(offset).View(view).ForCreateOffer(forCreateOffer).SalesforceOpportunityId(salesforceOpportunityId).SalesforceQuoteId(salesforceQuoteId).HubspotDealId(hubspotDealId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ListProducts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -435,9 +441,14 @@ Other parameters are passed through a pointer to a apiListProductsRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **partner** | **string** | filter by partner | 
+ **partner** | **string** | Filter by partner | 
  **limit** | **int32** | List pagination size, default 100, max value is 1000 | 
  **offset** | **int32** | List pagination offset, default 0 | 
+ **view** | **string** | Response format: &#39;lite&#39; or &#39;full&#39; (default: full). &#39;lite&#39; excludes info/metaInfo fields. | 
+ **forCreateOffer** | **bool** | Enable product filtering for create offer purpose | 
+ **salesforceOpportunityId** | **string** | Salesforce Opportunity ID for product filtering (used with forCreateOffer&#x3D;true) | 
+ **salesforceQuoteId** | **string** | Salesforce Quote ID for product filtering (used with forCreateOffer&#x3D;true) | 
+ **hubspotDealId** | **string** | HubSpot Deal ID for product filtering (used with forCreateOffer&#x3D;true) | 
 
 ### Return type
 
@@ -598,6 +609,86 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## QueryProducts
+
+> GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmProduct QueryProducts(ctx, orgId).PageSize(pageSize).PageNumber(pageNumber).Fields(fields).Q(q).S(s).Execute()
+
+query products
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	pageSize := int32(56) // int32 | Number of items per page (default 100, max 200) (optional)
+	pageNumber := int32(56) // int32 | Page number (default 1) (optional)
+	fields := "fields_example" // string | Comma-separated fields to return (e.g., 'id,name,status'). Dot notation supported. (optional)
+	q := "q_example" // string | LISP-style filter expression (e.g., '(= partner \\ (optional)
+	s := "s_example" // string | Sort fields: 'field:asc,field2:desc' or '-field,field2' format (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProductAPI.QueryProducts(context.Background(), orgId).PageSize(pageSize).PageNumber(pageNumber).Fields(fields).Q(q).S(s).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.QueryProducts``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `QueryProducts`: GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmProduct
+	fmt.Fprintf(os.Stdout, "Response from `ProductAPI.QueryProducts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiQueryProductsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **pageSize** | **int32** | Number of items per page (default 100, max 200) | 
+ **pageNumber** | **int32** | Page number (default 1) | 
+ **fields** | **string** | Comma-separated fields to return (e.g., &#39;id,name,status&#39;). Dot notation supported. | 
+ **q** | **string** | LISP-style filter expression (e.g., &#39;(&#x3D; partner \\ | 
+ **s** | **string** | Sort fields: &#39;field:asc,field2:desc&#39; or &#39;-field,field2&#39; format | 
+
+### Return type
+
+[**GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmProduct**](GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmProduct.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

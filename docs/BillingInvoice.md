@@ -8,11 +8,13 @@ Name | Type | Description | Notes
 **CreationTime** | Pointer to **time.Time** |  | [optional] 
 **EndDate** | Pointer to **time.Time** |  | [optional] 
 **EntitlementID** | Pointer to **string** |  | [optional] 
+**ExternalID** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Info** | Pointer to [**BillingInvoiceInfo**](BillingInvoiceInfo.md) |  | [optional] 
 **InvoiceURL** | Pointer to **string** | The invoice file URL, provided as AWS S3 presigned URL with expiration time. Output only. | [optional] 
 **LastUpdateTime** | Pointer to **time.Time** |  | [optional] 
 **OrganizationID** | Pointer to **string** |  | [optional] 
+**Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
 **PaymentStatus** | Pointer to [**BillingPaymentStatus**](BillingPaymentStatus.md) |  | [optional] 
 **StartDate** | Pointer to **time.Time** |  | [optional] 
 **Status** | Pointer to [**BillingInvoiceStatus**](BillingInvoiceStatus.md) |  | [optional] 
@@ -136,6 +138,31 @@ SetEntitlementID sets EntitlementID field to given value.
 `func (o *BillingInvoice) HasEntitlementID() bool`
 
 HasEntitlementID returns a boolean if a field has been set.
+
+### GetExternalID
+
+`func (o *BillingInvoice) GetExternalID() string`
+
+GetExternalID returns the ExternalID field if non-nil, zero value otherwise.
+
+### GetExternalIDOk
+
+`func (o *BillingInvoice) GetExternalIDOk() (*string, bool)`
+
+GetExternalIDOk returns a tuple with the ExternalID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalID
+
+`func (o *BillingInvoice) SetExternalID(v string)`
+
+SetExternalID sets ExternalID field to given value.
+
+### HasExternalID
+
+`func (o *BillingInvoice) HasExternalID() bool`
+
+HasExternalID returns a boolean if a field has been set.
 
 ### GetId
 
@@ -261,6 +288,31 @@ SetOrganizationID sets OrganizationID field to given value.
 `func (o *BillingInvoice) HasOrganizationID() bool`
 
 HasOrganizationID returns a boolean if a field has been set.
+
+### GetPartner
+
+`func (o *BillingInvoice) GetPartner() Partner`
+
+GetPartner returns the Partner field if non-nil, zero value otherwise.
+
+### GetPartnerOk
+
+`func (o *BillingInvoice) GetPartnerOk() (*Partner, bool)`
+
+GetPartnerOk returns a tuple with the Partner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartner
+
+`func (o *BillingInvoice) SetPartner(v Partner)`
+
+SetPartner sets Partner field to given value.
+
+### HasPartner
+
+`func (o *BillingInvoice) HasPartner() bool`
+
+HasPartner returns a boolean if a field has been set.
 
 ### GetPaymentStatus
 

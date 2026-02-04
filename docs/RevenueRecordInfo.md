@@ -7,14 +7,18 @@ Name | Type | Description | Notes
 **AwsRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAwsBillingEvent.md) | For raw revenue records in AWS Marketplace | [optional] 
 **AzureRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingAzureCmaRevenue.md) | For raw revenue records in Azure Marketplace | [optional] 
 **BankTraceId** | Pointer to **string** | The bank trace ID of the revenue record if applicable | [optional] 
-**BillingModel** | Pointer to **string** | The billing model of the revenue record if applicable The value is one of the following: - SubscriptionBased: The revenue record is from a subscription or recurring commitment. - UsageBased: The revenue record is from a usage-based metering. | [optional] 
+**BillingModel** | Pointer to [**RevenueBillingModel**](RevenueBillingModel.md) | The billing model of the revenue record if applicable The value is one of the following: - SubscriptionBased: The revenue record is from a subscription or recurring commitment. - UsageBased: The revenue record is from a usage-based metering. | [optional] 
 **Channel** | Pointer to [**RevenueChannel**](RevenueChannel.md) | The channel of revenue record. | [optional] 
+**ChargebeeInvoiceId** | Pointer to **string** | The Chargebee invoice ID for this revenue record if synced to Chargebee | [optional] 
+**ChargebeePaymentTransactionId** | Pointer to **string** | The Chargebee payment transaction ID for this revenue record if a payment was recorded in Chargebee | [optional] 
+**ChargebeeRefundTransactionId** | Pointer to **string** | The Chargebee refund transaction ID for this revenue record if a refund was recorded in Chargebee | [optional] 
 **CreditAmount** | Pointer to **float32** | The credit amount used in the revenue record. | [optional] 
 **DisbursementBillingEventId** | Pointer to **string** | The disbursement ID of the revenue record if applicable | [optional] 
 **DisbursementNotificationSent** | Pointer to **bool** | Whether the disbursement notification has been sent to the seller/ISV. | [optional] 
 **EarningId** | Pointer to **string** | The earning ID of the revenue record if applicable | [optional] 
 **GcpRevenueRecords** | Pointer to [**[]GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage**](GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage.md) | For raw revenue records in GCP Marketplace | [optional] 
 **IdSource** | Pointer to **string** | Source of the revenue record ID. | [optional] 
+**InvoiceId** | Pointer to **string** | The invoice ID of the revenue record if applicable | [optional] 
 **PaymentId** | Pointer to **string** | The payment  ID of the revenue record if applicable | [optional] 
 **ResellerId** | Pointer to **string** | The reseller ID of the revenue record if applicable | [optional] 
 **ResellerName** | Pointer to **string** | The reseller name of the revenue record if application | [optional] 
@@ -116,20 +120,20 @@ HasBankTraceId returns a boolean if a field has been set.
 
 ### GetBillingModel
 
-`func (o *RevenueRecordInfo) GetBillingModel() string`
+`func (o *RevenueRecordInfo) GetBillingModel() RevenueBillingModel`
 
 GetBillingModel returns the BillingModel field if non-nil, zero value otherwise.
 
 ### GetBillingModelOk
 
-`func (o *RevenueRecordInfo) GetBillingModelOk() (*string, bool)`
+`func (o *RevenueRecordInfo) GetBillingModelOk() (*RevenueBillingModel, bool)`
 
 GetBillingModelOk returns a tuple with the BillingModel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBillingModel
 
-`func (o *RevenueRecordInfo) SetBillingModel(v string)`
+`func (o *RevenueRecordInfo) SetBillingModel(v RevenueBillingModel)`
 
 SetBillingModel sets BillingModel field to given value.
 
@@ -163,6 +167,81 @@ SetChannel sets Channel field to given value.
 `func (o *RevenueRecordInfo) HasChannel() bool`
 
 HasChannel returns a boolean if a field has been set.
+
+### GetChargebeeInvoiceId
+
+`func (o *RevenueRecordInfo) GetChargebeeInvoiceId() string`
+
+GetChargebeeInvoiceId returns the ChargebeeInvoiceId field if non-nil, zero value otherwise.
+
+### GetChargebeeInvoiceIdOk
+
+`func (o *RevenueRecordInfo) GetChargebeeInvoiceIdOk() (*string, bool)`
+
+GetChargebeeInvoiceIdOk returns a tuple with the ChargebeeInvoiceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChargebeeInvoiceId
+
+`func (o *RevenueRecordInfo) SetChargebeeInvoiceId(v string)`
+
+SetChargebeeInvoiceId sets ChargebeeInvoiceId field to given value.
+
+### HasChargebeeInvoiceId
+
+`func (o *RevenueRecordInfo) HasChargebeeInvoiceId() bool`
+
+HasChargebeeInvoiceId returns a boolean if a field has been set.
+
+### GetChargebeePaymentTransactionId
+
+`func (o *RevenueRecordInfo) GetChargebeePaymentTransactionId() string`
+
+GetChargebeePaymentTransactionId returns the ChargebeePaymentTransactionId field if non-nil, zero value otherwise.
+
+### GetChargebeePaymentTransactionIdOk
+
+`func (o *RevenueRecordInfo) GetChargebeePaymentTransactionIdOk() (*string, bool)`
+
+GetChargebeePaymentTransactionIdOk returns a tuple with the ChargebeePaymentTransactionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChargebeePaymentTransactionId
+
+`func (o *RevenueRecordInfo) SetChargebeePaymentTransactionId(v string)`
+
+SetChargebeePaymentTransactionId sets ChargebeePaymentTransactionId field to given value.
+
+### HasChargebeePaymentTransactionId
+
+`func (o *RevenueRecordInfo) HasChargebeePaymentTransactionId() bool`
+
+HasChargebeePaymentTransactionId returns a boolean if a field has been set.
+
+### GetChargebeeRefundTransactionId
+
+`func (o *RevenueRecordInfo) GetChargebeeRefundTransactionId() string`
+
+GetChargebeeRefundTransactionId returns the ChargebeeRefundTransactionId field if non-nil, zero value otherwise.
+
+### GetChargebeeRefundTransactionIdOk
+
+`func (o *RevenueRecordInfo) GetChargebeeRefundTransactionIdOk() (*string, bool)`
+
+GetChargebeeRefundTransactionIdOk returns a tuple with the ChargebeeRefundTransactionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChargebeeRefundTransactionId
+
+`func (o *RevenueRecordInfo) SetChargebeeRefundTransactionId(v string)`
+
+SetChargebeeRefundTransactionId sets ChargebeeRefundTransactionId field to given value.
+
+### HasChargebeeRefundTransactionId
+
+`func (o *RevenueRecordInfo) HasChargebeeRefundTransactionId() bool`
+
+HasChargebeeRefundTransactionId returns a boolean if a field has been set.
 
 ### GetCreditAmount
 
@@ -313,6 +392,31 @@ SetIdSource sets IdSource field to given value.
 `func (o *RevenueRecordInfo) HasIdSource() bool`
 
 HasIdSource returns a boolean if a field has been set.
+
+### GetInvoiceId
+
+`func (o *RevenueRecordInfo) GetInvoiceId() string`
+
+GetInvoiceId returns the InvoiceId field if non-nil, zero value otherwise.
+
+### GetInvoiceIdOk
+
+`func (o *RevenueRecordInfo) GetInvoiceIdOk() (*string, bool)`
+
+GetInvoiceIdOk returns a tuple with the InvoiceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvoiceId
+
+`func (o *RevenueRecordInfo) SetInvoiceId(v string)`
+
+SetInvoiceId sets InvoiceId field to given value.
+
+### HasInvoiceId
+
+`func (o *RevenueRecordInfo) HasInvoiceId() bool`
+
+HasInvoiceId returns a boolean if a field has been set.
 
 ### GetPaymentId
 

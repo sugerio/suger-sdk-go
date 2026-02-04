@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Constraints** | Pointer to [**AwsMarketplaceCatalogPricingTermRateCardConstraints**](AwsMarketplaceCatalogPricingTermRateCardConstraints.md) | Defines constraints on how the term can be configured by acceptors. Applicable only to ConfigurableUpfrontPricingTerm. | [optional] 
+**Constraints** | Pointer to [**AwsMarketplacePurchaseConstraints**](AwsMarketplacePurchaseConstraints.md) | Defines constraints on how the term can be configured by acceptors. Applicable only to ConfigurableUpfrontPricingTerm. | [optional] 
 **RateCard** | Pointer to [**[]AwsMarketplaceCatalogPricingTermRateCardItem**](AwsMarketplaceCatalogPricingTermRateCardItem.md) |  | [optional] 
 **Selector** | Pointer to [**AwsMarketplaceCatalogPricingTermRateCardSelector**](AwsMarketplaceCatalogPricingTermRateCardSelector.md) | Selector is used to differentiate between the mutually exclusive rate cards in the same pricing term, to be selected by the buyer. Applicable only to ConfigurableUpfrontPricingTerm. | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetConstraints
 
-`func (o *AwsMarketplaceCatalogPricingTermRateCard) GetConstraints() AwsMarketplaceCatalogPricingTermRateCardConstraints`
+`func (o *AwsMarketplaceCatalogPricingTermRateCard) GetConstraints() AwsMarketplacePurchaseConstraints`
 
 GetConstraints returns the Constraints field if non-nil, zero value otherwise.
 
 ### GetConstraintsOk
 
-`func (o *AwsMarketplaceCatalogPricingTermRateCard) GetConstraintsOk() (*AwsMarketplaceCatalogPricingTermRateCardConstraints, bool)`
+`func (o *AwsMarketplaceCatalogPricingTermRateCard) GetConstraintsOk() (*AwsMarketplacePurchaseConstraints, bool)`
 
 GetConstraintsOk returns a tuple with the Constraints field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConstraints
 
-`func (o *AwsMarketplaceCatalogPricingTermRateCard) SetConstraints(v AwsMarketplaceCatalogPricingTermRateCardConstraints)`
+`func (o *AwsMarketplaceCatalogPricingTermRateCard) SetConstraints(v AwsMarketplacePurchaseConstraints)`
 
 SetConstraints sets Constraints field to given value.
 

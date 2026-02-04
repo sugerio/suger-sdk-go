@@ -20,6 +20,8 @@ var _ MappedNullable = &SnowflakeMarketplaceOfferPaymentTerms{}
 
 // SnowflakeMarketplaceOfferPaymentTerms struct for SnowflakeMarketplaceOfferPaymentTerms
 type SnowflakeMarketplaceOfferPaymentTerms struct {
+	// Allowed payment methods. Accepted values are CREDIT_CARD, INSTALLMENT.
+	AllowedPaymentMethods []string `json:"allowed_payment_methods,omitempty"`
 	// The installment schedule for the offer.
 	InstallmentSchedule *SnowflakeMarketplacePlanInstallmentSchedule `json:"installment_schedule,omitempty"`
 	// The pricing plan payment types. Accepted values are INVOICE, CREDIT_CARD, INSTALLMENT.
@@ -41,6 +43,38 @@ func NewSnowflakeMarketplaceOfferPaymentTerms() *SnowflakeMarketplaceOfferPaymen
 func NewSnowflakeMarketplaceOfferPaymentTermsWithDefaults() *SnowflakeMarketplaceOfferPaymentTerms {
 	this := SnowflakeMarketplaceOfferPaymentTerms{}
 	return &this
+}
+
+// GetAllowedPaymentMethods returns the AllowedPaymentMethods field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceOfferPaymentTerms) GetAllowedPaymentMethods() []string {
+	if o == nil || IsNil(o.AllowedPaymentMethods) {
+		var ret []string
+		return ret
+	}
+	return o.AllowedPaymentMethods
+}
+
+// GetAllowedPaymentMethodsOk returns a tuple with the AllowedPaymentMethods field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceOfferPaymentTerms) GetAllowedPaymentMethodsOk() ([]string, bool) {
+	if o == nil || IsNil(o.AllowedPaymentMethods) {
+		return nil, false
+	}
+	return o.AllowedPaymentMethods, true
+}
+
+// HasAllowedPaymentMethods returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceOfferPaymentTerms) HasAllowedPaymentMethods() bool {
+	if o != nil && !IsNil(o.AllowedPaymentMethods) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedPaymentMethods gets a reference to the given []string and assigns it to the AllowedPaymentMethods field.
+func (o *SnowflakeMarketplaceOfferPaymentTerms) SetAllowedPaymentMethods(v []string) {
+	o.AllowedPaymentMethods = v
 }
 
 // GetInstallmentSchedule returns the InstallmentSchedule field value if set, zero value otherwise.
@@ -117,6 +151,9 @@ func (o SnowflakeMarketplaceOfferPaymentTerms) MarshalJSON() ([]byte, error) {
 
 func (o SnowflakeMarketplaceOfferPaymentTerms) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AllowedPaymentMethods) {
+		toSerialize["allowed_payment_methods"] = o.AllowedPaymentMethods
+	}
 	if !IsNil(o.InstallmentSchedule) {
 		toSerialize["installment_schedule"] = o.InstallmentSchedule
 	}

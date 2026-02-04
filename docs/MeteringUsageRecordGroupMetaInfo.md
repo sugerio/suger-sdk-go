@@ -6,10 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SkipValidation** | Pointer to **bool** | If it is true, the validation of the usage record group is skipped. | [optional] 
 **BillableRecords** | Pointer to [**[]MeteringUsageRecord**](MeteringUsageRecord.md) | for usage metering API v2 | [optional] 
+**ErpInvoiceID** | Pointer to **string** | ERP invoice ID for tracking usage against external ERP service. | [optional] 
 **LagoAmount** | Pointer to **float32** | The lago amount (in dollars) of the customer. This field keeps the largest of the monthly amount. So it can only be updated when the invoice month increases. | [optional] 
 **LagoSubscriptionID** | Pointer to **string** | The lago subscription ID of the customer. | [optional] 
 **LagoUsageStartTime** | Pointer to **time.Time** | The lago usage start time of the customer usage. | [optional] 
 **MetronomeDailyCostAmount** | Pointer to **float32** | The metronome daily cost amount (in dollars) of the customer. | [optional] 
+**MetronomeInvoiceCreditBack** | Pointer to **bool** | Whether the metronome invoice has been credited back. | [optional] 
+**MetronomeInvoiceCreditBackAmount** | Pointer to **float32** | The metronome invoice amount (in dollars) of the customer. | [optional] 
 **MetronomeInvoiceID** | Pointer to **string** | The metronome invoice ID of the customer. | [optional] 
 **MetronomeMonthlyInvoiceAmount** | Pointer to **float32** | The metronome monthly invoice amount (in dollars) of the customer. This field keeps the largest amount of the invoice month. So it can only be updated when the invoice month increases. | [optional] 
 **MetronomeMonthlyInvoiceAmountAdjusted** | Pointer to **float32** | The metronome monthly invoice amount (in dollars) of the customer, which is adjusted by the seller. This field is populated only when the invoice amount is decreased by the seller via credit granting. | [optional] 
@@ -22,6 +25,7 @@ Name | Type | Description | Notes
 **StripeUsageRecordSummaryID** | Pointer to **string** |  | [optional] 
 **StripeUsageRecordSummaryTotalUsage** | Pointer to **int32** |  | [optional] 
 **Timestamp** | Pointer to **time.Time** | The timestamp (UTC)) of when the usage records were generated. Optional, if not provided, the current report timestamp will be used. | [optional] 
+**UsageAllocations** | Pointer to [**map[string][]UsageAllocation**](array.md) | usage allocation information, dimension key -&gt; UsageAllocation array. Only supported for AWS marketplace usage metering at this moment. | [optional] 
 
 ## Methods
 
@@ -91,6 +95,31 @@ SetBillableRecords sets BillableRecords field to given value.
 `func (o *MeteringUsageRecordGroupMetaInfo) HasBillableRecords() bool`
 
 HasBillableRecords returns a boolean if a field has been set.
+
+### GetErpInvoiceID
+
+`func (o *MeteringUsageRecordGroupMetaInfo) GetErpInvoiceID() string`
+
+GetErpInvoiceID returns the ErpInvoiceID field if non-nil, zero value otherwise.
+
+### GetErpInvoiceIDOk
+
+`func (o *MeteringUsageRecordGroupMetaInfo) GetErpInvoiceIDOk() (*string, bool)`
+
+GetErpInvoiceIDOk returns a tuple with the ErpInvoiceID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErpInvoiceID
+
+`func (o *MeteringUsageRecordGroupMetaInfo) SetErpInvoiceID(v string)`
+
+SetErpInvoiceID sets ErpInvoiceID field to given value.
+
+### HasErpInvoiceID
+
+`func (o *MeteringUsageRecordGroupMetaInfo) HasErpInvoiceID() bool`
+
+HasErpInvoiceID returns a boolean if a field has been set.
 
 ### GetLagoAmount
 
@@ -191,6 +220,56 @@ SetMetronomeDailyCostAmount sets MetronomeDailyCostAmount field to given value.
 `func (o *MeteringUsageRecordGroupMetaInfo) HasMetronomeDailyCostAmount() bool`
 
 HasMetronomeDailyCostAmount returns a boolean if a field has been set.
+
+### GetMetronomeInvoiceCreditBack
+
+`func (o *MeteringUsageRecordGroupMetaInfo) GetMetronomeInvoiceCreditBack() bool`
+
+GetMetronomeInvoiceCreditBack returns the MetronomeInvoiceCreditBack field if non-nil, zero value otherwise.
+
+### GetMetronomeInvoiceCreditBackOk
+
+`func (o *MeteringUsageRecordGroupMetaInfo) GetMetronomeInvoiceCreditBackOk() (*bool, bool)`
+
+GetMetronomeInvoiceCreditBackOk returns a tuple with the MetronomeInvoiceCreditBack field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetronomeInvoiceCreditBack
+
+`func (o *MeteringUsageRecordGroupMetaInfo) SetMetronomeInvoiceCreditBack(v bool)`
+
+SetMetronomeInvoiceCreditBack sets MetronomeInvoiceCreditBack field to given value.
+
+### HasMetronomeInvoiceCreditBack
+
+`func (o *MeteringUsageRecordGroupMetaInfo) HasMetronomeInvoiceCreditBack() bool`
+
+HasMetronomeInvoiceCreditBack returns a boolean if a field has been set.
+
+### GetMetronomeInvoiceCreditBackAmount
+
+`func (o *MeteringUsageRecordGroupMetaInfo) GetMetronomeInvoiceCreditBackAmount() float32`
+
+GetMetronomeInvoiceCreditBackAmount returns the MetronomeInvoiceCreditBackAmount field if non-nil, zero value otherwise.
+
+### GetMetronomeInvoiceCreditBackAmountOk
+
+`func (o *MeteringUsageRecordGroupMetaInfo) GetMetronomeInvoiceCreditBackAmountOk() (*float32, bool)`
+
+GetMetronomeInvoiceCreditBackAmountOk returns a tuple with the MetronomeInvoiceCreditBackAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetronomeInvoiceCreditBackAmount
+
+`func (o *MeteringUsageRecordGroupMetaInfo) SetMetronomeInvoiceCreditBackAmount(v float32)`
+
+SetMetronomeInvoiceCreditBackAmount sets MetronomeInvoiceCreditBackAmount field to given value.
+
+### HasMetronomeInvoiceCreditBackAmount
+
+`func (o *MeteringUsageRecordGroupMetaInfo) HasMetronomeInvoiceCreditBackAmount() bool`
+
+HasMetronomeInvoiceCreditBackAmount returns a boolean if a field has been set.
 
 ### GetMetronomeInvoiceID
 
@@ -491,6 +570,31 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *MeteringUsageRecordGroupMetaInfo) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
+
+### GetUsageAllocations
+
+`func (o *MeteringUsageRecordGroupMetaInfo) GetUsageAllocations() map[string][]UsageAllocation`
+
+GetUsageAllocations returns the UsageAllocations field if non-nil, zero value otherwise.
+
+### GetUsageAllocationsOk
+
+`func (o *MeteringUsageRecordGroupMetaInfo) GetUsageAllocationsOk() (*map[string][]UsageAllocation, bool)`
+
+GetUsageAllocationsOk returns a tuple with the UsageAllocations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageAllocations
+
+`func (o *MeteringUsageRecordGroupMetaInfo) SetUsageAllocations(v map[string][]UsageAllocation)`
+
+SetUsageAllocations sets UsageAllocations field to given value.
+
+### HasUsageAllocations
+
+`func (o *MeteringUsageRecordGroupMetaInfo) HasUsageAllocations() bool`
+
+HasUsageAllocations returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -41,9 +41,11 @@ type SnowflakeMarketplaceProduct struct {
 	LastSubmittedOn *string `json:"lastSubmittedOn,omitempty"`
 	ListingType *string `json:"listingType,omitempty"`
 	Metadata *SnowflakeMarketplaceProductMetadata `json:"metadata,omitempty"`
+	MonetizationVersion *string `json:"monetizationVersion,omitempty"`
 	Name *string `json:"name,omitempty"`
 	PricingPlans []SnowflakeMarketplaceProductPricingPlan `json:"pricingPlans,omitempty"`
 	Private *bool `json:"private,omitempty"`
+	ProductTypes []SnowflakeMarketplaceProductType `json:"productTypes,omitempty"`
 	ProfileName *string `json:"profileName,omitempty"`
 	PublishOnApproval *bool `json:"publishOnApproval,omitempty"`
 	Regions *string `json:"regions,omitempty"`
@@ -749,6 +751,38 @@ func (o *SnowflakeMarketplaceProduct) SetMetadata(v SnowflakeMarketplaceProductM
 	o.Metadata = &v
 }
 
+// GetMonetizationVersion returns the MonetizationVersion field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetMonetizationVersion() string {
+	if o == nil || IsNil(o.MonetizationVersion) {
+		var ret string
+		return ret
+	}
+	return *o.MonetizationVersion
+}
+
+// GetMonetizationVersionOk returns a tuple with the MonetizationVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetMonetizationVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.MonetizationVersion) {
+		return nil, false
+	}
+	return o.MonetizationVersion, true
+}
+
+// HasMonetizationVersion returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasMonetizationVersion() bool {
+	if o != nil && !IsNil(o.MonetizationVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetMonetizationVersion gets a reference to the given string and assigns it to the MonetizationVersion field.
+func (o *SnowflakeMarketplaceProduct) SetMonetizationVersion(v string) {
+	o.MonetizationVersion = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *SnowflakeMarketplaceProduct) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -843,6 +877,38 @@ func (o *SnowflakeMarketplaceProduct) HasPrivate() bool {
 // SetPrivate gets a reference to the given bool and assigns it to the Private field.
 func (o *SnowflakeMarketplaceProduct) SetPrivate(v bool) {
 	o.Private = &v
+}
+
+// GetProductTypes returns the ProductTypes field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceProduct) GetProductTypes() []SnowflakeMarketplaceProductType {
+	if o == nil || IsNil(o.ProductTypes) {
+		var ret []SnowflakeMarketplaceProductType
+		return ret
+	}
+	return o.ProductTypes
+}
+
+// GetProductTypesOk returns a tuple with the ProductTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceProduct) GetProductTypesOk() ([]SnowflakeMarketplaceProductType, bool) {
+	if o == nil || IsNil(o.ProductTypes) {
+		return nil, false
+	}
+	return o.ProductTypes, true
+}
+
+// HasProductTypes returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceProduct) HasProductTypes() bool {
+	if o != nil && !IsNil(o.ProductTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetProductTypes gets a reference to the given []SnowflakeMarketplaceProductType and assigns it to the ProductTypes field.
+func (o *SnowflakeMarketplaceProduct) SetProductTypes(v []SnowflakeMarketplaceProductType) {
+	o.ProductTypes = v
 }
 
 // GetProfileName returns the ProfileName field value if set, zero value otherwise.
@@ -1366,6 +1432,9 @@ func (o SnowflakeMarketplaceProduct) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata
 	}
+	if !IsNil(o.MonetizationVersion) {
+		toSerialize["monetizationVersion"] = o.MonetizationVersion
+	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
@@ -1374,6 +1443,9 @@ func (o SnowflakeMarketplaceProduct) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Private) {
 		toSerialize["private"] = o.Private
+	}
+	if !IsNil(o.ProductTypes) {
+		toSerialize["productTypes"] = o.ProductTypes
 	}
 	if !IsNil(o.ProfileName) {
 		toSerialize["profileName"] = o.ProfileName

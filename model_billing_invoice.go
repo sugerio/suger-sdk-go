@@ -25,12 +25,14 @@ type BillingInvoice struct {
 	CreationTime *time.Time `json:"creationTime,omitempty"`
 	EndDate *time.Time `json:"endDate,omitempty"`
 	EntitlementID *string `json:"entitlementID,omitempty"`
+	ExternalID *string `json:"externalID,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Info *BillingInvoiceInfo `json:"info,omitempty"`
 	// The invoice file URL, provided as AWS S3 presigned URL with expiration time. Output only.
 	InvoiceURL *string `json:"invoiceURL,omitempty"`
 	LastUpdateTime *time.Time `json:"lastUpdateTime,omitempty"`
 	OrganizationID *string `json:"organizationID,omitempty"`
+	Partner *Partner `json:"partner,omitempty"`
 	PaymentStatus *BillingPaymentStatus `json:"paymentStatus,omitempty"`
 	StartDate *time.Time `json:"startDate,omitempty"`
 	Status *BillingInvoiceStatus `json:"status,omitempty"`
@@ -180,6 +182,38 @@ func (o *BillingInvoice) HasEntitlementID() bool {
 // SetEntitlementID gets a reference to the given string and assigns it to the EntitlementID field.
 func (o *BillingInvoice) SetEntitlementID(v string) {
 	o.EntitlementID = &v
+}
+
+// GetExternalID returns the ExternalID field value if set, zero value otherwise.
+func (o *BillingInvoice) GetExternalID() string {
+	if o == nil || IsNil(o.ExternalID) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalID
+}
+
+// GetExternalIDOk returns a tuple with the ExternalID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInvoice) GetExternalIDOk() (*string, bool) {
+	if o == nil || IsNil(o.ExternalID) {
+		return nil, false
+	}
+	return o.ExternalID, true
+}
+
+// HasExternalID returns a boolean if a field has been set.
+func (o *BillingInvoice) HasExternalID() bool {
+	if o != nil && !IsNil(o.ExternalID) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalID gets a reference to the given string and assigns it to the ExternalID field.
+func (o *BillingInvoice) SetExternalID(v string) {
+	o.ExternalID = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -342,6 +376,38 @@ func (o *BillingInvoice) SetOrganizationID(v string) {
 	o.OrganizationID = &v
 }
 
+// GetPartner returns the Partner field value if set, zero value otherwise.
+func (o *BillingInvoice) GetPartner() Partner {
+	if o == nil || IsNil(o.Partner) {
+		var ret Partner
+		return ret
+	}
+	return *o.Partner
+}
+
+// GetPartnerOk returns a tuple with the Partner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInvoice) GetPartnerOk() (*Partner, bool) {
+	if o == nil || IsNil(o.Partner) {
+		return nil, false
+	}
+	return o.Partner, true
+}
+
+// HasPartner returns a boolean if a field has been set.
+func (o *BillingInvoice) HasPartner() bool {
+	if o != nil && !IsNil(o.Partner) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartner gets a reference to the given Partner and assigns it to the Partner field.
+func (o *BillingInvoice) SetPartner(v Partner) {
+	o.Partner = &v
+}
+
 // GetPaymentStatus returns the PaymentStatus field value if set, zero value otherwise.
 func (o *BillingInvoice) GetPaymentStatus() BillingPaymentStatus {
 	if o == nil || IsNil(o.PaymentStatus) {
@@ -492,6 +558,9 @@ func (o BillingInvoice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EntitlementID) {
 		toSerialize["entitlementID"] = o.EntitlementID
 	}
+	if !IsNil(o.ExternalID) {
+		toSerialize["externalID"] = o.ExternalID
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
@@ -506,6 +575,9 @@ func (o BillingInvoice) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OrganizationID) {
 		toSerialize["organizationID"] = o.OrganizationID
+	}
+	if !IsNil(o.Partner) {
+		toSerialize["partner"] = o.Partner
 	}
 	if !IsNil(o.PaymentStatus) {
 		toSerialize["paymentStatus"] = o.PaymentStatus

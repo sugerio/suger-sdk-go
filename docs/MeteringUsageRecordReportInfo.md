@@ -5,10 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AggregatedBillableRecords** | Pointer to [**[]AggregatedMeteringUsageRecord**](AggregatedMeteringUsageRecord.md) | The aggregated billable records from the usage metering API v2. | [optional] 
-**AlibabaMeteringRequest** | Pointer to [**ClientPushMeteringDataRequest**](ClientPushMeteringDataRequest.md) | The raw request to call Alibaba metering service. | [optional] 
-**AlibabaMeteringResponse** | Pointer to [**ClientPushMeteringDataResponseBody**](ClientPushMeteringDataResponseBody.md) | The raw response from Alibaba metering service. | [optional] 
+**AggregatedUsageAllocations** | Pointer to [**map[string][]UsageAllocation**](array.md) | The aggregated usage allocations | [optional] 
+**AlibabaInternationalMeteringRequest** | Pointer to [**GithubComAlibabacloudGoMarketplaceintl20221230ClientPushMeteringDataRequest**](GithubComAlibabacloudGoMarketplaceintl20221230ClientPushMeteringDataRequest.md) | The raw request to call Alibaba International metering service. | [optional] 
+**AlibabaInternationalMeteringResponse** | Pointer to [**GithubComAlibabacloudGoMarketplaceintl20221230ClientPushMeteringDataResponseBody**](GithubComAlibabacloudGoMarketplaceintl20221230ClientPushMeteringDataResponseBody.md) | The raw response from Alibaba International metering service. | [optional] 
+**AlibabaMeteringRequest** | Pointer to [**GithubComAlibabacloudGoMarket20151101V3ClientPushMeteringDataRequest**](GithubComAlibabacloudGoMarket20151101V3ClientPushMeteringDataRequest.md) | The raw request to call Alibaba metering service. | [optional] 
+**AlibabaMeteringResponse** | Pointer to [**GithubComAlibabacloudGoMarket20151101V3ClientPushMeteringDataResponseBody**](GithubComAlibabacloudGoMarket20151101V3ClientPushMeteringDataResponseBody.md) | The raw response from Alibaba metering service. | [optional] 
 **AwsMeteringRequest** | Pointer to [**AwsMarketplaceMeteringBatchMeterUsageInput**](AwsMarketplaceMeteringBatchMeterUsageInput.md) | The raw request to call AWS metering service. | [optional] 
-**AwsMeteringResponse** | Pointer to [**MarketplacemeteringBatchMeterUsageOutput**](MarketplacemeteringBatchMeterUsageOutput.md) | The raw response from AWS metering service. | [optional] 
+**AwsMeteringResponse** | Pointer to [**GithubComAwsAwsSdkGoV2ServiceMarketplacemeteringBatchMeterUsageOutput**](GithubComAwsAwsSdkGoV2ServiceMarketplacemeteringBatchMeterUsageOutput.md) | The raw response from AWS metering service. | [optional] 
 **AzureMeteringRequest** | Pointer to [**AzureMarketplaceMeteringBatchUsageEvent**](AzureMarketplaceMeteringBatchUsageEvent.md) | The raw request to call Azure metering service. | [optional] 
 **AzureMeteringResponse** | Pointer to [**GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse**](GithubComSugerioMarketplaceServiceThirdPartyAzureSdkMarketplacemeteringv1BatchUsageEventOkResponse.md) | The raw response from Azure metering service. | [optional] 
 **CommitAmount** | Pointer to **float32** | The amount of the commit if applicable. | [optional] 
@@ -79,22 +82,97 @@ SetAggregatedBillableRecords sets AggregatedBillableRecords field to given value
 
 HasAggregatedBillableRecords returns a boolean if a field has been set.
 
+### GetAggregatedUsageAllocations
+
+`func (o *MeteringUsageRecordReportInfo) GetAggregatedUsageAllocations() map[string][]UsageAllocation`
+
+GetAggregatedUsageAllocations returns the AggregatedUsageAllocations field if non-nil, zero value otherwise.
+
+### GetAggregatedUsageAllocationsOk
+
+`func (o *MeteringUsageRecordReportInfo) GetAggregatedUsageAllocationsOk() (*map[string][]UsageAllocation, bool)`
+
+GetAggregatedUsageAllocationsOk returns a tuple with the AggregatedUsageAllocations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregatedUsageAllocations
+
+`func (o *MeteringUsageRecordReportInfo) SetAggregatedUsageAllocations(v map[string][]UsageAllocation)`
+
+SetAggregatedUsageAllocations sets AggregatedUsageAllocations field to given value.
+
+### HasAggregatedUsageAllocations
+
+`func (o *MeteringUsageRecordReportInfo) HasAggregatedUsageAllocations() bool`
+
+HasAggregatedUsageAllocations returns a boolean if a field has been set.
+
+### GetAlibabaInternationalMeteringRequest
+
+`func (o *MeteringUsageRecordReportInfo) GetAlibabaInternationalMeteringRequest() GithubComAlibabacloudGoMarketplaceintl20221230ClientPushMeteringDataRequest`
+
+GetAlibabaInternationalMeteringRequest returns the AlibabaInternationalMeteringRequest field if non-nil, zero value otherwise.
+
+### GetAlibabaInternationalMeteringRequestOk
+
+`func (o *MeteringUsageRecordReportInfo) GetAlibabaInternationalMeteringRequestOk() (*GithubComAlibabacloudGoMarketplaceintl20221230ClientPushMeteringDataRequest, bool)`
+
+GetAlibabaInternationalMeteringRequestOk returns a tuple with the AlibabaInternationalMeteringRequest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlibabaInternationalMeteringRequest
+
+`func (o *MeteringUsageRecordReportInfo) SetAlibabaInternationalMeteringRequest(v GithubComAlibabacloudGoMarketplaceintl20221230ClientPushMeteringDataRequest)`
+
+SetAlibabaInternationalMeteringRequest sets AlibabaInternationalMeteringRequest field to given value.
+
+### HasAlibabaInternationalMeteringRequest
+
+`func (o *MeteringUsageRecordReportInfo) HasAlibabaInternationalMeteringRequest() bool`
+
+HasAlibabaInternationalMeteringRequest returns a boolean if a field has been set.
+
+### GetAlibabaInternationalMeteringResponse
+
+`func (o *MeteringUsageRecordReportInfo) GetAlibabaInternationalMeteringResponse() GithubComAlibabacloudGoMarketplaceintl20221230ClientPushMeteringDataResponseBody`
+
+GetAlibabaInternationalMeteringResponse returns the AlibabaInternationalMeteringResponse field if non-nil, zero value otherwise.
+
+### GetAlibabaInternationalMeteringResponseOk
+
+`func (o *MeteringUsageRecordReportInfo) GetAlibabaInternationalMeteringResponseOk() (*GithubComAlibabacloudGoMarketplaceintl20221230ClientPushMeteringDataResponseBody, bool)`
+
+GetAlibabaInternationalMeteringResponseOk returns a tuple with the AlibabaInternationalMeteringResponse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlibabaInternationalMeteringResponse
+
+`func (o *MeteringUsageRecordReportInfo) SetAlibabaInternationalMeteringResponse(v GithubComAlibabacloudGoMarketplaceintl20221230ClientPushMeteringDataResponseBody)`
+
+SetAlibabaInternationalMeteringResponse sets AlibabaInternationalMeteringResponse field to given value.
+
+### HasAlibabaInternationalMeteringResponse
+
+`func (o *MeteringUsageRecordReportInfo) HasAlibabaInternationalMeteringResponse() bool`
+
+HasAlibabaInternationalMeteringResponse returns a boolean if a field has been set.
+
 ### GetAlibabaMeteringRequest
 
-`func (o *MeteringUsageRecordReportInfo) GetAlibabaMeteringRequest() ClientPushMeteringDataRequest`
+`func (o *MeteringUsageRecordReportInfo) GetAlibabaMeteringRequest() GithubComAlibabacloudGoMarket20151101V3ClientPushMeteringDataRequest`
 
 GetAlibabaMeteringRequest returns the AlibabaMeteringRequest field if non-nil, zero value otherwise.
 
 ### GetAlibabaMeteringRequestOk
 
-`func (o *MeteringUsageRecordReportInfo) GetAlibabaMeteringRequestOk() (*ClientPushMeteringDataRequest, bool)`
+`func (o *MeteringUsageRecordReportInfo) GetAlibabaMeteringRequestOk() (*GithubComAlibabacloudGoMarket20151101V3ClientPushMeteringDataRequest, bool)`
 
 GetAlibabaMeteringRequestOk returns a tuple with the AlibabaMeteringRequest field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAlibabaMeteringRequest
 
-`func (o *MeteringUsageRecordReportInfo) SetAlibabaMeteringRequest(v ClientPushMeteringDataRequest)`
+`func (o *MeteringUsageRecordReportInfo) SetAlibabaMeteringRequest(v GithubComAlibabacloudGoMarket20151101V3ClientPushMeteringDataRequest)`
 
 SetAlibabaMeteringRequest sets AlibabaMeteringRequest field to given value.
 
@@ -106,20 +184,20 @@ HasAlibabaMeteringRequest returns a boolean if a field has been set.
 
 ### GetAlibabaMeteringResponse
 
-`func (o *MeteringUsageRecordReportInfo) GetAlibabaMeteringResponse() ClientPushMeteringDataResponseBody`
+`func (o *MeteringUsageRecordReportInfo) GetAlibabaMeteringResponse() GithubComAlibabacloudGoMarket20151101V3ClientPushMeteringDataResponseBody`
 
 GetAlibabaMeteringResponse returns the AlibabaMeteringResponse field if non-nil, zero value otherwise.
 
 ### GetAlibabaMeteringResponseOk
 
-`func (o *MeteringUsageRecordReportInfo) GetAlibabaMeteringResponseOk() (*ClientPushMeteringDataResponseBody, bool)`
+`func (o *MeteringUsageRecordReportInfo) GetAlibabaMeteringResponseOk() (*GithubComAlibabacloudGoMarket20151101V3ClientPushMeteringDataResponseBody, bool)`
 
 GetAlibabaMeteringResponseOk returns a tuple with the AlibabaMeteringResponse field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAlibabaMeteringResponse
 
-`func (o *MeteringUsageRecordReportInfo) SetAlibabaMeteringResponse(v ClientPushMeteringDataResponseBody)`
+`func (o *MeteringUsageRecordReportInfo) SetAlibabaMeteringResponse(v GithubComAlibabacloudGoMarket20151101V3ClientPushMeteringDataResponseBody)`
 
 SetAlibabaMeteringResponse sets AlibabaMeteringResponse field to given value.
 
@@ -156,20 +234,20 @@ HasAwsMeteringRequest returns a boolean if a field has been set.
 
 ### GetAwsMeteringResponse
 
-`func (o *MeteringUsageRecordReportInfo) GetAwsMeteringResponse() MarketplacemeteringBatchMeterUsageOutput`
+`func (o *MeteringUsageRecordReportInfo) GetAwsMeteringResponse() GithubComAwsAwsSdkGoV2ServiceMarketplacemeteringBatchMeterUsageOutput`
 
 GetAwsMeteringResponse returns the AwsMeteringResponse field if non-nil, zero value otherwise.
 
 ### GetAwsMeteringResponseOk
 
-`func (o *MeteringUsageRecordReportInfo) GetAwsMeteringResponseOk() (*MarketplacemeteringBatchMeterUsageOutput, bool)`
+`func (o *MeteringUsageRecordReportInfo) GetAwsMeteringResponseOk() (*GithubComAwsAwsSdkGoV2ServiceMarketplacemeteringBatchMeterUsageOutput, bool)`
 
 GetAwsMeteringResponseOk returns a tuple with the AwsMeteringResponse field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAwsMeteringResponse
 
-`func (o *MeteringUsageRecordReportInfo) SetAwsMeteringResponse(v MarketplacemeteringBatchMeterUsageOutput)`
+`func (o *MeteringUsageRecordReportInfo) SetAwsMeteringResponse(v GithubComAwsAwsSdkGoV2ServiceMarketplacemeteringBatchMeterUsageOutput)`
 
 SetAwsMeteringResponse sets AwsMeteringResponse field to given value.
 

@@ -20,6 +20,8 @@ var _ MappedNullable = &AwsMarketplaceEventBridgeEventDetail{}
 
 // AwsMarketplaceEventBridgeEventDetail struct for AwsMarketplaceEventBridgeEventDetail
 type AwsMarketplaceEventBridgeEventDetail struct {
+	Acceptor *AwsMarketplaceEventBridgeEventAccount `json:"acceptor,omitempty"`
+	Agreement *AwsMarketplaceEventBridgeEventAgreement `json:"agreement,omitempty"`
 	Catalog *string `json:"catalog,omitempty"`
 	EventCategory *string `json:"eventCategory,omitempty"`
 	EventID *string `json:"eventID,omitempty"`
@@ -27,13 +29,16 @@ type AwsMarketplaceEventBridgeEventDetail struct {
 	EventSource *string `json:"eventSource,omitempty"`
 	EventType *string `json:"eventType,omitempty"`
 	EventVersion *string `json:"eventVersion,omitempty"`
+	License *AwsMarketplaceEventBridgeEventLicense `json:"license,omitempty"`
 	ManagementEvent *bool `json:"managementEvent,omitempty"`
 	// The seller/ISV's AWS Account Id.
 	Manufacturer *AwsMarketplaceEventBridgeEventAccount `json:"manufacturer,omitempty"`
 	Offer *AwsMarketplaceEventBridgeEventOffer `json:"offer,omitempty"`
 	Product *AwsMarketplaceEventBridgeEventProduct `json:"product,omitempty"`
+	Proposer *AwsMarketplaceEventBridgeEventAccount `json:"proposer,omitempty"`
 	RequestID *string `json:"requestID,omitempty"`
 	RequestParameters map[string]interface{} `json:"requestParameters,omitempty"`
+	ResaleAuthorization *AwsMarketplaceEventBridgeEventResaleAuthorization `json:"resaleAuthorization,omitempty"`
 	ResponseElements map[string]interface{} `json:"responseElements,omitempty"`
 	// For private offer created by a channel partner, this is the channel partner's AWS Account Id. For private offer created by a seller/ISV, this is the seller/ISV's AWS Account Id.
 	SellerOfRecord *AwsMarketplaceEventBridgeEventAccount `json:"sellerOfRecord,omitempty"`
@@ -55,6 +60,70 @@ func NewAwsMarketplaceEventBridgeEventDetail() *AwsMarketplaceEventBridgeEventDe
 func NewAwsMarketplaceEventBridgeEventDetailWithDefaults() *AwsMarketplaceEventBridgeEventDetail {
 	this := AwsMarketplaceEventBridgeEventDetail{}
 	return &this
+}
+
+// GetAcceptor returns the Acceptor field value if set, zero value otherwise.
+func (o *AwsMarketplaceEventBridgeEventDetail) GetAcceptor() AwsMarketplaceEventBridgeEventAccount {
+	if o == nil || IsNil(o.Acceptor) {
+		var ret AwsMarketplaceEventBridgeEventAccount
+		return ret
+	}
+	return *o.Acceptor
+}
+
+// GetAcceptorOk returns a tuple with the Acceptor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsMarketplaceEventBridgeEventDetail) GetAcceptorOk() (*AwsMarketplaceEventBridgeEventAccount, bool) {
+	if o == nil || IsNil(o.Acceptor) {
+		return nil, false
+	}
+	return o.Acceptor, true
+}
+
+// HasAcceptor returns a boolean if a field has been set.
+func (o *AwsMarketplaceEventBridgeEventDetail) HasAcceptor() bool {
+	if o != nil && !IsNil(o.Acceptor) {
+		return true
+	}
+
+	return false
+}
+
+// SetAcceptor gets a reference to the given AwsMarketplaceEventBridgeEventAccount and assigns it to the Acceptor field.
+func (o *AwsMarketplaceEventBridgeEventDetail) SetAcceptor(v AwsMarketplaceEventBridgeEventAccount) {
+	o.Acceptor = &v
+}
+
+// GetAgreement returns the Agreement field value if set, zero value otherwise.
+func (o *AwsMarketplaceEventBridgeEventDetail) GetAgreement() AwsMarketplaceEventBridgeEventAgreement {
+	if o == nil || IsNil(o.Agreement) {
+		var ret AwsMarketplaceEventBridgeEventAgreement
+		return ret
+	}
+	return *o.Agreement
+}
+
+// GetAgreementOk returns a tuple with the Agreement field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsMarketplaceEventBridgeEventDetail) GetAgreementOk() (*AwsMarketplaceEventBridgeEventAgreement, bool) {
+	if o == nil || IsNil(o.Agreement) {
+		return nil, false
+	}
+	return o.Agreement, true
+}
+
+// HasAgreement returns a boolean if a field has been set.
+func (o *AwsMarketplaceEventBridgeEventDetail) HasAgreement() bool {
+	if o != nil && !IsNil(o.Agreement) {
+		return true
+	}
+
+	return false
+}
+
+// SetAgreement gets a reference to the given AwsMarketplaceEventBridgeEventAgreement and assigns it to the Agreement field.
+func (o *AwsMarketplaceEventBridgeEventDetail) SetAgreement(v AwsMarketplaceEventBridgeEventAgreement) {
+	o.Agreement = &v
 }
 
 // GetCatalog returns the Catalog field value if set, zero value otherwise.
@@ -281,6 +350,38 @@ func (o *AwsMarketplaceEventBridgeEventDetail) SetEventVersion(v string) {
 	o.EventVersion = &v
 }
 
+// GetLicense returns the License field value if set, zero value otherwise.
+func (o *AwsMarketplaceEventBridgeEventDetail) GetLicense() AwsMarketplaceEventBridgeEventLicense {
+	if o == nil || IsNil(o.License) {
+		var ret AwsMarketplaceEventBridgeEventLicense
+		return ret
+	}
+	return *o.License
+}
+
+// GetLicenseOk returns a tuple with the License field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsMarketplaceEventBridgeEventDetail) GetLicenseOk() (*AwsMarketplaceEventBridgeEventLicense, bool) {
+	if o == nil || IsNil(o.License) {
+		return nil, false
+	}
+	return o.License, true
+}
+
+// HasLicense returns a boolean if a field has been set.
+func (o *AwsMarketplaceEventBridgeEventDetail) HasLicense() bool {
+	if o != nil && !IsNil(o.License) {
+		return true
+	}
+
+	return false
+}
+
+// SetLicense gets a reference to the given AwsMarketplaceEventBridgeEventLicense and assigns it to the License field.
+func (o *AwsMarketplaceEventBridgeEventDetail) SetLicense(v AwsMarketplaceEventBridgeEventLicense) {
+	o.License = &v
+}
+
 // GetManagementEvent returns the ManagementEvent field value if set, zero value otherwise.
 func (o *AwsMarketplaceEventBridgeEventDetail) GetManagementEvent() bool {
 	if o == nil || IsNil(o.ManagementEvent) {
@@ -409,6 +510,38 @@ func (o *AwsMarketplaceEventBridgeEventDetail) SetProduct(v AwsMarketplaceEventB
 	o.Product = &v
 }
 
+// GetProposer returns the Proposer field value if set, zero value otherwise.
+func (o *AwsMarketplaceEventBridgeEventDetail) GetProposer() AwsMarketplaceEventBridgeEventAccount {
+	if o == nil || IsNil(o.Proposer) {
+		var ret AwsMarketplaceEventBridgeEventAccount
+		return ret
+	}
+	return *o.Proposer
+}
+
+// GetProposerOk returns a tuple with the Proposer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsMarketplaceEventBridgeEventDetail) GetProposerOk() (*AwsMarketplaceEventBridgeEventAccount, bool) {
+	if o == nil || IsNil(o.Proposer) {
+		return nil, false
+	}
+	return o.Proposer, true
+}
+
+// HasProposer returns a boolean if a field has been set.
+func (o *AwsMarketplaceEventBridgeEventDetail) HasProposer() bool {
+	if o != nil && !IsNil(o.Proposer) {
+		return true
+	}
+
+	return false
+}
+
+// SetProposer gets a reference to the given AwsMarketplaceEventBridgeEventAccount and assigns it to the Proposer field.
+func (o *AwsMarketplaceEventBridgeEventDetail) SetProposer(v AwsMarketplaceEventBridgeEventAccount) {
+	o.Proposer = &v
+}
+
 // GetRequestID returns the RequestID field value if set, zero value otherwise.
 func (o *AwsMarketplaceEventBridgeEventDetail) GetRequestID() string {
 	if o == nil || IsNil(o.RequestID) {
@@ -471,6 +604,38 @@ func (o *AwsMarketplaceEventBridgeEventDetail) HasRequestParameters() bool {
 // SetRequestParameters gets a reference to the given map[string]interface{} and assigns it to the RequestParameters field.
 func (o *AwsMarketplaceEventBridgeEventDetail) SetRequestParameters(v map[string]interface{}) {
 	o.RequestParameters = v
+}
+
+// GetResaleAuthorization returns the ResaleAuthorization field value if set, zero value otherwise.
+func (o *AwsMarketplaceEventBridgeEventDetail) GetResaleAuthorization() AwsMarketplaceEventBridgeEventResaleAuthorization {
+	if o == nil || IsNil(o.ResaleAuthorization) {
+		var ret AwsMarketplaceEventBridgeEventResaleAuthorization
+		return ret
+	}
+	return *o.ResaleAuthorization
+}
+
+// GetResaleAuthorizationOk returns a tuple with the ResaleAuthorization field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsMarketplaceEventBridgeEventDetail) GetResaleAuthorizationOk() (*AwsMarketplaceEventBridgeEventResaleAuthorization, bool) {
+	if o == nil || IsNil(o.ResaleAuthorization) {
+		return nil, false
+	}
+	return o.ResaleAuthorization, true
+}
+
+// HasResaleAuthorization returns a boolean if a field has been set.
+func (o *AwsMarketplaceEventBridgeEventDetail) HasResaleAuthorization() bool {
+	if o != nil && !IsNil(o.ResaleAuthorization) {
+		return true
+	}
+
+	return false
+}
+
+// SetResaleAuthorization gets a reference to the given AwsMarketplaceEventBridgeEventResaleAuthorization and assigns it to the ResaleAuthorization field.
+func (o *AwsMarketplaceEventBridgeEventDetail) SetResaleAuthorization(v AwsMarketplaceEventBridgeEventResaleAuthorization) {
+	o.ResaleAuthorization = &v
 }
 
 // GetResponseElements returns the ResponseElements field value if set, zero value otherwise.
@@ -579,6 +744,12 @@ func (o AwsMarketplaceEventBridgeEventDetail) MarshalJSON() ([]byte, error) {
 
 func (o AwsMarketplaceEventBridgeEventDetail) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Acceptor) {
+		toSerialize["acceptor"] = o.Acceptor
+	}
+	if !IsNil(o.Agreement) {
+		toSerialize["agreement"] = o.Agreement
+	}
 	if !IsNil(o.Catalog) {
 		toSerialize["catalog"] = o.Catalog
 	}
@@ -600,6 +771,9 @@ func (o AwsMarketplaceEventBridgeEventDetail) ToMap() (map[string]interface{}, e
 	if !IsNil(o.EventVersion) {
 		toSerialize["eventVersion"] = o.EventVersion
 	}
+	if !IsNil(o.License) {
+		toSerialize["license"] = o.License
+	}
 	if !IsNil(o.ManagementEvent) {
 		toSerialize["managementEvent"] = o.ManagementEvent
 	}
@@ -612,11 +786,17 @@ func (o AwsMarketplaceEventBridgeEventDetail) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Product) {
 		toSerialize["product"] = o.Product
 	}
+	if !IsNil(o.Proposer) {
+		toSerialize["proposer"] = o.Proposer
+	}
 	if !IsNil(o.RequestID) {
 		toSerialize["requestID"] = o.RequestID
 	}
 	if !IsNil(o.RequestParameters) {
 		toSerialize["requestParameters"] = o.RequestParameters
+	}
+	if !IsNil(o.ResaleAuthorization) {
+		toSerialize["resaleAuthorization"] = o.ResaleAuthorization
 	}
 	if !IsNil(o.ResponseElements) {
 		toSerialize["responseElements"] = o.ResponseElements

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **SupportInformation** | Pointer to [**AwsProductSupportInformation**](AwsProductSupportInformation.md) |  | [optional] 
 **Versions** | Pointer to [**[]AwsProductVersion**](AwsProductVersion.md) |  | [optional] 
 **DataFeedProductId** | Pointer to **string** | The product Id in AWS Marketplace Data Feed Service. | [optional] 
+**ListingId** | Pointer to **string** | The listing ID in AWS Marketplace. | [optional] 
 **ProductId** | Pointer to **string** | AWS Product ID | [optional] 
 
 ## Methods
@@ -232,6 +233,31 @@ SetDataFeedProductId sets DataFeedProductId field to given value.
 `func (o *AwsProduct) HasDataFeedProductId() bool`
 
 HasDataFeedProductId returns a boolean if a field has been set.
+
+### GetListingId
+
+`func (o *AwsProduct) GetListingId() string`
+
+GetListingId returns the ListingId field if non-nil, zero value otherwise.
+
+### GetListingIdOk
+
+`func (o *AwsProduct) GetListingIdOk() (*string, bool)`
+
+GetListingIdOk returns a tuple with the ListingId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetListingId
+
+`func (o *AwsProduct) SetListingId(v string)`
+
+SetListingId sets ListingId field to given value.
+
+### HasListingId
+
+`func (o *AwsProduct) HasListingId() bool`
+
+HasListingId returns a boolean if a field has been set.
 
 ### GetProductId
 

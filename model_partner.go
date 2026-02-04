@@ -24,6 +24,7 @@ const (
 	Partner_UNKNOWN Partner = ""
 	Partner_ADYEN Partner = "ADYEN"
 	Partner_ALIBABA Partner = "ALIBABA"
+	Partner_ANTHROPIC Partner = "ANTHROPIC"
 	Partner_AWS Partner = "AWS"
 	Partner_AWS_CHINA Partner = "AWS_CHINA"
 	Partner_AZURE Partner = "AZURE"
@@ -38,6 +39,7 @@ const (
 	Partner_MARKETO Partner = "MARKETO"
 	Partner_METRONOME Partner = "METRONOME"
 	Partner_MICROSOFT Partner = "MICROSOFT"
+	Partner_OPENAI Partner = "OPENAI"
 	Partner_ORACLE Partner = "ORACLE"
 	Partner_ORB Partner = "ORB"
 	Partner_REDHAT Partner = "REDHAT"
@@ -46,6 +48,7 @@ const (
 	Partner_SNOWFLAKE Partner = "SNOWFLAKE"
 	Partner_STRIPE Partner = "STRIPE"
 	Partner_ZOHO Partner = "ZOHO"
+	Partner_OAUTH2 Partner = "OAUTH2"
 )
 
 // All allowed values of Partner enum
@@ -53,6 +56,7 @@ var AllowedPartnerEnumValues = []Partner{
 	"",
 	"ADYEN",
 	"ALIBABA",
+	"ANTHROPIC",
 	"AWS",
 	"AWS_CHINA",
 	"AZURE",
@@ -67,6 +71,7 @@ var AllowedPartnerEnumValues = []Partner{
 	"MARKETO",
 	"METRONOME",
 	"MICROSOFT",
+	"OPENAI",
 	"ORACLE",
 	"ORB",
 	"REDHAT",
@@ -75,6 +80,7 @@ var AllowedPartnerEnumValues = []Partner{
 	"SNOWFLAKE",
 	"STRIPE",
 	"ZOHO",
+	"OAUTH2",
 }
 
 func (v *Partner) UnmarshalJSON(src []byte) error {

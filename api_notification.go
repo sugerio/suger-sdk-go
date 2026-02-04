@@ -31,7 +31,7 @@ type ApiGetNotificationMessageRequest struct {
 	notificationMessageId string
 }
 
-func (r ApiGetNotificationMessageRequest) Execute() (*NotificationMessage, *http.Response, error) {
+func (r ApiGetNotificationMessageRequest) Execute() (*GithubComSugerioMarketplaceServicePkgOrmNotificationMessage, *http.Response, error) {
 	return r.ApiService.GetNotificationMessageExecute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *NotificationAPIService) GetNotificationMessage(ctx context.Context, org
 }
 
 // Execute executes the request
-//  @return NotificationMessage
-func (a *NotificationAPIService) GetNotificationMessageExecute(r ApiGetNotificationMessageRequest) (*NotificationMessage, *http.Response, error) {
+//  @return GithubComSugerioMarketplaceServicePkgOrmNotificationMessage
+func (a *NotificationAPIService) GetNotificationMessageExecute(r ApiGetNotificationMessageRequest) (*GithubComSugerioMarketplaceServicePkgOrmNotificationMessage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *NotificationMessage
+		localVarReturnValue  *GithubComSugerioMarketplaceServicePkgOrmNotificationMessage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.GetNotificationMessage")
@@ -175,6 +175,7 @@ type ApiListNotificationEventsRequest struct {
 	limit *int32
 	offset *int32
 	priorities *string
+	message *string
 }
 
 // start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
@@ -204,6 +205,12 @@ func (r ApiListNotificationEventsRequest) Offset(offset int32) ApiListNotificati
 // Filter by priorities, empty means HIGH and CRITICAL only. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma.
 func (r ApiListNotificationEventsRequest) Priorities(priorities string) ApiListNotificationEventsRequest {
 	r.priorities = &priorities
+	return r
+}
+
+// Filter by event message containing the specified string, case-insensitive.
+func (r ApiListNotificationEventsRequest) Message(message string) ApiListNotificationEventsRequest {
+	r.message = &message
 	return r
 }
 
@@ -264,6 +271,9 @@ func (a *NotificationAPIService) ListNotificationEventsExecute(r ApiListNotifica
 	}
 	if r.priorities != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "priorities", r.priorities, "form", "")
+	}
+	if r.message != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "message", r.message, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -525,12 +535,19 @@ type ApiListNotificationMessagesRequest struct {
 	ApiService *NotificationAPIService
 	orgId string
 	limit *int32
+	keyword *string
 	offset *int32
 }
 
 // List pagination size, default 1000, max value is 1000
 func (r ApiListNotificationMessagesRequest) Limit(limit int32) ApiListNotificationMessagesRequest {
 	r.limit = &limit
+	return r
+}
+
+// Keyword to search in subject/content
+func (r ApiListNotificationMessagesRequest) Keyword(keyword string) ApiListNotificationMessagesRequest {
+	r.keyword = &keyword
 	return r
 }
 
@@ -547,7 +564,7 @@ func (r ApiListNotificationMessagesRequest) Execute() (*ListNotificationMessages
 /*
 ListNotificationMessages list notification messages
 
-List the notification messages of the given organization with pagination.
+List or search the notification messages of the given organization with pagination.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId Organization ID
@@ -585,6 +602,9 @@ func (a *NotificationAPIService) ListNotificationMessagesExecute(r ApiListNotifi
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.keyword != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "keyword", r.keyword, "form", "")
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdyenCustomerId** | Pointer to **string** | Adyen customerId of this buyer. If not provided but Partner is ADYEN, will create a new customer on Adyen. | [optional] 
+**ChargebeeCustomerID** | Pointer to **string** | The Chargebee Customer ID of the buyer. If not provided, the Chargebee Customer ID will not be updated. | [optional] 
 **CompanyInfo** | Pointer to [**CompanyInfo**](CompanyInfo.md) | Optional. CompanyInfo of the buyer. | [optional] 
 **CustomerId** | Pointer to **string** | The customer ID to recognize the cloud marketplace buyer in your internal system. | [optional] 
 **Description** | Pointer to **string** | The description of the buyer. | [optional] 
@@ -14,6 +15,7 @@ Name | Type | Description | Notes
 **OrbCustomerId** | Pointer to **string** | Optional. The Orb Customer ID of the buyer. | [optional] 
 **Partner** | Pointer to [**Partner**](Partner.md) | The channel partner where this buyer is billed. Only STRIPE &amp; ADYEN are supported at the moment. | [optional] 
 **PaymentConfig** | Pointer to [**PaymentConfig**](PaymentConfig.md) | Payment config for billing. | [optional] 
+**QuickbooksCustomerId** | Pointer to **string** | The Quickbooks Customer ID of the buyer. If not provided, the Quickbooks Customer ID will not be updated. | [optional] 
 **StripeCustomerId** | Pointer to **string** | Stripe customerId of this buyer. If not provided but Partner is STRIPE, will create a new customer on stripe. | [optional] 
 
 ## Methods
@@ -59,6 +61,31 @@ SetAdyenCustomerId sets AdyenCustomerId field to given value.
 `func (o *CreateBuyerParams) HasAdyenCustomerId() bool`
 
 HasAdyenCustomerId returns a boolean if a field has been set.
+
+### GetChargebeeCustomerID
+
+`func (o *CreateBuyerParams) GetChargebeeCustomerID() string`
+
+GetChargebeeCustomerID returns the ChargebeeCustomerID field if non-nil, zero value otherwise.
+
+### GetChargebeeCustomerIDOk
+
+`func (o *CreateBuyerParams) GetChargebeeCustomerIDOk() (*string, bool)`
+
+GetChargebeeCustomerIDOk returns a tuple with the ChargebeeCustomerID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChargebeeCustomerID
+
+`func (o *CreateBuyerParams) SetChargebeeCustomerID(v string)`
+
+SetChargebeeCustomerID sets ChargebeeCustomerID field to given value.
+
+### HasChargebeeCustomerID
+
+`func (o *CreateBuyerParams) HasChargebeeCustomerID() bool`
+
+HasChargebeeCustomerID returns a boolean if a field has been set.
 
 ### GetCompanyInfo
 
@@ -284,6 +311,31 @@ SetPaymentConfig sets PaymentConfig field to given value.
 `func (o *CreateBuyerParams) HasPaymentConfig() bool`
 
 HasPaymentConfig returns a boolean if a field has been set.
+
+### GetQuickbooksCustomerId
+
+`func (o *CreateBuyerParams) GetQuickbooksCustomerId() string`
+
+GetQuickbooksCustomerId returns the QuickbooksCustomerId field if non-nil, zero value otherwise.
+
+### GetQuickbooksCustomerIdOk
+
+`func (o *CreateBuyerParams) GetQuickbooksCustomerIdOk() (*string, bool)`
+
+GetQuickbooksCustomerIdOk returns a tuple with the QuickbooksCustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQuickbooksCustomerId
+
+`func (o *CreateBuyerParams) SetQuickbooksCustomerId(v string)`
+
+SetQuickbooksCustomerId sets QuickbooksCustomerId field to given value.
+
+### HasQuickbooksCustomerId
+
+`func (o *CreateBuyerParams) HasQuickbooksCustomerId() bool`
+
+HasQuickbooksCustomerId returns a boolean if a field has been set.
 
 ### GetStripeCustomerId
 

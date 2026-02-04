@@ -22,7 +22,7 @@ var _ MappedNullable = &ListNotificationMessagesResponse{}
 type ListNotificationMessagesResponse struct {
 	// The next offset to use in the next request to get the next page of notification messages. If this field is null, there are no more notification messages to get.
 	NextOffset *int32 `json:"nextOffset,omitempty"`
-	NotificationMessages []NotificationMessage `json:"notificationMessages,omitempty"`
+	NotificationMessages []GithubComSugerioMarketplaceServicePkgOrmNotificationMessage `json:"notificationMessages,omitempty"`
 	// The total number of notification messages. Only available when the request is made with the first offset = 0.
 	TotalCount *int32 `json:"totalCount,omitempty"`
 }
@@ -77,9 +77,9 @@ func (o *ListNotificationMessagesResponse) SetNextOffset(v int32) {
 }
 
 // GetNotificationMessages returns the NotificationMessages field value if set, zero value otherwise.
-func (o *ListNotificationMessagesResponse) GetNotificationMessages() []NotificationMessage {
+func (o *ListNotificationMessagesResponse) GetNotificationMessages() []GithubComSugerioMarketplaceServicePkgOrmNotificationMessage {
 	if o == nil || IsNil(o.NotificationMessages) {
-		var ret []NotificationMessage
+		var ret []GithubComSugerioMarketplaceServicePkgOrmNotificationMessage
 		return ret
 	}
 	return o.NotificationMessages
@@ -87,7 +87,7 @@ func (o *ListNotificationMessagesResponse) GetNotificationMessages() []Notificat
 
 // GetNotificationMessagesOk returns a tuple with the NotificationMessages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListNotificationMessagesResponse) GetNotificationMessagesOk() ([]NotificationMessage, bool) {
+func (o *ListNotificationMessagesResponse) GetNotificationMessagesOk() ([]GithubComSugerioMarketplaceServicePkgOrmNotificationMessage, bool) {
 	if o == nil || IsNil(o.NotificationMessages) {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *ListNotificationMessagesResponse) HasNotificationMessages() bool {
 	return false
 }
 
-// SetNotificationMessages gets a reference to the given []NotificationMessage and assigns it to the NotificationMessages field.
-func (o *ListNotificationMessagesResponse) SetNotificationMessages(v []NotificationMessage) {
+// SetNotificationMessages gets a reference to the given []GithubComSugerioMarketplaceServicePkgOrmNotificationMessage and assigns it to the NotificationMessages field.
+func (o *ListNotificationMessagesResponse) SetNotificationMessages(v []GithubComSugerioMarketplaceServicePkgOrmNotificationMessage) {
 	o.NotificationMessages = v
 }
 

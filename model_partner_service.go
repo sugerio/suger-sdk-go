@@ -25,6 +25,7 @@ const (
 	PartnerService_ACE PartnerService = "ACE"
 	PartnerService_BIGQUERY PartnerService = "BIGQUERY"
 	PartnerService_BILLING PartnerService = "BILLING"
+	PartnerService_CALENDAR PartnerService = "CALENDAR"
 	PartnerService_CHATBOT PartnerService = "CHATBOT"
 	PartnerService_COSELL PartnerService = "COSELL"
 	PartnerService_CRM PartnerService = "CRM"
@@ -32,6 +33,7 @@ const (
 	PartnerService_DATABASE PartnerService = "DATABASE"
 	PartnerService_DRIVE PartnerService = "DRIVE"
 	PartnerService_EMAIL PartnerService = "EMAIL"
+	PartnerService_GEMINI PartnerService = "GEMINI"
 	PartnerService_MARKETPLACE PartnerService = "MARKETPLACE"
 	PartnerService_NETSUITE PartnerService = "NETSUITE"
 	PartnerService_PAYMENT PartnerService = "PAYMENT"
@@ -46,6 +48,7 @@ var AllowedPartnerServiceEnumValues = []PartnerService{
 	"ACE",
 	"BIGQUERY",
 	"BILLING",
+	"CALENDAR",
 	"CHATBOT",
 	"COSELL",
 	"CRM",
@@ -53,6 +56,7 @@ var AllowedPartnerServiceEnumValues = []PartnerService{
 	"DATABASE",
 	"DRIVE",
 	"EMAIL",
+	"GEMINI",
 	"MARKETPLACE",
 	"NETSUITE",
 	"PAYMENT",

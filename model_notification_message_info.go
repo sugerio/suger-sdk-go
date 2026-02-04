@@ -22,12 +22,12 @@ var _ MappedNullable = &NotificationMessageInfo{}
 type NotificationMessageInfo struct {
 	// The action of this notification message.
 	Action *NotificationEventAction `json:"action,omitempty"`
+	BccRecipients []string `json:"bccRecipients,omitempty"`
 	CcRecipients []string `json:"ccRecipients,omitempty"`
 	// All other fields
 	CustomFields map[string]interface{} `json:"customFields,omitempty"`
 	// The HTML content of the email.
 	HtmlContent *string `json:"htmlContent,omitempty"`
-	RccRecipients []string `json:"rccRecipients,omitempty"`
 	// The standard fields to render the email content.
 	StandardFields map[string]interface{} `json:"standardFields,omitempty"`
 	Subject *string `json:"subject,omitempty"`
@@ -82,6 +82,38 @@ func (o *NotificationMessageInfo) HasAction() bool {
 // SetAction gets a reference to the given NotificationEventAction and assigns it to the Action field.
 func (o *NotificationMessageInfo) SetAction(v NotificationEventAction) {
 	o.Action = &v
+}
+
+// GetBccRecipients returns the BccRecipients field value if set, zero value otherwise.
+func (o *NotificationMessageInfo) GetBccRecipients() []string {
+	if o == nil || IsNil(o.BccRecipients) {
+		var ret []string
+		return ret
+	}
+	return o.BccRecipients
+}
+
+// GetBccRecipientsOk returns a tuple with the BccRecipients field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationMessageInfo) GetBccRecipientsOk() ([]string, bool) {
+	if o == nil || IsNil(o.BccRecipients) {
+		return nil, false
+	}
+	return o.BccRecipients, true
+}
+
+// HasBccRecipients returns a boolean if a field has been set.
+func (o *NotificationMessageInfo) HasBccRecipients() bool {
+	if o != nil && !IsNil(o.BccRecipients) {
+		return true
+	}
+
+	return false
+}
+
+// SetBccRecipients gets a reference to the given []string and assigns it to the BccRecipients field.
+func (o *NotificationMessageInfo) SetBccRecipients(v []string) {
+	o.BccRecipients = v
 }
 
 // GetCcRecipients returns the CcRecipients field value if set, zero value otherwise.
@@ -178,38 +210,6 @@ func (o *NotificationMessageInfo) HasHtmlContent() bool {
 // SetHtmlContent gets a reference to the given string and assigns it to the HtmlContent field.
 func (o *NotificationMessageInfo) SetHtmlContent(v string) {
 	o.HtmlContent = &v
-}
-
-// GetRccRecipients returns the RccRecipients field value if set, zero value otherwise.
-func (o *NotificationMessageInfo) GetRccRecipients() []string {
-	if o == nil || IsNil(o.RccRecipients) {
-		var ret []string
-		return ret
-	}
-	return o.RccRecipients
-}
-
-// GetRccRecipientsOk returns a tuple with the RccRecipients field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationMessageInfo) GetRccRecipientsOk() ([]string, bool) {
-	if o == nil || IsNil(o.RccRecipients) {
-		return nil, false
-	}
-	return o.RccRecipients, true
-}
-
-// HasRccRecipients returns a boolean if a field has been set.
-func (o *NotificationMessageInfo) HasRccRecipients() bool {
-	if o != nil && !IsNil(o.RccRecipients) {
-		return true
-	}
-
-	return false
-}
-
-// SetRccRecipients gets a reference to the given []string and assigns it to the RccRecipients field.
-func (o *NotificationMessageInfo) SetRccRecipients(v []string) {
-	o.RccRecipients = v
 }
 
 // GetStandardFields returns the StandardFields field value if set, zero value otherwise.
@@ -321,6 +321,9 @@ func (o NotificationMessageInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Action) {
 		toSerialize["action"] = o.Action
 	}
+	if !IsNil(o.BccRecipients) {
+		toSerialize["bccRecipients"] = o.BccRecipients
+	}
 	if !IsNil(o.CcRecipients) {
 		toSerialize["ccRecipients"] = o.CcRecipients
 	}
@@ -329,9 +332,6 @@ func (o NotificationMessageInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HtmlContent) {
 		toSerialize["htmlContent"] = o.HtmlContent
-	}
-	if !IsNil(o.RccRecipients) {
-		toSerialize["rccRecipients"] = o.RccRecipients
 	}
 	if !IsNil(o.StandardFields) {
 		toSerialize["standardFields"] = o.StandardFields

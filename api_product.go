@@ -790,9 +790,14 @@ type ApiListProductsRequest struct {
 	partner *string
 	limit *int32
 	offset *int32
+	view *string
+	forCreateOffer *bool
+	salesforceOpportunityId *string
+	salesforceQuoteId *string
+	hubspotDealId *string
 }
 
-// filter by partner
+// Filter by partner
 func (r ApiListProductsRequest) Partner(partner string) ApiListProductsRequest {
 	r.partner = &partner
 	return r
@@ -807,6 +812,36 @@ func (r ApiListProductsRequest) Limit(limit int32) ApiListProductsRequest {
 // List pagination offset, default 0
 func (r ApiListProductsRequest) Offset(offset int32) ApiListProductsRequest {
 	r.offset = &offset
+	return r
+}
+
+// Response format: &#39;lite&#39; or &#39;full&#39; (default: full). &#39;lite&#39; excludes info/metaInfo fields.
+func (r ApiListProductsRequest) View(view string) ApiListProductsRequest {
+	r.view = &view
+	return r
+}
+
+// Enable product filtering for create offer purpose
+func (r ApiListProductsRequest) ForCreateOffer(forCreateOffer bool) ApiListProductsRequest {
+	r.forCreateOffer = &forCreateOffer
+	return r
+}
+
+// Salesforce Opportunity ID for product filtering (used with forCreateOffer&#x3D;true)
+func (r ApiListProductsRequest) SalesforceOpportunityId(salesforceOpportunityId string) ApiListProductsRequest {
+	r.salesforceOpportunityId = &salesforceOpportunityId
+	return r
+}
+
+// Salesforce Quote ID for product filtering (used with forCreateOffer&#x3D;true)
+func (r ApiListProductsRequest) SalesforceQuoteId(salesforceQuoteId string) ApiListProductsRequest {
+	r.salesforceQuoteId = &salesforceQuoteId
+	return r
+}
+
+// HubSpot Deal ID for product filtering (used with forCreateOffer&#x3D;true)
+func (r ApiListProductsRequest) HubspotDealId(hubspotDealId string) ApiListProductsRequest {
+	r.hubspotDealId = &hubspotDealId
 	return r
 }
 
@@ -861,6 +896,21 @@ func (a *ProductAPIService) ListProductsExecute(r ApiListProductsRequest) ([]Wor
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	if r.view != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "view", r.view, "form", "")
+	}
+	if r.forCreateOffer != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "forCreateOffer", r.forCreateOffer, "form", "")
+	}
+	if r.salesforceOpportunityId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "salesforceOpportunityId", r.salesforceOpportunityId, "form", "")
+	}
+	if r.salesforceQuoteId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "salesforceQuoteId", r.salesforceQuoteId, "form", "")
+	}
+	if r.hubspotDealId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "hubspotDealId", r.hubspotDealId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1223,6 +1273,194 @@ func (a *ProductAPIService) PublishProductExecute(r ApiPublishProductRequest) (*
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiQueryProductsRequest struct {
+	ctx context.Context
+	ApiService *ProductAPIService
+	orgId string
+	pageSize *int32
+	pageNumber *int32
+	fields *string
+	q *string
+	s *string
+}
+
+// Number of items per page (default 100, max 200)
+func (r ApiQueryProductsRequest) PageSize(pageSize int32) ApiQueryProductsRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Page number (default 1)
+func (r ApiQueryProductsRequest) PageNumber(pageNumber int32) ApiQueryProductsRequest {
+	r.pageNumber = &pageNumber
+	return r
+}
+
+// Comma-separated fields to return (e.g., &#39;id,name,status&#39;). Dot notation supported.
+func (r ApiQueryProductsRequest) Fields(fields string) ApiQueryProductsRequest {
+	r.fields = &fields
+	return r
+}
+
+// LISP-style filter expression (e.g., &#39;(&#x3D; partner \\
+func (r ApiQueryProductsRequest) Q(q string) ApiQueryProductsRequest {
+	r.q = &q
+	return r
+}
+
+// Sort fields: &#39;field:asc,field2:desc&#39; or &#39;-field,field2&#39; format
+func (r ApiQueryProductsRequest) S(s string) ApiQueryProductsRequest {
+	r.s = &s
+	return r
+}
+
+func (r ApiQueryProductsRequest) Execute() (*GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmProduct, *http.Response, error) {
+	return r.ApiService.QueryProductsExecute(r)
+}
+
+/*
+QueryProducts query products
+
+Query products with advanced filtering, sorting, and pagination using CRUD query language. Supports complex filters, sorting by multiple fields, and pagination.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiQueryProductsRequest
+*/
+func (a *ProductAPIService) QueryProducts(ctx context.Context, orgId string) ApiQueryProductsRequest {
+	return ApiQueryProductsRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+	}
+}
+
+// Execute executes the request
+//  @return GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmProduct
+func (a *ProductAPIService) QueryProductsExecute(r ApiQueryProductsRequest) (*GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmProduct, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmProduct
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.QueryProducts")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/product/query"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	}
+	if r.pageNumber != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_number", r.pageNumber, "form", "")
+	}
+	if r.fields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.q != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "q", r.q, "form", "")
+	}
+	if r.s != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "s", r.s, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

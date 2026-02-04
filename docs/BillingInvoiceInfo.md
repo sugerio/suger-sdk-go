@@ -10,25 +10,28 @@ Name | Type | Description | Notes
 **AdjustMinimumSpendByDimensions** | Pointer to [**[]InvoiceAdjustMinimumSpendByDimension**](InvoiceAdjustMinimumSpendByDimension.md) | add or adjust minimum spend for a specific dimension | [optional] 
 **AdjustOverallDiscount** | Pointer to [**InvoiceAdjustOverallDiscount**](InvoiceAdjustOverallDiscount.md) | add or adjust overall discount calculate each dimension&#39;s discount first, then apply the overall discount | [optional] 
 **AdjustOverallMinimumSpend** | Pointer to [**InvoiceAdjustOverallMinimumSpend**](InvoiceAdjustOverallMinimumSpend.md) | add or adjust overall minimum spend calculate each dimension&#39;s minimum spend first, then apply the overall minimum spend | [optional] 
+**AwsInvoice** | Pointer to [**AwsInvoice**](AwsInvoice.md) |  | [optional] 
 **BillableDimensionDetails** | Pointer to [**[]BillableDimensionPriceModelDetail**](BillableDimensionPriceModelDetail.md) |  | [optional] 
 **CommitsRevenueDetails** | Pointer to [**[]CommitRevenueDetail**](CommitRevenueDetail.md) | Recurring flat fee for the invoice. There should be only one type fee for each invoice, commits, or usage. | [optional] 
 **CreationDate** | Pointer to **time.Time** | The creation date of the invoice when the status of the invoice may be draft or issued. It may be different from the issue date. | [optional] 
-**Currency** | Pointer to **string** |  | [optional] 
+**Currency** | Pointer to **string** | Deprecated: Use BillingInvoice.Currency instead. | [optional] 
 **DeductedCommitAmount** | Pointer to **float32** | The amount of the committed amount that has been deducted from the usage. It works only when IsMeteringOverageCommit is true. | [optional] 
 **DeductedCommitInvoiceID** | Pointer to **string** | The ID of the commit invoice that has been deducted from the usage. It works only when IsMeteringOverageCommit is true. | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**DueAmount** | Pointer to **float32** | Due amount &#x3D; SubtotalAmount + TaxAmount - AdjustOverallDiscount | [optional] 
-**DueDate** | Pointer to **time.Time** | DueDate &#x3D; IssueDate + NetTerm | [optional] 
+**DueAmount** | Pointer to **float32** | Due amount &#x3D; SubtotalAmount + TaxAmount - AdjustOverallDiscount Deprecated: Use BillingInvoice.DueAmount instead. | [optional] 
+**DueDate** | Pointer to **time.Time** | DueDate &#x3D; IssueDate + NetTerm Deprecated: Use BillingInvoice.DueDate instead. | [optional] 
 **GracePeriodInDays** | Pointer to **int32** | Grace Period in number of days | [optional] 
-**IsMeteringOverageCommit** | Pointer to **bool** | Whether the usage metering is charged for the amount that exceeds the committed amount from the entitlement. | [optional] 
-**IssueDate** | Pointer to **time.Time** | IssueDate, issue invoice automatically when CreationDate + GracePeriod, or issue invoice manually IssueDate &gt;&#x3D; CreationDate &amp;&amp; IssueDate &lt;&#x3D; CreationDate + GracePeriod | [optional] 
+**IsMeteringOverageCommit** | Pointer to **bool** | Custom fields for Suger managed Stripe invoice. Whether the usage metering is charged for the amount that exceeds the committed amount from the entitlement. | [optional] 
+**IssueDate** | Pointer to **time.Time** | IssueDate, issue invoice automatically when CreationDate + GracePeriod, or issue invoice manually IssueDate &gt;&#x3D; CreationDate &amp;&amp; IssueDate &lt;&#x3D; CreationDate + GracePeriod Deprecated: Use BillingInvoice.IssueDate instead. | [optional] 
 **Memo** | Pointer to **string** |  | [optional] 
 **NetTermsInDays** | Pointer to **int32** | Net Terms period in number of days | [optional] 
 **PaymentInstallmentsDetail** | Pointer to [**BillingPaymentInstallmentDetail**](BillingPaymentInstallmentDetail.md) |  | [optional] 
+**PdfURL** | Pointer to **string** | The PDF URL of the invoice, provided as AWS S3 presigned URL. Output only. | [optional] 
 **PeriodTotalDays** | Pointer to **int32** | PeriodTotalDays is the total number of days among the whole periods. e.g. 61 days for a 2-month invoice. | [optional] 
 **ReceiptUrl** | Pointer to **string** | Invoice receipt url, it only exists when there are transactions. | [optional] 
+**RelatedEntitlementIDs** | Pointer to **[]string** | The IDs of the entitlements related to the invoice. Aws invoice may be related to multiple entitlements. | [optional] 
 **SpaUrl** | Pointer to **string** | SPA url with JWT. | [optional] 
-**SubtotalAmount** | Pointer to **float32** | Subtotal amount calculated from the user usage. | [optional] 
+**SubtotalAmount** | Pointer to **float32** | Fields designed for stripe invoice. Subtotal amount calculated from the user usage. Deprecated: Use BillingInvoice.TotalAmount instead. | [optional] 
 **TaxAmount** | Pointer to **float32** |  | [optional] 
 **TrialPeriodInDays** | Pointer to **int32** | Trial period in number of days | [optional] 
 **UsageDailyRevenues** | Pointer to [**[]BillableDimensionUsageDailyRevenue**](BillableDimensionUsageDailyRevenue.md) | Billable dimension fees for the invoice. | [optional] 
@@ -201,6 +204,31 @@ SetAdjustOverallMinimumSpend sets AdjustOverallMinimumSpend field to given value
 `func (o *BillingInvoiceInfo) HasAdjustOverallMinimumSpend() bool`
 
 HasAdjustOverallMinimumSpend returns a boolean if a field has been set.
+
+### GetAwsInvoice
+
+`func (o *BillingInvoiceInfo) GetAwsInvoice() AwsInvoice`
+
+GetAwsInvoice returns the AwsInvoice field if non-nil, zero value otherwise.
+
+### GetAwsInvoiceOk
+
+`func (o *BillingInvoiceInfo) GetAwsInvoiceOk() (*AwsInvoice, bool)`
+
+GetAwsInvoiceOk returns a tuple with the AwsInvoice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsInvoice
+
+`func (o *BillingInvoiceInfo) SetAwsInvoice(v AwsInvoice)`
+
+SetAwsInvoice sets AwsInvoice field to given value.
+
+### HasAwsInvoice
+
+`func (o *BillingInvoiceInfo) HasAwsInvoice() bool`
+
+HasAwsInvoice returns a boolean if a field has been set.
 
 ### GetBillableDimensionDetails
 
@@ -577,6 +605,31 @@ SetPaymentInstallmentsDetail sets PaymentInstallmentsDetail field to given value
 
 HasPaymentInstallmentsDetail returns a boolean if a field has been set.
 
+### GetPdfURL
+
+`func (o *BillingInvoiceInfo) GetPdfURL() string`
+
+GetPdfURL returns the PdfURL field if non-nil, zero value otherwise.
+
+### GetPdfURLOk
+
+`func (o *BillingInvoiceInfo) GetPdfURLOk() (*string, bool)`
+
+GetPdfURLOk returns a tuple with the PdfURL field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPdfURL
+
+`func (o *BillingInvoiceInfo) SetPdfURL(v string)`
+
+SetPdfURL sets PdfURL field to given value.
+
+### HasPdfURL
+
+`func (o *BillingInvoiceInfo) HasPdfURL() bool`
+
+HasPdfURL returns a boolean if a field has been set.
+
 ### GetPeriodTotalDays
 
 `func (o *BillingInvoiceInfo) GetPeriodTotalDays() int32`
@@ -626,6 +679,31 @@ SetReceiptUrl sets ReceiptUrl field to given value.
 `func (o *BillingInvoiceInfo) HasReceiptUrl() bool`
 
 HasReceiptUrl returns a boolean if a field has been set.
+
+### GetRelatedEntitlementIDs
+
+`func (o *BillingInvoiceInfo) GetRelatedEntitlementIDs() []string`
+
+GetRelatedEntitlementIDs returns the RelatedEntitlementIDs field if non-nil, zero value otherwise.
+
+### GetRelatedEntitlementIDsOk
+
+`func (o *BillingInvoiceInfo) GetRelatedEntitlementIDsOk() (*[]string, bool)`
+
+GetRelatedEntitlementIDsOk returns a tuple with the RelatedEntitlementIDs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRelatedEntitlementIDs
+
+`func (o *BillingInvoiceInfo) SetRelatedEntitlementIDs(v []string)`
+
+SetRelatedEntitlementIDs sets RelatedEntitlementIDs field to given value.
+
+### HasRelatedEntitlementIDs
+
+`func (o *BillingInvoiceInfo) HasRelatedEntitlementIDs() bool`
+
+HasRelatedEntitlementIDs returns a boolean if a field has been set.
 
 ### GetSpaUrl
 

@@ -24,6 +24,7 @@ const (
 	AwsMarketplaceAgreementStatus_ACTIVE AwsMarketplaceAgreementStatus = "ACTIVE"
 	AwsMarketplaceAgreementStatus_ARCHIVED AwsMarketplaceAgreementStatus = "ARCHIVED"
 	AwsMarketplaceAgreementStatus_CANCELLED AwsMarketplaceAgreementStatus = "CANCELLED"
+	AwsMarketplaceAgreementStatus_CANCELED AwsMarketplaceAgreementStatus = "CANCELED"
 	AwsMarketplaceAgreementStatus_EXPIRED AwsMarketplaceAgreementStatus = "EXPIRED"
 	AwsMarketplaceAgreementStatus_RENEWED AwsMarketplaceAgreementStatus = "RENEWED"
 	AwsMarketplaceAgreementStatus_REPLACED AwsMarketplaceAgreementStatus = "REPLACED"
@@ -37,6 +38,7 @@ var AllowedAwsMarketplaceAgreementStatusEnumValues = []AwsMarketplaceAgreementSt
 	"ACTIVE",
 	"ARCHIVED",
 	"CANCELLED",
+	"CANCELED",
 	"EXPIRED",
 	"RENEWED",
 	"REPLACED",

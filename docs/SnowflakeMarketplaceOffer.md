@@ -20,12 +20,15 @@ Name | Type | Description | Notes
 **IsDefault** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **PaymentTerms** | Pointer to [**SnowflakeMarketplaceOfferPaymentTerms**](SnowflakeMarketplaceOfferPaymentTerms.md) |  | [optional] 
+**PricingPlanDetails** | Pointer to [**SnowflakeMarketplaceOfferPricingPlanDetails**](SnowflakeMarketplaceOfferPricingPlanDetails.md) | The overrides for the one time offer. It doesn&#39;t have pricing plan name | [optional] 
 **PricingPlanName** | Pointer to **string** |  | [optional] 
+**SalesMotion** | Pointer to **string** |  | [optional] 
 **State** | Pointer to **string** |  | [optional] 
 **StateUpdatedOn** | Pointer to **string** |  | [optional] 
 **TargetConsumer** | Pointer to **string** |  | [optional] 
 **TermsOfService** | Pointer to [**SnowflakeMarketplaceOfferTermsOfService**](SnowflakeMarketplaceOfferTermsOfService.md) | terms of service: {\&quot;type\&quot;:\&quot;DEFAULT\&quot;} | [optional] 
 **UpdatedOn** | Pointer to **string** |  | [optional] 
+**Version** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -446,6 +449,31 @@ SetPaymentTerms sets PaymentTerms field to given value.
 
 HasPaymentTerms returns a boolean if a field has been set.
 
+### GetPricingPlanDetails
+
+`func (o *SnowflakeMarketplaceOffer) GetPricingPlanDetails() SnowflakeMarketplaceOfferPricingPlanDetails`
+
+GetPricingPlanDetails returns the PricingPlanDetails field if non-nil, zero value otherwise.
+
+### GetPricingPlanDetailsOk
+
+`func (o *SnowflakeMarketplaceOffer) GetPricingPlanDetailsOk() (*SnowflakeMarketplaceOfferPricingPlanDetails, bool)`
+
+GetPricingPlanDetailsOk returns a tuple with the PricingPlanDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPricingPlanDetails
+
+`func (o *SnowflakeMarketplaceOffer) SetPricingPlanDetails(v SnowflakeMarketplaceOfferPricingPlanDetails)`
+
+SetPricingPlanDetails sets PricingPlanDetails field to given value.
+
+### HasPricingPlanDetails
+
+`func (o *SnowflakeMarketplaceOffer) HasPricingPlanDetails() bool`
+
+HasPricingPlanDetails returns a boolean if a field has been set.
+
 ### GetPricingPlanName
 
 `func (o *SnowflakeMarketplaceOffer) GetPricingPlanName() string`
@@ -470,6 +498,31 @@ SetPricingPlanName sets PricingPlanName field to given value.
 `func (o *SnowflakeMarketplaceOffer) HasPricingPlanName() bool`
 
 HasPricingPlanName returns a boolean if a field has been set.
+
+### GetSalesMotion
+
+`func (o *SnowflakeMarketplaceOffer) GetSalesMotion() string`
+
+GetSalesMotion returns the SalesMotion field if non-nil, zero value otherwise.
+
+### GetSalesMotionOk
+
+`func (o *SnowflakeMarketplaceOffer) GetSalesMotionOk() (*string, bool)`
+
+GetSalesMotionOk returns a tuple with the SalesMotion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSalesMotion
+
+`func (o *SnowflakeMarketplaceOffer) SetSalesMotion(v string)`
+
+SetSalesMotion sets SalesMotion field to given value.
+
+### HasSalesMotion
+
+`func (o *SnowflakeMarketplaceOffer) HasSalesMotion() bool`
+
+HasSalesMotion returns a boolean if a field has been set.
 
 ### GetState
 
@@ -595,6 +648,31 @@ SetUpdatedOn sets UpdatedOn field to given value.
 `func (o *SnowflakeMarketplaceOffer) HasUpdatedOn() bool`
 
 HasUpdatedOn returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *SnowflakeMarketplaceOffer) GetVersion() string`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *SnowflakeMarketplaceOffer) GetVersionOk() (*string, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *SnowflakeMarketplaceOffer) SetVersion(v string)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *SnowflakeMarketplaceOffer) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

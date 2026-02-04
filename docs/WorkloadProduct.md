@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
 **PartnerID** | Pointer to **string** |  | [optional] 
 **ProductType** | Pointer to **string** |  | [optional] 
+**SellerID** | Pointer to **string** |  | [optional] 
 **Service** | Pointer to [**PartnerService**](PartnerService.md) |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 
@@ -389,6 +390,31 @@ SetProductType sets ProductType field to given value.
 `func (o *WorkloadProduct) HasProductType() bool`
 
 HasProductType returns a boolean if a field has been set.
+
+### GetSellerID
+
+`func (o *WorkloadProduct) GetSellerID() string`
+
+GetSellerID returns the SellerID field if non-nil, zero value otherwise.
+
+### GetSellerIDOk
+
+`func (o *WorkloadProduct) GetSellerIDOk() (*string, bool)`
+
+GetSellerIDOk returns a tuple with the SellerID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSellerID
+
+`func (o *WorkloadProduct) SetSellerID(v string)`
+
+SetSellerID sets SellerID field to given value.
+
+### HasSellerID
+
+`func (o *WorkloadProduct) HasSellerID() bool`
+
+HasSellerID returns a boolean if a field has been set.
 
 ### GetService
 

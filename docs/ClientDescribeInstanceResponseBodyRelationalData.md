@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ServiceStatus** | Pointer to **string** |  | [optional] 
+**ServiceStatus** | Pointer to **string** | example:  STARTED | [optional] 
 
 ## Methods
 

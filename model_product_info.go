@@ -26,11 +26,13 @@ type ProductInfo struct {
 	AwsContainerProduct *AwsProduct `json:"awsContainerProduct,omitempty"`
 	AwsMachineLearningProduct *AwsProduct `json:"awsMachineLearningProduct,omitempty"`
 	AwsProfessionalServicesProduct *AwsProduct `json:"awsProfessionalServicesProduct,omitempty"`
+	AwsPurchaseConstraints *AwsMarketplacePurchaseConstraints `json:"awsPurchaseConstraints,omitempty"`
 	AwsSaasProduct *AwsProduct `json:"awsSaasProduct,omitempty"`
 	AwsSnsSubscriptions []AwsSnsSubscription `json:"awsSnsSubscriptions,omitempty"`
 	AzureProduct *AzureProduct `json:"azureProduct,omitempty"`
 	AzureProductResource *AzureMarketplaceProductResource `json:"azureProductResource,omitempty"`
 	Commits []CommitDimension `json:"commits,omitempty"`
+	CompanyID *string `json:"companyID,omitempty"`
 	Currency *string `json:"currency,omitempty"`
 	Dimensions []MeteringDimension `json:"dimensions,omitempty"`
 	// The public offer's EULA type.
@@ -253,6 +255,38 @@ func (o *ProductInfo) SetAwsProfessionalServicesProduct(v AwsProduct) {
 	o.AwsProfessionalServicesProduct = &v
 }
 
+// GetAwsPurchaseConstraints returns the AwsPurchaseConstraints field value if set, zero value otherwise.
+func (o *ProductInfo) GetAwsPurchaseConstraints() AwsMarketplacePurchaseConstraints {
+	if o == nil || IsNil(o.AwsPurchaseConstraints) {
+		var ret AwsMarketplacePurchaseConstraints
+		return ret
+	}
+	return *o.AwsPurchaseConstraints
+}
+
+// GetAwsPurchaseConstraintsOk returns a tuple with the AwsPurchaseConstraints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductInfo) GetAwsPurchaseConstraintsOk() (*AwsMarketplacePurchaseConstraints, bool) {
+	if o == nil || IsNil(o.AwsPurchaseConstraints) {
+		return nil, false
+	}
+	return o.AwsPurchaseConstraints, true
+}
+
+// HasAwsPurchaseConstraints returns a boolean if a field has been set.
+func (o *ProductInfo) HasAwsPurchaseConstraints() bool {
+	if o != nil && !IsNil(o.AwsPurchaseConstraints) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsPurchaseConstraints gets a reference to the given AwsMarketplacePurchaseConstraints and assigns it to the AwsPurchaseConstraints field.
+func (o *ProductInfo) SetAwsPurchaseConstraints(v AwsMarketplacePurchaseConstraints) {
+	o.AwsPurchaseConstraints = &v
+}
+
 // GetAwsSaasProduct returns the AwsSaasProduct field value if set, zero value otherwise.
 func (o *ProductInfo) GetAwsSaasProduct() AwsProduct {
 	if o == nil || IsNil(o.AwsSaasProduct) {
@@ -411,6 +445,38 @@ func (o *ProductInfo) HasCommits() bool {
 // SetCommits gets a reference to the given []CommitDimension and assigns it to the Commits field.
 func (o *ProductInfo) SetCommits(v []CommitDimension) {
 	o.Commits = v
+}
+
+// GetCompanyID returns the CompanyID field value if set, zero value otherwise.
+func (o *ProductInfo) GetCompanyID() string {
+	if o == nil || IsNil(o.CompanyID) {
+		var ret string
+		return ret
+	}
+	return *o.CompanyID
+}
+
+// GetCompanyIDOk returns a tuple with the CompanyID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductInfo) GetCompanyIDOk() (*string, bool) {
+	if o == nil || IsNil(o.CompanyID) {
+		return nil, false
+	}
+	return o.CompanyID, true
+}
+
+// HasCompanyID returns a boolean if a field has been set.
+func (o *ProductInfo) HasCompanyID() bool {
+	if o != nil && !IsNil(o.CompanyID) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompanyID gets a reference to the given string and assigns it to the CompanyID field.
+func (o *ProductInfo) SetCompanyID(v string) {
+	o.CompanyID = &v
 }
 
 // GetCurrency returns the Currency field value if set, zero value otherwise.
@@ -729,6 +795,9 @@ func (o ProductInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AwsProfessionalServicesProduct) {
 		toSerialize["awsProfessionalServicesProduct"] = o.AwsProfessionalServicesProduct
 	}
+	if !IsNil(o.AwsPurchaseConstraints) {
+		toSerialize["awsPurchaseConstraints"] = o.AwsPurchaseConstraints
+	}
 	if !IsNil(o.AwsSaasProduct) {
 		toSerialize["awsSaasProduct"] = o.AwsSaasProduct
 	}
@@ -743,6 +812,9 @@ func (o ProductInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Commits) {
 		toSerialize["commits"] = o.Commits
+	}
+	if !IsNil(o.CompanyID) {
+		toSerialize["companyID"] = o.CompanyID
 	}
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency

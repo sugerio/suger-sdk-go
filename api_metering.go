@@ -24,6 +24,370 @@ import (
 // MeteringAPIService MeteringAPI service
 type MeteringAPIService service
 
+type ApiAggregateUsageRecordGroupsRequest struct {
+	ctx context.Context
+	ApiService *MeteringAPIService
+	orgId string
+	partner *string
+	granularity *string
+	startDate *string
+	endDate *string
+}
+
+// Cloud Partner
+func (r ApiAggregateUsageRecordGroupsRequest) Partner(partner string) ApiAggregateUsageRecordGroupsRequest {
+	r.partner = &partner
+	return r
+}
+
+// Granularity
+func (r ApiAggregateUsageRecordGroupsRequest) Granularity(granularity string) ApiAggregateUsageRecordGroupsRequest {
+	r.granularity = &granularity
+	return r
+}
+
+// Start date (UTC) in YYYY-MM-DD format
+func (r ApiAggregateUsageRecordGroupsRequest) StartDate(startDate string) ApiAggregateUsageRecordGroupsRequest {
+	r.startDate = &startDate
+	return r
+}
+
+// End date (UTC) in YYYY-MM-DD format
+func (r ApiAggregateUsageRecordGroupsRequest) EndDate(endDate string) ApiAggregateUsageRecordGroupsRequest {
+	r.endDate = &endDate
+	return r
+}
+
+func (r ApiAggregateUsageRecordGroupsRequest) Execute() ([]UsageRecordAggregated, *http.Response, error) {
+	return r.ApiService.AggregateUsageRecordGroupsExecute(r)
+}
+
+/*
+AggregateUsageRecordGroups aggregate usageRecordGroups
+
+Aggregate usageRecordGroups by date and dimension key.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiAggregateUsageRecordGroupsRequest
+*/
+func (a *MeteringAPIService) AggregateUsageRecordGroups(ctx context.Context, orgId string) ApiAggregateUsageRecordGroupsRequest {
+	return ApiAggregateUsageRecordGroupsRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+	}
+}
+
+// Execute executes the request
+//  @return []UsageRecordAggregated
+func (a *MeteringAPIService) AggregateUsageRecordGroupsExecute(r ApiAggregateUsageRecordGroupsRequest) ([]UsageRecordAggregated, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []UsageRecordAggregated
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.AggregateUsageRecordGroups")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/usageRecordGroup/aggregate"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.partner == nil {
+		return localVarReturnValue, nil, reportError("partner is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
+	if r.startDate == nil {
+		return localVarReturnValue, nil, reportError("startDate is required and must be specified")
+	}
+	if r.endDate == nil {
+		return localVarReturnValue, nil, reportError("endDate is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "form", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiAggregateUsageRecordReportsRequest struct {
+	ctx context.Context
+	ApiService *MeteringAPIService
+	orgId string
+	partner *string
+	granularity *string
+	startDate *string
+	endDate *string
+}
+
+// Cloud Partner
+func (r ApiAggregateUsageRecordReportsRequest) Partner(partner string) ApiAggregateUsageRecordReportsRequest {
+	r.partner = &partner
+	return r
+}
+
+// Granularity
+func (r ApiAggregateUsageRecordReportsRequest) Granularity(granularity string) ApiAggregateUsageRecordReportsRequest {
+	r.granularity = &granularity
+	return r
+}
+
+// Start date (UTC) in YYYY-MM-DD format
+func (r ApiAggregateUsageRecordReportsRequest) StartDate(startDate string) ApiAggregateUsageRecordReportsRequest {
+	r.startDate = &startDate
+	return r
+}
+
+// End date (UTC) in YYYY-MM-DD format
+func (r ApiAggregateUsageRecordReportsRequest) EndDate(endDate string) ApiAggregateUsageRecordReportsRequest {
+	r.endDate = &endDate
+	return r
+}
+
+func (r ApiAggregateUsageRecordReportsRequest) Execute() ([]UsageRecordAggregated, *http.Response, error) {
+	return r.ApiService.AggregateUsageRecordReportsExecute(r)
+}
+
+/*
+AggregateUsageRecordReports aggregate usageRecordReports
+
+Aggregate usageRecordReports by date and dimension key.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiAggregateUsageRecordReportsRequest
+*/
+func (a *MeteringAPIService) AggregateUsageRecordReports(ctx context.Context, orgId string) ApiAggregateUsageRecordReportsRequest {
+	return ApiAggregateUsageRecordReportsRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+	}
+}
+
+// Execute executes the request
+//  @return []UsageRecordAggregated
+func (a *MeteringAPIService) AggregateUsageRecordReportsExecute(r ApiAggregateUsageRecordReportsRequest) ([]UsageRecordAggregated, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []UsageRecordAggregated
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MeteringAPIService.AggregateUsageRecordReports")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/usageRecordReport/aggregate"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.partner == nil {
+		return localVarReturnValue, nil, reportError("partner is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
+	if r.startDate == nil {
+		return localVarReturnValue, nil, reportError("startDate is required and must be specified")
+	}
+	if r.endDate == nil {
+		return localVarReturnValue, nil, reportError("endDate is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "partner", r.partner, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "form", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiBatchReportUsageRecordGroupsRequest struct {
 	ctx context.Context
 	ApiService *MeteringAPIService

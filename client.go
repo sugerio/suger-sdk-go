@@ -50,13 +50,23 @@ type APIClient struct {
 
 	// API Services
 
+	AIUsageAPI *AIUsageAPIService
+
 	APIAPI *APIAPIService
+
+	AuditingAPI *AuditingAPIService
 
 	BillingAPI *BillingAPIService
 
 	BuyerAPI *BuyerAPIService
 
+	CRMEnrichmentAPI *CRMEnrichmentAPIService
+
+	CatalogAPI *CatalogAPIService
+
 	ContactAPI *ContactAPIService
+
+	CosellAPI *CosellAPIService
 
 	EntitlementAPI *EntitlementAPIService
 
@@ -66,11 +76,19 @@ type APIClient struct {
 
 	OfferAPI *OfferAPIService
 
+	OperationAPI *OperationAPIService
+
 	ProductAPI *ProductAPIService
+
+	QuotaAPI *QuotaAPIService
 
 	ReportAPI *ReportAPIService
 
+	SearchAPI *SearchAPIService
+
 	SupportAPI *SupportAPIService
+
+	VendorAPI *VendorAPIService
 }
 
 type service struct {
@@ -89,17 +107,26 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.AIUsageAPI = (*AIUsageAPIService)(&c.common)
 	c.APIAPI = (*APIAPIService)(&c.common)
+	c.AuditingAPI = (*AuditingAPIService)(&c.common)
 	c.BillingAPI = (*BillingAPIService)(&c.common)
 	c.BuyerAPI = (*BuyerAPIService)(&c.common)
+	c.CRMEnrichmentAPI = (*CRMEnrichmentAPIService)(&c.common)
+	c.CatalogAPI = (*CatalogAPIService)(&c.common)
 	c.ContactAPI = (*ContactAPIService)(&c.common)
+	c.CosellAPI = (*CosellAPIService)(&c.common)
 	c.EntitlementAPI = (*EntitlementAPIService)(&c.common)
 	c.MeteringAPI = (*MeteringAPIService)(&c.common)
 	c.NotificationAPI = (*NotificationAPIService)(&c.common)
 	c.OfferAPI = (*OfferAPIService)(&c.common)
+	c.OperationAPI = (*OperationAPIService)(&c.common)
 	c.ProductAPI = (*ProductAPIService)(&c.common)
+	c.QuotaAPI = (*QuotaAPIService)(&c.common)
 	c.ReportAPI = (*ReportAPIService)(&c.common)
+	c.SearchAPI = (*SearchAPIService)(&c.common)
 	c.SupportAPI = (*SupportAPIService)(&c.common)
+	c.VendorAPI = (*VendorAPIService)(&c.common)
 
 	return c
 }
@@ -518,10 +545,7 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 	if err != nil {
 		return err
 	}
-	err = file.Close()
-	if err != nil {
-		return err
-	}
+	defer file.Close()
 
 	part, err := w.CreateFormFile(fieldName, filepath.Base(path))
 	if err != nil {

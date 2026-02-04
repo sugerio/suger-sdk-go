@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **IncludedQuantities** | Pointer to [**[]AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem**](AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem.md) |  | [optional] 
 **PaymentOption** | Pointer to [**AzureMarketplaceTerm**](AzureMarketplaceTerm.md) |  | [optional] 
 **PricePerPaymentInUsd** | Pointer to **float32** |  | [optional] 
-**Prices** | Pointer to [**[]AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem**](AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem.md) |  | [optional] 
+**Prices** | Pointer to [**[]AzureMarketplacePrice**](AzureMarketplacePrice.md) |  | [optional] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasPricePerPaymentInUsd returns a boolean if a field has been set.
 
 ### GetPrices
 
-`func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) GetPrices() []AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem`
+`func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) GetPrices() []AzureMarketplacePrice`
 
 GetPrices returns the Prices field if non-nil, zero value otherwise.
 
 ### GetPricesOk
 
-`func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) GetPricesOk() (*[]AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem, bool)`
+`func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) GetPricesOk() (*[]AzureMarketplacePrice, bool)`
 
 GetPricesOk returns a tuple with the Prices field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPrices
 
-`func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) SetPrices(v []AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem)`
+`func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) SetPrices(v []AzureMarketplacePrice)`
 
 SetPrices sets Prices field to given value.
 

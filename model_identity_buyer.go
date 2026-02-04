@@ -21,6 +21,7 @@ var _ MappedNullable = &IdentityBuyer{}
 
 // IdentityBuyer struct for IdentityBuyer
 type IdentityBuyer struct {
+	CompanyID *string `json:"companyID,omitempty"`
 	ContactIds []string `json:"contactIds,omitempty"`
 	CreationTime *time.Time `json:"creationTime,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -31,6 +32,8 @@ type IdentityBuyer struct {
 	Name *string `json:"name,omitempty"`
 	OrganizationID *string `json:"organizationID,omitempty"`
 	Partner *Partner `json:"partner,omitempty"`
+	S3KeyLogo *string `json:"s3KeyLogo,omitempty"`
+	Tags []string `json:"tags,omitempty"`
 }
 
 // NewIdentityBuyer instantiates a new IdentityBuyer object
@@ -48,6 +51,38 @@ func NewIdentityBuyer() *IdentityBuyer {
 func NewIdentityBuyerWithDefaults() *IdentityBuyer {
 	this := IdentityBuyer{}
 	return &this
+}
+
+// GetCompanyID returns the CompanyID field value if set, zero value otherwise.
+func (o *IdentityBuyer) GetCompanyID() string {
+	if o == nil || IsNil(o.CompanyID) {
+		var ret string
+		return ret
+	}
+	return *o.CompanyID
+}
+
+// GetCompanyIDOk returns a tuple with the CompanyID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityBuyer) GetCompanyIDOk() (*string, bool) {
+	if o == nil || IsNil(o.CompanyID) {
+		return nil, false
+	}
+	return o.CompanyID, true
+}
+
+// HasCompanyID returns a boolean if a field has been set.
+func (o *IdentityBuyer) HasCompanyID() bool {
+	if o != nil && !IsNil(o.CompanyID) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompanyID gets a reference to the given string and assigns it to the CompanyID field.
+func (o *IdentityBuyer) SetCompanyID(v string) {
+	o.CompanyID = &v
 }
 
 // GetContactIds returns the ContactIds field value if set, zero value otherwise.
@@ -370,6 +405,70 @@ func (o *IdentityBuyer) SetPartner(v Partner) {
 	o.Partner = &v
 }
 
+// GetS3KeyLogo returns the S3KeyLogo field value if set, zero value otherwise.
+func (o *IdentityBuyer) GetS3KeyLogo() string {
+	if o == nil || IsNil(o.S3KeyLogo) {
+		var ret string
+		return ret
+	}
+	return *o.S3KeyLogo
+}
+
+// GetS3KeyLogoOk returns a tuple with the S3KeyLogo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityBuyer) GetS3KeyLogoOk() (*string, bool) {
+	if o == nil || IsNil(o.S3KeyLogo) {
+		return nil, false
+	}
+	return o.S3KeyLogo, true
+}
+
+// HasS3KeyLogo returns a boolean if a field has been set.
+func (o *IdentityBuyer) HasS3KeyLogo() bool {
+	if o != nil && !IsNil(o.S3KeyLogo) {
+		return true
+	}
+
+	return false
+}
+
+// SetS3KeyLogo gets a reference to the given string and assigns it to the S3KeyLogo field.
+func (o *IdentityBuyer) SetS3KeyLogo(v string) {
+	o.S3KeyLogo = &v
+}
+
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *IdentityBuyer) GetTags() []string {
+	if o == nil || IsNil(o.Tags) {
+		var ret []string
+		return ret
+	}
+	return o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityBuyer) GetTagsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Tags) {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *IdentityBuyer) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []string and assigns it to the Tags field.
+func (o *IdentityBuyer) SetTags(v []string) {
+	o.Tags = v
+}
+
 func (o IdentityBuyer) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -380,6 +479,9 @@ func (o IdentityBuyer) MarshalJSON() ([]byte, error) {
 
 func (o IdentityBuyer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CompanyID) {
+		toSerialize["companyID"] = o.CompanyID
+	}
 	if !IsNil(o.ContactIds) {
 		toSerialize["contactIds"] = o.ContactIds
 	}
@@ -409,6 +511,12 @@ func (o IdentityBuyer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Partner) {
 		toSerialize["partner"] = o.Partner
+	}
+	if !IsNil(o.S3KeyLogo) {
+		toSerialize["s3KeyLogo"] = o.S3KeyLogo
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
 	}
 	return toSerialize, nil
 }

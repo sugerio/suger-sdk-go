@@ -29,6 +29,8 @@ type AwsProduct struct {
 	Versions []AwsProductVersion `json:"Versions,omitempty"`
 	// The product Id in AWS Marketplace Data Feed Service.
 	DataFeedProductId *string `json:"dataFeedProductId,omitempty"`
+	// The listing ID in AWS Marketplace.
+	ListingId *string `json:"listingId,omitempty"`
 	// AWS Product ID
 	ProductId *string `json:"productId,omitempty"`
 }
@@ -306,6 +308,38 @@ func (o *AwsProduct) SetDataFeedProductId(v string) {
 	o.DataFeedProductId = &v
 }
 
+// GetListingId returns the ListingId field value if set, zero value otherwise.
+func (o *AwsProduct) GetListingId() string {
+	if o == nil || IsNil(o.ListingId) {
+		var ret string
+		return ret
+	}
+	return *o.ListingId
+}
+
+// GetListingIdOk returns a tuple with the ListingId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsProduct) GetListingIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ListingId) {
+		return nil, false
+	}
+	return o.ListingId, true
+}
+
+// HasListingId returns a boolean if a field has been set.
+func (o *AwsProduct) HasListingId() bool {
+	if o != nil && !IsNil(o.ListingId) {
+		return true
+	}
+
+	return false
+}
+
+// SetListingId gets a reference to the given string and assigns it to the ListingId field.
+func (o *AwsProduct) SetListingId(v string) {
+	o.ListingId = &v
+}
+
 // GetProductId returns the ProductId field value if set, zero value otherwise.
 func (o *AwsProduct) GetProductId() string {
 	if o == nil || IsNil(o.ProductId) {
@@ -371,6 +405,9 @@ func (o AwsProduct) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DataFeedProductId) {
 		toSerialize["dataFeedProductId"] = o.DataFeedProductId
+	}
+	if !IsNil(o.ListingId) {
+		toSerialize["listingId"] = o.ListingId
 	}
 	if !IsNil(o.ProductId) {
 		toSerialize["productId"] = o.ProductId

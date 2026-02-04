@@ -1,6 +1,6 @@
 # \OfferAPI
 
-All URIs are relative to *http://https://api.suger.cloud*
+All URIs are relative to *https://api.suger.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,9 @@ Method | HTTP request | Description
 [**GetOfferEula**](OfferAPI.md#GetOfferEula) | **Get** /org/{orgId}/offer/{offerId}/eula | get offer EULA
 [**GetOfferResellerEula**](OfferAPI.md#GetOfferResellerEula) | **Get** /org/{orgId}/offer/{offerId}/resellerEula | get offer reseller EULA
 [**ListOffers**](OfferAPI.md#ListOffers) | **Get** /org/{orgId}/offer | list offers
+[**QueryOffers**](OfferAPI.md#QueryOffers) | **Get** /org/{orgId}/offer/query | query offers
 [**SendOfferNotifications**](OfferAPI.md#SendOfferNotifications) | **Post** /org/{orgId}/offer/{offerId}/notifyContacts | notify offer contacts
+[**SyncOffer**](OfferAPI.md#SyncOffer) | **Post** /org/{orgId}/offer/{offerId}/sync | sync offer from its partner. Such as AWS marketplace, Azure marketplace or GCP marketplace.
 [**UpdateOfferMetaInfo**](OfferAPI.md#UpdateOfferMetaInfo) | **Patch** /org/{orgId}/offer/{offerId}/metaInfo | update offer meta info
 
 
@@ -680,7 +682,7 @@ Name | Type | Description  | Notes
 
 ## ListOffers
 
-> []WorkloadOffer ListOffers(ctx, orgId).Status(status).Partner(partner).OfferType(offerType).ProductId(productId).BuyerId(buyerId).HubspotDealId(hubspotDealId).ContactId(contactId).Limit(limit).Offset(offset).Execute()
+> []WorkloadOffer ListOffers(ctx, orgId).Status(status).Partner(partner).OfferType(offerType).ProductId(productId).BuyerId(buyerId).HubspotDealId(hubspotDealId).SalesforceOpportunityId(salesforceOpportunityId).ContactId(contactId).Limit(limit).Offset(offset).Execute()
 
 list offers
 
@@ -705,14 +707,15 @@ func main() {
 	offerType := "offerType_example" // string | filter by offerType (optional)
 	productId := "productId_example" // string | filter by productId (optional)
 	buyerId := "buyerId_example" // string | filter by buyerId (optional)
-	hubspotDealId := "hubspotDealId_example" // string | filter by hubspotDealId (optional)
+	hubspotDealId := "hubspotDealId_example" // string | filter by hubspot Deal ID (optional)
+	salesforceOpportunityId := "salesforceOpportunityId_example" // string | filter by salesforce Opportunity ID (optional)
 	contactId := "contactId_example" // string | filter by contactId (optional)
 	limit := int32(56) // int32 | List pagination size, default 1000, max value is 1000 (optional)
 	offset := int32(56) // int32 | List pagination offset, default 0 (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OfferAPI.ListOffers(context.Background(), orgId).Status(status).Partner(partner).OfferType(offerType).ProductId(productId).BuyerId(buyerId).HubspotDealId(hubspotDealId).ContactId(contactId).Limit(limit).Offset(offset).Execute()
+	resp, r, err := apiClient.OfferAPI.ListOffers(context.Background(), orgId).Status(status).Partner(partner).OfferType(offerType).ProductId(productId).BuyerId(buyerId).HubspotDealId(hubspotDealId).SalesforceOpportunityId(salesforceOpportunityId).ContactId(contactId).Limit(limit).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.ListOffers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -743,7 +746,8 @@ Name | Type | Description  | Notes
  **offerType** | **string** | filter by offerType | 
  **productId** | **string** | filter by productId | 
  **buyerId** | **string** | filter by buyerId | 
- **hubspotDealId** | **string** | filter by hubspotDealId | 
+ **hubspotDealId** | **string** | filter by hubspot Deal ID | 
+ **salesforceOpportunityId** | **string** | filter by salesforce Opportunity ID | 
  **contactId** | **string** | filter by contactId | 
  **limit** | **int32** | List pagination size, default 1000, max value is 1000 | 
  **offset** | **int32** | List pagination offset, default 0 | 
@@ -766,9 +770,87 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## QueryOffers
+
+> GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmWorkloadOffer QueryOffers(ctx, orgId).PageSize(pageSize).PageNumber(pageNumber).Q(q).S(s).Execute()
+
+query offers
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	pageSize := int32(56) // int32 | Number of items per page (default 20, max 1000) (optional)
+	pageNumber := int32(56) // int32 | Page number (default 1) (optional)
+	q := "q_example" // string | LISP-style filter expression (e.g., '(= status \\ (optional)
+	s := "s_example" // string | Sort fields: 'field:asc,field2:desc' or '-field,field2' format (e.g., 'creation_time:desc,name:asc' or '-creation_time,name') (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.QueryOffers(context.Background(), orgId).PageSize(pageSize).PageNumber(pageNumber).Q(q).S(s).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.QueryOffers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `QueryOffers`: GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmWorkloadOffer
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.QueryOffers`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiQueryOffersRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **pageSize** | **int32** | Number of items per page (default 20, max 1000) | 
+ **pageNumber** | **int32** | Page number (default 1) | 
+ **q** | **string** | LISP-style filter expression (e.g., &#39;(&#x3D; status \\ | 
+ **s** | **string** | Sort fields: &#39;field:asc,field2:desc&#39; or &#39;-field,field2&#39; format (e.g., &#39;creation_time:desc,name:asc&#39; or &#39;-creation_time,name&#39;) | 
+
+### Return type
+
+[**GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmWorkloadOffer**](GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmWorkloadOffer.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SendOfferNotifications
 
-> NotificationEvent SendOfferNotifications(ctx, orgId, offerId).ContactIDs(contactIDs).Execute()
+> string SendOfferNotifications(ctx, orgId, offerId).ContactIDs(contactIDs).Execute()
 
 notify offer contacts
 
@@ -798,7 +880,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.SendOfferNotifications``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SendOfferNotifications`: NotificationEvent
+	// response from `SendOfferNotifications`: string
 	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.SendOfferNotifications`: %v\n", resp)
 }
 ```
@@ -825,7 +907,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**NotificationEvent**](NotificationEvent.md)
+**string**
 
 ### Authorization
 
@@ -834,6 +916,77 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SyncOffer
+
+> string SyncOffer(ctx, orgId, offerId).Execute()
+
+sync offer from its partner. Such as AWS marketplace, Azure marketplace or GCP marketplace.
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	offerId := "offerId_example" // string | Offer ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OfferAPI.SyncOffer(context.Background(), orgId, offerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OfferAPI.SyncOffer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SyncOffer`: string
+	fmt.Fprintf(os.Stdout, "Response from `OfferAPI.SyncOffer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+**offerId** | **string** | Offer ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSyncOfferRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

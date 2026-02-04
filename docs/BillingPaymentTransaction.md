@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CreationTime** | Pointer to **time.Time** |  | [optional] 
 **Currency** | Pointer to **string** |  | [optional] 
 **EntitlementID** | Pointer to **string** |  | [optional] 
+**ExternalID** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Info** | Pointer to [**BillingPaymentTransactionInfo**](BillingPaymentTransactionInfo.md) |  | [optional] 
 **InvoiceID** | Pointer to **string** |  | [optional] 
@@ -16,6 +17,8 @@ Name | Type | Description | Notes
 **OrganizationID** | Pointer to **string** |  | [optional] 
 **ParentID** | Pointer to **string** |  | [optional] 
 **Partner** | Pointer to [**Partner**](Partner.md) |  | [optional] 
+**PaymentMethodDescription** | Pointer to **string** |  | [optional] 
+**PaymentMethodType** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to [**BillingPaymentStatus**](BillingPaymentStatus.md) |  | [optional] 
 **Type** | Pointer to [**BillingPaymentTransactionType**](BillingPaymentTransactionType.md) |  | [optional] 
 **WalletID** | Pointer to **string** |  | [optional] 
@@ -164,6 +167,31 @@ SetEntitlementID sets EntitlementID field to given value.
 `func (o *BillingPaymentTransaction) HasEntitlementID() bool`
 
 HasEntitlementID returns a boolean if a field has been set.
+
+### GetExternalID
+
+`func (o *BillingPaymentTransaction) GetExternalID() string`
+
+GetExternalID returns the ExternalID field if non-nil, zero value otherwise.
+
+### GetExternalIDOk
+
+`func (o *BillingPaymentTransaction) GetExternalIDOk() (*string, bool)`
+
+GetExternalIDOk returns a tuple with the ExternalID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalID
+
+`func (o *BillingPaymentTransaction) SetExternalID(v string)`
+
+SetExternalID sets ExternalID field to given value.
+
+### HasExternalID
+
+`func (o *BillingPaymentTransaction) HasExternalID() bool`
+
+HasExternalID returns a boolean if a field has been set.
 
 ### GetId
 
@@ -339,6 +367,56 @@ SetPartner sets Partner field to given value.
 `func (o *BillingPaymentTransaction) HasPartner() bool`
 
 HasPartner returns a boolean if a field has been set.
+
+### GetPaymentMethodDescription
+
+`func (o *BillingPaymentTransaction) GetPaymentMethodDescription() string`
+
+GetPaymentMethodDescription returns the PaymentMethodDescription field if non-nil, zero value otherwise.
+
+### GetPaymentMethodDescriptionOk
+
+`func (o *BillingPaymentTransaction) GetPaymentMethodDescriptionOk() (*string, bool)`
+
+GetPaymentMethodDescriptionOk returns a tuple with the PaymentMethodDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaymentMethodDescription
+
+`func (o *BillingPaymentTransaction) SetPaymentMethodDescription(v string)`
+
+SetPaymentMethodDescription sets PaymentMethodDescription field to given value.
+
+### HasPaymentMethodDescription
+
+`func (o *BillingPaymentTransaction) HasPaymentMethodDescription() bool`
+
+HasPaymentMethodDescription returns a boolean if a field has been set.
+
+### GetPaymentMethodType
+
+`func (o *BillingPaymentTransaction) GetPaymentMethodType() string`
+
+GetPaymentMethodType returns the PaymentMethodType field if non-nil, zero value otherwise.
+
+### GetPaymentMethodTypeOk
+
+`func (o *BillingPaymentTransaction) GetPaymentMethodTypeOk() (*string, bool)`
+
+GetPaymentMethodTypeOk returns a tuple with the PaymentMethodType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaymentMethodType
+
+`func (o *BillingPaymentTransaction) SetPaymentMethodType(v string)`
+
+SetPaymentMethodType sets PaymentMethodType field to given value.
+
+### HasPaymentMethodType
+
+`func (o *BillingPaymentTransaction) HasPaymentMethodType() bool`
+
+HasPaymentMethodType returns a boolean if a field has been set.
 
 ### GetStatus
 

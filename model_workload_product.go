@@ -35,6 +35,7 @@ type WorkloadProduct struct {
 	Partner *Partner `json:"partner,omitempty"`
 	PartnerID *string `json:"partnerID,omitempty"`
 	ProductType *string `json:"productType,omitempty"`
+	SellerID *string `json:"sellerID,omitempty"`
 	Service *PartnerService `json:"service,omitempty"`
 	Status *string `json:"status,omitempty"`
 }
@@ -504,6 +505,38 @@ func (o *WorkloadProduct) SetProductType(v string) {
 	o.ProductType = &v
 }
 
+// GetSellerID returns the SellerID field value if set, zero value otherwise.
+func (o *WorkloadProduct) GetSellerID() string {
+	if o == nil || IsNil(o.SellerID) {
+		var ret string
+		return ret
+	}
+	return *o.SellerID
+}
+
+// GetSellerIDOk returns a tuple with the SellerID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadProduct) GetSellerIDOk() (*string, bool) {
+	if o == nil || IsNil(o.SellerID) {
+		return nil, false
+	}
+	return o.SellerID, true
+}
+
+// HasSellerID returns a boolean if a field has been set.
+func (o *WorkloadProduct) HasSellerID() bool {
+	if o != nil && !IsNil(o.SellerID) {
+		return true
+	}
+
+	return false
+}
+
+// SetSellerID gets a reference to the given string and assigns it to the SellerID field.
+func (o *WorkloadProduct) SetSellerID(v string) {
+	o.SellerID = &v
+}
+
 // GetService returns the Service field value if set, zero value otherwise.
 func (o *WorkloadProduct) GetService() PartnerService {
 	if o == nil || IsNil(o.Service) {
@@ -619,6 +652,9 @@ func (o WorkloadProduct) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProductType) {
 		toSerialize["productType"] = o.ProductType
+	}
+	if !IsNil(o.SellerID) {
+		toSerialize["sellerID"] = o.SellerID
 	}
 	if !IsNil(o.Service) {
 		toSerialize["service"] = o.Service

@@ -1538,7 +1538,9 @@ type ApiListEntitlementsRequest struct {
 	offerId *string
 	buyerId *string
 	externalId *string
-	buyerAccountId *string
+	awsAccountId *string
+	hubspotDealId *string
+	salesforceOpportunityId *string
 	limit *int32
 	offset *int32
 }
@@ -1573,9 +1575,21 @@ func (r ApiListEntitlementsRequest) ExternalId(externalId string) ApiListEntitle
 	return r
 }
 
-// filter by buyerAccountId is currently supported only for AWS
-func (r ApiListEntitlementsRequest) BuyerAccountId(buyerAccountId string) ApiListEntitlementsRequest {
-	r.buyerAccountId = &buyerAccountId
+// filter by awsAccountId of the entitlement buyer
+func (r ApiListEntitlementsRequest) AwsAccountId(awsAccountId string) ApiListEntitlementsRequest {
+	r.awsAccountId = &awsAccountId
+	return r
+}
+
+// filter by hubspotDealId
+func (r ApiListEntitlementsRequest) HubspotDealId(hubspotDealId string) ApiListEntitlementsRequest {
+	r.hubspotDealId = &hubspotDealId
+	return r
+}
+
+// filter by salesforceOpportunityId
+func (r ApiListEntitlementsRequest) SalesforceOpportunityId(salesforceOpportunityId string) ApiListEntitlementsRequest {
+	r.salesforceOpportunityId = &salesforceOpportunityId
 	return r
 }
 
@@ -1649,14 +1663,198 @@ func (a *EntitlementAPIService) ListEntitlementsExecute(r ApiListEntitlementsReq
 	if r.externalId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "externalId", r.externalId, "form", "")
 	}
-	if r.buyerAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "buyerAccountId", r.buyerAccountId, "form", "")
+	if r.awsAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "awsAccountId", r.awsAccountId, "form", "")
+	}
+	if r.hubspotDealId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "hubspotDealId", r.hubspotDealId, "form", "")
+	}
+	if r.salesforceOpportunityId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "salesforceOpportunityId", r.salesforceOpportunityId, "form", "")
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiQueryEntitlementsRequest struct {
+	ctx context.Context
+	ApiService *EntitlementAPIService
+	orgId string
+	pageSize *int32
+	pageNumber *int32
+	q *string
+	s *string
+}
+
+// Number of items per page (default 20, max 1000)
+func (r ApiQueryEntitlementsRequest) PageSize(pageSize int32) ApiQueryEntitlementsRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Page number (default 1)
+func (r ApiQueryEntitlementsRequest) PageNumber(pageNumber int32) ApiQueryEntitlementsRequest {
+	r.pageNumber = &pageNumber
+	return r
+}
+
+// LISP-style filter expression (e.g., &#39;(&#x3D; status \\
+func (r ApiQueryEntitlementsRequest) Q(q string) ApiQueryEntitlementsRequest {
+	r.q = &q
+	return r
+}
+
+// Sort fields: &#39;field:asc,field2:desc&#39; or &#39;-field,field2&#39; format (e.g., &#39;creation_time:desc,product_id:asc&#39; or &#39;-creation_time,product_id&#39;)
+func (r ApiQueryEntitlementsRequest) S(s string) ApiQueryEntitlementsRequest {
+	r.s = &s
+	return r
+}
+
+func (r ApiQueryEntitlementsRequest) Execute() (*GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmWorkloadEntitlement, *http.Response, error) {
+	return r.ApiService.QueryEntitlementsExecute(r)
+}
+
+/*
+QueryEntitlements query entitlements
+
+Query entitlements with advanced filtering, sorting, and pagination using CRUD query language. Supports complex filters, sorting by multiple fields, and pagination.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiQueryEntitlementsRequest
+*/
+func (a *EntitlementAPIService) QueryEntitlements(ctx context.Context, orgId string) ApiQueryEntitlementsRequest {
+	return ApiQueryEntitlementsRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+	}
+}
+
+// Execute executes the request
+//  @return GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmWorkloadEntitlement
+func (a *EntitlementAPIService) QueryEntitlementsExecute(r ApiQueryEntitlementsRequest) (*GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmWorkloadEntitlement, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmWorkloadEntitlement
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementAPIService.QueryEntitlements")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/entitlement/query"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	}
+	if r.pageNumber != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_number", r.pageNumber, "form", "")
+	}
+	if r.q != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "q", r.q, "form", "")
+	}
+	if r.s != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "s", r.s, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
