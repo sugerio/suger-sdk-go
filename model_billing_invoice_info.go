@@ -32,38 +32,44 @@ type BillingInvoiceInfo struct {
 	AdjustOverallDiscount *InvoiceAdjustOverallDiscount `json:"adjustOverallDiscount,omitempty"`
 	// add or adjust overall minimum spend calculate each dimension's minimum spend first, then apply the overall minimum spend
 	AdjustOverallMinimumSpend *InvoiceAdjustOverallMinimumSpend `json:"adjustOverallMinimumSpend,omitempty"`
+	AwsInvoice *AwsInvoice `json:"awsInvoice,omitempty"`
 	BillableDimensionDetails []BillableDimensionPriceModelDetail `json:"billableDimensionDetails,omitempty"`
 	// Recurring flat fee for the invoice. There should be only one type fee for each invoice, commits, or usage.
 	CommitsRevenueDetails []CommitRevenueDetail `json:"commitsRevenueDetails,omitempty"`
 	// The creation date of the invoice when the status of the invoice may be draft or issued. It may be different from the issue date.
 	CreationDate *time.Time `json:"creationDate,omitempty"`
+	// Deprecated: Use BillingInvoice.Currency instead.
 	Currency *string `json:"currency,omitempty"`
 	// The amount of the committed amount that has been deducted from the usage. It works only when IsMeteringOverageCommit is true.
 	DeductedCommitAmount *float32 `json:"deductedCommitAmount,omitempty"`
 	// The ID of the commit invoice that has been deducted from the usage. It works only when IsMeteringOverageCommit is true.
 	DeductedCommitInvoiceID *string `json:"deductedCommitInvoiceID,omitempty"`
 	Description *string `json:"description,omitempty"`
-	// Due amount = SubtotalAmount + TaxAmount - AdjustOverallDiscount
+	// Due amount = SubtotalAmount + TaxAmount - AdjustOverallDiscount Deprecated: Use BillingInvoice.DueAmount instead.
 	DueAmount *float32 `json:"dueAmount,omitempty"`
-	// DueDate = IssueDate + NetTerm
+	// DueDate = IssueDate + NetTerm Deprecated: Use BillingInvoice.DueDate instead.
 	DueDate *time.Time `json:"dueDate,omitempty"`
 	// Grace Period in number of days
 	GracePeriodInDays *int32 `json:"gracePeriodInDays,omitempty"`
-	// Whether the usage metering is charged for the amount that exceeds the committed amount from the entitlement.
+	// Custom fields for Suger managed Stripe invoice. Whether the usage metering is charged for the amount that exceeds the committed amount from the entitlement.
 	IsMeteringOverageCommit *bool `json:"isMeteringOverageCommit,omitempty"`
-	// IssueDate, issue invoice automatically when CreationDate + GracePeriod, or issue invoice manually IssueDate >= CreationDate && IssueDate <= CreationDate + GracePeriod
+	// IssueDate, issue invoice automatically when CreationDate + GracePeriod, or issue invoice manually IssueDate >= CreationDate && IssueDate <= CreationDate + GracePeriod Deprecated: Use BillingInvoice.IssueDate instead.
 	IssueDate *time.Time `json:"issueDate,omitempty"`
 	Memo *string `json:"memo,omitempty"`
 	// Net Terms period in number of days
 	NetTermsInDays *int32 `json:"netTermsInDays,omitempty"`
 	PaymentInstallmentsDetail *BillingPaymentInstallmentDetail `json:"paymentInstallmentsDetail,omitempty"`
+	// The PDF URL of the invoice, provided as AWS S3 presigned URL. Output only.
+	PdfURL *string `json:"pdfURL,omitempty"`
 	// PeriodTotalDays is the total number of days among the whole periods. e.g. 61 days for a 2-month invoice.
 	PeriodTotalDays *int32 `json:"periodTotalDays,omitempty"`
 	// Invoice receipt url, it only exists when there are transactions.
 	ReceiptUrl *string `json:"receiptUrl,omitempty"`
+	// The IDs of the entitlements related to the invoice. Aws invoice may be related to multiple entitlements.
+	RelatedEntitlementIDs []string `json:"relatedEntitlementIDs,omitempty"`
 	// SPA url with JWT.
 	SpaUrl *string `json:"spaUrl,omitempty"`
-	// Subtotal amount calculated from the user usage.
+	// Fields designed for stripe invoice. Subtotal amount calculated from the user usage. Deprecated: Use BillingInvoice.TotalAmount instead.
 	SubtotalAmount *float32 `json:"subtotalAmount,omitempty"`
 	TaxAmount *float32 `json:"taxAmount,omitempty"`
 	// Trial period in number of days
@@ -279,6 +285,38 @@ func (o *BillingInvoiceInfo) HasAdjustOverallMinimumSpend() bool {
 // SetAdjustOverallMinimumSpend gets a reference to the given InvoiceAdjustOverallMinimumSpend and assigns it to the AdjustOverallMinimumSpend field.
 func (o *BillingInvoiceInfo) SetAdjustOverallMinimumSpend(v InvoiceAdjustOverallMinimumSpend) {
 	o.AdjustOverallMinimumSpend = &v
+}
+
+// GetAwsInvoice returns the AwsInvoice field value if set, zero value otherwise.
+func (o *BillingInvoiceInfo) GetAwsInvoice() AwsInvoice {
+	if o == nil || IsNil(o.AwsInvoice) {
+		var ret AwsInvoice
+		return ret
+	}
+	return *o.AwsInvoice
+}
+
+// GetAwsInvoiceOk returns a tuple with the AwsInvoice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInvoiceInfo) GetAwsInvoiceOk() (*AwsInvoice, bool) {
+	if o == nil || IsNil(o.AwsInvoice) {
+		return nil, false
+	}
+	return o.AwsInvoice, true
+}
+
+// HasAwsInvoice returns a boolean if a field has been set.
+func (o *BillingInvoiceInfo) HasAwsInvoice() bool {
+	if o != nil && !IsNil(o.AwsInvoice) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsInvoice gets a reference to the given AwsInvoice and assigns it to the AwsInvoice field.
+func (o *BillingInvoiceInfo) SetAwsInvoice(v AwsInvoice) {
+	o.AwsInvoice = &v
 }
 
 // GetBillableDimensionDetails returns the BillableDimensionDetails field value if set, zero value otherwise.
@@ -761,6 +799,38 @@ func (o *BillingInvoiceInfo) SetPaymentInstallmentsDetail(v BillingPaymentInstal
 	o.PaymentInstallmentsDetail = &v
 }
 
+// GetPdfURL returns the PdfURL field value if set, zero value otherwise.
+func (o *BillingInvoiceInfo) GetPdfURL() string {
+	if o == nil || IsNil(o.PdfURL) {
+		var ret string
+		return ret
+	}
+	return *o.PdfURL
+}
+
+// GetPdfURLOk returns a tuple with the PdfURL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInvoiceInfo) GetPdfURLOk() (*string, bool) {
+	if o == nil || IsNil(o.PdfURL) {
+		return nil, false
+	}
+	return o.PdfURL, true
+}
+
+// HasPdfURL returns a boolean if a field has been set.
+func (o *BillingInvoiceInfo) HasPdfURL() bool {
+	if o != nil && !IsNil(o.PdfURL) {
+		return true
+	}
+
+	return false
+}
+
+// SetPdfURL gets a reference to the given string and assigns it to the PdfURL field.
+func (o *BillingInvoiceInfo) SetPdfURL(v string) {
+	o.PdfURL = &v
+}
+
 // GetPeriodTotalDays returns the PeriodTotalDays field value if set, zero value otherwise.
 func (o *BillingInvoiceInfo) GetPeriodTotalDays() int32 {
 	if o == nil || IsNil(o.PeriodTotalDays) {
@@ -823,6 +893,38 @@ func (o *BillingInvoiceInfo) HasReceiptUrl() bool {
 // SetReceiptUrl gets a reference to the given string and assigns it to the ReceiptUrl field.
 func (o *BillingInvoiceInfo) SetReceiptUrl(v string) {
 	o.ReceiptUrl = &v
+}
+
+// GetRelatedEntitlementIDs returns the RelatedEntitlementIDs field value if set, zero value otherwise.
+func (o *BillingInvoiceInfo) GetRelatedEntitlementIDs() []string {
+	if o == nil || IsNil(o.RelatedEntitlementIDs) {
+		var ret []string
+		return ret
+	}
+	return o.RelatedEntitlementIDs
+}
+
+// GetRelatedEntitlementIDsOk returns a tuple with the RelatedEntitlementIDs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingInvoiceInfo) GetRelatedEntitlementIDsOk() ([]string, bool) {
+	if o == nil || IsNil(o.RelatedEntitlementIDs) {
+		return nil, false
+	}
+	return o.RelatedEntitlementIDs, true
+}
+
+// HasRelatedEntitlementIDs returns a boolean if a field has been set.
+func (o *BillingInvoiceInfo) HasRelatedEntitlementIDs() bool {
+	if o != nil && !IsNil(o.RelatedEntitlementIDs) {
+		return true
+	}
+
+	return false
+}
+
+// SetRelatedEntitlementIDs gets a reference to the given []string and assigns it to the RelatedEntitlementIDs field.
+func (o *BillingInvoiceInfo) SetRelatedEntitlementIDs(v []string) {
+	o.RelatedEntitlementIDs = v
 }
 
 // GetSpaUrl returns the SpaUrl field value if set, zero value otherwise.
@@ -1013,6 +1115,9 @@ func (o BillingInvoiceInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdjustOverallMinimumSpend) {
 		toSerialize["adjustOverallMinimumSpend"] = o.AdjustOverallMinimumSpend
 	}
+	if !IsNil(o.AwsInvoice) {
+		toSerialize["awsInvoice"] = o.AwsInvoice
+	}
 	if !IsNil(o.BillableDimensionDetails) {
 		toSerialize["billableDimensionDetails"] = o.BillableDimensionDetails
 	}
@@ -1058,11 +1163,17 @@ func (o BillingInvoiceInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PaymentInstallmentsDetail) {
 		toSerialize["paymentInstallmentsDetail"] = o.PaymentInstallmentsDetail
 	}
+	if !IsNil(o.PdfURL) {
+		toSerialize["pdfURL"] = o.PdfURL
+	}
 	if !IsNil(o.PeriodTotalDays) {
 		toSerialize["periodTotalDays"] = o.PeriodTotalDays
 	}
 	if !IsNil(o.ReceiptUrl) {
 		toSerialize["receiptUrl"] = o.ReceiptUrl
+	}
+	if !IsNil(o.RelatedEntitlementIDs) {
+		toSerialize["relatedEntitlementIDs"] = o.RelatedEntitlementIDs
 	}
 	if !IsNil(o.SpaUrl) {
 		toSerialize["spaUrl"] = o.SpaUrl

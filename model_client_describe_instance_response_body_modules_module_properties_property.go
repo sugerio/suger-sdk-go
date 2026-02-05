@@ -20,10 +20,14 @@ var _ MappedNullable = &ClientDescribeInstanceResponseBodyModulesModulePropertie
 
 // ClientDescribeInstanceResponseBodyModulesModulePropertiesProperty struct for ClientDescribeInstanceResponseBodyModulesModulePropertiesProperty
 type ClientDescribeInstanceResponseBodyModulesModulePropertiesProperty struct {
+	// example:  12
 	DisplayUnit *string `json:"DisplayUnit,omitempty"`
+	// example:  12
 	Key *string `json:"Key,omitempty"`
+	// example:  12
 	Name *string `json:"Name,omitempty"`
 	PropertyValues *ClientDescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValues `json:"PropertyValues,omitempty"`
+	// example:  12
 	ShowType *string `json:"ShowType,omitempty"`
 }
 

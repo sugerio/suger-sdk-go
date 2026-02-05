@@ -21,7 +21,7 @@ var _ MappedNullable = &AwsMarketplaceCatalogPricingTermRateCard{}
 // AwsMarketplaceCatalogPricingTermRateCard struct for AwsMarketplaceCatalogPricingTermRateCard
 type AwsMarketplaceCatalogPricingTermRateCard struct {
 	// Defines constraints on how the term can be configured by acceptors. Applicable only to ConfigurableUpfrontPricingTerm.
-	Constraints *AwsMarketplaceCatalogPricingTermRateCardConstraints `json:"Constraints,omitempty"`
+	Constraints *AwsMarketplacePurchaseConstraints `json:"Constraints,omitempty"`
 	RateCard []AwsMarketplaceCatalogPricingTermRateCardItem `json:"RateCard,omitempty"`
 	// Selector is used to differentiate between the mutually exclusive rate cards in the same pricing term, to be selected by the buyer. Applicable only to ConfigurableUpfrontPricingTerm.
 	Selector *AwsMarketplaceCatalogPricingTermRateCardSelector `json:"Selector,omitempty"`
@@ -45,9 +45,9 @@ func NewAwsMarketplaceCatalogPricingTermRateCardWithDefaults() *AwsMarketplaceCa
 }
 
 // GetConstraints returns the Constraints field value if set, zero value otherwise.
-func (o *AwsMarketplaceCatalogPricingTermRateCard) GetConstraints() AwsMarketplaceCatalogPricingTermRateCardConstraints {
+func (o *AwsMarketplaceCatalogPricingTermRateCard) GetConstraints() AwsMarketplacePurchaseConstraints {
 	if o == nil || IsNil(o.Constraints) {
-		var ret AwsMarketplaceCatalogPricingTermRateCardConstraints
+		var ret AwsMarketplacePurchaseConstraints
 		return ret
 	}
 	return *o.Constraints
@@ -55,7 +55,7 @@ func (o *AwsMarketplaceCatalogPricingTermRateCard) GetConstraints() AwsMarketpla
 
 // GetConstraintsOk returns a tuple with the Constraints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AwsMarketplaceCatalogPricingTermRateCard) GetConstraintsOk() (*AwsMarketplaceCatalogPricingTermRateCardConstraints, bool) {
+func (o *AwsMarketplaceCatalogPricingTermRateCard) GetConstraintsOk() (*AwsMarketplacePurchaseConstraints, bool) {
 	if o == nil || IsNil(o.Constraints) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *AwsMarketplaceCatalogPricingTermRateCard) HasConstraints() bool {
 	return false
 }
 
-// SetConstraints gets a reference to the given AwsMarketplaceCatalogPricingTermRateCardConstraints and assigns it to the Constraints field.
-func (o *AwsMarketplaceCatalogPricingTermRateCard) SetConstraints(v AwsMarketplaceCatalogPricingTermRateCardConstraints) {
+// SetConstraints gets a reference to the given AwsMarketplacePurchaseConstraints and assigns it to the Constraints field.
+func (o *AwsMarketplaceCatalogPricingTermRateCard) SetConstraints(v AwsMarketplacePurchaseConstraints) {
 	o.Constraints = &v
 }
 

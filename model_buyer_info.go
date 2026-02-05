@@ -26,15 +26,26 @@ type BuyerInfo struct {
 	AwsBuyer *AwsAccountIdentifier `json:"awsBuyer,omitempty"`
 	// Buyer from Azure Marketplace
 	AzureBuyer *AzureADIdentifier `json:"azureBuyer,omitempty"`
+	// ChargebeeCustomerID is the chargebee customer ID for ther buyer if it is connected to a chargebee customer.
+	ChargebeeCustomerID *string `json:"chargebeeCustomerID,omitempty"`
 	// The amount that the seller can collect. It excludes the marketplace commision fee.
 	CollectableAmount *float32 `json:"collectableAmount,omitempty"`
+	// The buyer's company information synced from the cloud marketplaces.
 	CompanyInfo *CompanyInfo `json:"companyInfo,omitempty"`
+	// The number of CPPO_IN offers related to the buyer.
+	CppoInOfferCount *int32 `json:"cppoInOfferCount,omitempty"`
+	// The number of CPPO_OUT offers related to the buyer.
+	CppoOutOfferCount *int32 `json:"cppoOutOfferCount,omitempty"`
 	// customerID of buyer on seller's side
 	CustomerId *string `json:"customerId,omitempty"`
 	// The amount that has been disbursed to the seller account.
 	DisbursedAmount *float32 `json:"disbursedAmount,omitempty"`
 	// The email address of the buyer. This was copied from the new client signup form.
 	EmailAddress *string `json:"emailAddress,omitempty"`
+	// These fields are only used in the buyer detail api response. The enriched company information from 3rd party services.
+	EnrichedCompanyInfo *Company `json:"enrichedCompanyInfo,omitempty"`
+	// The number of entitlements related to the buyer.
+	EntitlementCount *int32 `json:"entitlementCount,omitempty"`
 	// Fields to store key-value pairs of buyer information.
 	Fields map[string]interface{} `json:"fields,omitempty"`
 	// Buyer from GCP Marketplace
@@ -49,10 +60,14 @@ type BuyerInfo struct {
 	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
 	// The metronome customer ID for the buyer if it is connected to a metronome customer.
 	MetronomeCustomerId *string `json:"metronomeCustomerId,omitempty"`
+	// The number of offers related to the buyer.
+	OfferCount *int32 `json:"offerCount,omitempty"`
 	// The orb customer ID for the buyer if it is connected to a orb customer.
 	OrbCustomerId *string `json:"orbCustomerId,omitempty"`
 	// Payment Config for billing.
 	PaymentConfig *PaymentConfig `json:"paymentConfig,omitempty"`
+	// The quickbooks customer ID for the buyer if it is connected to a quickbooks customer.
+	QuickbooksCustomerId *string `json:"quickbooksCustomerId,omitempty"`
 	// Buyer on Snowflake
 	SnowflakeBuyer *SnowflakeMarketplaceBuyer `json:"snowflakeBuyer,omitempty"`
 	// Buyer SPA url, public page visited with jwt.
@@ -176,6 +191,38 @@ func (o *BuyerInfo) SetAzureBuyer(v AzureADIdentifier) {
 	o.AzureBuyer = &v
 }
 
+// GetChargebeeCustomerID returns the ChargebeeCustomerID field value if set, zero value otherwise.
+func (o *BuyerInfo) GetChargebeeCustomerID() string {
+	if o == nil || IsNil(o.ChargebeeCustomerID) {
+		var ret string
+		return ret
+	}
+	return *o.ChargebeeCustomerID
+}
+
+// GetChargebeeCustomerIDOk returns a tuple with the ChargebeeCustomerID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetChargebeeCustomerIDOk() (*string, bool) {
+	if o == nil || IsNil(o.ChargebeeCustomerID) {
+		return nil, false
+	}
+	return o.ChargebeeCustomerID, true
+}
+
+// HasChargebeeCustomerID returns a boolean if a field has been set.
+func (o *BuyerInfo) HasChargebeeCustomerID() bool {
+	if o != nil && !IsNil(o.ChargebeeCustomerID) {
+		return true
+	}
+
+	return false
+}
+
+// SetChargebeeCustomerID gets a reference to the given string and assigns it to the ChargebeeCustomerID field.
+func (o *BuyerInfo) SetChargebeeCustomerID(v string) {
+	o.ChargebeeCustomerID = &v
+}
+
 // GetCollectableAmount returns the CollectableAmount field value if set, zero value otherwise.
 func (o *BuyerInfo) GetCollectableAmount() float32 {
 	if o == nil || IsNil(o.CollectableAmount) {
@@ -238,6 +285,70 @@ func (o *BuyerInfo) HasCompanyInfo() bool {
 // SetCompanyInfo gets a reference to the given CompanyInfo and assigns it to the CompanyInfo field.
 func (o *BuyerInfo) SetCompanyInfo(v CompanyInfo) {
 	o.CompanyInfo = &v
+}
+
+// GetCppoInOfferCount returns the CppoInOfferCount field value if set, zero value otherwise.
+func (o *BuyerInfo) GetCppoInOfferCount() int32 {
+	if o == nil || IsNil(o.CppoInOfferCount) {
+		var ret int32
+		return ret
+	}
+	return *o.CppoInOfferCount
+}
+
+// GetCppoInOfferCountOk returns a tuple with the CppoInOfferCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetCppoInOfferCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.CppoInOfferCount) {
+		return nil, false
+	}
+	return o.CppoInOfferCount, true
+}
+
+// HasCppoInOfferCount returns a boolean if a field has been set.
+func (o *BuyerInfo) HasCppoInOfferCount() bool {
+	if o != nil && !IsNil(o.CppoInOfferCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetCppoInOfferCount gets a reference to the given int32 and assigns it to the CppoInOfferCount field.
+func (o *BuyerInfo) SetCppoInOfferCount(v int32) {
+	o.CppoInOfferCount = &v
+}
+
+// GetCppoOutOfferCount returns the CppoOutOfferCount field value if set, zero value otherwise.
+func (o *BuyerInfo) GetCppoOutOfferCount() int32 {
+	if o == nil || IsNil(o.CppoOutOfferCount) {
+		var ret int32
+		return ret
+	}
+	return *o.CppoOutOfferCount
+}
+
+// GetCppoOutOfferCountOk returns a tuple with the CppoOutOfferCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetCppoOutOfferCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.CppoOutOfferCount) {
+		return nil, false
+	}
+	return o.CppoOutOfferCount, true
+}
+
+// HasCppoOutOfferCount returns a boolean if a field has been set.
+func (o *BuyerInfo) HasCppoOutOfferCount() bool {
+	if o != nil && !IsNil(o.CppoOutOfferCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetCppoOutOfferCount gets a reference to the given int32 and assigns it to the CppoOutOfferCount field.
+func (o *BuyerInfo) SetCppoOutOfferCount(v int32) {
+	o.CppoOutOfferCount = &v
 }
 
 // GetCustomerId returns the CustomerId field value if set, zero value otherwise.
@@ -334,6 +445,70 @@ func (o *BuyerInfo) HasEmailAddress() bool {
 // SetEmailAddress gets a reference to the given string and assigns it to the EmailAddress field.
 func (o *BuyerInfo) SetEmailAddress(v string) {
 	o.EmailAddress = &v
+}
+
+// GetEnrichedCompanyInfo returns the EnrichedCompanyInfo field value if set, zero value otherwise.
+func (o *BuyerInfo) GetEnrichedCompanyInfo() Company {
+	if o == nil || IsNil(o.EnrichedCompanyInfo) {
+		var ret Company
+		return ret
+	}
+	return *o.EnrichedCompanyInfo
+}
+
+// GetEnrichedCompanyInfoOk returns a tuple with the EnrichedCompanyInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetEnrichedCompanyInfoOk() (*Company, bool) {
+	if o == nil || IsNil(o.EnrichedCompanyInfo) {
+		return nil, false
+	}
+	return o.EnrichedCompanyInfo, true
+}
+
+// HasEnrichedCompanyInfo returns a boolean if a field has been set.
+func (o *BuyerInfo) HasEnrichedCompanyInfo() bool {
+	if o != nil && !IsNil(o.EnrichedCompanyInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnrichedCompanyInfo gets a reference to the given Company and assigns it to the EnrichedCompanyInfo field.
+func (o *BuyerInfo) SetEnrichedCompanyInfo(v Company) {
+	o.EnrichedCompanyInfo = &v
+}
+
+// GetEntitlementCount returns the EntitlementCount field value if set, zero value otherwise.
+func (o *BuyerInfo) GetEntitlementCount() int32 {
+	if o == nil || IsNil(o.EntitlementCount) {
+		var ret int32
+		return ret
+	}
+	return *o.EntitlementCount
+}
+
+// GetEntitlementCountOk returns a tuple with the EntitlementCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetEntitlementCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.EntitlementCount) {
+		return nil, false
+	}
+	return o.EntitlementCount, true
+}
+
+// HasEntitlementCount returns a boolean if a field has been set.
+func (o *BuyerInfo) HasEntitlementCount() bool {
+	if o != nil && !IsNil(o.EntitlementCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetEntitlementCount gets a reference to the given int32 and assigns it to the EntitlementCount field.
+func (o *BuyerInfo) SetEntitlementCount(v int32) {
+	o.EntitlementCount = &v
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise.
@@ -560,6 +735,38 @@ func (o *BuyerInfo) SetMetronomeCustomerId(v string) {
 	o.MetronomeCustomerId = &v
 }
 
+// GetOfferCount returns the OfferCount field value if set, zero value otherwise.
+func (o *BuyerInfo) GetOfferCount() int32 {
+	if o == nil || IsNil(o.OfferCount) {
+		var ret int32
+		return ret
+	}
+	return *o.OfferCount
+}
+
+// GetOfferCountOk returns a tuple with the OfferCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetOfferCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.OfferCount) {
+		return nil, false
+	}
+	return o.OfferCount, true
+}
+
+// HasOfferCount returns a boolean if a field has been set.
+func (o *BuyerInfo) HasOfferCount() bool {
+	if o != nil && !IsNil(o.OfferCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetOfferCount gets a reference to the given int32 and assigns it to the OfferCount field.
+func (o *BuyerInfo) SetOfferCount(v int32) {
+	o.OfferCount = &v
+}
+
 // GetOrbCustomerId returns the OrbCustomerId field value if set, zero value otherwise.
 func (o *BuyerInfo) GetOrbCustomerId() string {
 	if o == nil || IsNil(o.OrbCustomerId) {
@@ -622,6 +829,38 @@ func (o *BuyerInfo) HasPaymentConfig() bool {
 // SetPaymentConfig gets a reference to the given PaymentConfig and assigns it to the PaymentConfig field.
 func (o *BuyerInfo) SetPaymentConfig(v PaymentConfig) {
 	o.PaymentConfig = &v
+}
+
+// GetQuickbooksCustomerId returns the QuickbooksCustomerId field value if set, zero value otherwise.
+func (o *BuyerInfo) GetQuickbooksCustomerId() string {
+	if o == nil || IsNil(o.QuickbooksCustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.QuickbooksCustomerId
+}
+
+// GetQuickbooksCustomerIdOk returns a tuple with the QuickbooksCustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BuyerInfo) GetQuickbooksCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.QuickbooksCustomerId) {
+		return nil, false
+	}
+	return o.QuickbooksCustomerId, true
+}
+
+// HasQuickbooksCustomerId returns a boolean if a field has been set.
+func (o *BuyerInfo) HasQuickbooksCustomerId() bool {
+	if o != nil && !IsNil(o.QuickbooksCustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuickbooksCustomerId gets a reference to the given string and assigns it to the QuickbooksCustomerId field.
+func (o *BuyerInfo) SetQuickbooksCustomerId(v string) {
+	o.QuickbooksCustomerId = &v
 }
 
 // GetSnowflakeBuyer returns the SnowflakeBuyer field value if set, zero value otherwise.
@@ -771,11 +1010,20 @@ func (o BuyerInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AzureBuyer) {
 		toSerialize["azureBuyer"] = o.AzureBuyer
 	}
+	if !IsNil(o.ChargebeeCustomerID) {
+		toSerialize["chargebeeCustomerID"] = o.ChargebeeCustomerID
+	}
 	if !IsNil(o.CollectableAmount) {
 		toSerialize["collectableAmount"] = o.CollectableAmount
 	}
 	if !IsNil(o.CompanyInfo) {
 		toSerialize["companyInfo"] = o.CompanyInfo
+	}
+	if !IsNil(o.CppoInOfferCount) {
+		toSerialize["cppoInOfferCount"] = o.CppoInOfferCount
+	}
+	if !IsNil(o.CppoOutOfferCount) {
+		toSerialize["cppoOutOfferCount"] = o.CppoOutOfferCount
 	}
 	if !IsNil(o.CustomerId) {
 		toSerialize["customerId"] = o.CustomerId
@@ -785,6 +1033,12 @@ func (o BuyerInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EmailAddress) {
 		toSerialize["emailAddress"] = o.EmailAddress
+	}
+	if !IsNil(o.EnrichedCompanyInfo) {
+		toSerialize["enrichedCompanyInfo"] = o.EnrichedCompanyInfo
+	}
+	if !IsNil(o.EntitlementCount) {
+		toSerialize["entitlementCount"] = o.EntitlementCount
 	}
 	if !IsNil(o.Fields) {
 		toSerialize["fields"] = o.Fields
@@ -807,11 +1061,17 @@ func (o BuyerInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MetronomeCustomerId) {
 		toSerialize["metronomeCustomerId"] = o.MetronomeCustomerId
 	}
+	if !IsNil(o.OfferCount) {
+		toSerialize["offerCount"] = o.OfferCount
+	}
 	if !IsNil(o.OrbCustomerId) {
 		toSerialize["orbCustomerId"] = o.OrbCustomerId
 	}
 	if !IsNil(o.PaymentConfig) {
 		toSerialize["paymentConfig"] = o.PaymentConfig
+	}
+	if !IsNil(o.QuickbooksCustomerId) {
+		toSerialize["quickbooksCustomerId"] = o.QuickbooksCustomerId
 	}
 	if !IsNil(o.SnowflakeBuyer) {
 		toSerialize["snowflakeBuyer"] = o.SnowflakeBuyer

@@ -7,11 +7,16 @@ Name | Type | Description | Notes
 **AdyenBuyer** | Pointer to [**AdyenBuyer**](AdyenBuyer.md) | Buyer on Adyen | [optional] 
 **AwsBuyer** | Pointer to [**AwsAccountIdentifier**](AwsAccountIdentifier.md) | Buyer from AWS Marketplace | [optional] 
 **AzureBuyer** | Pointer to [**AzureADIdentifier**](AzureADIdentifier.md) | Buyer from Azure Marketplace | [optional] 
+**ChargebeeCustomerID** | Pointer to **string** | ChargebeeCustomerID is the chargebee customer ID for ther buyer if it is connected to a chargebee customer. | [optional] 
 **CollectableAmount** | Pointer to **float32** | The amount that the seller can collect. It excludes the marketplace commision fee. | [optional] 
-**CompanyInfo** | Pointer to [**CompanyInfo**](CompanyInfo.md) |  | [optional] 
+**CompanyInfo** | Pointer to [**CompanyInfo**](CompanyInfo.md) | The buyer&#39;s company information synced from the cloud marketplaces. | [optional] 
+**CppoInOfferCount** | Pointer to **int32** | The number of CPPO_IN offers related to the buyer. | [optional] 
+**CppoOutOfferCount** | Pointer to **int32** | The number of CPPO_OUT offers related to the buyer. | [optional] 
 **CustomerId** | Pointer to **string** | customerID of buyer on seller&#39;s side | [optional] 
 **DisbursedAmount** | Pointer to **float32** | The amount that has been disbursed to the seller account. | [optional] 
 **EmailAddress** | Pointer to **string** | The email address of the buyer. This was copied from the new client signup form. | [optional] 
+**EnrichedCompanyInfo** | Pointer to [**Company**](Company.md) | These fields are only used in the buyer detail api response. The enriched company information from 3rd party services. | [optional] 
+**EntitlementCount** | Pointer to **int32** | The number of entitlements related to the buyer. | [optional] 
 **Fields** | Pointer to **map[string]interface{}** | Fields to store key-value pairs of buyer information. | [optional] 
 **GcpBuyer** | Pointer to [**GcpMarketplaceUserAccount**](GcpMarketplaceUserAccount.md) | Buyer from GCP Marketplace | [optional] 
 **GrossAmount** | Pointer to **float32** | The gross amount that the buyer has committed to pay, including usage metered amount. | [optional] 
@@ -19,8 +24,10 @@ Name | Type | Description | Notes
 **LagoCustomerId** | Pointer to **string** | The lgo customer ID for the buyer if it is connected to a lago customer. | [optional] 
 **LastModifiedBy** | Pointer to **string** | Last modifier user ID. | [optional] 
 **MetronomeCustomerId** | Pointer to **string** | The metronome customer ID for the buyer if it is connected to a metronome customer. | [optional] 
+**OfferCount** | Pointer to **int32** | The number of offers related to the buyer. | [optional] 
 **OrbCustomerId** | Pointer to **string** | The orb customer ID for the buyer if it is connected to a orb customer. | [optional] 
 **PaymentConfig** | Pointer to [**PaymentConfig**](PaymentConfig.md) | Payment Config for billing. | [optional] 
+**QuickbooksCustomerId** | Pointer to **string** | The quickbooks customer ID for the buyer if it is connected to a quickbooks customer. | [optional] 
 **SnowflakeBuyer** | Pointer to [**SnowflakeMarketplaceBuyer**](SnowflakeMarketplaceBuyer.md) | Buyer on Snowflake | [optional] 
 **SpaUrl** | Pointer to **string** | Buyer SPA url, public page visited with jwt. | [optional] 
 **StripeBuyer** | Pointer to [**StripeCustomer**](StripeCustomer.md) | Buyer as Customer on Stripe | [optional] 
@@ -120,6 +127,31 @@ SetAzureBuyer sets AzureBuyer field to given value.
 
 HasAzureBuyer returns a boolean if a field has been set.
 
+### GetChargebeeCustomerID
+
+`func (o *BuyerInfo) GetChargebeeCustomerID() string`
+
+GetChargebeeCustomerID returns the ChargebeeCustomerID field if non-nil, zero value otherwise.
+
+### GetChargebeeCustomerIDOk
+
+`func (o *BuyerInfo) GetChargebeeCustomerIDOk() (*string, bool)`
+
+GetChargebeeCustomerIDOk returns a tuple with the ChargebeeCustomerID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChargebeeCustomerID
+
+`func (o *BuyerInfo) SetChargebeeCustomerID(v string)`
+
+SetChargebeeCustomerID sets ChargebeeCustomerID field to given value.
+
+### HasChargebeeCustomerID
+
+`func (o *BuyerInfo) HasChargebeeCustomerID() bool`
+
+HasChargebeeCustomerID returns a boolean if a field has been set.
+
 ### GetCollectableAmount
 
 `func (o *BuyerInfo) GetCollectableAmount() float32`
@@ -169,6 +201,56 @@ SetCompanyInfo sets CompanyInfo field to given value.
 `func (o *BuyerInfo) HasCompanyInfo() bool`
 
 HasCompanyInfo returns a boolean if a field has been set.
+
+### GetCppoInOfferCount
+
+`func (o *BuyerInfo) GetCppoInOfferCount() int32`
+
+GetCppoInOfferCount returns the CppoInOfferCount field if non-nil, zero value otherwise.
+
+### GetCppoInOfferCountOk
+
+`func (o *BuyerInfo) GetCppoInOfferCountOk() (*int32, bool)`
+
+GetCppoInOfferCountOk returns a tuple with the CppoInOfferCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCppoInOfferCount
+
+`func (o *BuyerInfo) SetCppoInOfferCount(v int32)`
+
+SetCppoInOfferCount sets CppoInOfferCount field to given value.
+
+### HasCppoInOfferCount
+
+`func (o *BuyerInfo) HasCppoInOfferCount() bool`
+
+HasCppoInOfferCount returns a boolean if a field has been set.
+
+### GetCppoOutOfferCount
+
+`func (o *BuyerInfo) GetCppoOutOfferCount() int32`
+
+GetCppoOutOfferCount returns the CppoOutOfferCount field if non-nil, zero value otherwise.
+
+### GetCppoOutOfferCountOk
+
+`func (o *BuyerInfo) GetCppoOutOfferCountOk() (*int32, bool)`
+
+GetCppoOutOfferCountOk returns a tuple with the CppoOutOfferCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCppoOutOfferCount
+
+`func (o *BuyerInfo) SetCppoOutOfferCount(v int32)`
+
+SetCppoOutOfferCount sets CppoOutOfferCount field to given value.
+
+### HasCppoOutOfferCount
+
+`func (o *BuyerInfo) HasCppoOutOfferCount() bool`
+
+HasCppoOutOfferCount returns a boolean if a field has been set.
 
 ### GetCustomerId
 
@@ -244,6 +326,56 @@ SetEmailAddress sets EmailAddress field to given value.
 `func (o *BuyerInfo) HasEmailAddress() bool`
 
 HasEmailAddress returns a boolean if a field has been set.
+
+### GetEnrichedCompanyInfo
+
+`func (o *BuyerInfo) GetEnrichedCompanyInfo() Company`
+
+GetEnrichedCompanyInfo returns the EnrichedCompanyInfo field if non-nil, zero value otherwise.
+
+### GetEnrichedCompanyInfoOk
+
+`func (o *BuyerInfo) GetEnrichedCompanyInfoOk() (*Company, bool)`
+
+GetEnrichedCompanyInfoOk returns a tuple with the EnrichedCompanyInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnrichedCompanyInfo
+
+`func (o *BuyerInfo) SetEnrichedCompanyInfo(v Company)`
+
+SetEnrichedCompanyInfo sets EnrichedCompanyInfo field to given value.
+
+### HasEnrichedCompanyInfo
+
+`func (o *BuyerInfo) HasEnrichedCompanyInfo() bool`
+
+HasEnrichedCompanyInfo returns a boolean if a field has been set.
+
+### GetEntitlementCount
+
+`func (o *BuyerInfo) GetEntitlementCount() int32`
+
+GetEntitlementCount returns the EntitlementCount field if non-nil, zero value otherwise.
+
+### GetEntitlementCountOk
+
+`func (o *BuyerInfo) GetEntitlementCountOk() (*int32, bool)`
+
+GetEntitlementCountOk returns a tuple with the EntitlementCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntitlementCount
+
+`func (o *BuyerInfo) SetEntitlementCount(v int32)`
+
+SetEntitlementCount sets EntitlementCount field to given value.
+
+### HasEntitlementCount
+
+`func (o *BuyerInfo) HasEntitlementCount() bool`
+
+HasEntitlementCount returns a boolean if a field has been set.
 
 ### GetFields
 
@@ -420,6 +552,31 @@ SetMetronomeCustomerId sets MetronomeCustomerId field to given value.
 
 HasMetronomeCustomerId returns a boolean if a field has been set.
 
+### GetOfferCount
+
+`func (o *BuyerInfo) GetOfferCount() int32`
+
+GetOfferCount returns the OfferCount field if non-nil, zero value otherwise.
+
+### GetOfferCountOk
+
+`func (o *BuyerInfo) GetOfferCountOk() (*int32, bool)`
+
+GetOfferCountOk returns a tuple with the OfferCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOfferCount
+
+`func (o *BuyerInfo) SetOfferCount(v int32)`
+
+SetOfferCount sets OfferCount field to given value.
+
+### HasOfferCount
+
+`func (o *BuyerInfo) HasOfferCount() bool`
+
+HasOfferCount returns a boolean if a field has been set.
+
 ### GetOrbCustomerId
 
 `func (o *BuyerInfo) GetOrbCustomerId() string`
@@ -469,6 +626,31 @@ SetPaymentConfig sets PaymentConfig field to given value.
 `func (o *BuyerInfo) HasPaymentConfig() bool`
 
 HasPaymentConfig returns a boolean if a field has been set.
+
+### GetQuickbooksCustomerId
+
+`func (o *BuyerInfo) GetQuickbooksCustomerId() string`
+
+GetQuickbooksCustomerId returns the QuickbooksCustomerId field if non-nil, zero value otherwise.
+
+### GetQuickbooksCustomerIdOk
+
+`func (o *BuyerInfo) GetQuickbooksCustomerIdOk() (*string, bool)`
+
+GetQuickbooksCustomerIdOk returns a tuple with the QuickbooksCustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQuickbooksCustomerId
+
+`func (o *BuyerInfo) SetQuickbooksCustomerId(v string)`
+
+SetQuickbooksCustomerId sets QuickbooksCustomerId field to given value.
+
+### HasQuickbooksCustomerId
+
+`func (o *BuyerInfo) HasQuickbooksCustomerId() bool`
+
+HasQuickbooksCustomerId returns a boolean if a field has been set.
 
 ### GetSnowflakeBuyer
 

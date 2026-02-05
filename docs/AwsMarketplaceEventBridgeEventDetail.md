@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Acceptor** | Pointer to [**AwsMarketplaceEventBridgeEventAccount**](AwsMarketplaceEventBridgeEventAccount.md) |  | [optional] 
+**Agreement** | Pointer to [**AwsMarketplaceEventBridgeEventAgreement**](AwsMarketplaceEventBridgeEventAgreement.md) |  | [optional] 
 **Catalog** | Pointer to **string** |  | [optional] 
 **EventCategory** | Pointer to **string** |  | [optional] 
 **EventID** | Pointer to **string** |  | [optional] 
@@ -11,12 +13,15 @@ Name | Type | Description | Notes
 **EventSource** | Pointer to **string** |  | [optional] 
 **EventType** | Pointer to **string** |  | [optional] 
 **EventVersion** | Pointer to **string** |  | [optional] 
+**License** | Pointer to [**AwsMarketplaceEventBridgeEventLicense**](AwsMarketplaceEventBridgeEventLicense.md) |  | [optional] 
 **ManagementEvent** | Pointer to **bool** |  | [optional] 
 **Manufacturer** | Pointer to [**AwsMarketplaceEventBridgeEventAccount**](AwsMarketplaceEventBridgeEventAccount.md) | The seller/ISV&#39;s AWS Account Id. | [optional] 
 **Offer** | Pointer to [**AwsMarketplaceEventBridgeEventOffer**](AwsMarketplaceEventBridgeEventOffer.md) |  | [optional] 
 **Product** | Pointer to [**AwsMarketplaceEventBridgeEventProduct**](AwsMarketplaceEventBridgeEventProduct.md) |  | [optional] 
+**Proposer** | Pointer to [**AwsMarketplaceEventBridgeEventAccount**](AwsMarketplaceEventBridgeEventAccount.md) |  | [optional] 
 **RequestID** | Pointer to **string** |  | [optional] 
 **RequestParameters** | Pointer to **map[string]interface{}** |  | [optional] 
+**ResaleAuthorization** | Pointer to [**AwsMarketplaceEventBridgeEventResaleAuthorization**](AwsMarketplaceEventBridgeEventResaleAuthorization.md) |  | [optional] 
 **ResponseElements** | Pointer to **map[string]interface{}** |  | [optional] 
 **SellerOfRecord** | Pointer to [**AwsMarketplaceEventBridgeEventAccount**](AwsMarketplaceEventBridgeEventAccount.md) | For private offer created by a channel partner, this is the channel partner&#39;s AWS Account Id. For private offer created by a seller/ISV, this is the seller/ISV&#39;s AWS Account Id. | [optional] 
 **TargetedBuyerAccountIds** | Pointer to **[]string** |  | [optional] 
@@ -39,6 +44,56 @@ will change when the set of required properties is changed
 NewAwsMarketplaceEventBridgeEventDetailWithDefaults instantiates a new AwsMarketplaceEventBridgeEventDetail object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAcceptor
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) GetAcceptor() AwsMarketplaceEventBridgeEventAccount`
+
+GetAcceptor returns the Acceptor field if non-nil, zero value otherwise.
+
+### GetAcceptorOk
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) GetAcceptorOk() (*AwsMarketplaceEventBridgeEventAccount, bool)`
+
+GetAcceptorOk returns a tuple with the Acceptor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAcceptor
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) SetAcceptor(v AwsMarketplaceEventBridgeEventAccount)`
+
+SetAcceptor sets Acceptor field to given value.
+
+### HasAcceptor
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) HasAcceptor() bool`
+
+HasAcceptor returns a boolean if a field has been set.
+
+### GetAgreement
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) GetAgreement() AwsMarketplaceEventBridgeEventAgreement`
+
+GetAgreement returns the Agreement field if non-nil, zero value otherwise.
+
+### GetAgreementOk
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) GetAgreementOk() (*AwsMarketplaceEventBridgeEventAgreement, bool)`
+
+GetAgreementOk returns a tuple with the Agreement field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgreement
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) SetAgreement(v AwsMarketplaceEventBridgeEventAgreement)`
+
+SetAgreement sets Agreement field to given value.
+
+### HasAgreement
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) HasAgreement() bool`
+
+HasAgreement returns a boolean if a field has been set.
 
 ### GetCatalog
 
@@ -215,6 +270,31 @@ SetEventVersion sets EventVersion field to given value.
 
 HasEventVersion returns a boolean if a field has been set.
 
+### GetLicense
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) GetLicense() AwsMarketplaceEventBridgeEventLicense`
+
+GetLicense returns the License field if non-nil, zero value otherwise.
+
+### GetLicenseOk
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) GetLicenseOk() (*AwsMarketplaceEventBridgeEventLicense, bool)`
+
+GetLicenseOk returns a tuple with the License field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLicense
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) SetLicense(v AwsMarketplaceEventBridgeEventLicense)`
+
+SetLicense sets License field to given value.
+
+### HasLicense
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) HasLicense() bool`
+
+HasLicense returns a boolean if a field has been set.
+
 ### GetManagementEvent
 
 `func (o *AwsMarketplaceEventBridgeEventDetail) GetManagementEvent() bool`
@@ -315,6 +395,31 @@ SetProduct sets Product field to given value.
 
 HasProduct returns a boolean if a field has been set.
 
+### GetProposer
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) GetProposer() AwsMarketplaceEventBridgeEventAccount`
+
+GetProposer returns the Proposer field if non-nil, zero value otherwise.
+
+### GetProposerOk
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) GetProposerOk() (*AwsMarketplaceEventBridgeEventAccount, bool)`
+
+GetProposerOk returns a tuple with the Proposer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProposer
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) SetProposer(v AwsMarketplaceEventBridgeEventAccount)`
+
+SetProposer sets Proposer field to given value.
+
+### HasProposer
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) HasProposer() bool`
+
+HasProposer returns a boolean if a field has been set.
+
 ### GetRequestID
 
 `func (o *AwsMarketplaceEventBridgeEventDetail) GetRequestID() string`
@@ -364,6 +469,31 @@ SetRequestParameters sets RequestParameters field to given value.
 `func (o *AwsMarketplaceEventBridgeEventDetail) HasRequestParameters() bool`
 
 HasRequestParameters returns a boolean if a field has been set.
+
+### GetResaleAuthorization
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) GetResaleAuthorization() AwsMarketplaceEventBridgeEventResaleAuthorization`
+
+GetResaleAuthorization returns the ResaleAuthorization field if non-nil, zero value otherwise.
+
+### GetResaleAuthorizationOk
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) GetResaleAuthorizationOk() (*AwsMarketplaceEventBridgeEventResaleAuthorization, bool)`
+
+GetResaleAuthorizationOk returns a tuple with the ResaleAuthorization field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResaleAuthorization
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) SetResaleAuthorization(v AwsMarketplaceEventBridgeEventResaleAuthorization)`
+
+SetResaleAuthorization sets ResaleAuthorization field to given value.
+
+### HasResaleAuthorization
+
+`func (o *AwsMarketplaceEventBridgeEventDetail) HasResaleAuthorization() bool`
+
+HasResaleAuthorization returns a boolean if a field has been set.
 
 ### GetResponseElements
 

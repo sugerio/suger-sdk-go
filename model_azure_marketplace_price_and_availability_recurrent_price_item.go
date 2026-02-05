@@ -23,11 +23,12 @@ type AzureMarketplacePriceAndAvailabilityRecurrentPriceItem struct {
 	// billingFrequency defines the frequency of the billing for recurring price.
 	BillingFrequency *AzureMarketplaceTerm `json:"billingFrequency,omitempty"`
 	BillingTerm *AzureMarketplaceTerm `json:"billingTerm,omitempty"`
-	// contractDuration defines the duration of the contract, should always be “year” with value 1 or 2 or 3
+	// contractDuration defines the duration of the contract, should always be \"year\" with value 1 or 2 or 3
 	ContractDuration *AzureMarketplaceTerm `json:"contractDuration,omitempty"`
 	// flexibleSchedule defines the payment installments for flexible billing.
 	FlexibleSchedule *AzureMarketplacePriceFlexibleSchedule `json:"flexibleSchedule,omitempty"`
 	PaymentOption *AzureMarketplaceTerm `json:"paymentOption,omitempty"`
+	// Using omitempty
 	PricePerPaymentInUsd *float32 `json:"pricePerPaymentInUsd,omitempty"`
 	Prices []AzureMarketplacePrice `json:"prices,omitempty"`
 }

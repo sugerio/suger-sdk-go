@@ -14,8 +14,10 @@ Name | Type | Description | Notes
 **AwsCppoOpportunity** | Pointer to [**AwsMarketplaceCppoOpportunity**](AwsMarketplaceCppoOpportunity.md) | AWS CPPO Opportunity, only applicable for AWS Marketplace CPPO_OUT or CPPO_IN offers. | [optional] 
 **AwsMachineLearningContractDuration** | Pointer to **int32** | For AWS machine learning contract private offer only. The contract duration of the offer in months. | [optional] 
 **AwsMarkupPercentage** | Pointer to **float32** | AWS private reseller offer using markup percentage. 10.0 represent 10% partner margin. | [optional] 
+**AwsOfferSetId** | Pointer to **string** | For AWS Offer Set feature. If this offer is linked to an offer set, save the OfferSet ID in this field. An offer set is a collection of offers that can be shared with a customer. | [optional] 
 **AwsResaleAuthorizationId** | Pointer to **string** | AWS ResaleAuthorizationId(CPPO_IN offer id) for CPPO offers of the reseller. | [optional] 
 **AzureOriginalPlan** | Pointer to [**AzureMarketplacePriceAndAvailabilityPrivateOfferPlan**](AzureMarketplacePriceAndAvailabilityPrivateOfferPlan.md) | The origin pricing of Azure plan. Only applicable for Azure Marketplace plans. | [optional] 
+**AzurePlanSoftwareReservations** | Pointer to [**[]AzureMarketplacePriceAndAvailabilitySoftwareReservation**](AzureMarketplacePriceAndAvailabilitySoftwareReservation.md) | All software reservation billing term options from the Azure plan (e.g., monthly, 1-year, 3-year with different discounts). Only applicable for Azure Marketplace VM offers with software reservations. | [optional] 
 **AzurePrivateOffer** | Pointer to [**AzureMarketplacePrivateOffer**](AzureMarketplacePrivateOffer.md) | The private offer for Azure Marketplace. Only applicable for Azure Marketplace private offers. | [optional] 
 **AzureProductVariant** | Pointer to [**AzureProductVariant**](AzureProductVariant.md) | For Azure marketplace only. | [optional] 
 **BillableDimensions** | Pointer to [**[]BillableDimension**](BillableDimension.md) | Usage based metering dimensions based on Billable Metrics, managed by Suger only. | [optional] 
@@ -35,6 +37,7 @@ Name | Type | Description | Notes
 **EulaUrl** | Pointer to **string** |  | [optional] 
 **GcpCustomerInfo** | Pointer to [**GcpMarketplacePrivateOfferCustomerInfo**](GcpMarketplacePrivateOfferCustomerInfo.md) | Only required when creating GCP Marketplace private offer. | [optional] 
 **GcpDuration** | Pointer to **int32** | The duration of the offer in months. Only required when creating GCP Marketplace private offer. | [optional] 
+**GcpFeatures** | Pointer to [**[]GcpMarketplaceProductFeatureValue**](GcpMarketplaceProductFeatureValue.md) | Optional when creating GCP Marketplace private offer. Custom feature values to set for the private offer. Each feature name must exist in the product&#39;s feature list. The feature list is available at product.Info.GcpProduct.ListingSpec.PurchaseSpec.Features. | [optional] 
 **GcpMetrics** | Pointer to [**[]GcpMarketplaceProductMeteringMetric**](GcpMarketplaceProductMeteringMetric.md) | Only applicable for GCP Marketplace Offers (the default or private offer) | [optional] 
 **GcpOfferDealType** | Pointer to [**GcpMarketplaceOfferDealType**](GcpMarketplaceOfferDealType.md) | Optional when creating GCP Marketplace private offer and replacement offer. | [optional] 
 **GcpPaymentSchedule** | Pointer to [**PaymentScheduleType**](PaymentScheduleType.md) | Only required when creating GCP Marketplace private offer, to specify the payment schedule for the private offer. TODO: It will be deprecated in the future and replaced by PaymentSchedule. | [optional] 
@@ -335,6 +338,31 @@ SetAwsMarkupPercentage sets AwsMarkupPercentage field to given value.
 
 HasAwsMarkupPercentage returns a boolean if a field has been set.
 
+### GetAwsOfferSetId
+
+`func (o *OfferInfo) GetAwsOfferSetId() string`
+
+GetAwsOfferSetId returns the AwsOfferSetId field if non-nil, zero value otherwise.
+
+### GetAwsOfferSetIdOk
+
+`func (o *OfferInfo) GetAwsOfferSetIdOk() (*string, bool)`
+
+GetAwsOfferSetIdOk returns a tuple with the AwsOfferSetId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsOfferSetId
+
+`func (o *OfferInfo) SetAwsOfferSetId(v string)`
+
+SetAwsOfferSetId sets AwsOfferSetId field to given value.
+
+### HasAwsOfferSetId
+
+`func (o *OfferInfo) HasAwsOfferSetId() bool`
+
+HasAwsOfferSetId returns a boolean if a field has been set.
+
 ### GetAwsResaleAuthorizationId
 
 `func (o *OfferInfo) GetAwsResaleAuthorizationId() string`
@@ -384,6 +412,31 @@ SetAzureOriginalPlan sets AzureOriginalPlan field to given value.
 `func (o *OfferInfo) HasAzureOriginalPlan() bool`
 
 HasAzureOriginalPlan returns a boolean if a field has been set.
+
+### GetAzurePlanSoftwareReservations
+
+`func (o *OfferInfo) GetAzurePlanSoftwareReservations() []AzureMarketplacePriceAndAvailabilitySoftwareReservation`
+
+GetAzurePlanSoftwareReservations returns the AzurePlanSoftwareReservations field if non-nil, zero value otherwise.
+
+### GetAzurePlanSoftwareReservationsOk
+
+`func (o *OfferInfo) GetAzurePlanSoftwareReservationsOk() (*[]AzureMarketplacePriceAndAvailabilitySoftwareReservation, bool)`
+
+GetAzurePlanSoftwareReservationsOk returns a tuple with the AzurePlanSoftwareReservations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzurePlanSoftwareReservations
+
+`func (o *OfferInfo) SetAzurePlanSoftwareReservations(v []AzureMarketplacePriceAndAvailabilitySoftwareReservation)`
+
+SetAzurePlanSoftwareReservations sets AzurePlanSoftwareReservations field to given value.
+
+### HasAzurePlanSoftwareReservations
+
+`func (o *OfferInfo) HasAzurePlanSoftwareReservations() bool`
+
+HasAzurePlanSoftwareReservations returns a boolean if a field has been set.
 
 ### GetAzurePrivateOffer
 
@@ -859,6 +912,31 @@ SetGcpDuration sets GcpDuration field to given value.
 `func (o *OfferInfo) HasGcpDuration() bool`
 
 HasGcpDuration returns a boolean if a field has been set.
+
+### GetGcpFeatures
+
+`func (o *OfferInfo) GetGcpFeatures() []GcpMarketplaceProductFeatureValue`
+
+GetGcpFeatures returns the GcpFeatures field if non-nil, zero value otherwise.
+
+### GetGcpFeaturesOk
+
+`func (o *OfferInfo) GetGcpFeaturesOk() (*[]GcpMarketplaceProductFeatureValue, bool)`
+
+GetGcpFeaturesOk returns a tuple with the GcpFeatures field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpFeatures
+
+`func (o *OfferInfo) SetGcpFeatures(v []GcpMarketplaceProductFeatureValue)`
+
+SetGcpFeatures sets GcpFeatures field to given value.
+
+### HasGcpFeatures
+
+`func (o *OfferInfo) HasGcpFeatures() bool`
+
+HasGcpFeatures returns a boolean if a field has been set.
 
 ### GetGcpMetrics
 

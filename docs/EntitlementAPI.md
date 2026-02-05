@@ -1,6 +1,6 @@
 # \EntitlementAPI
 
-All URIs are relative to *http://https://api.suger.cloud*
+All URIs are relative to *https://api.suger.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**GetEntitlementTerm**](EntitlementAPI.md#GetEntitlementTerm) | **Get** /org/{orgId}/entitlement/{entitlementId}/entitlementTerm/{entitlementTermId} | get entitlement term
 [**ListEntitlementTerms**](EntitlementAPI.md#ListEntitlementTerms) | **Get** /org/{orgId}/entitlement/{entitlementId}/entitlementTerm | list entitlement terms
 [**ListEntitlements**](EntitlementAPI.md#ListEntitlements) | **Get** /org/{orgId}/entitlement | list entitlements
+[**QueryEntitlements**](EntitlementAPI.md#QueryEntitlements) | **Get** /org/{orgId}/entitlement/query | query entitlements
 [**ScheduleEntitlementCancellation**](EntitlementAPI.md#ScheduleEntitlementCancellation) | **Post** /org/{orgId}/entitlement/{entitlementId}/scheduleCancellation | schedule entitlement cancellation
 [**UnscheduleEntitlementCancellation**](EntitlementAPI.md#UnscheduleEntitlementCancellation) | **Post** /org/{orgId}/entitlement/{entitlementId}/unscheduleCancellation | unschedule entitlement cancellation
 [**UpdateEntitlementMetaInfo**](EntitlementAPI.md#UpdateEntitlementMetaInfo) | **Patch** /org/{orgId}/entitlement/{entitlementId}/metaInfo | update entitlement meta info
@@ -767,7 +768,7 @@ Name | Type | Description  | Notes
 
 ## ListEntitlements
 
-> []WorkloadEntitlement ListEntitlements(ctx, orgId).Partner(partner).ProductId(productId).OfferId(offerId).BuyerId(buyerId).ExternalId(externalId).BuyerAccountId(buyerAccountId).Limit(limit).Offset(offset).Execute()
+> []WorkloadEntitlement ListEntitlements(ctx, orgId).Partner(partner).ProductId(productId).OfferId(offerId).BuyerId(buyerId).ExternalId(externalId).AwsAccountId(awsAccountId).HubspotDealId(hubspotDealId).SalesforceOpportunityId(salesforceOpportunityId).Limit(limit).Offset(offset).Execute()
 
 list entitlements
 
@@ -792,13 +793,15 @@ func main() {
 	offerId := "offerId_example" // string | filter by offerId (optional)
 	buyerId := "buyerId_example" // string | filter by buyerId (optional)
 	externalId := "externalId_example" // string | filter by externalId (optional)
-	buyerAccountId := "buyerAccountId_example" // string | filter by buyerAccountId is currently supported only for AWS (optional)
+	awsAccountId := "awsAccountId_example" // string | filter by awsAccountId of the entitlement buyer (optional)
+	hubspotDealId := "hubspotDealId_example" // string | filter by hubspotDealId (optional)
+	salesforceOpportunityId := "salesforceOpportunityId_example" // string | filter by salesforceOpportunityId (optional)
 	limit := int32(56) // int32 | List pagination size, default 1000, max value is 1000 (optional)
 	offset := int32(56) // int32 | List pagination offset, default 0 (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EntitlementAPI.ListEntitlements(context.Background(), orgId).Partner(partner).ProductId(productId).OfferId(offerId).BuyerId(buyerId).ExternalId(externalId).BuyerAccountId(buyerAccountId).Limit(limit).Offset(offset).Execute()
+	resp, r, err := apiClient.EntitlementAPI.ListEntitlements(context.Background(), orgId).Partner(partner).ProductId(productId).OfferId(offerId).BuyerId(buyerId).ExternalId(externalId).AwsAccountId(awsAccountId).HubspotDealId(hubspotDealId).SalesforceOpportunityId(salesforceOpportunityId).Limit(limit).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementAPI.ListEntitlements``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -829,13 +832,93 @@ Name | Type | Description  | Notes
  **offerId** | **string** | filter by offerId | 
  **buyerId** | **string** | filter by buyerId | 
  **externalId** | **string** | filter by externalId | 
- **buyerAccountId** | **string** | filter by buyerAccountId is currently supported only for AWS | 
+ **awsAccountId** | **string** | filter by awsAccountId of the entitlement buyer | 
+ **hubspotDealId** | **string** | filter by hubspotDealId | 
+ **salesforceOpportunityId** | **string** | filter by salesforceOpportunityId | 
  **limit** | **int32** | List pagination size, default 1000, max value is 1000 | 
  **offset** | **int32** | List pagination offset, default 0 | 
 
 ### Return type
 
 [**[]WorkloadEntitlement**](WorkloadEntitlement.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## QueryEntitlements
+
+> GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmWorkloadEntitlement QueryEntitlements(ctx, orgId).PageSize(pageSize).PageNumber(pageNumber).Q(q).S(s).Execute()
+
+query entitlements
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sugerio/suger-sdk-go"
+)
+
+func main() {
+	orgId := "orgId_example" // string | Organization ID
+	pageSize := int32(56) // int32 | Number of items per page (default 20, max 1000) (optional)
+	pageNumber := int32(56) // int32 | Page number (default 1) (optional)
+	q := "q_example" // string | LISP-style filter expression (e.g., '(= status \\ (optional)
+	s := "s_example" // string | Sort fields: 'field:asc,field2:desc' or '-field,field2' format (e.g., 'creation_time:desc,product_id:asc' or '-creation_time,product_id') (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EntitlementAPI.QueryEntitlements(context.Background(), orgId).PageSize(pageSize).PageNumber(pageNumber).Q(q).S(s).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementAPI.QueryEntitlements``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `QueryEntitlements`: GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmWorkloadEntitlement
+	fmt.Fprintf(os.Stdout, "Response from `EntitlementAPI.QueryEntitlements`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiQueryEntitlementsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **pageSize** | **int32** | Number of items per page (default 20, max 1000) | 
+ **pageNumber** | **int32** | Page number (default 1) | 
+ **q** | **string** | LISP-style filter expression (e.g., &#39;(&#x3D; status \\ | 
+ **s** | **string** | Sort fields: &#39;field:asc,field2:desc&#39; or &#39;-field,field2&#39; format (e.g., &#39;creation_time:desc,product_id:asc&#39; or &#39;-creation_time,product_id&#39;) | 
+
+### Return type
+
+[**GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmWorkloadEntitlement**](GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmWorkloadEntitlement.md)
 
 ### Authorization
 

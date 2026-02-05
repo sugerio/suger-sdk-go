@@ -20,27 +20,44 @@ var _ MappedNullable = &ClientDescribeOrderResponseBody{}
 
 // ClientDescribeOrderResponseBody struct for ClientDescribeOrderResponseBody
 type ClientDescribeOrderResponseBody struct {
+	// example:  0
 	AccountQuantity *int32 `json:"AccountQuantity,omitempty"`
+	// example:  190311111111****
 	AliUid *int32 `json:"AliUid,omitempty"`
 	Components map[string]interface{} `json:"Components,omitempty"`
+	// example:  0.0
 	CouponPrice *float32 `json:"CouponPrice,omitempty"`
+	// example:  1531191564000
 	CreatedOn *int32 `json:"CreatedOn,omitempty"`
 	InstanceIds *ClientDescribeOrderResponseBodyInstanceIds `json:"InstanceIds,omitempty"`
+	// example:  202211111111111
 	OrderId *int32 `json:"OrderId,omitempty"`
+	// example:  NORMAL
 	OrderStatus *string `json:"OrderStatus,omitempty"`
+	// example:  NEW
 	OrderType *string `json:"OrderType,omitempty"`
+	// example:  10.0
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty"`
+	// example:  1531191675000
 	PaidOn *int32 `json:"PaidOn,omitempty"`
+	// example:  PAID
 	PayStatus *string `json:"PayStatus,omitempty"`
+	// example:  0.0
 	PaymentPrice *float32 `json:"PaymentPrice,omitempty"`
+	// example:  MONTH
 	PeriodType *string `json:"PeriodType,omitempty"`
+	// example:  cmgj02****
 	ProductCode *string `json:"ProductCode,omitempty"`
 	ProductName *string `json:"ProductName,omitempty"`
+	// example:  cmgj02****-prepay
 	ProductSkuCode *string `json:"ProductSkuCode,omitempty"`
+	// example:  1
 	Quantity *int32 `json:"Quantity,omitempty"`
+	// example:  6EF60BEC-0242-43AF-BB20-270359FB54A7
 	RequestId *string `json:"RequestId,omitempty"`
 	SupplierCompanyName *string `json:"SupplierCompanyName,omitempty"`
 	SupplierTelephones *ClientDescribeOrderResponseBodySupplierTelephones `json:"SupplierTelephones,omitempty"`
+	// example:  0.0
 	TotalPrice *float32 `json:"TotalPrice,omitempty"`
 }
 

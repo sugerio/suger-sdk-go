@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | Pointer to [**NotificationEventAction**](NotificationEventAction.md) | The action of this notification message. | [optional] 
+**BccRecipients** | Pointer to **[]string** |  | [optional] 
 **CcRecipients** | Pointer to **[]string** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** | All other fields | [optional] 
 **HtmlContent** | Pointer to **string** | The HTML content of the email. | [optional] 
-**RccRecipients** | Pointer to **[]string** |  | [optional] 
 **StandardFields** | Pointer to **map[string]interface{}** | The standard fields to render the email content. | [optional] 
 **Subject** | Pointer to **string** |  | [optional] 
 **TextContent** | Pointer to **string** | The text content of the email in case the recipient&#39;s email client does not support HTML. | [optional] 
@@ -56,6 +56,31 @@ SetAction sets Action field to given value.
 `func (o *NotificationMessageInfo) HasAction() bool`
 
 HasAction returns a boolean if a field has been set.
+
+### GetBccRecipients
+
+`func (o *NotificationMessageInfo) GetBccRecipients() []string`
+
+GetBccRecipients returns the BccRecipients field if non-nil, zero value otherwise.
+
+### GetBccRecipientsOk
+
+`func (o *NotificationMessageInfo) GetBccRecipientsOk() (*[]string, bool)`
+
+GetBccRecipientsOk returns a tuple with the BccRecipients field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBccRecipients
+
+`func (o *NotificationMessageInfo) SetBccRecipients(v []string)`
+
+SetBccRecipients sets BccRecipients field to given value.
+
+### HasBccRecipients
+
+`func (o *NotificationMessageInfo) HasBccRecipients() bool`
+
+HasBccRecipients returns a boolean if a field has been set.
 
 ### GetCcRecipients
 
@@ -131,31 +156,6 @@ SetHtmlContent sets HtmlContent field to given value.
 `func (o *NotificationMessageInfo) HasHtmlContent() bool`
 
 HasHtmlContent returns a boolean if a field has been set.
-
-### GetRccRecipients
-
-`func (o *NotificationMessageInfo) GetRccRecipients() []string`
-
-GetRccRecipients returns the RccRecipients field if non-nil, zero value otherwise.
-
-### GetRccRecipientsOk
-
-`func (o *NotificationMessageInfo) GetRccRecipientsOk() (*[]string, bool)`
-
-GetRccRecipientsOk returns a tuple with the RccRecipients field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRccRecipients
-
-`func (o *NotificationMessageInfo) SetRccRecipients(v []string)`
-
-SetRccRecipients sets RccRecipients field to given value.
-
-### HasRccRecipients
-
-`func (o *NotificationMessageInfo) HasRccRecipients() bool`
-
-HasRccRecipients returns a boolean if a field has been set.
 
 ### GetStandardFields
 

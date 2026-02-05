@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AllowedPaymentMethods** | Pointer to **[]string** | Allowed payment methods. Accepted values are CREDIT_CARD, INSTALLMENT. | [optional] 
 **InstallmentSchedule** | Pointer to [**SnowflakeMarketplacePlanInstallmentSchedule**](SnowflakeMarketplacePlanInstallmentSchedule.md) | The installment schedule for the offer. | [optional] 
 **PaymentType** | Pointer to **string** | The pricing plan payment types. Accepted values are INVOICE, CREDIT_CARD, INSTALLMENT. | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewSnowflakeMarketplaceOfferPaymentTermsWithDefaults instantiates a new SnowflakeMarketplaceOfferPaymentTerms object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAllowedPaymentMethods
+
+`func (o *SnowflakeMarketplaceOfferPaymentTerms) GetAllowedPaymentMethods() []string`
+
+GetAllowedPaymentMethods returns the AllowedPaymentMethods field if non-nil, zero value otherwise.
+
+### GetAllowedPaymentMethodsOk
+
+`func (o *SnowflakeMarketplaceOfferPaymentTerms) GetAllowedPaymentMethodsOk() (*[]string, bool)`
+
+GetAllowedPaymentMethodsOk returns a tuple with the AllowedPaymentMethods field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedPaymentMethods
+
+`func (o *SnowflakeMarketplaceOfferPaymentTerms) SetAllowedPaymentMethods(v []string)`
+
+SetAllowedPaymentMethods sets AllowedPaymentMethods field to given value.
+
+### HasAllowedPaymentMethods
+
+`func (o *SnowflakeMarketplaceOfferPaymentTerms) HasAllowedPaymentMethods() bool`
+
+HasAllowedPaymentMethods returns a boolean if a field has been set.
 
 ### GetInstallmentSchedule
 

@@ -1,6 +1,6 @@
 # \NotificationAPI
 
-All URIs are relative to *http://https://api.suger.cloud*
+All URIs are relative to *https://api.suger.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## GetNotificationMessage
 
-> NotificationMessage GetNotificationMessage(ctx, orgId, notificationMessageId).Execute()
+> GithubComSugerioMarketplaceServicePkgOrmNotificationMessage GetNotificationMessage(ctx, orgId, notificationMessageId).Execute()
 
 get notification message
 
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `NotificationAPI.GetNotificationMessage``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetNotificationMessage`: NotificationMessage
+	// response from `GetNotificationMessage`: GithubComSugerioMarketplaceServicePkgOrmNotificationMessage
 	fmt.Fprintf(os.Stdout, "Response from `NotificationAPI.GetNotificationMessage`: %v\n", resp)
 }
 ```
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**NotificationMessage**](NotificationMessage.md)
+[**GithubComSugerioMarketplaceServicePkgOrmNotificationMessage**](GithubComSugerioMarketplaceServicePkgOrmNotificationMessage.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## ListNotificationEvents
 
-> ListNotificationEventsResponse ListNotificationEvents(ctx, orgId).StartDate(startDate).EndDate(endDate).Limit(limit).Offset(offset).Priorities(priorities).Execute()
+> ListNotificationEventsResponse ListNotificationEvents(ctx, orgId).StartDate(startDate).EndDate(endDate).Limit(limit).Offset(offset).Priorities(priorities).Message(message).Execute()
 
 list notification events
 
@@ -111,10 +111,11 @@ func main() {
 	limit := int32(56) // int32 | List pagination size, default 1000, max value is 1000 (optional)
 	offset := int32(56) // int32 | List pagination offset, default 0 (optional)
 	priorities := "priorities_example" // string | Filter by priorities, empty means HIGH and CRITICAL only. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma. (optional)
+	message := "message_example" // string | Filter by event message containing the specified string, case-insensitive. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NotificationAPI.ListNotificationEvents(context.Background(), orgId).StartDate(startDate).EndDate(endDate).Limit(limit).Offset(offset).Priorities(priorities).Execute()
+	resp, r, err := apiClient.NotificationAPI.ListNotificationEvents(context.Background(), orgId).StartDate(startDate).EndDate(endDate).Limit(limit).Offset(offset).Priorities(priorities).Message(message).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `NotificationAPI.ListNotificationEvents``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,6 +146,7 @@ Name | Type | Description  | Notes
  **limit** | **int32** | List pagination size, default 1000, max value is 1000 | 
  **offset** | **int32** | List pagination offset, default 0 | 
  **priorities** | **string** | Filter by priorities, empty means HIGH and CRITICAL only. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma. | 
+ **message** | **string** | Filter by event message containing the specified string, case-insensitive. | 
 
 ### Return type
 
@@ -246,7 +248,7 @@ Name | Type | Description  | Notes
 
 ## ListNotificationMessages
 
-> ListNotificationMessagesResponse ListNotificationMessages(ctx, orgId).Limit(limit).Offset(offset).Execute()
+> ListNotificationMessagesResponse ListNotificationMessages(ctx, orgId).Limit(limit).Keyword(keyword).Offset(offset).Execute()
 
 list notification messages
 
@@ -267,11 +269,12 @@ import (
 func main() {
 	orgId := "orgId_example" // string | Organization ID
 	limit := int32(56) // int32 | List pagination size, default 1000, max value is 1000 (optional)
+	keyword := "keyword_example" // string | Keyword to search in subject/content (optional)
 	offset := int32(56) // int32 | List pagination offset, default 0 (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.NotificationAPI.ListNotificationMessages(context.Background(), orgId).Limit(limit).Offset(offset).Execute()
+	resp, r, err := apiClient.NotificationAPI.ListNotificationMessages(context.Background(), orgId).Limit(limit).Keyword(keyword).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `NotificationAPI.ListNotificationMessages``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -298,6 +301,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **limit** | **int32** | List pagination size, default 1000, max value is 1000 | 
+ **keyword** | **string** | Keyword to search in subject/content | 
  **offset** | **int32** | List pagination offset, default 0 | 
 
 ### Return type

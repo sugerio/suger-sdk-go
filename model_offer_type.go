@@ -41,6 +41,7 @@ const (
 	OfferType_PER_USER OfferType = "PER_USER"
 	OfferType_PRIVATE OfferType = "PRIVATE"
 	OfferType_PROFESSIONAL_SERVICES OfferType = "PROFESSIONAL_SERVICES"
+	OfferType_SAAS OfferType = "SAAS"
 	OfferType_SUBSCRIPTION OfferType = "SUBSCRIPTION"
 	OfferType_MACHINE_LEARNING OfferType = "MACHINE_LEARNING"
 )
@@ -67,6 +68,7 @@ var AllowedOfferTypeEnumValues = []OfferType{
 	"PER_USER",
 	"PRIVATE",
 	"PROFESSIONAL_SERVICES",
+	"SAAS",
 	"SUBSCRIPTION",
 	"MACHINE_LEARNING",
 }

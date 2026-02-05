@@ -22,7 +22,7 @@ var _ MappedNullable = &AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoft
 type AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation struct {
 	PaymentSchedule *AzureMarketplaceTerm `json:"paymentSchedule,omitempty"`
 	ReservationDuration *AzureMarketplaceTerm `json:"reservationDuration,omitempty"`
-	VmPrices *AzureMarketplaceVmPrice `json:"vmPrices,omitempty"`
+	VmPrices *map[string]AzureMarketplaceVmPricePropertyItem `json:"vmPrices,omitempty"`
 }
 
 // NewAzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation instantiates a new AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation object
@@ -107,9 +107,9 @@ func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation
 }
 
 // GetVmPrices returns the VmPrices field value if set, zero value otherwise.
-func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation) GetVmPrices() AzureMarketplaceVmPrice {
+func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation) GetVmPrices() map[string]AzureMarketplaceVmPricePropertyItem {
 	if o == nil || IsNil(o.VmPrices) {
-		var ret AzureMarketplaceVmPrice
+		var ret map[string]AzureMarketplaceVmPricePropertyItem
 		return ret
 	}
 	return *o.VmPrices
@@ -117,7 +117,7 @@ func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation
 
 // GetVmPricesOk returns a tuple with the VmPrices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation) GetVmPricesOk() (*AzureMarketplaceVmPrice, bool) {
+func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation) GetVmPricesOk() (*map[string]AzureMarketplaceVmPricePropertyItem, bool) {
 	if o == nil || IsNil(o.VmPrices) {
 		return nil, false
 	}
@@ -133,8 +133,8 @@ func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation
 	return false
 }
 
-// SetVmPrices gets a reference to the given AzureMarketplaceVmPrice and assigns it to the VmPrices field.
-func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation) SetVmPrices(v AzureMarketplaceVmPrice) {
+// SetVmPrices gets a reference to the given map[string]AzureMarketplaceVmPricePropertyItem and assigns it to the VmPrices field.
+func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation) SetVmPrices(v map[string]AzureMarketplaceVmPricePropertyItem) {
 	o.VmPrices = &v
 }
 

@@ -25,9 +25,11 @@ Name | Type | Description | Notes
 **LastSubmittedOn** | Pointer to **string** |  | [optional] 
 **ListingType** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to [**SnowflakeMarketplaceProductMetadata**](SnowflakeMarketplaceProductMetadata.md) |  | [optional] 
+**MonetizationVersion** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **PricingPlans** | Pointer to [**[]SnowflakeMarketplaceProductPricingPlan**](SnowflakeMarketplaceProductPricingPlan.md) |  | [optional] 
 **Private** | Pointer to **bool** |  | [optional] 
+**ProductTypes** | Pointer to [**[]SnowflakeMarketplaceProductType**](SnowflakeMarketplaceProductType.md) |  | [optional] 
 **ProfileName** | Pointer to **string** |  | [optional] 
 **PublishOnApproval** | Pointer to **bool** |  | [optional] 
 **Regions** | Pointer to **string** |  | [optional] 
@@ -587,6 +589,31 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
+### GetMonetizationVersion
+
+`func (o *SnowflakeMarketplaceProduct) GetMonetizationVersion() string`
+
+GetMonetizationVersion returns the MonetizationVersion field if non-nil, zero value otherwise.
+
+### GetMonetizationVersionOk
+
+`func (o *SnowflakeMarketplaceProduct) GetMonetizationVersionOk() (*string, bool)`
+
+GetMonetizationVersionOk returns a tuple with the MonetizationVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMonetizationVersion
+
+`func (o *SnowflakeMarketplaceProduct) SetMonetizationVersion(v string)`
+
+SetMonetizationVersion sets MonetizationVersion field to given value.
+
+### HasMonetizationVersion
+
+`func (o *SnowflakeMarketplaceProduct) HasMonetizationVersion() bool`
+
+HasMonetizationVersion returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *SnowflakeMarketplaceProduct) GetName() string`
@@ -661,6 +688,31 @@ SetPrivate sets Private field to given value.
 `func (o *SnowflakeMarketplaceProduct) HasPrivate() bool`
 
 HasPrivate returns a boolean if a field has been set.
+
+### GetProductTypes
+
+`func (o *SnowflakeMarketplaceProduct) GetProductTypes() []SnowflakeMarketplaceProductType`
+
+GetProductTypes returns the ProductTypes field if non-nil, zero value otherwise.
+
+### GetProductTypesOk
+
+`func (o *SnowflakeMarketplaceProduct) GetProductTypesOk() (*[]SnowflakeMarketplaceProductType, bool)`
+
+GetProductTypesOk returns a tuple with the ProductTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProductTypes
+
+`func (o *SnowflakeMarketplaceProduct) SetProductTypes(v []SnowflakeMarketplaceProductType)`
+
+SetProductTypes sets ProductTypes field to given value.
+
+### HasProductTypes
+
+`func (o *SnowflakeMarketplaceProduct) HasProductTypes() bool`
+
+HasProductTypes returns a boolean if a field has been set.
 
 ### GetProfileName
 

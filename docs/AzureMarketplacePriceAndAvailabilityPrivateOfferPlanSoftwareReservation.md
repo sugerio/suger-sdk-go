@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PaymentSchedule** | Pointer to [**AzureMarketplaceTerm**](AzureMarketplaceTerm.md) |  | [optional] 
 **ReservationDuration** | Pointer to [**AzureMarketplaceTerm**](AzureMarketplaceTerm.md) |  | [optional] 
-**VmPrices** | Pointer to [**AzureMarketplaceVmPrice**](AzureMarketplaceVmPrice.md) |  | [optional] 
+**VmPrices** | Pointer to [**map[string]AzureMarketplaceVmPricePropertyItem**](AzureMarketplaceVmPricePropertyItem.md) |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasReservationDuration returns a boolean if a field has been set.
 
 ### GetVmPrices
 
-`func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation) GetVmPrices() AzureMarketplaceVmPrice`
+`func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation) GetVmPrices() map[string]AzureMarketplaceVmPricePropertyItem`
 
 GetVmPrices returns the VmPrices field if non-nil, zero value otherwise.
 
 ### GetVmPricesOk
 
-`func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation) GetVmPricesOk() (*AzureMarketplaceVmPrice, bool)`
+`func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation) GetVmPricesOk() (*map[string]AzureMarketplaceVmPricePropertyItem, bool)`
 
 GetVmPricesOk returns a tuple with the VmPrices field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVmPrices
 
-`func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation) SetVmPrices(v AzureMarketplaceVmPrice)`
+`func (o *AzureMarketplacePriceAndAvailabilityPrivateOfferPlanSoftwareReservation) SetVmPrices(v map[string]AzureMarketplaceVmPricePropertyItem)`
 
 SetVmPrices sets VmPrices field to given value.
 

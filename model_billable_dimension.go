@@ -32,7 +32,7 @@ type BillableDimension struct {
 	Length *int32 `json:"length,omitempty"`
 	// The minimum commit amount. Applicable to Direct only. Ignored if the value is 0 or less.
 	MinimumCommit *float32 `json:"minimumCommit,omitempty"`
-	// If the minimum commit is appled with pro-rata. Applicable to Direct only. If true, the minimum commit amount will be prorated based on the usage period (starting time and ending time).
+	// MinimumCommitProrata enables pro-rated minimum commit billing. Applicable to Direct only. If true, the minimum commit amount will be prorated based on the entitlement period. For example, if an entitlement is only active for 10 days of a monthly billing period, only 10/30 of the minimum commit amount will be charged.
 	MinimumCommitProrata *bool `json:"minimumCommitProrata,omitempty"`
 	// The minimum commit scope. The default value is \"DIMENSION\" if not set.
 	MinimumCommitScope *BillingMinimumCommitScope `json:"minimumCommitScope,omitempty"`

@@ -37,13 +37,17 @@ type SnowflakeMarketplaceOffer struct {
 	IsDefault *bool `json:"is_default,omitempty"`
 	Name *string `json:"name,omitempty"`
 	PaymentTerms *SnowflakeMarketplaceOfferPaymentTerms `json:"payment_terms,omitempty"`
+	// The overrides for the one time offer. It doesn't have pricing plan name
+	PricingPlanDetails *SnowflakeMarketplaceOfferPricingPlanDetails `json:"pricing_plan_details,omitempty"`
 	PricingPlanName *string `json:"pricing_plan_name,omitempty"`
+	SalesMotion *string `json:"sales_motion,omitempty"`
 	State *string `json:"state,omitempty"`
 	StateUpdatedOn *string `json:"state_updated_on,omitempty"`
 	TargetConsumer *string `json:"target_consumer,omitempty"`
 	// terms of service: {\"type\":\"DEFAULT\"}
 	TermsOfService *SnowflakeMarketplaceOfferTermsOfService `json:"terms_of_service,omitempty"`
 	UpdatedOn *string `json:"updated_on,omitempty"`
+	Version *string `json:"version,omitempty"`
 }
 
 // NewSnowflakeMarketplaceOffer instantiates a new SnowflakeMarketplaceOffer object
@@ -575,6 +579,38 @@ func (o *SnowflakeMarketplaceOffer) SetPaymentTerms(v SnowflakeMarketplaceOfferP
 	o.PaymentTerms = &v
 }
 
+// GetPricingPlanDetails returns the PricingPlanDetails field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceOffer) GetPricingPlanDetails() SnowflakeMarketplaceOfferPricingPlanDetails {
+	if o == nil || IsNil(o.PricingPlanDetails) {
+		var ret SnowflakeMarketplaceOfferPricingPlanDetails
+		return ret
+	}
+	return *o.PricingPlanDetails
+}
+
+// GetPricingPlanDetailsOk returns a tuple with the PricingPlanDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceOffer) GetPricingPlanDetailsOk() (*SnowflakeMarketplaceOfferPricingPlanDetails, bool) {
+	if o == nil || IsNil(o.PricingPlanDetails) {
+		return nil, false
+	}
+	return o.PricingPlanDetails, true
+}
+
+// HasPricingPlanDetails returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceOffer) HasPricingPlanDetails() bool {
+	if o != nil && !IsNil(o.PricingPlanDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetPricingPlanDetails gets a reference to the given SnowflakeMarketplaceOfferPricingPlanDetails and assigns it to the PricingPlanDetails field.
+func (o *SnowflakeMarketplaceOffer) SetPricingPlanDetails(v SnowflakeMarketplaceOfferPricingPlanDetails) {
+	o.PricingPlanDetails = &v
+}
+
 // GetPricingPlanName returns the PricingPlanName field value if set, zero value otherwise.
 func (o *SnowflakeMarketplaceOffer) GetPricingPlanName() string {
 	if o == nil || IsNil(o.PricingPlanName) {
@@ -605,6 +641,38 @@ func (o *SnowflakeMarketplaceOffer) HasPricingPlanName() bool {
 // SetPricingPlanName gets a reference to the given string and assigns it to the PricingPlanName field.
 func (o *SnowflakeMarketplaceOffer) SetPricingPlanName(v string) {
 	o.PricingPlanName = &v
+}
+
+// GetSalesMotion returns the SalesMotion field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceOffer) GetSalesMotion() string {
+	if o == nil || IsNil(o.SalesMotion) {
+		var ret string
+		return ret
+	}
+	return *o.SalesMotion
+}
+
+// GetSalesMotionOk returns a tuple with the SalesMotion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceOffer) GetSalesMotionOk() (*string, bool) {
+	if o == nil || IsNil(o.SalesMotion) {
+		return nil, false
+	}
+	return o.SalesMotion, true
+}
+
+// HasSalesMotion returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceOffer) HasSalesMotion() bool {
+	if o != nil && !IsNil(o.SalesMotion) {
+		return true
+	}
+
+	return false
+}
+
+// SetSalesMotion gets a reference to the given string and assigns it to the SalesMotion field.
+func (o *SnowflakeMarketplaceOffer) SetSalesMotion(v string) {
+	o.SalesMotion = &v
 }
 
 // GetState returns the State field value if set, zero value otherwise.
@@ -767,6 +835,38 @@ func (o *SnowflakeMarketplaceOffer) SetUpdatedOn(v string) {
 	o.UpdatedOn = &v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *SnowflakeMarketplaceOffer) GetVersion() string {
+	if o == nil || IsNil(o.Version) {
+		var ret string
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnowflakeMarketplaceOffer) GetVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.Version) {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *SnowflakeMarketplaceOffer) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
+func (o *SnowflakeMarketplaceOffer) SetVersion(v string) {
+	o.Version = &v
+}
+
 func (o SnowflakeMarketplaceOffer) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -825,8 +925,14 @@ func (o SnowflakeMarketplaceOffer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PaymentTerms) {
 		toSerialize["payment_terms"] = o.PaymentTerms
 	}
+	if !IsNil(o.PricingPlanDetails) {
+		toSerialize["pricing_plan_details"] = o.PricingPlanDetails
+	}
 	if !IsNil(o.PricingPlanName) {
 		toSerialize["pricing_plan_name"] = o.PricingPlanName
+	}
+	if !IsNil(o.SalesMotion) {
+		toSerialize["sales_motion"] = o.SalesMotion
 	}
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
@@ -842,6 +948,9 @@ func (o SnowflakeMarketplaceOffer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UpdatedOn) {
 		toSerialize["updated_on"] = o.UpdatedOn
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	return toSerialize, nil
 }

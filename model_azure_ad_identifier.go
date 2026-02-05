@@ -32,6 +32,9 @@ type AzureADIdentifier struct {
 	ObjectId *string `json:"objectId,omitempty"`
 	// ID of the user, used as External ID of suger IdentityBuyer.
 	Puid *string `json:"puid,omitempty"`
+	// Azure MPO seller ID
+	SellerId *string `json:"sellerId,omitempty"`
+	// The Azure Active Directory Tenant ID of the buyer or the reseller partner ID (the same as TenantId).
 	TenantId *string `json:"tenantId,omitempty"`
 }
 
@@ -308,6 +311,38 @@ func (o *AzureADIdentifier) SetPuid(v string) {
 	o.Puid = &v
 }
 
+// GetSellerId returns the SellerId field value if set, zero value otherwise.
+func (o *AzureADIdentifier) GetSellerId() string {
+	if o == nil || IsNil(o.SellerId) {
+		var ret string
+		return ret
+	}
+	return *o.SellerId
+}
+
+// GetSellerIdOk returns a tuple with the SellerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureADIdentifier) GetSellerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.SellerId) {
+		return nil, false
+	}
+	return o.SellerId, true
+}
+
+// HasSellerId returns a boolean if a field has been set.
+func (o *AzureADIdentifier) HasSellerId() bool {
+	if o != nil && !IsNil(o.SellerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSellerId gets a reference to the given string and assigns it to the SellerId field.
+func (o *AzureADIdentifier) SetSellerId(v string) {
+	o.SellerId = &v
+}
+
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *AzureADIdentifier) GetTenantId() string {
 	if o == nil || IsNil(o.TenantId) {
@@ -373,6 +408,9 @@ func (o AzureADIdentifier) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Puid) {
 		toSerialize["puid"] = o.Puid
+	}
+	if !IsNil(o.SellerId) {
+		toSerialize["sellerId"] = o.SellerId
 	}
 	if !IsNil(o.TenantId) {
 		toSerialize["tenantId"] = o.TenantId

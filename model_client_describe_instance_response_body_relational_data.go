@@ -20,6 +20,7 @@ var _ MappedNullable = &ClientDescribeInstanceResponseBodyRelationalData{}
 
 // ClientDescribeInstanceResponseBodyRelationalData struct for ClientDescribeInstanceResponseBodyRelationalData
 type ClientDescribeInstanceResponseBodyRelationalData struct {
+	// example:  STARTED
 	ServiceStatus *string `json:"ServiceStatus,omitempty"`
 }
 

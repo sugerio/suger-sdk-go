@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BillingFrequency** | Pointer to [**AzureMarketplaceTerm**](AzureMarketplaceTerm.md) | billingFrequency defines the frequency of the billing for recurring price. | [optional] 
 **BillingTerm** | Pointer to [**AzureMarketplaceTerm**](AzureMarketplaceTerm.md) |  | [optional] 
-**ContractDuration** | Pointer to [**AzureMarketplaceTerm**](AzureMarketplaceTerm.md) | contractDuration defines the duration of the contract, should always be “year” with value 1 or 2 or 3 | [optional] 
+**ContractDuration** | Pointer to [**AzureMarketplaceTerm**](AzureMarketplaceTerm.md) | contractDuration defines the duration of the contract, should always be \&quot;year\&quot; with value 1 or 2 or 3 | [optional] 
 **FlexibleSchedule** | Pointer to [**AzureMarketplacePriceFlexibleSchedule**](AzureMarketplacePriceFlexibleSchedule.md) | flexibleSchedule defines the payment installments for flexible billing. | [optional] 
 **PaymentOption** | Pointer to [**AzureMarketplaceTerm**](AzureMarketplaceTerm.md) |  | [optional] 
-**PricePerPaymentInUsd** | Pointer to **float32** |  | [optional] 
+**PricePerPaymentInUsd** | Pointer to **float32** | Using omitempty | [optional] 
 **Prices** | Pointer to [**[]AzureMarketplacePrice**](AzureMarketplacePrice.md) |  | [optional] 
 
 ## Methods

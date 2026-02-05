@@ -41,10 +41,14 @@ type OfferInfo struct {
 	AwsMachineLearningContractDuration *int32 `json:"awsMachineLearningContractDuration,omitempty"`
 	// AWS private reseller offer using markup percentage. 10.0 represent 10% partner margin.
 	AwsMarkupPercentage *float32 `json:"awsMarkupPercentage,omitempty"`
+	// For AWS Offer Set feature. If this offer is linked to an offer set, save the OfferSet ID in this field. An offer set is a collection of offers that can be shared with a customer.
+	AwsOfferSetId *string `json:"awsOfferSetId,omitempty"`
 	// AWS ResaleAuthorizationId(CPPO_IN offer id) for CPPO offers of the reseller.
 	AwsResaleAuthorizationId *string `json:"awsResaleAuthorizationId,omitempty"`
 	// The origin pricing of Azure plan. Only applicable for Azure Marketplace plans.
 	AzureOriginalPlan *AzureMarketplacePriceAndAvailabilityPrivateOfferPlan `json:"azureOriginalPlan,omitempty"`
+	// All software reservation billing term options from the Azure plan (e.g., monthly, 1-year, 3-year with different discounts). Only applicable for Azure Marketplace VM offers with software reservations.
+	AzurePlanSoftwareReservations []AzureMarketplacePriceAndAvailabilitySoftwareReservation `json:"azurePlanSoftwareReservations,omitempty"`
 	// The private offer for Azure Marketplace. Only applicable for Azure Marketplace private offers.
 	AzurePrivateOffer *AzureMarketplacePrivateOffer `json:"azurePrivateOffer,omitempty"`
 	// For Azure marketplace only.
@@ -81,6 +85,8 @@ type OfferInfo struct {
 	GcpCustomerInfo *GcpMarketplacePrivateOfferCustomerInfo `json:"gcpCustomerInfo,omitempty"`
 	// The duration of the offer in months. Only required when creating GCP Marketplace private offer.
 	GcpDuration *int32 `json:"gcpDuration,omitempty"`
+	// Optional when creating GCP Marketplace private offer. Custom feature values to set for the private offer. Each feature name must exist in the product's feature list. The feature list is available at product.Info.GcpProduct.ListingSpec.PurchaseSpec.Features.
+	GcpFeatures []GcpMarketplaceProductFeatureValue `json:"gcpFeatures,omitempty"`
 	// Only applicable for GCP Marketplace Offers (the default or private offer)
 	GcpMetrics []GcpMarketplaceProductMeteringMetric `json:"gcpMetrics,omitempty"`
 	// Optional when creating GCP Marketplace private offer and replacement offer.
@@ -476,6 +482,38 @@ func (o *OfferInfo) SetAwsMarkupPercentage(v float32) {
 	o.AwsMarkupPercentage = &v
 }
 
+// GetAwsOfferSetId returns the AwsOfferSetId field value if set, zero value otherwise.
+func (o *OfferInfo) GetAwsOfferSetId() string {
+	if o == nil || IsNil(o.AwsOfferSetId) {
+		var ret string
+		return ret
+	}
+	return *o.AwsOfferSetId
+}
+
+// GetAwsOfferSetIdOk returns a tuple with the AwsOfferSetId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OfferInfo) GetAwsOfferSetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsOfferSetId) {
+		return nil, false
+	}
+	return o.AwsOfferSetId, true
+}
+
+// HasAwsOfferSetId returns a boolean if a field has been set.
+func (o *OfferInfo) HasAwsOfferSetId() bool {
+	if o != nil && !IsNil(o.AwsOfferSetId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsOfferSetId gets a reference to the given string and assigns it to the AwsOfferSetId field.
+func (o *OfferInfo) SetAwsOfferSetId(v string) {
+	o.AwsOfferSetId = &v
+}
+
 // GetAwsResaleAuthorizationId returns the AwsResaleAuthorizationId field value if set, zero value otherwise.
 func (o *OfferInfo) GetAwsResaleAuthorizationId() string {
 	if o == nil || IsNil(o.AwsResaleAuthorizationId) {
@@ -538,6 +576,38 @@ func (o *OfferInfo) HasAzureOriginalPlan() bool {
 // SetAzureOriginalPlan gets a reference to the given AzureMarketplacePriceAndAvailabilityPrivateOfferPlan and assigns it to the AzureOriginalPlan field.
 func (o *OfferInfo) SetAzureOriginalPlan(v AzureMarketplacePriceAndAvailabilityPrivateOfferPlan) {
 	o.AzureOriginalPlan = &v
+}
+
+// GetAzurePlanSoftwareReservations returns the AzurePlanSoftwareReservations field value if set, zero value otherwise.
+func (o *OfferInfo) GetAzurePlanSoftwareReservations() []AzureMarketplacePriceAndAvailabilitySoftwareReservation {
+	if o == nil || IsNil(o.AzurePlanSoftwareReservations) {
+		var ret []AzureMarketplacePriceAndAvailabilitySoftwareReservation
+		return ret
+	}
+	return o.AzurePlanSoftwareReservations
+}
+
+// GetAzurePlanSoftwareReservationsOk returns a tuple with the AzurePlanSoftwareReservations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OfferInfo) GetAzurePlanSoftwareReservationsOk() ([]AzureMarketplacePriceAndAvailabilitySoftwareReservation, bool) {
+	if o == nil || IsNil(o.AzurePlanSoftwareReservations) {
+		return nil, false
+	}
+	return o.AzurePlanSoftwareReservations, true
+}
+
+// HasAzurePlanSoftwareReservations returns a boolean if a field has been set.
+func (o *OfferInfo) HasAzurePlanSoftwareReservations() bool {
+	if o != nil && !IsNil(o.AzurePlanSoftwareReservations) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzurePlanSoftwareReservations gets a reference to the given []AzureMarketplacePriceAndAvailabilitySoftwareReservation and assigns it to the AzurePlanSoftwareReservations field.
+func (o *OfferInfo) SetAzurePlanSoftwareReservations(v []AzureMarketplacePriceAndAvailabilitySoftwareReservation) {
+	o.AzurePlanSoftwareReservations = v
 }
 
 // GetAzurePrivateOffer returns the AzurePrivateOffer field value if set, zero value otherwise.
@@ -1146,6 +1216,38 @@ func (o *OfferInfo) HasGcpDuration() bool {
 // SetGcpDuration gets a reference to the given int32 and assigns it to the GcpDuration field.
 func (o *OfferInfo) SetGcpDuration(v int32) {
 	o.GcpDuration = &v
+}
+
+// GetGcpFeatures returns the GcpFeatures field value if set, zero value otherwise.
+func (o *OfferInfo) GetGcpFeatures() []GcpMarketplaceProductFeatureValue {
+	if o == nil || IsNil(o.GcpFeatures) {
+		var ret []GcpMarketplaceProductFeatureValue
+		return ret
+	}
+	return o.GcpFeatures
+}
+
+// GetGcpFeaturesOk returns a tuple with the GcpFeatures field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OfferInfo) GetGcpFeaturesOk() ([]GcpMarketplaceProductFeatureValue, bool) {
+	if o == nil || IsNil(o.GcpFeatures) {
+		return nil, false
+	}
+	return o.GcpFeatures, true
+}
+
+// HasGcpFeatures returns a boolean if a field has been set.
+func (o *OfferInfo) HasGcpFeatures() bool {
+	if o != nil && !IsNil(o.GcpFeatures) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpFeatures gets a reference to the given []GcpMarketplaceProductFeatureValue and assigns it to the GcpFeatures field.
+func (o *OfferInfo) SetGcpFeatures(v []GcpMarketplaceProductFeatureValue) {
+	o.GcpFeatures = v
 }
 
 // GetGcpMetrics returns the GcpMetrics field value if set, zero value otherwise.
@@ -2148,11 +2250,17 @@ func (o OfferInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AwsMarkupPercentage) {
 		toSerialize["awsMarkupPercentage"] = o.AwsMarkupPercentage
 	}
+	if !IsNil(o.AwsOfferSetId) {
+		toSerialize["awsOfferSetId"] = o.AwsOfferSetId
+	}
 	if !IsNil(o.AwsResaleAuthorizationId) {
 		toSerialize["awsResaleAuthorizationId"] = o.AwsResaleAuthorizationId
 	}
 	if !IsNil(o.AzureOriginalPlan) {
 		toSerialize["azureOriginalPlan"] = o.AzureOriginalPlan
+	}
+	if !IsNil(o.AzurePlanSoftwareReservations) {
+		toSerialize["azurePlanSoftwareReservations"] = o.AzurePlanSoftwareReservations
 	}
 	if !IsNil(o.AzurePrivateOffer) {
 		toSerialize["azurePrivateOffer"] = o.AzurePrivateOffer
@@ -2210,6 +2318,9 @@ func (o OfferInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GcpDuration) {
 		toSerialize["gcpDuration"] = o.GcpDuration
+	}
+	if !IsNil(o.GcpFeatures) {
+		toSerialize["gcpFeatures"] = o.GcpFeatures
 	}
 	if !IsNil(o.GcpMetrics) {
 		toSerialize["gcpMetrics"] = o.GcpMetrics

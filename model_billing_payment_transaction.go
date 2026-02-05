@@ -26,6 +26,7 @@ type BillingPaymentTransaction struct {
 	CreationTime *time.Time `json:"creationTime,omitempty"`
 	Currency *string `json:"currency,omitempty"`
 	EntitlementID *string `json:"entitlementID,omitempty"`
+	ExternalID *string `json:"externalID,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Info *BillingPaymentTransactionInfo `json:"info,omitempty"`
 	InvoiceID *string `json:"invoiceID,omitempty"`
@@ -33,6 +34,8 @@ type BillingPaymentTransaction struct {
 	OrganizationID *string `json:"organizationID,omitempty"`
 	ParentID *string `json:"parentID,omitempty"`
 	Partner *Partner `json:"partner,omitempty"`
+	PaymentMethodDescription *string `json:"paymentMethodDescription,omitempty"`
+	PaymentMethodType *string `json:"paymentMethodType,omitempty"`
 	Status *BillingPaymentStatus `json:"status,omitempty"`
 	Type *BillingPaymentTransactionType `json:"type,omitempty"`
 	WalletID *string `json:"walletID,omitempty"`
@@ -214,6 +217,38 @@ func (o *BillingPaymentTransaction) HasEntitlementID() bool {
 // SetEntitlementID gets a reference to the given string and assigns it to the EntitlementID field.
 func (o *BillingPaymentTransaction) SetEntitlementID(v string) {
 	o.EntitlementID = &v
+}
+
+// GetExternalID returns the ExternalID field value if set, zero value otherwise.
+func (o *BillingPaymentTransaction) GetExternalID() string {
+	if o == nil || IsNil(o.ExternalID) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalID
+}
+
+// GetExternalIDOk returns a tuple with the ExternalID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingPaymentTransaction) GetExternalIDOk() (*string, bool) {
+	if o == nil || IsNil(o.ExternalID) {
+		return nil, false
+	}
+	return o.ExternalID, true
+}
+
+// HasExternalID returns a boolean if a field has been set.
+func (o *BillingPaymentTransaction) HasExternalID() bool {
+	if o != nil && !IsNil(o.ExternalID) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalID gets a reference to the given string and assigns it to the ExternalID field.
+func (o *BillingPaymentTransaction) SetExternalID(v string) {
+	o.ExternalID = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -440,6 +475,70 @@ func (o *BillingPaymentTransaction) SetPartner(v Partner) {
 	o.Partner = &v
 }
 
+// GetPaymentMethodDescription returns the PaymentMethodDescription field value if set, zero value otherwise.
+func (o *BillingPaymentTransaction) GetPaymentMethodDescription() string {
+	if o == nil || IsNil(o.PaymentMethodDescription) {
+		var ret string
+		return ret
+	}
+	return *o.PaymentMethodDescription
+}
+
+// GetPaymentMethodDescriptionOk returns a tuple with the PaymentMethodDescription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingPaymentTransaction) GetPaymentMethodDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.PaymentMethodDescription) {
+		return nil, false
+	}
+	return o.PaymentMethodDescription, true
+}
+
+// HasPaymentMethodDescription returns a boolean if a field has been set.
+func (o *BillingPaymentTransaction) HasPaymentMethodDescription() bool {
+	if o != nil && !IsNil(o.PaymentMethodDescription) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentMethodDescription gets a reference to the given string and assigns it to the PaymentMethodDescription field.
+func (o *BillingPaymentTransaction) SetPaymentMethodDescription(v string) {
+	o.PaymentMethodDescription = &v
+}
+
+// GetPaymentMethodType returns the PaymentMethodType field value if set, zero value otherwise.
+func (o *BillingPaymentTransaction) GetPaymentMethodType() string {
+	if o == nil || IsNil(o.PaymentMethodType) {
+		var ret string
+		return ret
+	}
+	return *o.PaymentMethodType
+}
+
+// GetPaymentMethodTypeOk returns a tuple with the PaymentMethodType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingPaymentTransaction) GetPaymentMethodTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.PaymentMethodType) {
+		return nil, false
+	}
+	return o.PaymentMethodType, true
+}
+
+// HasPaymentMethodType returns a boolean if a field has been set.
+func (o *BillingPaymentTransaction) HasPaymentMethodType() bool {
+	if o != nil && !IsNil(o.PaymentMethodType) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentMethodType gets a reference to the given string and assigns it to the PaymentMethodType field.
+func (o *BillingPaymentTransaction) SetPaymentMethodType(v string) {
+	o.PaymentMethodType = &v
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *BillingPaymentTransaction) GetStatus() BillingPaymentStatus {
 	if o == nil || IsNil(o.Status) {
@@ -593,6 +692,9 @@ func (o BillingPaymentTransaction) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EntitlementID) {
 		toSerialize["entitlementID"] = o.EntitlementID
 	}
+	if !IsNil(o.ExternalID) {
+		toSerialize["externalID"] = o.ExternalID
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
@@ -613,6 +715,12 @@ func (o BillingPaymentTransaction) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Partner) {
 		toSerialize["partner"] = o.Partner
+	}
+	if !IsNil(o.PaymentMethodDescription) {
+		toSerialize["paymentMethodDescription"] = o.PaymentMethodDescription
+	}
+	if !IsNil(o.PaymentMethodType) {
+		toSerialize["paymentMethodType"] = o.PaymentMethodType
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status

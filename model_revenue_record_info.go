@@ -27,9 +27,15 @@ type RevenueRecordInfo struct {
 	// The bank trace ID of the revenue record if applicable
 	BankTraceId *string `json:"bankTraceId,omitempty"`
 	// The billing model of the revenue record if applicable The value is one of the following: - SubscriptionBased: The revenue record is from a subscription or recurring commitment. - UsageBased: The revenue record is from a usage-based metering.
-	BillingModel *string `json:"billingModel,omitempty"`
+	BillingModel *RevenueBillingModel `json:"billingModel,omitempty"`
 	// The channel of revenue record.
 	Channel *RevenueChannel `json:"channel,omitempty"`
+	// The Chargebee invoice ID for this revenue record if synced to Chargebee
+	ChargebeeInvoiceId *string `json:"chargebeeInvoiceId,omitempty"`
+	// The Chargebee payment transaction ID for this revenue record if a payment was recorded in Chargebee
+	ChargebeePaymentTransactionId *string `json:"chargebeePaymentTransactionId,omitempty"`
+	// The Chargebee refund transaction ID for this revenue record if a refund was recorded in Chargebee
+	ChargebeeRefundTransactionId *string `json:"chargebeeRefundTransactionId,omitempty"`
 	// The credit amount used in the revenue record.
 	CreditAmount *float32 `json:"creditAmount,omitempty"`
 	// The disbursement ID of the revenue record if applicable
@@ -42,6 +48,8 @@ type RevenueRecordInfo struct {
 	GcpRevenueRecords []GithubComSugerioMarketplaceServicePkgLegacyRdsDbLibBillingGcpChargeUsage `json:"gcpRevenueRecords,omitempty"`
 	// Source of the revenue record ID.
 	IdSource *string `json:"idSource,omitempty"`
+	// The invoice ID of the revenue record if applicable
+	InvoiceId *string `json:"invoiceId,omitempty"`
 	// The payment  ID of the revenue record if applicable
 	PaymentId *string `json:"paymentId,omitempty"`
 	// The reseller ID of the revenue record if applicable
@@ -166,9 +174,9 @@ func (o *RevenueRecordInfo) SetBankTraceId(v string) {
 }
 
 // GetBillingModel returns the BillingModel field value if set, zero value otherwise.
-func (o *RevenueRecordInfo) GetBillingModel() string {
+func (o *RevenueRecordInfo) GetBillingModel() RevenueBillingModel {
 	if o == nil || IsNil(o.BillingModel) {
-		var ret string
+		var ret RevenueBillingModel
 		return ret
 	}
 	return *o.BillingModel
@@ -176,7 +184,7 @@ func (o *RevenueRecordInfo) GetBillingModel() string {
 
 // GetBillingModelOk returns a tuple with the BillingModel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RevenueRecordInfo) GetBillingModelOk() (*string, bool) {
+func (o *RevenueRecordInfo) GetBillingModelOk() (*RevenueBillingModel, bool) {
 	if o == nil || IsNil(o.BillingModel) {
 		return nil, false
 	}
@@ -192,8 +200,8 @@ func (o *RevenueRecordInfo) HasBillingModel() bool {
 	return false
 }
 
-// SetBillingModel gets a reference to the given string and assigns it to the BillingModel field.
-func (o *RevenueRecordInfo) SetBillingModel(v string) {
+// SetBillingModel gets a reference to the given RevenueBillingModel and assigns it to the BillingModel field.
+func (o *RevenueRecordInfo) SetBillingModel(v RevenueBillingModel) {
 	o.BillingModel = &v
 }
 
@@ -227,6 +235,102 @@ func (o *RevenueRecordInfo) HasChannel() bool {
 // SetChannel gets a reference to the given RevenueChannel and assigns it to the Channel field.
 func (o *RevenueRecordInfo) SetChannel(v RevenueChannel) {
 	o.Channel = &v
+}
+
+// GetChargebeeInvoiceId returns the ChargebeeInvoiceId field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetChargebeeInvoiceId() string {
+	if o == nil || IsNil(o.ChargebeeInvoiceId) {
+		var ret string
+		return ret
+	}
+	return *o.ChargebeeInvoiceId
+}
+
+// GetChargebeeInvoiceIdOk returns a tuple with the ChargebeeInvoiceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetChargebeeInvoiceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ChargebeeInvoiceId) {
+		return nil, false
+	}
+	return o.ChargebeeInvoiceId, true
+}
+
+// HasChargebeeInvoiceId returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasChargebeeInvoiceId() bool {
+	if o != nil && !IsNil(o.ChargebeeInvoiceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetChargebeeInvoiceId gets a reference to the given string and assigns it to the ChargebeeInvoiceId field.
+func (o *RevenueRecordInfo) SetChargebeeInvoiceId(v string) {
+	o.ChargebeeInvoiceId = &v
+}
+
+// GetChargebeePaymentTransactionId returns the ChargebeePaymentTransactionId field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetChargebeePaymentTransactionId() string {
+	if o == nil || IsNil(o.ChargebeePaymentTransactionId) {
+		var ret string
+		return ret
+	}
+	return *o.ChargebeePaymentTransactionId
+}
+
+// GetChargebeePaymentTransactionIdOk returns a tuple with the ChargebeePaymentTransactionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetChargebeePaymentTransactionIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ChargebeePaymentTransactionId) {
+		return nil, false
+	}
+	return o.ChargebeePaymentTransactionId, true
+}
+
+// HasChargebeePaymentTransactionId returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasChargebeePaymentTransactionId() bool {
+	if o != nil && !IsNil(o.ChargebeePaymentTransactionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetChargebeePaymentTransactionId gets a reference to the given string and assigns it to the ChargebeePaymentTransactionId field.
+func (o *RevenueRecordInfo) SetChargebeePaymentTransactionId(v string) {
+	o.ChargebeePaymentTransactionId = &v
+}
+
+// GetChargebeeRefundTransactionId returns the ChargebeeRefundTransactionId field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetChargebeeRefundTransactionId() string {
+	if o == nil || IsNil(o.ChargebeeRefundTransactionId) {
+		var ret string
+		return ret
+	}
+	return *o.ChargebeeRefundTransactionId
+}
+
+// GetChargebeeRefundTransactionIdOk returns a tuple with the ChargebeeRefundTransactionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetChargebeeRefundTransactionIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ChargebeeRefundTransactionId) {
+		return nil, false
+	}
+	return o.ChargebeeRefundTransactionId, true
+}
+
+// HasChargebeeRefundTransactionId returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasChargebeeRefundTransactionId() bool {
+	if o != nil && !IsNil(o.ChargebeeRefundTransactionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetChargebeeRefundTransactionId gets a reference to the given string and assigns it to the ChargebeeRefundTransactionId field.
+func (o *RevenueRecordInfo) SetChargebeeRefundTransactionId(v string) {
+	o.ChargebeeRefundTransactionId = &v
 }
 
 // GetCreditAmount returns the CreditAmount field value if set, zero value otherwise.
@@ -421,6 +525,38 @@ func (o *RevenueRecordInfo) SetIdSource(v string) {
 	o.IdSource = &v
 }
 
+// GetInvoiceId returns the InvoiceId field value if set, zero value otherwise.
+func (o *RevenueRecordInfo) GetInvoiceId() string {
+	if o == nil || IsNil(o.InvoiceId) {
+		var ret string
+		return ret
+	}
+	return *o.InvoiceId
+}
+
+// GetInvoiceIdOk returns a tuple with the InvoiceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RevenueRecordInfo) GetInvoiceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.InvoiceId) {
+		return nil, false
+	}
+	return o.InvoiceId, true
+}
+
+// HasInvoiceId returns a boolean if a field has been set.
+func (o *RevenueRecordInfo) HasInvoiceId() bool {
+	if o != nil && !IsNil(o.InvoiceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetInvoiceId gets a reference to the given string and assigns it to the InvoiceId field.
+func (o *RevenueRecordInfo) SetInvoiceId(v string) {
+	o.InvoiceId = &v
+}
+
 // GetPaymentId returns the PaymentId field value if set, zero value otherwise.
 func (o *RevenueRecordInfo) GetPaymentId() string {
 	if o == nil || IsNil(o.PaymentId) {
@@ -574,6 +710,15 @@ func (o RevenueRecordInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Channel) {
 		toSerialize["channel"] = o.Channel
 	}
+	if !IsNil(o.ChargebeeInvoiceId) {
+		toSerialize["chargebeeInvoiceId"] = o.ChargebeeInvoiceId
+	}
+	if !IsNil(o.ChargebeePaymentTransactionId) {
+		toSerialize["chargebeePaymentTransactionId"] = o.ChargebeePaymentTransactionId
+	}
+	if !IsNil(o.ChargebeeRefundTransactionId) {
+		toSerialize["chargebeeRefundTransactionId"] = o.ChargebeeRefundTransactionId
+	}
 	if !IsNil(o.CreditAmount) {
 		toSerialize["creditAmount"] = o.CreditAmount
 	}
@@ -591,6 +736,9 @@ func (o RevenueRecordInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IdSource) {
 		toSerialize["idSource"] = o.IdSource
+	}
+	if !IsNil(o.InvoiceId) {
+		toSerialize["invoiceId"] = o.InvoiceId
 	}
 	if !IsNil(o.PaymentId) {
 		toSerialize["paymentId"] = o.PaymentId

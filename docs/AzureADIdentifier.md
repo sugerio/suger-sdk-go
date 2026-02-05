@@ -12,7 +12,8 @@ Name | Type | Description | Notes
 **LicenseType** | Pointer to **string** | Azure License Type | [optional] 
 **ObjectId** | Pointer to **string** |  | [optional] 
 **Puid** | Pointer to **string** | ID of the user, used as External ID of suger IdentityBuyer. | [optional] 
-**TenantId** | Pointer to **string** |  | [optional] 
+**SellerId** | Pointer to **string** | Azure MPO seller ID | [optional] 
+**TenantId** | Pointer to **string** | The Azure Active Directory Tenant ID of the buyer or the reseller partner ID (the same as TenantId). | [optional] 
 
 ## Methods
 
@@ -232,6 +233,31 @@ SetPuid sets Puid field to given value.
 `func (o *AzureADIdentifier) HasPuid() bool`
 
 HasPuid returns a boolean if a field has been set.
+
+### GetSellerId
+
+`func (o *AzureADIdentifier) GetSellerId() string`
+
+GetSellerId returns the SellerId field if non-nil, zero value otherwise.
+
+### GetSellerIdOk
+
+`func (o *AzureADIdentifier) GetSellerIdOk() (*string, bool)`
+
+GetSellerIdOk returns a tuple with the SellerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSellerId
+
+`func (o *AzureADIdentifier) SetSellerId(v string)`
+
+SetSellerId sets SellerId field to given value.
+
+### HasSellerId
+
+`func (o *AzureADIdentifier) HasSellerId() bool`
+
+HasSellerId returns a boolean if a field has been set.
 
 ### GetTenantId
 

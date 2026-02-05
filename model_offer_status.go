@@ -35,6 +35,8 @@ const (
 	OfferStatus_DRAFT OfferStatus = "DRAFT"
 	OfferStatus_EXPIRED OfferStatus = "EXPIRED"
 	OfferStatus_PENDING_ACCEPTANCE OfferStatus = "PENDING_ACCEPTANCE"
+	OfferStatus_ACCEPT_PENDING OfferStatus = "ACCEPT_PENDING"
+	OfferStatus_ACCEPT_FAILED OfferStatus = "ACCEPT_FAILED"
 	OfferStatus_PENDING_CANCEL OfferStatus = "PENDING_CANCEL"
 	OfferStatus_PENDING_CREATE OfferStatus = "PENDING_CREATE"
 	OfferStatus_PENDING_UPDATE OfferStatus = "PENDING_UPDATE"
@@ -46,6 +48,9 @@ const (
 	OfferStatus_UPDATE_FAILED OfferStatus = "UPDATE_FAILED"
 	OfferStatus_UPDATE_SUCCESS OfferStatus = "UPDATE_SUCCESS"
 	OfferStatus_USED OfferStatus = "USED"
+	OfferStatus_PENDING_PARTNER_ACTION OfferStatus = "PENDING_PARTNER_ACTION"
+	OfferStatus_VOID OfferStatus = "VOID"
+	OfferStatus_PENDING_MARKETPLACE_APPROVAL OfferStatus = "PENDING_MARKETPLACE_APPROVAL"
 )
 
 // All allowed values of OfferStatus enum
@@ -64,6 +69,8 @@ var AllowedOfferStatusEnumValues = []OfferStatus{
 	"DRAFT",
 	"EXPIRED",
 	"PENDING_ACCEPTANCE",
+	"ACCEPT_PENDING",
+	"ACCEPT_FAILED",
 	"PENDING_CANCEL",
 	"PENDING_CREATE",
 	"PENDING_UPDATE",
@@ -75,6 +82,9 @@ var AllowedOfferStatusEnumValues = []OfferStatus{
 	"UPDATE_FAILED",
 	"UPDATE_SUCCESS",
 	"USED",
+	"PENDING_PARTNER_ACTION",
+	"VOID",
+	"PENDING_MARKETPLACE_APPROVAL",
 }
 
 func (v *OfferStatus) UnmarshalJSON(src []byte) error {

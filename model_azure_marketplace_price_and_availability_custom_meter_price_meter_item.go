@@ -24,7 +24,7 @@ type AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem struct {
 	IncludedQuantities []AzureMarketplacePriceAndAvailabilityCustomMeterPriceIncludedQuantityItem `json:"includedQuantities,omitempty"`
 	PaymentOption *AzureMarketplaceTerm `json:"paymentOption,omitempty"`
 	PricePerPaymentInUsd *float32 `json:"pricePerPaymentInUsd,omitempty"`
-	Prices []AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem `json:"prices,omitempty"`
+	Prices []AzureMarketplacePrice `json:"prices,omitempty"`
 }
 
 // NewAzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem instantiates a new AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem object
@@ -173,9 +173,9 @@ func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) SetPrice
 }
 
 // GetPrices returns the Prices field value if set, zero value otherwise.
-func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) GetPrices() []AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem {
+func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) GetPrices() []AzureMarketplacePrice {
 	if o == nil || IsNil(o.Prices) {
-		var ret []AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem
+		var ret []AzureMarketplacePrice
 		return ret
 	}
 	return o.Prices
@@ -183,7 +183,7 @@ func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) GetPrice
 
 // GetPricesOk returns a tuple with the Prices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) GetPricesOk() ([]AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem, bool) {
+func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) GetPricesOk() ([]AzureMarketplacePrice, bool) {
 	if o == nil || IsNil(o.Prices) {
 		return nil, false
 	}
@@ -199,8 +199,8 @@ func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) HasPrice
 	return false
 }
 
-// SetPrices gets a reference to the given []AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem and assigns it to the Prices field.
-func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) SetPrices(v []AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItemPriceItem) {
+// SetPrices gets a reference to the given []AzureMarketplacePrice and assigns it to the Prices field.
+func (o *AzureMarketplacePriceAndAvailabilityCustomMeterPriceMeterItem) SetPrices(v []AzureMarketplacePrice) {
 	o.Prices = v
 }
 

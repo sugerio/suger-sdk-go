@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AwsPaymentTransaction** | Pointer to [**AwsPaymentTransaction**](AwsPaymentTransaction.md) | The aws payment transaction. | [optional] 
 **InvoiceDate** | Pointer to **time.Time** | The invoice issue date. | [optional] 
 **RefundExists** | Pointer to **bool** | Refund flag marks whether the transaction has any refund records. | [optional] 
 **StripeBalanceTransaction** | Pointer to [**StripeBalanceTransaction**](StripeBalanceTransaction.md) | Balance transaction that describes the impact of this charge on your account balance. | [optional] 
@@ -30,6 +31,31 @@ will change when the set of required properties is changed
 NewBillingPaymentTransactionInfoWithDefaults instantiates a new BillingPaymentTransactionInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAwsPaymentTransaction
+
+`func (o *BillingPaymentTransactionInfo) GetAwsPaymentTransaction() AwsPaymentTransaction`
+
+GetAwsPaymentTransaction returns the AwsPaymentTransaction field if non-nil, zero value otherwise.
+
+### GetAwsPaymentTransactionOk
+
+`func (o *BillingPaymentTransactionInfo) GetAwsPaymentTransactionOk() (*AwsPaymentTransaction, bool)`
+
+GetAwsPaymentTransactionOk returns a tuple with the AwsPaymentTransaction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsPaymentTransaction
+
+`func (o *BillingPaymentTransactionInfo) SetAwsPaymentTransaction(v AwsPaymentTransaction)`
+
+SetAwsPaymentTransaction sets AwsPaymentTransaction field to given value.
+
+### HasAwsPaymentTransaction
+
+`func (o *BillingPaymentTransactionInfo) HasAwsPaymentTransaction() bool`
+
+HasAwsPaymentTransaction returns a boolean if a field has been set.
 
 ### GetInvoiceDate
 

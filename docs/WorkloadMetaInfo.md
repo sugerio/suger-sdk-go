@@ -5,9 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AceApnCrmUniqueIdentifier** | Pointer to **string** | The linked ACE ApnCrmUniqueIdentifier of the private offer if available. | [optional] 
+**ApprovalInfo** | Pointer to [**ApprovalInfo**](ApprovalInfo.md) | The approval information for the offer, tracking submission, approval/decline status and decision dates. | [optional] 
 **AwsSaasProductDimensions** | Pointer to [**[]AwsProductDimension**](AwsProductDimension.md) | The AWS SaaS product dimensions. Applicable for AWS SaaS products only. This is used to save price info when creating AWS SaaS product. | [optional] 
+**AzureOriginalOfferIDForUpgrade** | Pointer to **string** | Original offer ID for Azure Upgrade | [optional] 
 **BaseAgreementId** | Pointer to **string** | Applicable for AWS Marketplace only, when the IsAgreementBasedOffer is true. | [optional] 
 **BuyerIds** | Pointer to **[]string** | The Suger buyer IDs of the private offer if available. | [optional] 
+**ChargebeeSubscriptionID** | Pointer to **string** | The Chargebee subscription ID of the private offer if available. | [optional] 
 **Contacts** | Pointer to [**[]Contact**](Contact.md) | The contacts of the offer to notify if any updates. | [optional] 
 **CppoInOfferId** | Pointer to **string** | The Suger CPPO_IN offer ID. | [optional] 
 **CppoOfferId** | Pointer to **string** | The Suger CPPO offer ID. Reseller to end buyer | [optional] 
@@ -19,18 +22,23 @@ Name | Type | Description | Notes
 **HubspotDealId** | Pointer to **string** | Hubsport deal ID of the private offer if available. | [optional] 
 **InternalNote** | Pointer to **string** | The Internal note of the private offer. It is only visible to the seller/ISV, not visible to the buyer. Up to 1000 characters. | [optional] 
 **IsAgreementBasedOffer** | Pointer to **bool** | Applicable for AWS Marketplace only, If this offer is agreement based offer. | [optional] 
+**IsAzureUpgradeOffer** | Pointer to **bool** | If this offer is an Azure upgrade offer. | [optional] 
 **IsGrossRevenueFullSync** | Pointer to **bool** | Whether the gross revenue is fully synced for the entitlement. | [optional] 
 **IsRenewalOffer** | Pointer to **bool** | Applicable for AWS Marketplace only. If this offer is renewal offer of existing agreement. The existing agreement can be within or outside AWS Marketplace. AWS may audit and verify your offer is a renewal. If AWS is unable to verify your offer, then AWS may revoke the offer and entitlements from your customer. | [optional] 
 **IsReplacementOffer** | Pointer to **bool** | If this offer is a GCP replacement offer. Applicable for GCP Marketplace replacement offer only. | [optional] 
 **LastModifiedBy** | Pointer to [**LastModifiedBy**](LastModifiedBy.md) | The user who last modified the product/offer/buyer/contact. | [optional] 
 **Notifications** | Pointer to [**[]NotificationEvent**](NotificationEvent.md) | The notifications of the offer if any updates. In most cases, it is to notify contacts/buyers when the offer is pending acceptance. | [optional] 
 **OfferAcceptDate** | Pointer to **time.Time** | The date when the offer is accepted by the buyer. Only available when the private offer has been accepted. | [optional] 
+**OfferCreationSuccessDate** | Pointer to **time.Time** | The datetime when the offer was successfully created on the partner&#39;s marketplace (AWS, Azure, GCP, etc). | [optional] 
+**OriginalEulaInfo** | Pointer to [**OriginalEulaInfo**](OriginalEulaInfo.md) | Original EULA info of the offer. It is used to store the original EULA info of the offer. used for clone offer. | [optional] 
 **PrettifiedErrorMessages** | Pointer to **[]string** | The prettified ErrorMessages. Using AI to make it more readable and understandable. The prettified error messages will be used for the offer related UI display. | [optional] 
 **RenewalOfferType** | Pointer to [**AwsRenewalOfferType**](AwsRenewalOfferType.md) | Applicable for AWS Marketplace only, required when the IsRenewalOffer is true. | [optional] 
 **ReplacedOfferEndTime** | Pointer to **time.Time** | The end time of the replaced offer. Applicable for GCP Marketplace replacement offer only. | [optional] 
 **ReplacedOfferResourceName** | Pointer to **string** | The resource name of the GCP Marketplace offer that this offer is replacing. In format of \&quot;projects/{gcpProjectNumber}/services/{productServiceName}/privateOffers/{privateOfferId}\&quot; Applicable for GCP Marketplace replacement offer only. | [optional] 
+**ResellerIds** | Pointer to **[]string** | The reseller IDs (in the identity.buyer table) associated with this offer. Only applicable for CPPO_OUT &amp; CPPO offers. | [optional] 
 **SalesforceEntitlementURL** | Pointer to **string** | The Salesforce entitlement URL | [optional] 
 **SalesforceOpportunityId** | Pointer to **string** | The Salesforce opportunity ID of the private offer if available. | [optional] 
+**SalesforceQuoteId** | Pointer to **string** | The Salesforce Quote ID of the private offer if available. | [optional] 
 **TestUsageMeteringEndTime** | Pointer to **time.Time** | The test usage metering end time. It is used for test usage metering only. Required if EnableTestUsageMetering is true. | [optional] 
 **UpdateMessage** | Pointer to **string** | The message to notify when the offer is updated. | [optional] 
 
@@ -78,6 +86,31 @@ SetAceApnCrmUniqueIdentifier sets AceApnCrmUniqueIdentifier field to given value
 
 HasAceApnCrmUniqueIdentifier returns a boolean if a field has been set.
 
+### GetApprovalInfo
+
+`func (o *WorkloadMetaInfo) GetApprovalInfo() ApprovalInfo`
+
+GetApprovalInfo returns the ApprovalInfo field if non-nil, zero value otherwise.
+
+### GetApprovalInfoOk
+
+`func (o *WorkloadMetaInfo) GetApprovalInfoOk() (*ApprovalInfo, bool)`
+
+GetApprovalInfoOk returns a tuple with the ApprovalInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApprovalInfo
+
+`func (o *WorkloadMetaInfo) SetApprovalInfo(v ApprovalInfo)`
+
+SetApprovalInfo sets ApprovalInfo field to given value.
+
+### HasApprovalInfo
+
+`func (o *WorkloadMetaInfo) HasApprovalInfo() bool`
+
+HasApprovalInfo returns a boolean if a field has been set.
+
 ### GetAwsSaasProductDimensions
 
 `func (o *WorkloadMetaInfo) GetAwsSaasProductDimensions() []AwsProductDimension`
@@ -102,6 +135,31 @@ SetAwsSaasProductDimensions sets AwsSaasProductDimensions field to given value.
 `func (o *WorkloadMetaInfo) HasAwsSaasProductDimensions() bool`
 
 HasAwsSaasProductDimensions returns a boolean if a field has been set.
+
+### GetAzureOriginalOfferIDForUpgrade
+
+`func (o *WorkloadMetaInfo) GetAzureOriginalOfferIDForUpgrade() string`
+
+GetAzureOriginalOfferIDForUpgrade returns the AzureOriginalOfferIDForUpgrade field if non-nil, zero value otherwise.
+
+### GetAzureOriginalOfferIDForUpgradeOk
+
+`func (o *WorkloadMetaInfo) GetAzureOriginalOfferIDForUpgradeOk() (*string, bool)`
+
+GetAzureOriginalOfferIDForUpgradeOk returns a tuple with the AzureOriginalOfferIDForUpgrade field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureOriginalOfferIDForUpgrade
+
+`func (o *WorkloadMetaInfo) SetAzureOriginalOfferIDForUpgrade(v string)`
+
+SetAzureOriginalOfferIDForUpgrade sets AzureOriginalOfferIDForUpgrade field to given value.
+
+### HasAzureOriginalOfferIDForUpgrade
+
+`func (o *WorkloadMetaInfo) HasAzureOriginalOfferIDForUpgrade() bool`
+
+HasAzureOriginalOfferIDForUpgrade returns a boolean if a field has been set.
 
 ### GetBaseAgreementId
 
@@ -152,6 +210,31 @@ SetBuyerIds sets BuyerIds field to given value.
 `func (o *WorkloadMetaInfo) HasBuyerIds() bool`
 
 HasBuyerIds returns a boolean if a field has been set.
+
+### GetChargebeeSubscriptionID
+
+`func (o *WorkloadMetaInfo) GetChargebeeSubscriptionID() string`
+
+GetChargebeeSubscriptionID returns the ChargebeeSubscriptionID field if non-nil, zero value otherwise.
+
+### GetChargebeeSubscriptionIDOk
+
+`func (o *WorkloadMetaInfo) GetChargebeeSubscriptionIDOk() (*string, bool)`
+
+GetChargebeeSubscriptionIDOk returns a tuple with the ChargebeeSubscriptionID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChargebeeSubscriptionID
+
+`func (o *WorkloadMetaInfo) SetChargebeeSubscriptionID(v string)`
+
+SetChargebeeSubscriptionID sets ChargebeeSubscriptionID field to given value.
+
+### HasChargebeeSubscriptionID
+
+`func (o *WorkloadMetaInfo) HasChargebeeSubscriptionID() bool`
+
+HasChargebeeSubscriptionID returns a boolean if a field has been set.
 
 ### GetContacts
 
@@ -428,6 +511,31 @@ SetIsAgreementBasedOffer sets IsAgreementBasedOffer field to given value.
 
 HasIsAgreementBasedOffer returns a boolean if a field has been set.
 
+### GetIsAzureUpgradeOffer
+
+`func (o *WorkloadMetaInfo) GetIsAzureUpgradeOffer() bool`
+
+GetIsAzureUpgradeOffer returns the IsAzureUpgradeOffer field if non-nil, zero value otherwise.
+
+### GetIsAzureUpgradeOfferOk
+
+`func (o *WorkloadMetaInfo) GetIsAzureUpgradeOfferOk() (*bool, bool)`
+
+GetIsAzureUpgradeOfferOk returns a tuple with the IsAzureUpgradeOffer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsAzureUpgradeOffer
+
+`func (o *WorkloadMetaInfo) SetIsAzureUpgradeOffer(v bool)`
+
+SetIsAzureUpgradeOffer sets IsAzureUpgradeOffer field to given value.
+
+### HasIsAzureUpgradeOffer
+
+`func (o *WorkloadMetaInfo) HasIsAzureUpgradeOffer() bool`
+
+HasIsAzureUpgradeOffer returns a boolean if a field has been set.
+
 ### GetIsGrossRevenueFullSync
 
 `func (o *WorkloadMetaInfo) GetIsGrossRevenueFullSync() bool`
@@ -578,6 +686,56 @@ SetOfferAcceptDate sets OfferAcceptDate field to given value.
 
 HasOfferAcceptDate returns a boolean if a field has been set.
 
+### GetOfferCreationSuccessDate
+
+`func (o *WorkloadMetaInfo) GetOfferCreationSuccessDate() time.Time`
+
+GetOfferCreationSuccessDate returns the OfferCreationSuccessDate field if non-nil, zero value otherwise.
+
+### GetOfferCreationSuccessDateOk
+
+`func (o *WorkloadMetaInfo) GetOfferCreationSuccessDateOk() (*time.Time, bool)`
+
+GetOfferCreationSuccessDateOk returns a tuple with the OfferCreationSuccessDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOfferCreationSuccessDate
+
+`func (o *WorkloadMetaInfo) SetOfferCreationSuccessDate(v time.Time)`
+
+SetOfferCreationSuccessDate sets OfferCreationSuccessDate field to given value.
+
+### HasOfferCreationSuccessDate
+
+`func (o *WorkloadMetaInfo) HasOfferCreationSuccessDate() bool`
+
+HasOfferCreationSuccessDate returns a boolean if a field has been set.
+
+### GetOriginalEulaInfo
+
+`func (o *WorkloadMetaInfo) GetOriginalEulaInfo() OriginalEulaInfo`
+
+GetOriginalEulaInfo returns the OriginalEulaInfo field if non-nil, zero value otherwise.
+
+### GetOriginalEulaInfoOk
+
+`func (o *WorkloadMetaInfo) GetOriginalEulaInfoOk() (*OriginalEulaInfo, bool)`
+
+GetOriginalEulaInfoOk returns a tuple with the OriginalEulaInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOriginalEulaInfo
+
+`func (o *WorkloadMetaInfo) SetOriginalEulaInfo(v OriginalEulaInfo)`
+
+SetOriginalEulaInfo sets OriginalEulaInfo field to given value.
+
+### HasOriginalEulaInfo
+
+`func (o *WorkloadMetaInfo) HasOriginalEulaInfo() bool`
+
+HasOriginalEulaInfo returns a boolean if a field has been set.
+
 ### GetPrettifiedErrorMessages
 
 `func (o *WorkloadMetaInfo) GetPrettifiedErrorMessages() []string`
@@ -678,6 +836,31 @@ SetReplacedOfferResourceName sets ReplacedOfferResourceName field to given value
 
 HasReplacedOfferResourceName returns a boolean if a field has been set.
 
+### GetResellerIds
+
+`func (o *WorkloadMetaInfo) GetResellerIds() []string`
+
+GetResellerIds returns the ResellerIds field if non-nil, zero value otherwise.
+
+### GetResellerIdsOk
+
+`func (o *WorkloadMetaInfo) GetResellerIdsOk() (*[]string, bool)`
+
+GetResellerIdsOk returns a tuple with the ResellerIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResellerIds
+
+`func (o *WorkloadMetaInfo) SetResellerIds(v []string)`
+
+SetResellerIds sets ResellerIds field to given value.
+
+### HasResellerIds
+
+`func (o *WorkloadMetaInfo) HasResellerIds() bool`
+
+HasResellerIds returns a boolean if a field has been set.
+
 ### GetSalesforceEntitlementURL
 
 `func (o *WorkloadMetaInfo) GetSalesforceEntitlementURL() string`
@@ -727,6 +910,31 @@ SetSalesforceOpportunityId sets SalesforceOpportunityId field to given value.
 `func (o *WorkloadMetaInfo) HasSalesforceOpportunityId() bool`
 
 HasSalesforceOpportunityId returns a boolean if a field has been set.
+
+### GetSalesforceQuoteId
+
+`func (o *WorkloadMetaInfo) GetSalesforceQuoteId() string`
+
+GetSalesforceQuoteId returns the SalesforceQuoteId field if non-nil, zero value otherwise.
+
+### GetSalesforceQuoteIdOk
+
+`func (o *WorkloadMetaInfo) GetSalesforceQuoteIdOk() (*string, bool)`
+
+GetSalesforceQuoteIdOk returns a tuple with the SalesforceQuoteId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSalesforceQuoteId
+
+`func (o *WorkloadMetaInfo) SetSalesforceQuoteId(v string)`
+
+SetSalesforceQuoteId sets SalesforceQuoteId field to given value.
+
+### HasSalesforceQuoteId
+
+`func (o *WorkloadMetaInfo) HasSalesforceQuoteId() bool`
+
+HasSalesforceQuoteId returns a boolean if a field has been set.
 
 ### GetTestUsageMeteringEndTime
 

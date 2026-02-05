@@ -23,12 +23,18 @@ var _ MappedNullable = &WorkloadMetaInfo{}
 type WorkloadMetaInfo struct {
 	// The linked ACE ApnCrmUniqueIdentifier of the private offer if available.
 	AceApnCrmUniqueIdentifier *string `json:"aceApnCrmUniqueIdentifier,omitempty"`
+	// The approval information for the offer, tracking submission, approval/decline status and decision dates.
+	ApprovalInfo *ApprovalInfo `json:"approvalInfo,omitempty"`
 	// The AWS SaaS product dimensions. Applicable for AWS SaaS products only. This is used to save price info when creating AWS SaaS product.
 	AwsSaasProductDimensions []AwsProductDimension `json:"awsSaasProductDimensions,omitempty"`
+	// Original offer ID for Azure Upgrade
+	AzureOriginalOfferIDForUpgrade *string `json:"azureOriginalOfferIDForUpgrade,omitempty"`
 	// Applicable for AWS Marketplace only, when the IsAgreementBasedOffer is true.
 	BaseAgreementId *string `json:"baseAgreementId,omitempty"`
 	// The Suger buyer IDs of the private offer if available.
 	BuyerIds []string `json:"buyerIds,omitempty"`
+	// The Chargebee subscription ID of the private offer if available.
+	ChargebeeSubscriptionID *string `json:"chargebeeSubscriptionID,omitempty"`
 	// The contacts of the offer to notify if any updates.
 	Contacts []Contact `json:"contacts,omitempty"`
 	// The Suger CPPO_IN offer ID.
@@ -51,6 +57,8 @@ type WorkloadMetaInfo struct {
 	InternalNote *string `json:"internalNote,omitempty"`
 	// Applicable for AWS Marketplace only, If this offer is agreement based offer.
 	IsAgreementBasedOffer *bool `json:"isAgreementBasedOffer,omitempty"`
+	// If this offer is an Azure upgrade offer.
+	IsAzureUpgradeOffer *bool `json:"isAzureUpgradeOffer,omitempty"`
 	// Whether the gross revenue is fully synced for the entitlement.
 	IsGrossRevenueFullSync *bool `json:"isGrossRevenueFullSync,omitempty"`
 	// Applicable for AWS Marketplace only. If this offer is renewal offer of existing agreement. The existing agreement can be within or outside AWS Marketplace. AWS may audit and verify your offer is a renewal. If AWS is unable to verify your offer, then AWS may revoke the offer and entitlements from your customer.
@@ -63,6 +71,10 @@ type WorkloadMetaInfo struct {
 	Notifications []NotificationEvent `json:"notifications,omitempty"`
 	// The date when the offer is accepted by the buyer. Only available when the private offer has been accepted.
 	OfferAcceptDate *time.Time `json:"offerAcceptDate,omitempty"`
+	// The datetime when the offer was successfully created on the partner's marketplace (AWS, Azure, GCP, etc).
+	OfferCreationSuccessDate *time.Time `json:"offerCreationSuccessDate,omitempty"`
+	// Original EULA info of the offer. It is used to store the original EULA info of the offer. used for clone offer.
+	OriginalEulaInfo *OriginalEulaInfo `json:"originalEulaInfo,omitempty"`
 	// The prettified ErrorMessages. Using AI to make it more readable and understandable. The prettified error messages will be used for the offer related UI display.
 	PrettifiedErrorMessages []string `json:"prettifiedErrorMessages,omitempty"`
 	// Applicable for AWS Marketplace only, required when the IsRenewalOffer is true.
@@ -71,10 +83,14 @@ type WorkloadMetaInfo struct {
 	ReplacedOfferEndTime *time.Time `json:"replacedOfferEndTime,omitempty"`
 	// The resource name of the GCP Marketplace offer that this offer is replacing. In format of \"projects/{gcpProjectNumber}/services/{productServiceName}/privateOffers/{privateOfferId}\" Applicable for GCP Marketplace replacement offer only.
 	ReplacedOfferResourceName *string `json:"replacedOfferResourceName,omitempty"`
+	// The reseller IDs (in the identity.buyer table) associated with this offer. Only applicable for CPPO_OUT & CPPO offers.
+	ResellerIds []string `json:"resellerIds,omitempty"`
 	// The Salesforce entitlement URL
 	SalesforceEntitlementURL *string `json:"salesforceEntitlementURL,omitempty"`
 	// The Salesforce opportunity ID of the private offer if available.
 	SalesforceOpportunityId *string `json:"salesforceOpportunityId,omitempty"`
+	// The Salesforce Quote ID of the private offer if available.
+	SalesforceQuoteId *string `json:"salesforceQuoteId,omitempty"`
 	// The test usage metering end time. It is used for test usage metering only. Required if EnableTestUsageMetering is true.
 	TestUsageMeteringEndTime *time.Time `json:"testUsageMeteringEndTime,omitempty"`
 	// The message to notify when the offer is updated.
@@ -130,6 +146,38 @@ func (o *WorkloadMetaInfo) SetAceApnCrmUniqueIdentifier(v string) {
 	o.AceApnCrmUniqueIdentifier = &v
 }
 
+// GetApprovalInfo returns the ApprovalInfo field value if set, zero value otherwise.
+func (o *WorkloadMetaInfo) GetApprovalInfo() ApprovalInfo {
+	if o == nil || IsNil(o.ApprovalInfo) {
+		var ret ApprovalInfo
+		return ret
+	}
+	return *o.ApprovalInfo
+}
+
+// GetApprovalInfoOk returns a tuple with the ApprovalInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadMetaInfo) GetApprovalInfoOk() (*ApprovalInfo, bool) {
+	if o == nil || IsNil(o.ApprovalInfo) {
+		return nil, false
+	}
+	return o.ApprovalInfo, true
+}
+
+// HasApprovalInfo returns a boolean if a field has been set.
+func (o *WorkloadMetaInfo) HasApprovalInfo() bool {
+	if o != nil && !IsNil(o.ApprovalInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetApprovalInfo gets a reference to the given ApprovalInfo and assigns it to the ApprovalInfo field.
+func (o *WorkloadMetaInfo) SetApprovalInfo(v ApprovalInfo) {
+	o.ApprovalInfo = &v
+}
+
 // GetAwsSaasProductDimensions returns the AwsSaasProductDimensions field value if set, zero value otherwise.
 func (o *WorkloadMetaInfo) GetAwsSaasProductDimensions() []AwsProductDimension {
 	if o == nil || IsNil(o.AwsSaasProductDimensions) {
@@ -160,6 +208,38 @@ func (o *WorkloadMetaInfo) HasAwsSaasProductDimensions() bool {
 // SetAwsSaasProductDimensions gets a reference to the given []AwsProductDimension and assigns it to the AwsSaasProductDimensions field.
 func (o *WorkloadMetaInfo) SetAwsSaasProductDimensions(v []AwsProductDimension) {
 	o.AwsSaasProductDimensions = v
+}
+
+// GetAzureOriginalOfferIDForUpgrade returns the AzureOriginalOfferIDForUpgrade field value if set, zero value otherwise.
+func (o *WorkloadMetaInfo) GetAzureOriginalOfferIDForUpgrade() string {
+	if o == nil || IsNil(o.AzureOriginalOfferIDForUpgrade) {
+		var ret string
+		return ret
+	}
+	return *o.AzureOriginalOfferIDForUpgrade
+}
+
+// GetAzureOriginalOfferIDForUpgradeOk returns a tuple with the AzureOriginalOfferIDForUpgrade field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadMetaInfo) GetAzureOriginalOfferIDForUpgradeOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureOriginalOfferIDForUpgrade) {
+		return nil, false
+	}
+	return o.AzureOriginalOfferIDForUpgrade, true
+}
+
+// HasAzureOriginalOfferIDForUpgrade returns a boolean if a field has been set.
+func (o *WorkloadMetaInfo) HasAzureOriginalOfferIDForUpgrade() bool {
+	if o != nil && !IsNil(o.AzureOriginalOfferIDForUpgrade) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureOriginalOfferIDForUpgrade gets a reference to the given string and assigns it to the AzureOriginalOfferIDForUpgrade field.
+func (o *WorkloadMetaInfo) SetAzureOriginalOfferIDForUpgrade(v string) {
+	o.AzureOriginalOfferIDForUpgrade = &v
 }
 
 // GetBaseAgreementId returns the BaseAgreementId field value if set, zero value otherwise.
@@ -224,6 +304,38 @@ func (o *WorkloadMetaInfo) HasBuyerIds() bool {
 // SetBuyerIds gets a reference to the given []string and assigns it to the BuyerIds field.
 func (o *WorkloadMetaInfo) SetBuyerIds(v []string) {
 	o.BuyerIds = v
+}
+
+// GetChargebeeSubscriptionID returns the ChargebeeSubscriptionID field value if set, zero value otherwise.
+func (o *WorkloadMetaInfo) GetChargebeeSubscriptionID() string {
+	if o == nil || IsNil(o.ChargebeeSubscriptionID) {
+		var ret string
+		return ret
+	}
+	return *o.ChargebeeSubscriptionID
+}
+
+// GetChargebeeSubscriptionIDOk returns a tuple with the ChargebeeSubscriptionID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadMetaInfo) GetChargebeeSubscriptionIDOk() (*string, bool) {
+	if o == nil || IsNil(o.ChargebeeSubscriptionID) {
+		return nil, false
+	}
+	return o.ChargebeeSubscriptionID, true
+}
+
+// HasChargebeeSubscriptionID returns a boolean if a field has been set.
+func (o *WorkloadMetaInfo) HasChargebeeSubscriptionID() bool {
+	if o != nil && !IsNil(o.ChargebeeSubscriptionID) {
+		return true
+	}
+
+	return false
+}
+
+// SetChargebeeSubscriptionID gets a reference to the given string and assigns it to the ChargebeeSubscriptionID field.
+func (o *WorkloadMetaInfo) SetChargebeeSubscriptionID(v string) {
+	o.ChargebeeSubscriptionID = &v
 }
 
 // GetContacts returns the Contacts field value if set, zero value otherwise.
@@ -578,6 +690,38 @@ func (o *WorkloadMetaInfo) SetIsAgreementBasedOffer(v bool) {
 	o.IsAgreementBasedOffer = &v
 }
 
+// GetIsAzureUpgradeOffer returns the IsAzureUpgradeOffer field value if set, zero value otherwise.
+func (o *WorkloadMetaInfo) GetIsAzureUpgradeOffer() bool {
+	if o == nil || IsNil(o.IsAzureUpgradeOffer) {
+		var ret bool
+		return ret
+	}
+	return *o.IsAzureUpgradeOffer
+}
+
+// GetIsAzureUpgradeOfferOk returns a tuple with the IsAzureUpgradeOffer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadMetaInfo) GetIsAzureUpgradeOfferOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsAzureUpgradeOffer) {
+		return nil, false
+	}
+	return o.IsAzureUpgradeOffer, true
+}
+
+// HasIsAzureUpgradeOffer returns a boolean if a field has been set.
+func (o *WorkloadMetaInfo) HasIsAzureUpgradeOffer() bool {
+	if o != nil && !IsNil(o.IsAzureUpgradeOffer) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAzureUpgradeOffer gets a reference to the given bool and assigns it to the IsAzureUpgradeOffer field.
+func (o *WorkloadMetaInfo) SetIsAzureUpgradeOffer(v bool) {
+	o.IsAzureUpgradeOffer = &v
+}
+
 // GetIsGrossRevenueFullSync returns the IsGrossRevenueFullSync field value if set, zero value otherwise.
 func (o *WorkloadMetaInfo) GetIsGrossRevenueFullSync() bool {
 	if o == nil || IsNil(o.IsGrossRevenueFullSync) {
@@ -770,6 +914,70 @@ func (o *WorkloadMetaInfo) SetOfferAcceptDate(v time.Time) {
 	o.OfferAcceptDate = &v
 }
 
+// GetOfferCreationSuccessDate returns the OfferCreationSuccessDate field value if set, zero value otherwise.
+func (o *WorkloadMetaInfo) GetOfferCreationSuccessDate() time.Time {
+	if o == nil || IsNil(o.OfferCreationSuccessDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.OfferCreationSuccessDate
+}
+
+// GetOfferCreationSuccessDateOk returns a tuple with the OfferCreationSuccessDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadMetaInfo) GetOfferCreationSuccessDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.OfferCreationSuccessDate) {
+		return nil, false
+	}
+	return o.OfferCreationSuccessDate, true
+}
+
+// HasOfferCreationSuccessDate returns a boolean if a field has been set.
+func (o *WorkloadMetaInfo) HasOfferCreationSuccessDate() bool {
+	if o != nil && !IsNil(o.OfferCreationSuccessDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetOfferCreationSuccessDate gets a reference to the given time.Time and assigns it to the OfferCreationSuccessDate field.
+func (o *WorkloadMetaInfo) SetOfferCreationSuccessDate(v time.Time) {
+	o.OfferCreationSuccessDate = &v
+}
+
+// GetOriginalEulaInfo returns the OriginalEulaInfo field value if set, zero value otherwise.
+func (o *WorkloadMetaInfo) GetOriginalEulaInfo() OriginalEulaInfo {
+	if o == nil || IsNil(o.OriginalEulaInfo) {
+		var ret OriginalEulaInfo
+		return ret
+	}
+	return *o.OriginalEulaInfo
+}
+
+// GetOriginalEulaInfoOk returns a tuple with the OriginalEulaInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadMetaInfo) GetOriginalEulaInfoOk() (*OriginalEulaInfo, bool) {
+	if o == nil || IsNil(o.OriginalEulaInfo) {
+		return nil, false
+	}
+	return o.OriginalEulaInfo, true
+}
+
+// HasOriginalEulaInfo returns a boolean if a field has been set.
+func (o *WorkloadMetaInfo) HasOriginalEulaInfo() bool {
+	if o != nil && !IsNil(o.OriginalEulaInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginalEulaInfo gets a reference to the given OriginalEulaInfo and assigns it to the OriginalEulaInfo field.
+func (o *WorkloadMetaInfo) SetOriginalEulaInfo(v OriginalEulaInfo) {
+	o.OriginalEulaInfo = &v
+}
+
 // GetPrettifiedErrorMessages returns the PrettifiedErrorMessages field value if set, zero value otherwise.
 func (o *WorkloadMetaInfo) GetPrettifiedErrorMessages() []string {
 	if o == nil || IsNil(o.PrettifiedErrorMessages) {
@@ -898,6 +1106,38 @@ func (o *WorkloadMetaInfo) SetReplacedOfferResourceName(v string) {
 	o.ReplacedOfferResourceName = &v
 }
 
+// GetResellerIds returns the ResellerIds field value if set, zero value otherwise.
+func (o *WorkloadMetaInfo) GetResellerIds() []string {
+	if o == nil || IsNil(o.ResellerIds) {
+		var ret []string
+		return ret
+	}
+	return o.ResellerIds
+}
+
+// GetResellerIdsOk returns a tuple with the ResellerIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadMetaInfo) GetResellerIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.ResellerIds) {
+		return nil, false
+	}
+	return o.ResellerIds, true
+}
+
+// HasResellerIds returns a boolean if a field has been set.
+func (o *WorkloadMetaInfo) HasResellerIds() bool {
+	if o != nil && !IsNil(o.ResellerIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetResellerIds gets a reference to the given []string and assigns it to the ResellerIds field.
+func (o *WorkloadMetaInfo) SetResellerIds(v []string) {
+	o.ResellerIds = v
+}
+
 // GetSalesforceEntitlementURL returns the SalesforceEntitlementURL field value if set, zero value otherwise.
 func (o *WorkloadMetaInfo) GetSalesforceEntitlementURL() string {
 	if o == nil || IsNil(o.SalesforceEntitlementURL) {
@@ -960,6 +1200,38 @@ func (o *WorkloadMetaInfo) HasSalesforceOpportunityId() bool {
 // SetSalesforceOpportunityId gets a reference to the given string and assigns it to the SalesforceOpportunityId field.
 func (o *WorkloadMetaInfo) SetSalesforceOpportunityId(v string) {
 	o.SalesforceOpportunityId = &v
+}
+
+// GetSalesforceQuoteId returns the SalesforceQuoteId field value if set, zero value otherwise.
+func (o *WorkloadMetaInfo) GetSalesforceQuoteId() string {
+	if o == nil || IsNil(o.SalesforceQuoteId) {
+		var ret string
+		return ret
+	}
+	return *o.SalesforceQuoteId
+}
+
+// GetSalesforceQuoteIdOk returns a tuple with the SalesforceQuoteId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadMetaInfo) GetSalesforceQuoteIdOk() (*string, bool) {
+	if o == nil || IsNil(o.SalesforceQuoteId) {
+		return nil, false
+	}
+	return o.SalesforceQuoteId, true
+}
+
+// HasSalesforceQuoteId returns a boolean if a field has been set.
+func (o *WorkloadMetaInfo) HasSalesforceQuoteId() bool {
+	if o != nil && !IsNil(o.SalesforceQuoteId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSalesforceQuoteId gets a reference to the given string and assigns it to the SalesforceQuoteId field.
+func (o *WorkloadMetaInfo) SetSalesforceQuoteId(v string) {
+	o.SalesforceQuoteId = &v
 }
 
 // GetTestUsageMeteringEndTime returns the TestUsageMeteringEndTime field value if set, zero value otherwise.
@@ -1039,14 +1311,23 @@ func (o WorkloadMetaInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AceApnCrmUniqueIdentifier) {
 		toSerialize["aceApnCrmUniqueIdentifier"] = o.AceApnCrmUniqueIdentifier
 	}
+	if !IsNil(o.ApprovalInfo) {
+		toSerialize["approvalInfo"] = o.ApprovalInfo
+	}
 	if !IsNil(o.AwsSaasProductDimensions) {
 		toSerialize["awsSaasProductDimensions"] = o.AwsSaasProductDimensions
+	}
+	if !IsNil(o.AzureOriginalOfferIDForUpgrade) {
+		toSerialize["azureOriginalOfferIDForUpgrade"] = o.AzureOriginalOfferIDForUpgrade
 	}
 	if !IsNil(o.BaseAgreementId) {
 		toSerialize["baseAgreementId"] = o.BaseAgreementId
 	}
 	if !IsNil(o.BuyerIds) {
 		toSerialize["buyerIds"] = o.BuyerIds
+	}
+	if !IsNil(o.ChargebeeSubscriptionID) {
+		toSerialize["chargebeeSubscriptionID"] = o.ChargebeeSubscriptionID
 	}
 	if !IsNil(o.Contacts) {
 		toSerialize["contacts"] = o.Contacts
@@ -1081,6 +1362,9 @@ func (o WorkloadMetaInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsAgreementBasedOffer) {
 		toSerialize["isAgreementBasedOffer"] = o.IsAgreementBasedOffer
 	}
+	if !IsNil(o.IsAzureUpgradeOffer) {
+		toSerialize["isAzureUpgradeOffer"] = o.IsAzureUpgradeOffer
+	}
 	if !IsNil(o.IsGrossRevenueFullSync) {
 		toSerialize["isGrossRevenueFullSync"] = o.IsGrossRevenueFullSync
 	}
@@ -1099,6 +1383,12 @@ func (o WorkloadMetaInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OfferAcceptDate) {
 		toSerialize["offerAcceptDate"] = o.OfferAcceptDate
 	}
+	if !IsNil(o.OfferCreationSuccessDate) {
+		toSerialize["offerCreationSuccessDate"] = o.OfferCreationSuccessDate
+	}
+	if !IsNil(o.OriginalEulaInfo) {
+		toSerialize["originalEulaInfo"] = o.OriginalEulaInfo
+	}
 	if !IsNil(o.PrettifiedErrorMessages) {
 		toSerialize["prettifiedErrorMessages"] = o.PrettifiedErrorMessages
 	}
@@ -1111,11 +1401,17 @@ func (o WorkloadMetaInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ReplacedOfferResourceName) {
 		toSerialize["replacedOfferResourceName"] = o.ReplacedOfferResourceName
 	}
+	if !IsNil(o.ResellerIds) {
+		toSerialize["resellerIds"] = o.ResellerIds
+	}
 	if !IsNil(o.SalesforceEntitlementURL) {
 		toSerialize["salesforceEntitlementURL"] = o.SalesforceEntitlementURL
 	}
 	if !IsNil(o.SalesforceOpportunityId) {
 		toSerialize["salesforceOpportunityId"] = o.SalesforceOpportunityId
+	}
+	if !IsNil(o.SalesforceQuoteId) {
+		toSerialize["salesforceQuoteId"] = o.SalesforceQuoteId
 	}
 	if !IsNil(o.TestUsageMeteringEndTime) {
 		toSerialize["testUsageMeteringEndTime"] = o.TestUsageMeteringEndTime

@@ -758,41 +758,62 @@ func (a *ContactAPIService) GetContactExecute(r ApiGetContactRequest) (*Identity
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListContactsByOrganizationRequest struct {
+type ApiListContactsRequest struct {
 	ctx context.Context
 	ApiService *ContactAPIService
 	orgId string
+	contactIds *string
+	emailDomain *string
+	keyword *string
 	limit *int32
 	offset *int32
 }
 
-// List pagination size, default 1000, max value is 1000
-func (r ApiListContactsByOrganizationRequest) Limit(limit int32) ApiListContactsByOrganizationRequest {
+// Comma-separated list of contact IDs to fetch specific contacts, up to 100 IDs
+func (r ApiListContactsRequest) ContactIds(contactIds string) ApiListContactsRequest {
+	r.contactIds = &contactIds
+	return r
+}
+
+// Email domain to filter contacts
+func (r ApiListContactsRequest) EmailDomain(emailDomain string) ApiListContactsRequest {
+	r.emailDomain = &emailDomain
+	return r
+}
+
+// the keyword string to search contacts by name or email (uses ORM for better performance)
+func (r ApiListContactsRequest) Keyword(keyword string) ApiListContactsRequest {
+	r.keyword = &keyword
+	return r
+}
+
+// List pagination size, default 1000, max value is 1000 (ignored when contactIds is provided)
+func (r ApiListContactsRequest) Limit(limit int32) ApiListContactsRequest {
 	r.limit = &limit
 	return r
 }
 
-// List pagination offset, default 0
-func (r ApiListContactsByOrganizationRequest) Offset(offset int32) ApiListContactsByOrganizationRequest {
+// List pagination offset, default 0 (ignored when contactIds is provided)
+func (r ApiListContactsRequest) Offset(offset int32) ApiListContactsRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiListContactsByOrganizationRequest) Execute() ([]IdentityContact, *http.Response, error) {
-	return r.ApiService.ListContactsByOrganizationExecute(r)
+func (r ApiListContactsRequest) Execute() ([]IdentityContact, *http.Response, error) {
+	return r.ApiService.ListContactsExecute(r)
 }
 
 /*
-ListContactsByOrganization list contacts by organization
+ListContacts list contacts
 
-List all contacts under the given organization.
+List all contacts under the given organization. If contactIds parameter is provided, return only those specific contacts.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId Organization ID
- @return ApiListContactsByOrganizationRequest
+ @return ApiListContactsRequest
 */
-func (a *ContactAPIService) ListContactsByOrganization(ctx context.Context, orgId string) ApiListContactsByOrganizationRequest {
-	return ApiListContactsByOrganizationRequest{
+func (a *ContactAPIService) ListContacts(ctx context.Context, orgId string) ApiListContactsRequest {
+	return ApiListContactsRequest{
 		ApiService: a,
 		ctx: ctx,
 		orgId: orgId,
@@ -801,7 +822,7 @@ func (a *ContactAPIService) ListContactsByOrganization(ctx context.Context, orgI
 
 // Execute executes the request
 //  @return []IdentityContact
-func (a *ContactAPIService) ListContactsByOrganizationExecute(r ApiListContactsByOrganizationRequest) ([]IdentityContact, *http.Response, error) {
+func (a *ContactAPIService) ListContactsExecute(r ApiListContactsRequest) ([]IdentityContact, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -809,7 +830,7 @@ func (a *ContactAPIService) ListContactsByOrganizationExecute(r ApiListContactsB
 		localVarReturnValue  []IdentityContact
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContactAPIService.ListContactsByOrganization")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContactAPIService.ListContacts")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -821,11 +842,198 @@ func (a *ContactAPIService) ListContactsByOrganizationExecute(r ApiListContactsB
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.contactIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "contactIds", r.contactIds, "form", "")
+	}
+	if r.emailDomain != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "emailDomain", r.emailDomain, "form", "")
+	}
+	if r.keyword != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "keyword", r.keyword, "form", "")
+	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiQueryContactsRequest struct {
+	ctx context.Context
+	ApiService *ContactAPIService
+	orgId string
+	pageSize *int32
+	pageNumber *int32
+	q *string
+	s *string
+}
+
+// Number of items per page (default 20, max 1000)
+func (r ApiQueryContactsRequest) PageSize(pageSize int32) ApiQueryContactsRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Page number (default 1)
+func (r ApiQueryContactsRequest) PageNumber(pageNumber int32) ApiQueryContactsRequest {
+	r.pageNumber = &pageNumber
+	return r
+}
+
+// LISP-style filter expression (e.g., &#39;(&#x3D; name \\
+func (r ApiQueryContactsRequest) Q(q string) ApiQueryContactsRequest {
+	r.q = &q
+	return r
+}
+
+// Sort fields: &#39;field:asc,field2:desc&#39; or &#39;-field,field2&#39; format (e.g., &#39;creation_time:desc,name:asc&#39; or &#39;-creation_time,name&#39;)
+func (r ApiQueryContactsRequest) S(s string) ApiQueryContactsRequest {
+	r.s = &s
+	return r
+}
+
+func (r ApiQueryContactsRequest) Execute() (*GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmIdentityContact, *http.Response, error) {
+	return r.ApiService.QueryContactsExecute(r)
+}
+
+/*
+QueryContacts query contacts
+
+Query contacts with advanced filtering, sorting, and pagination using CRUD query language. Supports complex filters, sorting by multiple fields, and pagination.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @return ApiQueryContactsRequest
+*/
+func (a *ContactAPIService) QueryContacts(ctx context.Context, orgId string) ApiQueryContactsRequest {
+	return ApiQueryContactsRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+	}
+}
+
+// Execute executes the request
+//  @return GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmIdentityContact
+func (a *ContactAPIService) QueryContactsExecute(r ApiQueryContactsRequest) (*GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmIdentityContact, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GithubComSugerioMarketplaceServicePkgCrudListBaseResponseGithubComSugerioMarketplaceServicePkgOrmIdentityContact
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContactAPIService.QueryContacts")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/contact/query"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	}
+	if r.pageNumber != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_number", r.pageNumber, "form", "")
+	}
+	if r.q != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "q", r.q, "form", "")
+	}
+	if r.s != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "s", r.s, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1229,7 +1437,7 @@ func (r ApiUpdateContactRequest) Execute() (*IdentityContact, *http.Response, er
 /*
 UpdateContact update contact
 
-update contact by the given organization and buyer id. The given name and information should be complete. Please note that this function does not support partial updates.
+Update the contact for the given organization and contact ID. This endpoint supports partial updates. Only the fields provided in the request body will be updated. To clear a field, provide it with an empty value.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orgId Organization ID
@@ -1261,6 +1469,160 @@ func (a *ContactAPIService) UpdateContactExecute(r ApiUpdateContactRequest) (*Id
 	}
 
 	localVarPath := localBasePath + "/org/{orgId}/contact/{contactId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"contactId"+"}", url.PathEscape(parameterValueToString(r.contactId, "contactId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.data == nil {
+		return localVarReturnValue, nil, reportError("data is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.data
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateContactTagsRequest struct {
+	ctx context.Context
+	ApiService *ContactAPIService
+	orgId string
+	contactId string
+	data *ServiceMarketplaceServiceApiUpdateContactTagsRequest
+}
+
+// Request Body
+func (r ApiUpdateContactTagsRequest) Data(data ServiceMarketplaceServiceApiUpdateContactTagsRequest) ApiUpdateContactTagsRequest {
+	r.data = &data
+	return r
+}
+
+func (r ApiUpdateContactTagsRequest) Execute() ([]string, *http.Response, error) {
+	return r.ApiService.UpdateContactTagsExecute(r)
+}
+
+/*
+UpdateContactTags update contact tags
+
+Update the tags for a contact. Tags must be alphabetic strings, max 10 characters each, max 5 tags total.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param orgId Organization ID
+ @param contactId Contact ID
+ @return ApiUpdateContactTagsRequest
+*/
+func (a *ContactAPIService) UpdateContactTags(ctx context.Context, orgId string, contactId string) ApiUpdateContactTagsRequest {
+	return ApiUpdateContactTagsRequest{
+		ApiService: a,
+		ctx: ctx,
+		orgId: orgId,
+		contactId: contactId,
+	}
+}
+
+// Execute executes the request
+//  @return []string
+func (a *ContactAPIService) UpdateContactTagsExecute(r ApiUpdateContactTagsRequest) ([]string, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContactAPIService.UpdateContactTags")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/org/{orgId}/contact/{contactId}/tag"
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"contactId"+"}", url.PathEscape(parameterValueToString(r.contactId, "contactId")), -1)
 

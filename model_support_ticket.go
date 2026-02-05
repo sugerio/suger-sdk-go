@@ -32,6 +32,7 @@ type SupportTicket struct {
 	OrganizationId *string `json:"organizationId,omitempty"`
 	Priority *SupportTicketPriority `json:"priority,omitempty"`
 	Status *SupportTicketStatus `json:"status,omitempty"`
+	TaskType *SupportTicketTaskType `json:"taskType,omitempty"`
 	Watchers []string `json:"watchers,omitempty"`
 }
 
@@ -436,6 +437,38 @@ func (o *SupportTicket) SetStatus(v SupportTicketStatus) {
 	o.Status = &v
 }
 
+// GetTaskType returns the TaskType field value if set, zero value otherwise.
+func (o *SupportTicket) GetTaskType() SupportTicketTaskType {
+	if o == nil || IsNil(o.TaskType) {
+		var ret SupportTicketTaskType
+		return ret
+	}
+	return *o.TaskType
+}
+
+// GetTaskTypeOk returns a tuple with the TaskType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SupportTicket) GetTaskTypeOk() (*SupportTicketTaskType, bool) {
+	if o == nil || IsNil(o.TaskType) {
+		return nil, false
+	}
+	return o.TaskType, true
+}
+
+// HasTaskType returns a boolean if a field has been set.
+func (o *SupportTicket) HasTaskType() bool {
+	if o != nil && !IsNil(o.TaskType) {
+		return true
+	}
+
+	return false
+}
+
+// SetTaskType gets a reference to the given SupportTicketTaskType and assigns it to the TaskType field.
+func (o *SupportTicket) SetTaskType(v SupportTicketTaskType) {
+	o.TaskType = &v
+}
+
 // GetWatchers returns the Watchers field value if set, zero value otherwise.
 func (o *SupportTicket) GetWatchers() []string {
 	if o == nil || IsNil(o.Watchers) {
@@ -513,6 +546,9 @@ func (o SupportTicket) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.TaskType) {
+		toSerialize["taskType"] = o.TaskType
 	}
 	if !IsNil(o.Watchers) {
 		toSerialize["watchers"] = o.Watchers

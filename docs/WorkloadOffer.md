@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **ProductID** | Pointer to **string** |  | [optional] 
 **Service** | Pointer to [**PartnerService**](PartnerService.md) |  | [optional] 
 **Status** | Pointer to [**OfferStatus**](OfferStatus.md) |  | [optional] 
+**SubStatus** | Pointer to [**GithubComSugerioMarketplaceServicePkgStructsOfferSubStatus**](GithubComSugerioMarketplaceServicePkgStructsOfferSubStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -543,6 +544,31 @@ SetStatus sets Status field to given value.
 `func (o *WorkloadOffer) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetSubStatus
+
+`func (o *WorkloadOffer) GetSubStatus() GithubComSugerioMarketplaceServicePkgStructsOfferSubStatus`
+
+GetSubStatus returns the SubStatus field if non-nil, zero value otherwise.
+
+### GetSubStatusOk
+
+`func (o *WorkloadOffer) GetSubStatusOk() (*GithubComSugerioMarketplaceServicePkgStructsOfferSubStatus, bool)`
+
+GetSubStatusOk returns a tuple with the SubStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubStatus
+
+`func (o *WorkloadOffer) SetSubStatus(v GithubComSugerioMarketplaceServicePkgStructsOfferSubStatus)`
+
+SetSubStatus sets SubStatus field to given value.
+
+### HasSubStatus
+
+`func (o *WorkloadOffer) HasSubStatus() bool`
+
+HasSubStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

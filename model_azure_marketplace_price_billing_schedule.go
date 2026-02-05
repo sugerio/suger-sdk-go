@@ -23,7 +23,11 @@ type AzureMarketplacePriceBillingSchedule struct {
 	// In format of YYYY-MM-DD.
 	ChargeDate *string `json:"chargeDate,omitempty"`
 	Note *string `json:"note,omitempty"`
+	// For non-VM offers (SaaS, etc.)
 	PricePerPaymentInUsd *float32 `json:"pricePerPaymentInUsd,omitempty"`
+	Prices []AzureMarketplacePrice `json:"prices,omitempty"`
+	// For VM offers with flexible billing could be 0 for the amount
+	UnitPricePerPaymentPeriodInUsd *float32 `json:"unitPricePerPaymentPeriodInUsd,omitempty"`
 }
 
 // NewAzureMarketplacePriceBillingSchedule instantiates a new AzureMarketplacePriceBillingSchedule object
@@ -139,6 +143,70 @@ func (o *AzureMarketplacePriceBillingSchedule) SetPricePerPaymentInUsd(v float32
 	o.PricePerPaymentInUsd = &v
 }
 
+// GetPrices returns the Prices field value if set, zero value otherwise.
+func (o *AzureMarketplacePriceBillingSchedule) GetPrices() []AzureMarketplacePrice {
+	if o == nil || IsNil(o.Prices) {
+		var ret []AzureMarketplacePrice
+		return ret
+	}
+	return o.Prices
+}
+
+// GetPricesOk returns a tuple with the Prices field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureMarketplacePriceBillingSchedule) GetPricesOk() ([]AzureMarketplacePrice, bool) {
+	if o == nil || IsNil(o.Prices) {
+		return nil, false
+	}
+	return o.Prices, true
+}
+
+// HasPrices returns a boolean if a field has been set.
+func (o *AzureMarketplacePriceBillingSchedule) HasPrices() bool {
+	if o != nil && !IsNil(o.Prices) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrices gets a reference to the given []AzureMarketplacePrice and assigns it to the Prices field.
+func (o *AzureMarketplacePriceBillingSchedule) SetPrices(v []AzureMarketplacePrice) {
+	o.Prices = v
+}
+
+// GetUnitPricePerPaymentPeriodInUsd returns the UnitPricePerPaymentPeriodInUsd field value if set, zero value otherwise.
+func (o *AzureMarketplacePriceBillingSchedule) GetUnitPricePerPaymentPeriodInUsd() float32 {
+	if o == nil || IsNil(o.UnitPricePerPaymentPeriodInUsd) {
+		var ret float32
+		return ret
+	}
+	return *o.UnitPricePerPaymentPeriodInUsd
+}
+
+// GetUnitPricePerPaymentPeriodInUsdOk returns a tuple with the UnitPricePerPaymentPeriodInUsd field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureMarketplacePriceBillingSchedule) GetUnitPricePerPaymentPeriodInUsdOk() (*float32, bool) {
+	if o == nil || IsNil(o.UnitPricePerPaymentPeriodInUsd) {
+		return nil, false
+	}
+	return o.UnitPricePerPaymentPeriodInUsd, true
+}
+
+// HasUnitPricePerPaymentPeriodInUsd returns a boolean if a field has been set.
+func (o *AzureMarketplacePriceBillingSchedule) HasUnitPricePerPaymentPeriodInUsd() bool {
+	if o != nil && !IsNil(o.UnitPricePerPaymentPeriodInUsd) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnitPricePerPaymentPeriodInUsd gets a reference to the given float32 and assigns it to the UnitPricePerPaymentPeriodInUsd field.
+func (o *AzureMarketplacePriceBillingSchedule) SetUnitPricePerPaymentPeriodInUsd(v float32) {
+	o.UnitPricePerPaymentPeriodInUsd = &v
+}
+
 func (o AzureMarketplacePriceBillingSchedule) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -157,6 +225,12 @@ func (o AzureMarketplacePriceBillingSchedule) ToMap() (map[string]interface{}, e
 	}
 	if !IsNil(o.PricePerPaymentInUsd) {
 		toSerialize["pricePerPaymentInUsd"] = o.PricePerPaymentInUsd
+	}
+	if !IsNil(o.Prices) {
+		toSerialize["prices"] = o.Prices
+	}
+	if !IsNil(o.UnitPricePerPaymentPeriodInUsd) {
+		toSerialize["unitPricePerPaymentPeriodInUsd"] = o.UnitPricePerPaymentPeriodInUsd
 	}
 	return toSerialize, nil
 }

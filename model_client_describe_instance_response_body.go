@@ -20,24 +20,40 @@ var _ MappedNullable = &ClientDescribeInstanceResponseBody{}
 
 // ClientDescribeInstanceResponseBody struct for ClientDescribeInstanceResponseBody
 type ClientDescribeInstanceResponseBody struct {
+	ActiveAddress *string `json:"ActiveAddress,omitempty"`
+	// example:  {\"frontEndUrl\":\"https://_****.aliyundoc.com\",\"password\":\"Sjtv***\",\"adminUrl\":\"https://_****.aliyundoc.com\",\"username\":\"aliyun***\"}
 	AppJson *string `json:"AppJson,omitempty"`
 	AutoRenewal *string `json:"AutoRenewal,omitempty"`
+	// example:  1570634021000
 	BeganOn *int32 `json:"BeganOn,omitempty"`
+	// example:  {\"package_version\":\"yuncode000111\"}
 	ComponentJson *string `json:"ComponentJson,omitempty"`
+	// example:  {}
 	Constraints *string `json:"Constraints,omitempty"`
+	// example:  1570634018000
 	CreatedOn *int32 `json:"CreatedOn,omitempty"`
+	// example:  1602259200000
 	EndOn *int32 `json:"EndOn,omitempty"`
 	ExtendJson *string `json:"ExtendJson,omitempty"`
+	// example:  {\"password\":\"***\",\"ip\":\"118.31.***.41\",\"innerIp\":\"118.31.***.41\",\"region\":\"\",\"username\":\"***\",\"beianInfo\":\"\"}
 	HostJson *string `json:"HostJson,omitempty"`
+	// example:  1551111111
 	InstanceId *int32 `json:"InstanceId,omitempty"`
+	// example:  true
 	IsTrial *bool `json:"IsTrial,omitempty"`
+	LicenseCode *string `json:"LicenseCode,omitempty"`
 	Modules *ClientDescribeInstanceResponseBodyModules `json:"Modules,omitempty"`
+	// example:  204211111111111
 	OrderId *int32 `json:"OrderId,omitempty"`
+	// example:  cmgj00**11
 	ProductCode *string `json:"ProductCode,omitempty"`
 	ProductName *string `json:"ProductName,omitempty"`
+	// example:  cmgj00**11-prepay
 	ProductSkuCode *string `json:"ProductSkuCode,omitempty"`
+	// example:  APP
 	ProductType *string `json:"ProductType,omitempty"`
 	RelationalData *ClientDescribeInstanceResponseBodyRelationalData `json:"RelationalData,omitempty"`
+	// example:  OPENED
 	Status *string `json:"Status,omitempty"`
 	SupplierName *string `json:"SupplierName,omitempty"`
 }
@@ -57,6 +73,38 @@ func NewClientDescribeInstanceResponseBody() *ClientDescribeInstanceResponseBody
 func NewClientDescribeInstanceResponseBodyWithDefaults() *ClientDescribeInstanceResponseBody {
 	this := ClientDescribeInstanceResponseBody{}
 	return &this
+}
+
+// GetActiveAddress returns the ActiveAddress field value if set, zero value otherwise.
+func (o *ClientDescribeInstanceResponseBody) GetActiveAddress() string {
+	if o == nil || IsNil(o.ActiveAddress) {
+		var ret string
+		return ret
+	}
+	return *o.ActiveAddress
+}
+
+// GetActiveAddressOk returns a tuple with the ActiveAddress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClientDescribeInstanceResponseBody) GetActiveAddressOk() (*string, bool) {
+	if o == nil || IsNil(o.ActiveAddress) {
+		return nil, false
+	}
+	return o.ActiveAddress, true
+}
+
+// HasActiveAddress returns a boolean if a field has been set.
+func (o *ClientDescribeInstanceResponseBody) HasActiveAddress() bool {
+	if o != nil && !IsNil(o.ActiveAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetActiveAddress gets a reference to the given string and assigns it to the ActiveAddress field.
+func (o *ClientDescribeInstanceResponseBody) SetActiveAddress(v string) {
+	o.ActiveAddress = &v
 }
 
 // GetAppJson returns the AppJson field value if set, zero value otherwise.
@@ -411,6 +459,38 @@ func (o *ClientDescribeInstanceResponseBody) SetIsTrial(v bool) {
 	o.IsTrial = &v
 }
 
+// GetLicenseCode returns the LicenseCode field value if set, zero value otherwise.
+func (o *ClientDescribeInstanceResponseBody) GetLicenseCode() string {
+	if o == nil || IsNil(o.LicenseCode) {
+		var ret string
+		return ret
+	}
+	return *o.LicenseCode
+}
+
+// GetLicenseCodeOk returns a tuple with the LicenseCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClientDescribeInstanceResponseBody) GetLicenseCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.LicenseCode) {
+		return nil, false
+	}
+	return o.LicenseCode, true
+}
+
+// HasLicenseCode returns a boolean if a field has been set.
+func (o *ClientDescribeInstanceResponseBody) HasLicenseCode() bool {
+	if o != nil && !IsNil(o.LicenseCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetLicenseCode gets a reference to the given string and assigns it to the LicenseCode field.
+func (o *ClientDescribeInstanceResponseBody) SetLicenseCode(v string) {
+	o.LicenseCode = &v
+}
+
 // GetModules returns the Modules field value if set, zero value otherwise.
 func (o *ClientDescribeInstanceResponseBody) GetModules() ClientDescribeInstanceResponseBodyModules {
 	if o == nil || IsNil(o.Modules) {
@@ -709,6 +789,9 @@ func (o ClientDescribeInstanceResponseBody) MarshalJSON() ([]byte, error) {
 
 func (o ClientDescribeInstanceResponseBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ActiveAddress) {
+		toSerialize["ActiveAddress"] = o.ActiveAddress
+	}
 	if !IsNil(o.AppJson) {
 		toSerialize["AppJson"] = o.AppJson
 	}
@@ -741,6 +824,9 @@ func (o ClientDescribeInstanceResponseBody) ToMap() (map[string]interface{}, err
 	}
 	if !IsNil(o.IsTrial) {
 		toSerialize["IsTrial"] = o.IsTrial
+	}
+	if !IsNil(o.LicenseCode) {
+		toSerialize["LicenseCode"] = o.LicenseCode
 	}
 	if !IsNil(o.Modules) {
 		toSerialize["Modules"] = o.Modules

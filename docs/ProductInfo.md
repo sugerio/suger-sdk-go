@@ -10,11 +10,13 @@ Name | Type | Description | Notes
 **AwsContainerProduct** | Pointer to [**AwsProduct**](AwsProduct.md) |  | [optional] 
 **AwsMachineLearningProduct** | Pointer to [**AwsProduct**](AwsProduct.md) |  | [optional] 
 **AwsProfessionalServicesProduct** | Pointer to [**AwsProduct**](AwsProduct.md) |  | [optional] 
+**AwsPurchaseConstraints** | Pointer to [**AwsMarketplacePurchaseConstraints**](AwsMarketplacePurchaseConstraints.md) |  | [optional] 
 **AwsSaasProduct** | Pointer to [**AwsProduct**](AwsProduct.md) |  | [optional] 
 **AwsSnsSubscriptions** | Pointer to [**[]AwsSnsSubscription**](AwsSnsSubscription.md) |  | [optional] 
 **AzureProduct** | Pointer to [**AzureProduct**](AzureProduct.md) |  | [optional] 
 **AzureProductResource** | Pointer to [**AzureMarketplaceProductResource**](AzureMarketplaceProductResource.md) |  | [optional] 
 **Commits** | Pointer to [**[]CommitDimension**](CommitDimension.md) |  | [optional] 
+**CompanyID** | Pointer to **string** |  | [optional] 
 **Currency** | Pointer to **string** |  | [optional] 
 **Dimensions** | Pointer to [**[]MeteringDimension**](MeteringDimension.md) |  | [optional] 
 **EulaType** | Pointer to [**EulaType**](EulaType.md) | The public offer&#39;s EULA type. | [optional] 
@@ -194,6 +196,31 @@ SetAwsProfessionalServicesProduct sets AwsProfessionalServicesProduct field to g
 
 HasAwsProfessionalServicesProduct returns a boolean if a field has been set.
 
+### GetAwsPurchaseConstraints
+
+`func (o *ProductInfo) GetAwsPurchaseConstraints() AwsMarketplacePurchaseConstraints`
+
+GetAwsPurchaseConstraints returns the AwsPurchaseConstraints field if non-nil, zero value otherwise.
+
+### GetAwsPurchaseConstraintsOk
+
+`func (o *ProductInfo) GetAwsPurchaseConstraintsOk() (*AwsMarketplacePurchaseConstraints, bool)`
+
+GetAwsPurchaseConstraintsOk returns a tuple with the AwsPurchaseConstraints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsPurchaseConstraints
+
+`func (o *ProductInfo) SetAwsPurchaseConstraints(v AwsMarketplacePurchaseConstraints)`
+
+SetAwsPurchaseConstraints sets AwsPurchaseConstraints field to given value.
+
+### HasAwsPurchaseConstraints
+
+`func (o *ProductInfo) HasAwsPurchaseConstraints() bool`
+
+HasAwsPurchaseConstraints returns a boolean if a field has been set.
+
 ### GetAwsSaasProduct
 
 `func (o *ProductInfo) GetAwsSaasProduct() AwsProduct`
@@ -318,6 +345,31 @@ SetCommits sets Commits field to given value.
 `func (o *ProductInfo) HasCommits() bool`
 
 HasCommits returns a boolean if a field has been set.
+
+### GetCompanyID
+
+`func (o *ProductInfo) GetCompanyID() string`
+
+GetCompanyID returns the CompanyID field if non-nil, zero value otherwise.
+
+### GetCompanyIDOk
+
+`func (o *ProductInfo) GetCompanyIDOk() (*string, bool)`
+
+GetCompanyIDOk returns a tuple with the CompanyID field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompanyID
+
+`func (o *ProductInfo) SetCompanyID(v string)`
+
+SetCompanyID sets CompanyID field to given value.
+
+### HasCompanyID
+
+`func (o *ProductInfo) HasCompanyID() bool`
+
+HasCompanyID returns a boolean if a field has been set.
 
 ### GetCurrency
 

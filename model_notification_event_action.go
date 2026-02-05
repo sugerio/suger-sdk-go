@@ -31,6 +31,10 @@ const (
 	NotificationEventAction_CREATE NotificationEventAction = "CREATE"
 	NotificationEventAction_DELETE NotificationEventAction = "DELETE"
 	NotificationEventAction_ARCHIVE NotificationEventAction = "ARCHIVE"
+	NotificationEventAction_PENDING_CREATE NotificationEventAction = "PENDING_CREATE"
+	NotificationEventAction_CREATE_FAILED NotificationEventAction = "CREATE_FAILED"
+	NotificationEventAction_ACTIVE NotificationEventAction = "ACTIVE"
+	NotificationEventAction_VOID NotificationEventAction = "VOID"
 	NotificationEventAction_DISBURSE NotificationEventAction = "DISBURSE"
 	NotificationEventAction_END_SOON NotificationEventAction = "END_SOON"
 	NotificationEventAction_EXPIRE NotificationEventAction = "EXPIRE"
@@ -50,20 +54,20 @@ const (
 	NotificationEventAction_REFUND NotificationEventAction = "REFUND"
 	NotificationEventAction_ISSUE NotificationEventAction = "ISSUE"
 	NotificationEventAction_SIGN NotificationEventAction = "SIGN"
+	NotificationEventAction_PENDING_PARTNER_ACTION NotificationEventAction = "PENDING_PARTNER_ACTION"
+	NotificationEventAction_TERMINATE NotificationEventAction = "TERMINATE"
 	NotificationEventAction_ROTATE_SECRET NotificationEventAction = "ROTATE_SECRET"
 	NotificationEventAction_SUSPEND NotificationEventAction = "SUSPEND"
 	NotificationEventAction_TEST NotificationEventAction = "TEST"
 	NotificationEventAction_UPDATE NotificationEventAction = "UPDATE"
-	NotificationEventAction_ACE_ENGAGEMENT_SCORE_UPDATE NotificationEventAction = "ACE_ENGAGEMENT_SCORE_UPDATE"
-	NotificationEventAction_ACE_SALES_REP_UPDATE NotificationEventAction = "ACE_SALES_REP_UPDATE"
-	NotificationEventAction_ACE_CUSTOMER_EMAIL_UPDATE NotificationEventAction = "ACE_CUSTOMER_EMAIL_UPDATE"
-	NotificationEventAction_AZURE_STATUS_UPDATE NotificationEventAction = "AZURE_STATUS_UPDATE"
 	NotificationEventAction_SUBMIT_APPROVAL_REQUEST NotificationEventAction = "SUBMIT_APPROVAL_REQUEST"
 	NotificationEventAction_REVIEW_APPROVAL_REQUEST NotificationEventAction = "REVIEW_APPROVAL_REQUEST"
+	NotificationEventAction_APPROVE_APPROVAL_REQUEST NotificationEventAction = "APPROVE_APPROVAL_REQUEST"
+	NotificationEventAction_DECLINE_APPROVAL_REQUEST NotificationEventAction = "DECLINE_APPROVAL_REQUEST"
 	NotificationEventAction_COMPLETE NotificationEventAction = "COMPLETE"
 	NotificationEventAction_FAIL NotificationEventAction = "FAIL"
 	NotificationEventAction_WEBHOOK NotificationEventAction = "WEBHOOK"
-	NotificationEventAction_MARKETPLACE_CONTACT_EMAIL_UPDATE NotificationEventAction = "MARKETPLACE_CONTACT_EMAIL_UPDATE"
+	NotificationEventAction_INBOUND NotificationEventAction = "INBOUND"
 )
 
 // All allowed values of NotificationEventAction enum
@@ -78,6 +82,10 @@ var AllowedNotificationEventActionEnumValues = []NotificationEventAction{
 	"CREATE",
 	"DELETE",
 	"ARCHIVE",
+	"PENDING_CREATE",
+	"CREATE_FAILED",
+	"ACTIVE",
+	"VOID",
 	"DISBURSE",
 	"END_SOON",
 	"EXPIRE",
@@ -97,20 +105,20 @@ var AllowedNotificationEventActionEnumValues = []NotificationEventAction{
 	"REFUND",
 	"ISSUE",
 	"SIGN",
+	"PENDING_PARTNER_ACTION",
+	"TERMINATE",
 	"ROTATE_SECRET",
 	"SUSPEND",
 	"TEST",
 	"UPDATE",
-	"ACE_ENGAGEMENT_SCORE_UPDATE",
-	"ACE_SALES_REP_UPDATE",
-	"ACE_CUSTOMER_EMAIL_UPDATE",
-	"AZURE_STATUS_UPDATE",
 	"SUBMIT_APPROVAL_REQUEST",
 	"REVIEW_APPROVAL_REQUEST",
+	"APPROVE_APPROVAL_REQUEST",
+	"DECLINE_APPROVAL_REQUEST",
 	"COMPLETE",
 	"FAIL",
 	"WEBHOOK",
-	"MARKETPLACE_CONTACT_EMAIL_UPDATE",
+	"INBOUND",
 }
 
 func (v *NotificationEventAction) UnmarshalJSON(src []byte) error {

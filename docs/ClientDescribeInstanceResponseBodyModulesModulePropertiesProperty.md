@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DisplayUnit** | Pointer to **string** |  | [optional] 
-**Key** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**DisplayUnit** | Pointer to **string** | example:  12 | [optional] 
+**Key** | Pointer to **string** | example:  12 | [optional] 
+**Name** | Pointer to **string** | example:  12 | [optional] 
 **PropertyValues** | Pointer to [**ClientDescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValues**](ClientDescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValues.md) |  | [optional] 
-**ShowType** | Pointer to **string** |  | [optional] 
+**ShowType** | Pointer to **string** | example:  12 | [optional] 
 
 ## Methods
 

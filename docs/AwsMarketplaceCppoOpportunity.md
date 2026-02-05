@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** |  | [optional] 
 **Terms** | Pointer to [**[]AwsMarketplaceCppoOpportunityTerm**](AwsMarketplaceCppoOpportunityTerm.md) |  | [optional] 
 **DiscountType** | Pointer to [**AwsMarketplaceCppoDiscountType**](AwsMarketplaceCppoDiscountType.md) | The following fields are not from aws catalog API, only used for cppo_out offer create. They shouldn&#39;t be read in other places because they will absent when fetch opportunity from aws catalog API. | [optional] 
+**MaximumAgreementStartDate** | Pointer to **string** | Use this field to modify and control the product agreement duration. | [optional] 
 **OpportunityDurationType** | Pointer to [**AwsMarketplaceCppoDurationType**](AwsMarketplaceCppoDurationType.md) |  | [optional] 
 **OpportunityId** | Pointer to **string** |  | [optional] 
 **PartnerId** | Pointer to **string** |  | [optional] 
@@ -390,6 +391,31 @@ SetDiscountType sets DiscountType field to given value.
 `func (o *AwsMarketplaceCppoOpportunity) HasDiscountType() bool`
 
 HasDiscountType returns a boolean if a field has been set.
+
+### GetMaximumAgreementStartDate
+
+`func (o *AwsMarketplaceCppoOpportunity) GetMaximumAgreementStartDate() string`
+
+GetMaximumAgreementStartDate returns the MaximumAgreementStartDate field if non-nil, zero value otherwise.
+
+### GetMaximumAgreementStartDateOk
+
+`func (o *AwsMarketplaceCppoOpportunity) GetMaximumAgreementStartDateOk() (*string, bool)`
+
+GetMaximumAgreementStartDateOk returns a tuple with the MaximumAgreementStartDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaximumAgreementStartDate
+
+`func (o *AwsMarketplaceCppoOpportunity) SetMaximumAgreementStartDate(v string)`
+
+SetMaximumAgreementStartDate sets MaximumAgreementStartDate field to given value.
+
+### HasMaximumAgreementStartDate
+
+`func (o *AwsMarketplaceCppoOpportunity) HasMaximumAgreementStartDate() bool`
+
+HasMaximumAgreementStartDate returns a boolean if a field has been set.
 
 ### GetOpportunityDurationType
 

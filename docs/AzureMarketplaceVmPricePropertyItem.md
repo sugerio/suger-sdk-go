@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**FlexibleSchedule** | Pointer to [**AzureMarketplacePriceFlexibleSchedule**](AzureMarketplacePriceFlexibleSchedule.md) | For Azure schema 2025-05-01 flexible billing | [optional] 
 **Quantity** | Pointer to **float32** |  | [optional] 
-**UnitPricePerPaymentPeriodInUsd** | Pointer to **float32** |  | [optional] 
+**UnitPricePerPaymentPeriodInUsd** | Pointer to **float32** | For VM offer, could be 0 | [optional] 
 
 ## Methods
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewAzureMarketplaceVmPricePropertyItemWithDefaults instantiates a new AzureMarketplaceVmPricePropertyItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetFlexibleSchedule
+
+`func (o *AzureMarketplaceVmPricePropertyItem) GetFlexibleSchedule() AzureMarketplacePriceFlexibleSchedule`
+
+GetFlexibleSchedule returns the FlexibleSchedule field if non-nil, zero value otherwise.
+
+### GetFlexibleScheduleOk
+
+`func (o *AzureMarketplaceVmPricePropertyItem) GetFlexibleScheduleOk() (*AzureMarketplacePriceFlexibleSchedule, bool)`
+
+GetFlexibleScheduleOk returns a tuple with the FlexibleSchedule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlexibleSchedule
+
+`func (o *AzureMarketplaceVmPricePropertyItem) SetFlexibleSchedule(v AzureMarketplacePriceFlexibleSchedule)`
+
+SetFlexibleSchedule sets FlexibleSchedule field to given value.
+
+### HasFlexibleSchedule
+
+`func (o *AzureMarketplaceVmPricePropertyItem) HasFlexibleSchedule() bool`
+
+HasFlexibleSchedule returns a boolean if a field has been set.
 
 ### GetQuantity
 

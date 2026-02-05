@@ -5,13 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AmiAlias** | Pointer to **string** | Exclusive Fields For AWS AMI Product | [optional] 
+**ApiType** | Pointer to **string** |  | [optional] 
+**CompatibleServices** | Pointer to **[]string** |  | [optional] 
+**Endpoints** | Pointer to [**[]AwsProductDeliveryOptionApiEndpoint**](AwsProductDeliveryOptionApiEndpoint.md) |  | [optional] 
 **FulfillmentUrl** | Pointer to **string** | Exclusive Fields For AWS SaaS Product | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
+**QuickLaunchEnabled** | Pointer to **bool** |  | [optional] 
 **Recommendations** | Pointer to **map[string]interface{}** |  | [optional] 
 **ShortDescription** | Pointer to **string** |  | [optional] 
 **SourceId** | Pointer to **string** |  | [optional] 
 **Title** | Pointer to **string** | Exclusive Fields For AWS Container Product | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
+**UsageInstructions** | Pointer to **string** | Exclusive Fields For SaaS AI Product | [optional] 
 **Visibility** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -57,6 +62,81 @@ SetAmiAlias sets AmiAlias field to given value.
 `func (o *AwsProductDeliveryOption) HasAmiAlias() bool`
 
 HasAmiAlias returns a boolean if a field has been set.
+
+### GetApiType
+
+`func (o *AwsProductDeliveryOption) GetApiType() string`
+
+GetApiType returns the ApiType field if non-nil, zero value otherwise.
+
+### GetApiTypeOk
+
+`func (o *AwsProductDeliveryOption) GetApiTypeOk() (*string, bool)`
+
+GetApiTypeOk returns a tuple with the ApiType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiType
+
+`func (o *AwsProductDeliveryOption) SetApiType(v string)`
+
+SetApiType sets ApiType field to given value.
+
+### HasApiType
+
+`func (o *AwsProductDeliveryOption) HasApiType() bool`
+
+HasApiType returns a boolean if a field has been set.
+
+### GetCompatibleServices
+
+`func (o *AwsProductDeliveryOption) GetCompatibleServices() []string`
+
+GetCompatibleServices returns the CompatibleServices field if non-nil, zero value otherwise.
+
+### GetCompatibleServicesOk
+
+`func (o *AwsProductDeliveryOption) GetCompatibleServicesOk() (*[]string, bool)`
+
+GetCompatibleServicesOk returns a tuple with the CompatibleServices field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompatibleServices
+
+`func (o *AwsProductDeliveryOption) SetCompatibleServices(v []string)`
+
+SetCompatibleServices sets CompatibleServices field to given value.
+
+### HasCompatibleServices
+
+`func (o *AwsProductDeliveryOption) HasCompatibleServices() bool`
+
+HasCompatibleServices returns a boolean if a field has been set.
+
+### GetEndpoints
+
+`func (o *AwsProductDeliveryOption) GetEndpoints() []AwsProductDeliveryOptionApiEndpoint`
+
+GetEndpoints returns the Endpoints field if non-nil, zero value otherwise.
+
+### GetEndpointsOk
+
+`func (o *AwsProductDeliveryOption) GetEndpointsOk() (*[]AwsProductDeliveryOptionApiEndpoint, bool)`
+
+GetEndpointsOk returns a tuple with the Endpoints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndpoints
+
+`func (o *AwsProductDeliveryOption) SetEndpoints(v []AwsProductDeliveryOptionApiEndpoint)`
+
+SetEndpoints sets Endpoints field to given value.
+
+### HasEndpoints
+
+`func (o *AwsProductDeliveryOption) HasEndpoints() bool`
+
+HasEndpoints returns a boolean if a field has been set.
 
 ### GetFulfillmentUrl
 
@@ -107,6 +187,31 @@ SetId sets Id field to given value.
 `func (o *AwsProductDeliveryOption) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetQuickLaunchEnabled
+
+`func (o *AwsProductDeliveryOption) GetQuickLaunchEnabled() bool`
+
+GetQuickLaunchEnabled returns the QuickLaunchEnabled field if non-nil, zero value otherwise.
+
+### GetQuickLaunchEnabledOk
+
+`func (o *AwsProductDeliveryOption) GetQuickLaunchEnabledOk() (*bool, bool)`
+
+GetQuickLaunchEnabledOk returns a tuple with the QuickLaunchEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQuickLaunchEnabled
+
+`func (o *AwsProductDeliveryOption) SetQuickLaunchEnabled(v bool)`
+
+SetQuickLaunchEnabled sets QuickLaunchEnabled field to given value.
+
+### HasQuickLaunchEnabled
+
+`func (o *AwsProductDeliveryOption) HasQuickLaunchEnabled() bool`
+
+HasQuickLaunchEnabled returns a boolean if a field has been set.
 
 ### GetRecommendations
 
@@ -232,6 +337,31 @@ SetType sets Type field to given value.
 `func (o *AwsProductDeliveryOption) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetUsageInstructions
+
+`func (o *AwsProductDeliveryOption) GetUsageInstructions() string`
+
+GetUsageInstructions returns the UsageInstructions field if non-nil, zero value otherwise.
+
+### GetUsageInstructionsOk
+
+`func (o *AwsProductDeliveryOption) GetUsageInstructionsOk() (*string, bool)`
+
+GetUsageInstructionsOk returns a tuple with the UsageInstructions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsageInstructions
+
+`func (o *AwsProductDeliveryOption) SetUsageInstructions(v string)`
+
+SetUsageInstructions sets UsageInstructions field to given value.
+
+### HasUsageInstructions
+
+`func (o *AwsProductDeliveryOption) HasUsageInstructions() bool`
+
+HasUsageInstructions returns a boolean if a field has been set.
 
 ### GetVisibility
 

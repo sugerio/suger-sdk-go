@@ -43,6 +43,7 @@ type WorkloadOffer struct {
 	ProductID *string `json:"productID,omitempty"`
 	Service *PartnerService `json:"service,omitempty"`
 	Status *OfferStatus `json:"status,omitempty"`
+	SubStatus *GithubComSugerioMarketplaceServicePkgStructsOfferSubStatus `json:"subStatus,omitempty"`
 }
 
 // NewWorkloadOffer instantiates a new WorkloadOffer object
@@ -702,6 +703,38 @@ func (o *WorkloadOffer) SetStatus(v OfferStatus) {
 	o.Status = &v
 }
 
+// GetSubStatus returns the SubStatus field value if set, zero value otherwise.
+func (o *WorkloadOffer) GetSubStatus() GithubComSugerioMarketplaceServicePkgStructsOfferSubStatus {
+	if o == nil || IsNil(o.SubStatus) {
+		var ret GithubComSugerioMarketplaceServicePkgStructsOfferSubStatus
+		return ret
+	}
+	return *o.SubStatus
+}
+
+// GetSubStatusOk returns a tuple with the SubStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkloadOffer) GetSubStatusOk() (*GithubComSugerioMarketplaceServicePkgStructsOfferSubStatus, bool) {
+	if o == nil || IsNil(o.SubStatus) {
+		return nil, false
+	}
+	return o.SubStatus, true
+}
+
+// HasSubStatus returns a boolean if a field has been set.
+func (o *WorkloadOffer) HasSubStatus() bool {
+	if o != nil && !IsNil(o.SubStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubStatus gets a reference to the given GithubComSugerioMarketplaceServicePkgStructsOfferSubStatus and assigns it to the SubStatus field.
+func (o *WorkloadOffer) SetSubStatus(v GithubComSugerioMarketplaceServicePkgStructsOfferSubStatus) {
+	o.SubStatus = &v
+}
+
 func (o WorkloadOffer) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -771,6 +804,9 @@ func (o WorkloadOffer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.SubStatus) {
+		toSerialize["subStatus"] = o.SubStatus
 	}
 	return toSerialize, nil
 }

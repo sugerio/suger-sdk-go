@@ -25,6 +25,8 @@ type MeteringUsageRecordGroupMetaInfo struct {
 	SkipValidation *bool `json:"SkipValidation,omitempty"`
 	// for usage metering API v2
 	BillableRecords []MeteringUsageRecord `json:"billableRecords,omitempty"`
+	// ERP invoice ID for tracking usage against external ERP service.
+	ErpInvoiceID *string `json:"erpInvoiceID,omitempty"`
 	// The lago amount (in dollars) of the customer. This field keeps the largest of the monthly amount. So it can only be updated when the invoice month increases.
 	LagoAmount *float32 `json:"lagoAmount,omitempty"`
 	// The lago subscription ID of the customer.
@@ -33,6 +35,10 @@ type MeteringUsageRecordGroupMetaInfo struct {
 	LagoUsageStartTime *time.Time `json:"lagoUsageStartTime,omitempty"`
 	// The metronome daily cost amount (in dollars) of the customer.
 	MetronomeDailyCostAmount *float32 `json:"metronomeDailyCostAmount,omitempty"`
+	// Whether the metronome invoice has been credited back.
+	MetronomeInvoiceCreditBack *bool `json:"metronomeInvoiceCreditBack,omitempty"`
+	// The metronome invoice amount (in dollars) of the customer.
+	MetronomeInvoiceCreditBackAmount *float32 `json:"metronomeInvoiceCreditBackAmount,omitempty"`
 	// The metronome invoice ID of the customer.
 	MetronomeInvoiceID *string `json:"metronomeInvoiceID,omitempty"`
 	// The metronome monthly invoice amount (in dollars) of the customer. This field keeps the largest amount of the invoice month. So it can only be updated when the invoice month increases.
@@ -53,6 +59,8 @@ type MeteringUsageRecordGroupMetaInfo struct {
 	StripeUsageRecordSummaryTotalUsage *int32 `json:"stripeUsageRecordSummaryTotalUsage,omitempty"`
 	// The timestamp (UTC)) of when the usage records were generated. Optional, if not provided, the current report timestamp will be used.
 	Timestamp *time.Time `json:"timestamp,omitempty"`
+	// usage allocation information, dimension key -> UsageAllocation array. Only supported for AWS marketplace usage metering at this moment.
+	UsageAllocations *map[string][]UsageAllocation `json:"usageAllocations,omitempty"`
 }
 
 // NewMeteringUsageRecordGroupMetaInfo instantiates a new MeteringUsageRecordGroupMetaInfo object
@@ -134,6 +142,38 @@ func (o *MeteringUsageRecordGroupMetaInfo) HasBillableRecords() bool {
 // SetBillableRecords gets a reference to the given []MeteringUsageRecord and assigns it to the BillableRecords field.
 func (o *MeteringUsageRecordGroupMetaInfo) SetBillableRecords(v []MeteringUsageRecord) {
 	o.BillableRecords = v
+}
+
+// GetErpInvoiceID returns the ErpInvoiceID field value if set, zero value otherwise.
+func (o *MeteringUsageRecordGroupMetaInfo) GetErpInvoiceID() string {
+	if o == nil || IsNil(o.ErpInvoiceID) {
+		var ret string
+		return ret
+	}
+	return *o.ErpInvoiceID
+}
+
+// GetErpInvoiceIDOk returns a tuple with the ErpInvoiceID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) GetErpInvoiceIDOk() (*string, bool) {
+	if o == nil || IsNil(o.ErpInvoiceID) {
+		return nil, false
+	}
+	return o.ErpInvoiceID, true
+}
+
+// HasErpInvoiceID returns a boolean if a field has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) HasErpInvoiceID() bool {
+	if o != nil && !IsNil(o.ErpInvoiceID) {
+		return true
+	}
+
+	return false
+}
+
+// SetErpInvoiceID gets a reference to the given string and assigns it to the ErpInvoiceID field.
+func (o *MeteringUsageRecordGroupMetaInfo) SetErpInvoiceID(v string) {
+	o.ErpInvoiceID = &v
 }
 
 // GetLagoAmount returns the LagoAmount field value if set, zero value otherwise.
@@ -262,6 +302,70 @@ func (o *MeteringUsageRecordGroupMetaInfo) HasMetronomeDailyCostAmount() bool {
 // SetMetronomeDailyCostAmount gets a reference to the given float32 and assigns it to the MetronomeDailyCostAmount field.
 func (o *MeteringUsageRecordGroupMetaInfo) SetMetronomeDailyCostAmount(v float32) {
 	o.MetronomeDailyCostAmount = &v
+}
+
+// GetMetronomeInvoiceCreditBack returns the MetronomeInvoiceCreditBack field value if set, zero value otherwise.
+func (o *MeteringUsageRecordGroupMetaInfo) GetMetronomeInvoiceCreditBack() bool {
+	if o == nil || IsNil(o.MetronomeInvoiceCreditBack) {
+		var ret bool
+		return ret
+	}
+	return *o.MetronomeInvoiceCreditBack
+}
+
+// GetMetronomeInvoiceCreditBackOk returns a tuple with the MetronomeInvoiceCreditBack field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) GetMetronomeInvoiceCreditBackOk() (*bool, bool) {
+	if o == nil || IsNil(o.MetronomeInvoiceCreditBack) {
+		return nil, false
+	}
+	return o.MetronomeInvoiceCreditBack, true
+}
+
+// HasMetronomeInvoiceCreditBack returns a boolean if a field has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) HasMetronomeInvoiceCreditBack() bool {
+	if o != nil && !IsNil(o.MetronomeInvoiceCreditBack) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetronomeInvoiceCreditBack gets a reference to the given bool and assigns it to the MetronomeInvoiceCreditBack field.
+func (o *MeteringUsageRecordGroupMetaInfo) SetMetronomeInvoiceCreditBack(v bool) {
+	o.MetronomeInvoiceCreditBack = &v
+}
+
+// GetMetronomeInvoiceCreditBackAmount returns the MetronomeInvoiceCreditBackAmount field value if set, zero value otherwise.
+func (o *MeteringUsageRecordGroupMetaInfo) GetMetronomeInvoiceCreditBackAmount() float32 {
+	if o == nil || IsNil(o.MetronomeInvoiceCreditBackAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.MetronomeInvoiceCreditBackAmount
+}
+
+// GetMetronomeInvoiceCreditBackAmountOk returns a tuple with the MetronomeInvoiceCreditBackAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) GetMetronomeInvoiceCreditBackAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.MetronomeInvoiceCreditBackAmount) {
+		return nil, false
+	}
+	return o.MetronomeInvoiceCreditBackAmount, true
+}
+
+// HasMetronomeInvoiceCreditBackAmount returns a boolean if a field has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) HasMetronomeInvoiceCreditBackAmount() bool {
+	if o != nil && !IsNil(o.MetronomeInvoiceCreditBackAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetronomeInvoiceCreditBackAmount gets a reference to the given float32 and assigns it to the MetronomeInvoiceCreditBackAmount field.
+func (o *MeteringUsageRecordGroupMetaInfo) SetMetronomeInvoiceCreditBackAmount(v float32) {
+	o.MetronomeInvoiceCreditBackAmount = &v
 }
 
 // GetMetronomeInvoiceID returns the MetronomeInvoiceID field value if set, zero value otherwise.
@@ -648,6 +752,38 @@ func (o *MeteringUsageRecordGroupMetaInfo) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
 }
 
+// GetUsageAllocations returns the UsageAllocations field value if set, zero value otherwise.
+func (o *MeteringUsageRecordGroupMetaInfo) GetUsageAllocations() map[string][]UsageAllocation {
+	if o == nil || IsNil(o.UsageAllocations) {
+		var ret map[string][]UsageAllocation
+		return ret
+	}
+	return *o.UsageAllocations
+}
+
+// GetUsageAllocationsOk returns a tuple with the UsageAllocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) GetUsageAllocationsOk() (*map[string][]UsageAllocation, bool) {
+	if o == nil || IsNil(o.UsageAllocations) {
+		return nil, false
+	}
+	return o.UsageAllocations, true
+}
+
+// HasUsageAllocations returns a boolean if a field has been set.
+func (o *MeteringUsageRecordGroupMetaInfo) HasUsageAllocations() bool {
+	if o != nil && !IsNil(o.UsageAllocations) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageAllocations gets a reference to the given map[string][]UsageAllocation and assigns it to the UsageAllocations field.
+func (o *MeteringUsageRecordGroupMetaInfo) SetUsageAllocations(v map[string][]UsageAllocation) {
+	o.UsageAllocations = &v
+}
+
 func (o MeteringUsageRecordGroupMetaInfo) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -664,6 +800,9 @@ func (o MeteringUsageRecordGroupMetaInfo) ToMap() (map[string]interface{}, error
 	if !IsNil(o.BillableRecords) {
 		toSerialize["billableRecords"] = o.BillableRecords
 	}
+	if !IsNil(o.ErpInvoiceID) {
+		toSerialize["erpInvoiceID"] = o.ErpInvoiceID
+	}
 	if !IsNil(o.LagoAmount) {
 		toSerialize["lagoAmount"] = o.LagoAmount
 	}
@@ -675,6 +814,12 @@ func (o MeteringUsageRecordGroupMetaInfo) ToMap() (map[string]interface{}, error
 	}
 	if !IsNil(o.MetronomeDailyCostAmount) {
 		toSerialize["metronomeDailyCostAmount"] = o.MetronomeDailyCostAmount
+	}
+	if !IsNil(o.MetronomeInvoiceCreditBack) {
+		toSerialize["metronomeInvoiceCreditBack"] = o.MetronomeInvoiceCreditBack
+	}
+	if !IsNil(o.MetronomeInvoiceCreditBackAmount) {
+		toSerialize["metronomeInvoiceCreditBackAmount"] = o.MetronomeInvoiceCreditBackAmount
 	}
 	if !IsNil(o.MetronomeInvoiceID) {
 		toSerialize["metronomeInvoiceID"] = o.MetronomeInvoiceID
@@ -711,6 +856,9 @@ func (o MeteringUsageRecordGroupMetaInfo) ToMap() (map[string]interface{}, error
 	}
 	if !IsNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
+	}
+	if !IsNil(o.UsageAllocations) {
+		toSerialize["usageAllocations"] = o.UsageAllocations
 	}
 	return toSerialize, nil
 }

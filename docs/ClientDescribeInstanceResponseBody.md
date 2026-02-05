@@ -4,25 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AppJson** | Pointer to **string** |  | [optional] 
+**ActiveAddress** | Pointer to **string** |  | [optional] 
+**AppJson** | Pointer to **string** | example:  {\&quot;frontEndUrl\&quot;:\&quot;https://_****.aliyundoc.com\&quot;,\&quot;password\&quot;:\&quot;Sjtv***\&quot;,\&quot;adminUrl\&quot;:\&quot;https://_****.aliyundoc.com\&quot;,\&quot;username\&quot;:\&quot;aliyun***\&quot;} | [optional] 
 **AutoRenewal** | Pointer to **string** |  | [optional] 
-**BeganOn** | Pointer to **int32** |  | [optional] 
-**ComponentJson** | Pointer to **string** |  | [optional] 
-**Constraints** | Pointer to **string** |  | [optional] 
-**CreatedOn** | Pointer to **int32** |  | [optional] 
-**EndOn** | Pointer to **int32** |  | [optional] 
+**BeganOn** | Pointer to **int32** | example:  1570634021000 | [optional] 
+**ComponentJson** | Pointer to **string** | example:  {\&quot;package_version\&quot;:\&quot;yuncode000111\&quot;} | [optional] 
+**Constraints** | Pointer to **string** | example:  {} | [optional] 
+**CreatedOn** | Pointer to **int32** | example:  1570634018000 | [optional] 
+**EndOn** | Pointer to **int32** | example:  1602259200000 | [optional] 
 **ExtendJson** | Pointer to **string** |  | [optional] 
-**HostJson** | Pointer to **string** |  | [optional] 
-**InstanceId** | Pointer to **int32** |  | [optional] 
-**IsTrial** | Pointer to **bool** |  | [optional] 
+**HostJson** | Pointer to **string** | example:  {\&quot;password\&quot;:\&quot;***\&quot;,\&quot;ip\&quot;:\&quot;118.31.***.41\&quot;,\&quot;innerIp\&quot;:\&quot;118.31.***.41\&quot;,\&quot;region\&quot;:\&quot;\&quot;,\&quot;username\&quot;:\&quot;***\&quot;,\&quot;beianInfo\&quot;:\&quot;\&quot;} | [optional] 
+**InstanceId** | Pointer to **int32** | example:  1551111111 | [optional] 
+**IsTrial** | Pointer to **bool** | example:  true | [optional] 
+**LicenseCode** | Pointer to **string** |  | [optional] 
 **Modules** | Pointer to [**ClientDescribeInstanceResponseBodyModules**](ClientDescribeInstanceResponseBodyModules.md) |  | [optional] 
-**OrderId** | Pointer to **int32** |  | [optional] 
-**ProductCode** | Pointer to **string** |  | [optional] 
+**OrderId** | Pointer to **int32** | example:  204211111111111 | [optional] 
+**ProductCode** | Pointer to **string** | example:  cmgj00**11 | [optional] 
 **ProductName** | Pointer to **string** |  | [optional] 
-**ProductSkuCode** | Pointer to **string** |  | [optional] 
-**ProductType** | Pointer to **string** |  | [optional] 
+**ProductSkuCode** | Pointer to **string** | example:  cmgj00**11-prepay | [optional] 
+**ProductType** | Pointer to **string** | example:  APP | [optional] 
 **RelationalData** | Pointer to [**ClientDescribeInstanceResponseBodyRelationalData**](ClientDescribeInstanceResponseBodyRelationalData.md) |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to **string** | example:  OPENED | [optional] 
 **SupplierName** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -43,6 +45,31 @@ will change when the set of required properties is changed
 NewClientDescribeInstanceResponseBodyWithDefaults instantiates a new ClientDescribeInstanceResponseBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetActiveAddress
+
+`func (o *ClientDescribeInstanceResponseBody) GetActiveAddress() string`
+
+GetActiveAddress returns the ActiveAddress field if non-nil, zero value otherwise.
+
+### GetActiveAddressOk
+
+`func (o *ClientDescribeInstanceResponseBody) GetActiveAddressOk() (*string, bool)`
+
+GetActiveAddressOk returns a tuple with the ActiveAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActiveAddress
+
+`func (o *ClientDescribeInstanceResponseBody) SetActiveAddress(v string)`
+
+SetActiveAddress sets ActiveAddress field to given value.
+
+### HasActiveAddress
+
+`func (o *ClientDescribeInstanceResponseBody) HasActiveAddress() bool`
+
+HasActiveAddress returns a boolean if a field has been set.
 
 ### GetAppJson
 
@@ -318,6 +345,31 @@ SetIsTrial sets IsTrial field to given value.
 `func (o *ClientDescribeInstanceResponseBody) HasIsTrial() bool`
 
 HasIsTrial returns a boolean if a field has been set.
+
+### GetLicenseCode
+
+`func (o *ClientDescribeInstanceResponseBody) GetLicenseCode() string`
+
+GetLicenseCode returns the LicenseCode field if non-nil, zero value otherwise.
+
+### GetLicenseCodeOk
+
+`func (o *ClientDescribeInstanceResponseBody) GetLicenseCodeOk() (*string, bool)`
+
+GetLicenseCodeOk returns a tuple with the LicenseCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLicenseCode
+
+`func (o *ClientDescribeInstanceResponseBody) SetLicenseCode(v string)`
+
+SetLicenseCode sets LicenseCode field to given value.
+
+### HasLicenseCode
+
+`func (o *ClientDescribeInstanceResponseBody) HasLicenseCode() bool`
+
+HasLicenseCode returns a boolean if a field has been set.
 
 ### GetModules
 

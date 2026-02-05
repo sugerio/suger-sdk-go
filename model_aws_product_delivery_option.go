@@ -22,15 +22,21 @@ var _ MappedNullable = &AwsProductDeliveryOption{}
 type AwsProductDeliveryOption struct {
 	// Exclusive Fields For AWS AMI Product
 	AmiAlias *string `json:"AmiAlias,omitempty"`
+	ApiType *string `json:"ApiType,omitempty"`
+	CompatibleServices []string `json:"CompatibleServices,omitempty"`
+	Endpoints []AwsProductDeliveryOptionApiEndpoint `json:"Endpoints,omitempty"`
 	// Exclusive Fields For AWS SaaS Product
 	FulfillmentUrl *string `json:"FulfillmentUrl,omitempty"`
 	Id *string `json:"Id,omitempty"`
+	QuickLaunchEnabled *bool `json:"QuickLaunchEnabled,omitempty"`
 	Recommendations map[string]interface{} `json:"Recommendations,omitempty"`
 	ShortDescription *string `json:"ShortDescription,omitempty"`
 	SourceId *string `json:"SourceId,omitempty"`
 	// Exclusive Fields For AWS Container Product
 	Title *string `json:"Title,omitempty"`
 	Type *string `json:"Type,omitempty"`
+	// Exclusive Fields For SaaS AI Product
+	UsageInstructions *string `json:"UsageInstructions,omitempty"`
 	Visibility *string `json:"Visibility,omitempty"`
 }
 
@@ -81,6 +87,102 @@ func (o *AwsProductDeliveryOption) HasAmiAlias() bool {
 // SetAmiAlias gets a reference to the given string and assigns it to the AmiAlias field.
 func (o *AwsProductDeliveryOption) SetAmiAlias(v string) {
 	o.AmiAlias = &v
+}
+
+// GetApiType returns the ApiType field value if set, zero value otherwise.
+func (o *AwsProductDeliveryOption) GetApiType() string {
+	if o == nil || IsNil(o.ApiType) {
+		var ret string
+		return ret
+	}
+	return *o.ApiType
+}
+
+// GetApiTypeOk returns a tuple with the ApiType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsProductDeliveryOption) GetApiTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ApiType) {
+		return nil, false
+	}
+	return o.ApiType, true
+}
+
+// HasApiType returns a boolean if a field has been set.
+func (o *AwsProductDeliveryOption) HasApiType() bool {
+	if o != nil && !IsNil(o.ApiType) {
+		return true
+	}
+
+	return false
+}
+
+// SetApiType gets a reference to the given string and assigns it to the ApiType field.
+func (o *AwsProductDeliveryOption) SetApiType(v string) {
+	o.ApiType = &v
+}
+
+// GetCompatibleServices returns the CompatibleServices field value if set, zero value otherwise.
+func (o *AwsProductDeliveryOption) GetCompatibleServices() []string {
+	if o == nil || IsNil(o.CompatibleServices) {
+		var ret []string
+		return ret
+	}
+	return o.CompatibleServices
+}
+
+// GetCompatibleServicesOk returns a tuple with the CompatibleServices field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsProductDeliveryOption) GetCompatibleServicesOk() ([]string, bool) {
+	if o == nil || IsNil(o.CompatibleServices) {
+		return nil, false
+	}
+	return o.CompatibleServices, true
+}
+
+// HasCompatibleServices returns a boolean if a field has been set.
+func (o *AwsProductDeliveryOption) HasCompatibleServices() bool {
+	if o != nil && !IsNil(o.CompatibleServices) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompatibleServices gets a reference to the given []string and assigns it to the CompatibleServices field.
+func (o *AwsProductDeliveryOption) SetCompatibleServices(v []string) {
+	o.CompatibleServices = v
+}
+
+// GetEndpoints returns the Endpoints field value if set, zero value otherwise.
+func (o *AwsProductDeliveryOption) GetEndpoints() []AwsProductDeliveryOptionApiEndpoint {
+	if o == nil || IsNil(o.Endpoints) {
+		var ret []AwsProductDeliveryOptionApiEndpoint
+		return ret
+	}
+	return o.Endpoints
+}
+
+// GetEndpointsOk returns a tuple with the Endpoints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsProductDeliveryOption) GetEndpointsOk() ([]AwsProductDeliveryOptionApiEndpoint, bool) {
+	if o == nil || IsNil(o.Endpoints) {
+		return nil, false
+	}
+	return o.Endpoints, true
+}
+
+// HasEndpoints returns a boolean if a field has been set.
+func (o *AwsProductDeliveryOption) HasEndpoints() bool {
+	if o != nil && !IsNil(o.Endpoints) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpoints gets a reference to the given []AwsProductDeliveryOptionApiEndpoint and assigns it to the Endpoints field.
+func (o *AwsProductDeliveryOption) SetEndpoints(v []AwsProductDeliveryOptionApiEndpoint) {
+	o.Endpoints = v
 }
 
 // GetFulfillmentUrl returns the FulfillmentUrl field value if set, zero value otherwise.
@@ -145,6 +247,38 @@ func (o *AwsProductDeliveryOption) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AwsProductDeliveryOption) SetId(v string) {
 	o.Id = &v
+}
+
+// GetQuickLaunchEnabled returns the QuickLaunchEnabled field value if set, zero value otherwise.
+func (o *AwsProductDeliveryOption) GetQuickLaunchEnabled() bool {
+	if o == nil || IsNil(o.QuickLaunchEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.QuickLaunchEnabled
+}
+
+// GetQuickLaunchEnabledOk returns a tuple with the QuickLaunchEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsProductDeliveryOption) GetQuickLaunchEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.QuickLaunchEnabled) {
+		return nil, false
+	}
+	return o.QuickLaunchEnabled, true
+}
+
+// HasQuickLaunchEnabled returns a boolean if a field has been set.
+func (o *AwsProductDeliveryOption) HasQuickLaunchEnabled() bool {
+	if o != nil && !IsNil(o.QuickLaunchEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuickLaunchEnabled gets a reference to the given bool and assigns it to the QuickLaunchEnabled field.
+func (o *AwsProductDeliveryOption) SetQuickLaunchEnabled(v bool) {
+	o.QuickLaunchEnabled = &v
 }
 
 // GetRecommendations returns the Recommendations field value if set, zero value otherwise.
@@ -307,6 +441,38 @@ func (o *AwsProductDeliveryOption) SetType(v string) {
 	o.Type = &v
 }
 
+// GetUsageInstructions returns the UsageInstructions field value if set, zero value otherwise.
+func (o *AwsProductDeliveryOption) GetUsageInstructions() string {
+	if o == nil || IsNil(o.UsageInstructions) {
+		var ret string
+		return ret
+	}
+	return *o.UsageInstructions
+}
+
+// GetUsageInstructionsOk returns a tuple with the UsageInstructions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsProductDeliveryOption) GetUsageInstructionsOk() (*string, bool) {
+	if o == nil || IsNil(o.UsageInstructions) {
+		return nil, false
+	}
+	return o.UsageInstructions, true
+}
+
+// HasUsageInstructions returns a boolean if a field has been set.
+func (o *AwsProductDeliveryOption) HasUsageInstructions() bool {
+	if o != nil && !IsNil(o.UsageInstructions) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageInstructions gets a reference to the given string and assigns it to the UsageInstructions field.
+func (o *AwsProductDeliveryOption) SetUsageInstructions(v string) {
+	o.UsageInstructions = &v
+}
+
 // GetVisibility returns the Visibility field value if set, zero value otherwise.
 func (o *AwsProductDeliveryOption) GetVisibility() string {
 	if o == nil || IsNil(o.Visibility) {
@@ -352,11 +518,23 @@ func (o AwsProductDeliveryOption) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AmiAlias) {
 		toSerialize["AmiAlias"] = o.AmiAlias
 	}
+	if !IsNil(o.ApiType) {
+		toSerialize["ApiType"] = o.ApiType
+	}
+	if !IsNil(o.CompatibleServices) {
+		toSerialize["CompatibleServices"] = o.CompatibleServices
+	}
+	if !IsNil(o.Endpoints) {
+		toSerialize["Endpoints"] = o.Endpoints
+	}
 	if !IsNil(o.FulfillmentUrl) {
 		toSerialize["FulfillmentUrl"] = o.FulfillmentUrl
 	}
 	if !IsNil(o.Id) {
 		toSerialize["Id"] = o.Id
+	}
+	if !IsNil(o.QuickLaunchEnabled) {
+		toSerialize["QuickLaunchEnabled"] = o.QuickLaunchEnabled
 	}
 	if !IsNil(o.Recommendations) {
 		toSerialize["Recommendations"] = o.Recommendations
@@ -372,6 +550,9 @@ func (o AwsProductDeliveryOption) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Type) {
 		toSerialize["Type"] = o.Type
+	}
+	if !IsNil(o.UsageInstructions) {
+		toSerialize["UsageInstructions"] = o.UsageInstructions
 	}
 	if !IsNil(o.Visibility) {
 		toSerialize["Visibility"] = o.Visibility
