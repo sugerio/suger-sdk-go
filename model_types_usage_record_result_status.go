@@ -21,9 +21,9 @@ type TypesUsageRecordResultStatus string
 
 // List of types.UsageRecordResultStatus
 const (
-	UsageRecordResultStatusSuccess TypesUsageRecordResultStatus = "Success"
-	UsageRecordResultStatusCustomerNotSubscribed TypesUsageRecordResultStatus = "CustomerNotSubscribed"
-	UsageRecordResultStatusDuplicateRecord TypesUsageRecordResultStatus = "DuplicateRecord"
+	TypesUsageRecordResultStatusSuccess TypesUsageRecordResultStatus = "Success"
+	TypesUsageRecordResultStatusCustomerNotSubscribed TypesUsageRecordResultStatus = "CustomerNotSubscribed"
+	TypesUsageRecordResultStatusDuplicateRecord TypesUsageRecordResultStatus = "DuplicateRecord"
 )
 
 // All allowed values of TypesUsageRecordResultStatus enum
